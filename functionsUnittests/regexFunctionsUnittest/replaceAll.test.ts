@@ -98,10 +98,9 @@ describe('replaceAll', () => {
     );
   });
 
-  it('16. should throw Error when pattern is invalid regex', () => {
-    expect(() => replaceAll('test', '[unclosed', 'demo')).toThrow(Error);
-    expect(() => replaceAll('test', '[unclosed', 'demo')).toThrow(
-      'Invalid regular expression pattern',
-    );
+  it('16. should escape special characters in string patterns', () => {
+    // String patterns are escaped, so special chars are treated literally
+    const result = replaceAll('test[unclosed', '[unclosed', 'demo');
+    expect(result).toBe('testdemo');
   });
 });

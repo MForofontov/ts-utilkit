@@ -46,9 +46,10 @@ export function hasBacktracking(pattern: string | RegExp): boolean {
 
   // Check for nested quantifiers (most common backtracking issue)
   // Pattern like (a+)+ or (a*)* or (a+)*
-  const nestedQuantifiers =
-    /(\([^)]*[*+?]\)|\[[^\]]*\])[*+?{]/.test(source) ||
-    /(\([^)]*[*+?]\)|\[[^\]]*\])\{/.test(source);
+  // Look for a quantifier inside a group/class followed by another quantifier
+    // Detect nested quantifiers like (a+)+ or (a*)*
+    // Do not inspect character classes here to avoid false positives from literal '+' or '*' inside them.
+    const nestedQuantifiers = /\([^)]*[*+?][^)]*\)[*+?{]/.test(source);
 
   if (nestedQuantifiers) {
     return true;
@@ -63,10 +64,14 @@ export function hasBacktracking(pattern: string | RegExp): boolean {
     return true;
   }
 
-  // Check for multiple consecutive greedy quantifiers
-  // Pattern like .*.*  or .+.+ or similar
-  const multipleGreedyQuantifiers = /[*+][*+]|[*+]\{|\{[^}]*\}[*+{]/;
-  if (multipleGreedyQuantifiers.test(source)) {
+  // Check for multiple consecutive greedy quantifiers like .*.* or .+.+
+  // This pattern checks for: any_char quantifier any_char quantifier
+  // But we need to be careful not to flag: [a-z]+literal[a-z]+
+  // We look for patterns where there are multiple quantifiers in close proximity
+  // without literal separators (anchors, literal chars, etc.)
+  // Flag obvious consecutive greedy wildcards like .*.* or .+.+ with no literals in between
+  const consecutiveQuantifiers = /\.\*\.\*|\.\+\.\+/;
+  if (consecutiveQuantifiers.test(source)) {
     return true;
   }
 

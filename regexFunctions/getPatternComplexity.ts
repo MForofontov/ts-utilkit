@@ -67,7 +67,9 @@ export function getPatternComplexity(
   const characterClasses = (source.match(/\[.*?\]/g) || []).length;
   const quantifiers = (source.match(/[*+?]|\{\d+,?\d*\}/g) || []).length;
   const alternations = (source.match(/\|/g) || []).length;
-  const hasLookarounds = /\(\?[=!<]/.test(source);
+  // Count all lookaround assertions: (?=, (?!, (?<=, (?<!
+  const lookaroundMatches = source.match(/\(\?[=!<]/g) || [];
+  const hasLookarounds = lookaroundMatches.length > 0;
   const hasBackreferences = /\\[1-9]/.test(source);
 
   // Calculate complexity score

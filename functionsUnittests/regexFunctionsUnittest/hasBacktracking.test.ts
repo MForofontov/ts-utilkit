@@ -69,24 +69,24 @@ describe('hasBacktracking', () => {
   });
 
   // Error cases
-  it('13. should throw TypeError when pattern is not a RegExp', () => {
-    expect(() => hasBacktracking('invalid' as any)).toThrow(TypeError);
-    expect(() => hasBacktracking('invalid' as any)).toThrow(
-      'pattern must be a RegExp',
+  it('13. should throw TypeError when pattern is not a string or RegExp', () => {
+    expect(() => hasBacktracking(123 as any)).toThrow(TypeError);
+    expect(() => hasBacktracking(123 as any)).toThrow(
+      'pattern must be a string or RegExp',
     );
   });
 
   it('14. should throw TypeError when pattern is null', () => {
     expect(() => hasBacktracking(null as any)).toThrow(TypeError);
     expect(() => hasBacktracking(null as any)).toThrow(
-      'pattern must be a RegExp',
+      'pattern must be a string or RegExp',
     );
   });
 
   it('15. should throw TypeError when pattern is undefined', () => {
     expect(() => hasBacktracking(undefined as any)).toThrow(TypeError);
     expect(() => hasBacktracking(undefined as any)).toThrow(
-      'pattern must be a RegExp',
+      'pattern must be a string or RegExp',
     );
   });
 });

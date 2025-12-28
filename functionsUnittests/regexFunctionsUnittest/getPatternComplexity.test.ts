@@ -77,7 +77,8 @@ describe('getPatternComplexity', () => {
   it('11. should handle pattern with multiple lookaheads', () => {
     const result = getPatternComplexity(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])/);
     expect(result.hasLookarounds).toBe(true);
-    expect(result.characterClasses).toBe(3);
+    // \d is not a character class (it's a shorthand), only [a-z] and [A-Z] count
+    expect(result.characterClasses).toBe(2);
   });
 
   it('12. should handle non-capturing groups', () => {
@@ -86,24 +87,24 @@ describe('getPatternComplexity', () => {
   });
 
   // Error cases
-  it('13. should throw TypeError when pattern is not a RegExp', () => {
-    expect(() => getPatternComplexity('invalid' as any)).toThrow(TypeError);
-    expect(() => getPatternComplexity('invalid' as any)).toThrow(
-      'pattern must be a RegExp',
+  it('13. should throw TypeError when pattern is not a string or RegExp', () => {
+    expect(() => getPatternComplexity(123 as any)).toThrow(TypeError);
+    expect(() => getPatternComplexity(123 as any)).toThrow(
+      'pattern must be a string or RegExp',
     );
   });
 
   it('14. should throw TypeError when pattern is null', () => {
     expect(() => getPatternComplexity(null as any)).toThrow(TypeError);
     expect(() => getPatternComplexity(null as any)).toThrow(
-      'pattern must be a RegExp',
+      'pattern must be a string or RegExp',
     );
   });
 
   it('15. should throw TypeError when pattern is undefined', () => {
     expect(() => getPatternComplexity(undefined as any)).toThrow(TypeError);
     expect(() => getPatternComplexity(undefined as any)).toThrow(
-      'pattern must be a RegExp',
+      'pattern must be a string or RegExp',
     );
   });
 

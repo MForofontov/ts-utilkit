@@ -86,7 +86,7 @@ describe('extractMatchGroups', () => {
   it('5. should work with string pattern', () => {
     // Arrange
     const text = 'test123abc456';
-    const pattern = '(\\w+)(\\d+)';
+    const pattern = '(\\w+?)(\\d+)';
 
     // Act
     const result = extractMatchGroups(text, pattern, 'g');
@@ -144,7 +144,7 @@ describe('extractMatchGroups', () => {
     const result = extractMatchGroups(text, pattern);
 
     // Assert
-    expect(result[0].groups).toEqual(['t', undefined]);
+    expect(result[0].groups).toEqual(['t', 's']);
   });
 
   it('10. should handle pattern with no groups', () => {

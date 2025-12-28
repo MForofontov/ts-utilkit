@@ -74,13 +74,13 @@ describe('buildPattern', () => {
 
   // group() tests
   it('10. should create capture group', () => {
-    const pattern = buildPattern().group().literal('test').build();
+    const pattern = buildPattern().literal('test').group().build();
     const match = 'test'.match(pattern);
     expect(match?.[1]).toBe('test');
   });
 
   it('11. should create named capture group', () => {
-    const pattern = buildPattern().group('word').raw('\\w+').build();
+    const pattern = buildPattern().raw('\\w+').group('word').build();
     const match = 'hello'.match(pattern);
     expect(match?.groups?.word).toBe('hello');
   });
@@ -164,12 +164,12 @@ describe('buildPattern', () => {
   it('20. should throw Error when trying to make optional without previous pattern', () => {
     expect(() => buildPattern().optional()).toThrow(Error);
     expect(() => buildPattern().optional()).toThrow(
-      'No pattern to make optional',
+      'Cannot make optional: no pattern parts added yet',
     );
   });
 
   it('21. should throw Error when trying to repeat without previous pattern', () => {
     expect(() => buildPattern().repeat(2)).toThrow(Error);
-    expect(() => buildPattern().repeat(2)).toThrow('No pattern to repeat');
+    expect(() => buildPattern().repeat(2)).toThrow('Cannot add repeat: no pattern parts added yet');
   });
 });

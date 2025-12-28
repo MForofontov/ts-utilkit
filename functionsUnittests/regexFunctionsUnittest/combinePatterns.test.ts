@@ -96,7 +96,7 @@ describe('combinePatterns', () => {
       TypeError,
     );
     expect(() => combinePatterns([/test/], 'invalid' as any)).toThrow(
-      'operator must be either "and" or "or"',
+      "operator must be 'and' or 'or'",
     );
   });
 

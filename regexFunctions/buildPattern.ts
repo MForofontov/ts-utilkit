@@ -98,9 +98,6 @@ export class PatternBuilder {
    * @returns The builder instance for chaining.
    */
   group(name?: string): this {
-    if (this.parts.length === 0) {
-      throw new Error('Cannot create group: no pattern parts added yet');
-    }
     if (name !== undefined && typeof name !== 'string') {
       throw new TypeError(`name must be a string, got ${typeof name}`);
     }
@@ -122,8 +119,9 @@ export class PatternBuilder {
       throw new Error('At least one alternative is required');
     }
     const current = this.parts.join('');
-    const allAlternatives = [current, ...alternatives].join('|');
-    this.parts = [`(?:${allAlternatives})`];
+    const allAlternatives = current ? [current, ...alternatives] : alternatives;
+    const alternation = allAlternatives.join('|');
+    this.parts = [`(?:${alternation})`];
     return this;
   }
 

@@ -33,11 +33,6 @@ export const CommonPatterns = {
   hexColor: /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/,
 
   /**
-   * US phone number pattern (various formats).
-   */
-  phoneUS: /^(\+1[-.\s]?)?(\(?\d{3}\)?[-.\s]?)?\d{3}[-.\s]?\d{4}$/,
-
-  /**
    * Credit card number pattern (basic, spaces/dashes optional).
    */
   creditCard: /^(?:\d{4}[-\s]?){3}\d{4}$/,
@@ -77,12 +72,12 @@ export const CommonPatterns = {
   /**
    * HTML tag pattern.
    */
-  htmlTag: /<\/?[\w\s="/.':;#-\/]+>/gi,
+  htmlTag: /<\/?[\w\s="/.':;#-\/]+>/,
 
   /**
    * Slug pattern (URL-friendly string).
    */
-  slug: /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
+  slug: /^[a-z0-9_-]+$/i,
 
   /**
    * MAC address pattern.
@@ -119,6 +114,10 @@ export const CommonPatterns = {
 export function getCommonPattern(
   patternName: keyof typeof CommonPatterns,
 ): RegExp {
+  if (typeof patternName !== 'string') {
+    throw new TypeError(`name must be a string, got ${typeof patternName}`);
+  }
+  
   if (!(patternName in CommonPatterns)) {
     throw new Error(
       `Unknown pattern name: ${patternName}. Available patterns: ${Object.keys(CommonPatterns).join(', ')}`,
@@ -155,6 +154,10 @@ export function testCommonPattern(
 ): boolean {
   if (typeof text !== 'string') {
     throw new TypeError(`text must be a string, got ${typeof text}`);
+  }
+  
+  if (typeof patternName !== 'string') {
+    throw new TypeError(`name must be a string, got ${typeof patternName}`);
   }
 
   const pattern = getCommonPattern(patternName);
