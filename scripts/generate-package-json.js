@@ -3,83 +3,87 @@ const path = require('path');
 
 // Module metadata
 const modules = {
-  arrayFunctions: {
+  array: {
     description: 'Comprehensive array manipulation utilities including sorting, filtering, transformation, and mathematical operations',
     keywords: ['array', 'utilities', 'sorting', 'filtering', 'transformation']
   },
-  asyncFunctions: {
+  async: {
     description: 'Asynchronous operation utilities for retry logic, timeouts, parallel execution, and promise management',
     keywords: ['async', 'promises', 'retry', 'timeout', 'parallel']
   },
-  collectionFunctions: {
+  collection: {
     description: 'Collection utilities for Sets, Maps, and conversions between different collection types',
     keywords: ['collection', 'set', 'map', 'conversion', 'utilities']
   },
-  configurationFunctions: {
+  configuration: {
     description: 'Configuration management utilities for environment variables, deep merging, and validation',
     keywords: ['config', 'environment', 'configuration', 'validation', 'settings']
   },
-  cryptoFunctions: {
+  crypto: {
     description: 'Cryptographic utilities for hashing (SHA-256, SHA-512, MD5), encryption (AES-256), HMAC, and password management',
     keywords: ['crypto', 'hash', 'encryption', 'hmac', 'security', 'password']
   },
-  dateFunctions: {
+  date: {
     description: 'Date and time manipulation utilities for formatting, calculations, and timezone handling',
     keywords: ['date', 'time', 'datetime', 'formatting', 'timezone']
   },
-  encodingFunctions: {
+  encoding: {
     description: 'Encoding and decoding utilities for Base64 and other encoding schemes',
     keywords: ['encoding', 'base64', 'decode', 'encode']
   },
-  eventFunctions: {
+  event: {
     description: 'Event handling utilities including EventEmitter, debounce, throttle, event bus, and delegation',
     keywords: ['event', 'emitter', 'debounce', 'throttle', 'pubsub', 'delegation']
   },
-  formatFunctions: {
+  format: {
     description: 'Formatting utilities for numbers, dates, strings, and currencies',
     keywords: ['format', 'formatting', 'number', 'currency', 'string']
   },
-  mathFunctions: {
+  math: {
     description: 'Mathematical utilities covering algebra, geometry, statistics, number theory, and combinatorics',
     keywords: ['math', 'algebra', 'geometry', 'statistics', 'calculation']
   },
-  networkFunctions: {
+  network: {
     description: 'Network utilities for URL validation, IP address handling, and network-related operations',
     keywords: ['network', 'url', 'ip', 'validation', 'http']
   },
-  objectFunctions: {
+  object: {
     description: 'Object manipulation utilities for deep merging, cloning, path access, and transformation',
     keywords: ['object', 'merge', 'clone', 'utilities', 'transformation']
   },
-  parsingFunctions: {
+  parsing: {
     description: 'Parsing utilities for JSON, CSV, XML, and other data formats',
     keywords: ['parsing', 'json', 'csv', 'xml', 'data']
   },
-  randomFunctions: {
+  random: {
     description: 'Random generation utilities for numbers, strings, arrays, and weighted selections',
     keywords: ['random', 'generator', 'uuid', 'selection', 'utilities']
   },
-  regexFunctions: {
+  regex: {
     description: 'Regular expression utilities for pattern matching and text processing',
     keywords: ['regex', 'pattern', 'matching', 'validation', 'text']
   },
-  serializationFunctions: {
+  serialization: {
     description: 'Serialization and deserialization utilities for various data formats',
     keywords: ['serialization', 'json', 'serialize', 'deserialize', 'data']
   },
-  stringFunctions: {
+  string: {
     description: 'String manipulation utilities for formatting, transformation, and text processing',
     keywords: ['string', 'text', 'formatting', 'manipulation', 'utilities']
   },
-  utilityFunctions: {
+  'testing-utilities': {
+    description: 'Testing utilities and helpers for generating test data, assertions, and performance testing',
+    keywords: ['testing', 'test', 'utilities', 'helpers', 'assertions', 'jest']
+  },
+  utility: {
     description: 'General-purpose utility functions for debouncing, throttling, color conversion, and common patterns',
     keywords: ['utility', 'helpers', 'debounce', 'throttle', 'utils']
   },
-  validationFunctions: {
+  validation: {
     description: 'Validation utilities for email, URL, IP addresses, UUID, dates, and custom patterns',
     keywords: ['validation', 'validator', 'email', 'url', 'ip', 'uuid']
   },
-  webScrapingFunctions: {
+  webscraping: {
     description: 'Web scraping utilities for HTML parsing, data extraction, and web content processing',
     keywords: ['scraping', 'html', 'parsing', 'extraction', 'web']
   }
@@ -92,7 +96,7 @@ const repository = 'https://github.com/MForofontov/ts-functions';
 
 function generatePackageJson(moduleName) {
   const meta = modules[moduleName];
-  const packageName = `@ts-functions/${moduleName.replace('Functions', '').toLowerCase()}`;
+  const packageName = `@ts-functions/${moduleName}`;
   
   const packageJson = {
     name: packageName,

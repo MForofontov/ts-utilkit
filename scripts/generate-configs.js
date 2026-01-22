@@ -2,26 +2,27 @@ const fs = require('fs');
 const path = require('path');
 
 const modules = [
-  'arrayFunctions',
-  'asyncFunctions',
-  'collectionFunctions',
-  'configurationFunctions',
-  'cryptoFunctions',
-  'dateFunctions',
-  'encodingFunctions',
-  'eventFunctions',
-  'formatFunctions',
-  'mathFunctions',
-  'networkFunctions',
-  'objectFunctions',
-  'parsingFunctions',
-  'randomFunctions',
-  'regexFunctions',
-  'serializationFunctions',
-  'stringFunctions',
-  'utilityFunctions',
-  'validationFunctions',
-  'webScrapingFunctions'
+  'array',
+  'async',
+  'collection',
+  'configuration',
+  'crypto',
+  'date',
+  'encoding',
+  'event',
+  'format',
+  'math',
+  'network',
+  'object',
+  'parsing',
+  'random',
+  'regex',
+  'serialization',
+  'string',
+  'testing-utilities',
+  'utility',
+  'validation',
+  'webscraping'
 ];
 
 const tsConfig = {

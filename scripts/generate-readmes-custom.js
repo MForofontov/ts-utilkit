@@ -3,7 +3,7 @@ const path = require('path');
 
 // Custom README content for each module based on actual functions
 const readmeTemplates = {
-  arrayFunctions: `# @ts-functions/array
+  array: `# @ts-functions/array
 
 Comprehensive array manipulation utilities with 27+ functions for sorting, filtering, transformation, and mathematical operations on arrays.
 
@@ -203,7 +203,7 @@ GPL-3.0 © MForofontov
 Contributions welcome! See the [main repository](https://github.com/MForofontov/ts-functions) for guidelines.
 `,
 
-  asyncFunctions: `# @ts-functions/async
+  async: `# @ts-functions/async
 
 Asynchronous operation utilities for retry logic, timeouts, parallel execution, and promise management.
 
@@ -333,7 +333,7 @@ For detailed API documentation, visit the [main repository](https://github.com/M
 GPL-3.0 © MForofontov
 `,
 
-  cryptoFunctions: `# @ts-functions/crypto
+  crypto: `# @ts-functions/crypto
 
 Cryptographic utilities for hashing, encryption, HMAC, and secure password management using Node.js built-in crypto module.
 
@@ -500,26 +500,27 @@ GPL-3.0 © MForofontov
 
 // Generate README for remaining modules with appropriate content
 const modules = [
-  'arrayFunctions',
-  'asyncFunctions',
-  'cryptoFunctions',
-  'collectionFunctions',
-  'configurationFunctions',
-  'dateFunctions',
-  'encodingFunctions',
-  'eventFunctions',
-  'formatFunctions',
-  'mathFunctions',
-  'networkFunctions',
-  'objectFunctions',
-  'parsingFunctions',
-  'randomFunctions',
-  'regexFunctions',
-  'serializationFunctions',
-  'stringFunctions',
-  'utilityFunctions',
-  'validationFunctions',
-  'webScrapingFunctions'
+  'array',
+  'async',
+  'crypto',
+  'collection',
+  'configuration',
+  'date',
+  'encoding',
+  'event',
+  'format',
+  'math',
+  'network',
+  'object',
+  'parsing',
+  'random',
+  'regex',
+  'serialization',
+  'string',
+  'testing-utilities',
+  'utility',
+  'validation',
+  'webscraping'
 ];
 
 console.log('Generating custom README.md files based on actual module content...\n');
@@ -541,8 +542,8 @@ modules.forEach(moduleName => {
 
 console.log('\n✓ All custom README.md files generated successfully!');
 
-function generateGenericReadme(moduleName) {
-  const name = moduleName.replace('Functions', '').toLowerCase();
+function generateGenericR;
+  const title = moduleName.charAt(0).toUpperCase() + moduleName.slice(1).replace(/-/g, ' '
   const title = moduleName.replace('Functions', ' Functions').replace(/([A-Z])/g, ' $1').trim();
   
   return `# @ts-functions/${name}
