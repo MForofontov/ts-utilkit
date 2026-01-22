@@ -1,5 +1,5 @@
 {
-  "name": "ts-functions-library",
+  "name": "ts-functions",
   "version": "1.0.0",
   "description": "A collection of reusable TypeScript utility functions.",
   "main": "dist/index.js",
@@ -7,17 +7,25 @@
   "license": "GPL-3.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourname/ts-functions-library.git"
+    "url": "https://github.com/MForofontov/ts-functions.git"
   },
   "keywords": [
     "typescript",
     "utilities",
-    "functions"
+    "functions",
+    "helpers",
+    "toolkit",
+    "utils",
+    "type-safe",
+    "enterprise"
   ],
-  "author": "",
+  "author": "MForofontov",
   "engines": {
     "node": ">=20"
   },
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "test": "./run-tests.sh",
     "test:github": "./run-tests-github.sh",

@@ -1,0 +1,36 @@
+{
+  "name": "@ts-functions/random",
+  "version": "1.0.0",
+  "description": "Random generation utilities for numbers, strings, arrays, and weighted selections",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MForofontov/ts-functions.git",
+    "directory": "packages/randomFunctions"
+  },
+  "keywords": [
+    "random",
+    "generator",
+    "uuid",
+    "selection",
+    "utilities"
+  ],
+  "author": "MForofontov",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

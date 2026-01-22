@@ -1,0 +1,39 @@
+{
+  "name": "@ts-functions/math",
+  "version": "1.0.0",
+  "description": "Mathematical utilities covering algebra, geometry, statistics, number theory, and combinatorics",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MForofontov/ts-functions.git",
+    "directory": "packages/mathFunctions"
+  },
+  "keywords": [
+    "math",
+    "algebra",
+    "geometry",
+    "statistics",
+    "calculation"
+  ],
+  "author": "MForofontov",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@ts-functions/array": "^1.0.0"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

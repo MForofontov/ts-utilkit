@@ -1,0 +1,37 @@
+{
+  "name": "@ts-functions/event",
+  "version": "1.0.0",
+  "description": "Event handling utilities including EventEmitter, debounce, throttle, event bus, and delegation",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MForofontov/ts-functions.git",
+    "directory": "packages/eventFunctions"
+  },
+  "keywords": [
+    "event",
+    "emitter",
+    "debounce",
+    "throttle",
+    "pubsub",
+    "delegation"
+  ],
+  "author": "MForofontov",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

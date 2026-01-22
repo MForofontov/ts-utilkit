@@ -10,28 +10,34 @@
     "lib": ["es2023", "dom"],
     "outDir": "dist",
     "declaration": true,
-    "emitDeclarationOnly": false
+    "emitDeclarationOnly": false,
+    "baseUrl": ".",
+    "paths": {
+      "@ts-functions/array": ["packages/array/src"],
+      "@ts-functions/async": ["packages/async/src"],
+      "@ts-functions/collection": ["packages/collection/src"],
+      "@ts-functions/configuration": ["packages/configuration/src"],
+      "@ts-functions/crypto": ["packages/crypto/src"],
+      "@ts-functions/date": ["packages/date/src"],
+      "@ts-functions/encoding": ["packages/encoding/src"],
+      "@ts-functions/event": ["packages/event/src"],
+      "@ts-functions/format": ["packages/format/src"],
+      "@ts-functions/math": ["packages/math/src"],
+      "@ts-functions/network": ["packages/network/src"],
+      "@ts-functions/object": ["packages/object/src"],
+      "@ts-functions/parsing": ["packages/parsing/src"],
+      "@ts-functions/random": ["packages/random/src"],
+      "@ts-functions/regex": ["packages/regex/src"],
+      "@ts-functions/serialization": ["packages/serialization/src"],
+      "@ts-functions/string": ["packages/string/src"],
+      "@ts-functions/utility": ["packages/utility/src"],
+      "@ts-functions/validation": ["packages/validation/src"],
+      "@ts-functions/webscraping": ["packages/webscraping/src"]
+    }
   },
   "include": [
     "index.ts",
-    "arrayFunctions",
-    "asyncFunctions",
-    "collectionFunctions",
-    "configurationFunctions",
-    "cryptoFunctions",
-    "dateFunctions",
-    "encodingFunctions",
-    "eventFunctions",
-    "mathFunctions",
-    "networkFunctions",
-    "objectFunctions",
-    "randomFunctions",
-    "regexFunctions",
-    "serializationFunctions",
-    "stringFunctions",
-    "testingUtilities",
-    "utilityFunctions",
-    "validationFunctions"
+    "packages/*/src/**/*"
   ],
-  "exclude": ["dist", "node_modules"]
+  "exclude": ["dist", "node_modules", "packages/*/tests/**/*"]
 }

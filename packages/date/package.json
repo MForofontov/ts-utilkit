@@ -1,0 +1,36 @@
+{
+  "name": "@ts-functions/date",
+  "version": "1.0.0",
+  "description": "Date and time manipulation utilities for formatting, calculations, and timezone handling",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MForofontov/ts-functions.git",
+    "directory": "packages/dateFunctions"
+  },
+  "keywords": [
+    "date",
+    "time",
+    "datetime",
+    "formatting",
+    "timezone"
+  ],
+  "author": "MForofontov",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

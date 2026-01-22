@@ -1,9 +1,12 @@
 {
   "extends": "./tsconfig.json",
   "include": [
-    "functionsUnittests",
-    "testingUtilities",
+    "packages/**/tests/**/*.ts",
+    "packages/**/tests/**/*.tsx",
+    "packages/**/src/**/*.ts",
+    "packages/**/src/**/*.tsx",
     "jest.config.ts",
     "jest.local.config.ts"
-  ]
+  ],
+  "exclude": ["dist", "node_modules"]
 }

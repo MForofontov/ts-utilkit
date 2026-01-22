@@ -1,0 +1,37 @@
+{
+  "name": "@ts-functions/validation",
+  "version": "1.0.0",
+  "description": "Validation utilities for email, URL, IP addresses, UUID, dates, and custom patterns",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MForofontov/ts-functions.git",
+    "directory": "packages/validationFunctions"
+  },
+  "keywords": [
+    "validation",
+    "validator",
+    "email",
+    "url",
+    "ip",
+    "uuid"
+  ],
+  "author": "MForofontov",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

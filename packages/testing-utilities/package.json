@@ -1,0 +1,39 @@
+{
+  "name": "@ts-functions/testing-utilities",
+  "version": "1.0.0",
+  "description": "Testing utilities and helpers for writing comprehensive unit tests with TypeScript and Jest",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MForofontov/ts-functions.git",
+    "directory": "packages/testing-utilities"
+  },
+  "keywords": [
+    "testing",
+    "utilities",
+    "jest",
+    "test-helpers",
+    "typescript",
+    "unit-testing",
+    "test-data",
+    "mocking"
+  ],
+  "author": "MForofontov",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}
