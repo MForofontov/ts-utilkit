@@ -1,4 +1,4 @@
-import { sumArrayElements } from '../../../../array/src/sumArrayElements';
+import { sumArrayElements } from '@ts-functions/array';
 
 /**
  * Calculates the arithmetic mean (average) of all numbers in an array.

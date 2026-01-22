@@ -1,4 +1,4 @@
-import { deepEqual } from '../object/src/deepEqual';
+import { deepEqual } from '@ts-functions/object';
 
 /**
  * Removes duplicates from an array using deep equality comparison.

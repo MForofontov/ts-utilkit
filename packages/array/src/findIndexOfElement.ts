@@ -1,4 +1,4 @@
-import { deepEqual } from '../object/src/deepEqual';
+import { deepEqual } from '@ts-functions/object';
 
 /**
  * Finds the index of an element in an array using deep equality comparison.

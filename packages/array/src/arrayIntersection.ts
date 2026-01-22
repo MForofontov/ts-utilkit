@@ -1,4 +1,4 @@
-import { deepEqual } from '../object/src/deepEqual';
+import { deepEqual } from '@ts-functions/object';
 
 /**
  * Returns the intersection of two arrays (elements that are present in both arrays).

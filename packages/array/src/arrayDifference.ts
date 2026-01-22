@@ -1,4 +1,4 @@
-import { deepEqual } from '../object/src/deepEqual';
+import { deepEqual } from '@ts-functions/object';
 
 /**
  * Finds the difference between two arrays (elements in the first array that are not in the second).
