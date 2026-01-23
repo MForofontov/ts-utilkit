@@ -30,6 +30,7 @@
       "@ts-functions/regex": ["packages/regex/src"],
       "@ts-functions/serialization": ["packages/serialization/src"],
       "@ts-functions/string": ["packages/string/src"],
+      "@ts-functions/testing-utilities": ["packages/testing-utilities/src"],
       "@ts-functions/utility": ["packages/utility/src"],
       "@ts-functions/validation": ["packages/validation/src"],
       "@ts-functions/webscraping": ["packages/webscraping/src"]
