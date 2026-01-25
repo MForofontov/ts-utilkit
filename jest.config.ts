@@ -33,6 +33,9 @@ const config = {
       tsconfig: 'tsconfig.test.json',
     },
   },
+  moduleNameMapper: {
+    '^@ts-utilkit/(.*)$': '<rootDir>/packages/$1/src',
+  },
   testEnvironment: 'allure-jest/node',
   testEnvironmentOptions: {
     resultsDir: 'allure-results',

@@ -1,0 +1,37 @@
+{
+  "name": "@ts-utilkit/validation",
+  "version": "0.1.0",
+  "description": "Validation utilities for email, URL, IP addresses, UUID, dates, and custom patterns",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MForofontov/ts-utilkit.git",
+    "directory": "packages/validationFunctions"
+  },
+  "keywords": [
+    "validation",
+    "validator",
+    "email",
+    "url",
+    "ip",
+    "uuid"
+  ],
+  "author": "MForofontov",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

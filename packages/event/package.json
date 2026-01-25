@@ -1,0 +1,37 @@
+{
+  "name": "@ts-utilkit/event",
+  "version": "0.1.0",
+  "description": "Event handling utilities including EventEmitter, debounce, throttle, event bus, and delegation",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MForofontov/ts-utilkit.git",
+    "directory": "packages/eventFunctions"
+  },
+  "keywords": [
+    "event",
+    "emitter",
+    "debounce",
+    "throttle",
+    "pubsub",
+    "delegation"
+  ],
+  "author": "MForofontov",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

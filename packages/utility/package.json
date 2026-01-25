@@ -1,0 +1,36 @@
+{
+  "name": "@ts-utilkit/utility",
+  "version": "0.1.0",
+  "description": "General-purpose utility functions for debouncing, throttling, color conversion, and common patterns",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MForofontov/ts-utilkit.git",
+    "directory": "packages/utilityFunctions"
+  },
+  "keywords": [
+    "utility",
+    "helpers",
+    "debounce",
+    "throttle",
+    "utils"
+  ],
+  "author": "MForofontov",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

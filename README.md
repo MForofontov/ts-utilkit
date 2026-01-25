@@ -1,22 +1,23 @@
-# ts-functions-library
+# ts-utilkit
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
 [![Jest](https://img.shields.io/badge/Jest-323330?style=for-the-badge&logo=Jest&logoColor=white)](https://jestjs.io/)
-[![ESLint](https://img.shields.io/badge/ESLint-4B3263?style=for-the-badge&logo=eslint&logoColor=white)](https://eslint.org/)
-[![Prettier](https://img.shields.io/badge/Prettier-F7B93E?style=for-the-badge&logo=prettier&logoColor=black)](https://prettier.io/)
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
-A comprehensive collection of **200+ reusable TypeScript utility functions** organized into 7 specialized modules. This enterprise-grade library emphasizes type safety, comprehensive testing, and follows TypeScript best practices for maximum reliability and maintainability.
+A collection of **200+ TypeScript utility functions** organized into specialized modules. Built with type safety and comprehensive testing in mind.
+
+> ⚠️ **Production Notice**: While this library has extensive test coverage (>98%), not all functions have been battle-tested in production environments. Use at your own discretion and thoroughly test in your specific use case before deploying to production.
 
 ## ✨ Features
 
-- 🎯 **200+ Functions**: Comprehensive utilities across 7 specialized categories
-- 🔒 **Type Safe**: Full TypeScript support with complete type annotations
+- 🎯 **200+ Functions**: Utilities across array, async, crypto, date, math, object, string, and more
+- 🔒 **Type Safe**: Full TypeScript support with strict type checking
 - 📝 **Well Documented**: JSDoc comments with examples and complexity notes
-- 🧪 **Thoroughly Tested**: >95% test coverage with Jest and Allure reporting
-- 🚀 **Enterprise Ready**: Follows industry best practices and coding standards
-- 📦 **Tree Shakeable**: Import only what you need for optimal bundle size
-- 🛡️ **Error Resilient**: Comprehensive input validation with descriptive error messages
+- 🧪 **Extensively Tested**: 5,675 unit tests with >98% code coverage
+- 📦 **Tree Shakeable**: Import only what you need
+- 🛡️ **Input Validation**: Comprehensive error handling with descriptive messages
+- ⚖️ **MIT Licensed**: Free for personal and commercial use
 
 ## 📚 Table of Contents
 
@@ -38,16 +39,16 @@ This library requires **Node.js 20 or later** and supports modern TypeScript env
 
 ```bash
 # npm
-npm install ts-functions-library
+npm install ts-utilkit
 
 # yarn
-yarn add ts-functions-library
+yarn add ts-utilkit
 
 # pnpm
-pnpm add ts-functions-library
+pnpm add ts-utilkit
 
 # bun
-bun add ts-functions-library
+bun add ts-utilkit
 ```
 
 ### TypeScript Configuration
@@ -69,7 +70,7 @@ Ensure your `tsconfig.json` includes:
 Import functions individually for optimal tree-shaking:
 
 ```typescript
-import { chunkArray, deepMerge, slugify } from 'ts-functions-library';
+import { chunkArray, deepMerge, slugify } from 'ts-utilkit';
 
 // Array operations
 const chunks = chunkArray([1, 2, 3, 4, 5], 2); // [[1, 2], [3, 4], [5]]
@@ -205,7 +206,7 @@ import {
   chunkArray,
   findDuplicates,
   cartesianProduct,
-} from 'ts-functions-library';
+} from 'ts-utilkit';
 
 // Split array into chunks
 const data = [1, 2, 3, 4, 5, 6, 7, 8];
@@ -225,7 +226,7 @@ const combinations = cartesianProduct(colors, sizes);
 ### Async Operations
 
 ```typescript
-import { asyncRetry, asyncTimeout, asyncMap } from 'ts-functions-library';
+import { asyncRetry, asyncTimeout, asyncMap } from 'ts-utilkit';
 
 // Retry with exponential backoff
 const result = await asyncRetry(() => fetch('/api/data'), {
@@ -250,7 +251,7 @@ const responses = await asyncMap(urls, async (url) => {
 ### Object Manipulation
 
 ```typescript
-import { deepMerge, safeGet, flattenObject } from 'ts-functions-library';
+import { deepMerge, safeGet, flattenObject } from 'ts-utilkit';
 
 // Deep merge with conflict resolution
 const config = deepMerge(
@@ -276,7 +277,7 @@ import {
   calculateStandardDeviation,
   calculateHaversineDistance,
   isPrime,
-} from 'ts-functions-library';
+} from 'ts-utilkit';
 
 // Statistical calculations
 const data = [2, 4, 4, 4, 5, 5, 7, 9];
@@ -295,7 +296,7 @@ const primeCheck = isPrime(97); // true
 ### String Processing
 
 ```typescript
-import { slugify, extractDomain, isPalindrome } from 'ts-functions-library';
+import { slugify, extractDomain, isPalindrome } from 'ts-utilkit';
 
 // URL-friendly slugs
 const slug = slugify('Hello World! 123'); // 'hello-world-123'
@@ -314,7 +315,7 @@ import {
   isValidIPv4,
   isValidUUID,
   isValidMACAddress,
-} from 'ts-functions-library';
+} from 'ts-utilkit';
 
 // Network validation
 const isValidIP = isValidIPv4('192.168.1.1'); // true
@@ -375,8 +376,8 @@ throw new Error('timeout must be non-negative, got -1');
 
 ```bash
 # Clone the repository
-git clone https://github.com/MForofontov/ts-functions-library.git
-cd ts-functions-library
+git clone https://github.com/MForofontov/ts-utilkit.git
+cd ts-utilkit
 
 # Install dependencies
 npm install
@@ -395,7 +396,7 @@ npm run format
 ### Project Structure
 
 ```
-ts-functions-library/
+ts-utilkit/
 ├── .github/                        # GitHub workflows and documentation
 ├── arrayFunctions/                 # Array manipulation utilities (26 functions)
 ├── asyncFunctions/                 # Async operations and concurrency (6 functions)
@@ -557,9 +558,9 @@ See the [LICENSE](LICENSE) file for complete details.
 
 <div align="center">
 
-**[Documentation](https://github.com/MForofontov/ts-functions-library)** •
-**[Examples](https://github.com/MForofontov/ts-functions-library/tree/main/functionsUnittests)** •
-**[Issues](https://github.com/MForofontov/ts-functions-library/issues)** •
-**[Contributing](https://github.com/MForofontov/ts-functions-library/blob/main/.github/copilot-instructions.md)**
+**[Documentation](https://github.com/MForofontov/ts-utilkit)** •
+**[Examples](https://github.com/MForofontov/ts-utilkit/tree/main/functionsUnittests)** •
+**[Issues](https://github.com/MForofontov/ts-utilkit/issues)** •
+**[Contributing](https://github.com/MForofontov/ts-utilkit/blob/main/.github/copilot-instructions.md)**
 
 </div>

@@ -1,0 +1,36 @@
+{
+  "name": "@ts-utilkit/format",
+  "version": "0.1.0",
+  "description": "Formatting utilities for numbers, dates, strings, and currencies",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MForofontov/ts-utilkit.git",
+    "directory": "packages/formatFunctions"
+  },
+  "keywords": [
+    "format",
+    "formatting",
+    "number",
+    "currency",
+    "string"
+  ],
+  "author": "MForofontov",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

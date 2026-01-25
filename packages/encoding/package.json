@@ -1,0 +1,35 @@
+{
+  "name": "@ts-utilkit/encoding",
+  "version": "0.1.0",
+  "description": "Encoding and decoding utilities for Base64 and other encoding schemes",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MForofontov/ts-utilkit.git",
+    "directory": "packages/encodingFunctions"
+  },
+  "keywords": [
+    "encoding",
+    "base64",
+    "decode",
+    "encode"
+  ],
+  "author": "MForofontov",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

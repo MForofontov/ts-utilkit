@@ -1,0 +1,39 @@
+{
+  "name": "@ts-utilkit/testing-utilities",
+  "version": "0.1.0",
+  "description": "Testing utilities and helpers for writing comprehensive unit tests with TypeScript and Jest",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MForofontov/ts-utilkit.git",
+    "directory": "packages/testing-utilities"
+  },
+  "keywords": [
+    "testing",
+    "utilities",
+    "jest",
+    "test-helpers",
+    "typescript",
+    "unit-testing",
+    "test-data",
+    "mocking"
+  ],
+  "author": "MForofontov",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}
