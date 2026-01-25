@@ -11,7 +11,7 @@ YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
 echo "========================================="
-echo "  ts-functions Package Publisher"
+echo "  ts-utilkit Package Publisher"
 echo "========================================="
 echo ""
 
@@ -27,7 +27,7 @@ echo -e "${GREEN}✓ Logged in as: $NPM_USER${NC}"
 echo ""
 
 # Confirm publishing
-echo -e "${YELLOW}This will publish 21 packages to npm under the @ts-functions scope.${NC}"
+echo -e "${YELLOW}This will publish 21 packages to npm under the @ts-utilkit scope.${NC}"
 read -p "Are you sure you want to continue? (yes/no): " -r
 echo
 if [[ ! $REPLY =~ ^[Yy][Ee][Ss]$ ]]; then
@@ -71,13 +71,13 @@ for package in "${PACKAGES[@]}"; do
   PACKAGE_PATH="packages/$package"
   
   echo "----------------------------------------"
-  echo "Processing: @ts-functions/$package"
+  echo "Processing: @ts-utilkit/$package"
   echo "----------------------------------------"
   
   if [ ! -d "$PACKAGE_PATH" ]; then
     echo -e "${RED}✗ Directory not found: $PACKAGE_PATH${NC}"
     ((FAILURE_COUNT++))
-    FAILED_PACKAGES+=("@ts-functions/$package")
+    FAILED_PACKAGES+=("@ts-utilkit/$package")
     continue
   fi
   
@@ -90,7 +90,7 @@ for package in "${PACKAGES[@]}"; do
   else
     echo -e "  ${RED}✗ Build failed${NC}"
     ((FAILURE_COUNT++))
-    FAILED_PACKAGES+=("@ts-functions/$package")
+    FAILED_PACKAGES+=("@ts-utilkit/$package")
     cd - > /dev/null
     continue
   fi
@@ -103,7 +103,7 @@ for package in "${PACKAGES[@]}"; do
   else
     echo -e "  ${RED}✗ Publish failed${NC}"
     ((FAILURE_COUNT++))
-    FAILED_PACKAGES+=("@ts-functions/$package")
+    FAILED_PACKAGES+=("@ts-utilkit/$package")
   fi
   
   cd - > /dev/null
@@ -128,7 +128,7 @@ else
   echo -e "${GREEN}All packages published successfully! 🎉${NC}"
   echo ""
   echo "You can now install packages with:"
-  echo "  npm install @ts-functions/array"
-  echo "  npm install @ts-functions/crypto"
+  echo "  npm install @ts-utilkit/array"
+  echo "  npm install @ts-utilkit/crypto"
   echo "  # etc."
 fi

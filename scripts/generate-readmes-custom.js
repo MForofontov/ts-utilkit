@@ -3,14 +3,14 @@ const path = require('path');
 
 // Custom README content for each module based on actual functions
 const readmeTemplates = {
-  array: `# @ts-functions/array
+  array: `# @ts-utilkit/array
 
 Comprehensive array manipulation utilities with 27+ functions for sorting, filtering, transformation, and mathematical operations on arrays.
 
 ## Installation
 
 \`\`\`bash
-npm install @ts-functions/array
+npm install @ts-utilkit/array
 \`\`\`
 
 ## Features
@@ -66,7 +66,7 @@ npm install @ts-functions/array
 ### Basic Array Manipulation
 
 \`\`\`typescript
-import { chunkArray, shuffleArray, rotateArrayLeft } from '@ts-functions/array';
+import { chunkArray, shuffleArray, rotateArrayLeft } from '@ts-utilkit/array';
 
 // Chunk array into smaller arrays
 const numbers = [1, 2, 3, 4, 5, 6, 7, 8];
@@ -85,7 +85,7 @@ const rotated = rotateArrayLeft([1, 2, 3, 4, 5], 2);
 ### Working with Duplicates
 
 \`\`\`typescript
-import { findDuplicates, removeDuplicates, uniqueElementsWithCounts } from '@ts-functions/array';
+import { findDuplicates, removeDuplicates, uniqueElementsWithCounts } from '@ts-utilkit/array';
 
 const data = [1, 2, 2, 3, 4, 4, 4, 5];
 
@@ -111,7 +111,7 @@ const counts = uniqueElementsWithCounts(data);
 ### Array Set Operations
 
 \`\`\`typescript
-import { arrayDifference, arrayIntersection, mergeUnique } from '@ts-functions/array';
+import { arrayDifference, arrayIntersection, mergeUnique } from '@ts-utilkit/array';
 
 const arr1 = [1, 2, 3, 4];
 const arr2 = [3, 4, 5, 6];
@@ -132,7 +132,7 @@ const merged = mergeUnique(arr1, arr2);
 ### Flattening Arrays
 
 \`\`\`typescript
-import { flattenArray, flattenArrayDepth } from '@ts-functions/array';
+import { flattenArray, flattenArrayDepth } from '@ts-utilkit/array';
 
 // Flatten completely
 const nested = [1, [2, [3, [4, 5]]]];
@@ -147,7 +147,7 @@ const partialFlat = flattenArrayDepth(nested, 2);
 ### Grouping and Sorting
 
 \`\`\`typescript
-import { groupBy, sortBy } from '@ts-functions/array';
+import { groupBy, sortBy } from '@ts-utilkit/array';
 
 const users = [
   { name: 'Alice', age: 30, role: 'admin' },
@@ -170,7 +170,7 @@ const sorted = sortBy(users, 'age');
 ### Mathematical Operations
 
 \`\`\`typescript
-import { findMax, findMin, sumArrayElements, generatePrimes } from '@ts-functions/array';
+import { findMax, findMin, sumArrayElements, generatePrimes } from '@ts-utilkit/array';
 
 const numbers = [5, 2, 8, 1, 9];
 
@@ -192,7 +192,7 @@ All functions include:
 - Descriptive error messages
 - Time/space complexity notes
 
-For detailed API documentation, visit the [main repository](https://github.com/MForofontov/ts-functions).
+For detailed API documentation, visit the [main repository](https://github.com/MForofontov/ts-utilkit).
 
 ## License
 
@@ -200,17 +200,17 @@ GPL-3.0 © MForofontov
 
 ## Contributing
 
-Contributions welcome! See the [main repository](https://github.com/MForofontov/ts-functions) for guidelines.
+Contributions welcome! See the [main repository](https://github.com/MForofontov/ts-utilkit) for guidelines.
 `,
 
-  async: `# @ts-functions/async
+  async: `# @ts-utilkit/async
 
 Asynchronous operation utilities for retry logic, timeouts, parallel execution, and promise management.
 
 ## Installation
 
 \`\`\`bash
-npm install @ts-functions/async
+npm install @ts-utilkit/async
 \`\`\`
 
 ## Features
@@ -241,7 +241,7 @@ npm install @ts-functions/async
 ### Retry with Exponential Backoff
 
 \`\`\`typescript
-import { asyncRetry } from '@ts-functions/async';
+import { asyncRetry } from '@ts-utilkit/async';
 
 // Retry API call up to 3 times with exponential backoff
 const data = await asyncRetry(
@@ -258,7 +258,7 @@ const data = await asyncRetry(
 ### Promise Timeout
 
 \`\`\`typescript
-import { asyncTimeout } from '@ts-functions/async';
+import { asyncTimeout } from '@ts-utilkit/async';
 
 try {
   // Timeout after 5 seconds
@@ -274,7 +274,7 @@ try {
 ### Controlled Parallel Execution
 
 \`\`\`typescript
-import { asyncParallel } from '@ts-functions/async';
+import { asyncParallel } from '@ts-utilkit/async';
 
 const urls = [
   'https://api.example.com/user/1',
@@ -293,7 +293,7 @@ const results = await asyncParallel(
 ### Sequential Execution
 
 \`\`\`typescript
-import { asyncSeries } from '@ts-functions/async';
+import { asyncSeries } from '@ts-utilkit/async';
 
 const operations = [
   async () => await database.createUser(userData),
@@ -308,7 +308,7 @@ const results = await asyncSeries(operations);
 ### Async Array Operations
 
 \`\`\`typescript
-import { asyncMap, asyncFilter } from '@ts-functions/async';
+import { asyncMap, asyncFilter } from '@ts-utilkit/async';
 
 const userIds = [1, 2, 3, 4, 5];
 
@@ -326,21 +326,21 @@ const activeUsers = await asyncFilter(users, async (user) => {
 
 ## API Documentation
 
-For detailed API documentation, visit the [main repository](https://github.com/MForofontov/ts-functions).
+For detailed API documentation, visit the [main repository](https://github.com/MForofontov/ts-utilkit).
 
 ## License
 
 GPL-3.0 © MForofontov
 `,
 
-  crypto: `# @ts-functions/crypto
+  crypto: `# @ts-utilkit/crypto
 
 Cryptographic utilities for hashing, encryption, HMAC, and secure password management using Node.js built-in crypto module.
 
 ## Installation
 
 \`\`\`bash
-npm install @ts-functions/crypto
+npm install @ts-utilkit/crypto
 \`\`\`
 
 ## Features
@@ -379,7 +379,7 @@ npm install @ts-functions/crypto
 ### Password Hashing
 
 \`\`\`typescript
-import { hashPassword, generateSalt, compareHash } from '@ts-functions/crypto';
+import { hashPassword, generateSalt, compareHash } from '@ts-utilkit/crypto';
 
 // Register user
 const salt = generateSalt();
@@ -394,7 +394,7 @@ const isValid = compareHash(loginHash, storedHashedPassword);
 ### Data Hashing
 
 \`\`\`typescript
-import { hashSHA256, hashSHA512 } from '@ts-functions/crypto';
+import { hashSHA256, hashSHA512 } from '@ts-utilkit/crypto';
 
 // Hash data
 const hash256 = hashSHA256('sensitive data');
@@ -408,7 +408,7 @@ const fileHash = hashSHA256(fileContent);
 ### Encryption/Decryption
 
 \`\`\`typescript
-import { encryptAES256, decryptAES256 } from '@ts-functions/crypto';
+import { encryptAES256, decryptAES256 } from '@ts-utilkit/crypto';
 
 // Generate a 256-bit key (64 hex characters)
 const key = '0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef';
@@ -425,7 +425,7 @@ const decrypted = decryptAES256(encrypted, key);
 ### HMAC for API Signatures
 
 \`\`\`typescript
-import { generateHMAC, verifyHMAC } from '@ts-functions/crypto';
+import { generateHMAC, verifyHMAC } from '@ts-utilkit/crypto';
 
 // Client: Sign API request
 const secretKey = 'shared-secret-key';
@@ -452,7 +452,7 @@ if (isValid) {
 ### Generate Random Data
 
 \`\`\`typescript
-import { generateSalt, generateRandomBytes } from '@ts-functions/crypto';
+import { generateSalt, generateRandomBytes } from '@ts-utilkit/crypto';
 
 // Generate salt for password hashing
 const salt = generateSalt();
@@ -490,7 +490,7 @@ All functions include:
 - Complete TypeScript types
 - Comprehensive examples
 
-For detailed API documentation, visit the [main repository](https://github.com/MForofontov/ts-functions).
+For detailed API documentation, visit the [main repository](https://github.com/MForofontov/ts-utilkit).
 
 ## License
 
@@ -546,14 +546,14 @@ function generateGenericR;
   const title = moduleName.charAt(0).toUpperCase() + moduleName.slice(1).replace(/-/g, ' '
   const title = moduleName.replace('Functions', ' Functions').replace(/([A-Z])/g, ' $1').trim();
   
-  return `# @ts-functions/${name}
+  return `# @ts-utilkit/${name}
 
 ${title} - TypeScript utility functions for ${name} operations.
 
 ## Installation
 
 \`\`\`bash
-npm install @ts-functions/${name}
+npm install @ts-utilkit/${name}
 \`\`\`
 
 ## Features
@@ -567,7 +567,7 @@ npm install @ts-functions/${name}
 ## Usage
 
 \`\`\`typescript
-import { functionName } from '@ts-functions/${name}';
+import { functionName } from '@ts-utilkit/${name}';
 
 // Example usage
 const result = functionName(input);
@@ -575,7 +575,7 @@ const result = functionName(input);
 
 ## API Documentation
 
-For complete API documentation, please visit the [main repository](https://github.com/MForofontov/ts-functions).
+For complete API documentation, please visit the [main repository](https://github.com/MForofontov/ts-utilkit).
 
 ## License
 
@@ -583,6 +583,6 @@ GPL-3.0 © MForofontov
 
 ## Contributing
 
-Contributions are welcome! Please see the [main repository](https://github.com/MForofontov/ts-functions) for contribution guidelines.
+Contributions are welcome! Please see the [main repository](https://github.com/MForofontov/ts-utilkit) for contribution guidelines.
 `;
 }

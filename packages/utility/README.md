@@ -1,11 +1,11 @@
-# @ts-functions/utility
+# @ts-utilkit/utility
 
 utility  Functions - TypeScript utility functions for utility operations.
 
 ## Installation
 
 ```bash
-npm install @ts-functions/utility
+npm install @ts-utilkit/utility
 ```
 
 ## Features
@@ -19,7 +19,7 @@ npm install @ts-functions/utility
 ## Usage
 
 ```typescript
-import { functionName } from '@ts-functions/utility';
+import { functionName } from '@ts-utilkit/utility';
 
 // Example usage
 const result = functionName(input);
@@ -27,7 +27,7 @@ const result = functionName(input);
 
 ## API Documentation
 
-For complete API documentation, please visit the [main repository](https://github.com/MForofontov/ts-functions).
+For complete API documentation, please visit the [main repository](https://github.com/MForofontov/ts-utilkit).
 
 ## License
 
@@ -35,4 +35,4 @@ GPL-3.0 © MForofontov
 
 ## Contributing
 
-Contributions are welcome! Please see the [main repository](https://github.com/MForofontov/ts-functions) for contribution guidelines.
+Contributions are welcome! Please see the [main repository](https://github.com/MForofontov/ts-utilkit) for contribution guidelines.

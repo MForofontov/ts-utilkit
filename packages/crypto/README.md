@@ -1,11 +1,11 @@
-# @ts-functions/crypto
+# @ts-utilkit/crypto
 
 Cryptographic utilities for hashing, encryption, HMAC, and secure password management using Node.js built-in crypto module.
 
 ## Installation
 
 ```bash
-npm install @ts-functions/crypto
+npm install @ts-utilkit/crypto
 ```
 
 ## Features
@@ -44,7 +44,7 @@ npm install @ts-functions/crypto
 ### Password Hashing
 
 ```typescript
-import { hashPassword, generateSalt, compareHash } from '@ts-functions/crypto';
+import { hashPassword, generateSalt, compareHash } from '@ts-utilkit/crypto';
 
 // Register user
 const salt = generateSalt();
@@ -59,7 +59,7 @@ const isValid = compareHash(loginHash, storedHashedPassword);
 ### Data Hashing
 
 ```typescript
-import { hashSHA256, hashSHA512 } from '@ts-functions/crypto';
+import { hashSHA256, hashSHA512 } from '@ts-utilkit/crypto';
 
 // Hash data
 const hash256 = hashSHA256('sensitive data');
@@ -73,7 +73,7 @@ const fileHash = hashSHA256(fileContent);
 ### Encryption/Decryption
 
 ```typescript
-import { encryptAES256, decryptAES256 } from '@ts-functions/crypto';
+import { encryptAES256, decryptAES256 } from '@ts-utilkit/crypto';
 
 // Generate a 256-bit key (64 hex characters)
 const key = '0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef';
@@ -90,7 +90,7 @@ const decrypted = decryptAES256(encrypted, key);
 ### HMAC for API Signatures
 
 ```typescript
-import { generateHMAC, verifyHMAC } from '@ts-functions/crypto';
+import { generateHMAC, verifyHMAC } from '@ts-utilkit/crypto';
 
 // Client: Sign API request
 const secretKey = 'shared-secret-key';
@@ -117,7 +117,7 @@ if (isValid) {
 ### Generate Random Data
 
 ```typescript
-import { generateSalt, generateRandomBytes } from '@ts-functions/crypto';
+import { generateSalt, generateRandomBytes } from '@ts-utilkit/crypto';
 
 // Generate salt for password hashing
 const salt = generateSalt();
@@ -155,7 +155,7 @@ All functions include:
 - Complete TypeScript types
 - Comprehensive examples
 
-For detailed API documentation, visit the [main repository](https://github.com/MForofontov/ts-functions).
+For detailed API documentation, visit the [main repository](https://github.com/MForofontov/ts-utilkit).
 
 ## License
 

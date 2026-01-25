@@ -1,13 +1,13 @@
 {
-  "name": "@ts-functions/math",
+  "name": "@ts-utilkit/math",
   "version": "1.0.0",
   "description": "Mathematical utilities covering algebra, geometry, statistics, number theory, and combinatorics",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "license": "GPL-3.0",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/MForofontov/ts-functions.git",
+    "url": "https://github.com/MForofontov/ts-utilkit.git",
     "directory": "packages/mathFunctions"
   },
   "keywords": [
@@ -26,7 +26,7 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@ts-functions/array": "^1.0.0"
+    "@ts-utilkit/array": "^1.0.0"
   },
   "files": [
     "dist",

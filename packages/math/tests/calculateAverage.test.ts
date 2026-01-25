@@ -1,4 +1,4 @@
-import { sumArrayElements } from '@ts-functions/array';
+import { sumArrayElements } from '@ts-utilkit/array';
 import { calculateAverage } from '../src/statisticsFunctions/centralTendency/calculateAverage';
 
 // Mock the sumArrayElements function

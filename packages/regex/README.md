@@ -1,11 +1,11 @@
-# @ts-functions/regex
+# @ts-utilkit/regex
 
 regex  Functions - TypeScript utility functions for regex operations.
 
 ## Installation
 
 ```bash
-npm install @ts-functions/regex
+npm install @ts-utilkit/regex
 ```
 
 ## Features
@@ -19,7 +19,7 @@ npm install @ts-functions/regex
 ## Usage
 
 ```typescript
-import { functionName } from '@ts-functions/regex';
+import { functionName } from '@ts-utilkit/regex';
 
 // Example usage
 const result = functionName(input);
@@ -27,7 +27,7 @@ const result = functionName(input);
 
 ## API Documentation
 
-For complete API documentation, please visit the [main repository](https://github.com/MForofontov/ts-functions).
+For complete API documentation, please visit the [main repository](https://github.com/MForofontov/ts-utilkit).
 
 ## License
 
@@ -35,4 +35,4 @@ GPL-3.0 © MForofontov
 
 ## Contributing
 
-Contributions are welcome! Please see the [main repository](https://github.com/MForofontov/ts-functions) for contribution guidelines.
+Contributions are welcome! Please see the [main repository](https://github.com/MForofontov/ts-utilkit) for contribution guidelines.

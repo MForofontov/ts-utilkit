@@ -1,13 +1,13 @@
 {
-  "name": "@ts-functions/webscraping",
+  "name": "@ts-utilkit/webscraping",
   "version": "1.0.0",
   "description": "Web scraping utilities for HTML parsing, data extraction, and web content processing",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "license": "GPL-3.0",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/MForofontov/ts-functions.git",
+    "url": "https://github.com/MForofontov/ts-utilkit.git",
     "directory": "packages/webScrapingFunctions"
   },
   "keywords": [

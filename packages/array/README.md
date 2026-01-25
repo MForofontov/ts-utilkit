@@ -1,11 +1,11 @@
-# @ts-functions/array
+# @ts-utilkit/array
 
 Comprehensive array manipulation utilities with 27+ functions for sorting, filtering, transformation, and mathematical operations on arrays.
 
 ## Installation
 
 ```bash
-npm install @ts-functions/array
+npm install @ts-utilkit/array
 ```
 
 ## Features
@@ -61,7 +61,7 @@ npm install @ts-functions/array
 ### Basic Array Manipulation
 
 ```typescript
-import { chunkArray, shuffleArray, rotateArrayLeft } from '@ts-functions/array';
+import { chunkArray, shuffleArray, rotateArrayLeft } from '@ts-utilkit/array';
 
 // Chunk array into smaller arrays
 const numbers = [1, 2, 3, 4, 5, 6, 7, 8];
@@ -80,7 +80,7 @@ const rotated = rotateArrayLeft([1, 2, 3, 4, 5], 2);
 ### Working with Duplicates
 
 ```typescript
-import { findDuplicates, removeDuplicates, uniqueElementsWithCounts } from '@ts-functions/array';
+import { findDuplicates, removeDuplicates, uniqueElementsWithCounts } from '@ts-utilkit/array';
 
 const data = [1, 2, 2, 3, 4, 4, 4, 5];
 
@@ -106,7 +106,7 @@ const counts = uniqueElementsWithCounts(data);
 ### Array Set Operations
 
 ```typescript
-import { arrayDifference, arrayIntersection, mergeUnique } from '@ts-functions/array';
+import { arrayDifference, arrayIntersection, mergeUnique } from '@ts-utilkit/array';
 
 const arr1 = [1, 2, 3, 4];
 const arr2 = [3, 4, 5, 6];
@@ -127,7 +127,7 @@ const merged = mergeUnique(arr1, arr2);
 ### Flattening Arrays
 
 ```typescript
-import { flattenArray, flattenArrayDepth } from '@ts-functions/array';
+import { flattenArray, flattenArrayDepth } from '@ts-utilkit/array';
 
 // Flatten completely
 const nested = [1, [2, [3, [4, 5]]]];
@@ -142,7 +142,7 @@ const partialFlat = flattenArrayDepth(nested, 2);
 ### Grouping and Sorting
 
 ```typescript
-import { groupBy, sortBy } from '@ts-functions/array';
+import { groupBy, sortBy } from '@ts-utilkit/array';
 
 const users = [
   { name: 'Alice', age: 30, role: 'admin' },
@@ -165,7 +165,7 @@ const sorted = sortBy(users, 'age');
 ### Mathematical Operations
 
 ```typescript
-import { findMax, findMin, sumArrayElements, generatePrimes } from '@ts-functions/array';
+import { findMax, findMin, sumArrayElements, generatePrimes } from '@ts-utilkit/array';
 
 const numbers = [5, 2, 8, 1, 9];
 
@@ -187,7 +187,7 @@ All functions include:
 - Descriptive error messages
 - Time/space complexity notes
 
-For detailed API documentation, visit the [main repository](https://github.com/MForofontov/ts-functions).
+For detailed API documentation, visit the [main repository](https://github.com/MForofontov/ts-utilkit).
 
 ## License
 
@@ -195,4 +195,4 @@ GPL-3.0 © MForofontov
 
 ## Contributing
 
-Contributions welcome! See the [main repository](https://github.com/MForofontov/ts-functions) for guidelines.
+Contributions welcome! See the [main repository](https://github.com/MForofontov/ts-utilkit) for guidelines.

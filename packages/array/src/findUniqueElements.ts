@@ -1,4 +1,4 @@
-import { deepEqual } from '@ts-functions/object';
+import { deepEqual } from '@ts-utilkit/object';
 
 /**
  * Finds unique elements in an array using deep equality comparison.

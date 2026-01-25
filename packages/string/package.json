@@ -1,13 +1,13 @@
 {
-  "name": "@ts-functions/string",
+  "name": "@ts-utilkit/string",
   "version": "1.0.0",
   "description": "String manipulation utilities for formatting, transformation, and text processing",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "license": "GPL-3.0",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/MForofontov/ts-functions.git",
+    "url": "https://github.com/MForofontov/ts-utilkit.git",
     "directory": "packages/stringFunctions"
   },
   "keywords": [

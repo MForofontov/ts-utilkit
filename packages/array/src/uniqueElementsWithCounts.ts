@@ -1,4 +1,4 @@
-import { getDeepEqualityHash } from '@ts-functions/object';
+import { getDeepEqualityHash } from '@ts-utilkit/object';
 
 /**
  * Gets unique elements in an array and their counts using deep equality comparison.

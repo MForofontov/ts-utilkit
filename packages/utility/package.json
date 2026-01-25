@@ -1,13 +1,13 @@
 {
-  "name": "@ts-functions/utility",
+  "name": "@ts-utilkit/utility",
   "version": "1.0.0",
   "description": "General-purpose utility functions for debouncing, throttling, color conversion, and common patterns",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "license": "GPL-3.0",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/MForofontov/ts-functions.git",
+    "url": "https://github.com/MForofontov/ts-utilkit.git",
     "directory": "packages/utilityFunctions"
   },
   "keywords": [

@@ -1,4 +1,4 @@
-# ts-functions
+# ts-utilkit
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
@@ -38,16 +38,16 @@ This library requires **Node.js 20 or later** and supports modern TypeScript env
 
 ```bash
 # npm
-npm install ts-functions
+npm install ts-utilkit
 
 # yarn
-yarn add ts-functions
+yarn add ts-utilkit
 
 # pnpm
-pnpm add ts-functions
+pnpm add ts-utilkit
 
 # bun
-bun add ts-functions
+bun add ts-utilkit
 ```
 
 ### TypeScript Configuration
@@ -69,7 +69,7 @@ Ensure your `tsconfig.json` includes:
 Import functions individually for optimal tree-shaking:
 
 ```typescript
-import { chunkArray, deepMerge, slugify } from 'ts-functions';
+import { chunkArray, deepMerge, slugify } from 'ts-utilkit';
 
 // Array operations
 const chunks = chunkArray([1, 2, 3, 4, 5], 2); // [[1, 2], [3, 4], [5]]
@@ -205,7 +205,7 @@ import {
   chunkArray,
   findDuplicates,
   cartesianProduct,
-} from 'ts-functions';
+} from 'ts-utilkit';
 
 // Split array into chunks
 const data = [1, 2, 3, 4, 5, 6, 7, 8];
@@ -225,7 +225,7 @@ const combinations = cartesianProduct(colors, sizes);
 ### Async Operations
 
 ```typescript
-import { asyncRetry, asyncTimeout, asyncMap } from 'ts-functions';
+import { asyncRetry, asyncTimeout, asyncMap } from 'ts-utilkit';
 
 // Retry with exponential backoff
 const result = await asyncRetry(() => fetch('/api/data'), {
@@ -250,7 +250,7 @@ const responses = await asyncMap(urls, async (url) => {
 ### Object Manipulation
 
 ```typescript
-import { deepMerge, safeGet, flattenObject } from 'ts-functions';
+import { deepMerge, safeGet, flattenObject } from 'ts-utilkit';
 
 // Deep merge with conflict resolution
 const config = deepMerge(
@@ -276,7 +276,7 @@ import {
   calculateStandardDeviation,
   calculateHaversineDistance,
   isPrime,
-} from 'ts-functions';
+} from 'ts-utilkit';
 
 // Statistical calculations
 const data = [2, 4, 4, 4, 5, 5, 7, 9];
@@ -295,7 +295,7 @@ const primeCheck = isPrime(97); // true
 ### String Processing
 
 ```typescript
-import { slugify, extractDomain, isPalindrome } from 'ts-functions';
+import { slugify, extractDomain, isPalindrome } from 'ts-utilkit';
 
 // URL-friendly slugs
 const slug = slugify('Hello World! 123'); // 'hello-world-123'
@@ -314,7 +314,7 @@ import {
   isValidIPv4,
   isValidUUID,
   isValidMACAddress,
-} from 'ts-functions';
+} from 'ts-utilkit';
 
 // Network validation
 const isValidIP = isValidIPv4('192.168.1.1'); // true
@@ -375,8 +375,8 @@ throw new Error('timeout must be non-negative, got -1');
 
 ```bash
 # Clone the repository
-git clone https://github.com/MForofontov/ts-functions.git
-cd ts-functions
+git clone https://github.com/MForofontov/ts-utilkit.git
+cd ts-utilkit
 
 # Install dependencies
 npm install
@@ -395,7 +395,7 @@ npm run format
 ### Project Structure
 
 ```
-ts-functions/
+ts-utilkit/
 ├── .github/                        # GitHub workflows and documentation
 ├── arrayFunctions/                 # Array manipulation utilities (26 functions)
 ├── asyncFunctions/                 # Async operations and concurrency (6 functions)
@@ -557,9 +557,9 @@ See the [LICENSE](LICENSE) file for complete details.
 
 <div align="center">
 
-**[Documentation](https://github.com/MForofontov/ts-functions)** •
-**[Examples](https://github.com/MForofontov/ts-functions/tree/main/functionsUnittests)** •
-**[Issues](https://github.com/MForofontov/ts-functions/issues)** •
-**[Contributing](https://github.com/MForofontov/ts-functions/blob/main/.github/copilot-instructions.md)**
+**[Documentation](https://github.com/MForofontov/ts-utilkit)** •
+**[Examples](https://github.com/MForofontov/ts-utilkit/tree/main/functionsUnittests)** •
+**[Issues](https://github.com/MForofontov/ts-utilkit/issues)** •
+**[Contributing](https://github.com/MForofontov/ts-utilkit/blob/main/.github/copilot-instructions.md)**
 
 </div>

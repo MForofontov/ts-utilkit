@@ -34,7 +34,7 @@ const config = {
     },
   },
   moduleNameMapper: {
-    '^@ts-functions/(.*)$': '<rootDir>/packages/$1/src',
+    '^@ts-utilkit/(.*)$': '<rootDir>/packages/$1/src',
   },
   testEnvironment: 'allure-jest/node',
   testEnvironmentOptions: {

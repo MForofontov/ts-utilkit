@@ -1,13 +1,13 @@
 {
-  "name": "@ts-functions/encoding",
+  "name": "@ts-utilkit/encoding",
   "version": "1.0.0",
   "description": "Encoding and decoding utilities for Base64 and other encoding schemes",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "license": "GPL-3.0",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/MForofontov/ts-functions.git",
+    "url": "https://github.com/MForofontov/ts-utilkit.git",
     "directory": "packages/encodingFunctions"
   },
   "keywords": [

@@ -1,11 +1,11 @@
-# @ts-functions/configuration
+# @ts-utilkit/configuration
 
 configuration  Functions - TypeScript utility functions for configuration operations.
 
 ## Installation
 
 ```bash
-npm install @ts-functions/configuration
+npm install @ts-utilkit/configuration
 ```
 
 ## Features
@@ -19,7 +19,7 @@ npm install @ts-functions/configuration
 ## Usage
 
 ```typescript
-import { functionName } from '@ts-functions/configuration';
+import { functionName } from '@ts-utilkit/configuration';
 
 // Example usage
 const result = functionName(input);
@@ -27,7 +27,7 @@ const result = functionName(input);
 
 ## API Documentation
 
-For complete API documentation, please visit the [main repository](https://github.com/MForofontov/ts-functions).
+For complete API documentation, please visit the [main repository](https://github.com/MForofontov/ts-utilkit).
 
 ## License
 
@@ -35,4 +35,4 @@ GPL-3.0 © MForofontov
 
 ## Contributing
 
-Contributions are welcome! Please see the [main repository](https://github.com/MForofontov/ts-functions) for contribution guidelines.
+Contributions are welcome! Please see the [main repository](https://github.com/MForofontov/ts-utilkit) for contribution guidelines.

@@ -1,11 +1,11 @@
-# @ts-functions/serialization
+# @ts-utilkit/serialization
 
 serialization  Functions - TypeScript utility functions for serialization operations.
 
 ## Installation
 
 ```bash
-npm install @ts-functions/serialization
+npm install @ts-utilkit/serialization
 ```
 
 ## Features
@@ -19,7 +19,7 @@ npm install @ts-functions/serialization
 ## Usage
 
 ```typescript
-import { functionName } from '@ts-functions/serialization';
+import { functionName } from '@ts-utilkit/serialization';
 
 // Example usage
 const result = functionName(input);
@@ -27,7 +27,7 @@ const result = functionName(input);
 
 ## API Documentation
 
-For complete API documentation, please visit the [main repository](https://github.com/MForofontov/ts-functions).
+For complete API documentation, please visit the [main repository](https://github.com/MForofontov/ts-utilkit).
 
 ## License
 
@@ -35,4 +35,4 @@ GPL-3.0 © MForofontov
 
 ## Contributing
 
-Contributions are welcome! Please see the [main repository](https://github.com/MForofontov/ts-functions) for contribution guidelines.
+Contributions are welcome! Please see the [main repository](https://github.com/MForofontov/ts-utilkit) for contribution guidelines.

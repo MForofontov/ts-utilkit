@@ -1,4 +1,4 @@
-import { deepEqual } from '@ts-functions/object';
+import { deepEqual } from '@ts-utilkit/object';
 
 /**
  * Merges two arrays and returns a new array with unique elements.

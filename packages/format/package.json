@@ -1,13 +1,13 @@
 {
-  "name": "@ts-functions/format",
+  "name": "@ts-utilkit/format",
   "version": "1.0.0",
   "description": "Formatting utilities for numbers, dates, strings, and currencies",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "license": "GPL-3.0",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/MForofontov/ts-functions.git",
+    "url": "https://github.com/MForofontov/ts-utilkit.git",
     "directory": "packages/formatFunctions"
   },
   "keywords": [

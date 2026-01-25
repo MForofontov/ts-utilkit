@@ -1,13 +1,13 @@
 {
-  "name": "@ts-functions/crypto",
+  "name": "@ts-utilkit/crypto",
   "version": "1.0.0",
   "description": "Cryptographic utilities for hashing (SHA-256, SHA-512, MD5), encryption (AES-256), HMAC, and password management",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "license": "GPL-3.0",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/MForofontov/ts-functions.git",
+    "url": "https://github.com/MForofontov/ts-utilkit.git",
     "directory": "packages/cryptoFunctions"
   },
   "keywords": [

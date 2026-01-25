@@ -1,13 +1,13 @@
 {
-  "name": "@ts-functions/network",
+  "name": "@ts-utilkit/network",
   "version": "1.0.0",
   "description": "Network utilities for URL validation, IP address handling, and network-related operations",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "license": "GPL-3.0",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/MForofontov/ts-functions.git",
+    "url": "https://github.com/MForofontov/ts-utilkit.git",
     "directory": "packages/networkFunctions"
   },
   "keywords": [

@@ -1,13 +1,13 @@
 {
-  "name": "@ts-functions/date",
+  "name": "@ts-utilkit/date",
   "version": "1.0.0",
   "description": "Date and time manipulation utilities for formatting, calculations, and timezone handling",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "license": "GPL-3.0",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/MForofontov/ts-functions.git",
+    "url": "https://github.com/MForofontov/ts-utilkit.git",
     "directory": "packages/dateFunctions"
   },
   "keywords": [

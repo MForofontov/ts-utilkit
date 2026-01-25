@@ -1,11 +1,11 @@
-# @ts-functions/collection
+# @ts-utilkit/collection
 
 collection  Functions - TypeScript utility functions for collection operations.
 
 ## Installation
 
 ```bash
-npm install @ts-functions/collection
+npm install @ts-utilkit/collection
 ```
 
 ## Features
@@ -19,7 +19,7 @@ npm install @ts-functions/collection
 ## Usage
 
 ```typescript
-import { functionName } from '@ts-functions/collection';
+import { functionName } from '@ts-utilkit/collection';
 
 // Example usage
 const result = functionName(input);
@@ -27,7 +27,7 @@ const result = functionName(input);
 
 ## API Documentation
 
-For complete API documentation, please visit the [main repository](https://github.com/MForofontov/ts-functions).
+For complete API documentation, please visit the [main repository](https://github.com/MForofontov/ts-utilkit).
 
 ## License
 
@@ -35,4 +35,4 @@ GPL-3.0 © MForofontov
 
 ## Contributing
 
-Contributions are welcome! Please see the [main repository](https://github.com/MForofontov/ts-functions) for contribution guidelines.
+Contributions are welcome! Please see the [main repository](https://github.com/MForofontov/ts-utilkit) for contribution guidelines.

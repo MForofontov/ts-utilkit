@@ -1,11 +1,11 @@
-# @ts-functions/async
+# @ts-utilkit/async
 
 Asynchronous operation utilities for retry logic, timeouts, parallel execution, and promise management.
 
 ## Installation
 
 ```bash
-npm install @ts-functions/async
+npm install @ts-utilkit/async
 ```
 
 ## Features
@@ -36,7 +36,7 @@ npm install @ts-functions/async
 ### Retry with Exponential Backoff
 
 ```typescript
-import { asyncRetry } from '@ts-functions/async';
+import { asyncRetry } from '@ts-utilkit/async';
 
 // Retry API call up to 3 times with exponential backoff
 const data = await asyncRetry(
@@ -53,7 +53,7 @@ const data = await asyncRetry(
 ### Promise Timeout
 
 ```typescript
-import { asyncTimeout } from '@ts-functions/async';
+import { asyncTimeout } from '@ts-utilkit/async';
 
 try {
   // Timeout after 5 seconds
@@ -69,7 +69,7 @@ try {
 ### Controlled Parallel Execution
 
 ```typescript
-import { asyncParallel } from '@ts-functions/async';
+import { asyncParallel } from '@ts-utilkit/async';
 
 const urls = [
   'https://api.example.com/user/1',
@@ -88,7 +88,7 @@ const results = await asyncParallel(
 ### Sequential Execution
 
 ```typescript
-import { asyncSeries } from '@ts-functions/async';
+import { asyncSeries } from '@ts-utilkit/async';
 
 const operations = [
   async () => await database.createUser(userData),
@@ -103,7 +103,7 @@ const results = await asyncSeries(operations);
 ### Async Array Operations
 
 ```typescript
-import { asyncMap, asyncFilter } from '@ts-functions/async';
+import { asyncMap, asyncFilter } from '@ts-utilkit/async';
 
 const userIds = [1, 2, 3, 4, 5];
 
@@ -121,7 +121,7 @@ const activeUsers = await asyncFilter(users, async (user) => {
 
 ## API Documentation
 
-For detailed API documentation, visit the [main repository](https://github.com/MForofontov/ts-functions).
+For detailed API documentation, visit the [main repository](https://github.com/MForofontov/ts-utilkit).
 
 ## License
 

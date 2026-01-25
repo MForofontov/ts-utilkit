@@ -1,11 +1,11 @@
-# @ts-functions/testing-utilities
+# @ts-utilkit/testing-utilities
 
 Comprehensive testing utilities and helpers for writing robust unit tests with TypeScript and Jest.
 
 ## Installation
 
 ```bash
-npm install --save-dev @ts-functions/testing-utilities
+npm install --save-dev @ts-utilkit/testing-utilities
 ```
 
 ## Features
@@ -69,7 +69,7 @@ import {
   generateRandomEmail,
   generateRandomNumber,
   generateTestArray
-} from '@ts-functions/testing-utilities';
+} from '@ts-utilkit/testing-utilities';
 
 describe('User Registration', () => {
   it('should accept valid user data', () => {
@@ -96,7 +96,7 @@ describe('User Registration', () => {
 ### Boundary Value Testing
 
 ```typescript
-import { getBoundaryValues } from '@ts-functions/testing-utilities';
+import { getBoundaryValues } from '@ts-utilkit/testing-utilities';
 
 describe('calculateDiscount', () => {
   it('should handle boundary values correctly', () => {
@@ -116,7 +116,7 @@ describe('calculateDiscount', () => {
 import { 
   getCommonInvalidInputs,
   testInvalidTypes 
-} from '@ts-functions/testing-utilities';
+} from '@ts-utilkit/testing-utilities';
 
 describe('processData', () => {
   it('should reject invalid inputs', () => {
@@ -137,7 +137,7 @@ describe('processData', () => {
 ### Performance Testing
 
 ```typescript
-import { runPerformanceTest } from '@ts-functions/testing-utilities';
+import { runPerformanceTest } from '@ts-utilkit/testing-utilities';
 
 describe('sortLargeArray', () => {
   it('should sort 10,000 items within 100ms', async () => {
@@ -155,7 +155,7 @@ describe('sortLargeArray', () => {
 ### Multiple Test Cases
 
 ```typescript
-import { testMultipleCases } from '@ts-functions/testing-utilities';
+import { testMultipleCases } from '@ts-utilkit/testing-utilities';
 
 describe('add', () => {
   testMultipleCases(add, [
@@ -170,7 +170,7 @@ describe('add', () => {
 ### Async Condition Waiting
 
 ```typescript
-import { waitForCondition } from '@ts-functions/testing-utilities';
+import { waitForCondition } from '@ts-utilkit/testing-utilities';
 
 describe('async operation', () => {
   it('should complete within timeout', async () => {
@@ -190,7 +190,7 @@ describe('async operation', () => {
 ### Data Isolation
 
 ```typescript
-import { cloneTestData } from '@ts-functions/testing-utilities';
+import { cloneTestData } from '@ts-utilkit/testing-utilities';
 
 describe('mutating operations', () => {
   const originalData = { users: [{ id: 1, name: 'Alice' }] };
@@ -221,7 +221,7 @@ All functions include:
 - Runtime type validation
 - Descriptive error messages
 
-For detailed API documentation, visit the [main repository](https://github.com/MForofontov/ts-functions).
+For detailed API documentation, visit the [main repository](https://github.com/MForofontov/ts-utilkit).
 
 ## License
 
@@ -229,4 +229,4 @@ GPL-3.0 © MForofontov
 
 ## Contributing
 
-Contributions welcome! See the [main repository](https://github.com/MForofontov/ts-functions) for guidelines.
+Contributions welcome! See the [main repository](https://github.com/MForofontov/ts-utilkit) for guidelines.

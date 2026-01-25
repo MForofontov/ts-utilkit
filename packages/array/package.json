@@ -1,13 +1,13 @@
 {
-  "name": "@ts-functions/array",
+  "name": "@ts-utilkit/array",
   "version": "1.0.0",
   "description": "Comprehensive array manipulation utilities including sorting, filtering, transformation, and mathematical operations",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "license": "GPL-3.0",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/MForofontov/ts-functions.git",
+    "url": "https://github.com/MForofontov/ts-utilkit.git",
     "directory": "packages/arrayFunctions"
   },
   "keywords": [
@@ -26,7 +26,7 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@ts-functions/object": "^1.0.0"
+    "@ts-utilkit/object": "^1.0.0"
   },
   "files": [
     "dist",
