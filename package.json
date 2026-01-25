@@ -30,6 +30,7 @@
     "test": "./run-tests.sh",
     "test:github": "./run-tests-github.sh",
     "test:local": "jest --config jest.local.config.ts",
+    "test:install:full": "./test-install-full.sh",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "format": "prettier --write \"**/*.{ts,js,json,md}\"",

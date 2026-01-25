@@ -21,15 +21,16 @@ A collection of **200+ TypeScript utility functions** organized into specialized
 
 ## 📚 Table of Contents
 
-- [Installation](#installation)
-- [Quick Start](#quick-start)
-- [Function Categories](#function-categories)
-- [Usage Examples](#usage-examples)
-- [API Documentation](#api-documentation)
-- [Development](#development)
-- [Testing](#testing)
-- [Contributing](#contributing)
-- [License](#license)
+- [Installation](#-installation)
+- [Quick Start](#-quick-start)
+- [Packages Overview](#-packages-overview)
+- [Function Summary](#-function-summary)
+- [Usage Examples](#-usage-examples)
+- [API Documentation](#-api-documentation)
+- [Development](#-development)
+- [Testing](#-testing)
+- [Contributing](#-contributing)
+- [License](#-license)
 
 ## 🚀 Installation
 
@@ -82,120 +83,65 @@ const merged = deepMerge({ a: 1 }, { b: 2 }); // { a: 1, b: 2 }
 const slug = slugify('Hello World!'); // 'hello-world'
 ```
 
-## 📋 Function Categories
+## � Packages Overview
 
-### 🔢 Array Functions (26 functions)
+This library provides **370+ utility functions** organized into **21 specialized packages**. Each package is independently installable and fully tree-shakeable.
 
-Comprehensive array manipulation utilities for modern JavaScript development.
+| Package | Functions | Description | Documentation |
+|---------|-----------|-------------|---------------|
+| **@ts-utilkit/array** | 27 | Array manipulation, chunking, flattening, grouping, sorting | [View Functions →](packages/array/README.md) |
+| **@ts-utilkit/async** | 6 | Retry logic, timeouts, parallel/series execution | [View Functions →](packages/async/README.md) |
+| **@ts-utilkit/collection** | 17 | Set and Map operations, conversions | [View Functions →](packages/collection/README.md) |
+| **@ts-utilkit/configuration** | 12 | Environment variables, config management | [View Functions →](packages/configuration/README.md) |
+| **@ts-utilkit/crypto** | 11 | Hashing (SHA, MD5), encryption (AES), HMAC | [View Functions →](packages/crypto/README.md) |
+| **@ts-utilkit/date** | 31 | Date arithmetic, formatting, business days | [View Functions →](packages/date/README.md) |
+| **@ts-utilkit/encoding** | 2 | Base64 encoding/decoding | [View Functions →](packages/encoding/README.md) |
+| **@ts-utilkit/event** | 7 | Event emitters, debouncing, throttling | [View Functions →](packages/event/README.md) |
+| **@ts-utilkit/format** | 8 | Number, currency, byte, duration formatting | [View Functions →](packages/format/README.md) |
+| **@ts-utilkit/math** | 56 | Arithmetic, algebra, geometry, statistics | [View Functions →](packages/math/README.md) |
+| **@ts-utilkit/network** | 18 | URL parsing, query params, domain extraction | [View Functions →](packages/network/README.md) |
+| **@ts-utilkit/object** | 39 | Deep merge/clone, flattening, key transformations | [View Functions →](packages/object/README.md) |
+| **@ts-utilkit/parsing** | 7 | CSV, INI, log, env file parsing | [View Functions →](packages/parsing/README.md) |
+| **@ts-utilkit/random** | 25 | Random generation (numbers, strings, colors, UUIDs) | [View Functions →](packages/random/README.md) |
+| **@ts-utilkit/regex** | 15 | Pattern building, matching, common patterns | [View Functions →](packages/regex/README.md) |
+| **@ts-utilkit/serialization** | 18 | JSON, CSV, XML, YAML, binary serialization | [View Functions →](packages/serialization/README.md) |
+| **@ts-utilkit/string** | 51 | Case conversion, slugs, validation, manipulation | [View Functions →](packages/string/README.md) |
+| **@ts-utilkit/testing-utilities** | 21 | Test data generation, assertions, spies | [View Functions →](packages/testing-utilities/README.md) |
+| **@ts-utilkit/utility** | 10 | Debounce, throttle, color conversion, delays | [View Functions →](packages/utility/README.md) |
+| **@ts-utilkit/validation** | 13 | IP, UUID, email, credit card validation | [View Functions →](packages/validation/README.md) |
+| **@ts-utilkit/webscraping** | 16 | HTML parsing, link/email extraction | [View Functions →](packages/webscraping/README.md) |
 
-**Key Functions:**
+> 💡 **Tip**: Click on "View Functions →" links to see the complete function list for each package with detailed usage examples.
 
-- `chunkArray` - Split arrays into smaller chunks
-- `flattenArray` - Flatten nested arrays of any depth
-- `findDuplicates` - Find duplicate elements with optional custom equality
-- `mergeUnique` - Merge arrays removing duplicates
-- `cartesianProduct` - Generate cartesian products
-- `shuffleArray` - Fisher-Yates shuffle implementation
+## 📊 Function Summary
 
-### ⚡ Async Functions (6 functions)
+Quick reference of functions by category:
 
-Powerful utilities for asynchronous operations and concurrency control.
+| Category | Function Count | Key Functions |
+|----------|----------------|---------------|
+| **Array** | 27 | `chunkArray`, `findDuplicates`, `groupBy`, `flattenArray`, `shuffleArray` |
+| **Async** | 6 | `asyncRetry`, `asyncTimeout`, `asyncParallel`, `asyncSeries`, `asyncMap` |
+| **Collection** | 17 | `setUnion`, `setIntersection`, `mapToObject`, `setDifference`, `mapMerge` |
+| **Configuration** | 12 | `getEnv`, `parseEnvInt`, `parseEnvBoolean`, `loadEnvFile`, `validateConfig` |
+| **Crypto** | 11 | `hashSHA256`, `hashPassword`, `encryptAES256`, `generateHMAC`, `compareHash` |
+| **Date** | 31 | `addDays`, `formatDate`, `daysBetween`, `isLeapYear`, `getQuarter` |
+| **Encoding** | 2 | `encodeBase64`, `decodeBase64` |
+| **Event** | 7 | `EventEmitter`, `createEventBus`, `debounceEvent`, `throttleEvent`, `waitForEvent` |
+| **Format** | 8 | `formatNumber`, `formatCurrency`, `formatBytes`, `formatDuration`, `formatPlural` |
+| **Math** | 56 | `calculateStandardDeviation`, `isPrime`, `calculateHaversineDistance`, `factorial`, `median` |
+| **Network** | 18 | `parseURL`, `addQueryParams`, `isValidURL`, `normalizeURL`, `extractDomain` |
+| **Object** | 39 | `deepMerge`, `safeGet`, `flattenObject`, `pickKeys`, `deepClone` |
+| **Parsing** | 7 | `parseCSV`, `parseINI`, `parseQueryString`, `parseUserAgent`, `parseMarkdown` |
+| **Random** | 25 | `randomInt`, `randomElement`, `randomUUID`, `randomHex`, `randomShuffle` |
+| **Regex** | 15 | `extractEmails`, `extractURLs`, `escapeRegex`, `matchAll`, `removeHTML` |
+| **Serialization** | 18 | `serializeToJSON`, `deserializeFromJSON`, `handleCircularReferences`, `deepClone` |
+| **String** | 51 | `slugify`, `capitalizeEachWord`, `isPalindrome`, `toKebabCase`, `truncateString` |
+| **Testing** | 21 | `generateRandomString`, `generateRandomEmail`, `assertArraysEqual`, `runPerformanceTest` |
+| **Utility** | 10 | `debounce`, `throttle`, `delay`, `hexToRgb`, `bytesToSize` |
+| **Validation** | 13 | `isValidIPv4`, `isValidUUID`, `isValidJSON`, `isInRange`, `isValidCreditCard` |
+| **Webscraping** | 16 | `extractLinks`, `extractMetaTags`, `extractEmails`, `fetchHTML`, `parseHTML` |
 
-**Key Functions:**
-
-- `asyncRetry` - Retry functions with exponential backoff
-- `asyncTimeout` - Add timeouts to promises
-- `asyncMap` - Async array mapping with concurrency control
-- `asyncFilter` - Async array filtering
-- `asyncSeries` - Execute functions sequentially
-- `asyncParallel` - Controlled parallel execution
-
-### 📅 Date Functions (26 functions)
-
-Comprehensive date and time manipulation without external dependencies.
-
-**Key Functions:**
-
-- `formatDate` - Flexible date formatting
-- `businessDaysBetween` - Calculate business days
-- `addMonths` - Accurate month arithmetic
-- `getWeekNumber` - ISO week number calculation
-- `isLeapYear` - Leap year detection
-- `getQuarter` - Quarter calculation
-
-### 🔐 Encoding Functions (2 functions)
-
-Secure encoding/decoding utilities for data transformation.
-
-**Key Functions:**
-
-- `encodeBase64` - Safe Base64 encoding (Node.js Buffer-based)
-- `decodeBase64` - Safe Base64 decoding with error handling
-
-### 🧮 Math Functions (48 functions)
-
-Extensive mathematical operations organized by mathematical domains.
-
-#### Subdomains:
-
-- **Arithmetic** (9 functions): Basic operations, rounding, percentages
-- **Algebra** (8 functions): Powers, roots, logarithms, exponentials
-- **Geometry** (20 functions): Area, volume, distance, trigonometry
-- **Statistics** (7 functions): Mean, median, variance, standard deviation
-- **Number Theory** (7 functions): Primes, GCD, LCM, divisibility
-- **Combinatorics** (4 functions): Factorials, permutations, combinations
-- **Sequences** (3 functions): Fibonacci, triangular numbers
-
-### 🎯 Object Functions (35 functions)
-
-Advanced object manipulation utilities for complex data structures.
-
-**Key Functions:**
-
-- `deepMerge` - Deep object merging with conflict resolution
-- `safeGet` - Safe property access with default values
-- `flattenObject` - Flatten nested objects with dot notation
-- `deepClone` - Deep cloning with `structuredClone` fallback
-- `objectToQueryString` - Convert objects to URL query strings
-- `pickKeys` & `omitKeys` - Select/exclude object properties
-
-### 🔤 String Functions (46 functions)
-
-Comprehensive text processing utilities for modern applications.
-
-**Key Functions:**
-
-- `slugify` - URL-friendly string conversion
-- `capitalizeEachWord` - Smart text capitalization
-- `isPalindrome` - Palindrome detection
-- `extractDomain` - Domain extraction from URLs
-- `stripHtmlTags` - Safe HTML tag removal
-- `generateRandomString` - Cryptographically secure random strings
-
-### ✅ Validation Functions (9 functions)
-
-Specialized validation utilities not covered by popular libraries.
-
-**Key Functions:**
-
-- `isValidIPv4` & `isValidIPv6` - IP address validation
-- `isValidMACAddress` - MAC address validation
-- `isValidUUID` - UUID format validation
-- `isValidISODate` - ISO date string validation
-- `isValidJSON` - JSON string validation
-- `isValidTime` - Time format validation
-
-### 🛠️ Utility Functions (10 functions)
-
-General-purpose utilities for common programming tasks.
-
-**Key Functions:**
-
-- `debounce` & `throttle` - Function execution control
-- `hexToRgb` & `rgbToHex` - Color format conversion
-- `bytesToSize` - Human-readable byte size formatting
-- `delay` - Promise-based delays
-- `safeJSONParse` - Safe JSON parsing with error handling
+**Total: 373 Functions** across 21 specialized packages
 
 ## 💡 Usage Examples
 

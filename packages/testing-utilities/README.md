@@ -18,46 +18,29 @@ npm install --save-dev @ts-utilkit/testing-utilities
 - 🎲 Random data generation for comprehensive test coverage
 - 📦 Deep cloning for test data isolation
 
-## Functions
+## Available Functions (21)
 
-### Test Data Generation
-
-- **generateRandomString** - Generate random strings with custom length and character sets
-- **generateRandomNumber** - Generate random numbers within specified ranges
-- **generateRandomBoolean** - Generate random boolean values
-- **generateRandomDate** - Generate random dates within a range
-- **generateRandomEmail** - Generate random valid email addresses
-- **generateRandomURL** - Generate random valid URLs
-- **generateRandomUUID** - Generate random UUIDs (v4)
-- **generateRandomIPv4** - Generate random IPv4 addresses
-- **generateRandomObject** - Generate random objects with specified structure
-- **generateTestArray** - Generate arrays filled with test data
-- **generateRange** - Generate numeric ranges for iteration
-
-### Assertions & Comparisons
-
-- **assertArraysEqual** - Deep equality assertion for arrays
-- **testMultipleCases** - Run multiple test cases efficiently
-- **testInvalidTypes** - Test function behavior with invalid types
-
-### Boundary Testing
-
-- **getBoundaryValues** - Get boundary values for numeric range testing
-- **getCommonInvalidInputs** - Get common invalid input values
-
-### Performance & Debugging
-
-- **runPerformanceTest** - Measure function execution time
-- **measureMemoryUsage** - Measure memory consumption
-- **waitForCondition** - Wait for async conditions in tests
-
-### Mocking & Spies
-
-- **createSpy** - Create function spies for tracking calls
-
-### Utilities
-
-- **cloneTestData** - Deep clone objects for test isolation
+- **`assertArraysEqual`** - Deep equality assertion for arrays
+- **`cloneTestData`** - Deep clone objects for test isolation
+- **`createSpy`** - Create function spies for tracking calls
+- **`generateRandomBoolean`** - Generate random boolean values
+- **`generateRandomDate`** - Generate random dates within a range
+- **`generateRandomEmail`** - Generate random valid email addresses
+- **`generateRandomIPv4`** - Generate random IPv4 addresses
+- **`generateRandomNumber`** - Generate random numbers within specified ranges
+- **`generateRandomObject`** - Generate random objects with specified structure
+- **`generateRandomString`** - Generate random strings with custom length and character sets
+- **`generateRandomURL`** - Generate random valid URLs
+- **`generateRandomUUID`** - Generate random UUIDs (v4)
+- **`generateRange`** - Generate numeric ranges for iteration
+- **`generateTestArray`** - Generate arrays filled with test data
+- **`getBoundaryValues`** - Get boundary values for numeric range testing
+- **`getCommonInvalidInputs`** - Get common invalid input values
+- **`measureMemoryUsage`** - Measure memory consumption
+- **`runPerformanceTest`** - Measure function execution time
+- **`testInvalidTypes`** - Test function behavior with invalid types
+- **`testMultipleCases`** - Run multiple test cases efficiently
+- **`waitForCondition`** - Wait for async conditions in tests
 
 ## Usage Examples
 

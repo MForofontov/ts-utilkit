@@ -17,19 +17,14 @@ npm install @ts-utilkit/async
 - 📦 Series execution with error handling
 - ✅ Comprehensive test coverage
 
-## Functions
+## Available Functions (6)
 
-### Retry Logic
-- **asyncRetry** - Retry failed operations with exponential backoff
-
-### Timeout Control
-- **asyncTimeout** - Add timeout to any promise
-
-### Execution Control
-- **asyncParallel** - Execute multiple async operations with concurrency limit
-- **asyncSeries** - Execute async operations sequentially
-- **asyncMap** - Map array with async function
-- **asyncFilter** - Filter array with async predicate
+- **`asyncFilter`** - Filter array with async predicate
+- **`asyncMap`** - Map array with async function
+- **`asyncParallel`** - Execute multiple async operations with concurrency limit
+- **`asyncRetry`** - Retry failed operations with exponential backoff
+- **`asyncSeries`** - Execute async operations sequentially
+- **`asyncTimeout`** - Add timeout to any promise
 
 ## Usage Examples
 

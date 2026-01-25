@@ -18,26 +18,19 @@ npm install @ts-utilkit/crypto
 - ⚡ Timing-safe comparisons to prevent timing attacks
 - 📖 Comprehensive documentation and examples
 
-## Functions
+## Available Functions (11)
 
-### Hashing
-- **hashSHA256** - SHA-256 hashing
-- **hashSHA512** - SHA-512 hashing
-- **hashMD5** - MD5 hashing (legacy support only)
-- **hashPassword** - Secure password hashing with PBKDF2
-- **compareHash** - Timing-safe hash comparison
-
-### Encryption/Decryption
-- **encryptAES256** - AES-256-GCM encryption
-- **decryptAES256** - AES-256-GCM decryption
-
-### HMAC
-- **generateHMAC** - Generate HMAC for data integrity
-- **verifyHMAC** - Timing-safe HMAC verification
-
-### Utilities
-- **generateSalt** - Generate cryptographic salt (32 hex chars)
-- **generateRandomBytes** - Generate secure random bytes
+- **`compareHash`** - Timing-safe hash comparison
+- **`decryptAES256`** - AES-256-GCM decryption
+- **`encryptAES256`** - AES-256-GCM encryption
+- **`generateHMAC`** - Generate HMAC for data integrity
+- **`generateRandomBytes`** - Generate secure random bytes
+- **`generateSalt`** - Generate cryptographic salt (32 hex chars)
+- **`hashMD5`** - MD5 hashing (legacy support only)
+- **`hashPassword`** - Secure password hashing with PBKDF2
+- **`hashSHA256`** - SHA-256 hashing
+- **`hashSHA512`** - SHA-512 hashing
+- **`verifyHMAC`** - Timing-safe HMAC verification
 
 ## Usage Examples
 
