@@ -103,7 +103,7 @@ export function testPattern(
   }
 
   if (error) {
-    throw error;
+    throw new Error(error);
   }
 
   return result;

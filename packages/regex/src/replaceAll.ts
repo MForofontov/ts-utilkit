@@ -63,7 +63,7 @@ export function replaceAll(
   try {
     if (typeof pattern === 'string') {
       // For string patterns, escape special characters and add global flag
-      const escaped = pattern.replace(/[.*+?^${}()|[\]\\\/]/g, '\\$&');
+      const escaped = pattern.replace(/[.*+?^${}()|[\]\\/ ]/g, '\\$&');
       const effectiveFlags = flags || 'g';
       const hasGlobalFlag = effectiveFlags.includes('g');
       const finalFlags = hasGlobalFlag ? effectiveFlags : effectiveFlags + 'g';

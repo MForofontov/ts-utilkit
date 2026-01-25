@@ -189,6 +189,8 @@ describe('formatDuration', () => {
 
     // Act & Assert
     expect(() => formatDuration(milliseconds, format)).toThrow(Error);
-    expect(() => formatDuration(milliseconds, format)).toThrow('Invalid format');
+    expect(() => formatDuration(milliseconds, format)).toThrow(
+      'Invalid format',
+    );
   });
 });

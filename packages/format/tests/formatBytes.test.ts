@@ -183,6 +183,8 @@ describe('formatBytes', () => {
 
     // Act & Assert
     expect(() => formatBytes(bytes, 2, binary)).toThrow(TypeError);
-    expect(() => formatBytes(bytes, 2, binary)).toThrow('binary must be a boolean');
+    expect(() => formatBytes(bytes, 2, binary)).toThrow(
+      'binary must be a boolean',
+    );
   });
 });

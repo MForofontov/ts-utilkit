@@ -57,7 +57,7 @@ export function parseLogLine(
 
   if (format !== 'common' && format !== 'combined') {
     throw new Error(
-      `Invalid format: "${format}" (valid options: common, combined)`,
+      `Invalid format: "${format as string}" (valid options: common, combined)`,
     );
   }
 

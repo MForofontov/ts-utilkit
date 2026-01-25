@@ -1,7 +1,4 @@
-import {
-  extractMatchGroups,
-  MatchGroup,
-} from '../src/extractMatchGroups';
+import { extractMatchGroups, type MatchGroup } from '../src/extractMatchGroups';
 
 /**
  * Unit tests for the extractMatchGroups function.
@@ -100,7 +97,7 @@ describe('extractMatchGroups', () => {
   it('6. should extract URL components', () => {
     // Arrange
     const text = 'Visit https://example.com:8080/path';
-    const pattern = /(https?):\/\/([^:\/]+):?(\d*)(\/.*)$/g;
+    const pattern = /(https?):\/\/([^:/]+):?(\d*)(\/.*)$/g;
 
     // Act
     const result = extractMatchGroups(text, pattern);

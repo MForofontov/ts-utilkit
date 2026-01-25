@@ -70,7 +70,7 @@ describe('replaceWithCallback', () => {
     // Arrange
     const text = 'a b c';
     const pattern = /\w/g;
-    let indices: number[] = [];
+    const indices: number[] = [];
     const callback = (match: string, ...args: any[]) => {
       const index = args[args.length - 2]; // Second to last arg is index
       indices.push(index);

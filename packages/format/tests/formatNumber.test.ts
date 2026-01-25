@@ -173,6 +173,8 @@ describe('formatNumber', () => {
 
     // Act & Assert
     expect(() => formatNumber(value, 0, separator)).toThrow(Error);
-    expect(() => formatNumber(value, 0, separator)).toThrow('exactly one character');
+    expect(() => formatNumber(value, 0, separator)).toThrow(
+      'exactly one character',
+    );
   });
 });

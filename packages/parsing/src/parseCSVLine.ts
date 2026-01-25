@@ -60,7 +60,9 @@ export function parseCSVLine(
     throw new Error('input string cannot be empty');
   }
   if (delimiter.length !== 1) {
-    throw new Error(`delimiter must be exactly one character, got "${delimiter}"`);
+    throw new Error(
+      `delimiter must be exactly one character, got "${delimiter}"`,
+    );
   }
   if (quote.length !== 1) {
     throw new Error(`quote must be exactly one character, got "${quote}"`);

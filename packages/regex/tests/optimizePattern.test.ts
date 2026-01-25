@@ -24,13 +24,17 @@ describe('optimizePattern', () => {
   it('3. should detect redundant dot-star at start', () => {
     const result = optimizePattern(/^.*test/);
     expect(result.canOptimize).toBe(true);
-    expect(result.suggestions).toContain('Pattern starts with ^.* which matches from beginning - consider if this is necessary');
+    expect(result.suggestions).toContain(
+      'Pattern starts with ^.* which matches from beginning - consider if this is necessary',
+    );
   });
 
   it('4. should detect redundant dot-star at end', () => {
     const result = optimizePattern(/test.*$/);
     expect(result.canOptimize).toBe(true);
-    expect(result.suggestions).toContain('Pattern ends with .*$ which matches to end - consider if this is necessary');
+    expect(result.suggestions).toContain(
+      'Pattern ends with .*$ which matches to end - consider if this is necessary',
+    );
   });
 
   it('5. should suggest lazy quantifiers', () => {

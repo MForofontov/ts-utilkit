@@ -130,16 +130,22 @@ export function formatCurrency(
     currencyUpper.length === 3 && currencyUpper in CURRENCY_SYMBOLS;
 
   // Determine symbol
-  const symbol = customSymbol || (isCurrencyCode ? CURRENCY_SYMBOLS[currencyUpper] : undefined);
+  const symbol =
+    customSymbol ||
+    (isCurrencyCode ? CURRENCY_SYMBOLS[currencyUpper] : undefined);
 
   // Format with currency
   let result: string;
   if (symbol) {
     // Standard format: "$1,234.56"
-    result = isNegative ? `-${symbol}${formattedNumber}` : `${symbol}${formattedNumber}`;
+    result = isNegative
+      ? `-${symbol}${formattedNumber}`
+      : `${symbol}${formattedNumber}`;
   } else {
     // Unknown currency format: "1,234.56 XXX"
-    result = isNegative ? `-${formattedNumber} ${currencyUpper}` : `${formattedNumber} ${currencyUpper}`;
+    result = isNegative
+      ? `-${formattedNumber} ${currencyUpper}`
+      : `${formattedNumber} ${currencyUpper}`;
   }
 
   return result;

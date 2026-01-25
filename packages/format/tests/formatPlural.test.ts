@@ -173,6 +173,8 @@ describe('formatPlural', () => {
 
     // Act & Assert
     expect(() => formatPlural(count, word)).toThrow(TypeError);
-    expect(() => formatPlural(count, word)).toThrow('singular must be a string');
+    expect(() => formatPlural(count, word)).toThrow(
+      'singular must be a string',
+    );
   });
 });

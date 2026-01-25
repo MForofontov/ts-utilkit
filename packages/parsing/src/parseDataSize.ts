@@ -66,9 +66,7 @@ export function parseDataSize(input: string, binary: boolean = true): number {
     throw new Error(`Invalid numeric value: "${match[1]}"`);
   }
   if (numericValue < 0) {
-    throw new Error(
-      `Numeric value must be non-negative, got ${numericValue}`,
-    );
+    throw new Error(`Numeric value must be non-negative, got ${numericValue}`);
   }
 
   // Define units and their multipliers

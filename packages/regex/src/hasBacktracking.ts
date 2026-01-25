@@ -47,9 +47,9 @@ export function hasBacktracking(pattern: string | RegExp): boolean {
   // Check for nested quantifiers (most common backtracking issue)
   // Pattern like (a+)+ or (a*)* or (a+)*
   // Look for a quantifier inside a group/class followed by another quantifier
-    // Detect nested quantifiers like (a+)+ or (a*)*
-    // Do not inspect character classes here to avoid false positives from literal '+' or '*' inside them.
-    const nestedQuantifiers = /\([^)]*[*+?][^)]*\)[*+?{]/.test(source);
+  // Detect nested quantifiers like (a+)+ or (a*)*
+  // Do not inspect character classes here to avoid false positives from literal '+' or '*' inside them.
+  const nestedQuantifiers = /\([^)]*[*+?][^)]*\)[*+?{]/.test(source);
 
   if (nestedQuantifiers) {
     return true;

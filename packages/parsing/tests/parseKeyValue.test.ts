@@ -138,9 +138,7 @@ describe('parseKeyValue', () => {
 
     // Act & Assert
     expect(() => parseKeyValue(input)).toThrow(Error);
-    expect(() => parseKeyValue(input)).toThrow(
-      'input string cannot be empty',
-    );
+    expect(() => parseKeyValue(input)).toThrow('input string cannot be empty');
   });
 
   // Test case 12: Throw Error for missing key-value delimiter

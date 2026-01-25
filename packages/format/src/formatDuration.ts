@@ -63,7 +63,11 @@ export function formatDuration(
   }
 
   if (milliseconds === 0) {
-    return format === 'long' ? '0 milliseconds' : format === 'compact' ? '0:00' : '0ms';
+    return format === 'long'
+      ? '0 milliseconds'
+      : format === 'compact'
+        ? '0:00'
+        : '0ms';
   }
 
   // Calculate time components

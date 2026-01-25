@@ -149,6 +149,8 @@ describe('formatPercentage', () => {
 
     // Act & Assert
     expect(() => formatPercentage(value, decimals)).toThrow(Error);
-    expect(() => formatPercentage(value, decimals)).toThrow('must be non-negative');
+    expect(() => formatPercentage(value, decimals)).toThrow(
+      'must be non-negative',
+    );
   });
 });

@@ -60,7 +60,7 @@ export function parseEnvFile(
   const lines = input.split(/\r?\n/);
 
   for (let lineNum = 0; lineNum < lines.length; lineNum++) {
-    let line = lines[lineNum].trim();
+    const line = lines[lineNum].trim();
 
     // Skip empty lines and comments
     if (line.length === 0 || line.startsWith('#')) {
@@ -99,14 +99,13 @@ export function parseEnvFile(
 
     // Expand variables if requested
     if (expandVariables) {
-      value = value.replace(/\$\{([A-Z_][A-Z0-9_]*)\}|\$([A-Z_][A-Z0-9_]*)/gi, (
-        match,
-        bracedVar,
-        unbracedVar,
-      ) => {
-        const varName = bracedVar || unbracedVar;
-        return result[varName] || '';
-      });
+      value = value.replace(
+        /\$\{([A-Z_][A-Z0-9_]*)\}|\$([A-Z_][A-Z0-9_]*)/gi,
+        (match, bracedVar, unbracedVar) => {
+          const varName = bracedVar || unbracedVar;
+          return result[varName] || '';
+        },
+      );
     }
 
     result[key] = value;

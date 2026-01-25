@@ -82,7 +82,7 @@ export function deserializeFromXML(xmlString: string): Record<string, any> {
         // Find the closing tag
         const closingTag = `</${tag}>`;
         let depth = 1;
-        let contentStart = pos;
+        const contentStart = pos;
 
         while (pos < trimmed.length && depth > 0) {
           if (trimmed.slice(pos).startsWith(`<${tag}`)) {

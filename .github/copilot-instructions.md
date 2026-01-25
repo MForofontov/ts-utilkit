@@ -1,4 +1,4 @@
-# GitHub Copilot Instructions for ts-functions-library
+# GitHub Copilot Instructions for ts-functions
 
 ## Project Overview
 
@@ -20,7 +20,7 @@ This is a comprehensive TypeScript utility functions library containing 200+ reu
 ### Directory Structure
 
 ```
-ts-functions-library/
+ts-functions/
 ├── .github/                        # GitHub-specific files and workflows
 ├── arrayFunctions/                 # Array manipulation utilities
 │   ├── arrayDifference.ts
@@ -947,4 +947,4 @@ function isValidType(value: unknown): value is ExpectedType {
 - Consider memoization for expensive calculations
 - Profile performance-critical functions
 
-This document serves as a comprehensive guide for maintaining code quality, consistency, and best practices in the ts-functions-library project. It should be updated whenever new patterns, standards, or modules are established in the project.
+This document serves as a comprehensive guide for maintaining code quality, consistency, and best practices in the ts-functions project. It should be updated whenever new patterns, standards, or modules are established in the project.

@@ -149,6 +149,8 @@ describe('formatScientific', () => {
 
     // Act & Assert
     expect(() => formatScientific(value, decimals)).toThrow(Error);
-    expect(() => formatScientific(value, decimals)).toThrow('must be non-negative');
+    expect(() => formatScientific(value, decimals)).toThrow(
+      'must be non-negative',
+    );
   });
 });

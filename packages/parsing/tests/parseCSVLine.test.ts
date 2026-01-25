@@ -172,6 +172,8 @@ describe('parseCSVLine', () => {
 
     // Act & Assert
     expect(() => parseCSVLine(input, delimiter)).toThrow(Error);
-    expect(() => parseCSVLine(input, delimiter)).toThrow('exactly one character');
+    expect(() => parseCSVLine(input, delimiter)).toThrow(
+      'exactly one character',
+    );
   });
 });

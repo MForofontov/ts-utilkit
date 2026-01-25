@@ -1,4 +1,5 @@
-import { randomRGB, RGB } from '../src/randomRGB';
+import type { RGB } from '../src/randomRGB';
+import { randomRGB } from '../src/randomRGB';
 
 /**
  * Unit tests for the randomRGB function.

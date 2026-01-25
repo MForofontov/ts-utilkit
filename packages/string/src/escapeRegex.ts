@@ -32,5 +32,5 @@ export function escapeRegex(str: string): string {
   }
 
   // Escape all regex special characters
-  return str.replace(/[.*+?^${}()|[\]\\\/]/g, '\\$&');
+  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/\//g, '\\/');
 }

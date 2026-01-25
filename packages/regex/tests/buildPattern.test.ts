@@ -1,7 +1,4 @@
-import {
-  buildPattern,
-  PatternBuilder,
-} from '../src/buildPattern';
+import { buildPattern, PatternBuilder } from '../src/buildPattern';
 
 /**
  * Unit tests for the buildPattern function and PatternBuilder class.
@@ -170,6 +167,8 @@ describe('buildPattern', () => {
 
   it('21. should throw Error when trying to repeat without previous pattern', () => {
     expect(() => buildPattern().repeat(2)).toThrow(Error);
-    expect(() => buildPattern().repeat(2)).toThrow('Cannot add repeat: no pattern parts added yet');
+    expect(() => buildPattern().repeat(2)).toThrow(
+      'Cannot add repeat: no pattern parts added yet',
+    );
   });
 });

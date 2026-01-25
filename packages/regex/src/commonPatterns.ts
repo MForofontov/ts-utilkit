@@ -72,7 +72,7 @@ export const CommonPatterns = {
   /**
    * HTML tag pattern.
    */
-  htmlTag: /<\/?[\w\s="/.':;#-\/]+>/,
+  htmlTag: /<\/?[\w\s="/.':;#-/ ]+>/,
 
   /**
    * Slug pattern (URL-friendly string).
@@ -117,7 +117,7 @@ export function getCommonPattern(
   if (typeof patternName !== 'string') {
     throw new TypeError(`name must be a string, got ${typeof patternName}`);
   }
-  
+
   if (!(patternName in CommonPatterns)) {
     throw new Error(
       `Unknown pattern name: ${patternName}. Available patterns: ${Object.keys(CommonPatterns).join(', ')}`,
@@ -155,7 +155,7 @@ export function testCommonPattern(
   if (typeof text !== 'string') {
     throw new TypeError(`text must be a string, got ${typeof text}`);
   }
-  
+
   if (typeof patternName !== 'string') {
     throw new TypeError(`name must be a string, got ${typeof patternName}`);
   }

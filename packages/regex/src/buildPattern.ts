@@ -16,7 +16,7 @@ export class PatternBuilder {
       throw new TypeError(`text must be a string, got ${typeof text}`);
     }
     // Escape regex special characters
-    const escaped = text.replace(/[.*+?^${}()|[\]\\\/]/g, '\\$&');
+    const escaped = text.replace(/[.*+?^${}()|[\]\\/ ]/g, '\\$&');
     this.parts.push(escaped);
     return this;
   }

@@ -180,7 +180,9 @@ describe('formatCurrency', () => {
 
     // Act & Assert
     expect(() => formatCurrency(value, currency)).toThrow(TypeError);
-    expect(() => formatCurrency(value, currency)).toThrow('value must be a number');
+    expect(() => formatCurrency(value, currency)).toThrow(
+      'value must be a number',
+    );
   });
 
   // Test case 14: Throw TypeError for NaN
@@ -191,7 +193,9 @@ describe('formatCurrency', () => {
 
     // Act & Assert
     expect(() => formatCurrency(value, currency)).toThrow(TypeError);
-    expect(() => formatCurrency(value, currency)).toThrow('value must be a number');
+    expect(() => formatCurrency(value, currency)).toThrow(
+      'value must be a number',
+    );
   });
 
   // Test case 15: Throw TypeError for non-string currency
@@ -202,7 +206,9 @@ describe('formatCurrency', () => {
 
     // Act & Assert
     expect(() => formatCurrency(value, currency)).toThrow(TypeError);
-    expect(() => formatCurrency(value, currency)).toThrow('currency must be a string');
+    expect(() => formatCurrency(value, currency)).toThrow(
+      'currency must be a string',
+    );
   });
 
   // Test case 16: Throw Error for negative decimals

@@ -47,7 +47,9 @@ export function combinePatterns(
   }
 
   if (operator !== 'and' && operator !== 'or') {
-    throw new TypeError(`operator must be 'and' or 'or', got ${operator}`);
+    throw new TypeError(
+      `operator must be 'and' or 'or', got ${operator as string}`,
+    );
   }
 
   if (flags !== undefined && typeof flags !== 'string') {
