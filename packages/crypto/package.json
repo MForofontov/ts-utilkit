@@ -1,6 +1,6 @@
 {
   "name": "@ts-utilkit/crypto",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Cryptographic utilities for hashing (SHA-256, SHA-512, MD5), encryption (AES-256), HMAC, and password management",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

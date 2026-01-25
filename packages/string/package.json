@@ -1,6 +1,6 @@
 {
   "name": "@ts-utilkit/string",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "String manipulation utilities for formatting, transformation, and text processing",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

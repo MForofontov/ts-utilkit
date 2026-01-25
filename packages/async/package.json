@@ -1,6 +1,6 @@
 {
   "name": "@ts-utilkit/async",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Asynchronous operation utilities for retry logic, timeouts, parallel execution, and promise management",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

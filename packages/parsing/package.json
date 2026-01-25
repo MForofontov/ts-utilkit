@@ -1,6 +1,6 @@
 {
   "name": "@ts-utilkit/parsing",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Parsing utilities for JSON, CSV, XML, and other data formats",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

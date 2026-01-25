@@ -1,6 +1,6 @@
 {
   "name": "@ts-utilkit/network",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Network utilities for URL validation, IP address handling, and network-related operations",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

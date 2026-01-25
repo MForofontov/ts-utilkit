@@ -1,6 +1,6 @@
 {
   "name": "@ts-utilkit/random",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Random generation utilities for numbers, strings, arrays, and weighted selections",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

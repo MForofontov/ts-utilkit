@@ -1,6 +1,6 @@
 {
   "name": "@ts-utilkit/encoding",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Encoding and decoding utilities for Base64 and other encoding schemes",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

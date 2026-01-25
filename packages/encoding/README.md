@@ -31,7 +31,7 @@ For complete API documentation, please visit the [main repository](https://githu
 
 ## License
 
-GPL-3.0 © MForofontov
+MIT © MForofontov
 
 ## Contributing
 

@@ -1,6 +1,6 @@
 {
   "name": "@ts-utilkit/array",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Comprehensive array manipulation utilities including sorting, filtering, transformation, and mathematical operations",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -26,7 +26,7 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@ts-utilkit/object": "^1.0.0"
+    "@ts-utilkit/object": "^0.1.0"
   },
   "files": [
     "dist",

@@ -1,6 +1,6 @@
 {
   "name": "@ts-utilkit/regex",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Regular expression utilities for pattern matching and text processing",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

@@ -89,9 +89,9 @@ const modules = {
   }
 };
 
-const baseVersion = '1.0.0';
+const baseVersion = '0.1.0';
 const author = 'MForofontov';
-const license = 'GPL-3.0';
+const license = 'MIT';
 const repository = 'https://github.com/MForofontov/ts-utilkit';
 
 function generatePackageJson(moduleName) {

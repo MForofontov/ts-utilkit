@@ -1,6 +1,6 @@
 {
   "name": "@ts-utilkit/object",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Object manipulation utilities for deep merging, cloning, path access, and transformation",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

@@ -1,6 +1,6 @@
 {
   "name": "@ts-utilkit/collection",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Collection utilities for Sets, Maps, and conversions between different collection types",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

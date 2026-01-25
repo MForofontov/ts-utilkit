@@ -1,6 +1,6 @@
 {
   "name": "@ts-utilkit/date",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Date and time manipulation utilities for formatting, calculations, and timezone handling",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

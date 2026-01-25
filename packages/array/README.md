@@ -191,7 +191,7 @@ For detailed API documentation, visit the [main repository](https://github.com/M
 
 ## License
 
-GPL-3.0 © MForofontov
+MIT © MForofontov
 
 ## Contributing
 

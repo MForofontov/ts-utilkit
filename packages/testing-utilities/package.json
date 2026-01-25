@@ -1,6 +1,6 @@
 {
   "name": "@ts-utilkit/testing-utilities",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Testing utilities and helpers for writing comprehensive unit tests with TypeScript and Jest",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
