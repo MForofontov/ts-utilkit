@@ -35,9 +35,8 @@ if [[ ! $REPLY =~ ^[Yy][Ee][Ss]$ ]]; then
   exit 0
 fi
 
-# Packages to publish
+# Packages to publish (object must come before array since array depends on it)
 PACKAGES=(
-  "array"
   "async"
   "collection"
   "configuration"
@@ -46,7 +45,6 @@ PACKAGES=(
   "encoding"
   "event"
   "format"
-  "math"
   "network"
   "object"
   "parsing"
@@ -58,6 +56,8 @@ PACKAGES=(
   "utility"
   "validation"
   "webscraping"
+  "array"
+  "math"
 )
 
 SUCCESS_COUNT=0
@@ -83,19 +83,18 @@ for package in "${PACKAGES[@]}"; do
   
   cd "$PACKAGE_PATH"
   
-  # Build the package
-  echo "  Building..."
-  if npm run build &> /dev/null; then
-    echo -e "  ${GREEN}✓ Build successful${NC}"
-  else
-    echo -e "  ${RED}✗ Build failed${NC}"
-    ((FAILURE_COUNT++))
-    FAILED_PACKAGES+=("@ts-utilkit/$package")
+  # Check if this version is already published
+  PACKAGE_NAME="@ts-utilkit/$package"
+  CURRENT_VERSION=$(node -p "require('./package.json').version")
+  
+  echo "  Checking npm registry for version $CURRENT_VERSION..."
+  if npm view "$PACKAGE_NAME@$CURRENT_VERSION" version &> /dev/null; then
+    echo -e "  ${YELLOW}⚠️  Version $CURRENT_VERSION already published, skipping...${NC}"
     cd - > /dev/null
     continue
   fi
   
-  # Publish the package
+  # Publish the package (prepublishOnly hook will build it)
   echo "  Publishing..."
   if npm publish --access public; then
     echo -e "  ${GREEN}✓ Published successfully${NC}"
