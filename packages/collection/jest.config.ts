@@ -1,13 +1,3 @@
-/*
-Root Jest configuration for ts-utilkit.
-Runs all tests across all packages with comprehensive reporting.
-
-For testing individual packages, use:
-  npm test -w @ts-utilkit/array
-  npm test -w @ts-utilkit/crypto
-  etc.
-*/
-
 import * as os from 'os';
 
 const Status = {
@@ -17,14 +7,9 @@ const Status = {
 
 const config = {
   preset: 'ts-jest',
-  globals: {
-    'ts-jest': {
-      tsconfig: 'tsconfig.test.json',
-    },
-  },
-  moduleNameMapper: {
-    '^@ts-utilkit/(.*)$': '<rootDir>/packages/$1/src',
-  },
+  displayName: 'collection',
+  testMatch: ['<rootDir>/tests/**/*.test.ts'],
+  rootDir: '.',
   testEnvironment: 'allure-jest/node',
   testEnvironmentOptions: {
     resultsDir: 'allure-results',
@@ -56,14 +41,10 @@ const config = {
       node_version: process.version,
     },
   },
-  reporters: [
-    'default', // default jest reporter
-    ['jest-html-reporter', { outputPath: 'jest.html' }], // jest html reporter
-    ['jest-allure', { outputDir: 'allure-results' }],
-  ],
   collectCoverage: true,
   coverageDirectory: 'coverage',
   coverageReporters: ['json', 'lcov', 'text', 'clover'],
+  coveragePathIgnorePatterns: ['/node_modules/', '/tests/'],
   testPathIgnorePatterns: ['/node_modules/', '/allure-results/', '/dist/'],
 };
 

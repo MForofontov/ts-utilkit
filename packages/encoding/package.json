@@ -22,7 +22,8 @@
   },
   "scripts": {
     "build": "tsc",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "test": "jest --config jest.config.ts"
   },
   "files": [
     "dist",
