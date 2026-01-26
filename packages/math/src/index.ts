@@ -1,21 +1,14 @@
 // Auto-generated index file for math
 // This file exports all functions from this module
 
-// Algebra Functions
+// Algebra Functions (3)
 export * from './algebraFunctions/calculateCubeRoot';
-export * from './algebraFunctions/calculateExponential';
-export * from './algebraFunctions/calculateLogBase10';
 export * from './algebraFunctions/calculateLogarithm';
-export * from './algebraFunctions/calculateNaturalLogarithm';
-export * from './algebraFunctions/calculatePower';
 export * from './algebraFunctions/calculateSquareRoot';
 
-// Arithmetic Functions
-export * from './arithmeticFunctions/absoluteValue';
+// Arithmetic Functions (4)
 export * from './arithmeticFunctions/calculatePercentage';
 export * from './arithmeticFunctions/ceilValue';
-export * from './arithmeticFunctions/floorValue';
-export * from './arithmeticFunctions/getRandomIntInRange';
 export * from './arithmeticFunctions/roundToDecimals';
 export * from './arithmeticFunctions/roundValue';
 

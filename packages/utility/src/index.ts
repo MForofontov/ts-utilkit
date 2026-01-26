@@ -7,7 +7,6 @@ export * from './debounceAsync';
 export * from './delay';
 export * from './hexToRgb';
 export * from './isNil';
-export * from './parseQueryString';
 export * from './rgbToHex';
 export * from './safeJSONParse';
 export * from './throttle';

@@ -65,5 +65,6 @@ export function randomFloat(
 
   const random = Math.random() * (max - min) + min;
   const multiplier = Math.pow(10, decimals);
-  return Math.round(random * multiplier) / multiplier;
+  // Use floor instead of round to ensure result is always < max (exclusive upper bound)
+  return Math.floor(random * multiplier) / multiplier;
 }

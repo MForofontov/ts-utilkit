@@ -2,7 +2,9 @@ import { sumArrayElements } from '@ts-utilkit/array';
 import { calculateAverage } from '../src/statisticsFunctions/centralTendency/calculateAverage';
 
 // Mock the sumArrayElements function
-jest.mock('../../array/src/sumArrayElements');
+jest.mock('@ts-utilkit/array', () => ({
+  sumArrayElements: jest.fn(),
+}));
 
 describe('calculateAverage', () => {
   // Test case 1: Average of all numbers in the array

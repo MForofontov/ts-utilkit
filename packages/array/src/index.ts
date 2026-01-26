@@ -23,7 +23,6 @@ export * from './removeDuplicates';
 export * from './removeFalsyValues';
 export * from './rotateArrayLeft';
 export * from './rotateArrayRight';
-export * from './shuffleArray';
 export * from './sortBy';
 export * from './sumArrayElements';
 export * from './uniqueElementsWithCounts';

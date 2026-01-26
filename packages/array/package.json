@@ -1,6 +1,6 @@
 {
   "name": "@ts-utilkit/array",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Comprehensive array manipulation utilities including sorting, filtering, transformation, and mathematical operations",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -8,7 +8,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/MForofontov/ts-utilkit.git",
-    "directory": "packages/arrayFunctions"
+    "directory": "packages/array"
   },
   "keywords": [
     "array",

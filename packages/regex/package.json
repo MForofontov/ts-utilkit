@@ -8,7 +8,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/MForofontov/ts-utilkit.git",
-    "directory": "packages/regexFunctions"
+    "directory": "packages/regex"
   },
   "keywords": [
     "regex",
