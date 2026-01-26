@@ -89,7 +89,7 @@ This library provides **370+ utility functions** organized into **21 specialized
 
 | Package | Functions | Description | Documentation |
 |---------|-----------|-------------|---------------|
-| **@ts-utilkit/array** | 27 | Array manipulation, chunking, flattening, grouping, sorting | [View Functions →](packages/array/README.md) |
+| **@ts-utilkit/array** | 26 | Array manipulation, chunking, flattening, grouping, sorting | [View Functions →](packages/array/README.md) |
 | **@ts-utilkit/async** | 6 | Retry logic, timeouts, parallel/series execution | [View Functions →](packages/async/README.md) |
 | **@ts-utilkit/collection** | 17 | Set and Map operations, conversions | [View Functions →](packages/collection/README.md) |
 | **@ts-utilkit/configuration** | 12 | Environment variables, config management | [View Functions →](packages/configuration/README.md) |
@@ -107,7 +107,7 @@ This library provides **370+ utility functions** organized into **21 specialized
 | **@ts-utilkit/serialization** | 18 | JSON, CSV, XML, YAML, binary serialization | [View Functions →](packages/serialization/README.md) |
 | **@ts-utilkit/string** | 51 | Case conversion, slugs, validation, manipulation | [View Functions →](packages/string/README.md) |
 | **@ts-utilkit/testing-utilities** | 21 | Test data generation, assertions, spies | [View Functions →](packages/testing-utilities/README.md) |
-| **@ts-utilkit/utility** | 10 | Debounce, throttle, color conversion, delays | [View Functions →](packages/utility/README.md) |
+| **@ts-utilkit/utility** | 9 | Debounce, throttle, color conversion, delays | [View Functions →](packages/utility/README.md) |
 | **@ts-utilkit/validation** | 13 | IP, UUID, email, credit card validation | [View Functions →](packages/validation/README.md) |
 | **@ts-utilkit/webscraping** | 16 | HTML parsing, link/email extraction | [View Functions →](packages/webscraping/README.md) |
 
@@ -119,7 +119,7 @@ Quick reference of functions by category:
 
 | Category | Function Count | Key Functions |
 |----------|----------------|---------------|
-| **Array** | 27 | `chunkArray`, `findDuplicates`, `groupBy`, `flattenArray`, `shuffleArray` |
+| **Array** | 26 | `chunkArray`, `findDuplicates`, `groupBy`, `flattenArray`, `sortBy` |
 | **Async** | 6 | `asyncRetry`, `asyncTimeout`, `asyncParallel`, `asyncSeries`, `asyncMap` |
 | **Collection** | 17 | `setUnion`, `setIntersection`, `mapToObject`, `setDifference`, `mapMerge` |
 | **Configuration** | 12 | `getEnv`, `parseEnvInt`, `parseEnvBoolean`, `loadEnvFile`, `validateConfig` |
@@ -137,11 +137,11 @@ Quick reference of functions by category:
 | **Serialization** | 18 | `serializeToJSON`, `deserializeFromJSON`, `handleCircularReferences`, `deepClone` |
 | **String** | 51 | `slugify`, `capitalizeEachWord`, `isPalindrome`, `toKebabCase`, `truncateString` |
 | **Testing** | 21 | `generateRandomString`, `generateRandomEmail`, `assertArraysEqual`, `runPerformanceTest` |
-| **Utility** | 10 | `debounce`, `throttle`, `delay`, `hexToRgb`, `bytesToSize` |
+| **Utility** | 9 | `debounce`, `throttle`, `delay`, `hexToRgb`, `bytesToSize` |
 | **Validation** | 13 | `isValidIPv4`, `isValidUUID`, `isValidJSON`, `isInRange`, `isValidCreditCard` |
 | **Webscraping** | 16 | `extractLinks`, `extractMetaTags`, `extractEmails`, `fetchHTML`, `parseHTML` |
 
-**Total: 373 Functions** across 21 specialized packages
+**Total: 371 Functions** across 21 specialized packages
 
 ## 💡 Usage Examples
 

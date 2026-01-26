@@ -1,7 +1,7 @@
 // Auto-generated index file for math
 // This file exports all functions from this module
 
-// Algebra Functions (2)
+// Algebra Functions (3)
 export * from './algebraFunctions/calculateCubeRoot';
 export * from './algebraFunctions/calculateLogarithm';
 export * from './algebraFunctions/calculateSquareRoot';

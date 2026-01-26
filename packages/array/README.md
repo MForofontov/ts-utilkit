@@ -1,6 +1,6 @@
 # @ts-utilkit/array
 
-Comprehensive array manipulation utilities with 27+ functions for sorting, filtering, transformation, and mathematical operations on arrays.
+Comprehensive array manipulation utilities with 26 functions for sorting, filtering, transformation, and mathematical operations on arrays.
 
 ## Installation
 
@@ -17,7 +17,7 @@ npm install @ts-utilkit/array
 - ⚡ Performance-optimized implementations
 - 📖 Extensive JSDoc documentation
 
-## Available Functions (27)
+## Available Functions (26)
 
 - **`arrayDifference`** - Find elements in first array not in second
 - **`arrayIntersection`** - Find common elements between arrays
@@ -41,7 +41,6 @@ npm install @ts-utilkit/array
 - **`removeFalsyValues`** - Remove falsy values (null, undefined, false, 0, '')
 - **`rotateArrayLeft`** - Rotate array elements to the left
 - **`rotateArrayRight`** - Rotate array elements to the right
-- **`shuffleArray`** - Randomize array elements (Fisher-Yates)
 - **`sortBy`** - Sort objects by property or custom function
 - **`sumArrayElements`** - Sum all numeric elements
 - **`uniqueElementsWithCounts`** - Get unique elements with occurrence counts
@@ -52,20 +51,20 @@ npm install @ts-utilkit/array
 ### Basic Array Manipulation
 
 ```typescript
-import { chunkArray, shuffleArray, rotateArrayLeft } from '@ts-utilkit/array';
+import { chunkArray, rotateArrayLeft, rotateArrayRight } from '@ts-utilkit/array';
 
 // Chunk array into smaller arrays
 const numbers = [1, 2, 3, 4, 5, 6, 7, 8];
 const chunks = chunkArray(numbers, 3);
 // Result: [[1, 2, 3], [4, 5, 6], [7, 8]]
 
-// Shuffle array randomly
-const shuffled = shuffleArray([1, 2, 3, 4, 5]);
-// Result: [3, 1, 5, 2, 4] (random order)
-
 // Rotate array left
-const rotated = rotateArrayLeft([1, 2, 3, 4, 5], 2);
+const rotatedLeft = rotateArrayLeft([1, 2, 3, 4, 5], 2);
 // Result: [3, 4, 5, 1, 2]
+
+// Rotate array right
+const rotatedRight = rotateArrayRight([1, 2, 3, 4, 5], 2);
+// Result: [4, 5, 1, 2, 3]
 ```
 
 ### Working with Duplicates

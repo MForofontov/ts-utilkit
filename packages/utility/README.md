@@ -16,7 +16,7 @@ npm install @ts-utilkit/utility
 - 🔒 Type-safe with strict TypeScript configuration
 - 📖 Extensive JSDoc documentation
 
-## Available Functions (10)
+## Available Functions (9)
 
 - **`bytesToSize`** - Converts bytes to human-readable size (KB, MB, GB, etc.)
 - **`debounce`** - Creates a debounced function that delays execution
@@ -24,7 +24,6 @@ npm install @ts-utilkit/utility
 - **`delay`** - Pauses execution for a specified duration (Promise-based)
 - **`hexToRgb`** - Converts hex color to RGB object
 - **`isNil`** - Checks if value is null or undefined
-- **`parseQueryString`** - Parses URL query string to object
 - **`rgbToHex`** - Converts RGB values to hex color string
 - **`safeJSONParse`** - Safely parses JSON with fallback value
 - **`throttle`** - Creates a throttled function that limits execution rate
