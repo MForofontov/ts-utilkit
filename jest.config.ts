@@ -62,8 +62,14 @@ const config = {
     ['jest-allure', { outputDir: 'allure-results' }],
   ],
   collectCoverage: true,
+  collectCoverageFrom: [
+    'packages/*/src/**/*.ts',
+    '!packages/*/src/**/*.test.ts',
+    '!packages/*/src/**/index.ts',
+  ],
   coverageDirectory: 'coverage',
   coverageReporters: ['json', 'lcov', 'text', 'clover'],
+  coveragePathIgnorePatterns: ['/node_modules/'],
   testPathIgnorePatterns: ['/node_modules/', '/allure-results/', '/dist/'],
 };
 
