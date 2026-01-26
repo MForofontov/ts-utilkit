@@ -5,13 +5,13 @@
 [![Jest](https://img.shields.io/badge/Jest-323330?style=for-the-badge&logo=Jest&logoColor=white)](https://jestjs.io/)
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
-A collection of **200+ TypeScript utility functions** organized into specialized modules. Built with type safety and comprehensive testing in mind.
+A collection of **408 TypeScript utility functions** organized into specialized modules. Built with type safety and comprehensive testing in mind.
 
 > ⚠️ **Production Notice**: While this library has extensive test coverage (>98%), not all functions have been battle-tested in production environments. Use at your own discretion and thoroughly test in your specific use case before deploying to production.
 
 ## ✨ Features
 
-- 🎯 **200+ Functions**: Utilities across array, async, crypto, date, math, object, string, and more
+- 🎯 **408 Functions**: Utilities across array, async, crypto, date, math, object, string, and more
 - 🔒 **Type Safe**: Full TypeScript support with strict type checking
 - 📝 **Well Documented**: JSDoc comments with examples and complexity notes
 - 🧪 **Extensively Tested**: 5,675 unit tests with >98% code coverage
@@ -85,7 +85,7 @@ const slug = slugify('Hello World!'); // 'hello-world'
 
 ## � Packages Overview
 
-This library provides **370+ utility functions** organized into **21 specialized packages**. Each package is independently installable and fully tree-shakeable.
+This library provides **408 utility functions** organized into **21 specialized packages**. Each package is independently installable and fully tree-shakeable.
 
 | Package | Functions | Description | Documentation |
 |---------|-----------|-------------|---------------|
@@ -141,7 +141,7 @@ Quick reference of functions by category:
 | **Validation** | 13 | `isValidIPv4`, `isValidUUID`, `isValidJSON`, `isInRange`, `isValidCreditCard` |
 | **Webscraping** | 16 | `extractLinks`, `extractMetaTags`, `extractEmails`, `fetchHTML`, `parseHTML` |
 
-**Total: 371 Functions** across 21 specialized packages
+**Total: 408 Functions** across 21 specialized packages
 
 ## 💡 Usage Examples
 
