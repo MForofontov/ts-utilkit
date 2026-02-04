@@ -18,16 +18,9 @@ on:
         required: false
         default: '2.34.0'
         type: string
-      deploy_pages:
-        description: 'Deploy Allure report to GitHub Pages (first matrix only)'
-        required: false
-        default: false
-        type: boolean
 
 permissions:
   contents: read
-  pages: write          # needed only if deploy_pages=true
-  id-token: write       # needed only if deploy_pages=true
 
 jobs:
   test:
@@ -41,6 +34,7 @@ jobs:
       ALLURE_RESULTS_DIR: allure-results
       ALLURE_REPORT_DIR: allure-report
       TEST_SCRIPT: ${{ inputs.test_script }}
+      FORCE_COLOR: "1"
 
     steps:
       - name: Checkout
@@ -91,48 +85,58 @@ jobs:
           sudo ln -sf /opt/allure/bin/allure /usr/local/bin/allure
           allure --version
 
-      - name: Run tests (prefers your test script)
+      # Create test directories
+      - name: Setup test directories
+        run: mkdir -p "$ALLURE_RESULTS_DIR" "$ALLURE_REPORT_DIR"
+
+      # Run tests
+      - name: Run tests
+        id: tests
         shell: bash
         continue-on-error: true
         run: |
-          set -eux
-          mkdir -p "$ALLURE_RESULTS_DIR" "$ALLURE_REPORT_DIR"
+          set +e
           
           # Determine package manager
           if [ -f pnpm-lock.yaml ]; then PM="pnpm"; elif [ -f yarn.lock ]; then PM="yarn"; else PM="npm"; fi
           
-          # If repo provides run-tests.sh, use it for consistency with your local runs
+          # If repo provides run-tests.sh, use it for consistency with local runs
           if [ -x ./run-tests.sh ]; then
             ./run-tests.sh
           else
             # Fallback: direct npm script invocation
             $PM run "$TEST_SCRIPT"
           fi
+          
+          CODE=$?
+          echo "exit_code=$CODE" >> $GITHUB_OUTPUT
+          exit 0
 
+      # Generate Allure report
       - name: Generate Allure report
         if: always()
         shell: bash
         run: |
           set -eux
-          # Generate even if tests fail so you can inspect failures
-          allure generate "$ALLURE_RESULTS_DIR" --clean -o "$ALLURE_REPORT_DIR" || true
+          if [ -d "$ALLURE_RESULTS_DIR" ] && [ "$(ls -A $ALLURE_RESULTS_DIR)" ]; then
+            allure generate "$ALLURE_RESULTS_DIR" --clean -o "$ALLURE_REPORT_DIR"
+          else
+            echo "No Allure results found, creating empty report directory"
+            mkdir -p "$ALLURE_REPORT_DIR"
+            echo "<html><body><h1>No test results available</h1></body></html>" > "$ALLURE_REPORT_DIR/index.html"
+          fi
 
-      - name: Upload Allure results (raw)
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: allure-results-${{ matrix.node }}
-          path: ${{ env.ALLURE_RESULTS_DIR }}
-          retention-days: 30
-
+      # Upload Allure report (HTML)
       - name: Upload Allure report (HTML)
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: allure-report-${{ matrix.node }}
           path: ${{ env.ALLURE_REPORT_DIR }}
+          if-no-files-found: ignore
           retention-days: 30
 
+      # Job summary
       - name: Job Summary
         if: always()
         shell: bash
@@ -140,7 +144,9 @@ jobs:
           echo "## Test & Allure Summary (Node ${{ matrix.node }})" >> $GITHUB_STEP_SUMMARY
           echo "- Node.js: \`${{ matrix.node }}\`" >> $GITHUB_STEP_SUMMARY
           echo "- Test script: \`${{ inputs.test_script }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- Test exit code: \`${{ steps.tests.outputs.exit_code || 'N/A' }}\`" >> $GITHUB_STEP_SUMMARY
           echo "- Allure version: \`${{ inputs.allure_version }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
           
           if [ -f "${{ env.ALLURE_REPORT_DIR }}/widgets/summary.json" ]; then
             sudo apt-get update -y >/dev/null 2>&1 || true
@@ -150,35 +156,23 @@ jobs:
             B=$(jq '.statistic.broken' ${{ env.ALLURE_REPORT_DIR }}/widgets/summary.json 2>/dev/null || echo 0)
             S=$(jq '.statistic.skipped' ${{ env.ALLURE_REPORT_DIR }}/widgets/summary.json 2>/dev/null || echo 0)
             T=$(jq '.statistic.total'  ${{ env.ALLURE_REPORT_DIR }}/widgets/summary.json 2>/dev/null || echo 0)
+            echo "### Test Results" >> $GITHUB_STEP_SUMMARY
             echo "- Total: **$T**  |  Passed: **$P**  |  Failed: **$F**  |  Broken: **$B**  |  Skipped: **$S**" >> $GITHUB_STEP_SUMMARY
           else
             echo "- Allure summary not found (no results?)" >> $GITHUB_STEP_SUMMARY
           fi
-          echo "- Artifacts: \`allure-results-${{ matrix.node }}\`, \`allure-report-${{ matrix.node }}\`" >> $GITHUB_STEP_SUMMARY
+          
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Artifacts" >> $GITHUB_STEP_SUMMARY
+          echo "- \`allure-report-${{ matrix.node }}\` - Allure HTML report" >> $GITHUB_STEP_SUMMARY
 
-  deploy-allure:
-    if: ${{ inputs.deploy_pages }}
-    needs: [test]
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      # publish the report from the first matrix entry
-      - name: Download Allure report from first matrix entry
-        uses: actions/download-artifact@v4
-        with:
-          name: allure-report-${{ fromJSON(inputs.node_versions)[0] }}
-          path: ./site
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./site
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      # Fail job if tests failed
+      - name: Check test results
+        if: always()
+        shell: bash
+        run: |
+          if [ "${{ steps.tests.outputs.exit_code }}" != "0" ]; then
+            echo "❌ Tests failed with exit code: ${{ steps.tests.outputs.exit_code }}"
+            exit 1
+          fi
+          echo "✅ All tests passed"

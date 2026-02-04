@@ -14,6 +14,7 @@ const Status = {
 export const baseConfig = {
   preset: 'ts-jest',
   testEnvironment: 'allure-jest/node',
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   testEnvironmentOptions: {
     resultsDir: 'allure-results',
     links: {
