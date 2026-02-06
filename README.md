@@ -5,13 +5,13 @@
 [![Jest](https://img.shields.io/badge/Jest-323330?style=for-the-badge&logo=Jest&logoColor=white)](https://jestjs.io/)
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
-A collection of **200+ TypeScript utility functions** organized into specialized modules. Built with type safety and comprehensive testing in mind.
+A collection of **408 TypeScript utility functions** organized into specialized modules. Built with type safety and comprehensive testing in mind.
 
 > ⚠️ **Production Notice**: While this library has extensive test coverage (>98%), not all functions have been battle-tested in production environments. Use at your own discretion and thoroughly test in your specific use case before deploying to production.
 
 ## ✨ Features
 
-- 🎯 **200+ Functions**: Utilities across array, async, crypto, date, math, object, string, and more
+- 🎯 **408 Functions**: Utilities across array, async, crypto, date, math, object, string, and more
 - 🔒 **Type Safe**: Full TypeScript support with strict type checking
 - 📝 **Well Documented**: JSDoc comments with examples and complexity notes
 - 🧪 **Extensively Tested**: 5,675 unit tests with >98% code coverage
@@ -85,7 +85,7 @@ const slug = slugify('Hello World!'); // 'hello-world'
 
 ## � Packages Overview
 
-This library provides **370+ utility functions** organized into **21 specialized packages**. Each package is independently installable and fully tree-shakeable.
+This library provides **408 utility functions** organized into **21 specialized packages**. Each package is independently installable and fully tree-shakeable.
 
 | Package | Functions | Description | Documentation |
 |---------|-----------|-------------|---------------|
@@ -141,7 +141,7 @@ Quick reference of functions by category:
 | **Validation** | 13 | `isValidIPv4`, `isValidUUID`, `isValidJSON`, `isInRange`, `isValidCreditCard` |
 | **Webscraping** | 16 | `extractLinks`, `extractMetaTags`, `extractEmails`, `fetchHTML`, `parseHTML` |
 
-**Total: 371 Functions** across 21 specialized packages
+**Total: 408 Functions** across 21 specialized packages
 
 ## 💡 Usage Examples
 
@@ -464,20 +464,28 @@ All tests must pass before merge approval.
 
 ## 📄 License
 
-This project is licensed under the **GNU General Public License v3.0**.
+This project is licensed under the **MIT License**.
 
 ```
-Copyright (C) 2024 Mykyta Forofontov
+Copyright (c) 2026 Mykyta Forofontov
 
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 ```
 
 See the [LICENSE](LICENSE) file for complete details.

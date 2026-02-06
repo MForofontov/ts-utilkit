@@ -2,13 +2,38 @@
   "name": "@ts-utilkit/math",
   "version": "0.1.1",
   "description": "Mathematical utilities covering algebra, geometry, statistics, number theory, and combinatorics",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "license": "MIT",
+  "homepage": "https://github.com/mykfor1/ts-utilkit/tree/main/packages/math#readme",
+  "bugs": {
+    "url": "https://github.com/mykfor1/ts-utilkit/issues"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/MForofontov/ts-utilkit.git",
     "directory": "packages/math"
+  },
+  "license": "MIT",
+  "author": "MForofontov",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "test": "jest --config jest.config.ts",
+    "test:coverage": "jest --config jest.config.ts --coverage",
+    "test:watch": "jest --config jest.config.ts --watch",
+    "lint": "eslint src/**/*.ts",
+    "format:check": "prettier --check src/**/*.ts",
+    "publish:dry": "npm publish --dry-run",
+    "publish": "npm publish",
+    "version:patch": "npm version patch",
+    "version:minor": "npm version minor",
+    "version:major": "npm version major"
   },
   "keywords": [
     "math",
@@ -17,22 +42,9 @@
     "statistics",
     "calculation"
   ],
-  "author": "MForofontov",
   "engines": {
     "node": ">=20"
   },
-  "scripts": {
-    "build": "tsc",
-    "prepublishOnly": "npm run build"
-  },
-  "dependencies": {
-    "@ts-utilkit/array": "^0.1.0"
-  },
-  "files": [
-    "dist",
-    "README.md",
-    "LICENSE"
-  ],
   "publishConfig": {
     "access": "public"
   }
