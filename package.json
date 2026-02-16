@@ -19,7 +19,7 @@
     "type-safe",
     "enterprise"
   ],
-  "author": "MForofontov",
+  "author": "Mykyta Forofontov",
   "engines": {
     "node": ">=20"
   },
