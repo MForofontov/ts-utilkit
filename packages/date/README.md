@@ -50,38 +50,17 @@ npm install @ts-utilkit/date
 - **`oneWeekAgo`** - Gets the date from one week ago
 - **`toUTCDate`** - Converts a date to UTC
 
-## Usage Examples
+## Quick Example
 
 ```typescript
-import { addDays, formatDate, dateDiff, isLeapYear } from '@ts-utilkit/date';
+import { addDays, formatDate, daysBetween, isLeapYear } from '@ts-utilkit/date';
 
-// Date arithmetic
-const tomorrow = addDays(new Date(), 1);
-// Result: Date object for tomorrow
-
-// Date formatting
-const formatted = formatDate(new Date(), 'YYYY-MM-DD HH:mm:ss');
-// Result: "2024-03-15 14:30:00"
-
-// Date difference
-const date1 = new Date('2024-01-01');
-const date2 = new Date('2024-12-31');
-const days = dateDiff(date1, date2, 'days');
-// Result: 365
-
-// Leap year check
-const isLeap = isLeapYear(2024);
-// Result: true
+addDays(new Date(), 7);               // Add 7 days
+formatDate(new Date(), 'YYYY-MM-DD'); // Format date
+daysBetween(date1, date2);            // Days between dates
+isLeapYear(2024);                     // true
 ```
-
-## API Documentation
-
-For complete API documentation, please visit the [main repository](https://github.com/MForofontov/ts-utilkit).
 
 ## License
 
-MIT © MForofontov
-
-## Contributing
-
-Contributions are welcome! Please see the [main repository](https://github.com/MForofontov/ts-utilkit) for contribution guidelines.
+MIT © [Mykyta Forofontov](https://github.com/MForofontov)

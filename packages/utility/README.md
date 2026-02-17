@@ -28,43 +28,20 @@ npm install @ts-utilkit/utility
 - **`safeJSONParse`** - Safely parses JSON with fallback value
 - **`throttle`** - Creates a throttled function that limits execution rate
 
-## Usage Examples
+## Quick Example
 
 ```typescript
-import { debounce, throttle, retry, memoize } from '@ts-utilkit/utility';
+import { debounce, throttle, clamp, noop } from '@ts-utilkit/utility';
 
-// Debounce: Delays execution until after inactivity
-const debouncedSearch = debounce((query: string) => {
-  console.log('Searching for:', query);
-}, 300);
-
-// Throttle: Limits execution rate
-const throttledScroll = throttle(() => {
-  console.log('Scroll event');
-}, 100);
-
-// Retry with backoff
-const fetchData = async () => {
-  const response = await fetch('https://api.example.com/data');
-  return response.json();
-};
-const data = await retry(fetchData, { maxAttempts: 3, delay: 1000 });
-
-// Memoization for expensive calculations
-const fibonacci = memoize((n: number): number => {
-  if (n <= 1) return n;
-  return fibonacci(n - 1) + fibonacci(n - 2);
-});
-const result = fibonacci(40); // Cached for performance
+debounce(fn, 300);                   // Delay until inactivity
+throttle(fn, 100);                   // Limit rate
+clamp(5, 0, 10);                     // 5 (within range)
+noop();                              // No-op function
 ```
-
-## API Documentation
-
-For complete API documentation, please visit the [main repository](https://github.com/MForofontov/ts-utilkit).
 
 ## License
 
-MIT © MForofontov
+MIT © [Mykyta Forofontov](https://github.com/MForofontov)
 
 ## Contributing
 

@@ -26,98 +26,21 @@ npm install @ts-utilkit/async
 - **`asyncSeries`** - Execute async operations sequentially
 - **`asyncTimeout`** - Add timeout to any promise
 
-## Usage Examples
-
-### Retry with Exponential Backoff
+## Quick Example
 
 ```typescript
-import { asyncRetry } from '@ts-utilkit/async';
+import { asyncRetry, asyncTimeout, asyncParallel } from '@ts-utilkit/async';
 
-// Retry API call up to 3 times with exponential backoff
-const data = await asyncRetry(
-  async () => {
-    const response = await fetch('https://api.example.com/data');
-    if (!response.ok) throw new Error('API error');
-    return response.json();
-  },
-  3,      // max retries
-  1000    // initial delay (1s, then 2s, then 4s)
-);
+// Retry with exponential backoff
+await asyncRetry(() => fetchAPI(), 3, 1000);
+
+// Add timeout to promise
+await asyncTimeout(slowPromise, 5000);
+
+// Control parallel execution
+await asyncParallel([fn1, fn2, fn3], 2);
 ```
-
-### Promise Timeout
-
-```typescript
-import { asyncTimeout } from '@ts-utilkit/async';
-
-try {
-  // Timeout after 5 seconds
-  const result = await asyncTimeout(
-    fetch('https://api.example.com/slow-endpoint'),
-    5000
-  );
-} catch (error) {
-  console.error('Request timed out or failed');
-}
-```
-
-### Controlled Parallel Execution
-
-```typescript
-import { asyncParallel } from '@ts-utilkit/async';
-
-const urls = [
-  'https://api.example.com/user/1',
-  'https://api.example.com/user/2',
-  'https://api.example.com/user/3',
-  // ... 100 URLs
-];
-
-// Process only 5 requests at a time
-const results = await asyncParallel(
-  urls.map(url => () => fetch(url).then(r => r.json())),
-  5 // concurrency limit
-);
-```
-
-### Sequential Execution
-
-```typescript
-import { asyncSeries } from '@ts-utilkit/async';
-
-const operations = [
-  async () => await database.createUser(userData),
-  async () => await email.sendWelcome(user.email),
-  async () => await analytics.trackSignup(user.id)
-];
-
-// Execute in order, stop on first failure
-const results = await asyncSeries(operations);
-```
-
-### Async Array Operations
-
-```typescript
-import { asyncMap, asyncFilter } from '@ts-utilkit/async';
-
-const userIds = [1, 2, 3, 4, 5];
-
-// Map with async function
-const users = await asyncMap(userIds, async (id) => {
-  return await fetchUser(id);
-});
-
-// Filter with async predicate
-const activeUsers = await asyncFilter(users, async (user) => {
-  const status = await checkUserStatus(user.id);
-  return status === 'active';
-});
-```
-
-## API Documentation
-
-For detailed API documentation, visit the [main repository](https://github.com/MForofontov/ts-utilkit).
 
 ## License
 
-MIT © MForofontov
+MIT © [Mykyta Forofontov](https://github.com/MForofontov)

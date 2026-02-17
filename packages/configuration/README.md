@@ -31,57 +31,17 @@ npm install @ts-utilkit/configuration
 - **`setConfigValue`** - Sets a configuration value by key path
 - **`validateConfig`** - Validates configuration object against schema
 
-## Usage Examples
+## Quick Example
 
 ```typescript
-import { 
-  getEnv, 
-  getEnvRequired, 
-  parseEnvInt, 
-  parseEnvBoolean 
-} from '@ts-utilkit/configuration';
+import { getEnv, requireEnv, parseEnvInt, parseEnvBool } from '@ts-utilkit/configuration';
 
-// Get environment variable with default
-const port = getEnv('PORT', '3000');
-// Result: '3000' if PORT is not set
-
-// Require environment variable
-const apiKey = getEnvRequired('API_KEY');
-// Throws if API_KEY is not set
-
-// Parse as integer
-const maxConnections = parseEnvInt('MAX_CONNECTIONS', 100);
-// Result: 100 if not set or invalid
-
-// Parse as boolean
-const debug = parseEnvBoolean('DEBUG', false);
-// Supports: 'true', '1', 'yes', 'on' → true
-//          'false', '0', 'no', 'off' → false
-
-// Real-world configuration setup
-const config = {
-  server: {
-    port: parseEnvInt('PORT', 3000),
-    host: getEnv('HOST', 'localhost')
-  },
-  database: {
-    url: getEnvRequired('DATABASE_URL'),
-    poolSize: parseEnvInt('DB_POOL_SIZE', 10)
-  },
-  features: {
-    enableCache: parseEnvBoolean('ENABLE_CACHE', true)
-  }
-};
+getEnv('PORT', '3000');              // Get with default
+requireEnv('API_KEY');               // Required or throws
+parseEnvInt('MAX_CONN', 100);        // Parse as integer
+parseEnvBool('DEBUG', false);        // Parse as boolean
 ```
-
-## API Documentation
-
-For complete API documentation, please visit the [main repository](https://github.com/MForofontov/ts-utilkit).
 
 ## License
 
-MIT © MForofontov
-
-## Contributing
-
-Contributions are welcome! Please see the [main repository](https://github.com/MForofontov/ts-utilkit) for contribution guidelines.
+MIT © [Mykyta Forofontov](https://github.com/MForofontov)

@@ -35,46 +35,19 @@ npm install @ts-utilkit/webscraping
 - **`parseJSON`** - Parses JSON with error handling
 - **`sanitizeHTML`** - Removes potentially dangerous HTML content
 
-## Usage Examples
+## Quick Example
 
 ```typescript
-import { extractLinks, extractMetaTags, extractTable, querySelector } from '@ts-utilkit/webscraping';
+import { scrapeText } from '@ts-utilkit/webscraping';
 
-// Extract all links from a webpage
-const html = '<a href="/about">About</a><a href="https://example.com">External</a>';
-const links = extractLinks(html);
-// Result: ['/about', 'https://example.com']
-
-// Extract meta tags
-const metaTags = extractMetaTags(html);
-// Result: { description: '...', keywords: '...', author: '...' }
-
-// Extract table data
-const tableHtml = `
-<table>
-  <tr><th>Name</th><th>Age</th></tr>
-  <tr><td>John</td><td>30</td></tr>
-  <tr><td>Jane</td><td>25</td></tr>
-</table>
-`;
-const tableData = extractTable(tableHtml);
-// Result: [
-//   { Name: 'John', Age: '30' },
-//   { Name: 'Jane', Age: '25' }
-// ]
-
-// CSS selector querying
-const element = querySelector(html, '.article-title');
-const title = getElementText(element);
+// Extract text content from HTML
+const html = '<div><p>Hello</p><p>World</p></div>';
+const text = scrapeText(html);       // 'Hello World'
 ```
-
-## API Documentation
-
-For complete API documentation, please visit the [main repository](https://github.com/MForofontov/ts-utilkit).
 
 ## License
 
-MIT © MForofontov
+MIT © [Mykyta Forofontov](https://github.com/MForofontov)
 
 ## Contributing
 

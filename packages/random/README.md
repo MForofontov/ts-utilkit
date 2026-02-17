@@ -44,37 +44,20 @@ npm install @ts-utilkit/random
 - **`randomWord`** - Generates a random word
 - **`randomWords`** - Generates multiple random words
 
-## Usage Examples
+## Quick Example
 
 ```typescript
-import { randomInt, randomElement, randomHexColor, randomShuffle } from '@ts-utilkit/random';
+import { randomInt, randomFloat, selectRandom, shuffleArray } from '@ts-utilkit/random';
 
-// Random integer
-const dice = randomInt(1, 6);
-// Result: Random number between 1 and 6
-
-// Random element from array
-const fruits = ['apple', 'banana', 'orange'];
-const randomFruit = randomElement(fruits);
-// Result: One random fruit
-
-// Random hex color
-const color = randomHexColor();
-// Result: "#a3c2f4"
-
-// Shuffle array
-const cards = [1, 2, 3, 4, 5];
-const shuffled = randomShuffle(cards);
-// Result: [3, 1, 5, 2, 4] (random order)
+randomInt(1, 6);                     // 4
+randomFloat(0, 1);                   // 0.7234
+selectRandom(['a', 'b', 'c']);       // 'b'
+shuffleArray([1, 2, 3, 4]);          // [3, 1, 4, 2]
 ```
-
-## API Documentation
-
-For complete API documentation, please visit the [main repository](https://github.com/MForofontov/ts-utilkit).
 
 ## License
 
-MIT © MForofontov
+MIT © [Mykyta Forofontov](https://github.com/MForofontov)
 
 ## Contributing
 

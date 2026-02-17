@@ -26,40 +26,20 @@ npm install @ts-utilkit/parsing
 - **`parseKeyValue`** - Parses key=value format strings
 - **`parseLogLine`** - Parses structured log lines into components
 
-## Usage Examples
+## Quick Example
 
 ```typescript
-import { parseCSV, parseINI, parseQueryString } from '@ts-utilkit/parsing';
+import { parseCSV, parseJSON, parseQueryString, parseURL } from '@ts-utilkit/parsing';
 
-// Parse CSV data
-const csv = 'name,age,city\nJohn,30,NYC\nJane,25,LA';
-const data = parseCSV(csv);
-// Result: [
-//   { name: 'John', age: '30', city: 'NYC' },
-//   { name: 'Jane', age: '25', city: 'LA' }
-// ]
-
-// Parse INI configuration
-const ini = `
-[database]
-host=localhost
-port=5432
-`;
-const config = parseINI(ini);
-// Result: { database: { host: 'localhost', port: '5432' } }
-
-// Parse query string
-const qs = parseQueryString('page=2&sort=date&order=desc');
-// Result: { page: '2', sort: 'date', order: 'desc' }
+parseCSV('a,b\n1,2');                // [{a: '1', b: '2'}]
+parseJSON('{"a":1}');                // {a: 1}
+parseQueryString('page=2&sort=asc'); // {page: '2', sort: 'asc'}
+parseURL('https://example.com/path');// {protocol: 'https:', host: 'example.com', ...}
 ```
-
-## API Documentation
-
-For complete API documentation, please visit the [main repository](https://github.com/MForofontov/ts-utilkit).
 
 ## License
 
-MIT © MForofontov
+MIT © [Mykyta Forofontov](https://github.com/MForofontov)
 
 ## Contributing
 

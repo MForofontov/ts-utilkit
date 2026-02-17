@@ -58,39 +58,20 @@ npm install @ts-utilkit/object
 - **`unflattenObject`** - Unflatten dot notation object
 - **`uniqueValues`** - Get unique values from object
 
-## Usage Examples
+## Quick Example
 
 ```typescript
-import { deepMerge, safeGet, flattenObject, pickKeys } from '@ts-utilkit/object';
+import { deepMerge, safeGet, flattenObject, pickProperties } from '@ts-utilkit/object';
 
-// Deep merge objects
-const config = deepMerge(
-  { api: { timeout: 5000 }, features: { auth: true } },
-  { api: { retries: 3 }, features: { logging: true } }
-);
-// Result: { api: { timeout: 5000, retries: 3 }, features: { auth: true, logging: true } }
-
-// Safe property access
-const user = { profile: { name: 'John' } };
-const name = safeGet(user, 'profile.name', 'Anonymous'); // 'John'
-const email = safeGet(user, 'profile.email', 'no-email'); // 'no-email'
-
-// Flatten nested objects
-const nested = { a: { b: { c: 1 } }, d: 2 };
-const flat = flattenObject(nested); // { 'a.b.c': 1, 'd': 2 }
-
-// Pick specific keys
-const data = { id: 1, name: 'Alice', email: 'alice@example.com', password: 'secret' };
-const safe = pickKeys(data, ['id', 'name', 'email']); // { id: 1, name: 'Alice', email: 'alice@example.com' }
+deepMerge({a: 1}, {b: 2});           // {a: 1, b: 2}
+safeGet({a: {b: 'c'}}, 'a.b');       // 'c'
+flattenObject({a: {b: {c: 1}}});     // {'a.b.c': 1}
+pickProperties(obj, ['id', 'name']); // {id: 1, name: 'Alice'}
 ```
-
-## API Documentation
-
-For complete API documentation, please visit the [main repository](https://github.com/MForofontov/ts-utilkit).
 
 ## License
 
-MIT © MForofontov
+MIT © [Mykyta Forofontov](https://github.com/MForofontov)
 
 ## Contributing
 
