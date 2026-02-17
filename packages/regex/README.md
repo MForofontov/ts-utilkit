@@ -34,39 +34,19 @@ npm install @ts-utilkit/regex
 - **`splitByPattern`** - Splits a string by a regex pattern
 - **`testPattern`** - Tests if a string matches a regex pattern
 
-## Usage Examples
+## Quick Example
 
 ```typescript
-import { extractEmails, extractURLs, escapeRegex, matchAll } from '@ts-utilkit/regex';
+import { escapeRegExp, extractURLsFromText, isMatchingPattern } from '@ts-utilkit/regex';
 
-// Extract emails from text
-const text = 'Contact us at info@example.com or support@example.com';
-const emails = extractEmails(text);
-// Result: ['info@example.com', 'support@example.com']
-
-// Extract URLs
-const content = 'Visit https://example.com or http://test.org';
-const urls = extractURLs(content);
-// Result: ['https://example.com', 'http://test.org']
-
-// Escape special characters for regex
-const userInput = 'Price: $10.99';
-const escaped = escapeRegex(userInput);
-// Result: 'Price: \$10\.99'
-
-// Find all matches with capture groups
-const pattern = /(\d{4})-(\d{2})-(\d{2})/g;
-const dates = matchAll('2024-01-15 and 2024-12-31', pattern);
-// Result: [['2024-01-15', '2024', '01', '15'], ['2024-12-31', '2024', '12', '31']]
+escapeRegExp('Price: $10.99');              // 'Price: \$10\.99'
+extractURLsFromText('Visit https://a.com'); // ['https://a.com']
+isMatchingPattern('test@email.com', /^\S+@\S+\.\S+$/); // true
 ```
-
-## API Documentation
-
-For complete API documentation, please visit the [main repository](https://github.com/MForofontov/ts-utilkit).
 
 ## License
 
-MIT © MForofontov
+MIT © [Mykyta Forofontov](https://github.com/MForofontov)
 
 ## Contributing
 

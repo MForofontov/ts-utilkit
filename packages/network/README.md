@@ -37,38 +37,19 @@ npm install @ts-utilkit/network
 - **`removeQueryParams`** - Removes query parameters from a URL
 - **`sanitizeURL`** - Sanitizes URL by removing dangerous protocols
 
-## Usage Examples
+## Quick Example
 
 ```typescript
-import { parseURL, addQueryParams, getQueryParams, normalizeURL } from '@ts-utilkit/network';
+import { isValidURL, isValidIP, getURLParams } from '@ts-utilkit/network';
 
-// Parse URL
-const parsed = parseURL('https://example.com/path?foo=bar#section');
-// Result: { protocol: 'https:', host: 'example.com', path: '/path', ... }
-
-// Add query parameters
-const url = addQueryParams('https://api.example.com/search', {
-  q: 'typescript',
-  limit: 10
-});
-// Result: "https://api.example.com/search?q=typescript&limit=10"
-
-// Extract query parameters
-const params = getQueryParams('https://example.com?page=2&sort=date');
-// Result: { page: '2', sort: 'date' }
-
-// Normalize URL
-const normalized = normalizeURL('https://example.com//path///to//page/');
-// Result: "https://example.com/path/to/page"
+isValidURL('https://example.com');   // true
+isValidIP('192.168.1.1');            // true
+getURLParams('?page=2&sort=date');   // {page: '2', sort: 'date'}
 ```
-
-## API Documentation
-
-For complete API documentation, please visit the [main repository](https://github.com/MForofontov/ts-utilkit).
 
 ## License
 
-MIT © MForofontov
+MIT © [Mykyta Forofontov](https://github.com/MForofontov)
 
 ## Contributing
 

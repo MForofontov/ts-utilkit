@@ -70,35 +70,20 @@ npm install @ts-utilkit/string
 - **`uniqueCharacters`** - Get unique characters as array
 - **`wordsToSentence`** - Join words into sentence
 
-## Usage Examples
+## Quick Example
 
 ```typescript
-import { slugify, capitalizeEachWord, isPalindrome, toKebabCase } from '@ts-utilkit/string';
+import { slugify, capitalizeFirstLetter, isPalindrome, truncate } from '@ts-utilkit/string';
 
-// Create URL-friendly slugs
-const title = 'Hello World! This is TypeScript 2024';
-const slug = slugify(title); // 'hello-world-this-is-typescript-2024'
-
-// Capitalize words
-const text = 'hello world';
-const capitalized = capitalizeEachWord(text); // 'Hello World'
-
-// Check palindromes
-const word = 'racecar';
-const isPalin = isPalindrome(word); // true
-
-// Case conversions
-const camelCase = 'myVariableName';
-const kebab = toKebabCase(camelCase); // 'my-variable-name'
+slugify('Hello World!');             // 'hello-world'
+capitalizeFirstLetter('hello');      // 'Hello'
+isPalindrome('racecar');             // true
+truncate('Long text...', 10);        // 'Long text...'
 ```
-
-## API Documentation
-
-For complete API documentation, please visit the [main repository](https://github.com/MForofontov/ts-utilkit).
 
 ## License
 
-MIT © MForofontov
+MIT © [Mykyta Forofontov](https://github.com/MForofontov)
 
 ## Contributing
 

@@ -21,36 +21,15 @@ npm install @ts-utilkit/encoding
 - **`encodeBase64`** - Encodes a string to Base64
 - **`decodeBase64`** - Decodes a Base64 string
 
-## Usage Examples
+## Quick Example
 
 ```typescript
 import { encodeBase64, decodeBase64 } from '@ts-utilkit/encoding';
 
-// Encode to Base64
-const encoded = encodeBase64('Hello, World!');
-// Result: "SGVsbG8sIFdvcmxkIQ=="
-
-// Decode from Base64
-const decoded = decodeBase64('SGVsbG8sIFdvcmxkIQ==');
-// Result: "Hello, World!"
-
-// Use case: API authentication tokens
-const credentials = encodeBase64(`${username}:${password}`);
-const authHeader = `Basic ${credentials}`;
-
-// Use case: Data URI for images
-const imageData = encodeBase64(imageBuffer);
-const dataURI = `data:image/png;base64,${imageData}`;
+encodeBase64('Hello, World!');         // "SGVsbG8sIFdvcmxkIQ=="
+decodeBase64('SGVsbG8sIFdvcmxkIQ=='); // "Hello, World!"
 ```
-
-## API Documentation
-
-For complete API documentation, please visit the [main repository](https://github.com/MForofontov/ts-utilkit).
 
 ## License
 
-MIT © MForofontov
-
-## Contributing
-
-Contributions are welcome! Please see the [main repository](https://github.com/MForofontov/ts-utilkit) for contribution guidelines.
+MIT © [Mykyta Forofontov](https://github.com/MForofontov)

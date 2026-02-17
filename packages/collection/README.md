@@ -36,39 +36,19 @@ npm install @ts-utilkit/collection
 - **`setToArray`** - Converts a Set to an array
 - **`setUnion`** - Computes the union of two or more Sets
 
-## Usage Examples
+## Quick Example
 
 ```typescript
-import { setUnion, setIntersection, mapToObject, filterSet } from '@ts-utilkit/collection';
+import { setUnion, setIntersection, mapToObject } from '@ts-utilkit/collection';
 
 // Set operations
-const set1 = new Set([1, 2, 3]);
-const set2 = new Set([2, 3, 4]);
-const union = setUnion(set1, set2);
-// Result: Set { 1, 2, 3, 4 }
+setUnion(new Set([1, 2]), new Set([2, 3]));     // Set {1, 2, 3}
+setIntersection(new Set([1, 2]), new Set([2, 3])); // Set {2}
 
-const intersection = setIntersection(set1, set2);
-// Result: Set { 2, 3 }
-
-// Map operations
-const map = new Map([['a', 1], ['b', 2], ['c', 3]]);
-const obj = mapToObject(map);
-// Result: { a: 1, b: 2, c: 3 }
-
-// Filtering Sets
-const numbers = new Set([1, 2, 3, 4, 5]);
-const evens = filterSet(numbers, n => n % 2 === 0);
-// Result: Set { 2, 4 }
+// Map conversions
+mapToObject(new Map([['a', 1], ['b', 2]]));     // {a: 1, b: 2}
 ```
-
-## API Documentation
-
-For complete API documentation, please visit the [main repository](https://github.com/MForofontov/ts-utilkit).
 
 ## License
 
-MIT © MForofontov
-
-## Contributing
-
-Contributions are welcome! Please see the [main repository](https://github.com/MForofontov/ts-utilkit) for contribution guidelines.
+MIT © [Mykyta Forofontov](https://github.com/MForofontov)

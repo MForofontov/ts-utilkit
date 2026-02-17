@@ -26,45 +26,22 @@ npm install @ts-utilkit/event
 - **`waitForEvent`** - Returns a Promise that resolves when an event is emitted
 - **`onceEvent`** - Wraps an event handler to execute only once
 
-## Usage Examples
+## Quick Example
 
 ```typescript
 import { EventEmitter, createEventBus, waitForEvent } from '@ts-utilkit/event';
 
-// Custom event emitter
+// Event emitter
 const emitter = new EventEmitter();
-emitter.on('data', (payload) => {
-  console.log('Received:', payload);
-});
+emitter.on('data', (payload) => console.log(payload));
 emitter.emit('data', { message: 'Hello' });
 
-// Event bus for decoupled communication
+// Event bus
 const bus = createEventBus();
-bus.subscribe('user:login', (user) => {
-  console.log('User logged in:', user.name);
-});
-bus.publish('user:login', { name: 'John' });
-
-// Wait for event (Promise-based)
-const result = await waitForEvent(emitter, 'response', 5000);
-console.log('Response received:', result);
-
-// Execute handler only once
-const handler = onceEvent((data) => {
-  console.log('First call:', data);
-});
-handler('data1'); // Executes
-handler('data2'); // Ignored
+bus.subscribe('event', handler);
+bus.publish('event', data);
 ```
-
-## API Documentation
-
-For complete API documentation, please visit the [main repository](https://github.com/MForofontov/ts-utilkit).
 
 ## License
 
-MIT © MForofontov
-
-## Contributing
-
-Contributions are welcome! Please see the [main repository](https://github.com/MForofontov/ts-utilkit) for contribution guidelines.
+MIT © [Mykyta Forofontov](https://github.com/MForofontov)

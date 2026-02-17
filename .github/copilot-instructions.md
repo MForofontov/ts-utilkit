@@ -748,6 +748,65 @@ Handle naming conflicts explicitly:
 export { groupBy as groupByObject } from './objectFunctions/groupBy';
 ```
 
+### CHANGELOG Management
+
+#### Per-Package CHANGELOGs
+
+Each package maintains its own `CHANGELOG.md` following [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+#### Workflow - CRITICAL
+
+**ALWAYS update CHANGELOG.md IMMEDIATELY when making changes:**
+
+1. **As you make ANY change** (add function, fix bug, update docs):
+   - Open the package's `CHANGELOG.md`
+   - Add entry to the `[Unreleased]` section under appropriate category
+   - Use present tense: "Add function", not "Added function"
+
+2. **Categories in [Unreleased] section**:
+   - `### Added` - New features, functions, capabilities
+   - `### Changed` - Changes to existing functionality
+   - `### Deprecated` - Soon-to-be removed features
+   - `### Removed` - Removed features
+   - `### Fixed` - Bug fixes
+   - `### Security` - Security improvements
+
+3. **When releasing a new version**:
+   - Rename `[Unreleased]` to `[X.Y.Z] - YYYY-MM-DD`
+   - Create new empty `[Unreleased]` section at the top
+   - Update package.json version number
+   - Commit with message: "Release vX.Y.Z"
+
+#### CHANGELOG Entry Examples
+
+```markdown
+## [Unreleased]
+
+### Added
+- New function `arrayUnique` for removing duplicates
+- Support for custom comparator in `sortBy` function
+- TypeScript 5.0 strict mode compatibility
+
+### Changed
+- `deepMerge` now handles circular references
+- Improved performance of `flattenArray` by 40%
+
+### Fixed
+- Fixed NaN handling in `calculateMean`
+- Corrected return type of `asyncRetry` generic
+
+### Security
+- Updated crypto functions to use timing-safe comparisons
+```
+
+#### CHANGELOG Update Checklist
+
+- [ ] Entry added to [Unreleased] section
+- [ ] Appropriate category used (Added/Changed/Fixed/etc.)
+- [ ] Entry is clear and descriptive
+- [ ] Breaking changes are clearly marked
+- [ ] Related issue/PR numbers referenced (if applicable)
+
 ### Mathematical Functions Specific Guidelines
 
 #### Organization by Subdomain

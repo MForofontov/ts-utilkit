@@ -48,47 +48,19 @@ npm install @ts-utilkit/serialization
 - **`flattenForSerialization`** - Flatten nested structures for serialization
 - **`unflattenFromSerialization`** - Unflatten serialized data back to nested structure
 
-## Usage Examples
+## Quick Example
 
 ```typescript
-import {
-  serializeToJSON,
-  deserializeFromJSON,
-  serializeToCSV,
-  handleCircularReferences,
-  cloneViaSerialization
-} from '@ts-utilkit/serialization';
+import { serializeJSON, deserializeJSON, serializeXML } from '@ts-utilkit/serialization';
 
-// JSON serialization with type safety
-const data = { name: 'John', age: 30, hobbies: ['coding', 'reading'] };
-const json = serializeToJSON(data);
-const parsed = deserializeFromJSON<typeof data>(json);
-
-// CSV serialization
-const users = [
-  { id: 1, name: 'Alice', email: 'alice@example.com' },
-  { id: 2, name: 'Bob', email: 'bob@example.com' }
-];
-const csv = serializeToCSV(users);
-// Output: "id,name,email\n1,Alice,alice@example.com\n2,Bob,bob@example.com"
-
-// Handle circular references
-const obj: any = { name: 'Test' };
-obj.self = obj; // Circular reference
-const sanitized = handleCircularReferences(obj);
-
-// Deep clone via serialization
-const original = { nested: { data: [1, 2, 3] } };
-const cloned = cloneViaSerialization(original);
+serializeJSON({a: 1});               // '{"a":1}'
+deserializeJSON('{"a":1}');          // {a: 1}
+serializeXML({root: {item: 'value'}}); // '<root><item>value</item></root>'
 ```
-
-## API Documentation
-
-For complete API documentation with detailed examples, please visit the [main repository](https://github.com/MForofontov/ts-utilkit).
 
 ## License
 
-MIT © MForofontov
+MIT © [Mykyta Forofontov](https://github.com/MForofontov)
 
 ## Contributing
 

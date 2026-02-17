@@ -312,209 +312,24 @@ throw new Error('timeout must be non-negative, got -1');
 
 ## 🛠️ Development
 
-### Prerequisites
-
-- **Node.js**: Version 20 or later
-- **TypeScript**: Latest stable version
-- **Package Manager**: npm, yarn, pnpm, or bun
-
-### Getting Started
+**Requirements**: Node.js 20+, TypeScript
 
 ```bash
-# Clone the repository
-git clone https://github.com/MForofontov/ts-utilkit.git
-cd ts-utilkit
-
-# Install dependencies
 npm install
-
-# Build the project
 npm run build
-
-# Run tests
 npm test
-
-# Lint and format code
-npm run lint:fix
-npm run format
 ```
 
-### Project Structure
-
-```
-ts-utilkit/
-├── .github/                        # GitHub workflows and documentation
-├── arrayFunctions/                 # Array manipulation utilities (26 functions)
-├── asyncFunctions/                 # Async operations and concurrency (6 functions)
-├── dateFunctions/                  # Date and time utilities (26 functions)
-├── encodingFunctions/              # Encoding/decoding utilities (2 functions)
-├── mathFunctions/                  # Mathematical operations (48 functions)
-│   ├── algebraFunctions/           # Powers, roots, logarithms
-│   ├── arithmeticFunctions/        # Basic math operations
-│   ├── combinatoricsFunctions/     # Factorials, permutations
-│   ├── geometricFunctions/         # Shapes, distances, trigonometry
-│   ├── numberTheoryFunctions/      # Primes, GCD, LCM
-│   ├── sequenceFunctions/          # Fibonacci, sequences
-│   └── statisticsFunctions/        # Statistical calculations
-├── objectFunctions/                # Object manipulation (35 functions)
-├── stringFunctions/                # String processing (46 functions)
-├── utilityFunctions/               # General utilities (10 functions)
-├── validationFunctions/            # Validation utilities (9 functions)
-├── functionsUnittests/             # Comprehensive test suites
-└── index.ts                       # Main export file
-```
-
-### Build Scripts
-
-| Command            | Description                      |
-| ------------------ | -------------------------------- |
-| `npm run build`    | Compile TypeScript to JavaScript |
-| `npm run prepare`  | Pre-publish build step           |
-| `npm run lint`     | Run ESLint checks                |
-| `npm run lint:fix` | Fix ESLint issues automatically  |
-| `npm run format`   | Format code with Prettier        |
-
-### Code Quality Tools
-
-- **TypeScript**: Strict type checking with ES2023 target
-- **ESLint**: Code quality and consistency checks
-- **Prettier**: Automated code formatting
-- **Jest**: Testing framework with extensive coverage
-- **Allure**: Advanced test reporting
-
-## 🧪 Testing
-
-This project maintains **>95% test coverage** with comprehensive test suites for every function.
-
-### Test Framework
-
-- **Jest**: Primary testing framework with TypeScript support
-- **Allure**: Advanced test reporting and analytics
-- **Coverage**: Detailed code coverage reports
-- **Test Structure**: Follows Arrange-Act-Assert pattern
-
-### Running Tests
-
-```bash
-# Run all tests with Allure reporting
-npm test
-
-# Run tests locally without Allure
-npm run test:local
-
-# Run tests for GitHub CI
-npm run test:github
-
-# Open Allure report after test completion
-npm test -- --open-report
-# or
-OPEN_REPORT=true npm test
-```
-
-### Test Structure
-
-Each function includes minimum 6 test cases:
-
-1. **Normal Usage**: Typical input scenarios
-2. **Edge Cases**: Empty arrays, boundary values
-3. **Error Handling**: Invalid input types (TypeError)
-4. **Value Validation**: Invalid input values (Error)
-5. **Boundary Conditions**: Min/max values
-6. **Performance**: Large input handling
-
-### Example Test Structure
-
-```typescript
-describe('functionName', () => {
-  it('1. should handle typical input correctly', () => {
-    // Arrange
-    const input = validInput;
-
-    // Act
-    const result = functionName(input);
-
-    // Assert
-    expect(result).toBe(expectedOutput);
-  });
-
-  it('2. should throw TypeError for invalid input type', () => {
-    expect(() => functionName(invalidInput)).toThrow(TypeError);
-    expect(() => functionName(invalidInput)).toThrow('expected error message');
-  });
-
-  // ... additional test cases
-});
-```
-
-### Test Reports
-
-- **Allure Reports**: Interactive HTML reports with detailed test analytics
-- **Coverage Reports**: Line, branch, and function coverage metrics
-- **Performance Metrics**: Execution time tracking for optimization
-
-### Continuous Integration
-
-Tests run automatically on:
-
-- Pull requests
-- Main branch commits
-- Release tags
-
-All tests must pass before merge approval.
+**Test Coverage**: >95% across all functions
 
 ## 📄 License
 
-This project is licensed under the **MIT License**.
+MIT License - Copyright (c) 2026 Mykyta Forofontov
 
-```
-Copyright (c) 2026 Mykyta Forofontov
+## 👨‍💻 Author
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
-
-See the [LICENSE](LICENSE) file for complete details.
-
-## 👨‍💻 Authors
-
-- **[Mykyta Forofontov](https://github.com/MForofontov)** - _Initial work and primary maintainer_
-
-## 🙏 Acknowledgments
-
-- TypeScript team for excellent language design
-- Jest community for robust testing framework
-- Open source community for inspiration and feedback
-
-## 📊 Project Stats
-
-- **200+ Functions**: Across 7 specialized categories
-- **>95% Test Coverage**: Comprehensive test suites
-- **Zero Dependencies**: Pure TypeScript implementation
-- **Enterprise Ready**: Production-grade code quality
-- **Active Maintenance**: Regular updates and improvements
+[Mykyta Forofontov](https://github.com/MForofontov)
 
 ---
 
-<div align="center">
-
-**[Documentation](https://github.com/MForofontov/ts-utilkit)** •
-**[Examples](https://github.com/MForofontov/ts-utilkit/tree/main/functionsUnittests)** •
-**[Issues](https://github.com/MForofontov/ts-utilkit/issues)** •
-**[Contributing](https://github.com/MForofontov/ts-utilkit/blob/main/.github/copilot-instructions.md)**
-
-</div>
+**408 functions** • **>95% coverage** • **TypeScript-first** • **Zero dependencies**

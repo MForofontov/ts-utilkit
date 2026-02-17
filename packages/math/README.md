@@ -75,38 +75,20 @@ npm install @ts-utilkit/math
 - **`roundToDecimals`** - Round to decimal places
 - **`roundValue`** - Round to nearest integer
 
-## Usage Examples
+## Quick Example
 
 ```typescript
-import { 
-  calculateStandardDeviation, 
-  calculateHaversineDistance, 
-  isPrime,
-  calculateFactorial 
-} from '@ts-utilkit/math';
+import { calculateMean, isPrime, factorial, power } from '@ts-utilkit/math';
 
-// Statistical calculations
-const data = [2, 4, 4, 4, 5, 5, 7, 9];
-const stdDev = calculateStandardDeviation(data); // ~2.138
-
-// Geographic distance calculation
-const distance = calculateHaversineDistance(
-  { lat: 40.7128, lng: -74.0060 }, // New York
-  { lat: 34.0522, lng: -118.2437 }  // Los Angeles
-); // ~3944.42 km
-
-// Number theory
-const primeCheck = isPrime(97); // true
-const factorial = calculateFactorial(5); // 120
+calculateMean([1, 2, 3, 4, 5]);      // 3
+isPrime(17);                         // true
+factorial(5);                        // 120
+power(2, 10);                        // 1024
 ```
-
-## API Documentation
-
-For complete API documentation, please visit the [main repository](https://github.com/MForofontov/ts-utilkit).
 
 ## License
 
-MIT © MForofontov
+MIT © [Mykyta Forofontov](https://github.com/MForofontov)
 
 ## Contributing
 

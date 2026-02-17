@@ -16,7 +16,7 @@ npm install @ts-utilkit/validation
 - 🔒 Type-safe with strict TypeScript configuration
 - 📖 Extensive JSDoc documentation
 
-## Available Functions (13)
+## Available Functions (14)
 
 - **`isInRange`** - Checks if a number is within a specified range
 - **`isValidCreditCard`** - Validates credit card number format (Luhn algorithm)
@@ -31,37 +31,22 @@ npm install @ts-utilkit/validation
 - **`isValidSlug`** - Validates URL-friendly slug format
 - **`isValidTime`** - Validates time format (HH:MM or HH:MM:SS)
 - **`isValidUUID`** - Validates UUID format (v1, v3, v4, v5)
+- **`validateConfig`** - Validates configuration object against required keys schema
 
-## Usage Examples
+## Quick Example
 
 ```typescript
 import { isValidIPv4, isValidUUID, isInRange, isValidJSON } from '@ts-utilkit/validation';
 
-// IP address validation
-const isValid = isValidIPv4('192.168.1.1');
-// Result: true
-
-// UUID validation
-const isValidId = isValidUUID('550e8400-e29b-41d4-a716-446655440000');
-// Result: true
-
-// Range validation
-const isInBounds = isInRange(50, 0, 100);
-// Result: true
-
-// JSON validation
-const jsonStr = '{"name": "John", "age": 30}';
-const isValidJsonStr = isValidJSON(jsonStr);
-// Result: true
+isValidIPv4('192.168.1.1');          // true
+isValidUUID('550e8400-...');         // true
+isInRange(50, 0, 100);               // true
+isValidJSON('{"a":1}');              // true
 ```
-
-## API Documentation
-
-For complete API documentation, please visit the [main repository](https://github.com/MForofontov/ts-utilkit).
 
 ## License
 
-MIT © MForofontov
+MIT © [Mykyta Forofontov](https://github.com/MForofontov)
 
 ## Contributing
 

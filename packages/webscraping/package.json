@@ -12,7 +12,7 @@
     "directory": "packages/webscraping"
   },
   "license": "MIT",
-  "author": "MForofontov",
+  "author": "Mykyta Forofontov",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "sideEffects": false,

@@ -27,36 +27,17 @@ npm install @ts-utilkit/format
 - **`formatPlural`** - Pluralizes a word based on count
 - **`formatScientific`** - Formats a number in scientific notation
 
-## Usage Examples
+## Quick Example
 
 ```typescript
-import { formatNumber, formatCurrency, formatFileSize, pluralize } from '@ts-utilkit/format';
+import { formatNumber, formatCurrency, formatBytes, pluralize } from '@ts-utilkit/format';
 
-// Number formatting with thousands separators
-const formatted = formatNumber(1234567.89, { decimals: 2 });
-// Result: "1,234,567.89"
-
-// Currency formatting
-const price = formatCurrency(99.99, { currency: 'USD', locale: 'en-US' });
-// Result: "$99.99"
-
-// File size formatting
-const size = formatFileSize(1536000);
-// Result: "1.46 MB"
-
-// Pluralization
-const message = `You have ${count} ${pluralize('item', count)}`;
-// Result: "You have 5 items" or "You have 1 item"
+formatNumber(1234567.89);             // "1,234,567.89"
+formatCurrency(99.99, 'USD');         // "$99.99"
+formatBytes(1536000);                 // "1.46 MB"
+pluralize('item', 5);                 // "items"
 ```
-
-## API Documentation
-
-For complete API documentation, please visit the [main repository](https://github.com/MForofontov/ts-utilkit).
 
 ## License
 
-MIT © MForofontov
-
-## Contributing
-
-Contributions are welcome! Please see the [main repository](https://github.com/MForofontov/ts-utilkit) for contribution guidelines.
+MIT © [Mykyta Forofontov](https://github.com/MForofontov)
