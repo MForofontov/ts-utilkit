@@ -14,3 +14,4 @@ export * from './isValidRegex';
 export * from './isValidSlug';
 export * from './isValidTime';
 export * from './isValidUUID';
+export * from './validateConfig';

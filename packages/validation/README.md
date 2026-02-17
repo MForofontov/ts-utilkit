@@ -16,7 +16,7 @@ npm install @ts-utilkit/validation
 - 🔒 Type-safe with strict TypeScript configuration
 - 📖 Extensive JSDoc documentation
 
-## Available Functions (13)
+## Available Functions (14)
 
 - **`isInRange`** - Checks if a number is within a specified range
 - **`isValidCreditCard`** - Validates credit card number format (Luhn algorithm)
@@ -31,6 +31,7 @@ npm install @ts-utilkit/validation
 - **`isValidSlug`** - Validates URL-friendly slug format
 - **`isValidTime`** - Validates time format (HH:MM or HH:MM:SS)
 - **`isValidUUID`** - Validates UUID format (v1, v3, v4, v5)
+- **`validateConfig`** - Validates configuration object against required keys schema
 
 ## Quick Example
 

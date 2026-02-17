@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- New features go here
+- New function `validateConfig` - Validates configuration object against required keys schema (migrated from deprecated @ts-utilkit/configuration package)
 
 ### Changed
 - Changes to existing functionality

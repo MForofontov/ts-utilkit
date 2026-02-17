@@ -1,4 +1,4 @@
-# Changelog - @ts-utilkit/configuration
+# Changelog - @ts-utilkit/env
 
 All notable changes to this package will be documented in this file.
 
@@ -16,13 +16,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Bug fixes
 
-## [0.1.0] - 2026-01-26
+## [0.1.0] - 2026-02-17
 
 ### Added
-- Initial release of @ts-utilkit/configuration with 12 functions
-- Environment variable utilities: `getEnv`, `requireEnv`
-- Environment parsing: `parseEnvArray`, `parseEnvBool`, `parseEnvFloat`, `parseEnvInt`, `parseEnvJSON`
-- Configuration management: `deepMergeConfig`, `freezeConfig`, `getConfigValue`, `setConfigValue`, `validateConfig`
+- Initial release of @ts-utilkit/env with 7 environment variable utilities
+- Environment variable retrieval: `getEnv`, `requireEnv`
+- Type-safe parsing: `parseEnvInt`, `parseEnvBool`, `parseEnvFloat`
+- Complex type parsing: `parseEnvArray`, `parseEnvJSON`
+- Migrated from @ts-utilkit/configuration package (better separation of concerns)
 - TypeScript-first with complete type definitions
 - Comprehensive test coverage (>95%)
 
