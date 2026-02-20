@@ -1,4 +1,5 @@
 import { randomChoice } from './randomChoice';
+import { randomInt } from './randomInt';
 
 /**
  * Generates Lorem Ipsum placeholder text.
@@ -112,7 +113,7 @@ export function loremIpsum(sentences: number = 3): string {
   const result: string[] = [];
 
   for (let s = 0; s < sentences; s++) {
-    const sentenceLength = Math.floor(Math.random() * 11) + 5; // 5-15 words
+    const sentenceLength = randomInt(5, 15); // 5-15 words
     const sentenceWords: string[] = [];
 
     // First sentence always starts with "Lorem ipsum dolor sit amet"

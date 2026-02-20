@@ -1,3 +1,5 @@
+import { randomInt } from './randomInt';
+
 /**
  * RGB color representation.
  */
@@ -28,8 +30,8 @@ export interface RGB {
  */
 export function randomRGB(): RGB {
   return {
-    r: Math.floor(Math.random() * 256),
-    g: Math.floor(Math.random() * 256),
-    b: Math.floor(Math.random() * 256),
+    r: randomInt(0, 255),
+    g: randomInt(0, 255),
+    b: randomInt(0, 255),
   };
 }

@@ -1,3 +1,5 @@
+import { randomInt } from './randomInt';
+
 /**
  * Generates a random string matching a template pattern.
  *
@@ -57,14 +59,11 @@ export function randomPattern(template: string): string {
     const char = template[i];
 
     if (char === '#') {
-      const randomIndex = Math.floor(Math.random() * digits.length);
-      result += digits[randomIndex];
+      result += digits[randomInt(0, digits.length - 1)];
     } else if (char === 'A') {
-      const randomIndex = Math.floor(Math.random() * uppercase.length);
-      result += uppercase[randomIndex];
+      result += uppercase[randomInt(0, uppercase.length - 1)];
     } else if (char === 'a') {
-      const randomIndex = Math.floor(Math.random() * lowercase.length);
-      result += lowercase[randomIndex];
+      result += lowercase[randomInt(0, lowercase.length - 1)];
     } else {
       // Preserve all other characters
       result += char;

@@ -20,6 +20,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `randomWords`: replace inline vowel/consonant alternation loop with calls to `randomWord` per word
 - `randomHex`: replace manual character-pick loop with `randomSequence(length, '0123456789abcdef')`
 - `randomBase64`: replace manual character-pick loop with `randomSequence(length, base64Charset)`
+- `loremIpsum`: replace `Math.floor(Math.random() * 11) + 5` with `randomInt(5, 15)` for sentence length
+- `randomRGB`: replace three `Math.floor(Math.random() * 256)` with `randomInt(0, 255)` per channel
+- `randomHexColor`: replace `Math.floor(Math.random() * 16777216)` with `randomInt(0, 16777215)`
+- `randomPattern`: replace three inline `Math.floor(Math.random() * chars.length)` index picks with `randomInt(0, chars.length - 1)`
+- `randomDate`: replace float timestamp formula with `randomInt(startTime, endTime)` for cleaner millisecond-precision date generation
+- `randomBetween`: delegate integer path to `randomInt(min, max)` and float path to `randomFloat(min, max, 15)`
+
+### Deprecated
+- `randomBetween`: use `randomInt(min, max)` for integers or `randomFloat(min, max)` for floats directly. Will be removed in the next major version.
 
 ### Fixed
 - `randomWeighted` performance test: increase threshold from 100 ms to 200 ms to prevent flaky failures on slower machines

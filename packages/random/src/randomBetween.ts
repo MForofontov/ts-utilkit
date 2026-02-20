@@ -1,3 +1,6 @@
+import { randomInt } from './randomInt';
+import { randomFloat } from './randomFloat';
+
 /**
  * Generates a random number between min and max (inclusive for integers, exclusive for floats).
  *
@@ -20,6 +23,9 @@
  * @example
  * // Dice roll
  * randomBetween(1, 6); // 4
+ *
+ * @deprecated Use `randomInt(min, max)` for integers or `randomFloat(min, max)`
+ * for floats from `@ts-utilkit/random` directly. Will be removed in the next major version.
  *
  * @complexity Time: O(1), Space: O(1)
  */
@@ -55,12 +61,12 @@ export function randomBetween(
       throw new Error('min must be less than or equal to max');
     }
 
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+    return randomInt(min, max);
   } else {
     if (min >= max) {
       throw new Error('min must be less than max');
     }
 
-    return Math.random() * (max - min) + min;
+    return randomFloat(min, max, 15);
   }
 }

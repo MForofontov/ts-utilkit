@@ -1,4 +1,4 @@
-import { randomChoice } from '@ts-utilkit/random';
+import { randomChoice, randomSequence } from '@ts-utilkit/random';
 
 /**
  * Generates a random URL for testing.
@@ -20,8 +20,8 @@ export function generateRandomURL(secure: boolean = true): string {
   const protocol = secure ? 'https' : 'http';
   const domains = ['com', 'org', 'net', 'io'];
   const domain = randomChoice(domains);
-  const subdomain = Math.random().toString(36).substring(2, 8);
-  const path = Math.random().toString(36).substring(2, 10);
+  const subdomain = randomSequence(6, 'abcdefghijklmnopqrstuvwxyz0123456789');
+  const path = randomSequence(8, 'abcdefghijklmnopqrstuvwxyz0123456789');
 
   return `${protocol}://${subdomain}.${domain}/${path}`;
 }
