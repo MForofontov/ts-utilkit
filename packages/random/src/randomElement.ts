@@ -1,3 +1,5 @@
+import { _weightedPick } from './_weightedPick';
+
 /**
  * Interface for weighted elements with metadata.
  */
@@ -72,16 +74,6 @@ export function randomElement<T>(
     throw new Error('Sum of weights must be greater than zero');
   }
 
-  // Select random element
-  let random = Math.random() * totalWeight;
-
-  for (let i = 0; i < elements.length; i++) {
-    random -= elements[i].weight;
-    if (random <= 0) {
-      return elements[i];
-    }
-  }
-
-  // Fallback
-  return elements[elements.length - 1];
+  const weights = elements.map((elem) => elem.weight);
+  return _weightedPick(elements, weights);
 }

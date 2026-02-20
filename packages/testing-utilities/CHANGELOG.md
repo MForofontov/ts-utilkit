@@ -8,13 +8,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- New features go here
+- Add `@ts-utilkit/random` as a declared package dependency
 
 ### Changed
-- Changes to existing functionality
-
-### Fixed
-- Bug fixes
+- `generateRandomString`: delegate character generation to `randomSequence` from `@ts-utilkit/random`
+- `generateRandomEmail`: use `randomChoice` from `@ts-utilkit/random` for domain selection
+- `generateRandomURL`: use `randomChoice` from `@ts-utilkit/random` for TLD selection
+- `generateRandomIPv4`: use `randomInt` and `randomChoice` from `@ts-utilkit/random`; remove internal `rand` helper
+- `generateRandomUUID`: replaced with a pure `export { randomUUID as generateRandomUUID }` re-export from `@ts-utilkit/random`
+- `generateRandomBoolean`: replaced with a pure `export { randomBoolean as generateRandomBoolean }` re-export from `@ts-utilkit/random`; test error messages updated to match `randomBoolean`'s `"probability must be between 0 and 1"`
+- `generateRandomDate`: delegate to `randomDate` from `@ts-utilkit/random`
 
 ## [0.1.0] - 2026-01-26
 

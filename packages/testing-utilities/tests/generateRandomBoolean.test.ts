@@ -99,7 +99,7 @@ describe('generateRandomBoolean', () => {
     // Act & Assert
     expect(() => generateRandomBoolean(probability)).toThrow(Error);
     expect(() => generateRandomBoolean(probability)).toThrow(
-      'trueProbability must be between 0 and 1',
+      'probability must be between 0 and 1',
     );
   });
 
@@ -111,7 +111,7 @@ describe('generateRandomBoolean', () => {
     // Act & Assert
     expect(() => generateRandomBoolean(probability)).toThrow(Error);
     expect(() => generateRandomBoolean(probability)).toThrow(
-      'trueProbability must be between 0 and 1',
+      'probability must be between 0 and 1',
     );
   });
 });

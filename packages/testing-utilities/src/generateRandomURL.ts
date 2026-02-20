@@ -1,3 +1,5 @@
+import { randomChoice } from '@ts-utilkit/random';
+
 /**
  * Generates a random URL for testing.
  *
@@ -17,7 +19,7 @@
 export function generateRandomURL(secure: boolean = true): string {
   const protocol = secure ? 'https' : 'http';
   const domains = ['com', 'org', 'net', 'io'];
-  const domain = domains[Math.floor(Math.random() * domains.length)];
+  const domain = randomChoice(domains);
   const subdomain = Math.random().toString(36).substring(2, 8);
   const path = Math.random().toString(36).substring(2, 10);
 

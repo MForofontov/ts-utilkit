@@ -45,6 +45,9 @@
   "engines": {
     "node": ">=20"
   },
+  "dependencies": {
+    "@ts-utilkit/array": "*"
+  },
   "publishConfig": {
     "access": "public"
   }

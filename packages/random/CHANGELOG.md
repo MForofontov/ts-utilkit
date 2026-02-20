@@ -8,13 +8,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- New features go here
+- New internal `_weightedPick` helper that encapsulates the weighted random selection algorithm
 
 ### Changed
-- Changes to existing functionality
+- `randomColorFromPalette`: replace inline `Math.floor(Math.random() * palette.length)` with internal `randomChoice` call
+- `randomEnum`: replace inline random index with internal `randomChoice` call
+- `randomFromRange`: replace inline random index with internal `randomChoice` call
+- `loremIpsum`: replace two inline word-picks with internal `randomChoice` calls
+- `randomWeighted`: delegate core weighted selection to `_weightedPick` helper
+- `randomElement`: delegate core weighted selection to `_weightedPick` helper
 
 ### Fixed
-- Bug fixes
+- `randomWeighted` performance test: increase threshold from 100 ms to 200 ms to prevent flaky failures on slower machines
 
 ## [0.1.1] - 2026-01-25
 

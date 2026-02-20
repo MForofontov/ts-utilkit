@@ -1,3 +1,5 @@
+import { randomChoice } from './randomChoice';
+
 /**
  * Generates Lorem Ipsum placeholder text.
  *
@@ -117,13 +119,11 @@ export function loremIpsum(sentences: number = 3): string {
     if (s === 0) {
       sentenceWords.push('Lorem', 'ipsum', 'dolor', 'sit', 'amet');
       for (let w = 5; w < sentenceLength; w++) {
-        const randomIndex = Math.floor(Math.random() * words.length);
-        sentenceWords.push(words[randomIndex]);
+        sentenceWords.push(randomChoice(words));
       }
     } else {
       for (let w = 0; w < sentenceLength; w++) {
-        const randomIndex = Math.floor(Math.random() * words.length);
-        const word = words[randomIndex];
+        const word = randomChoice(words);
         // Capitalize first word of sentence
         sentenceWords.push(
           w === 0 ? word.charAt(0).toUpperCase() + word.slice(1) : word,

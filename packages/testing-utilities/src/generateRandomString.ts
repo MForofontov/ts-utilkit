@@ -1,3 +1,5 @@
+import { randomSequence } from '@ts-utilkit/random';
+
 /**
  * Type for character set options.
  */
@@ -10,6 +12,9 @@ export type CharsetType =
 
 /**
  * Generates random strings for testing.
+ *
+ * @deprecated Use `randomSequence` from `@ts-utilkit/random` directly.
+ * Will be removed in the next major version.
  *
  * @param length - Length of the string.
  * @param charset - Character set to use (default: 'alphanumeric').
@@ -46,11 +51,5 @@ export function generateRandomString(
   };
 
   const chars = charsets[charset];
-  let result = '';
-
-  for (let i = 0; i < length; i++) {
-    result += chars.charAt(Math.floor(Math.random() * chars.length));
-  }
-
-  return result;
+  return randomSequence(Math.floor(length), chars);
 }

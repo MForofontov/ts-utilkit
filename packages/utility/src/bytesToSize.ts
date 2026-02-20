@@ -1,3 +1,5 @@
+import { formatBytes } from '@ts-utilkit/format';
+
 /**
  * Converts bytes to a human-readable size string with appropriate units.
  *
@@ -60,43 +62,5 @@ export function bytesToSize(bytes: number, binary: boolean = true): string {
     throw new TypeError(`binary must be a boolean, got ${typeof binary}`);
   }
 
-  // Handle zero bytes
-  if (bytes === 0) return '0 Bytes';
-
-  // Define units for binary (IEC) and decimal (SI) systems
-  const binarySizes = [
-    'Bytes',
-    'KiB',
-    'MiB',
-    'GiB',
-    'TiB',
-    'PiB',
-    'EiB',
-    'ZiB',
-    'YiB',
-  ];
-  const decimalSizes = [
-    'Bytes',
-    'KB',
-    'MB',
-    'GB',
-    'TB',
-    'PB',
-    'EB',
-    'ZB',
-    'YB',
-  ];
-
-  const sizes = binary ? binarySizes : decimalSizes;
-  const base = binary ? 1024 : 1000;
-
-  // Calculate the appropriate unit index
-  const i = Math.floor(Math.log(bytes) / Math.log(base));
-
-  // Clamp index to valid range
-  const index = Math.min(i, sizes.length - 1);
-
-  // Calculate and format the result
-  const value = bytes / Math.pow(base, index);
-  return `${value.toFixed(2)} ${sizes[index]}`;
+  return formatBytes(bytes, 2, binary, binary);
 }

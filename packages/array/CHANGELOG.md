@@ -8,13 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- New features go here
+- Declare `@ts-utilkit/object` as an explicit package dependency (formalises existing cross-package import)
 
 ### Changed
-- Changes to existing functionality
-
-### Fixed
-- Bug fixes
+- `groupBy`: replaced with a pure `export { groupByObject as groupBy }` re-export from `@ts-utilkit/object`; eliminates all duplicated logic; `TypeError` on non-array input now propagates from `groupByObject`
 
 ## [0.1.1] - 2026-01-26
 

@@ -1,3 +1,5 @@
+import { randomChoice } from './randomChoice';
+
 /**
  * Picks a random color from a predefined palette.
  *
@@ -43,6 +45,5 @@ export function randomColorFromPalette(palette: string[]): string {
     }
   }
 
-  const randomIndex = Math.floor(Math.random() * palette.length);
-  return palette[randomIndex];
+  return randomChoice(palette);
 }

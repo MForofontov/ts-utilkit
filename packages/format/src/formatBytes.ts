@@ -42,6 +42,7 @@ export function formatBytes(
   bytes: number,
   decimals: number = 2,
   binary: boolean = true,
+  iecUnits: boolean = false,
 ): string {
   // Input validation
   if (typeof bytes !== 'number' || isNaN(bytes)) {
@@ -52,6 +53,9 @@ export function formatBytes(
   }
   if (typeof binary !== 'boolean') {
     throw new TypeError(`binary must be a boolean, got ${typeof binary}`);
+  }
+  if (typeof iecUnits !== 'boolean') {
+    throw new TypeError(`iecUnits must be a boolean, got ${typeof iecUnits}`);
   }
 
   if (bytes < 0) {
@@ -66,7 +70,9 @@ export function formatBytes(
   }
 
   const k = binary ? 1024 : 1000;
-  const units = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+  const standardUnits = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+  const binaryUnits = ['Bytes', 'KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB'];
+  const units = iecUnits && binary ? binaryUnits : standardUnits;
   const i = Math.floor(Math.log(bytes) / Math.log(k));
 
   // Ensure we don't exceed the units array
