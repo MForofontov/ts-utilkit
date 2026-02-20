@@ -1,3 +1,5 @@
+import { _parseURL } from './_parseURL';
+
 /**
  * Normalizes a URL by applying various standardization rules.
  * Removes trailing slashes, converts to lowercase, sorts query parameters, etc.
@@ -45,9 +47,6 @@ export function normalizeURL(
   options: NormalizeOptions = {},
 ): string {
   // Input validation
-  if (typeof url !== 'string') {
-    throw new TypeError(`url must be a string, got ${typeof url}`);
-  }
   if (typeof options !== 'object' || options === null) {
     throw new TypeError(`options must be an object, got ${typeof options}`);
   }
@@ -61,60 +60,56 @@ export function normalizeURL(
     removeEmptyParams: options.removeEmptyParams ?? true,
   };
 
-  try {
-    const parsed = new URL(url);
+  const parsed = _parseURL(url);
 
-    // Lowercase hostname
-    if (opts.lowercaseHostname) {
-      parsed.hostname = parsed.hostname.toLowerCase();
-    }
-
-    // Remove default ports
-    if (opts.removeDefaultPorts) {
-      if (
-        (parsed.protocol === 'http:' && parsed.port === '80') ||
-        (parsed.protocol === 'https:' && parsed.port === '443')
-      ) {
-        parsed.port = '';
-      }
-    }
-
-    // Remove trailing slash from pathname
-    if (opts.removeTrailingSlash && parsed.pathname.endsWith('/')) {
-      parsed.pathname = parsed.pathname.replace(/\/$/, '') || '/';
-    }
-
-    // Handle query parameters
-    if (parsed.search) {
-      const params = new URLSearchParams(parsed.search);
-
-      // Remove empty parameters
-      if (opts.removeEmptyParams) {
-        const keysToDelete: string[] = [];
-        params.forEach((value, key) => {
-          if (value === '') {
-            keysToDelete.push(key);
-          }
-        });
-        keysToDelete.forEach((key) => params.delete(key));
-      }
-
-      // Sort query parameters
-      if (opts.sortQueryParams) {
-        const sortedParams = new URLSearchParams();
-        const keys = Array.from(params.keys()).sort();
-        keys.forEach((key) => {
-          const values = params.getAll(key);
-          values.forEach((value) => sortedParams.append(key, value));
-        });
-        parsed.search = sortedParams.toString();
-      } else {
-        parsed.search = params.toString();
-      }
-    }
-
-    return parsed.toString();
-  } catch {
-    throw new Error(`Invalid URL: ${url}`);
+  // Lowercase hostname
+  if (opts.lowercaseHostname) {
+    parsed.hostname = parsed.hostname.toLowerCase();
   }
+
+  // Remove default ports
+  if (opts.removeDefaultPorts) {
+    if (
+      (parsed.protocol === 'http:' && parsed.port === '80') ||
+      (parsed.protocol === 'https:' && parsed.port === '443')
+    ) {
+      parsed.port = '';
+    }
+  }
+
+  // Remove trailing slash from pathname
+  if (opts.removeTrailingSlash && parsed.pathname.endsWith('/')) {
+    parsed.pathname = parsed.pathname.replace(/\/$/, '') || '/';
+  }
+
+  // Handle query parameters
+  if (parsed.search) {
+    const params = new URLSearchParams(parsed.search);
+
+    // Remove empty parameters
+    if (opts.removeEmptyParams) {
+      const keysToDelete: string[] = [];
+      params.forEach((value, key) => {
+        if (value === '') {
+          keysToDelete.push(key);
+        }
+      });
+      keysToDelete.forEach((key) => params.delete(key));
+    }
+
+    // Sort query parameters
+    if (opts.sortQueryParams) {
+      const sortedParams = new URLSearchParams();
+      const keys = Array.from(params.keys()).sort();
+      keys.forEach((key) => {
+        const values = params.getAll(key);
+        values.forEach((value) => sortedParams.append(key, value));
+      });
+      parsed.search = sortedParams.toString();
+    } else {
+      parsed.search = params.toString();
+    }
+  }
+
+  return parsed.toString();
 }

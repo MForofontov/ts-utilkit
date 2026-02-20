@@ -1,3 +1,5 @@
+import { _parseURL } from './_parseURL';
+
 /**
  * Checks if two URLs have the same origin (protocol + host + port).
  * Useful for CORS and security checks.
@@ -33,8 +35,10 @@
  *
  * @complexity Time: O(1), Space: O(1)
  */
+
 export function isSameOrigin(url1: string, url2: string): boolean {
-  // Input validation
+  // _parseURL validates type and throws TypeError/Error for each URL.
+  // For isSameOrigin we provide a combined error message on failure.
   if (typeof url1 !== 'string') {
     throw new TypeError(`url1 must be a string, got ${typeof url1}`);
   }
@@ -43,10 +47,8 @@ export function isSameOrigin(url1: string, url2: string): boolean {
   }
 
   try {
-    const urlObj1 = new URL(url1);
-    const urlObj2 = new URL(url2);
-
-    // Compare origins
+    const urlObj1 = _parseURL(url1);
+    const urlObj2 = _parseURL(url2);
     return urlObj1.origin === urlObj2.origin;
   } catch {
     throw new Error(`Invalid URL(s): ${url1}, ${url2}`);

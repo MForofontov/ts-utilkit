@@ -1,3 +1,5 @@
+import { _parseURL } from './_parseURL';
+
 /**
  * Adds or updates query parameters in a URL.
  * If a parameter already exists, it will be updated with the new value.
@@ -29,29 +31,23 @@
  *
  * @complexity Time: O(n), Space: O(n)
  */
+
 export function addQueryParams(
   url: string,
   params: Record<string, string | number | boolean>,
 ): string {
-  // Input validation
-  if (typeof url !== 'string') {
-    throw new TypeError(`url must be a string, got ${typeof url}`);
-  }
+  // Input validation handled by _parseURL for url
   if (typeof params !== 'object' || params === null || Array.isArray(params)) {
     throw new TypeError(`params must be an object, got ${typeof params}`);
   }
 
-  try {
-    const urlObj = new URL(url);
-    const searchParams = urlObj.searchParams;
+  const urlObj = _parseURL(url);
+  const searchParams = urlObj.searchParams;
 
-    // Add or update parameters
-    for (const [key, value] of Object.entries(params)) {
-      searchParams.set(key, String(value));
-    }
-
-    return urlObj.toString();
-  } catch {
-    throw new Error(`Invalid URL: ${url}`);
+  // Add or update parameters
+  for (const [key, value] of Object.entries(params)) {
+    searchParams.set(key, String(value));
   }
+
+  return urlObj.toString();
 }

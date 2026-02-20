@@ -44,6 +44,9 @@ import { formatBytes } from '@ts-utilkit/format';
  * @note Uses logarithms to determine the appropriate unit efficiently.
  *
  * @complexity Time: O(1), Space: O(1)
+ *
+ * @deprecated Use `formatBytes` from `@ts-utilkit/format` directly.
+ * `bytesToSize` is a thin wrapper and will be removed in the next major version.
  */
 export function bytesToSize(bytes: number, binary: boolean = true): string {
   // Validate bytes parameter
