@@ -1,3 +1,5 @@
+import { deepEqual } from '@ts-utilkit/object';
+
 /**
  * Interface for test case.
  */
@@ -61,7 +63,7 @@ export function testMultipleCases<T, R>(
 
   return testCases.map((testCase) => {
     const actual = fn(testCase.input);
-    const passed = JSON.stringify(actual) === JSON.stringify(testCase.expected);
+    const passed = deepEqual(actual, testCase.expected as unknown);
 
     return {
       passed,

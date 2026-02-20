@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - `groupBy`: replaced with a pure `export { groupByObject as groupBy }` re-export from `@ts-utilkit/object`; eliminates all duplicated logic; `TypeError` on non-array input now propagates from `groupByObject`
+- `findCommonWithCondition`: replace `JSON.stringify(item1) === JSON.stringify(item2)` with `deepEqual` from `@ts-utilkit/object` — correctly handles NaN, Date, RegExp, and deeply nested values that JSON.stringify cannot
 
 ## [0.1.1] - 2026-01-26
 

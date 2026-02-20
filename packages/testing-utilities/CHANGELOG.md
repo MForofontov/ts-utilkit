@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Add `@ts-utilkit/random` as a declared package dependency
+- Add `@ts-utilkit/object` as a declared package dependency
 
 ### Changed
 - `generateRandomString`: delegate character generation to `randomSequence` from `@ts-utilkit/random`
@@ -21,6 +22,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `generateRandomNumber`: delegate to `randomInt` (integers) or `randomFloat` (decimals) from `@ts-utilkit/random`
 - `generateRandomEmail`: replace `Math.random().toString(36).substring(2, 10)` with `randomSequence(8, alphanumericLower)` for consistent 8-char usernames
 - `generateRandomURL`: replace `Math.random().toString(36)` patterns with `randomSequence` for consistent-length subdomain (6 chars) and path (8 chars)
+- `assertArraysEqual`: replace `JSON.stringify(sorted) === JSON.stringify(sorted)` with `deepEqual` from `@ts-utilkit/object` — handles NaN, Date, RegExp correctly
+- `testMultipleCases`: replace `JSON.stringify(actual) === JSON.stringify(expected)` with `deepEqual` from `@ts-utilkit/object`
 
 ### Deprecated
 - `generateRandomNumber`: use `randomInt` (for integers) or `randomFloat` (for decimals) from `@ts-utilkit/random` directly. Will be removed in the next major version.

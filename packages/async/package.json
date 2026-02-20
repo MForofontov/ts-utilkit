@@ -45,6 +45,9 @@
   "engines": {
     "node": ">=20"
   },
+  "dependencies": {
+    "@ts-utilkit/utility": "*"
+  },
   "publishConfig": {
     "access": "public"
   }

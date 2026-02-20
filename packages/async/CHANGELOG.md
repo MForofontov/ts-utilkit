@@ -8,13 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- New features go here
+- Add `@ts-utilkit/utility` as a declared package dependency
 
 ### Changed
-- Changes to existing functionality
-
-### Fixed
-- Bug fixes
+- `asyncRetry`: replace inline `new Promise(resolve => setTimeout(resolve, delay))` with `delay()` from `@ts-utilkit/utility`
 
 ## [0.1.0] - 2026-01-26
 
