@@ -17,6 +17,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `loremIpsum`: replace two inline word-picks with internal `randomChoice` calls
 - `randomWeighted`: delegate core weighted selection to `_weightedPick` helper
 - `randomElement`: delegate core weighted selection to `_weightedPick` helper
+- `randomWords`: replace inline vowel/consonant alternation loop with calls to `randomWord` per word
+- `randomHex`: replace manual character-pick loop with `randomSequence(length, '0123456789abcdef')`
+- `randomBase64`: replace manual character-pick loop with `randomSequence(length, base64Charset)`
 
 ### Fixed
 - `randomWeighted` performance test: increase threshold from 100 ms to 200 ms to prevent flaky failures on slower machines

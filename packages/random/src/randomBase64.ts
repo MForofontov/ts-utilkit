@@ -1,3 +1,5 @@
+import { randomSequence } from './randomSequence';
+
 /**
  * Generates a random base64 string of approximately specified length.
  *
@@ -36,13 +38,8 @@ export function randomBase64(length: number): string {
     throw new Error('length must be non-negative');
   }
 
-  const base64Chars =
-    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
-  let result = '';
-  for (let i = 0; i < length; i++) {
-    const randomIndex = Math.floor(Math.random() * base64Chars.length);
-    result += base64Chars[randomIndex];
-  }
-
-  return result;
+  return randomSequence(
+    length,
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/',
+  );
 }

@@ -41,8 +41,10 @@
  *
  * @complexity Time: O(n), Space: O(1) where n is the length of the string
  */
+import { escapeRegex } from './escapeRegex';
+
 export function countSubstring(str: string, substring: string): number {
   if (substring.length === 0) return 0;
-  const escapedSubstring = substring.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const escapedSubstring = escapeRegex(substring);
   return (str.match(new RegExp(escapedSubstring, 'g')) || []).length;
 }

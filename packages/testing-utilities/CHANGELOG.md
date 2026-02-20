@@ -18,6 +18,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `generateRandomUUID`: replaced with a pure `export { randomUUID as generateRandomUUID }` re-export from `@ts-utilkit/random`
 - `generateRandomBoolean`: replaced with a pure `export { randomBoolean as generateRandomBoolean }` re-export from `@ts-utilkit/random`; test error messages updated to match `randomBoolean`'s `"probability must be between 0 and 1"`
 - `generateRandomDate`: delegate to `randomDate` from `@ts-utilkit/random`
+- `generateRandomNumber`: delegate to `randomInt` (integers) or `randomFloat` (decimals) from `@ts-utilkit/random`
+
+### Deprecated
+- `generateRandomNumber`: use `randomInt` (for integers) or `randomFloat` (for decimals) from `@ts-utilkit/random` directly. Will be removed in the next major version.
 
 ## [0.1.0] - 2026-01-26
 

@@ -1,3 +1,5 @@
+import { randomWord } from './randomWord';
+
 /**
  * Generates multiple random pronounceable words.
  *
@@ -60,19 +62,10 @@ export function randomWords(
     throw new Error(`wordLength must be between 1 and 20, got ${wordLength}`);
   }
 
-  const vowels = 'aeiou';
-  const consonants = 'bcdfghjklmnprstvwxyz';
   const words: string[] = [];
 
   for (let w = 0; w < count; w++) {
-    let word = '';
-    for (let i = 0; i < wordLength; i++) {
-      const useConsonant = i % 2 === 0;
-      const alphabet = useConsonant ? consonants : vowels;
-      const randomIndex = Math.floor(Math.random() * alphabet.length);
-      word += alphabet[randomIndex];
-    }
-    words.push(word);
+    words.push(randomWord(wordLength));
   }
 
   return words;

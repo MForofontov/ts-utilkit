@@ -1,5 +1,10 @@
+import { randomInt, randomFloat } from '@ts-utilkit/random';
+
 /**
  * Generates a random number within a specified range.
+ *
+ * @deprecated Use `randomInt` (for integers) or `randomFloat` (for decimals) from
+ * `@ts-utilkit/random` directly. Will be removed in the next major version.
  *
  * @param min - Minimum value (inclusive).
  * @param max - Maximum value (inclusive).
@@ -31,11 +36,10 @@ export function generateRandomNumber(
     throw new Error('decimals must be non-negative');
   }
 
-  const random = Math.random() * (max - min) + min;
-
   if (decimals === 0) {
-    return Math.floor(random);
+    return randomInt(min, max);
   }
 
-  return Number(random.toFixed(decimals));
+  return randomFloat(min, max, decimals);
 }
+

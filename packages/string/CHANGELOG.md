@@ -7,14 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Added
-- New features go here
-
 ### Changed
-- Changes to existing functionality
+- `countCharacterOccurrences`: replace inline regex-escape pattern with `escapeRegex` from the same package
+- `countSubstring`: replace inline regex-escape pattern with `escapeRegex` from the same package
+- `replaceMultiple`: replace inline regex-escape pattern with `escapeRegex` from the same package
+- `generateRandomAlphanumeric`: delegate character generation to `randomSequence` from `@ts-utilkit/random`
 
-### Fixed
-- Bug fixes
+### Deprecated
+- `generateRandomAlphanumeric`: use `randomSequence` from `@ts-utilkit/random` directly with the alphanumeric charset. Will be removed in the next major version.
+
+### Added
+- Add `@ts-utilkit/random` as a declared package dependency
 
 ## [0.1.0] - 2026-01-26
 
