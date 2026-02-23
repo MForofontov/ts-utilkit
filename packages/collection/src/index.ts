@@ -2,6 +2,8 @@
 // This file exports all functions from this module
 
 export * from './arrayToSet';
+export * from './createCounterMap';
+export * from './createMultiMap';
 export * from './isDisjoint';
 export * from './isSubset';
 export * from './isSuperset';
