@@ -1,3 +1,5 @@
+import { randomChoice } from './randomChoice';
+
 /**
  * Generates a random number from a range with a specified step.
  *
@@ -63,6 +65,5 @@ export function randomFromRange(
     throw new Error('No valid values in range with given step');
   }
 
-  const randomIndex = Math.floor(Math.random() * values.length);
-  return values[randomIndex];
+  return randomChoice(values);
 }

@@ -1,3 +1,5 @@
+import { _parseURL } from './_parseURL';
+
 /**
  * Extracts query parameters from a URL string and returns them as an object.
  * Handles multiple values for the same parameter name.
@@ -26,35 +28,27 @@
  *
  * @complexity Time: O(n), Space: O(n)
  */
+
 export function getQueryParams(url: string): Record<string, string | string[]> {
-  // Input validation
-  if (typeof url !== 'string') {
-    throw new TypeError(`url must be a string, got ${typeof url}`);
-  }
+  const parsed = _parseURL(url);
+  const params: Record<string, string | string[]> = {};
 
-  try {
-    const parsed = new URL(url);
-    const params: Record<string, string | string[]> = {};
-
-    // Iterate through all search parameters
-    parsed.searchParams.forEach((value, key) => {
-      if (params[key]) {
-        // Parameter already exists
-        if (Array.isArray(params[key])) {
-          // Already an array, add to it
-          params[key].push(value);
-        } else {
-          // Convert to array
-          params[key] = [params[key], value];
-        }
+  // Iterate through all search parameters
+  parsed.searchParams.forEach((value, key) => {
+    if (params[key]) {
+      // Parameter already exists
+      if (Array.isArray(params[key])) {
+        // Already an array, add to it
+        params[key].push(value);
       } else {
-        // First occurrence of this parameter
-        params[key] = value;
+        // Convert to array
+        params[key] = [params[key], value];
       }
-    });
+    } else {
+      // First occurrence of this parameter
+      params[key] = value;
+    }
+  });
 
-    return params;
-  } catch {
-    throw new Error(`Invalid URL: ${url}`);
-  }
+  return params;
 }

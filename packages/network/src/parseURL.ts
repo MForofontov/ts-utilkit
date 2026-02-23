@@ -1,3 +1,5 @@
+import { _parseURL } from './_parseURL';
+
 /**
  * Interface representing parsed URL components.
  */
@@ -55,27 +57,19 @@ export interface ParsedURL {
  *
  * @complexity Time: O(n), Space: O(n) - Where n is URL length
  */
+
 export function parseURL(url: string): ParsedURL {
-  // Input validation
-  if (typeof url !== 'string') {
-    throw new TypeError(`url must be a string, got ${typeof url}`);
-  }
+  const parsed = _parseURL(url);
 
-  try {
-    const parsed = new URL(url);
-
-    return {
-      protocol: parsed.protocol,
-      hostname: parsed.hostname,
-      port: parsed.port,
-      pathname: parsed.pathname,
-      search: parsed.search.replace(/^\?/, ''),
-      hash: parsed.hash.replace(/^#/, ''),
-      host: parsed.host,
-      origin: parsed.origin,
-      href: parsed.href,
-    };
-  } catch {
-    throw new Error(`Invalid URL: ${url}`);
-  }
+  return {
+    protocol: parsed.protocol,
+    hostname: parsed.hostname,
+    port: parsed.port,
+    pathname: parsed.pathname,
+    search: parsed.search.replace(/^\?/, ''),
+    hash: parsed.hash.replace(/^#/, ''),
+    host: parsed.host,
+    origin: parsed.origin,
+    href: parsed.href,
+  };
 }

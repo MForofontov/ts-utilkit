@@ -43,6 +43,8 @@
  *
  * @complexity Time: O(n*m), Space: O(n) where n is str length, m is number of replacements
  */
+import { escapeRegex } from './escapeRegex';
+
 export function replaceMultiple(
   str: string,
   replacements: { [key: string]: string },
@@ -53,9 +55,7 @@ export function replaceMultiple(
     return str;
   }
 
-  const escapedKeys = replacementKeys.map(
-    (key) => key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), // Escape special regex characters
-  );
+  const escapedKeys = replacementKeys.map((key) => escapeRegex(key));
 
   const regex = new RegExp(escapedKeys.join('|'), 'g');
 

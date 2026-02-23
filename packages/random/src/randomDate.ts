@@ -1,3 +1,5 @@
+import { randomInt } from './randomInt';
+
 /**
  * Generates a random Date within a specified range.
  *
@@ -43,6 +45,5 @@ export function randomDate(start: Date, end: Date): Date {
     throw new Error('start date must be before or equal to end date');
   }
 
-  const randomTime = startTime + Math.random() * (endTime - startTime);
-  return new Date(randomTime);
+  return new Date(randomInt(startTime, endTime));
 }

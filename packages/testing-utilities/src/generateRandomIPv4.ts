@@ -1,3 +1,5 @@
+import { randomInt, randomChoice } from '@ts-utilkit/random';
+
 /**
  * Generates a random IPv4 address for testing.
  *
@@ -18,17 +20,13 @@ export function generateRandomIPv4(private_: boolean = false): string {
   if (private_) {
     // Generate private IP (192.168.x.x, 10.x.x.x, or 172.16-31.x.x)
     const ranges = [
-      () => `192.168.${rand(0, 255)}.${rand(0, 255)}`,
-      () => `10.${rand(0, 255)}.${rand(0, 255)}.${rand(0, 255)}`,
-      () => `172.${rand(16, 31)}.${rand(0, 255)}.${rand(0, 255)}`,
+      () => `192.168.${randomInt(0, 255)}.${randomInt(0, 255)}`,
+      () => `10.${randomInt(0, 255)}.${randomInt(0, 255)}.${randomInt(0, 255)}`,
+      () => `172.${randomInt(16, 31)}.${randomInt(0, 255)}.${randomInt(0, 255)}`,
     ];
-    return ranges[Math.floor(Math.random() * ranges.length)]();
+    return randomChoice(ranges)();
   }
 
   // Generate public IP (avoid private ranges)
-  return `${rand(1, 223)}.${rand(0, 255)}.${rand(0, 255)}.${rand(1, 254)}`;
-}
-
-function rand(min: number, max: number): number {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+  return `${randomInt(1, 223)}.${randomInt(0, 255)}.${randomInt(0, 255)}.${randomInt(1, 254)}`;
 }

@@ -1,3 +1,5 @@
+import { randomSequence } from '@ts-utilkit/random';
+
 /**
  * Generates a random alphanumeric string of specified length using Math.random().
  *
@@ -37,6 +39,10 @@
  * @note For cryptographic purposes, use generateRandomString() from crypto functions.
  * @note Each character is independently random (no uniqueness guarantee).
  *
+ * @deprecated Use `randomSequence` from `@ts-utilkit/random` directly with the
+ * alphanumeric charset: `randomSequence(length, 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789')`.
+ * Will be removed in the next major version.
+ *
  * @complexity Time: O(n), Space: O(n) where n is the length
  */
 export function generateRandomAlphanumeric(length: number): string {
@@ -44,11 +50,8 @@ export function generateRandomAlphanumeric(length: number): string {
     throw new Error('Length must be a non-negative number');
   }
 
-  const chars =
-    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  let result = '';
-  for (let i = 0; i < length; i++) {
-    result += chars.charAt(Math.floor(Math.random() * chars.length));
-  }
-  return result;
+  return randomSequence(
+    Math.floor(length),
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789',
+  );
 }

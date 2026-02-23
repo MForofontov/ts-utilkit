@@ -1,3 +1,5 @@
+import { delay as delayFn } from '@ts-utilkit/utility';
+
 /**
  * Retries an async function with configurable attempts and delay between retries.
  *
@@ -111,7 +113,7 @@ export function asyncRetry<T>(
             break;
         }
 
-        await new Promise((resolve) => setTimeout(resolve, currentDelay));
+        await delayFn(currentDelay);
       }
     }
 

@@ -1,5 +1,10 @@
+import { randomDate } from '@ts-utilkit/random';
+
 /**
  * Generates a random date for testing.
+ *
+ * @deprecated Use `randomDate` from `@ts-utilkit/random` directly.
+ * Will be removed in the next major version.
  *
  * @param start - Start date (default: 2000-01-01).
  * @param end - End date (default: current date).
@@ -19,8 +24,5 @@ export function generateRandomDate(
   start: Date = new Date('2000-01-01'),
   end: Date = new Date(),
 ): Date {
-  const startTime = start.getTime();
-  const endTime = end.getTime();
-  const randomTime = startTime + Math.random() * (endTime - startTime);
-  return new Date(randomTime);
+  return randomDate(start, end);
 }

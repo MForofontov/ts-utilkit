@@ -1,3 +1,5 @@
+import { _parseURL } from './_parseURL';
+
 /**
  * Extracts the pathname from a URL.
  * Returns the path component without query string or hash.
@@ -28,15 +30,5 @@
  * @complexity Time: O(1), Space: O(1)
  */
 export function getURLPath(url: string): string {
-  // Input validation
-  if (typeof url !== 'string') {
-    throw new TypeError(`url must be a string, got ${typeof url}`);
-  }
-
-  try {
-    const urlObj = new URL(url);
-    return urlObj.pathname;
-  } catch {
-    throw new Error(`Invalid URL: ${url}`);
-  }
+  return _parseURL(url).pathname;
 }

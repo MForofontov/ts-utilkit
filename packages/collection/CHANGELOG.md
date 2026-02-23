@@ -8,13 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- New features go here
-
-### Changed
-- Changes to existing functionality
-
-### Fixed
-- Bug fixes
+- Add `createCounterMap` — counts occurrences of each item in an array and returns a `Map<T, number>` keyed by item identity
+- Add `createMultiMap` — factory that creates a multi-map data structure (`MultiMap<K, V>`) where each key holds an ordered array of values, with full CRUD methods and method chaining support
 
 ## [0.1.0] - 2026-01-26
 

@@ -1,3 +1,5 @@
+import { randomInt } from './randomInt';
+
 /**
  * Generates a random hexadecimal color code.
  *
@@ -31,7 +33,7 @@ export function randomHexColor(includeHash: boolean = true): string {
     );
   }
 
-  const hex = Math.floor(Math.random() * 16777216)
+  const hex = randomInt(0, 16777215)
     .toString(16)
     .padStart(6, '0')
     .toUpperCase();

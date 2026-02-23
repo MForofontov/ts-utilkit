@@ -8,13 +8,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- New features go here
+- Internal `_parseURL` helper that consolidates repeated URL validation + parsing logic
 
 ### Changed
-- Changes to existing functionality
-
-### Fixed
-- Bug fixes
+- `addQueryParams`: use `_parseURL` internal helper instead of inline `new URL()` try/catch
+- `removeQueryParams`: use `_parseURL` internal helper instead of inline `new URL()` try/catch
+- `getQueryParams`: use `_parseURL` internal helper instead of inline `new URL()` try/catch
+- `getURLPath`: use `_parseURL` internal helper instead of inline `new URL()` try/catch
+- `normalizeURL`: use `_parseURL` internal helper instead of inline `new URL()` try/catch
+- `parseURL`: use `_parseURL` internal helper instead of inline `new URL()` try/catch
+- `isSameOrigin`: use `_parseURL` internal helper instead of inline `new URL()` try/catch
+- `extractDomain`: delegate to `getDomainParts` internally, removing ~55 lines of duplicated hostname-parsing logic
 
 ## [0.1.0] - 2026-01-26
 

@@ -41,12 +41,14 @@
  *
  * @complexity Time: O(n), Space: O(1) where n is the length of the string
  */
+import { escapeRegex } from './escapeRegex';
+
 export function countCharacterOccurrences(str: string, char: string): number {
   if (!char) {
     return 0;
   }
 
-  const escapedChar = char.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const escapedChar = escapeRegex(char);
 
   return (str.match(new RegExp(escapedChar, 'g')) || []).length;
 }

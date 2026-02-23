@@ -1,3 +1,5 @@
+import { _weightedPick } from './_weightedPick';
+
 /**
  * Picks a random element from an array based on weights.
  *
@@ -73,17 +75,5 @@ export function randomWeighted<T>(items: T[], weights: number[]): T {
     throw new Error('Sum of weights must be greater than zero');
   }
 
-  // Generate random value between 0 and totalWeight
-  let random = Math.random() * totalWeight;
-
-  // Find the item corresponding to the random value
-  for (let i = 0; i < items.length; i++) {
-    random -= weights[i];
-    if (random <= 0) {
-      return items[i];
-    }
-  }
-
-  // Fallback (should never reach here due to floating point precision)
-  return items[items.length - 1];
+  return _weightedPick(items, weights);
 }

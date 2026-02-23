@@ -48,6 +48,10 @@
   "engines": {
     "node": ">=20"
   },
+  "dependencies": {
+    "@ts-utilkit/object": "*",
+    "@ts-utilkit/random": "*"
+  },
   "publishConfig": {
     "access": "public"
   }

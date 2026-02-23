@@ -1,3 +1,5 @@
+import { randomChoice } from './randomChoice';
+
 /**
  * Picks a random value from an enum or object.
  *
@@ -37,6 +39,5 @@ export function randomEnum<T extends Record<string, any>>(
     throw new Error('enumObj must have at least one enumerable value');
   }
 
-  const randomIndex = Math.floor(Math.random() * values.length);
-  return values[randomIndex] as T[keyof T];
+  return randomChoice(values) as T[keyof T];
 }

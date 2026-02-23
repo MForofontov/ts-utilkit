@@ -8,13 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- New features go here
+- Declare `@ts-utilkit/format` as an explicit package dependency
 
 ### Changed
-- Changes to existing functionality
-
-### Fixed
-- Bug fixes
+- `bytesToSize`: delegate implementation to `formatBytes` from `@ts-utilkit/format`; behaviour unchanged (IEC units in binary mode, 2 decimal places)
+- `bytesToSize`: marked `@deprecated` — use `formatBytes` from `@ts-utilkit/format` directly; will be removed in the next major version
 
 ## [0.1.1] - 2026-01-26
 

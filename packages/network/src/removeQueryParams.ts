@@ -1,3 +1,5 @@
+import { _parseURL } from './_parseURL';
+
 /**
  * Removes specific query parameters from a URL.
  * If a parameter doesn't exist, it is silently ignored.
@@ -29,26 +31,20 @@
  *
  * @complexity Time: O(n), Space: O(n)
  */
+
 export function removeQueryParams(url: string, keys: string[]): string {
   // Input validation
-  if (typeof url !== 'string') {
-    throw new TypeError(`url must be a string, got ${typeof url}`);
-  }
   if (!Array.isArray(keys)) {
     throw new TypeError(`keys must be an array, got ${typeof keys}`);
   }
 
-  try {
-    const urlObj = new URL(url);
-    const searchParams = urlObj.searchParams;
+  const urlObj = _parseURL(url);
+  const searchParams = urlObj.searchParams;
 
-    // Remove specified parameters
-    for (const key of keys) {
-      searchParams.delete(key);
-    }
-
-    return urlObj.toString();
-  } catch {
-    throw new Error(`Invalid URL: ${url}`);
+  // Remove specified parameters
+  for (const key of keys) {
+    searchParams.delete(key);
   }
+
+  return urlObj.toString();
 }

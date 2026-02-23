@@ -1,3 +1,5 @@
+import { randomChoice, randomSequence } from '@ts-utilkit/random';
+
 /**
  * Generates a random valid email address for testing.
  *
@@ -16,8 +18,7 @@
  */
 export function generateRandomEmail(domain?: string): string {
   const domains = ['gmail.com', 'yahoo.com', 'outlook.com', 'example.com'];
-  const selectedDomain =
-    domain || domains[Math.floor(Math.random() * domains.length)];
-  const username = Math.random().toString(36).substring(2, 10);
+  const selectedDomain = domain || randomChoice(domains);
+  const username = randomSequence(8, 'abcdefghijklmnopqrstuvwxyz0123456789');
   return `${username}@${selectedDomain}`;
 }
