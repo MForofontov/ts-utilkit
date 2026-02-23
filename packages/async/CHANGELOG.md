@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Add `asyncBatch` — process an array in sequential fixed-size batches with optional inter-batch delay for rate-limiting
+- Add `asyncDeduplication` — collapse concurrent in-flight calls with identical arguments into a single shared Promise
+- Add `asyncMemoize` — cache resolved values of async functions with optional TTL and custom key function
+- Add `asyncPoll` — repeatedly call an async function at a fixed interval until a condition is met or a timeout elapses
+- Add `asyncWaterfall` — execute async tasks in sequence, piping each task’s output as the next task’s input
 - Add `@ts-utilkit/utility` as a declared package dependency
 
 ### Changed
