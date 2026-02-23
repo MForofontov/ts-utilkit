@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Add `countBy` — group array elements by a key function and return a `Map<string, number>` of occurrence counts
+- Add `dropWhile` — drop leading elements while a predicate holds, returning all remaining elements
+- Add `partition` — split an array into `[matches, nonMatches]` tuple based on a predicate
+- Add `slidingWindow` — generate all contiguous sub-arrays of a fixed size across the input array
+- Add `takeWhile` — collect leading elements while a predicate holds, stopping at first failure
 - Declare `@ts-utilkit/object` as an explicit package dependency (formalises existing cross-package import)
 
 ### Changed
