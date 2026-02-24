@@ -8,13 +8,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- New features go here
-
-### Changed
-- Changes to existing functionality
-
-### Fixed
-- Bug fixes
+- Add `isAfter(d1, d2)` — returns `true` if `d1` is strictly after `d2` (millisecond precision)
+- Add `isBefore(d1, d2)` — returns `true` if `d1` is strictly before `d2` (millisecond precision)
+- Add `isSameDay(d1, d2)` — returns `true` if both dates share the same year, month, and day (ignores time)
+- Add `isSameMonth(d1, d2)` — returns `true` if both dates share the same year and month
+- Add `isSameYear(d1, d2)` — returns `true` if both dates share the same year
+- Add `isYesterday(date)` — returns `true` if the date falls on yesterday's calendar date
+- Add `isTomorrow(date)` — returns `true` if the date falls on tomorrow's calendar date
+- Add `addHours(date, hours)` — adds a number of hours (sub-day arithmetic)
+- Add `addMinutes(date, minutes)` — adds a number of minutes (sub-day arithmetic)
+- Add `addSeconds(date, seconds)` — adds a number of seconds (sub-day arithmetic)
+- Add `subtractDays(date, n)` — explicit named complement to `addDays(date, -n)`
+- Add `subtractMonths(date, n)` — explicit named complement to `addMonths(date, -n)`
+- Add `addYears(date, years)` — adds or subtracts a number of years, handles leap-day overflow
+- Add `getStartOfDay(date)` — returns a new Date at 00:00:00.000 of the same day
+- Add `getEndOfDay(date)` — returns a new Date at 23:59:59.999 of the same day
+- Add `getStartOfMonth(date)` — returns a new Date at the first day of the month at midnight
+- Add `formatRelativeTime(date, baseDate?)` — formats the difference as a human-readable string (e.g., "2 hours ago", "in 3 days")
+- Add `fromUnixTimestamp(ts)` — converts a Unix timestamp (seconds) to a `Date` object
+- Add `toUnixTimestamp(date)` — converts a `Date` to a Unix timestamp (whole seconds, floor)
 
 ## [0.1.0] - 2026-01-26
 
