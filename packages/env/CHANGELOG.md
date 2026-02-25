@@ -8,7 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- New features go here
+- New function `hasEnv` for checking environment variable existence without throwing
+- New function `parseEnvEnum` for parsing and validating env vars against a fixed set of allowed values with TypeScript generics
+- New function `parseEnvPort` for parsing and range-validating TCP/UDP port numbers (1–65535)
+- New function `requireEnvAll` for requiring multiple env vars at once, reporting all missing keys in a single error
 
 ### Changed
 - Changes to existing functionality
