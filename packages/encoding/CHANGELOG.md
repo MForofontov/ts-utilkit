@@ -8,7 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- New features go here
+- New function `encodeBase64URL` for URL-safe Base64 encoding (RFC 4648 §5) without padding — used in JWTs and OAuth tokens
+- New function `decodeBase64URL` for decoding URL-safe Base64 strings with strict alphabet validation
+- New function `encodeHex` for encoding UTF-8 strings as lowercase hexadecimal
+- New function `decodeHex` for decoding hexadecimal strings back to UTF-8, with length and character validation
+- New function `encodeBase32` for RFC 4648 Base32 encoding — the standard format for TOTP/2FA shared secrets
+- New function `decodeBase32` for decoding Base32 strings, case-insensitive with optional padding support
 
 ### Changed
 - Changes to existing functionality
