@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- `isAbsoluteURL`: checks whether a URL string has a scheme and can be parsed without a base URL
+- `isRelativeURL`: checks whether a URL string is a valid relative reference (no scheme, requires a base)
+- `hasQueryParam`: checks whether a specific query parameter key exists in a URL
+- `setURLFragment`: sets or replaces the fragment of a URL and returns the updated URL string
 - Internal `_parseURL` helper that consolidates repeated URL validation + parsing logic
 
 ### Changed
