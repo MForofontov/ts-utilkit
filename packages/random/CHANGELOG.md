@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- `randomGaussian`: samples from a Gaussian (normal) distribution using the Box-Muller transform
+- `randomExponential`: samples from an exponential distribution using the inverse transform method
 - New internal `_weightedPick` helper that encapsulates the weighted random selection algorithm
 
 ### Changed
