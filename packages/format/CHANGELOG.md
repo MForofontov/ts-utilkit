@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - `formatBytes`: new optional `iecUnits` parameter (default: `false`); when `true` with `binary=true`, uses IEC unit labels (KiB, MiB, GiB) instead of SI labels (KB, MB, GB)
+- `formatList`: format an array of strings into a locale-aware conjunction list ("Alice, Bob, and Carol") using `Intl.ListFormat`; supports "and", "or", and "none" conjunction modes
+- `formatRelativeTime`: format a date relative to a base date as a human-friendly string ("just now", "5 minutes ago", "yesterday", "last month", "in 2 years"); string/display focused, distinct from the `@ts-utilkit/date` version
+- `formatTemperature`: convert and format temperatures between Celsius, Fahrenheit, and Kelvin with configurable decimal places and proper unit symbols ("°C", "°F", "K")
 
 ## [0.1.0] - 2026-01-26
 
