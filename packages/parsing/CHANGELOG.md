@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- New features go here
+- `parseHTTPHeaders`: parses a raw HTTP header block into a lower-cased key-value record
 
 ### Changed
 - Changes to existing functionality
