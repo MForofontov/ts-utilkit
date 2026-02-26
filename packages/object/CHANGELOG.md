@@ -8,7 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- New features go here
+- `zipObject`: creates an object from separate keys and values arrays
+- `findKey`: returns the first key whose value satisfies a predicate
+- `renameKey`: renames a single key immutably, preserving insertion order
+- `transformKeys`: applies a custom function to all keys, keeping values unchanged
 
 ### Changed
 - Changes to existing functionality
