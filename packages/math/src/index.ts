@@ -9,6 +9,10 @@ export * from './algebraFunctions/calculateSquareRoot';
 // Arithmetic Functions (4)
 export * from './arithmeticFunctions/calculatePercentage';
 export * from './arithmeticFunctions/ceilValue';
+export * from './arithmeticFunctions/clamp';
+export * from './arithmeticFunctions/lerp';
+export * from './arithmeticFunctions/mapRange';
+export * from './arithmeticFunctions/normalizeValue';
 export * from './arithmeticFunctions/roundToDecimals';
 export * from './arithmeticFunctions/roundValue';
 
@@ -67,6 +71,12 @@ export * from './statisticsFunctions/centralTendency/calculateMedian';
 export * from './statisticsFunctions/centralTendency/calculateMode';
 export * from './statisticsFunctions/centralTendency/calculateProduct';
 export * from './statisticsFunctions/dispersion/calculateInterquartileRange';
+export * from './statisticsFunctions/dispersion/calculatePercentile';
 export * from './statisticsFunctions/dispersion/calculateRange';
 export * from './statisticsFunctions/dispersion/calculateStandardDeviation';
 export * from './statisticsFunctions/dispersion/calculateVariance';
+export * from './statisticsFunctions/dispersion/calculateZScore';
+
+// Statistics Relationships Functions
+export * from './statisticsFunctions/relationships/calculateCorrelation';
+export * from './statisticsFunctions/relationships/calculateCovariance';

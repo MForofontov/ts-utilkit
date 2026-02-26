@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Declare `@ts-utilkit/array` as an explicit package dependency (formalises existing cross-package import)
+- `clamp(n, min, max)`: clamp a number to an inclusive range; throws for NaN inputs or min > max
+- `lerp(a, b, t)`: linear interpolation between two values; t outside [0, 1] extrapolates
+- `normalizeValue(value, min, max)`: scale a value to [0, 1] within a range; returns NaN for degenerate range (min === max)
+- `mapRange(value, inMin, inMax, outMin, outMax)`: re-map a value from one range to another; returns NaN for degenerate input range
+- `calculatePercentile(arr, p)`: p-th percentile using linear interpolation (PERCENTILE.INC); throws for p outside [0, 100]
+- `calculateZScore(value, mean, stdDev)`: standard score (z-score); returns NaN for zero stdDev, throws for negative stdDev
+- `calculateCovariance(x, y)`: population covariance of two arrays; throws for length mismatch
+- `calculateCorrelation(x, y)`: Pearson correlation coefficient; returns NaN for degenerate distributions, throws for length mismatch
 
 ## [0.1.1] - 2026-01-26
 
