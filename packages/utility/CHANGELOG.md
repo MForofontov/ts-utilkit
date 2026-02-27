@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Declare `@ts-utilkit/format` as an explicit package dependency
+- Add `memoize` function to cache synchronous function results with optional custom key serialisation (sync counterpart to `asyncMemoize`)
+- Add `pipe` function for left-to-right function composition with full TypeScript overloads up to 6 functions
+- Add `compose` function for right-to-left function composition with full TypeScript overloads up to 6 functions
+- Add `tryCatch` function for safe synchronous execution returning `{ value, error }` without propagating exceptions
+- Add `measure` function to time synchronous function execution returning `{ result, durationMs, label }`
 
 ### Changed
 - `bytesToSize`: delegate implementation to `formatBytes` from `@ts-utilkit/format`; behaviour unchanged (IEC units in binary mode, 2 decimal places)
