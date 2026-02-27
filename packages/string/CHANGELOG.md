@@ -18,6 +18,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Add `@ts-utilkit/random` as a declared package dependency
+- Add `toCamelCase` function to convert strings to camelCase (handles space, kebab, snake, PascalCase, and mixed-delimiter inputs)
+- Add `toPascalCase` function to convert strings to PascalCase (handles space, kebab, snake, camelCase, and mixed-delimiter inputs)
+- Add `maskString` function to mask a range of characters in a string with a configurable mask character (useful for credit cards, passwords, PII)
+- Add `wrapText` function to word-wrap a string at a specified maximum line width, inserting newlines at word boundaries
+- Add `normalizeWhitespace` function to trim leading/trailing whitespace and collapse internal whitespace runs to a single space
+- Add `removeAccents` function to strip diacritical marks from characters using Unicode NFD normalisation (preserves structure unlike `slugify`)
+- Add `truncateWords` function to truncate a string to a specified number of whole words with a configurable suffix (complements `truncateString` which cuts at character count)
+- Add `extractNumbers` function to extract all integer and decimal numbers (including negatives) from a string as an array of JavaScript numbers
 
 ## [0.1.0] - 2026-01-26
 
