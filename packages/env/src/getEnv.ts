@@ -20,6 +20,8 @@
  *
  * @complexity Time: O(1), Space: O(1)
  */
+export function getEnv(key: string): string | undefined;
+export function getEnv(key: string, defaultValue: string): string;
 export function getEnv(key: string, defaultValue?: string): string | undefined {
   if (typeof key !== 'string') {
     throw new TypeError(`key must be a string, got ${typeof key}`);

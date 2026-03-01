@@ -27,5 +27,8 @@
  * @complexity Time: O(n), Space: O(n) - Where n is array length
  */
 export function sumArrayElements(arr: number[]): number {
+  if (!Array.isArray(arr)) {
+    throw new TypeError(`arr must be an array, got ${typeof arr}`);
+  }
   return arr.reduce((sum, num) => sum + num, 0);
 }

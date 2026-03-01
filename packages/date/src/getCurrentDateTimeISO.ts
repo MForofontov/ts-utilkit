@@ -32,6 +32,9 @@
  * @note Ideal for logging, database storage, and API responses.
  * @note Timezone-independent; always returns UTC time.
  *
+ * @deprecated Use `new Date().toISOString()` directly.
+ * This function adds no logic over the native call. Will be removed in the next major version.
+ *
  * @complexity Time: O(1), Space: O(1)
  */
 export function getCurrentDateTimeISO(): string {

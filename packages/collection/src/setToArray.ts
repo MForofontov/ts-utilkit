@@ -24,6 +24,9 @@
  * @note Preserves insertion order
  * @note Creates a new array (does not reference internal Set structure)
  *
+ * @deprecated Use `Array.from(set)` or `[...set]` directly — this function wraps a single built-in call.
+ * Will be removed in the next major version.
+ *
  * @complexity Time: O(n) where n is set size, Space: O(n)
  */
 export function setToArray<T>(set: Set<T>): T[] {

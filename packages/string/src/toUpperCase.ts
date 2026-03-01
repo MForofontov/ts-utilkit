@@ -1,38 +1,22 @@
 /**
  * Converts a string to uppercase.
  *
+ * @deprecated Use native `str.toUpperCase()` directly.
+ * Will be removed in the next major version.
+ *
  * @param str - The string to convert.
- * @returns The uppercase string.
+ * @returns The uppercase version of the string.
  *
  * @throws {TypeError} If str is not a string.
  *
  * @example
- * // Basic usage
- * toUpperCase("hello"); // "HELLO"
- * toUpperCase("world"); // "WORLD"
+ * toUpperCase('Hello World'); // 'HELLO WORLD'
  *
- * @example
- * // Mixed case input
- * toUpperCase("Hello World"); // "HELLO WORLD"
- * toUpperCase("TypeScript"); // "TYPESCRIPT"
- *
- * @example
- * // Special characters and numbers
- * toUpperCase("hello123!"); // "HELLO123!"
- * toUpperCase("test@example.com"); // "TEST@EXAMPLE.COM"
- *
- * @example
- * // Edge cases
- * toUpperCase(""); // ""
- * toUpperCase("ALREADY UPPERCASE"); // "ALREADY UPPERCASE"
- *
- * @note This is a simple wrapper around the native String.prototype.toUpperCase() method.
- * @note Non-alphabetic characters (numbers, symbols, whitespace) remain unchanged.
- * @note The function preserves all characters including special characters.
- * @note Locale-aware uppercasing requires String.prototype.toLocaleUpperCase() instead.
- *
- * @complexity Time: O(n), Space: O(n) where n is the length of the string
+ * @complexity Time: O(n), Space: O(n)
  */
 export function toUpperCase(str: string): string {
+  if (typeof str !== 'string') {
+    throw new TypeError(`str must be a string, got ${typeof str}`);
+  }
   return str.toUpperCase();
 }

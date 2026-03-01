@@ -1,16 +1,26 @@
 /**
  * Generates an array of all prime numbers up to a specified limit using the Sieve of Eratosthenes algorithm.
- *
- * @deprecated This function has moved to `@ts-utilkit/math`. Import it from there:
- * `import { generatePrimes } from '@ts-utilkit/math'`
- * Will be removed from this package in the next major version.
+ * A prime number is a natural number greater than 1 that is not a product of two smaller natural numbers.
  *
  * @param limit - The upper limit of the range to find prime numbers (inclusive).
  * @returns An array containing all prime numbers up to and including the limit.
  * @throws {RangeError} If the limit is not an integer.
  *
  * @example
- * generatePrimes(10); // [2, 3, 5, 7]
+ * // Basic usage
+ * generatePrimes(10); // Returns [2, 3, 5, 7]
+ *
+ * @example
+ * // Empty result for small limits
+ * generatePrimes(1); // Returns []
+ *
+ * @example
+ * // Larger range
+ * generatePrimes(20); // Returns [2, 3, 5, 7, 11, 13, 17, 19]
+ *
+ * @note This implementation uses the Sieve of Eratosthenes algorithm, which is efficient
+ * for finding all primes up to a moderate limit. For very large limits, memory usage
+ * may become a concern as the sieve requires O(n) space.
  *
  * @complexity Time: O(n log log n), Space: O(n) - Where n is the limit
  */

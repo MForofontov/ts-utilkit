@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Deprecated
+- `generateRandomString`: use `randomSequence` from `@ts-utilkit/random` directly. Note: this function is NOT cryptographically secure — for secure random strings use `generateRandomString` from `@ts-utilkit/string`.
+
 ### Added
 - Add `@ts-utilkit/random` as a declared package dependency
 - Add `@ts-utilkit/object` as a declared package dependency

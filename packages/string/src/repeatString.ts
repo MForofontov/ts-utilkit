@@ -1,37 +1,34 @@
 /**
- * Repeats a string a specified number of times.
+ * Returns a string repeated a given number of times.
+ *
+ * @deprecated Use native `str.repeat(count)` directly.
+ * Will be removed in the next major version.
  *
  * @param str - The string to repeat.
- * @param count - The number of times to repeat the string (must be non-negative).
- * @returns The string repeated count times.
+ * @param count - Number of times to repeat (must be non-negative integer).
+ * @returns The repeated string.
  *
- * @throws {TypeError} If str is not a string or count is not a number.
- * @throws {Error} If count is NaN or negative.
- *
- * @example
- * // Basic usage
- * repeatString("hello", 3); // "hellohellohello"
+ * @throws {TypeError} If str is not a string.
+ * @throws {TypeError} If count is not a number.
+ * @throws {RangeError} If count is negative or not an integer.
  *
  * @example
- * // Edge cases
- * repeatString("test", 0); // ""
- * repeatString("x", 1); // "x"
+ * repeatString('ab', 3); // 'ababab'
+ * repeatString('x', 0);  // ''
  *
- * @example
- * // Special characters
- * repeatString("-=", 5); // "-=-=-=-=-="
- *
- * @note This is a wrapper around the native String.prototype.repeat() method with validation.
- * @note Count is truncated to an integer if a float is provided.
- *
- * @complexity Time: O(n*count), Space: O(n*count) where n is the length of the string
+ * @complexity Time: O(n*count), Space: O(n*count)
  */
 export function repeatString(str: string, count: number): string {
-  if (isNaN(count)) {
-    throw new Error('Count must be a number');
+  if (typeof str !== 'string') {
+    throw new TypeError(`str must be a string, got ${typeof str}`);
   }
-  if (count < 0) {
-    throw new Error('Count must be non-negative');
+  if (typeof count !== 'number' || isNaN(count)) {
+    throw new TypeError(`count must be a number, got ${typeof count}`);
+  }
+  if (count < 0 || !Number.isInteger(count)) {
+    throw new RangeError(
+      `count must be a non-negative integer, got ${count}`,
+    );
   }
   return str.repeat(count);
 }

@@ -1,55 +1,36 @@
 /**
- * Replaces only the first occurrence of a substring in a string (case-sensitive).
+ * Replaces the first occurrence of a search string with a replacement string.
  *
- * @param str - The string to perform replacement in.
- * @param searchValue - The substring to find and replace.
- * @param replaceValue - The substring to insert in place of searchValue.
- * @returns A new string with the first occurrence replaced, or original if not found.
+ * @deprecated Use native `str.replace(search, replacement)` directly.
+ * Will be removed in the next major version.
  *
- * @throws {TypeError} If str, searchValue, or replaceValue is not a string.
+ * @param str - The source string.
+ * @param search - The string to search for.
+ * @param replacement - The string to replace with.
+ * @returns A new string with the first occurrence replaced.
  *
- * @example
- * // Basic usage
- * replaceFirst("hello world", "world", "everyone"); // "hello everyone"
- * replaceFirst("hello world world", "world", "everyone"); // "hello everyone world"
+ * @throws {TypeError} If any argument is not a string.
  *
  * @example
- * // Case-sensitive replacement
- * replaceFirst("Hello World", "world", "there"); // "Hello World" (not found)
- * replaceFirst("Hello World", "World", "there"); // "Hello there"
+ * replaceFirst('hello world hello', 'hello', 'hi'); // 'hi world hello'
  *
- * @example
- * // Empty search value
- * replaceFirst("hello", "", "X"); // "hello" (no replacement)
- *
- * @example
- * // Not found
- * replaceFirst("hello world", "xyz", "abc"); // "hello world"
- *
- * @example
- * // Real-world: replacing first tag
- * const html = "<div>First</div><div>Second</div>";
- * const updated = replaceFirst(html, "<div>", "<span>");
- * // Result: "<span>First</div><div>Second</div>"
- *
- * @note Only replaces the first occurrence; subsequent matches are unchanged.
- * @note Replacement is case-sensitive.
- * @note Returns original string if searchValue is empty or not found.
- * @note For replacing all occurrences, use replaceSubstring().
- *
- * @complexity Time: O(n), Space: O(n) where n is the length of the string
+ * @complexity Time: O(n), Space: O(n)
  */
 export function replaceFirst(
   str: string,
-  searchValue: string,
-  replaceValue: string,
+  search: string,
+  replacement: string,
 ): string {
-  if (searchValue === '') {
-    return str;
+  if (typeof str !== 'string') {
+    throw new TypeError(`str must be a string, got ${typeof str}`);
   }
-  const index = str.indexOf(searchValue);
-  if (index === -1) {
-    return str;
+  if (typeof search !== 'string') {
+    throw new TypeError(`search must be a string, got ${typeof search}`);
   }
-  return str.replace(searchValue, replaceValue);
+  if (typeof replacement !== 'string') {
+    throw new TypeError(
+      `replacement must be a string, got ${typeof replacement}`,
+    );
+  }
+  return str.replace(search, replacement);
 }

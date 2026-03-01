@@ -2,6 +2,8 @@
  * Creates a new object with all properties from the source except those with empty values.
  * Empty values are defined as null, undefined, or empty strings.
  *
+ * @see {@link compactObject} for a recursive alternative that only removes `null` and `undefined` (keeps empty strings).
+ *
  * @param obj - The source object to filter.
  * @returns A new object containing only properties with non-empty values.
  *

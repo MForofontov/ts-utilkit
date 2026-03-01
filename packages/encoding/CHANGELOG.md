@@ -19,7 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Changes to existing functionality
 
 ### Fixed
-- Bug fixes
+- `encodeBase64`: was incorrectly producing URL-safe base64 (`-`, `_`, no `=` padding) — now correctly produces standard RFC 4648 §4 base64 (`+`, `/`, `=` padding preserved). URL-safe output remains available via the dedicated `encodeBase64URL` function.
 
 ## [0.1.0] - 2026-01-26
 

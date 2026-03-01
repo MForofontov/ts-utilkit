@@ -258,4 +258,28 @@ describe('sumArrayElements', () => {
     // Assert
     expect(result).toBeCloseTo(expected, -10); // Less precision for very large numbers
   });
+
+  // Test case 21: Error case - null input
+  it('21. should throw TypeError for null input', () => {
+    expect(() => sumArrayElements(null as unknown as number[])).toThrow(TypeError);
+    expect(() => sumArrayElements(null as unknown as number[])).toThrow(
+      'arr must be an array, got object',
+    );
+  });
+
+  // Test case 22: Error case - string input
+  it('22. should throw TypeError for string input', () => {
+    expect(() => sumArrayElements('not an array' as unknown as number[])).toThrow(TypeError);
+    expect(() => sumArrayElements('not an array' as unknown as number[])).toThrow(
+      'arr must be an array, got string',
+    );
+  });
+
+  // Test case 23: Error case - number input
+  it('23. should throw TypeError for number input', () => {
+    expect(() => sumArrayElements(42 as unknown as number[])).toThrow(TypeError);
+    expect(() => sumArrayElements(42 as unknown as number[])).toThrow(
+      'arr must be an array, got number',
+    );
+  });
 });

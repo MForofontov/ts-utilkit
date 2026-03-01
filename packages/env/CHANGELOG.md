@@ -14,7 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - New function `requireEnvAll` for requiring multiple env vars at once, reporting all missing keys in a single error
 
 ### Changed
-- Changes to existing functionality
+- `getEnv`: added TypeScript overload signatures so callers passing a `defaultValue` now receive `string` (not `string | undefined`) — fully backward-compatible, no runtime change
 
 ### Fixed
 - Bug fixes

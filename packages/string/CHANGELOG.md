@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Deprecated
+- `startsWith`: pure native wrapper over `String.prototype.startsWith()` — use native method directly
+- `endsWith`: pure native wrapper over `String.prototype.endsWith()` — use native method directly
+- `indexOfSubstring`: pure native wrapper over `String.prototype.indexOf()` — use native method directly
+- `lastIndexOfSubstring`: pure native wrapper over `String.prototype.lastIndexOf()` — use native method directly
+- `splitString`: pure native wrapper over `String.prototype.split()` — use native method directly
+- `toLowerCase`: pure native wrapper over `String.prototype.toLowerCase()` — use native method directly
+- `toUpperCase`: pure native wrapper over `String.prototype.toUpperCase()` — use native method directly
+- `repeatString`: pure native wrapper over `String.prototype.repeat()` — use native method directly
+- `replaceFirst`: thin wrapper over `String.prototype.replace()` with no meaningful added logic
+- `replaceSubstring`: thin wrapper over `str.split(s).join(r)` with no meaningful added logic
+- `extractSubstring`: thin wrapper over `String.prototype.slice()` with minimal bounds validation
+- `reverseString`: one-liner `str.split('').reverse().join('')` with no added logic
+- `generateRandomAlphanumeric`: previously deprecated delegate to `randomSequence`; now removed
+
 ### Changed
 - `countCharacterOccurrences`: replace inline regex-escape pattern with `escapeRegex` from the same package
 - `countSubstring`: replace inline regex-escape pattern with `escapeRegex` from the same package

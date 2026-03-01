@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Deprecated
+- `arrayToSet`: thin wrapper around `new Set(array)`; use that constructor directly. Will be removed in the next major version.
+- `setToArray`: thin wrapper around `Array.from(set)` / `[...set]`; use those directly. Will be removed in the next major version.
+
 ### Added
 - Add `createCounterMap` — counts occurrences of each item in an array and returns a `Map<T, number>` keyed by item identity
 - Add `createMultiMap` — factory that creates a multi-map data structure (`MultiMap<K, V>`) where each key holds an ordered array of values, with full CRUD methods and method chaining support

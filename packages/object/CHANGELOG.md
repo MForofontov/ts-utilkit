@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- `compactObject`: add `@see` cross-reference to `removeEmptyValues` in JSDoc to clarify the difference (recursive vs shallow, omits empty strings vs not)
+- `removeEmptyValues`: add `@see` cross-reference to `compactObject` in JSDoc to clarify the difference
+
+### Deprecated
+- `queryStringToObject`: use `deserializeFromQueryString` from `@ts-utilkit/serialization` instead — the serialization version supports richer options (arrayFormat, decodeValues). Will be removed in the next major version.
+- `objectToQueryString`: use `serializeToQueryString` from `@ts-utilkit/serialization` instead — the serialization version supports richer options (arrayFormat, encodeValues). Will be removed in the next major version.
+
 ### Added
 - `zipObject`: creates an object from separate keys and values arrays
 - `findKey`: returns the first key whose value satisfies a predicate

@@ -30,6 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `randomBetween`: delegate integer path to `randomInt(min, max)` and float path to `randomFloat(min, max, 15)`
 
 ### Deprecated
+- `randomUUID`: uses `Math.random()` — **NOT cryptographically secure**; use `crypto.randomUUID()` (Node.js ≥ 14.17) for all security-sensitive UUID generation. Will be removed in the next major version.
 - `randomBetween`: use `randomInt(min, max)` for integers or `randomFloat(min, max)` for floats directly. Will be removed in the next major version.
 
 ### Fixed

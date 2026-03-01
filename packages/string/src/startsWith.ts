@@ -1,38 +1,30 @@
 /**
- * Checks if a string starts with a specified substring.
+ * Checks whether a string begins with the specified search string.
+ *
+ * @deprecated Use native `str.startsWith(searchString)` directly.
+ * Will be removed in the next major version.
  *
  * @param str - The string to check.
- * @param start - The substring to check for at the beginning.
- * @returns True if the string starts with the specified substring, false otherwise.
+ * @param searchString - The string to search for at the start.
+ * @returns True if str begins with searchString, false otherwise.
  *
- * @throws {TypeError} If str or start is not a string.
- *
- * @example
- * // Basic usage
- * startsWith("hello world", "hello"); // true
- * startsWith("hello world", "world"); // false
+ * @throws {TypeError} If str is not a string.
+ * @throws {TypeError} If searchString is not a string.
  *
  * @example
- * // Case-sensitive matching
- * startsWith("Hello World", "Hello"); // true
- * startsWith("Hello World", "hello"); // false
+ * startsWith('hello world', 'hello'); // true
+ * startsWith('hello world', 'world'); // false
  *
- * @example
- * // Empty strings
- * startsWith("hello", ""); // true (empty string matches)
- * startsWith("", "hello"); // false
- * startsWith("", ""); // true
- *
- * @example
- * // Special characters
- * startsWith("!@#$%", "!@#"); // true
- *
- * @note This is a wrapper around the native String.prototype.startsWith() method.
- * @note Comparison is case-sensitive.
- * @note An empty substring always returns true (all strings start with empty string).
- *
- * @complexity Time: O(m), Space: O(1) where m is the length of the start substring
+ * @complexity Time: O(n), Space: O(1)
  */
-export function startsWith(str: string, start: string): boolean {
-  return str.startsWith(start);
+export function startsWith(str: string, searchString: string): boolean {
+  if (typeof str !== 'string') {
+    throw new TypeError(`str must be a string, got ${typeof str}`);
+  }
+  if (typeof searchString !== 'string') {
+    throw new TypeError(
+      `searchString must be a string, got ${typeof searchString}`,
+    );
+  }
+  return str.startsWith(searchString);
 }

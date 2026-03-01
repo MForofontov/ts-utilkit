@@ -1,6 +1,10 @@
 /**
  * Converts an object into a URL-encoded query string suitable for HTTP requests.
  *
+ * @deprecated Use `serializeToQueryString` from `@ts-utilkit/serialization` instead.
+ * The serialization package version supports richer options (arrayFormat, encodeValues).
+ * Will be removed in the next major version.
+ *
  * @param obj - The object whose properties will be converted to query parameters.
  * @returns A URL-encoded query string without the leading '?'.
  *

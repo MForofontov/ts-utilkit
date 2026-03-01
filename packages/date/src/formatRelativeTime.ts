@@ -2,6 +2,10 @@
  * Formats the difference between a date and an optional base date as a human-readable
  * relative time string such as `"2 hours ago"` or `"in 3 days"`.
  *
+ * @deprecated Use `formatRelativeTime` from `@ts-utilkit/format` instead.
+ * The format package version accepts `Date | string | number` and is the canonical implementation.
+ * Will be removed in the next major version.
+ *
  * @param date - The Date to express relative to `baseDate`.
  * @param baseDate - The reference point for the comparison (default: `new Date()`).
  * @returns A human-readable relative time string.

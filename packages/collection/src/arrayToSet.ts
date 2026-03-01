@@ -24,6 +24,9 @@
  * @note Preserves insertion order of first occurrence
  * @note Uses strict equality (===) for duplicate detection
  *
+ * @deprecated Use `new Set(array)` directly — this function wraps a single constructor call.
+ * Will be removed in the next major version.
+ *
  * @complexity Time: O(n) where n is array length, Space: O(n)
  */
 export function arrayToSet<T>(array: T[]): Set<T> {

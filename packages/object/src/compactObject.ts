@@ -2,6 +2,8 @@
  * Creates a new object with all properties from the source except those with null or undefined values.
  * Recursively removes null and undefined values from nested objects and arrays.
  *
+ * @see {@link removeEmptyValues} for a shallow alternative that also strips empty strings (`""`).
+ *
  * @param obj - The source object to process.
  * @returns A new object containing only properties with non-null and non-undefined values.
  *

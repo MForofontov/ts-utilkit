@@ -1,48 +1,30 @@
 /**
- * Finds the index of the first occurrence of a substring within a string (case-sensitive).
+ * Returns the index of the first occurrence of a substring within a string, or -1 if not found.
  *
- * @param str - The string to search in.
- * @param substr - The substring to find.
- * @returns The zero-based index of the first occurrence, or -1 if not found.
+ * @deprecated Use native `str.indexOf(searchString)` directly.
+ * Will be removed in the next major version.
+ *
+ * @param str - The string to search within.
+ * @param searchString - The substring to search for.
+ * @returns The index of the first occurrence, or -1 if not found.
  *
  * @throws {TypeError} If str is not a string.
- * @throws {TypeError} If substr is not a string.
+ * @throws {TypeError} If searchString is not a string.
  *
  * @example
- * // Basic usage
- * indexOfSubstring("hello world", "world"); // 6
- * indexOfSubstring("hello world", "hello"); // 0
+ * indexOfSubstring('hello world', 'world'); // 6
+ * indexOfSubstring('hello world', 'xyz');   // -1
  *
- * @example
- * // Case-sensitive search
- * indexOfSubstring("Hello World", "world"); // -1 (not found)
- * indexOfSubstring("Hello World", "World"); // 6
- *
- * @example
- * // Not found cases
- * indexOfSubstring("hello", "xyz"); // -1
- * indexOfSubstring("", "test"); // -1
- *
- * @example
- * // Empty substring
- * indexOfSubstring("hello", ""); // 0 (empty string found at start)
- * indexOfSubstring("", ""); // 0
- *
- * @example
- * // Real-world: finding markers
- * const text = "User: John, Age: 30";
- * const agePos = indexOfSubstring(text, "Age:");
- * if (agePos !== -1) {
- *   const age = text.substring(agePos + 5).trim();
- * }
- *
- * @note This is a wrapper around String.prototype.indexOf().
- * @note Search is case-sensitive.
- * @note Returns position of first occurrence only (use lastIndexOf for last).
- * @note Empty substring always returns 0.
- *
- * @complexity Time: O(n*m), Space: O(1) where n is str length, m is substr length
+ * @complexity Time: O(n), Space: O(1)
  */
-export function indexOfSubstring(str: string, substr: string): number {
-  return str.indexOf(substr);
+export function indexOfSubstring(str: string, searchString: string): number {
+  if (typeof str !== 'string') {
+    throw new TypeError(`str must be a string, got ${typeof str}`);
+  }
+  if (typeof searchString !== 'string') {
+    throw new TypeError(
+      `searchString must be a string, got ${typeof searchString}`,
+    );
+  }
+  return str.indexOf(searchString);
 }

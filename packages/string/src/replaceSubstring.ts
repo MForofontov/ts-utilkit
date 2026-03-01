@@ -1,53 +1,36 @@
 /**
- * Replaces all occurrences of a substring in a string with a new substring.
+ * Replaces all occurrences of a search string with a replacement string.
  *
- * @param str - The string to search within.
- * @param searchValue - The substring to find.
- * @param replaceValue - The substring to replace with.
- * @returns The string with all occurrences of the search substring replaced with the replacement substring.
+ * @deprecated Use native `str.replaceAll(search, replacement)` directly.
+ * Will be removed in the next major version.
  *
- * @throws {TypeError} If str is not a string.
- * @throws {TypeError} If searchValue is not a string.
- * @throws {TypeError} If replaceValue is not a string.
+ * @param str - The source string.
+ * @param search - The string to search for (all occurrences).
+ * @param replacement - The string to replace with.
+ * @returns A new string with all occurrences replaced.
  *
- * @example
- * // Basic replacement
- * replaceSubstring("hello world world", "world", "everyone"); // "hello everyone everyone"
+ * @throws {TypeError} If any argument is not a string.
  *
  * @example
- * // Multiple occurrences
- * replaceSubstring("foo bar foo bar", "foo", "baz"); // "baz bar baz bar"
+ * replaceSubstring('hello hello hello', 'hello', 'hi'); // 'hi hi hi'
  *
- * @example
- * // No matches found
- * replaceSubstring("hello world", "xyz", "abc"); // "hello world"
- *
- * @example
- * // Empty search string
- * replaceSubstring("hello", "", "x"); // "hello"
- *
- * @example
- * // Replace with empty string (removal)
- * replaceSubstring("hello world", " world", ""); // "hello"
- *
- * @note Replaces ALL occurrences of the search substring, not just the first.
- * @note If searchValue is empty string, returns the original string unchanged.
- * @note Case-sensitive matching.
- * @note Uses split and join internally for global replacement.
- *
- * @complexity Time: O(n), Space: O(n) where n is the length of the string
+ * @complexity Time: O(n), Space: O(n)
  */
 export function replaceSubstring(
   str: string,
-  searchValue: string,
-  replaceValue: string,
+  search: string,
+  replacement: string,
 ): string {
-  if (searchValue === '') {
-    return str;
+  if (typeof str !== 'string') {
+    throw new TypeError(`str must be a string, got ${typeof str}`);
   }
-  const index = str.indexOf(searchValue);
-  if (index === -1) {
-    return str;
+  if (typeof search !== 'string') {
+    throw new TypeError(`search must be a string, got ${typeof search}`);
   }
-  return str.split(searchValue).join(replaceValue);
+  if (typeof replacement !== 'string') {
+    throw new TypeError(
+      `replacement must be a string, got ${typeof replacement}`,
+    );
+  }
+  return str.split(search).join(replacement);
 }

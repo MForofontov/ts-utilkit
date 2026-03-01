@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Deprecated
+- `isNil`: thin wrapper over `value === null || value === undefined` — use `value == null` or an explicit null-check directly
+- `bytesToSize`: pure delegate to `formatBytes` from `@ts-utilkit/format` with no added logic — use `formatBytes` directly
+
 ### Added
 - Declare `@ts-utilkit/format` as an explicit package dependency
 - Add `memoize` function to cache synchronous function results with optional custom key serialisation (sync counterpart to `asyncMemoize`)

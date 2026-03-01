@@ -37,5 +37,11 @@
  * @complexity Time: O(1), Space: O(1)
  */
 export function isEven(n: number): boolean {
+  if (isNaN(n)) {
+    throw new Error('Input must be a number');
+  }
+  if (!Number.isInteger(n)) {
+    throw new Error('Input must be an integer');
+  }
   return n % 2 === 0;
 }

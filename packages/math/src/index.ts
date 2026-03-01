@@ -51,6 +51,7 @@ export * from './geometricFunctions/radiansToDegrees';
 
 // Number Theory Functions
 export * from './numberTheoryFunctions/gcd';
+export * from './numberTheoryFunctions/generatePrimes';
 export * from './numberTheoryFunctions/isEven';
 export * from './numberTheoryFunctions/isOdd';
 export * from './numberTheoryFunctions/isPerfectSquare';

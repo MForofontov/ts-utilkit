@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- `sumArrayElements`: added `Array.isArray` guard — now throws `TypeError` (e.g. `'arr must be an array, got object'`) when a non-array is passed, rather than silently producing `0`
+
+### Changed
+- `findMax`: replace `Math.max(...arr)` spread (stack overflow risk for arrays > ~100k elements) with a `reduce`-based implementation that preserves NaN propagation semantics
+- `findMin`: replace `Math.min(...arr)` spread (stack overflow risk for arrays > ~100k elements) with a `reduce`-based implementation that preserves NaN propagation semantics
+
+### Deprecated
+- `groupBy`: re-export of `groupByObject` from `@ts-utilkit/object`; use `groupByObject` directly
+- `generatePrimes`: moved to `@ts-utilkit/math` where it belongs as a number theory function; kept here with @deprecated for backward compatibility
+
 ### Added
 - Add `countBy` — group array elements by a key function and return a `Map<string, number>` of occurrence counts
 - Add `dropWhile` — drop leading elements while a predicate holds, returning all remaining elements

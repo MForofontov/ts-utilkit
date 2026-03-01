@@ -1,6 +1,10 @@
 /**
  * Safely parses JSON from a string, commonly used in web scraping for API responses.
  *
+ * @deprecated Use `safeJSONParse` from `@ts-utilkit/utility` instead.
+ * `safeJSONParse(str, null)` is equivalent and is the canonical implementation.
+ * Will be removed in the next major version.
+ *
  * @template T - The expected type of the parsed JSON.
  * @param jsonString - The JSON string to parse.
  * @returns Parsed JSON object or null if parsing fails.

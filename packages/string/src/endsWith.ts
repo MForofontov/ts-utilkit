@@ -1,39 +1,30 @@
 /**
- * Checks if a string ends with a specified substring.
+ * Checks whether a string ends with the specified search string.
+ *
+ * @deprecated Use native `str.endsWith(searchString)` directly.
+ * Will be removed in the next major version.
  *
  * @param str - The string to check.
- * @param end - The substring to check for at the end.
- * @returns True if the string ends with the specified substring, false otherwise.
+ * @param searchString - The string to search for at the end.
+ * @returns True if str ends with searchString, false otherwise.
  *
- * @throws {TypeError} If str or end is not a string.
- *
- * @example
- * // Basic usage
- * endsWith("hello world", "world"); // true
- * endsWith("hello world", "hello"); // false
+ * @throws {TypeError} If str is not a string.
+ * @throws {TypeError} If searchString is not a string.
  *
  * @example
- * // Case-sensitive matching
- * endsWith("Hello World", "World"); // true
- * endsWith("Hello World", "world"); // false
+ * endsWith('hello world', 'world'); // true
+ * endsWith('hello world', 'hello'); // false
  *
- * @example
- * // Empty strings
- * endsWith("hello", ""); // true (empty string matches)
- * endsWith("", "hello"); // false
- * endsWith("", ""); // true
- *
- * @example
- * // Special characters and punctuation
- * endsWith("hello!", "!"); // true
- * endsWith("file.txt", ".txt"); // true
- *
- * @note This is a wrapper around the native String.prototype.endsWith() method.
- * @note Comparison is case-sensitive.
- * @note An empty substring always returns true (all strings end with empty string).
- *
- * @complexity Time: O(m), Space: O(1) where m is the length of the end substring
+ * @complexity Time: O(n), Space: O(1)
  */
-export function endsWith(str: string, end: string): boolean {
-  return str.endsWith(end);
+export function endsWith(str: string, searchString: string): boolean {
+  if (typeof str !== 'string') {
+    throw new TypeError(`str must be a string, got ${typeof str}`);
+  }
+  if (typeof searchString !== 'string') {
+    throw new TypeError(
+      `searchString must be a string, got ${typeof searchString}`,
+    );
+  }
+  return str.endsWith(searchString);
 }

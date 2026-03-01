@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Deprecated
+- `getCurrentDateTimeISO`: thin wrapper around `new Date().toISOString()`; use that directly. Will be removed in the next major version.
+- `oneWeekAgo`: convenience alias for `addDays(date, -7)`; use that call directly. Will be removed in the next major version.
+- `formatRelativeTime`: use `formatRelativeTime` from `@ts-utilkit/format` instead. The format package version is the canonical implementation and accepts `Date | string | number`. Will be removed in the next major version.
+
 ### Added
 - Add `isAfter(d1, d2)` — returns `true` if `d1` is strictly after `d2` (millisecond precision)
 - Add `isBefore(d1, d2)` — returns `true` if `d1` is strictly before `d2` (millisecond precision)

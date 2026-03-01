@@ -1,58 +1,47 @@
 /**
- * Extracts a substring from a string based on the starting index and length.
+ * Extracts a substring from a string starting at the given index for the given length.
  *
- * @param str - The original string.
- * @param start - The starting index (0-based, must be non-negative).
- * @param length - The length of the substring to extract.
- * @returns The extracted substring of the specified length starting at the given index.
+ * @deprecated Use native `str.slice(startIndex, startIndex + length)` directly.
+ * Will be removed in the next major version.
  *
- * @throws {Error} If start or length is NaN.
- * @throws {Error} If start is greater than string length.
- * @throws {Error} If start is negative.
+ * @param str - The source string.
+ * @param startIndex - The zero-based index to start extracting from.
+ * @param length - The number of characters to extract.
+ * @returns The extracted substring.
  *
- * @example
- * // Basic usage
- * extractSubstring("hello world", 6, 5); // "world"
- * extractSubstring("hello world", 0, 5); // "hello"
+ * @throws {TypeError} If str is not a string.
+ * @throws {TypeError} If startIndex or length is not a number.
+ * @throws {RangeError} If startIndex is negative or length is negative.
  *
  * @example
- * // Extract from middle
- * extractSubstring("JavaScript", 4, 6); // "Script"
+ * extractSubstring('hello world', 6, 5); // 'world'
+ * extractSubstring('abcdef', 0, 3);      // 'abc'
  *
- * @example
- * // Length extends beyond string
- * extractSubstring("hello", 2, 10); // "llo" (stops at string end)
- *
- * @example
- * // Zero length
- * extractSubstring("hello", 2, 0); // ""
- *
- * @example
- * // Start at end
- * extractSubstring("hello", 5, 3); // ""
- *
- * @note This is a wrapper around String.slice() with validation.
- * @note If start + length exceeds string length, returns substring to end of string.
- * @note Negative length values are treated as 0 (returns empty string).
- * @note For more flexible extraction, consider using String.slice() or String.substring() directly.
- *
- * @complexity Time: O(n), Space: O(n) where n is the length of extracted substring
+ * @complexity Time: O(n), Space: O(n)
  */
 export function extractSubstring(
   str: string,
-  start: number,
+  startIndex: number,
   length: number,
 ): string {
-  if (isNaN(start) || isNaN(length)) {
-    throw new Error('Start index and length must be numbers');
+  if (typeof str !== 'string') {
+    throw new TypeError(`str must be a string, got ${typeof str}`);
   }
-  if (start > str.length) {
-    throw new Error(
-      'Start index must be less than or equal to the string length',
+  if (typeof startIndex !== 'number' || isNaN(startIndex)) {
+    throw new TypeError(
+      `startIndex must be a number, got ${typeof startIndex}`,
     );
   }
-  if (start < 0) {
-    throw new Error('Start index must be non-negative');
+  if (typeof length !== 'number' || isNaN(length)) {
+    throw new TypeError(`length must be a number, got ${typeof length}`);
   }
-  return str.slice(start, start + length);
+  if (startIndex < 0) {
+    throw new RangeError(
+      `startIndex must be non-negative, got ${startIndex}`,
+    );
+  }
+  if (length < 0) {
+    throw new RangeError(`length must be non-negative, got ${length}`);
+  }
+  return str.slice(startIndex, startIndex + length);
 }

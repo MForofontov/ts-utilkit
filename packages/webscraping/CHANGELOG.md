@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Deprecated
+- `parseJSON`: use `safeJSONParse(str, null)` from `@ts-utilkit/utility` instead — functionally equivalent and is the canonical implementation. Will be removed in the next major version.
+
 ### Added
 - New features go here
 

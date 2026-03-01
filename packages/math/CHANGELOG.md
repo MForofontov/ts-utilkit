@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Deprecated
+- `oddOrEven`: redundant with `isEven` and `isOdd`; use those directly. Will be removed in the next major version.
+
+### Fixed
+- `isEven`: added NaN and non-integer input validation (throws `Error` for NaN; throws `Error` for floats) — consistent with sibling `isOdd` behaviour
+
+### Added
+- `generatePrimes`: Sieve of Eratosthenes implementation moved from `@ts-utilkit/array` — this is a number theory function and belongs in the math package
+
 ### Added
 - Declare `@ts-utilkit/array` as an explicit package dependency (formalises existing cross-package import)
 - `clamp(n, min, max)`: clamp a number to an inclusive range; throws for NaN inputs or min > max
