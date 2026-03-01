@@ -18,6 +18,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `repeatString`: pure native wrapper over `String.prototype.repeat()` — use native method directly
 - `replaceFirst`: thin wrapper over `String.prototype.replace()` with no meaningful added logic
 - `replaceSubstring`: thin wrapper over `str.split(s).join(r)` with no meaningful added logic
+
+### Fixed
+- `countVowels`, `countWords`, `findLongestWord`, `firstNonRepeatingCharacter`, `hasLowercase`, `hasUppercase`, `isAlpha`, `isAlphanumeric`, `isNumeric`, `isPalindrome`, `isValidEmail`, `isWhitespace`: added runtime `typeof` guard to enforce the documented `@throws {TypeError}` when a non-string argument is passed (previously the documented error was never thrown)
 - `extractSubstring`: thin wrapper over `String.prototype.slice()` with minimal bounds validation
 - `reverseString`: one-liner `str.split('').reverse().join('')` with no added logic
 - `generateRandomAlphanumeric`: previously deprecated delegate to `randomSequence`; now removed

@@ -107,4 +107,20 @@ describe('hasLowercase', () => {
     const result: boolean = hasLowercase(str);
     expect(result).toBe(expected);
   });
+
+  // Test case 14: should throw TypeError for non-string input
+  it('14. should throw TypeError when str is not a string', () => {
+    expect(() => hasLowercase(null as unknown as string)).toThrow(TypeError);
+    expect(() => hasLowercase(null as unknown as string)).toThrow(
+      'str must be a string, got object',
+    );
+  });
+
+  // Test case 15: should throw TypeError for number input
+  it('15. should throw TypeError when str is a number', () => {
+    expect(() => hasLowercase(123 as unknown as string)).toThrow(TypeError);
+    expect(() => hasLowercase(123 as unknown as string)).toThrow(
+      'str must be a string, got number',
+    );
+  });
 });

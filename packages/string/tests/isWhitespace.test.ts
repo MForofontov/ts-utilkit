@@ -123,4 +123,20 @@ describe('isWhitespace', () => {
     const result: boolean = isWhitespace(str);
     expect(result).toBe(expected);
   });
+
+  // Test case 16: should throw TypeError for non-string input
+  it('16. should throw TypeError when str is not a string', () => {
+    expect(() => isWhitespace(null as unknown as string)).toThrow(TypeError);
+    expect(() => isWhitespace(null as unknown as string)).toThrow(
+      'str must be a string, got object',
+    );
+  });
+
+  // Test case 17: should throw TypeError for number input
+  it('17. should throw TypeError when str is a number', () => {
+    expect(() => isWhitespace(123 as unknown as string)).toThrow(TypeError);
+    expect(() => isWhitespace(123 as unknown as string)).toThrow(
+      'str must be a string, got number',
+    );
+  });
 });

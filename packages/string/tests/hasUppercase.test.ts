@@ -107,4 +107,20 @@ describe('hasUppercase', () => {
     const result: boolean = hasUppercase(str);
     expect(result).toBe(expected);
   });
+
+  // Test case 14: should throw TypeError for non-string input
+  it('14. should throw TypeError when str is not a string', () => {
+    expect(() => hasUppercase(null as unknown as string)).toThrow(TypeError);
+    expect(() => hasUppercase(null as unknown as string)).toThrow(
+      'str must be a string, got object',
+    );
+  });
+
+  // Test case 15: should throw TypeError for number input
+  it('15. should throw TypeError when str is a number', () => {
+    expect(() => hasUppercase(123 as unknown as string)).toThrow(TypeError);
+    expect(() => hasUppercase(123 as unknown as string)).toThrow(
+      'str must be a string, got number',
+    );
+  });
 });

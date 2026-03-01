@@ -20,6 +20,8 @@
  *
  * @complexity Time: O(1), Space: O(1)
  */
+export function parseEnvFloat(key: string): number | undefined;
+export function parseEnvFloat(key: string, defaultValue: number): number;
 export function parseEnvFloat(
   key: string,
   defaultValue?: number,

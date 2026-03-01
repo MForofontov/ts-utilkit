@@ -32,6 +32,9 @@
  * @complexity Time: O(n), Space: O(n) where n is the length of the string
  */
 export function countWords(str: string): number {
+  if (typeof str !== 'string') {
+    throw new TypeError(`str must be a string, got ${typeof str}`);
+  }
   if (str.trim() === '') {
     return 0;
   }

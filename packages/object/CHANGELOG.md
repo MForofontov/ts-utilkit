@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Deprecated
 - `queryStringToObject`: use `deserializeFromQueryString` from `@ts-utilkit/serialization` instead — the serialization version supports richer options (arrayFormat, decodeValues). Will be removed in the next major version.
 - `objectToQueryString`: use `serializeToQueryString` from `@ts-utilkit/serialization` instead — the serialization version supports richer options (arrayFormat, encodeValues). Will be removed in the next major version.
+- `countProperties`: functionally identical to `objectSize(obj)` — both return `Object.keys(obj).length`; use `objectSize` instead. Will be removed in the next major version.
 
 ### Added
 - `zipObject`: creates an object from separate keys and values arrays

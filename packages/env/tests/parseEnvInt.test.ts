@@ -108,4 +108,11 @@ describe('parseEnvInt', () => {
       'defaultValue must be a valid number, not NaN',
     );
   });
+
+  it('16. should return a number (never undefined) when a defaultValue is provided', () => {
+    delete process.env['PARSE_ENV_INT_OVERLOAD_TEST'];
+    const result = parseEnvInt('PARSE_ENV_INT_OVERLOAD_TEST', 99);
+    expect(result).toBe(99);
+    expect(typeof result).toBe('number');
+  });
 });

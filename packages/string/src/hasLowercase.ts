@@ -38,5 +38,8 @@
  * @complexity Time: O(n), Space: O(1) where n is the length of the string
  */
 export function hasLowercase(str: string): boolean {
+  if (typeof str !== 'string') {
+    throw new TypeError(`str must be a string, got ${typeof str}`);
+  }
   return /[a-z]/.test(str);
 }

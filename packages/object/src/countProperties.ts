@@ -31,6 +31,9 @@
  * @note This function is functionally equivalent to objectSize().
  * @note For arrays specifically, prefer using array.length instead.
  *
+ * @deprecated Use `objectSize(obj)` instead — both return `Object.keys(obj).length`.
+ * Will be removed in the next major version.
+ *
  * @complexity Time: O(n), Space: O(n) where n is the number of properties
  */
 export function countProperties(obj: Record<string, unknown>): number {

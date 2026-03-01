@@ -25,5 +25,8 @@
  * @complexity Time: O(n), Space: O(1) where n is the length of the input string
  */
 export function countVowels(str: string): number {
+  if (typeof str !== 'string') {
+    throw new TypeError(`str must be a string, got ${typeof str}`);
+  }
   return (str.match(/[aeiou]/gi) || []).length;
 }

@@ -33,6 +33,9 @@
  * @complexity Time: O(n), Space: O(k) where n is string length and k is number of unique characters
  */
 export function firstNonRepeatingCharacter(str: string): string | null {
+  if (typeof str !== 'string') {
+    throw new TypeError(`str must be a string, got ${typeof str}`);
+  }
   // Create an object to store the count of each character
   const charCount: { [key: string]: number } = {};
 

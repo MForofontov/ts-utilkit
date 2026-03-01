@@ -40,6 +40,9 @@
 export function hexToRgb(
   hex: string,
 ): { r: number; g: number; b: number } | null {
+  if (typeof hex !== 'string') {
+    throw new TypeError(`hex must be a string, got ${typeof hex}`);
+  }
   const hexValue = hex.replace(/^#/, '');
   if (!/^[\da-fA-F]{6}$/.test(hexValue)) return null;
 

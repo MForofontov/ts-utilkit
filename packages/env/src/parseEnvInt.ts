@@ -20,6 +20,8 @@
  *
  * @complexity Time: O(1), Space: O(1)
  */
+export function parseEnvInt(key: string): number | undefined;
+export function parseEnvInt(key: string, defaultValue: number): number;
 export function parseEnvInt(
   key: string,
   defaultValue?: number,

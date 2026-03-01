@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Deprecated
 - `oddOrEven`: redundant with `isEven` and `isOdd`; use those directly. Will be removed in the next major version.
+- `calculateBinomialCoefficient`: mathematically identical to `calculateCombination(n, k)`; use `calculateCombination` instead. Will be removed in the next major version.
 
 ### Fixed
 - `isEven`: added NaN and non-integer input validation (throws `Error` for NaN; throws `Error` for floats) — consistent with sibling `isOdd` behaviour

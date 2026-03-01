@@ -110,4 +110,11 @@ describe('parseEnvFloat', () => {
       'defaultValue must be a valid number, not NaN',
     );
   });
+
+  it('16. should return a number (never undefined) when a defaultValue is provided', () => {
+    delete process.env['PARSE_ENV_FLOAT_OVERLOAD_TEST'];
+    const result = parseEnvFloat('PARSE_ENV_FLOAT_OVERLOAD_TEST', 3.14);
+    expect(result).toBe(3.14);
+    expect(typeof result).toBe('number');
+  });
 });

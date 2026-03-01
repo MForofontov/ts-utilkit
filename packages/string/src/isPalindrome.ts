@@ -27,6 +27,9 @@
  * @complexity Time: O(n), Space: O(n) where n is the length of the string
  */
 export function isPalindrome(str: string): boolean {
+  if (typeof str !== 'string') {
+    throw new TypeError(`str must be a string, got ${typeof str}`);
+  }
   const cleanedStr = str.replace(/[^A-Za-z0-9]/g, '').toLowerCase();
   return cleanedStr === cleanedStr.split('').reverse().join('');
 }

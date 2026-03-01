@@ -15,6 +15,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - `getEnv`: added TypeScript overload signatures so callers passing a `defaultValue` now receive `string` (not `string | undefined`) — fully backward-compatible, no runtime change
+- `parseEnvInt`: added TypeScript overload signatures so callers passing a `defaultValue` now receive `number` (not `number | undefined`) — fully backward-compatible, no runtime change
+- `parseEnvFloat`: added TypeScript overload signatures so callers passing a `defaultValue` now receive `number` (not `number | undefined`) — fully backward-compatible, no runtime change
 
 ### Fixed
 - Bug fixes
