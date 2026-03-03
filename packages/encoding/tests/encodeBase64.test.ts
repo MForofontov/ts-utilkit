@@ -57,11 +57,4 @@ describe('encodeBase64', () => {
     expect(decoded).toBe(input);
   });
 
-  // Test case 11: Throw TypeError for non-string input
-  it('11. should throw TypeError when input is not a string', () => {
-    expect(() => encodeBase64(123 as unknown as string)).toThrow(TypeError);
-    expect(() => encodeBase64(123 as unknown as string)).toThrow(
-      'str must be a string, got number',
-    );
-  });
 });

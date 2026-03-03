@@ -7,7 +7,6 @@
  * @returns A non-negative random floating-point number drawn from the
  *   Exponential(λ) distribution.
  *
- * @throws {TypeError} If lambda is not a number.
  * @throws {Error} If lambda is NaN or not greater than 0.
  *
  * @example
@@ -31,9 +30,6 @@
  * @complexity Time: O(1), Space: O(1)
  */
 export function randomExponential(lambda: number): number {
-  if (typeof lambda !== 'number') {
-    throw new TypeError(`lambda must be a number, got ${typeof lambda}`);
-  }
   if (isNaN(lambda)) {
     throw new Error('lambda must be a valid number, not NaN');
   }

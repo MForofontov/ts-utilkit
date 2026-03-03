@@ -190,25 +190,4 @@ describe('extractImages', () => {
     expect(result).toEqual(expected);
   });
 
-  // Error cases
-  it('15. should throw TypeError when html is not a string', () => {
-    // Arrange
-    const html = 123 as unknown as string;
-    const expectedMessage = 'html must be a string, got number';
-
-    // Act & Assert
-    expect(() => extractImages(html)).toThrow(TypeError);
-    expect(() => extractImages(html)).toThrow(expectedMessage);
-  });
-
-  it('16. should throw TypeError when baseUrl is not a string', () => {
-    // Arrange
-    const html = '<img src="/logo.png">';
-    const baseUrl = 123 as unknown as string;
-    const expectedMessage = 'baseUrl must be a string, got number';
-
-    // Act & Assert
-    expect(() => extractImages(html, baseUrl)).toThrow(TypeError);
-    expect(() => extractImages(html, baseUrl)).toThrow(expectedMessage);
-  });
 });

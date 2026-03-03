@@ -6,8 +6,6 @@
  * @param str - The string to convert.
  * @returns The camelCase version of the string.
  *
- * @throws {TypeError} If str is not a string.
- *
  * @example
  * toCamelCase('hello world');   // 'helloWorld'
  * toCamelCase('foo-bar-baz');   // 'fooBarBaz'
@@ -24,10 +22,6 @@
  * @complexity Time: O(n), Space: O(n)
  */
 export function toCamelCase(str: string): string {
-  if (typeof str !== 'string') {
-    throw new TypeError(`str must be a string, got ${typeof str}`);
-  }
-
   return str
     .trim()
     // Insert separator before uppercase letters following lowercase/digit

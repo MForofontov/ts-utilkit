@@ -5,7 +5,6 @@
  * @param defaultValue - Optional default value if variable is not set or invalid.
  * @returns The parsed float value or default value.
  *
- * @throws {TypeError} If key is not a string or defaultValue is not a number.
  * @throws {Error} If key is empty.
  *
  * @example
@@ -26,19 +25,6 @@ export function parseEnvFloat(
   key: string,
   defaultValue?: number,
 ): number | undefined {
-  if (typeof key !== 'string') {
-    throw new TypeError(`key must be a string, got ${typeof key}`);
-  }
-
-  if (defaultValue !== undefined && typeof defaultValue !== 'number') {
-    throw new TypeError(
-      `defaultValue must be a number, got ${typeof defaultValue}`,
-    );
-  }
-
-  if (defaultValue !== undefined && isNaN(defaultValue)) {
-    throw new TypeError('defaultValue must be a valid number, not NaN');
-  }
 
   if (key.length === 0) {
     throw new Error('key cannot be an empty string');

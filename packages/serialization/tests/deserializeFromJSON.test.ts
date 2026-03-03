@@ -149,32 +149,6 @@ describe('deserializeFromJSON', () => {
     expect(result).toEqual(expected);
   });
 
-  // Error cases
-  it('13. should throw TypeError when jsonString is not a string', () => {
-    // Arrange
-    const input: any = { name: 'John' };
-    const expectedMessage = 'jsonString must be a string, got object';
-
-    // Act & Assert
-    expect(() => deserializeFromJSON(input)).toThrow(TypeError);
-    expect(() => deserializeFromJSON(input)).toThrow(expectedMessage);
-  });
-
-  it('14. should throw TypeError when validate is not a function', () => {
-    // Arrange
-    const input = '{"age":30}';
-    const invalidValidate: any = 'not a function';
-    const expectedMessage = 'validate must be a function, got string';
-
-    // Act & Assert
-    expect(() => deserializeFromJSON(input, invalidValidate)).toThrow(
-      TypeError,
-    );
-    expect(() => deserializeFromJSON(input, invalidValidate)).toThrow(
-      expectedMessage,
-    );
-  });
-
   it('15. should throw Error for invalid JSON', () => {
     // Arrange
     const input = '{name: "John"}'; // Invalid - missing quotes

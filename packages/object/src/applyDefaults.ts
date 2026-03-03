@@ -5,9 +5,6 @@
  * @param defaults - The default values to apply where properties don't exist in source.
  * @returns A new object combining properties from both inputs.
  *
- * @throws {TypeError} If obj is not an object or is null.
- * @throws {TypeError} If defaults is not an object or is null.
- *
  * @example
  * const obj = { a: 1, b: 2 };
  * const defaults = { b: 3, c: 4 };
@@ -50,12 +47,6 @@ export function applyDefaults<T extends Record<string, unknown>>(
   obj: T,
   defaults: Partial<T>,
 ): T {
-  if (typeof obj !== 'object' || obj === null) {
-    throw new TypeError('The first argument must be a non-null object');
-  }
-  if (typeof defaults !== 'object' || defaults === null) {
-    throw new TypeError('The second argument must be a non-null object');
-  }
 
   return { ...defaults, ...obj };
 }

@@ -6,7 +6,6 @@ import { randomSequence } from './randomSequence';
  * @param length - The approximate length of the base64 string.
  * @returns A random base64 string.
  *
- * @throws {TypeError} If length is not a number.
  * @throws {Error} If length is NaN.
  * @throws {Error} If length is negative or not an integer.
  *
@@ -25,9 +24,6 @@ import { randomSequence } from './randomSequence';
  * @complexity Time: O(n), Space: O(n) where n is length
  */
 export function randomBase64(length: number): string {
-  if (typeof length !== 'number') {
-    throw new TypeError(`length must be a number, got ${typeof length}`);
-  }
   if (isNaN(length)) {
     throw new Error('length must be a valid number, not NaN');
   }

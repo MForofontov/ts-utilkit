@@ -4,8 +4,6 @@
  * @param value - The number to format.
  * @returns The number with its appropriate ordinal suffix.
  *
- * @throws {TypeError} If value is not a number or is NaN.
- *
  * @example
  * // Basic usage
  * formatOrdinal(1); // Returns "1st"
@@ -36,9 +34,6 @@
  */
 export function formatOrdinal(value: number): string {
   // Input validation
-  if (typeof value !== 'number' || isNaN(value)) {
-    throw new TypeError(`value must be a number, got ${typeof value}`);
-  }
 
   const absValue = Math.abs(value);
   const lastDigit = absValue % 10;

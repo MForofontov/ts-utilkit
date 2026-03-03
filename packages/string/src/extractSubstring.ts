@@ -9,8 +9,6 @@
  * @param length - The number of characters to extract.
  * @returns The extracted substring.
  *
- * @throws {TypeError} If str is not a string.
- * @throws {TypeError} If startIndex or length is not a number.
  * @throws {RangeError} If startIndex is negative or length is negative.
  *
  * @example
@@ -24,17 +22,6 @@ export function extractSubstring(
   startIndex: number,
   length: number,
 ): string {
-  if (typeof str !== 'string') {
-    throw new TypeError(`str must be a string, got ${typeof str}`);
-  }
-  if (typeof startIndex !== 'number' || isNaN(startIndex)) {
-    throw new TypeError(
-      `startIndex must be a number, got ${typeof startIndex}`,
-    );
-  }
-  if (typeof length !== 'number' || isNaN(length)) {
-    throw new TypeError(`length must be a number, got ${typeof length}`);
-  }
   if (startIndex < 0) {
     throw new RangeError(
       `startIndex must be non-negative, got ${startIndex}`,

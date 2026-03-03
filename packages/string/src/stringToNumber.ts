@@ -4,8 +4,6 @@
  * @param str - The string to convert to a number.
  * @returns The converted number, or NaN if the string is not a valid number.
  *
- * @throws {TypeError} If str is not a string.
- *
  * @example
  * // Basic usage
  * stringToNumber("123"); // 123

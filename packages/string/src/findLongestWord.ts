@@ -4,8 +4,6 @@
  * @param str - The string to analyze.
  * @returns The longest word in the string (or empty string if no words found).
  *
- * @throws {TypeError} If str is not a string.
- *
  * @example
  * // Basic usage
  * findLongestWord("The quick brown fox jumps over the lazy dog."); // "jumps"
@@ -37,9 +35,6 @@
  * @complexity Time: O(n), Space: O(n) where n is the length of the string
  */
 export function findLongestWord(str: string): string {
-  if (typeof str !== 'string') {
-    throw new TypeError(`str must be a string, got ${typeof str}`);
-  }
   // Remove punctuation and special characters
   const cleanedStr = str.replace(
     /[.,/#!$%^&*;:{}=\-_`~()"\t\n\r\b\f\v\\']/g,

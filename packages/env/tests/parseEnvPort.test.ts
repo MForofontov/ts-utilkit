@@ -104,23 +104,9 @@ describe('parseEnvPort', () => {
     );
   });
 
-  it('16. should throw TypeError when key is not a string', () => {
-    expect(() => parseEnvPort(42 as unknown as string)).toThrow(TypeError);
-    expect(() => parseEnvPort(42 as unknown as string)).toThrow(
-      'key must be a string, got number',
-    );
-  });
-
   it('17. should throw Error when key is empty', () => {
     expect(() => parseEnvPort('')).toThrow(Error);
     expect(() => parseEnvPort('')).toThrow('key cannot be an empty string');
-  });
-
-  it('18. should throw TypeError when defaultValue is not a number', () => {
-    expect(() => parseEnvPort('PORT', '3000' as unknown as number)).toThrow(TypeError);
-    expect(() => parseEnvPort('PORT', '3000' as unknown as number)).toThrow(
-      'defaultValue must be a number, got string',
-    );
   });
 
   it('19. should throw Error when defaultValue is out of the valid port range', () => {

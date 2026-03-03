@@ -5,8 +5,6 @@
  * @param removeNull - Whether to remove null values (default: false).
  * @returns Sanitized object safe for serialization.
  *
- * @throws {TypeError} If obj is not an object or removeNull is not boolean.
- *
  * @example
  * // Remove functions and symbols
  * sanitizeForSerialization({ a: 1, b: () => {}, c: Symbol('x') });
@@ -24,11 +22,6 @@ export function sanitizeForSerialization(
   obj: any,
   removeNull: boolean = false,
 ): any {
-  if (typeof removeNull !== 'boolean') {
-    throw new TypeError(
-      `removeNull must be a boolean, got ${typeof removeNull}`,
-    );
-  }
 
   const sanitize = (value: any): any => {
     if (value === undefined) {

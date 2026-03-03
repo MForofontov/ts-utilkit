@@ -59,23 +59,4 @@ describe('rgbToHex', () => {
     expect(rgbToHex({ r: 255, g: Number.NaN, b: 0 })).toBe('#ffNaN00');
   });
 
-  // Test case 11: should throw TypeError when rgb is null
-  it('11. should throw TypeError when rgb is null', () => {
-    expect(() =>
-      rgbToHex(null as unknown as { r: number; g: number; b: number }),
-    ).toThrow(TypeError);
-    expect(() =>
-      rgbToHex(null as unknown as { r: number; g: number; b: number }),
-    ).toThrow('rgb must be an object, got null');
-  });
-
-  // Test case 12: should throw TypeError when rgb is a number
-  it('12. should throw TypeError when rgb is a number', () => {
-    expect(() =>
-      rgbToHex(42 as unknown as { r: number; g: number; b: number }),
-    ).toThrow(TypeError);
-    expect(() =>
-      rgbToHex(42 as unknown as { r: number; g: number; b: number }),
-    ).toThrow('rgb must be an object, got number');
-  });
 });

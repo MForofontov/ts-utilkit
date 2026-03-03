@@ -10,7 +10,6 @@
  * @returns `true` if the variable exists and its value is a non-empty string,
  *   `false` if the variable is absent or set to an empty string.
  *
- * @throws {TypeError} If key is not a string.
  * @throws {Error} If key is an empty string.
  *
  * @example
@@ -39,9 +38,6 @@
  * @complexity Time: O(1), Space: O(1)
  */
 export function hasEnv(key: string): boolean {
-  if (typeof key !== 'string') {
-    throw new TypeError(`key must be a string, got ${typeof key}`);
-  }
 
   if (key.length === 0) {
     throw new Error('key cannot be an empty string');

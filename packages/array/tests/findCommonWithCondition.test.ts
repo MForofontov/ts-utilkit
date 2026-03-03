@@ -167,42 +167,4 @@ describe('findCommonWithCondition', () => {
     expect(findCommonWithCondition(arr1, arr2, condition)).toEqual(expected);
   });
 
-  // Test case 19: Throw when the first argument is not an array
-  it('19. should throw TypeError when the first argument is not an array', () => {
-    const arr1 = null as unknown as number[];
-    const arr2: number[] = [1, 2];
-    const condition = (value: number) => value > 0;
-    expect(() => findCommonWithCondition(arr1, arr2, condition)).toThrow(
-      TypeError,
-    );
-    expect(() => findCommonWithCondition(arr1, arr2, condition)).toThrow(
-      "Cannot read properties of null (reading 'filter')",
-    );
-  });
-
-  // Test case 20: Throw when the second argument is not an array
-  it('20. should throw TypeError when the second argument is not an array', () => {
-    const arr1: number[] = [1, 2, 3];
-    const arr2 = null as unknown as number[];
-    const condition = (value: number) => value > 0;
-    expect(() => findCommonWithCondition(arr1, arr2, condition)).toThrow(
-      TypeError,
-    );
-    expect(() => findCommonWithCondition(arr1, arr2, condition)).toThrow(
-      "Cannot read properties of null (reading 'some')",
-    );
-  });
-
-  // Test case 21: Throw when the condition argument is not callable
-  it('21. should throw TypeError when the condition argument is not a function', () => {
-    const arr1: number[] = [1, 2, 3];
-    const arr2: number[] = [2, 3, 4];
-    const condition = null as unknown as (value: number) => boolean;
-    expect(() => findCommonWithCondition(arr1, arr2, condition)).toThrow(
-      TypeError,
-    );
-    expect(() => findCommonWithCondition(arr1, arr2, condition)).toThrow(
-      'object null is not a function',
-    );
-  });
 });

@@ -6,9 +6,6 @@
  * @param decimals - Number of decimal places (default: 2).
  * @returns A random float in the range [min, max).
  *
- * @throws {TypeError} If min is not a number.
- * @throws {TypeError} If max is not a number.
- * @throws {TypeError} If decimals is provided and not a number.
  * @throws {Error} If min or max is NaN.
  * @throws {Error} If decimals is NaN.
  * @throws {Error} If min is greater than or equal to max.
@@ -35,15 +32,6 @@ export function randomFloat(
   max: number,
   decimals: number = 2,
 ): number {
-  if (typeof min !== 'number') {
-    throw new TypeError(`min must be a number, got ${typeof min}`);
-  }
-  if (typeof max !== 'number') {
-    throw new TypeError(`max must be a number, got ${typeof max}`);
-  }
-  if (typeof decimals !== 'number') {
-    throw new TypeError(`decimals must be a number, got ${typeof decimals}`);
-  }
   if (isNaN(min)) {
     throw new Error('min must be a valid number, not NaN');
   }

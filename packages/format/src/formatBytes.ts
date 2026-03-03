@@ -7,9 +7,6 @@
  * @param binary - Whether to use binary (1024) or decimal (1000) multiplier (default: true).
  * @returns A formatted string with the appropriate unit (e.g., "5.00 KB").
  *
- * @throws {TypeError} If bytes is not a number or is NaN.
- * @throws {TypeError} If decimals is not a number or is NaN.
- * @throws {TypeError} If binary is not a boolean.
  * @throws {Error} If bytes is negative.
  * @throws {Error} If decimals is negative.
  *
@@ -45,18 +42,6 @@ export function formatBytes(
   iecUnits: boolean = false,
 ): string {
   // Input validation
-  if (typeof bytes !== 'number' || isNaN(bytes)) {
-    throw new TypeError(`bytes must be a number, got ${typeof bytes}`);
-  }
-  if (typeof decimals !== 'number' || isNaN(decimals)) {
-    throw new TypeError(`decimals must be a number, got ${typeof decimals}`);
-  }
-  if (typeof binary !== 'boolean') {
-    throw new TypeError(`binary must be a boolean, got ${typeof binary}`);
-  }
-  if (typeof iecUnits !== 'boolean') {
-    throw new TypeError(`iecUnits must be a boolean, got ${typeof iecUnits}`);
-  }
 
   if (bytes < 0) {
     throw new Error(`bytes must be non-negative, got ${bytes}`);

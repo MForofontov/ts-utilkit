@@ -5,8 +5,6 @@
  * @param path - The dot-notation path where the value should be set (e.g., 'user.address.city').
  * @param value - The value to set at the specified path.
  *
- * @throws {TypeError} If obj is not an object or is null.
- *
  * @example
  * // Update existing nested value
  * const user = { a: { b: { c: 3 } } };
@@ -50,9 +48,6 @@ export function setNestedValue(
   path: string,
   value: unknown,
 ): void {
-  if (typeof obj !== 'object' || obj === null) {
-    throw new TypeError('Input must be a non-null object');
-  }
   const keys = path.split('.');
   let current: Record<string, unknown> = obj;
   for (let i = 0; i < keys.length - 1; i++) {

@@ -133,32 +133,6 @@ describe('generateRange', () => {
     expect(result).toEqual([]);
   });
 
-  // Test case 10: Error - invalid start type
-  it('10. should throw TypeError when start is not a number', () => {
-    // Arrange
-    const start = 'one' as unknown as number;
-    const end = 5;
-
-    // Act & Assert
-    expect(() => generateRange(start, end)).toThrow(TypeError);
-    expect(() => generateRange(start, end)).toThrow(
-      'start must be a valid number',
-    );
-  });
-
-  // Test case 11: Error - invalid end type
-  it('11. should throw TypeError when end is not a number', () => {
-    // Arrange
-    const start = 1;
-    const end = 'five' as unknown as number;
-
-    // Act & Assert
-    expect(() => generateRange(start, end)).toThrow(TypeError);
-    expect(() => generateRange(start, end)).toThrow(
-      'end must be a valid number',
-    );
-  });
-
   // Test case 12: Error - invalid step type
   it('12. should throw Error when step is not a number', () => {
     // Arrange

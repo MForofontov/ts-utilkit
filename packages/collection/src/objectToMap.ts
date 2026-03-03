@@ -4,8 +4,6 @@
  * @param obj - The object to convert.
  * @returns A new Map with the same key-value pairs.
  *
- * @throws {TypeError} If obj is not an object.
- *
  * @example
  * // Basic conversion
  * const obj = { name: 'John', age: 30 };
@@ -30,9 +28,6 @@
 export function objectToMap<V>(
   obj: Record<string | symbol, V>,
 ): Map<string | symbol, V> {
-  if (obj === null || typeof obj !== 'object') {
-    throw new TypeError(`obj must be an object, got ${typeof obj}`);
-  }
 
   const result = new Map<string | symbol, V>();
 

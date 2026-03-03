@@ -5,7 +5,6 @@
  * @param otherSets - One or more sets to subtract from the first set.
  * @returns A new Set containing elements from firstSet that are not in any of the otherSets.
  *
- * @throws {TypeError} If any argument is not a Set.
  * @throws {Error} If fewer than two sets are provided.
  *
  * @example
@@ -42,16 +41,7 @@ export function setDifference<T>(
     );
   }
 
-  if (!(firstSet instanceof Set)) {
-    throw new TypeError(`First argument must be a Set, got ${typeof firstSet}`);
-  }
-
   for (let i = 0; i < otherSets.length; i++) {
-    if (!(otherSets[i] instanceof Set)) {
-      throw new TypeError(
-        `All arguments must be Sets, argument ${i + 1} is ${typeof otherSets[i]}`,
-      );
-    }
   }
 
   const result = new Set<T>();

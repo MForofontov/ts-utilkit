@@ -134,26 +134,6 @@ describe('formatBytes', () => {
     expect(result).toBe(expected);
   });
 
-  // Test case 11: Throw TypeError for non-number bytes
-  it('11. should throw TypeError when bytes is not a number', () => {
-    // Arrange
-    const bytes = 'invalid' as unknown as number;
-
-    // Act & Assert
-    expect(() => formatBytes(bytes)).toThrow(TypeError);
-    expect(() => formatBytes(bytes)).toThrow('bytes must be a number');
-  });
-
-  // Test case 12: Throw TypeError for NaN bytes
-  it('12. should throw TypeError when bytes is NaN', () => {
-    // Arrange
-    const bytes = NaN;
-
-    // Act & Assert
-    expect(() => formatBytes(bytes)).toThrow(TypeError);
-    expect(() => formatBytes(bytes)).toThrow('bytes must be a number');
-  });
-
   // Test case 13: Throw Error for negative bytes
   it('13. should throw Error for negative bytes', () => {
     // Arrange
@@ -175,16 +155,4 @@ describe('formatBytes', () => {
     expect(() => formatBytes(bytes, decimals)).toThrow('must be non-negative');
   });
 
-  // Test case 15: Throw TypeError for non-boolean binary
-  it('15. should throw TypeError when binary is not a boolean', () => {
-    // Arrange
-    const bytes = 1024;
-    const binary = 'yes' as unknown as boolean;
-
-    // Act & Assert
-    expect(() => formatBytes(bytes, 2, binary)).toThrow(TypeError);
-    expect(() => formatBytes(bytes, 2, binary)).toThrow(
-      'binary must be a boolean',
-    );
-  });
 });

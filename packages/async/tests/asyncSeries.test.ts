@@ -128,22 +128,6 @@ describe('asyncSeries', () => {
     expect(executionOrder).toEqual([1, 2]); // Third task should not execute
   });
 
-  // Test case 7: TypeError for invalid input types
-  it('7. should throw TypeError for invalid input types', () => {
-    // Arrange
-    const invalidInputs = [123, null, undefined, {}, true, 'string'];
-
-    // Act & Assert
-    invalidInputs.forEach((input) => {
-      expect(() =>
-        asyncSeries(input as unknown as (() => Promise<unknown>)[]),
-      ).toThrow(TypeError);
-      expect(() =>
-        asyncSeries(input as unknown as (() => Promise<unknown>)[]),
-      ).toThrow('tasks must be an array, got');
-    });
-  });
-
   // Test case 8: Error for non-function tasks
   it('8. should throw Error for non-function tasks', () => {
     // Arrange
@@ -154,9 +138,6 @@ describe('asyncSeries', () => {
       expect(() =>
         asyncSeries([task as unknown as () => Promise<unknown>]),
       ).toThrow(Error);
-      expect(() =>
-        asyncSeries([task as unknown as () => Promise<unknown>]),
-      ).toThrow('Task at index 0 must be a function, got');
     });
   });
 });

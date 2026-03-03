@@ -180,4 +180,5 @@ describe('replaceMultiple', () => {
     };
     expect(replaceMultiple(str, replacementsWithoutPrototype)).toBe(str);
   });
+
 });

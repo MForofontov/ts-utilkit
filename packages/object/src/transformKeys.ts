@@ -6,10 +6,6 @@
  * @param fn - A function applied to each key string, returning the new key.
  * @returns A new object with all keys transformed.
  *
- * @throws {TypeError} If obj is not a non-null object.
- * @throws {TypeError} If fn is not a function.
- * @throws {TypeError} If fn returns a non-string value for any key.
- *
  * @example
  * // Convert all keys to uppercase
  * transformKeys({ foo: 1, bar: 2 }, k => k.toUpperCase());
@@ -36,21 +32,10 @@ export function transformKeys(
   obj: Record<string, unknown>,
   fn: (key: string) => string,
 ): Record<string, unknown> {
-  if (obj === null || typeof obj !== 'object' || Array.isArray(obj)) {
-    throw new TypeError(`obj must be a non-null object, got ${obj === null ? 'null' : typeof obj}`);
-  }
-  if (typeof fn !== 'function') {
-    throw new TypeError(`fn must be a function, got ${typeof fn}`);
-  }
 
   const result: Record<string, unknown> = {};
   for (const key of Object.keys(obj)) {
     const newKey = fn(key);
-    if (typeof newKey !== 'string') {
-      throw new TypeError(
-        `fn must return a string, got ${typeof newKey} for key "${key}"`,
-      );
-    }
     result[newKey] = obj[key];
   }
   return result;

@@ -156,4 +156,5 @@ describe('capitalizeNthLetter', () => {
     const result: string = capitalizeNthLetter(str, n);
     expect(result).toBe(expected);
   });
+
 });

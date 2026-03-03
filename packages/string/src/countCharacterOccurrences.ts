@@ -5,9 +5,6 @@
  * @param char - The character to count (can be any length, not just single character).
  * @returns The number of occurrences of the character in the string.
  *
- * @throws {TypeError} If str is not a string.
- * @throws {TypeError} If char is not a string.
- *
  * @example
  * // Basic usage
  * countCharacterOccurrences("hello world", "l"); // 3

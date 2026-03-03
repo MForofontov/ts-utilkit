@@ -57,12 +57,6 @@ describe('getURLsFromText', () => {
     expect(result).toEqual([]);
   });
 
-  it('10. should throw TypeError for non-string input', () => {
-    const input = 123 as unknown as string;
-    expect(() => getURLsFromText(input)).toThrow(TypeError);
-    expect(() => getURLsFromText(input)).toThrow('text must be a string');
-  });
-
   it('11. should remove duplicate URLs', () => {
     const text = 'Visit https://example.com and https://example.com again';
     const result = getURLsFromText(text);

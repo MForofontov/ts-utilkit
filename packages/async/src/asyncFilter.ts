@@ -5,8 +5,6 @@
  * @param asyncPredicate - Async function that returns true for elements to keep.
  * @returns Promise that resolves with filtered array.
  *
- * @throws {TypeError} If array is not an array or asyncPredicate is not a function.
- *
  * @example
  * // Filter users based on async validation
  * const validUsers = await asyncFilter(
@@ -53,15 +51,6 @@ export function asyncFilter<T>(
   array: T[],
   asyncPredicate: (item: T, index: number) => Promise<boolean>,
 ): Promise<T[]> {
-  if (!Array.isArray(array)) {
-    throw new TypeError(`array must be an array, got ${typeof array}`);
-  }
-
-  if (typeof asyncPredicate !== 'function') {
-    throw new TypeError(
-      `asyncPredicate must be a function, got ${typeof asyncPredicate}`,
-    );
-  }
 
   // After validation, return the async implementation
   return (async () => {

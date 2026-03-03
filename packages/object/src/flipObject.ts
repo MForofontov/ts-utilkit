@@ -5,8 +5,6 @@
  * @param obj - The object whose keys and values will be swapped.
  * @returns A new object with keys and values swapped (values become keys, keys become values).
  *
- * @throws {TypeError} If input is not a non-null object.
- *
  * @example
  * // Basic usage
  * flipObject({ a: 1, b: 2 }); // { '1': 'a', '2': 'b' }
@@ -38,9 +36,6 @@
 export function flipObject<T extends Record<string, unknown>>(
   obj: T,
 ): Record<string, string> {
-  if (typeof obj !== 'object' || obj === null) {
-    throw new TypeError('Input must be a non-null object');
-  }
   return Object.keys(obj).reduce((acc: Record<string, string>, key: string) => {
     acc[String(obj[key])] = key;
     return acc;

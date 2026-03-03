@@ -4,7 +4,6 @@
  * @param timestamp - The Unix timestamp in seconds (integer or float).
  * @returns A `Date` object corresponding to the given Unix timestamp.
  *
- * @throws {TypeError} If timestamp is not a number.
  * @throws {Error} If timestamp is NaN.
  *
  * @example
@@ -29,11 +28,6 @@
  * @complexity Time: O(1), Space: O(1)
  */
 export function fromUnixTimestamp(timestamp: number): Date {
-  if (typeof timestamp !== 'number') {
-    throw new TypeError(
-      `timestamp must be a number, got ${typeof timestamp}`,
-    );
-  }
   if (isNaN(timestamp)) {
     throw new Error('timestamp must be a valid number, not NaN');
   }

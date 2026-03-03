@@ -92,21 +92,4 @@ describe('isValidISODate', () => {
     expect(isValidISODate('2023-12-25T23:59:59Z')).toBe(true);
   });
 
-  // Test case 8: TypeError for invalid input types
-  it('8. should throw TypeError for invalid dateString type', () => {
-    expect(() => isValidISODate(123 as unknown as string)).toThrow(TypeError);
-    expect(() => isValidISODate(123 as unknown as string)).toThrow(
-      'dateString must be a string',
-    );
-  });
-
-  // Test case 9: TypeError for invalid allowTime type
-  it('9. should throw TypeError for invalid allowTime type', () => {
-    expect(() =>
-      isValidISODate('2023-12-25', 'invalid' as unknown as boolean),
-    ).toThrow(TypeError);
-    expect(() =>
-      isValidISODate('2023-12-25', 'invalid' as unknown as boolean),
-    ).toThrow('allowTime must be a boolean');
-  });
 });

@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Remove all runtime `typeof`/`instanceof` TypeError guards; rely on TypeScript type system for type safety
+- Remove all `@throws {TypeError}` JSDoc tags from all affected functions
+- Remove all TypeError test cases from all test files
+
+
 ### Deprecated
 - `arrayToSet`: thin wrapper around `new Set(array)`; use that constructor directly. Will be removed in the next major version.
 - `setToArray`: thin wrapper around `Array.from(set)` / `[...set]`; use those directly. Will be removed in the next major version.

@@ -5,8 +5,6 @@
  * @param options - Options for encoding (encodeValues, arrayFormat).
  * @returns The query string (without leading ?).
  *
- * @throws {TypeError} If data is not an object or options are invalid.
- *
  * @example
  * // Basic query string
  * serializeToQueryString({ name: 'John', age: 30 }); // 'name=John&age=30'
@@ -27,25 +25,8 @@ export function serializeToQueryString(
     arrayFormat?: 'repeat' | 'brackets' | 'comma';
   } = {},
 ): string {
-  if (data === null || typeof data !== 'object' || Array.isArray(data)) {
-    throw new TypeError(
-      `data must be an object, got ${Array.isArray(data) ? 'array' : typeof data}`,
-    );
-  }
 
   const { encodeValues = true, arrayFormat = 'repeat' } = options;
-
-  if (typeof encodeValues !== 'boolean') {
-    throw new TypeError(
-      `encodeValues must be a boolean, got ${typeof encodeValues}`,
-    );
-  }
-
-  if (!['repeat', 'brackets', 'comma'].includes(arrayFormat)) {
-    throw new TypeError(
-      `arrayFormat must be 'repeat', 'brackets', or 'comma', got ${arrayFormat}`,
-    );
-  }
 
   const parts: string[] = [];
 

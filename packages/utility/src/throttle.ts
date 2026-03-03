@@ -5,8 +5,6 @@
  * @param limit - The time interval in milliseconds (minimum time between executions).
  * @returns A throttled version of the function that enforces rate limiting.
  *
- * @throws {TypeError} If func is not a function.
- * @throws {TypeError} If limit is not a number.
  * @throws {Error} If limit is negative or NaN.
  *
  * @example
@@ -52,12 +50,6 @@ export function throttle<Args extends unknown[]>(
   func: (...args: Args) => void,
   limit: number,
 ): (...args: Args) => void {
-  if (typeof func !== 'function') {
-    throw new TypeError(`func must be a function, got ${typeof func}`);
-  }
-  if (typeof limit !== 'number') {
-    throw new TypeError(`limit must be a number, got ${typeof limit}`);
-  }
   if (Number.isNaN(limit) || limit < 0) {
     throw new Error('limit must be a non-negative number');
   }

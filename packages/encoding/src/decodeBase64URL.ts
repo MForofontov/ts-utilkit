@@ -11,7 +11,6 @@ import { Buffer } from 'buffer';
  * @param str - The Base64URL encoded string to decode.
  * @returns The decoded UTF-8 string.
  *
- * @throws {TypeError} If str is not a string.
  * @throws {Error} If the string contains characters outside the Base64URL alphabet.
  *
  * @example
@@ -43,9 +42,6 @@ import { Buffer } from 'buffer';
  * @complexity Time: O(n), Space: O(n) where n is the length of the encoded string
  */
 export function decodeBase64URL(str: string): string {
-  if (typeof str !== 'string') {
-    throw new TypeError(`str must be a string, got ${typeof str}`);
-  }
 
   if (!/^[A-Za-z0-9\-_=]*$/.test(str)) {
     throw new Error('Invalid Base64URL string');

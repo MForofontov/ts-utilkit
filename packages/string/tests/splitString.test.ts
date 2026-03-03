@@ -16,12 +16,4 @@ describe('splitString', () => {
   it('5. should handle multiple spaces as delimiter', () => {
     expect(splitString('hello  world', '  ')).toEqual(['hello', 'world']);
   });
-  it('6. should throw TypeError when str is not a string', () => {
-    expect(() => splitString(123 as unknown as string, ',')).toThrow(TypeError);
-    expect(() => splitString(123 as unknown as string, ',')).toThrow('str must be a string, got number');
-  });
-  it('7. should throw TypeError when delimiter is not a string', () => {
-    expect(() => splitString('hello', 123 as unknown as string)).toThrow(TypeError);
-    expect(() => splitString('hello', 123 as unknown as string)).toThrow('delimiter must be a string, got number');
-  });
 });

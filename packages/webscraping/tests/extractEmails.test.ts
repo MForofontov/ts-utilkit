@@ -204,14 +204,4 @@ describe('extractEmails', () => {
     expect(result).toEqual(expected);
   });
 
-  // Error cases
-  it('16. should throw TypeError when html is not a string', () => {
-    // Arrange
-    const html = 123 as unknown as string;
-    const expectedMessage = 'html must be a string, got number';
-
-    // Act & Assert
-    expect(() => extractEmails(html)).toThrow(TypeError);
-    expect(() => extractEmails(html)).toThrow(expectedMessage);
-  });
 });

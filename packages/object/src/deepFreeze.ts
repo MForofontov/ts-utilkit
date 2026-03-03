@@ -4,8 +4,6 @@
  * @param obj - The object to freeze recursively.
  * @returns The frozen object (same reference as input, but now immutable).
  *
- * @throws {TypeError} If obj is not a non-null object.
- *
  * @example
  * // Basic usage
  * const user = { name: 'John', address: { city: 'New York' } };
@@ -47,10 +45,7 @@
  *
  * @complexity Time: O(n) where n is total number of properties across all nesting levels, Space: O(d) where d is max depth (recursion stack)
  */
-export function deepFreeze<T>(obj: T): T {
-  if (typeof obj !== 'object' || obj === null) {
-    throw new TypeError('Input must be a non-null object');
-  }
+export function deepFreeze<T extends object>(obj: T): T {
   Object.freeze(obj);
   Object.keys(obj).forEach((key) => {
     const value = (obj as Record<string, unknown>)[key];

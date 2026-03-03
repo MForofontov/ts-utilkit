@@ -4,8 +4,6 @@
  * @param str - The string to validate.
  * @returns True if string contains only letters with no numbers, spaces, or special characters; false otherwise.
  *
- * @throws {TypeError} If str is not a string.
- *
  * @example
  * // Valid alphabetic strings
  * isAlpha("Hello"); // true
@@ -44,8 +42,5 @@
  * @complexity Time: O(n), Space: O(1) where n is the length of the string
  */
 export function isAlpha(str: string): boolean {
-  if (typeof str !== 'string') {
-    throw new TypeError(`str must be a string, got ${typeof str}`);
-  }
   return /^[A-Za-z]+$/.test(str);
 }

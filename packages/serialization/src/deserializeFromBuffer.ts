@@ -7,7 +7,6 @@
  * @param parseJSON - Whether to parse as JSON (default: true).
  * @returns The deserialized data.
  *
- * @throws {TypeError} If buffer is not a Buffer or encoding is not a string.
  * @throws {Error} If deserialization fails.
  *
  * @example
@@ -28,17 +27,6 @@ export function deserializeFromBuffer<T = any>(
   encoding: BufferEncoding = 'utf8',
   parseJSON: boolean = true,
 ): T {
-  if (!Buffer.isBuffer(buffer)) {
-    throw new TypeError(`buffer must be a Buffer, got ${typeof buffer}`);
-  }
-
-  if (typeof encoding !== 'string') {
-    throw new TypeError(`encoding must be a string, got ${typeof encoding}`);
-  }
-
-  if (typeof parseJSON !== 'boolean') {
-    throw new TypeError(`parseJSON must be a boolean, got ${typeof parseJSON}`);
-  }
 
   try {
     const str = buffer.toString(encoding);

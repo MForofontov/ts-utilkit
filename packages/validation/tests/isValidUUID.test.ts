@@ -59,33 +59,6 @@ describe('isValidUUID', () => {
     expect(endTime - startTime).toBeLessThan(100); // Should complete quickly (increased threshold for CI environments)
   });
 
-  // Test case 5: TypeError for invalid input types
-  it('5. should throw TypeError for invalid input types', () => {
-    // Arrange
-    const invalidInputs: unknown[] = [null, undefined, 42, {}, [], true];
-    const expectedMessage = 'uuid must be a string, got';
-
-    // Act & Assert
-    for (const input of invalidInputs) {
-      expect(() => isValidUUID(input as string)).toThrow(TypeError);
-      expect(() => isValidUUID(input as string)).toThrow(expectedMessage);
-    }
-
-    // Test invalid version types
-    expect(() =>
-      isValidUUID(
-        '123e4567-e89b-12d3-a456-426614174000',
-        'invalid' as unknown as number,
-      ),
-    ).toThrow(TypeError);
-    expect(() =>
-      isValidUUID(
-        '123e4567-e89b-12d3-a456-426614174000',
-        'invalid' as unknown as number,
-      ),
-    ).toThrow('version must be a number, got');
-  });
-
   // Test case 6: Error for unsupported version
   it('6. should throw Error for unsupported UUID version', () => {
     // Arrange

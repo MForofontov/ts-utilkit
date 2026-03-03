@@ -7,8 +7,6 @@ import { createDecipheriv, scryptSync } from 'crypto';
  * @param key - The decryption key (must be the same key used for encryption).
  * @returns The decrypted plaintext string.
  *
- * @throws {TypeError} If encrypted is not a string.
- * @throws {TypeError} If key is not a string.
  * @throws {Error} If encrypted is empty.
  * @throws {Error} If key is empty.
  * @throws {Error} If encrypted format is invalid.
@@ -44,13 +42,6 @@ import { createDecipheriv, scryptSync } from 'crypto';
  * @complexity Time: O(n) where n is encrypted data length, Space: O(n)
  */
 export function decryptAES256(encrypted: string, key: string): string {
-  if (typeof encrypted !== 'string') {
-    throw new TypeError(`encrypted must be a string, got ${typeof encrypted}`);
-  }
-
-  if (typeof key !== 'string') {
-    throw new TypeError(`key must be a string, got ${typeof key}`);
-  }
 
   if (encrypted.length === 0) {
     throw new Error('encrypted cannot be empty');

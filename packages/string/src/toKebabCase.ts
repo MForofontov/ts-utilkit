@@ -4,8 +4,6 @@
  * @param str - The string to convert.
  * @returns The kebab-cased string with lowercase letters and hyphens between words.
  *
- * @throws {TypeError} If str is not a string.
- *
  * @example
  * // Basic usage
  * toKebabCase("Hello World"); // "hello-world"

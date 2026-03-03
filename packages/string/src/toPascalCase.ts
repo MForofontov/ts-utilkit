@@ -6,8 +6,6 @@
  * @param str - The string to convert.
  * @returns The PascalCase version of the string.
  *
- * @throws {TypeError} If str is not a string.
- *
  * @example
  * toPascalCase('hello world');   // 'HelloWorld'
  * toPascalCase('foo-bar-baz');   // 'FooBarBaz'
@@ -24,10 +22,6 @@
  * @complexity Time: O(n), Space: O(n)
  */
 export function toPascalCase(str: string): string {
-  if (typeof str !== 'string') {
-    throw new TypeError(`str must be a string, got ${typeof str}`);
-  }
-
   return str
     .trim()
     // Insert separator before uppercase letters following lowercase/digit

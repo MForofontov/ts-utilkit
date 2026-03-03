@@ -105,48 +105,6 @@ describe('waitForCondition', () => {
     await expect(promise).rejects.toThrow();
   });
 
-  // Test case 7: Error - invalid condition type
-  it('7. should throw TypeError when condition is not a function', async () => {
-    // Arrange
-    const invalidCondition = 'not a function' as unknown as () => boolean;
-
-    // Act & Assert
-    await expect(waitForCondition(invalidCondition)).rejects.toThrow(TypeError);
-    await expect(waitForCondition(invalidCondition)).rejects.toThrow(
-      'condition must be a function',
-    );
-  });
-
-  // Test case 8: Error - invalid interval type
-  it('8. should throw Error when interval is not a number', async () => {
-    // Arrange
-    const condition = () => true;
-    const invalidInterval = 'hundred' as unknown as number;
-
-    // Act & Assert
-    await expect(
-      waitForCondition(condition, 1000, invalidInterval),
-    ).rejects.toThrow(Error);
-    await expect(
-      waitForCondition(condition, 1000, invalidInterval),
-    ).rejects.toThrow('interval must be a positive number');
-  });
-
-  // Test case 9: Error - invalid timeout type
-  it('9. should throw Error when timeout is not a number', async () => {
-    // Arrange
-    const condition = () => true;
-    const invalidTimeout = 'thousand' as unknown as number;
-
-    // Act & Assert - interval is checked after timeout fails
-    await expect(
-      waitForCondition(condition, 100, invalidTimeout),
-    ).rejects.toThrow(Error);
-    await expect(
-      waitForCondition(condition, 100, invalidTimeout),
-    ).rejects.toThrow('interval must be a positive number');
-  });
-
   // Test case 10: Error - interval less than 1
   it('10. should throw Error when interval is less than or equal to 0', async () => {
     // Arrange

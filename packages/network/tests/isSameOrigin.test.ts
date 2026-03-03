@@ -82,24 +82,6 @@ describe('isSameOrigin', () => {
     expect(result).toBe(true);
   });
 
-  // Test case 11: Throw when first URL is not a string
-  it('11. should throw TypeError for non-string url1', () => {
-    const url = 123 as unknown as string;
-    expect(() => isSameOrigin(url, 'https://example.com')).toThrow(TypeError);
-    expect(() => isSameOrigin(url, 'https://example.com')).toThrow(
-      'url1 must be a string',
-    );
-  });
-
-  // Test case 12: Throw when second URL is not a string
-  it('12. should throw TypeError for non-string url2', () => {
-    const url = 123 as unknown as string;
-    expect(() => isSameOrigin('https://example.com', url)).toThrow(TypeError);
-    expect(() => isSameOrigin('https://example.com', url)).toThrow(
-      'url2 must be a string',
-    );
-  });
-
   // Test case 13: Throw on invalid first URL
   it('13. should throw Error for invalid url1', () => {
     expect(() => isSameOrigin('not a url', 'https://example.com')).toThrow(

@@ -11,8 +11,6 @@ import { Buffer } from 'buffer';
  * @param str - The UTF-8 string to encode.
  * @returns A lowercase hex string (e.g. `'68656c6c6f'` for `'hello'`).
  *
- * @throws {TypeError} If str is not a string.
- *
  * @example
  * // Basic usage
  * encodeHex('hello'); // '68656c6c6f'
@@ -38,9 +36,6 @@ import { Buffer } from 'buffer';
  * @complexity Time: O(n), Space: O(n) where n is the byte length of the UTF-8 string
  */
 export function encodeHex(str: string): string {
-  if (typeof str !== 'string') {
-    throw new TypeError(`str must be a string, got ${typeof str}`);
-  }
 
   return Buffer.from(str, 'utf8').toString('hex');
 }

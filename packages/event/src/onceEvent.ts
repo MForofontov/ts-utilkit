@@ -5,8 +5,6 @@
  * @param handler - The function to wrap.
  * @returns A wrapped function that executes only once and caches the result.
  *
- * @throws {TypeError} If handler is not a function.
- *
  * @example
  * // Basic usage
  * const initOnce = onceEvent(() => {
@@ -45,9 +43,6 @@
 export function onceEvent<T extends unknown[], R>(
   handler: (...args: T) => R,
 ): (...args: T) => R {
-  if (typeof handler !== 'function') {
-    throw new TypeError(`handler must be a function, got ${typeof handler}`);
-  }
 
   let called = false;
   let result: R;

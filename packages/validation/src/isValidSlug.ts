@@ -6,8 +6,6 @@
  * @param slug - The slug string to validate.
  * @returns True if valid slug, false otherwise.
  *
- * @throws {TypeError} If slug is not a string.
- *
  * @example
  * // Valid slugs
  * isValidSlug("hello-world"); // true
@@ -33,9 +31,6 @@
  * @complexity Time: O(1), Space: O(1)
  */
 export function isValidSlug(slug: string): boolean {
-  if (typeof slug !== 'string') {
-    throw new TypeError(`slug must be a string, got ${typeof slug}`);
-  }
 
   // Empty string is not a valid slug
   if (slug.length === 0) {

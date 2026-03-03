@@ -7,9 +7,6 @@
  * @param maxWidth - The maximum number of characters per line (must be >= 1).
  * @returns A new string with newline characters inserted at word boundaries.
  *
- * @throws {TypeError} If str is not a string.
- * @throws {TypeError} If maxWidth is not a number.
- * @throws {Error} If maxWidth is NaN.
  * @throws {Error} If maxWidth is less than 1.
  *
  * @example
@@ -33,15 +30,6 @@
  * @complexity Time: O(n), Space: O(n)
  */
 export function wrapText(str: string, maxWidth: number): string {
-  if (typeof str !== 'string') {
-    throw new TypeError(`str must be a string, got ${typeof str}`);
-  }
-  if (typeof maxWidth !== 'number') {
-    throw new TypeError(`maxWidth must be a number, got ${typeof maxWidth}`);
-  }
-  if (isNaN(maxWidth)) {
-    throw new Error('maxWidth must be a valid number, not NaN');
-  }
   if (maxWidth < 1) {
     throw new Error(`maxWidth must be at least 1, got ${maxWidth}`);
   }

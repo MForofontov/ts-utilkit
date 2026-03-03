@@ -20,9 +20,6 @@ export interface MeasureResult<T> {
  *   identification when logging multiple measurements.
  * @returns A `MeasureResult<T>` with `result`, `durationMs`, and `label`.
  *
- * @throws {TypeError} If `fn` is not a function.
- * @throws {TypeError} If `label` is provided but is not a string.
- *
  * @example
  * // Measure a computation
  * const { result, durationMs } = measure(() => heavyComputation(1000));
@@ -48,12 +45,6 @@ export interface MeasureResult<T> {
  * @complexity Time: O(1) + O(fn), Space: O(1)
  */
 export function measure<T>(fn: () => T, label?: string): MeasureResult<T> {
-  if (typeof fn !== 'function') {
-    throw new TypeError(`fn must be a function, got ${typeof fn}`);
-  }
-  if (label !== undefined && typeof label !== 'string') {
-    throw new TypeError(`label must be a string, got ${typeof label}`);
-  }
 
   const start = performance.now();
   const result = fn();

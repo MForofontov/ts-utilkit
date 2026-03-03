@@ -6,7 +6,6 @@ import { randomChoice } from './randomChoice';
  * @param palette - Array of color codes (hex, rgb, or named colors).
  * @returns A random color from the palette.
  *
- * @throws {TypeError} If palette is not an array.
  * @throws {Error} If palette is empty.
  * @throws {Error} If any palette item is not a string.
  *
@@ -29,9 +28,6 @@ import { randomChoice } from './randomChoice';
  * @complexity Time: O(1), Space: O(1)
  */
 export function randomColorFromPalette(palette: string[]): string {
-  if (!Array.isArray(palette)) {
-    throw new TypeError(`palette must be an array, got ${typeof palette}`);
-  }
   if (palette.length === 0) {
     throw new Error('palette cannot be empty');
   }

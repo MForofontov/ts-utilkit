@@ -5,8 +5,6 @@
  * @param source - The object whose properties will be merged into the target.
  * @returns A new object containing the merged properties from both inputs.
  *
- * @throws {TypeError} If target or source is not a non-null object.
- *
  * @example
  * // Basic merging
  * const obj1 = { a: 1, b: 2 };
@@ -52,10 +50,6 @@ export function deepMerge<T extends object, U extends object>(
   const isObject = (obj: unknown): obj is Record<string, unknown> =>
     !!obj && typeof obj === 'object';
 
-  if (!isObject(target) || !isObject(source)) {
-    throw new TypeError('Both target and source must be non-null objects');
-  }
-
   const merge = (
     t: Record<string, unknown>,
     s: Record<string, unknown>,
@@ -75,5 +69,5 @@ export function deepMerge<T extends object, U extends object>(
     return t;
   };
 
-  return merge({ ...target }, source) as T & U;
+  return merge({ ...target } as Record<string, unknown>, source as Record<string, unknown>) as T & U;
 }

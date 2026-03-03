@@ -23,8 +23,6 @@ export interface URLComponents {
  * @param components - An object containing URL components.
  * @returns A properly formatted URL string.
  *
- * @throws {TypeError} If components is not an object.
- * @throws {TypeError} If required components (protocol, hostname) are not strings.
  * @throws {Error} If required components are missing.
  *
  * @example
@@ -59,21 +57,6 @@ export interface URLComponents {
  */
 export function buildURL(components: URLComponents): string {
   // Input validation
-  if (typeof components !== 'object' || components === null) {
-    throw new TypeError(
-      `components must be an object, got ${typeof components}`,
-    );
-  }
-  if (typeof components.protocol !== 'string') {
-    throw new TypeError(
-      `protocol must be a string, got ${typeof components.protocol}`,
-    );
-  }
-  if (typeof components.hostname !== 'string') {
-    throw new TypeError(
-      `hostname must be a string, got ${typeof components.hostname}`,
-    );
-  }
 
   let url = `${components.protocol}://${components.hostname}`;
 

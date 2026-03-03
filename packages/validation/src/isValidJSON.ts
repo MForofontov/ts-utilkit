@@ -4,8 +4,6 @@
  * @param jsonString - The JSON string to validate.
  * @returns True if the string is valid JSON, false otherwise.
  *
- * @throws {TypeError} If jsonString is not a string.
- *
  * @example
  * // Valid JSON strings
  * isValidJSON('{"name": "John", "age": 30}'); // true
@@ -28,11 +26,6 @@
  * @complexity Time: O(n), Space: O(n)
  */
 export function isValidJSON(jsonString: string): boolean {
-  if (typeof jsonString !== 'string') {
-    throw new TypeError(
-      `jsonString must be a string, got ${typeof jsonString}`,
-    );
-  }
 
   if (jsonString.trim() === '') {
     return false;

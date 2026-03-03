@@ -108,23 +108,9 @@ describe('parseEnvBool', () => {
     expect(result).toBe(false);
   });
 
-  // Error cases
-  it('16. should throw TypeError when key is not a string', () => {
-    expect(() => parseEnvBool(123 as any)).toThrow(TypeError);
-    expect(() => parseEnvBool(123 as any)).toThrow(
-      'key must be a string, got number',
-    );
-  });
-
   it('17. should throw Error when key is empty string', () => {
     expect(() => parseEnvBool('')).toThrow(Error);
     expect(() => parseEnvBool('')).toThrow('key cannot be an empty string');
   });
 
-  it('18. should throw TypeError when defaultValue is not a boolean', () => {
-    expect(() => parseEnvBool('KEY', 'not a bool' as any)).toThrow(TypeError);
-    expect(() => parseEnvBool('KEY', 'not a bool' as any)).toThrow(
-      'defaultValue must be a boolean, got string',
-    );
-  });
 });

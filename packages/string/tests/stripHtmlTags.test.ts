@@ -124,4 +124,5 @@ describe('stripHtmlTags', () => {
     const result: string = stripHtmlTags(str);
     expect(result).toBe(expected);
   });
+
 });

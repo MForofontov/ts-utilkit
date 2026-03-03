@@ -11,8 +11,6 @@ import { Buffer } from 'buffer';
  * @returns The Base64URL encoded string (uses `-` and `_` instead of `+` and `/`,
  *   with no `=` padding).
  *
- * @throws {TypeError} If str is not a string.
- *
  * @example
  * // Basic usage
  * encodeBase64URL('hello'); // 'aGVsbG8'
@@ -38,9 +36,6 @@ import { Buffer } from 'buffer';
  * @complexity Time: O(n), Space: O(n) where n is the byte length of the UTF-8 string
  */
 export function encodeBase64URL(str: string): string {
-  if (typeof str !== 'string') {
-    throw new TypeError(`str must be a string, got ${typeof str}`);
-  }
 
   return Buffer.from(str, 'utf8')
     .toString('base64')

@@ -7,8 +7,6 @@
  * @param url - The URL string to test.
  * @returns `true` if the URL is a valid relative reference, `false` otherwise.
  *
- * @throws {TypeError} If url is not a string.
- *
  * @example
  * // Relative paths
  * isRelativeURL('/path/to/page');    // true
@@ -36,9 +34,6 @@
  * @complexity Time: O(n), Space: O(1)
  */
 export function isRelativeURL(url: string): boolean {
-  if (typeof url !== 'string') {
-    throw new TypeError(`url must be a string, got ${typeof url}`);
-  }
   // If it can be parsed without a base, it's absolute
   try {
     new URL(url);

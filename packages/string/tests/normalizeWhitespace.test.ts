@@ -74,35 +74,4 @@ describe('normalizeWhitespace', () => {
 
   // ─── Error cases ───────────────────────────────────────────────────────────
 
-  it('16. should throw TypeError when str is a number', () => {
-    expect(() => normalizeWhitespace(42 as unknown as string)).toThrow(TypeError);
-    expect(() => normalizeWhitespace(42 as unknown as string)).toThrow(
-      'str must be a string, got number',
-    );
-  });
-
-  it('17. should throw TypeError when str is null', () => {
-    expect(() => normalizeWhitespace(null as unknown as string)).toThrow(TypeError);
-    expect(() => normalizeWhitespace(null as unknown as string)).toThrow(
-      'str must be a string, got object',
-    );
-  });
-
-  it('18. should throw TypeError when str is undefined', () => {
-    expect(() =>
-      normalizeWhitespace(undefined as unknown as string),
-    ).toThrow(TypeError);
-    expect(() =>
-      normalizeWhitespace(undefined as unknown as string),
-    ).toThrow('str must be a string, got undefined');
-  });
-
-  it('19. should throw TypeError when str is an array', () => {
-    expect(() =>
-      normalizeWhitespace(['hello'] as unknown as string),
-    ).toThrow(TypeError);
-    expect(() =>
-      normalizeWhitespace(['hello'] as unknown as string),
-    ).toThrow('str must be a string, got object');
-  });
 });

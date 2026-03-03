@@ -76,9 +76,4 @@ describe('mapMerge', () => {
     expect(() => mapMerge(map)).toThrow('At least two maps are required');
   });
 
-  it('7. should throw TypeError when argument is not a Map', () => {
-    const validMap = new Map([['a', 1]]);
-    const invalidMap = { b: 2 } as unknown as Map<string, number>;
-    expect(() => mapMerge(validMap, invalidMap)).toThrow(TypeError);
-  });
 });

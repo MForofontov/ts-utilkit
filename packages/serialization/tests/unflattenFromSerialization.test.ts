@@ -162,34 +162,4 @@ describe('unflattenFromSerialization', () => {
     expect(result).toEqual(expected);
   });
 
-  // Error cases
-  it('14. should throw TypeError when flatObj is not an object', () => {
-    // Arrange
-    const input: any = 'not an object';
-    const expectedMessage = 'flatObj must be an object, got string';
-
-    // Act & Assert
-    expect(() => unflattenFromSerialization(input)).toThrow(TypeError);
-    expect(() => unflattenFromSerialization(input)).toThrow(expectedMessage);
-  });
-
-  it('15. should throw TypeError when flatObj is null', () => {
-    // Arrange
-    const input: any = null;
-    const expectedMessage = 'flatObj must be an object, got object';
-
-    // Act & Assert
-    expect(() => unflattenFromSerialization(input)).toThrow(TypeError);
-    expect(() => unflattenFromSerialization(input)).toThrow(expectedMessage);
-  });
-
-  it('16. should throw TypeError when flatObj is an array', () => {
-    // Arrange
-    const input: any = [1, 2, 3];
-    const expectedMessage = 'flatObj must be an object, got array';
-
-    // Act & Assert
-    expect(() => unflattenFromSerialization(input)).toThrow(TypeError);
-    expect(() => unflattenFromSerialization(input)).toThrow(expectedMessage);
-  });
 });

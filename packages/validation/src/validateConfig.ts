@@ -6,7 +6,6 @@
  * @param requiredKeys - Array of required key paths (supports nested with dot notation).
  * @returns True if all required keys are present.
  *
- * @throws {TypeError} If config is not an object or requiredKeys is not an array.
  * @throws {Error} If config is null or any required key is missing.
  *
  * @example
@@ -25,24 +24,8 @@ export function validateConfig<T extends Record<string, any>>(
   config: T,
   requiredKeys: string[],
 ): boolean {
-  if (config === null || typeof config !== 'object' || Array.isArray(config)) {
-    throw new TypeError(
-      `config must be an object, got ${Array.isArray(config) ? 'array' : typeof config}`,
-    );
-  }
-
-  if (!Array.isArray(requiredKeys)) {
-    throw new TypeError(
-      `requiredKeys must be an array, got ${typeof requiredKeys}`,
-    );
-  }
 
   for (const key of requiredKeys) {
-    if (typeof key !== 'string') {
-      throw new TypeError(
-        `All required keys must be strings, got ${typeof key}`,
-      );
-    }
 
     const value = getNestedValue(config, key);
 

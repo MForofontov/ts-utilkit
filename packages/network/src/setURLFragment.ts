@@ -9,8 +9,6 @@ import { _parseURL } from './_parseURL';
  *   Pass an empty string to clear the existing fragment.
  * @returns The updated URL string with the new fragment applied.
  *
- * @throws {TypeError} If url is not a string.
- * @throws {TypeError} If fragment is not a string.
  * @throws {Error} If url is not a valid absolute URL.
  *
  * @example
@@ -40,9 +38,6 @@ import { _parseURL } from './_parseURL';
  * @complexity Time: O(n), Space: O(n)
  */
 export function setURLFragment(url: string, fragment: string): string {
-  if (typeof fragment !== 'string') {
-    throw new TypeError(`fragment must be a string, got ${typeof fragment}`);
-  }
   const urlObj = _parseURL(url);
   urlObj.hash = fragment;
   return urlObj.toString();

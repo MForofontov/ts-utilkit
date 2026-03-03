@@ -4,8 +4,6 @@
  * @param str - The string to analyze.
  * @returns The first non-repeating character, or null if all characters repeat or string is empty.
  *
- * @throws {TypeError} If str is not a string.
- *
  * @example
  * // Basic usage
  * firstNonRepeatingCharacter("abacabad"); // 'c'
@@ -33,9 +31,6 @@
  * @complexity Time: O(n), Space: O(k) where n is string length and k is number of unique characters
  */
 export function firstNonRepeatingCharacter(str: string): string | null {
-  if (typeof str !== 'string') {
-    throw new TypeError(`str must be a string, got ${typeof str}`);
-  }
   // Create an object to store the count of each character
   const charCount: { [key: string]: number } = {};
 

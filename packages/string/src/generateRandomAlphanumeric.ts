@@ -11,7 +11,6 @@ import { randomSequence } from '@ts-utilkit/random';
  * @param length - The length of the string to generate (must be non-negative integer).
  * @returns A random alphanumeric string.
  *
- * @throws {TypeError} If length is not a number.
  * @throws {RangeError} If length is negative.
  *
  * @example
@@ -20,9 +19,6 @@ import { randomSequence } from '@ts-utilkit/random';
  * @complexity Time: O(n), Space: O(n)
  */
 export function generateRandomAlphanumeric(length: number): string {
-  if (typeof length !== 'number' || isNaN(length)) {
-    throw new TypeError(`length must be a number, got ${typeof length}`);
-  }
   if (length < 0) {
     throw new RangeError(`length must be non-negative, got ${length}`);
   }

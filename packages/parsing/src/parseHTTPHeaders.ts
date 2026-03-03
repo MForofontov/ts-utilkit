@@ -9,7 +9,6 @@
  * @returns A `Record<string, string>` mapping lower-cased header names to their
  *   trimmed values.
  *
- * @throws {TypeError} If raw is not a string.
  * @throws {Error} If raw is an empty string.
  *
  * @example
@@ -39,9 +38,6 @@
  * @complexity Time: O(n), Space: O(n) where n is the length of the raw string
  */
 export function parseHTTPHeaders(raw: string): Record<string, string> {
-  if (typeof raw !== 'string') {
-    throw new TypeError(`raw must be a string, got ${typeof raw}`);
-  }
   if (raw.trim().length === 0) {
     throw new Error('raw header string cannot be empty');
   }

@@ -67,24 +67,4 @@ describe('zipObject', () => {
     );
   });
 
-  it('11. should throw TypeError when keys is not an array', () => {
-    expect(() => zipObject('a,b' as unknown as string[], [1, 2])).toThrow(TypeError);
-    expect(() => zipObject('a,b' as unknown as string[], [1, 2])).toThrow(
-      'keys must be an array, got string',
-    );
-  });
-
-  it('12. should throw TypeError when values is not an array', () => {
-    expect(() => zipObject(['a'], 'val' as unknown as string[])).toThrow(TypeError);
-    expect(() => zipObject(['a'], 'val' as unknown as string[])).toThrow(
-      'values must be an array, got string',
-    );
-  });
-
-  it('13. should throw TypeError when a key element is not a string', () => {
-    expect(() => zipObject([1, 2] as unknown as string[], ['x', 'y'])).toThrow(TypeError);
-    expect(() => zipObject([1, 2] as unknown as string[], ['x', 'y'])).toThrow(
-      'keys[0] must be a string, got number',
-    );
-  });
 });

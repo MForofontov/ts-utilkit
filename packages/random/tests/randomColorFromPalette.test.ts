@@ -117,22 +117,6 @@ describe('randomColorFromPalette', () => {
     expect(['red', 'blue']).toContain(result);
   });
 
-  // Error Test case 11: TypeError for non-array palette
-  it('11. should throw TypeError when palette is not an array', () => {
-    expect(() => randomColorFromPalette('red' as any)).toThrow(TypeError);
-    expect(() => randomColorFromPalette('red' as any)).toThrow(
-      'palette must be an array, got string',
-    );
-  });
-
-  // Error Test case 12: TypeError for null palette
-  it('12. should throw TypeError when palette is null', () => {
-    expect(() => randomColorFromPalette(null as any)).toThrow(TypeError);
-    expect(() => randomColorFromPalette(null as any)).toThrow(
-      'palette must be an array, got object',
-    );
-  });
-
   // Error Test case 13: Error for empty palette
   it('13. should throw Error when palette is empty', () => {
     expect(() => randomColorFromPalette([])).toThrow(Error);
@@ -154,8 +138,5 @@ describe('randomColorFromPalette', () => {
     expect(() =>
       randomColorFromPalette(['red', { color: 'blue' } as any]),
     ).toThrow(Error);
-    expect(() =>
-      randomColorFromPalette(['red', { color: 'blue' } as any]),
-    ).toThrow('All palette items must be strings, got object at index 1');
   });
 });

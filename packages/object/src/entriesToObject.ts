@@ -4,9 +4,6 @@
  * @param entries - Array of [key, value] pairs where keys must be strings.
  * @returns An object with properties created from the entries.
  *
- * @throws {TypeError} If input is not an array.
- * @throws {TypeError} If any entry is not a valid [string, any] pair.
- *
  * @example
  * // Basic usage
  * const entries = [['name', 'John'], ['age', 30], ['city', 'New York']];
@@ -37,18 +34,8 @@
  * @complexity Time: O(n), Space: O(n) where n is the number of entries
  */
 export function entriesToObject<T>(entries: [string, unknown][]): T {
-  if (!Array.isArray(entries)) {
-    throw new TypeError('Input must be an array of key-value pairs');
-  }
 
   for (const entry of entries) {
-    if (
-      !Array.isArray(entry) ||
-      entry.length !== 2 ||
-      typeof entry[0] !== 'string'
-    ) {
-      throw new TypeError('Each entry must be a [string, any] pair');
-    }
   }
 
   return Object.fromEntries(entries) as T;

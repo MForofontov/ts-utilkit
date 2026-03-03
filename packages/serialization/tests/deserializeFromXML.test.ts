@@ -148,14 +148,4 @@ describe('deserializeFromXML', () => {
     expect(result.root.other).toBe('3');
   });
 
-  // Error cases
-  it('13. should throw TypeError when xmlString is not a string', () => {
-    // Arrange
-    const input: any = { root: 'value' };
-    const expectedMessage = 'xmlString must be a string, got object';
-
-    // Act & Assert
-    expect(() => deserializeFromXML(input)).toThrow(TypeError);
-    expect(() => deserializeFromXML(input)).toThrow(expectedMessage);
-  });
 });

@@ -49,28 +49,4 @@ describe('deepClone', () => {
     expect(Object.prototype.toString.call(result.r)).toBe('[object RegExp]');
   });
 
-  // Test case 6: Handle non-object input (number)
-  it('6. should throw a TypeError if input is a number', () => {
-    expect(() => deepClone(42 as unknown as object)).toThrow(TypeError);
-  });
-
-  // Test case 7: Handle non-object input (string)
-  it('7. should throw a TypeError if input is a string', () => {
-    expect(() => deepClone('string' as unknown as object)).toThrow(TypeError);
-  });
-
-  // Test case 8: Handle non-object input (boolean)
-  it('8. should throw a TypeError if input is a boolean', () => {
-    expect(() => deepClone(true as unknown as object)).toThrow(TypeError);
-  });
-
-  // Test case 9: Handle non-object input (null)
-  it('9. should throw a TypeError if input is null', () => {
-    expect(() => deepClone(null as unknown as object)).toThrow(TypeError);
-  });
-
-  // Test case 10: Handle non-object input (undefined)
-  it('10. should throw a TypeError if input is undefined', () => {
-    expect(() => deepClone(undefined as unknown as object)).toThrow(TypeError);
-  });
 });

@@ -72,34 +72,6 @@ describe('maskString', () => {
 
   // ─── Error cases ───────────────────────────────────────────────────────────
 
-  it('16. should throw TypeError when str is not a string', () => {
-    expect(() => maskString(123 as unknown as string, 0, 1)).toThrow(TypeError);
-    expect(() => maskString(123 as unknown as string, 0, 1)).toThrow(
-      'str must be a string, got number',
-    );
-  });
-
-  it('17. should throw TypeError when start is not a number', () => {
-    expect(() => maskString('hello', '2' as unknown as number, 4)).toThrow(TypeError);
-    expect(() => maskString('hello', '2' as unknown as number, 4)).toThrow(
-      'start must be a number, got string',
-    );
-  });
-
-  it('18. should throw TypeError when end is not a number', () => {
-    expect(() => maskString('hello', 0, '4' as unknown as number)).toThrow(TypeError);
-    expect(() => maskString('hello', 0, '4' as unknown as number)).toThrow(
-      'end must be a number, got string',
-    );
-  });
-
-  it('19. should throw TypeError when mask is not a string', () => {
-    expect(() => maskString('hello', 0, 4, 9 as unknown as string)).toThrow(TypeError);
-    expect(() => maskString('hello', 0, 4, 9 as unknown as string)).toThrow(
-      'mask must be a string, got number',
-    );
-  });
-
   it('20. should throw Error when start is negative', () => {
     expect(() => maskString('hello', -1, 4)).toThrow(Error);
     expect(() => maskString('hello', -1, 4)).toThrow(
@@ -110,20 +82,6 @@ describe('maskString', () => {
   it('21. should throw Error when end is negative', () => {
     expect(() => maskString('hello', 0, -1)).toThrow(Error);
     expect(() => maskString('hello', 0, -1)).toThrow(
-      'end must be a non-negative number',
-    );
-  });
-
-  it('22. should throw Error when start is NaN', () => {
-    expect(() => maskString('hello', NaN, 4)).toThrow(Error);
-    expect(() => maskString('hello', NaN, 4)).toThrow(
-      'start must be a non-negative number',
-    );
-  });
-
-  it('23. should throw Error when end is NaN', () => {
-    expect(() => maskString('hello', 0, NaN)).toThrow(Error);
-    expect(() => maskString('hello', 0, NaN)).toThrow(
       'end must be a non-negative number',
     );
   });

@@ -47,38 +47,4 @@ describe('entriesToObject', () => {
     expect(result).toEqual(expected);
   });
 
-  // Test case 5: Handle entries with non-string keys
-  it('5. should throw a TypeError if an entry has a non-string key', () => {
-    const entries: [string, unknown][] = [[123 as unknown as string, 'value']];
-    expect(() => entriesToObject(entries)).toThrow(TypeError);
-  });
-
-  // Test case 6: Handle entries with invalid structure
-  it('6. should throw a TypeError if an entry is not a [string, any] pair', () => {
-    const entries: unknown[] = [['a', 1], ['b'], 'invalid'];
-    expect(() =>
-      entriesToObject(entries as unknown as [string, unknown][]),
-    ).toThrow(TypeError);
-  });
-
-  // Test case 7: Handle non-array input
-  it('7. should throw a TypeError if input is not an array', () => {
-    expect(() => entriesToObject(42 as unknown as [string, unknown][])).toThrow(
-      TypeError,
-    );
-  });
-
-  // Test case 8: Handle null input
-  it('8. should throw a TypeError if input is null', () => {
-    expect(() =>
-      entriesToObject(null as unknown as [string, unknown][]),
-    ).toThrow(TypeError);
-  });
-
-  // Test case 9: Handle undefined input
-  it('9. should throw a TypeError if input is undefined', () => {
-    expect(() =>
-      entriesToObject(undefined as unknown as [string, unknown][]),
-    ).toThrow(TypeError);
-  });
 });

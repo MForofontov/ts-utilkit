@@ -5,7 +5,6 @@
  * @param paths - Path segments to join.
  * @returns A normalized joined path.
  *
- * @throws {TypeError} If any path segment is not a string.
  * @throws {Error} If no path segments are provided.
  *
  * @example
@@ -34,9 +33,6 @@ export function joinURLPaths(...paths: string[]): string {
   }
 
   for (const path of paths) {
-    if (typeof path !== 'string') {
-      throw new TypeError(`All paths must be strings, got ${typeof path}`);
-    }
   }
 
   // Track if the original first path started with /

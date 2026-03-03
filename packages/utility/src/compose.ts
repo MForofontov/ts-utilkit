@@ -7,7 +7,6 @@
  * @param fn1 - The outermost (last applied) function.
  * @returns A composed function applying all functions right-to-left.
  *
- * @throws {TypeError} If any argument is not a function.
  * @throws {Error} If called with no arguments.
  *
  * @example
@@ -75,11 +74,6 @@ export function compose(
     throw new Error('compose requires at least one function');
   }
   for (let i = 0; i < fns.length; i++) {
-    if (typeof fns[i] !== 'function') {
-      throw new TypeError(
-        `All arguments must be functions, got ${typeof fns[i]} at index ${i}`,
-      );
-    }
   }
   return (arg: unknown) => fns.reduceRight((acc, fn) => fn(acc), arg);
 }

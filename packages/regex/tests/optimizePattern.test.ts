@@ -102,25 +102,4 @@ describe('optimizePattern', () => {
     expect(result).toHaveProperty('suggestions');
   });
 
-  // Error cases
-  it('14. should throw TypeError when pattern is not a string or RegExp', () => {
-    expect(() => optimizePattern(123 as any)).toThrow(TypeError);
-    expect(() => optimizePattern(123 as any)).toThrow(
-      'pattern must be a string or RegExp',
-    );
-  });
-
-  it('15. should throw TypeError when pattern is null', () => {
-    expect(() => optimizePattern(null as any)).toThrow(TypeError);
-    expect(() => optimizePattern(null as any)).toThrow(
-      'pattern must be a string or RegExp',
-    );
-  });
-
-  it('16. should throw TypeError when pattern is undefined', () => {
-    expect(() => optimizePattern(undefined as any)).toThrow(TypeError);
-    expect(() => optimizePattern(undefined as any)).toThrow(
-      'pattern must be a string or RegExp',
-    );
-  });
 });

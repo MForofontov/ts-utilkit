@@ -7,8 +7,6 @@
  * @returns An array of numbers found in the string, in the order they appear.
  *   Returns an empty array if no numbers are found.
  *
- * @throws {TypeError} If str is not a string.
- *
  * @example
  * // Extract integers and decimals from a sentence
  * extractNumbers('I have 3 cats and 1.5 dogs');
@@ -38,9 +36,6 @@
  * @complexity Time: O(n), Space: O(k) where k is the number of matches
  */
 export function extractNumbers(str: string): number[] {
-  if (typeof str !== 'string') {
-    throw new TypeError(`str must be a string, got ${typeof str}`);
-  }
 
   const matches = str.match(/[+-]?\d+(\.\d+)?/g);
 

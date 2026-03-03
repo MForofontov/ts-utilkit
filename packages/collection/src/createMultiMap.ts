@@ -97,9 +97,6 @@ export interface MultiMap<K, V> {
  * @template V - The value type.
  * @returns A fresh {@link MultiMap} instance.
  *
- * @throws {TypeError} If `key` is `undefined` when calling `set` or `setAll`.
- * @throws {TypeError} If `values` is not an array when calling `setAll`.
- *
  * @example
  * // Build incrementally with chaining
  * const mm = createMultiMap<string, number>();
@@ -143,9 +140,6 @@ export function createMultiMap<K, V>(): MultiMap<K, V> {
 
   const multiMap: MultiMap<K, V> = {
     set(key: K, value: V): MultiMap<K, V> {
-      if (key === undefined) {
-        throw new TypeError('key must not be undefined');
-      }
 
       const existing = store.get(key);
       if (existing !== undefined) {
@@ -158,12 +152,6 @@ export function createMultiMap<K, V>(): MultiMap<K, V> {
     },
 
     setAll(key: K, values: V[]): MultiMap<K, V> {
-      if (key === undefined) {
-        throw new TypeError('key must not be undefined');
-      }
-      if (!Array.isArray(values)) {
-        throw new TypeError(`values must be an array, got ${typeof values}`);
-      }
 
       const existing = store.get(key);
       if (existing !== undefined) {

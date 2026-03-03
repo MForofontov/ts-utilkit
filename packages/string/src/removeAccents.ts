@@ -7,8 +7,6 @@
  * @param str - The string from which to remove accents.
  * @returns A new string with all diacritical marks removed.
  *
- * @throws {TypeError} If str is not a string.
- *
  * @example
  * // Remove accents from French characters
  * removeAccents('café');
@@ -38,9 +36,5 @@
  * @complexity Time: O(n), Space: O(n)
  */
 export function removeAccents(str: string): string {
-  if (typeof str !== 'string') {
-    throw new TypeError(`str must be a string, got ${typeof str}`);
-  }
-
   return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 }

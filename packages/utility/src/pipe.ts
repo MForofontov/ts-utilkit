@@ -6,7 +6,6 @@
  * @param fn1 - First function to apply.
  * @returns A composed function applying all functions left-to-right.
  *
- * @throws {TypeError} If any argument is not a function.
  * @throws {Error} If called with no arguments.
  *
  * @example
@@ -74,11 +73,6 @@ export function pipe(
     throw new Error('pipe requires at least one function');
   }
   for (let i = 0; i < fns.length; i++) {
-    if (typeof fns[i] !== 'function') {
-      throw new TypeError(
-        `All arguments must be functions, got ${typeof fns[i]} at index ${i}`,
-      );
-    }
   }
   return (arg: unknown) => fns.reduce((acc, fn) => fn(acc), arg);
 }

@@ -132,14 +132,4 @@ describe('isValidHexColor', () => {
     expect(isValidHexColor('#FF#5733')).toBe(false);
   });
 
-  // Test case 15: Throw TypeError when color is not a string
-  it('15. should throw TypeError when color is not a string', () => {
-    // Arrange
-    const invalidInput = 0xff5733 as unknown as string;
-    const expectedMessage = 'color must be a string, got number';
-
-    // Act & Assert
-    expect(() => isValidHexColor(invalidInput)).toThrow(TypeError);
-    expect(() => isValidHexColor(invalidInput)).toThrow(expectedMessage);
-  });
 });

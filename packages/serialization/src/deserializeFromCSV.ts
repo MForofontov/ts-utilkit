@@ -5,7 +5,6 @@
  * @param options - CSV options (delimiter, hasHeaders).
  * @returns Array of objects representing CSV rows.
  *
- * @throws {TypeError} If csvString is not a string or options are invalid.
  * @throws {Error} If csvString is empty.
  *
  * @example
@@ -26,25 +25,12 @@ export function deserializeFromCSV(
   csvString: string,
   options: { delimiter?: string; hasHeaders?: boolean } = {},
 ): Record<string, string>[] {
-  if (typeof csvString !== 'string') {
-    throw new TypeError(`csvString must be a string, got ${typeof csvString}`);
-  }
 
   if (csvString.length === 0) {
     throw new Error('csvString cannot be empty');
   }
 
   const { delimiter = ',', hasHeaders = true } = options;
-
-  if (typeof delimiter !== 'string') {
-    throw new TypeError(`delimiter must be a string, got ${typeof delimiter}`);
-  }
-
-  if (typeof hasHeaders !== 'boolean') {
-    throw new TypeError(
-      `hasHeaders must be a boolean, got ${typeof hasHeaders}`,
-    );
-  }
 
   const parseRow = (row: string): string[] => {
     const values: string[] = [];

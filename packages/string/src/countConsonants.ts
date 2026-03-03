@@ -4,8 +4,6 @@
  * @param str - The string to analyze.
  * @returns The total count of consonant letters (b, c, d, f, g, h, j, k, l, m, n, p, q, r, s, t, v, w, x, y, z).
  *
- * @throws {TypeError} If str is not a string.
- *
  * @example
  * // Basic usage
  * countConsonants("Hello world"); // 7

@@ -35,11 +35,6 @@ describe('mapToObject', () => {
     expect(result).toEqual({ '1': 'a', '2': 'b' });
   });
 
-  it('5. should throw TypeError when map is not a Map', () => {
-    const invalidMap = { a: 1 } as unknown as Map<string, number>;
-    expect(() => mapToObject(invalidMap)).toThrow(TypeError);
-  });
-
   it('6. should throw Error for non-string non-symbol keys', () => {
     const map = new Map([[1 as any, 'value']]);
     expect(() => mapToObject(map as any)).toThrow(

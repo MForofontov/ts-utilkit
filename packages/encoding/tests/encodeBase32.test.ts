@@ -70,17 +70,4 @@ describe('encodeBase32', () => {
     }
   });
 
-  it('13. should throw TypeError when str is not a string', () => {
-    expect(() => encodeBase32(42 as unknown as string)).toThrow(TypeError);
-    expect(() => encodeBase32(42 as unknown as string)).toThrow(
-      'str must be a string, got number',
-    );
-  });
-
-  it('14. should throw TypeError for null input', () => {
-    expect(() => encodeBase32(null as unknown as string)).toThrow(TypeError);
-    expect(() => encodeBase32(null as unknown as string)).toThrow(
-      'str must be a string, got object',
-    );
-  });
 });

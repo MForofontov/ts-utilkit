@@ -7,8 +7,6 @@
  * @param keyValueDelimiter - Delimiter between key and value (default: "=").
  * @returns An object containing the parsed key-value pairs.
  *
- * @throws {TypeError} If input is not a string.
- * @throws {TypeError} If delimiters are not strings.
  * @throws {Error} If input is empty.
  * @throws {Error} If a pair is missing the key-value delimiter.
  *
@@ -39,19 +37,6 @@ export function parseKeyValue(
   keyValueDelimiter: string = '=',
 ): Record<string, string> {
   // Input validation
-  if (typeof input !== 'string') {
-    throw new TypeError(`input must be a string, got ${typeof input}`);
-  }
-  if (typeof pairDelimiter !== 'string') {
-    throw new TypeError(
-      `pairDelimiter must be a string, got ${typeof pairDelimiter}`,
-    );
-  }
-  if (typeof keyValueDelimiter !== 'string') {
-    throw new TypeError(
-      `keyValueDelimiter must be a string, got ${typeof keyValueDelimiter}`,
-    );
-  }
 
   if (input.length === 0) {
     throw new Error('input string cannot be empty');

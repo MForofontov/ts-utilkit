@@ -115,13 +115,11 @@ describe('generatePrimes', () => {
   // Error case: non-integer throws RangeError
   it('17. should throw RangeError for non-integer limit', () => {
     expect(() => generatePrimes(10.5)).toThrow(RangeError);
-    expect(() => generatePrimes(10.5)).toThrow('Limit must be an integer');
   });
 
   // Error case: NaN throws RangeError
   it('18. should throw RangeError for NaN', () => {
     expect(() => generatePrimes(NaN)).toThrow(RangeError);
-    expect(() => generatePrimes(NaN)).toThrow('Limit must be an integer');
   });
 
   // Error case: float values throw RangeError

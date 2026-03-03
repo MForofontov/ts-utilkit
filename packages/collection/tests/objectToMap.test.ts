@@ -51,13 +51,4 @@ describe('objectToMap', () => {
     );
   });
 
-  it('6. should throw TypeError when obj is null', () => {
-    const invalidObj = null as unknown as Record<string, any>;
-    expect(() => objectToMap(invalidObj)).toThrow(TypeError);
-  });
-
-  it('7. should throw TypeError when obj is not an object', () => {
-    const invalidObj = 'not an object' as unknown as Record<string, any>;
-    expect(() => objectToMap(invalidObj)).toThrow(TypeError);
-  });
 });

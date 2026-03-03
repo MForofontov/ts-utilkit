@@ -134,29 +134,6 @@ describe('parseDataSize', () => {
     expect(result).toBe(expected);
   });
 
-  // Test case 11: Throw TypeError for non-string input
-  it('11. should throw TypeError when input is not a string', () => {
-    // Arrange
-    const input = 123 as unknown as string;
-
-    // Act & Assert
-    expect(() => parseDataSize(input)).toThrow(TypeError);
-    expect(() => parseDataSize(input)).toThrow('input must be a string');
-  });
-
-  // Test case 12: Throw TypeError for non-boolean binary
-  it('12. should throw TypeError when binary is not a boolean', () => {
-    // Arrange
-    const input = '5KB';
-    const binary = 'yes' as unknown as boolean;
-
-    // Act & Assert
-    expect(() => parseDataSize(input, binary)).toThrow(TypeError);
-    expect(() => parseDataSize(input, binary)).toThrow(
-      'binary must be a boolean',
-    );
-  });
-
   // Test case 13: Throw Error for empty input
   it('13. should throw Error when input is empty', () => {
     // Arrange

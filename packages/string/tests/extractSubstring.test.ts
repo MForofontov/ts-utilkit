@@ -24,16 +24,4 @@ describe('extractSubstring', () => {
     expect(() => extractSubstring('hello', 0, -1)).toThrow(RangeError);
     expect(() => extractSubstring('hello', 0, -1)).toThrow('length must be non-negative');
   });
-  it('8. should throw TypeError when str is not a string', () => {
-    expect(() => extractSubstring(123 as unknown as string, 0, 2)).toThrow(TypeError);
-    expect(() => extractSubstring(123 as unknown as string, 0, 2)).toThrow('str must be a string, got number');
-  });
-  it('9. should throw TypeError when startIndex is not a number', () => {
-    expect(() => extractSubstring('hello', 'x' as unknown as number, 2)).toThrow(TypeError);
-    expect(() => extractSubstring('hello', 'x' as unknown as number, 2)).toThrow('startIndex must be a number');
-  });
-  it('10. should throw TypeError when length is not a number', () => {
-    expect(() => extractSubstring('hello', 0, 'x' as unknown as number)).toThrow(TypeError);
-    expect(() => extractSubstring('hello', 0, 'x' as unknown as number)).toThrow('length must be a number');
-  });
 });

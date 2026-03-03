@@ -86,14 +86,6 @@ describe('randomBoolean', () => {
     expect(results.size).toBe(2); // Should have both true and false
   });
 
-  // Error Test case 9: TypeError for non-number probability
-  it('9. should throw TypeError when probability is not a number', () => {
-    expect(() => randomBoolean('0.5' as any)).toThrow(TypeError);
-    expect(() => randomBoolean('0.5' as any)).toThrow(
-      'probability must be a number',
-    );
-  });
-
   // Error Test case 10: Error for NaN probability
   it('10. should throw Error when probability is NaN', () => {
     expect(() => randomBoolean(NaN)).toThrow(Error);

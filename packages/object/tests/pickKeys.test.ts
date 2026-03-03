@@ -69,38 +69,4 @@ describe('pickKeys', () => {
     expect(result).toEqual(expected);
   });
 
-  // Test case 8: Handle non-object input (number)
-  it('8. should throw a TypeError if input is a number', () => {
-    expect(() =>
-      pickKeys(42 as unknown as Record<string, unknown>, ['a']),
-    ).toThrow(TypeError);
-  });
-
-  // Test case 9: Handle non-object input (string)
-  it('9. should throw a TypeError if input is a string', () => {
-    expect(() =>
-      pickKeys('string' as unknown as Record<string, unknown>, ['a']),
-    ).toThrow(TypeError);
-  });
-
-  // Test case 10: Handle non-object input (boolean)
-  it('10. should throw a TypeError if input is a boolean', () => {
-    expect(() =>
-      pickKeys(true as unknown as Record<string, unknown>, ['a']),
-    ).toThrow(TypeError);
-  });
-
-  // Test case 11: Handle non-object input (null)
-  it('11. should throw a TypeError if input is null', () => {
-    expect(() =>
-      pickKeys(null as unknown as Record<string, unknown>, ['a']),
-    ).toThrow(TypeError);
-  });
-
-  // Test case 12: Handle non-object input (undefined)
-  it('12. should throw a TypeError if input is undefined', () => {
-    expect(() =>
-      pickKeys(undefined as unknown as Record<string, unknown>, ['a']),
-    ).toThrow(TypeError);
-  });
 });

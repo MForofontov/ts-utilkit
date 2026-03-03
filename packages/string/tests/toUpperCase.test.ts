@@ -16,8 +16,4 @@ describe('toUpperCase', () => {
   it('5. should leave non-letter characters unchanged', () => {
     expect(toUpperCase('abc123!@#')).toBe('ABC123!@#');
   });
-  it('6. should throw TypeError when str is not a string', () => {
-    expect(() => toUpperCase(123 as unknown as string)).toThrow(TypeError);
-    expect(() => toUpperCase(123 as unknown as string)).toThrow('str must be a string, got number');
-  });
 });

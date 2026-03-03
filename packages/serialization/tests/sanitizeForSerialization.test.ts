@@ -190,19 +190,4 @@ describe('sanitizeForSerialization', () => {
     expect(input).toEqual(original);
   });
 
-  // Error cases
-  it('15. should throw TypeError when removeNull is not boolean', () => {
-    // Arrange
-    const input = { a: 1 };
-    const invalidRemoveNull: any = 'true';
-    const expectedMessage = 'removeNull must be a boolean, got string';
-
-    // Act & Assert
-    expect(() => sanitizeForSerialization(input, invalidRemoveNull)).toThrow(
-      TypeError,
-    );
-    expect(() => sanitizeForSerialization(input, invalidRemoveNull)).toThrow(
-      expectedMessage,
-    );
-  });
 });

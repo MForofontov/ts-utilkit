@@ -76,28 +76,6 @@ describe('replaceAll', () => {
     expect(result).toBe('bbb');
   });
 
-  // Error cases
-  it('13. should throw TypeError when text is not a string', () => {
-    expect(() => replaceAll(123 as any, 'test', 'demo')).toThrow(TypeError);
-    expect(() => replaceAll(123 as any, 'test', 'demo')).toThrow(
-      'text must be a string',
-    );
-  });
-
-  it('14. should throw TypeError when pattern is invalid type', () => {
-    expect(() => replaceAll('test', 123 as any, 'demo')).toThrow(TypeError);
-    expect(() => replaceAll('test', 123 as any, 'demo')).toThrow(
-      'pattern must be a string or RegExp',
-    );
-  });
-
-  it('15. should throw TypeError when replacement is invalid type', () => {
-    expect(() => replaceAll('test', 'test', 123 as any)).toThrow(TypeError);
-    expect(() => replaceAll('test', 'test', 123 as any)).toThrow(
-      'replacement must be a string or function',
-    );
-  });
-
   it('16. should escape special characters in string patterns', () => {
     // String patterns are escaped, so special chars are treated literally
     const result = replaceAll('test[unclosed', '[unclosed', 'demo');

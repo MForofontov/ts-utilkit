@@ -115,34 +115,6 @@ describe('isValidTime', () => {
     expect(isValidTime('  2:30 PM  ', true, false)).toBe(true);
   });
 
-  // Test case 12: TypeError for invalid input types
-  it('12. should throw TypeError for invalid timeString type', () => {
-    expect(() => isValidTime(123 as unknown as string)).toThrow(TypeError);
-    expect(() => isValidTime(123 as unknown as string)).toThrow(
-      'timeString must be a string',
-    );
-  });
-
-  // Test case 13: TypeError for invalid allowSeconds type
-  it('13. should throw TypeError for invalid allowSeconds type', () => {
-    expect(() => isValidTime('14:30', 'true' as unknown as boolean)).toThrow(
-      TypeError,
-    );
-    expect(() => isValidTime('14:30', 'true' as unknown as boolean)).toThrow(
-      'allowSeconds must be a boolean',
-    );
-  });
-
-  // Test case 14: TypeError for invalid format24Hour type
-  it('14. should throw TypeError for invalid format24Hour type', () => {
-    expect(() =>
-      isValidTime('14:30', true, 'true' as unknown as boolean),
-    ).toThrow(TypeError);
-    expect(() =>
-      isValidTime('14:30', true, 'true' as unknown as boolean),
-    ).toThrow('format24Hour must be a boolean');
-  });
-
   // Test case 15: Edge cases for hour validation in 24-hour format
   it('15. should validate edge cases for 24-hour format hours', () => {
     // Test boundary values

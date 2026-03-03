@@ -111,38 +111,4 @@ describe('flattenObject', () => {
     expect(result).toEqual(expected);
   });
 
-  // Test case 14: Throw error for non-object input (number)
-  it('14. should throw a TypeError if input is a number', () => {
-    expect(() =>
-      flattenObject(42 as unknown as Record<string, unknown>),
-    ).toThrow(TypeError);
-  });
-
-  // Test case 15: Throw error for non-object input (string)
-  it('15. should throw a TypeError if input is a string', () => {
-    expect(() =>
-      flattenObject('string' as unknown as Record<string, unknown>),
-    ).toThrow(TypeError);
-  });
-
-  // Test case 16: Throw error for non-object input (boolean)
-  it('16. should throw a TypeError if input is a boolean', () => {
-    expect(() =>
-      flattenObject(true as unknown as Record<string, unknown>),
-    ).toThrow(TypeError);
-  });
-
-  // Test case 17: Throw error for null input
-  it('17. should throw a TypeError if input is null', () => {
-    expect(() =>
-      flattenObject(null as unknown as Record<string, unknown>),
-    ).toThrow(TypeError);
-  });
-
-  // Test case 18: Throw error for undefined input
-  it('18. should throw a TypeError if input is undefined', () => {
-    expect(() =>
-      flattenObject(undefined as unknown as Record<string, unknown>),
-    ).toThrow(TypeError);
-  });
 });

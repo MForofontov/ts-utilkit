@@ -5,8 +5,6 @@
  * @param keysToPick - Array of keys to include in the result.
  * @returns A new object with only the specified keys (subset of original).
  *
- * @throws {TypeError} If obj is not a non-null object.
- *
  * @example
  * // Pick specific properties for public API
  * const user = { id: 1, name: 'John', email: 'john@example.com', role: 'admin' };
@@ -44,9 +42,6 @@ export function pickKeys<T extends Record<string, unknown>>(
   obj: T,
   keysToPick: (keyof T)[],
 ): Partial<T> {
-  if (typeof obj !== 'object' || obj === null) {
-    throw new TypeError('Input must be a non-null object');
-  }
   return Object.fromEntries(
     Object.entries(obj).filter(([key]) => keysToPick.includes(key as keyof T)),
   ) as Partial<T>;

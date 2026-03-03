@@ -145,4 +145,5 @@ describe('uniqueCharacters', () => {
     const result: string[] = uniqueCharacters(str);
     expect(result).toEqual(expected);
   });
+
 });

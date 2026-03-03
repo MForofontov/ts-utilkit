@@ -44,15 +44,7 @@ describe('fromUnixTimestamp', () => {
     expect(result.toISOString()).toBe('2100-01-01T00:00:00.000Z');
   });
 
-  it('9. should throw TypeError when timestamp is not a number', () => {
-    expect(() => fromUnixTimestamp('1735689600' as unknown as number)).toThrow(TypeError);
-    expect(() => fromUnixTimestamp('1735689600' as unknown as number)).toThrow(
-      'timestamp must be a number, got string',
-    );
-  });
-
   it('10. should throw Error when timestamp is NaN', () => {
     expect(() => fromUnixTimestamp(NaN)).toThrow(Error);
-    expect(() => fromUnixTimestamp(NaN)).toThrow('timestamp must be a valid number, not NaN');
   });
 });

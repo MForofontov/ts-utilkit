@@ -70,39 +70,4 @@ describe('transformKeys', () => {
 
   // ── Error cases ───────────────────────────────────────────────────────────
 
-  it('11. should throw TypeError when obj is null', () => {
-    expect(() =>
-      transformKeys(null as unknown as Record<string, unknown>, (k) => k),
-    ).toThrow(TypeError);
-    expect(() =>
-      transformKeys(null as unknown as Record<string, unknown>, (k) => k),
-    ).toThrow('obj must be a non-null object, got null');
-  });
-
-  it('12. should throw TypeError when obj is an array', () => {
-    expect(() =>
-      transformKeys([1, 2] as unknown as Record<string, unknown>, (k) => k),
-    ).toThrow(TypeError);
-    expect(() =>
-      transformKeys([1, 2] as unknown as Record<string, unknown>, (k) => k),
-    ).toThrow('obj must be a non-null object, got object');
-  });
-
-  it('13. should throw TypeError when fn is not a function', () => {
-    expect(() =>
-      transformKeys({ a: 1 }, 'upper' as unknown as (k: string) => string),
-    ).toThrow(TypeError);
-    expect(() =>
-      transformKeys({ a: 1 }, 'upper' as unknown as (k: string) => string),
-    ).toThrow('fn must be a function, got string');
-  });
-
-  it('14. should throw TypeError when fn returns a non-string value', () => {
-    expect(() =>
-      transformKeys({ a: 1 }, (() => 42) as unknown as (k: string) => string),
-    ).toThrow(TypeError);
-    expect(() =>
-      transformKeys({ a: 1 }, (() => 42) as unknown as (k: string) => string),
-    ).toThrow('fn must return a string, got number for key "a"');
-  });
 });

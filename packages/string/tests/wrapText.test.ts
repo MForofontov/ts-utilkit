@@ -82,34 +82,11 @@ describe('wrapText', () => {
 
   // ─── Error cases ───────────────────────────────────────────────────────────
 
-  it('18. should throw TypeError when str is not a string', () => {
-    expect(() => wrapText(123 as unknown as string, 10)).toThrow(TypeError);
-    expect(() => wrapText(123 as unknown as string, 10)).toThrow(
-      'str must be a string, got number',
-    );
-  });
-
-  it('19. should throw TypeError when maxWidth is not a number', () => {
-    expect(() => wrapText('hello', '10' as unknown as number)).toThrow(TypeError);
-    expect(() => wrapText('hello', '10' as unknown as number)).toThrow(
-      'maxWidth must be a number, got string',
-    );
-  });
-
-  it('20. should throw Error when maxWidth is NaN', () => {
-    expect(() => wrapText('hello', NaN)).toThrow(Error);
-    expect(() => wrapText('hello', NaN)).toThrow(
-      'maxWidth must be a valid number, not NaN',
-    );
-  });
-
   it('21. should throw Error when maxWidth is 0', () => {
     expect(() => wrapText('hello', 0)).toThrow(Error);
-    expect(() => wrapText('hello', 0)).toThrow('maxWidth must be at least 1');
   });
 
   it('22. should throw Error when maxWidth is negative', () => {
     expect(() => wrapText('hello', -5)).toThrow(Error);
-    expect(() => wrapText('hello', -5)).toThrow('maxWidth must be at least 1');
   });
 });

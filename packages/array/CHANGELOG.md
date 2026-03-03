@@ -7,12 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Fixed
-- `sumArrayElements`: added `Array.isArray` guard — now throws `TypeError` (e.g. `'arr must be an array, got object'`) when a non-array is passed, rather than silently producing `0`
-
 ### Changed
+- Remove all runtime `typeof`/`instanceof` TypeError guards; rely on TypeScript type system for type safety
+- Remove all `@throws {TypeError}` JSDoc tags from all affected functions
+- Remove all TypeError test cases from all test files
 - `findMax`: replace `Math.max(...arr)` spread (stack overflow risk for arrays > ~100k elements) with a `reduce`-based implementation that preserves NaN propagation semantics
 - `findMin`: replace `Math.min(...arr)` spread (stack overflow risk for arrays > ~100k elements) with a `reduce`-based implementation that preserves NaN propagation semantics
+- `groupBy`: replaced with a pure `export { groupByObject as groupBy }` re-export from `@ts-utilkit/object`; eliminates all duplicated logic
+- `findCommonWithCondition`: replace `JSON.stringify(item1) === JSON.stringify(item2)` with `deepEqual` from `@ts-utilkit/object` — correctly handles NaN, Date, RegExp, and deeply nested values that JSON.stringify cannot
 
 ### Deprecated
 - `groupBy`: re-export of `groupByObject` from `@ts-utilkit/object`; use `groupByObject` directly
@@ -25,10 +27,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add `slidingWindow` — generate all contiguous sub-arrays of a fixed size across the input array
 - Add `takeWhile` — collect leading elements while a predicate holds, stopping at first failure
 - Declare `@ts-utilkit/object` as an explicit package dependency (formalises existing cross-package import)
-
-### Changed
-- `groupBy`: replaced with a pure `export { groupByObject as groupBy }` re-export from `@ts-utilkit/object`; eliminates all duplicated logic; `TypeError` on non-array input now propagates from `groupByObject`
-- `findCommonWithCondition`: replace `JSON.stringify(item1) === JSON.stringify(item2)` with `deepEqual` from `@ts-utilkit/object` — correctly handles NaN, Date, RegExp, and deeply nested values that JSON.stringify cannot
 
 ## [0.1.1] - 2026-01-26
 

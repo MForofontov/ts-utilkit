@@ -6,7 +6,6 @@ import { randomBytes } from 'crypto';
  * @param length - The length of the salt in bytes. Defaults to 32 bytes.
  * @returns Hex string representation of the salt.
  *
- * @throws {TypeError} If length is not a number.
  * @throws {Error} If length is not a positive integer.
  * @throws {Error} If length is NaN.
  *
@@ -37,9 +36,6 @@ import { randomBytes } from 'crypto';
  * @complexity Time: O(n) where n is the length, Space: O(n)
  */
 export function generateSalt(length: number = 32): string {
-  if (typeof length !== 'number') {
-    throw new TypeError(`length must be a number, got ${typeof length}`);
-  }
 
   if (isNaN(length)) {
     throw new Error('length must be a valid number, not NaN');

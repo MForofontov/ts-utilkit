@@ -140,27 +140,4 @@ describe('compose', () => {
     ).toThrow('compose requires at least one function');
   });
 
-  it('17. should throw TypeError when a non-function is passed', () => {
-    expect(() =>
-      (compose as unknown as (...a: unknown[]) => unknown)(
-        (x: number) => x,
-        42,
-      ),
-    ).toThrow(TypeError);
-    expect(() =>
-      (compose as unknown as (...a: unknown[]) => unknown)(
-        (x: number) => x,
-        42,
-      ),
-    ).toThrow('All arguments must be functions, got number at index 1');
-  });
-
-  it('18. should throw TypeError when the first argument is not a function', () => {
-    expect(() =>
-      (compose as unknown as (...a: unknown[]) => unknown)('not a fn'),
-    ).toThrow(TypeError);
-    expect(() =>
-      (compose as unknown as (...a: unknown[]) => unknown)('not a fn'),
-    ).toThrow('All arguments must be functions, got string at index 0');
-  });
 });

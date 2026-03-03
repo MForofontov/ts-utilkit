@@ -5,8 +5,6 @@
  * @param set2 - The second set.
  * @returns A new Set containing elements that are in either set1 or set2, but not in both.
  *
- * @throws {TypeError} If either argument is not a Set.
- *
  * @example
  * // Basic symmetric difference
  * const set1 = new Set([1, 2, 3]);
@@ -37,13 +35,6 @@
  * @complexity Time: O(n + m) where n and m are set sizes, Space: O(n + m)
  */
 export function setSymmetricDifference<T>(set1: Set<T>, set2: Set<T>): Set<T> {
-  if (!(set1 instanceof Set)) {
-    throw new TypeError(`First argument must be a Set, got ${typeof set1}`);
-  }
-
-  if (!(set2 instanceof Set)) {
-    throw new TypeError(`Second argument must be a Set, got ${typeof set2}`);
-  }
 
   const result = new Set<T>();
 

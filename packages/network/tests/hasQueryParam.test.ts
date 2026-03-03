@@ -60,22 +60,6 @@ describe('hasQueryParam', () => {
 
   // ── Error cases ───────────────────────────────────────────────────────────
 
-  it('12. should throw TypeError when url is not a string', () => {
-    expect(() => hasQueryParam(123 as unknown as string, 'key')).toThrow(TypeError);
-    expect(() => hasQueryParam(123 as unknown as string, 'key')).toThrow(
-      'url must be a string, got number',
-    );
-  });
-
-  it('13. should throw TypeError when key is not a string', () => {
-    expect(() =>
-      hasQueryParam('https://example.com?a=1', 99 as unknown as string),
-    ).toThrow(TypeError);
-    expect(() =>
-      hasQueryParam('https://example.com?a=1', 99 as unknown as string),
-    ).toThrow('key must be a string, got number');
-  });
-
   it('14. should throw Error when url is not a valid URL', () => {
     expect(() => hasQueryParam('not-a-valid-url', 'key')).toThrow(Error);
     expect(() => hasQueryParam('not-a-valid-url', 'key')).toThrow(

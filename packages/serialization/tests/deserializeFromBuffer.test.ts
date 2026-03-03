@@ -147,47 +147,6 @@ describe('deserializeFromBuffer', () => {
     expect(result).toEqual(expected);
   });
 
-  // Error cases
-  it('13. should throw TypeError when buffer is not a Buffer', () => {
-    // Arrange
-    const input: any = 'not a buffer';
-    const expectedMessage = 'buffer must be a Buffer, got string';
-
-    // Act & Assert
-    expect(() => deserializeFromBuffer(input)).toThrow(TypeError);
-    expect(() => deserializeFromBuffer(input)).toThrow(expectedMessage);
-  });
-
-  it('14. should throw TypeError when encoding is not a string', () => {
-    // Arrange
-    const input = Buffer.from('hello');
-    const invalidEncoding: any = 123;
-    const expectedMessage = 'encoding must be a string, got number';
-
-    // Act & Assert
-    expect(() => deserializeFromBuffer(input, invalidEncoding)).toThrow(
-      TypeError,
-    );
-    expect(() => deserializeFromBuffer(input, invalidEncoding)).toThrow(
-      expectedMessage,
-    );
-  });
-
-  it('15. should throw TypeError when parseJSON is not boolean', () => {
-    // Arrange
-    const input = Buffer.from('{}');
-    const invalidParseJSON: any = 'true';
-    const expectedMessage = 'parseJSON must be a boolean, got string';
-
-    // Act & Assert
-    expect(() =>
-      deserializeFromBuffer(input, 'utf8', invalidParseJSON),
-    ).toThrow(TypeError);
-    expect(() =>
-      deserializeFromBuffer(input, 'utf8', invalidParseJSON),
-    ).toThrow(expectedMessage);
-  });
-
   it('16. should throw Error for invalid JSON', () => {
     // Arrange
     const input = Buffer.from('{name: "John"}'); // Invalid JSON

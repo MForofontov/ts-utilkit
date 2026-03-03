@@ -89,31 +89,4 @@ describe('toPascalCase', () => {
 
   // ─── Error cases ───────────────────────────────────────────────────────────
 
-  it('19. should throw TypeError when str is a number', () => {
-    expect(() => toPascalCase(42 as unknown as string)).toThrow(TypeError);
-    expect(() => toPascalCase(42 as unknown as string)).toThrow(
-      'str must be a string, got number',
-    );
-  });
-
-  it('20. should throw TypeError when str is null', () => {
-    expect(() => toPascalCase(null as unknown as string)).toThrow(TypeError);
-    expect(() => toPascalCase(null as unknown as string)).toThrow(
-      'str must be a string, got object',
-    );
-  });
-
-  it('21. should throw TypeError when str is undefined', () => {
-    expect(() => toPascalCase(undefined as unknown as string)).toThrow(TypeError);
-    expect(() => toPascalCase(undefined as unknown as string)).toThrow(
-      'str must be a string, got undefined',
-    );
-  });
-
-  it('22. should throw TypeError when str is a boolean', () => {
-    expect(() => toPascalCase(true as unknown as string)).toThrow(TypeError);
-    expect(() => toPascalCase(true as unknown as string)).toThrow(
-      'str must be a string, got boolean',
-    );
-  });
 });

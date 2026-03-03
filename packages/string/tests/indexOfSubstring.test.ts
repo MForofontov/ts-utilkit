@@ -16,12 +16,4 @@ describe('indexOfSubstring', () => {
   it('5. should be case-sensitive', () => {
     expect(indexOfSubstring('Hello World', 'world')).toBe(-1);
   });
-  it('6. should throw TypeError when str is not a string', () => {
-    expect(() => indexOfSubstring(123 as unknown as string, 'x')).toThrow(TypeError);
-    expect(() => indexOfSubstring(123 as unknown as string, 'x')).toThrow('str must be a string, got number');
-  });
-  it('7. should throw TypeError when searchString is not a string', () => {
-    expect(() => indexOfSubstring('hello', 123 as unknown as string)).toThrow(TypeError);
-    expect(() => indexOfSubstring('hello', 123 as unknown as string)).toThrow('searchString must be a string, got number');
-  });
 });

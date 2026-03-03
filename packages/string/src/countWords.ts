@@ -4,8 +4,6 @@
  * @param str - The string to analyze.
  * @returns The total count of words (sequences of non-whitespace characters).
  *
- * @throws {TypeError} If str is not a string.
- *
  * @example
  * // Basic usage
  * countWords("Hello world! This is a test."); // 6
@@ -32,9 +30,6 @@
  * @complexity Time: O(n), Space: O(n) where n is the length of the string
  */
 export function countWords(str: string): number {
-  if (typeof str !== 'string') {
-    throw new TypeError(`str must be a string, got ${typeof str}`);
-  }
   if (str.trim() === '') {
     return 0;
   }

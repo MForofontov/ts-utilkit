@@ -4,7 +4,6 @@
  * @param map - The Map to convert.
  * @returns A plain object with the same key-value pairs.
  *
- * @throws {TypeError} If map is not a Map.
  * @throws {Error} If Map contains non-string and non-symbol keys.
  *
  * @example
@@ -31,9 +30,6 @@
 export function mapToObject<V>(
   map: Map<string | symbol, V>,
 ): Record<string | symbol, V> {
-  if (!(map instanceof Map)) {
-    throw new TypeError(`map must be a Map, got ${typeof map}`);
-  }
 
   const result: Record<string | symbol, V> = {};
 

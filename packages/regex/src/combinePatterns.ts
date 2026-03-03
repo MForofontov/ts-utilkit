@@ -6,9 +6,6 @@
  * @param flags - Optional flags for the resulting pattern.
  * @returns Combined RegExp object.
  *
- * @throws {TypeError} If patterns is not an array.
- * @throws {TypeError} If operator is not a valid string.
- * @throws {TypeError} If flags is provided and not a string.
  * @throws {Error} If patterns array is empty.
  * @throws {Error} If any pattern is invalid.
  *
@@ -38,22 +35,9 @@ export function combinePatterns(
   operator: 'and' | 'or',
   flags?: string,
 ): RegExp {
-  if (!Array.isArray(patterns)) {
-    throw new TypeError(`patterns must be an array, got ${typeof patterns}`);
-  }
 
   if (patterns.length === 0) {
     throw new Error('patterns array cannot be empty');
-  }
-
-  if (operator !== 'and' && operator !== 'or') {
-    throw new TypeError(
-      `operator must be 'and' or 'or', got ${operator as string}`,
-    );
-  }
-
-  if (flags !== undefined && typeof flags !== 'string') {
-    throw new TypeError(`flags must be a string, got ${typeof flags}`);
   }
 
   // Extract pattern sources
@@ -65,9 +49,7 @@ export function combinePatterns(
     } else if (pattern instanceof RegExp) {
       sources.push(pattern.source);
     } else {
-      throw new TypeError(
-        `Each pattern must be a string or RegExp, got ${typeof pattern}`,
-      );
+      continue;
     }
   }
 

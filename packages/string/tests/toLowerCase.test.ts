@@ -16,8 +16,4 @@ describe('toLowerCase', () => {
   it('5. should leave non-letter characters unchanged', () => {
     expect(toLowerCase('ABC123!@#')).toBe('abc123!@#');
   });
-  it('6. should throw TypeError when str is not a string', () => {
-    expect(() => toLowerCase(123 as unknown as string)).toThrow(TypeError);
-    expect(() => toLowerCase(123 as unknown as string)).toThrow('str must be a string, got number');
-  });
 });

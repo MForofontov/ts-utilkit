@@ -95,16 +95,4 @@ describe('isValidURL', () => {
     expect(isValidURL('custom://example.com', ['http'])).toBe(false);
   });
 
-  // Test case 19: Error case - non-string input
-  it('19. should throw TypeError for non-string input', () => {
-    const input = 12345 as unknown as string;
-    expect(() => isValidURL(input)).toThrow(TypeError);
-    expect(() => isValidURL(input)).toThrow('url must be a string');
-  });
-
-  // Test case 20: Error case - invalid allowedSchemes type
-  it('20. should throw TypeError for non-array allowedSchemes', () => {
-    const schemes = 'http' as unknown as string[];
-    expect(() => isValidURL('https://example.com', schemes)).toThrow(TypeError);
-  });
 });

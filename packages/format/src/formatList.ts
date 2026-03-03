@@ -7,12 +7,7 @@
  * @param locale - BCP 47 locale string used for formatting (default: "en").
  * @returns A formatted list string. Returns an empty string for an empty array.
  *
- * @throws {TypeError} If items is not an array.
- * @throws {TypeError} If any element in items is not a string.
- * @throws {TypeError} If conjunction is not a string.
  * @throws {Error} If conjunction is not one of "and", "or", or "none".
- * @throws {TypeError} If locale is not a string.
- *
  * @example
  * // Three items with default "and" conjunction
  * formatList(['Alice', 'Bob', 'Carol']); // Returns "Alice, Bob, and Carol"
@@ -41,28 +36,12 @@ export function formatList(
   locale: string = 'en',
 ): string {
   // Input validation
-  if (!Array.isArray(items)) {
-    throw new TypeError(`items must be an array, got ${typeof items}`);
-  }
   for (let i = 0; i < items.length; i++) {
-    if (typeof items[i] !== 'string') {
-      throw new TypeError(
-        `items[${i}] must be a string, got ${typeof items[i]}`,
-      );
-    }
-  }
-  if (typeof conjunction !== 'string') {
-    throw new TypeError(
-      `conjunction must be a string, got ${typeof conjunction}`,
-    );
   }
   if (!['and', 'or', 'none'].includes(conjunction)) {
     throw new Error(
       `conjunction must be "and", "or", or "none", got "${conjunction}"`,
     );
-  }
-  if (typeof locale !== 'string') {
-    throw new TypeError(`locale must be a string, got ${typeof locale}`);
   }
 
   // Return early for empty array

@@ -80,49 +80,6 @@ describe('verifyHMAC', () => {
 
   // Error test cases (always at the end)
 
-  // Test case 10: Throw error for null data
-  it('10. should throw TypeError when data is null', () => {
-    const hmac = generateHMAC(testData, testKey, 'sha256');
-    expect(() =>
-      verifyHMAC(null as unknown as string, testKey, hmac, 'sha256'),
-    ).toThrow(TypeError);
-    expect(() =>
-      verifyHMAC(null as unknown as string, testKey, hmac, 'sha256'),
-    ).toThrow('data must be a string or Buffer');
-  });
-
-  // Test case 11: Throw error for null secret
-  it('11. should throw TypeError when secret is null', () => {
-    const hmac = generateHMAC(testData, testKey, 'sha256');
-    expect(() =>
-      verifyHMAC(testData, null as unknown as string, hmac, 'sha256'),
-    ).toThrow(TypeError);
-    expect(() =>
-      verifyHMAC(testData, null as unknown as string, hmac, 'sha256'),
-    ).toThrow('secret must be a string');
-  });
-
-  // Test case 12: Throw error for null hmac
-  it('12. should throw TypeError when hmac is null', () => {
-    expect(() =>
-      verifyHMAC(testData, testKey, null as unknown as string, 'sha256'),
-    ).toThrow(TypeError);
-    expect(() =>
-      verifyHMAC(testData, testKey, null as unknown as string, 'sha256'),
-    ).toThrow('hmac must be a string');
-  });
-
-  // Test case 13: Throw error for algorithm type
-  it('13. should throw TypeError when algorithm is not a string', () => {
-    const hmac = generateHMAC(testData, testKey, 'sha256');
-    expect(() =>
-      verifyHMAC(testData, testKey, hmac, 123 as unknown as 'sha256'),
-    ).toThrow(TypeError);
-    expect(() =>
-      verifyHMAC(testData, testKey, hmac, 123 as unknown as 'sha256'),
-    ).toThrow('algorithm must be a string');
-  });
-
   // Test case 14: Throw error for empty secret
   it('14. should throw Error when secret is empty', () => {
     const hmac = generateHMAC(testData, testKey, 'sha256');

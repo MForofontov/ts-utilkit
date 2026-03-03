@@ -63,14 +63,4 @@ describe('mapReduce', () => {
     expect(result).toBe(5);
   });
 
-  it('7. should throw TypeError when map is not a Map', () => {
-    const invalidMap = { a: 1 } as unknown as Map<string, number>;
-    expect(() => mapReduce(invalidMap, (acc) => acc, 0)).toThrow(TypeError);
-  });
-
-  it('8. should throw TypeError when reducer is not a function', () => {
-    const map = new Map([['a', 1]]);
-    const invalidReducer = 'not a function' as unknown as () => number;
-    expect(() => mapReduce(map, invalidReducer, 0)).toThrow(TypeError);
-  });
 });

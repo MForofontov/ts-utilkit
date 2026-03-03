@@ -7,9 +7,6 @@
  * @param quote - Quote character (default: '"').
  * @returns An array of parsed fields.
  *
- * @throws {TypeError} If input is not a string.
- * @throws {TypeError} If delimiter is not a string.
- * @throws {TypeError} If quote is not a string.
  * @throws {Error} If input is empty.
  * @throws {Error} If delimiter or quote is not exactly one character.
  * @throws {Error} If quotes are not properly closed.
@@ -46,15 +43,6 @@ export function parseCSVLine(
   quote: string = '"',
 ): string[] {
   // Input validation
-  if (typeof input !== 'string') {
-    throw new TypeError(`input must be a string, got ${typeof input}`);
-  }
-  if (typeof delimiter !== 'string') {
-    throw new TypeError(`delimiter must be a string, got ${typeof delimiter}`);
-  }
-  if (typeof quote !== 'string') {
-    throw new TypeError(`quote must be a string, got ${typeof quote}`);
-  }
 
   if (input.length === 0) {
     throw new Error('input string cannot be empty');

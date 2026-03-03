@@ -20,9 +20,6 @@ export interface MatchGroup {
  * @param flags - Optional flags for string patterns (default: 'g').
  * @returns Array of MatchGroup objects containing matches and groups.
  *
- * @throws {TypeError} If text is not a string.
- * @throws {TypeError} If pattern is not a string or RegExp.
- * @throws {TypeError} If flags is provided and not a string.
  * @throws {Error} If pattern is invalid.
  *
  * @example
@@ -52,19 +49,6 @@ export function extractMatchGroups(
   pattern: string | RegExp,
   flags?: string,
 ): MatchGroup[] {
-  if (typeof text !== 'string') {
-    throw new TypeError(`text must be a string, got ${typeof text}`);
-  }
-
-  if (typeof pattern !== 'string' && !(pattern instanceof RegExp)) {
-    throw new TypeError(
-      `pattern must be a string or RegExp, got ${typeof pattern}`,
-    );
-  }
-
-  if (flags !== undefined && typeof flags !== 'string') {
-    throw new TypeError(`flags must be a string, got ${typeof flags}`);
-  }
 
   let regex: RegExp;
 

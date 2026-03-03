@@ -8,7 +8,6 @@ import { randomChoice } from './randomChoice';
  * @param step - The step size (default: 1).
  * @returns A random number from the range.
  *
- * @throws {TypeError} If min, max, or step is not a number.
  * @throws {Error} If parameters are invalid (NaN, min > max, step <= 0, etc.).
  *
  * @example
@@ -30,15 +29,6 @@ export function randomFromRange(
   max: number,
   step: number = 1,
 ): number {
-  if (typeof min !== 'number') {
-    throw new TypeError(`min must be a number, got ${typeof min}`);
-  }
-  if (typeof max !== 'number') {
-    throw new TypeError(`max must be a number, got ${typeof max}`);
-  }
-  if (typeof step !== 'number') {
-    throw new TypeError(`step must be a number, got ${typeof step}`);
-  }
   if (isNaN(min)) {
     throw new Error('min must be a valid number, not NaN');
   }

@@ -121,26 +121,6 @@ describe('formatPercentage', () => {
     expect(result).toBe(expected);
   });
 
-  // Test case 10: Throw TypeError for non-number value
-  it('10. should throw TypeError when value is not a number', () => {
-    // Arrange
-    const value = 'invalid' as unknown as number;
-
-    // Act & Assert
-    expect(() => formatPercentage(value)).toThrow(TypeError);
-    expect(() => formatPercentage(value)).toThrow('value must be a number');
-  });
-
-  // Test case 11: Throw TypeError for NaN
-  it('11. should throw TypeError when value is NaN', () => {
-    // Arrange
-    const value = NaN;
-
-    // Act & Assert
-    expect(() => formatPercentage(value)).toThrow(TypeError);
-    expect(() => formatPercentage(value)).toThrow('value must be a number');
-  });
-
   // Test case 12: Throw Error for negative decimals
   it('12. should throw Error for negative decimals', () => {
     // Arrange

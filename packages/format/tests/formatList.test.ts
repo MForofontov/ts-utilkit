@@ -190,39 +190,6 @@ describe('formatList', () => {
 
   // ─── Error Cases ───────────────────────────────────────────────────────────
 
-  // Test case 15: Throws TypeError if items is not an array
-  it('15. should throw TypeError if items is not an array', () => {
-    // Act & Assert
-    expect(() => formatList('not an array' as unknown as string[])).toThrow(
-      TypeError,
-    );
-    expect(() => formatList('not an array' as unknown as string[])).toThrow(
-      'items must be an array, got string',
-    );
-  });
-
-  // Test case 16: Throws TypeError if any item is not a string
-  it('16. should throw TypeError if any item is not a string', () => {
-    // Act & Assert
-    expect(() => formatList(['Alice', 42 as unknown as string])).toThrow(
-      TypeError,
-    );
-    expect(() => formatList(['Alice', 42 as unknown as string])).toThrow(
-      'items[1] must be a string, got number',
-    );
-  });
-
-  // Test case 17: Throws TypeError if conjunction is not a string
-  it('17. should throw TypeError if conjunction is not a string', () => {
-    // Act & Assert
-    expect(() =>
-      formatList(['a', 'b'], 42 as unknown as 'and'),
-    ).toThrow(TypeError);
-    expect(() =>
-      formatList(['a', 'b'], 42 as unknown as 'and'),
-    ).toThrow('conjunction must be a string, got number');
-  });
-
   // Test case 18: Throws Error if conjunction is an invalid string
   it('18. should throw Error if conjunction is an unrecognized value', () => {
     // Act & Assert
@@ -234,14 +201,4 @@ describe('formatList', () => {
     ).toThrow('conjunction must be "and", "or", or "none", got "xor"');
   });
 
-  // Test case 19: Throws TypeError if locale is not a string
-  it('19. should throw TypeError if locale is not a string', () => {
-    // Act & Assert
-    expect(() =>
-      formatList(['a', 'b'], 'and', 42 as unknown as string),
-    ).toThrow(TypeError);
-    expect(() =>
-      formatList(['a', 'b'], 'and', 42 as unknown as string),
-    ).toThrow('locale must be a string, got number');
-  });
 });

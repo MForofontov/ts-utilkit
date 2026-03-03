@@ -127,26 +127,4 @@ describe('tryCatch', () => {
 
   // ─── Error cases ───────────────────────────────────────────────────────────
 
-  it('18. should throw TypeError when fn is not a function', () => {
-    expect(() => tryCatch(42 as unknown as () => number)).toThrow(TypeError);
-    expect(() => tryCatch(42 as unknown as () => number)).toThrow(
-      'fn must be a function, got number',
-    );
-  });
-
-  it('19. should throw TypeError when fn is null', () => {
-    expect(() => tryCatch(null as unknown as () => number)).toThrow(TypeError);
-    expect(() => tryCatch(null as unknown as () => number)).toThrow(
-      'fn must be a function, got object',
-    );
-  });
-
-  it('20. should throw TypeError when onError is provided but not a function', () => {
-    expect(() =>
-      tryCatch(() => 1, 'not-a-fn' as unknown as (e: Error) => number),
-    ).toThrow(TypeError);
-    expect(() =>
-      tryCatch(() => 1, 'not-a-fn' as unknown as (e: Error) => number),
-    ).toThrow('onError must be a function, got string');
-  });
 });

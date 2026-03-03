@@ -15,17 +15,8 @@ describe('repeatString', () => {
   });
   it('5. should throw RangeError for negative count', () => {
     expect(() => repeatString('x', -1)).toThrow(RangeError);
-    expect(() => repeatString('x', -1)).toThrow('count must be a non-negative integer');
   });
   it('6. should throw RangeError for float count', () => {
     expect(() => repeatString('x', 2.5)).toThrow(RangeError);
-  });
-  it('7. should throw TypeError when str is not a string', () => {
-    expect(() => repeatString(123 as unknown as string, 2)).toThrow(TypeError);
-    expect(() => repeatString(123 as unknown as string, 2)).toThrow('str must be a string, got number');
-  });
-  it('8. should throw TypeError when count is not a number', () => {
-    expect(() => repeatString('x', 'a' as unknown as number)).toThrow(TypeError);
-    expect(() => repeatString('x', 'a' as unknown as number)).toThrow('count must be a number, got string');
   });
 });

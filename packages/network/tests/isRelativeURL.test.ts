@@ -67,24 +67,4 @@ describe('isRelativeURL', () => {
 
   // ── Error cases ───────────────────────────────────────────────────────────
 
-  it('15. should throw TypeError when url is a number', () => {
-    expect(() => isRelativeURL(42 as unknown as string)).toThrow(TypeError);
-    expect(() => isRelativeURL(42 as unknown as string)).toThrow(
-      'url must be a string, got number',
-    );
-  });
-
-  it('16. should throw TypeError when url is null', () => {
-    expect(() => isRelativeURL(null as unknown as string)).toThrow(TypeError);
-    expect(() => isRelativeURL(null as unknown as string)).toThrow(
-      'url must be a string, got object',
-    );
-  });
-
-  it('17. should throw TypeError when url is undefined', () => {
-    expect(() => isRelativeURL(undefined as unknown as string)).toThrow(TypeError);
-    expect(() => isRelativeURL(undefined as unknown as string)).toThrow(
-      'url must be a string, got undefined',
-    );
-  });
 });

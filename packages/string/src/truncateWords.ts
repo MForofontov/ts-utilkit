@@ -10,10 +10,6 @@
  *   otherwise the first `count` words joined by a single space with `suffix`
  *   appended.
  *
- * @throws {TypeError} If str is not a string.
- * @throws {TypeError} If count is not a number.
- * @throws {TypeError} If suffix is not a string.
- * @throws {Error} If count is NaN.
  * @throws {Error} If count is less than 1.
  *
  * @example
@@ -43,18 +39,6 @@ export function truncateWords(
   count: number,
   suffix: string = '...',
 ): string {
-  if (typeof str !== 'string') {
-    throw new TypeError(`str must be a string, got ${typeof str}`);
-  }
-  if (typeof count !== 'number') {
-    throw new TypeError(`count must be a number, got ${typeof count}`);
-  }
-  if (typeof suffix !== 'string') {
-    throw new TypeError(`suffix must be a string, got ${typeof suffix}`);
-  }
-  if (isNaN(count)) {
-    throw new Error('count must be a valid number, not NaN');
-  }
   if (count < 1) {
     throw new Error(`count must be at least 1, got ${count}`);
   }

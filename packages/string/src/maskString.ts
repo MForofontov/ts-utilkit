@@ -9,12 +9,8 @@
  * @param mask - The character to use as the mask (default: `'*'`).
  * @returns A new string with the specified range replaced by the mask character.
  *
- * @throws {TypeError} If str is not a string.
- * @throws {TypeError} If start is not a number.
- * @throws {TypeError} If end is not a number.
- * @throws {TypeError} If mask is not a string.
- * @throws {Error} If start is NaN or negative.
- * @throws {Error} If end is NaN or negative.
+ * @throws {Error} If start is negative.
+ * @throws {Error} If end is negative.
  * @throws {Error} If start is greater than end.
  * @throws {Error} If mask is not exactly one character.
  *
@@ -44,22 +40,10 @@ export function maskString(
   end: number,
   mask: string = '*',
 ): string {
-  if (typeof str !== 'string') {
-    throw new TypeError(`str must be a string, got ${typeof str}`);
-  }
-  if (typeof start !== 'number') {
-    throw new TypeError(`start must be a number, got ${typeof start}`);
-  }
-  if (typeof end !== 'number') {
-    throw new TypeError(`end must be a number, got ${typeof end}`);
-  }
-  if (typeof mask !== 'string') {
-    throw new TypeError(`mask must be a string, got ${typeof mask}`);
-  }
-  if (isNaN(start) || start < 0) {
+  if (start < 0) {
     throw new Error(`start must be a non-negative number, got ${start}`);
   }
-  if (isNaN(end) || end < 0) {
+  if (end < 0) {
     throw new Error(`end must be a non-negative number, got ${end}`);
   }
   if (start > end) {

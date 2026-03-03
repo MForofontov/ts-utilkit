@@ -130,19 +130,4 @@ describe('randomHexColor', () => {
     expect(result).toMatch(/^#[0-9A-F]{6}$/);
   });
 
-  // Error Test case 13: TypeError for non-boolean includeHash
-  it('13. should throw TypeError when includeHash is not a boolean', () => {
-    expect(() => randomHexColor('true' as any)).toThrow(TypeError);
-    expect(() => randomHexColor('true' as any)).toThrow(
-      'includeHash must be a boolean, got string',
-    );
-  });
-
-  // Error Test case 14: TypeError for number includeHash
-  it('14. should throw TypeError when includeHash is a number', () => {
-    expect(() => randomHexColor(1 as any)).toThrow(TypeError);
-    expect(() => randomHexColor(1 as any)).toThrow(
-      'includeHash must be a boolean, got number',
-    );
-  });
 });

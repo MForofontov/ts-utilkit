@@ -123,4 +123,5 @@ describe('capitalizeEachWord', () => {
     const result: string = capitalizeEachWord(str);
     expect(result).toBe(expected);
   });
+
 });

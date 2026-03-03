@@ -6,8 +6,6 @@
  * @param obj2 - The second object for comparison.
  * @returns An object containing keys where values differ, using obj2's values.
  *
- * @throws {TypeError} If either obj1 or obj2 is not an object or is null.
- *
  * @example
  * // Different values and unique properties
  * const obj1 = { a: 1, b: 2, c: 3 };
@@ -50,14 +48,6 @@ export function getObjectDifference(
   obj1: Record<string, unknown>,
   obj2: Record<string, unknown>,
 ): Record<string, unknown> {
-  if (
-    typeof obj1 !== 'object' ||
-    obj1 === null ||
-    typeof obj2 !== 'object' ||
-    obj2 === null
-  ) {
-    throw new TypeError('Both inputs must be non-null objects');
-  }
 
   const diff: Record<string, unknown> = {};
 

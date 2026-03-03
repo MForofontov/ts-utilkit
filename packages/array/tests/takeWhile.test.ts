@@ -122,28 +122,4 @@ describe('takeWhile', () => {
     expect(end - start).toBeLessThan(100);
   });
 
-  // Error cases
-  // Test case 14: Throws TypeError when arr is not an array
-  it('14. should throw TypeError when arr is not an array', () => {
-    expect(() => takeWhile('not an array' as unknown as string[], (x) => !!x)).toThrow(TypeError);
-    expect(() => takeWhile('not an array' as unknown as string[], (x) => !!x)).toThrow(
-      'arr must be an array, got string',
-    );
-  });
-
-  // Test case 15: Throws TypeError when arr is null
-  it('15. should throw TypeError when arr is null', () => {
-    expect(() => takeWhile(null as unknown as never[], (x) => !!x)).toThrow(TypeError);
-    expect(() => takeWhile(null as unknown as never[], (x) => !!x)).toThrow(
-      'arr must be an array, got object',
-    );
-  });
-
-  // Test case 16: Throws TypeError when predicate is not a function
-  it('16. should throw TypeError when predicate is not a function', () => {
-    expect(() => takeWhile([1, 2, 3], 42 as unknown as () => boolean)).toThrow(TypeError);
-    expect(() => takeWhile([1, 2, 3], 42 as unknown as () => boolean)).toThrow(
-      'predicate must be a function, got number',
-    );
-  });
 });

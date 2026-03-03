@@ -9,7 +9,6 @@ import { randomFloat } from './randomFloat';
  * @param integer - Whether to return an integer (default: true).
  * @returns A random number between min and max.
  *
- * @throws {TypeError} If min, max, or integer have incorrect types.
  * @throws {Error} If min or max is NaN, not safe integers (when integer=true), or min >= max.
  *
  * @example
@@ -34,15 +33,6 @@ export function randomBetween(
   max: number,
   integer: boolean = true,
 ): number {
-  if (typeof min !== 'number') {
-    throw new TypeError(`min must be a number, got ${typeof min}`);
-  }
-  if (typeof max !== 'number') {
-    throw new TypeError(`max must be a number, got ${typeof max}`);
-  }
-  if (typeof integer !== 'boolean') {
-    throw new TypeError(`integer must be a boolean, got ${typeof integer}`);
-  }
   if (isNaN(min)) {
     throw new Error('min must be a valid number, not NaN');
   }

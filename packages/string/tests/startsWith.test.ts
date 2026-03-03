@@ -16,12 +16,4 @@ describe('startsWith', () => {
   it('5. should be case-sensitive', () => {
     expect(startsWith('Hello', 'hello')).toBe(false);
   });
-  it('6. should throw TypeError when str is not a string', () => {
-    expect(() => startsWith(123 as unknown as string, 'x')).toThrow(TypeError);
-    expect(() => startsWith(123 as unknown as string, 'x')).toThrow('str must be a string, got number');
-  });
-  it('7. should throw TypeError when searchString is not a string', () => {
-    expect(() => startsWith('hello', 123 as unknown as string)).toThrow(TypeError);
-    expect(() => startsWith('hello', 123 as unknown as string)).toThrow('searchString must be a string, got number');
-  });
 });

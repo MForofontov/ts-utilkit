@@ -6,7 +6,6 @@
  * @param parentUrl - The parent URL/domain to check against.
  * @returns True if subdomainUrl is a subdomain of parentUrl, false otherwise.
  *
- * @throws {TypeError} If subdomainUrl or parentUrl is not a string.
  * @throws {Error} If URLs are invalid.
  *
  * @example
@@ -30,14 +29,6 @@
  */
 export function isSubdomain(subdomainUrl: string, parentUrl: string): boolean {
   // Input validation
-  if (typeof subdomainUrl !== 'string') {
-    throw new TypeError(
-      `subdomainUrl must be a string, got ${typeof subdomainUrl}`,
-    );
-  }
-  if (typeof parentUrl !== 'string') {
-    throw new TypeError(`parentUrl must be a string, got ${typeof parentUrl}`);
-  }
 
   let subdomainHostname: string;
   let parentHostname: string;

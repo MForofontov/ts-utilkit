@@ -225,14 +225,4 @@ describe('extractStyles', () => {
     expect(result).toEqual(expected);
   });
 
-  // Test case 15: Throw TypeError when html is not a string
-  it('15. should throw TypeError when html is not a string', () => {
-    // Arrange
-    const invalidInput = 123 as unknown as string;
-    const expectedMessage = 'html must be a string, got number';
-
-    // Act & Assert
-    expect(() => extractStyles(invalidInput)).toThrow(TypeError);
-    expect(() => extractStyles(invalidInput)).toThrow(expectedMessage);
-  });
 });

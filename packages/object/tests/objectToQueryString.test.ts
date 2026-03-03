@@ -56,38 +56,4 @@ describe('objectToQueryString', () => {
     expect(result).toBe(expected);
   });
 
-  // Test case 7: Handle non-object input (number)
-  it('7. should throw a TypeError if input is a number', () => {
-    expect(() =>
-      objectToQueryString(42 as unknown as Record<string, unknown>),
-    ).toThrow(TypeError);
-  });
-
-  // Test case 8: Handle non-object input (string)
-  it('8. should throw a TypeError if input is a string', () => {
-    expect(() =>
-      objectToQueryString('string' as unknown as Record<string, unknown>),
-    ).toThrow(TypeError);
-  });
-
-  // Test case 9: Handle non-object input (boolean)
-  it('9. should throw a TypeError if input is a boolean', () => {
-    expect(() =>
-      objectToQueryString(true as unknown as Record<string, unknown>),
-    ).toThrow(TypeError);
-  });
-
-  // Test case 10: Handle non-object input (null)
-  it('10. should throw a TypeError if input is null', () => {
-    expect(() =>
-      objectToQueryString(null as unknown as Record<string, unknown>),
-    ).toThrow(TypeError);
-  });
-
-  // Test case 11: Handle non-object input (undefined)
-  it('11. should throw a TypeError if input is undefined', () => {
-    expect(() =>
-      objectToQueryString(undefined as unknown as Record<string, unknown>),
-    ).toThrow(TypeError);
-  });
 });

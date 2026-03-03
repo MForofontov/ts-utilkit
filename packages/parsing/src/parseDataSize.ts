@@ -6,8 +6,6 @@
  * @param binary - Whether to use binary (1024) or decimal (1000) multiplier (default: true).
  * @returns The size in bytes.
  *
- * @throws {TypeError} If input is not a string.
- * @throws {TypeError} If binary is not a boolean.
  * @throws {Error} If input is empty.
  * @throws {Error} If input format is invalid.
  * @throws {Error} If the numeric value is negative or NaN.
@@ -40,12 +38,6 @@
  */
 export function parseDataSize(input: string, binary: boolean = true): number {
   // Input validation
-  if (typeof input !== 'string') {
-    throw new TypeError(`input must be a string, got ${typeof input}`);
-  }
-  if (typeof binary !== 'boolean') {
-    throw new TypeError(`binary must be a boolean, got ${typeof binary}`);
-  }
 
   if (input.length === 0) {
     throw new Error('input string cannot be empty');

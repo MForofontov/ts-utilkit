@@ -11,9 +11,6 @@
  * @returns A new function with the same signature as `fn` that transparently
  *   caches return values.
  *
- * @throws {TypeError} If `fn` is not a function.
- * @throws {TypeError} If `keyFn` is provided but is not a function.
- *
  * @example
  * // Basic memoization — second call is served from cache
  * const square = memoize((n: number) => {
@@ -49,12 +46,6 @@ export function memoize<T, Args extends unknown[]>(
   fn: (...args: Args) => T,
   keyFn?: (...args: Args) => string,
 ): (...args: Args) => T {
-  if (typeof fn !== 'function') {
-    throw new TypeError(`fn must be a function, got ${typeof fn}`);
-  }
-  if (keyFn !== undefined && typeof keyFn !== 'function') {
-    throw new TypeError(`keyFn must be a function, got ${typeof keyFn}`);
-  }
 
   const cache = new Map<string, T>();
 

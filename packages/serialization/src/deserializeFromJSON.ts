@@ -6,7 +6,6 @@
  * @param validate - Optional validation function to verify deserialized data.
  * @returns The deserialized data.
  *
- * @throws {TypeError} If jsonString is not a string.
  * @throws {Error} If JSON is invalid or validation fails.
  *
  * @example
@@ -25,15 +24,6 @@ export function deserializeFromJSON<T = any>(
   jsonString: string,
   validate?: (data: any) => boolean,
 ): T {
-  if (typeof jsonString !== 'string') {
-    throw new TypeError(
-      `jsonString must be a string, got ${typeof jsonString}`,
-    );
-  }
-
-  if (validate !== undefined && typeof validate !== 'function') {
-    throw new TypeError(`validate must be a function, got ${typeof validate}`);
-  }
 
   let data: any;
 

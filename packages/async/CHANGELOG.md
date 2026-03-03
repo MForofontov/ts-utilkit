@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Remove all runtime `typeof`/`instanceof` TypeError guards; rely on TypeScript type system for type safety
+- Remove all `@throws {TypeError}` JSDoc tags from all affected functions
+- Remove all TypeError test cases from all test files
+
+
 ### Added
 - Add `asyncBatch` — process an array in sequential fixed-size batches with optional inter-batch delay for rate-limiting
 - Add `asyncDeduplication` — collapse concurrent in-flight calls with identical arguments into a single shared Promise

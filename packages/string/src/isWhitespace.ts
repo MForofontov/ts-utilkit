@@ -4,8 +4,6 @@
  * @param str - The string to check.
  * @returns True if the string contains only whitespace characters (or is empty), false otherwise.
  *
- * @throws {TypeError} If str is not a string.
- *
  * @example
  * // Basic usage
  * isWhitespace("   "); // true
@@ -36,8 +34,5 @@
  * @complexity Time: O(n), Space: O(1) where n is the length of the string
  */
 export function isWhitespace(str: string): boolean {
-  if (typeof str !== 'string') {
-    throw new TypeError(`str must be a string, got ${typeof str}`);
-  }
   return /^\s*$/.test(str);
 }

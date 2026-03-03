@@ -143,38 +143,4 @@ describe('formatPlural', () => {
     expect(() => formatPlural(count, word)).toThrow('singular cannot be empty');
   });
 
-  // Test case 11: Throw TypeError for non-number count
-  it('11. should throw TypeError when count is not a number', () => {
-    // Arrange
-    const count = 'two' as unknown as number;
-    const word = 'item';
-
-    // Act & Assert
-    expect(() => formatPlural(count, word)).toThrow(TypeError);
-    expect(() => formatPlural(count, word)).toThrow('count must be a number');
-  });
-
-  // Test case 12: Throw TypeError for NaN count
-  it('12. should throw TypeError when count is NaN', () => {
-    // Arrange
-    const count = NaN;
-    const word = 'item';
-
-    // Act & Assert
-    expect(() => formatPlural(count, word)).toThrow(TypeError);
-    expect(() => formatPlural(count, word)).toThrow('count must be a number');
-  });
-
-  // Test case 13: Throw TypeError for non-string singular
-  it('13. should throw TypeError when singular is not a string', () => {
-    // Arrange
-    const count = 2;
-    const word = 123 as unknown as string;
-
-    // Act & Assert
-    expect(() => formatPlural(count, word)).toThrow(TypeError);
-    expect(() => formatPlural(count, word)).toThrow(
-      'singular must be a string',
-    );
-  });
 });

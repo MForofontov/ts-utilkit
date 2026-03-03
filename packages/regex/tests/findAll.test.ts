@@ -161,41 +161,6 @@ describe('findAll', () => {
     expect(result[0].endIndex).toBe(9);
   });
 
-  // Error cases
-  it('11. should throw TypeError when text is not a string', () => {
-    // Arrange
-    const invalidText: any = [];
-    const pattern = /\w+/g;
-    const expectedMessage = 'text must be a string, got object';
-
-    // Act & Assert
-    expect(() => findAll(invalidText, pattern)).toThrow(TypeError);
-    expect(() => findAll(invalidText, pattern)).toThrow(expectedMessage);
-  });
-
-  it('12. should throw TypeError when pattern is invalid type', () => {
-    // Arrange
-    const text = 'test';
-    const invalidPattern: any = 123;
-    const expectedMessage = 'pattern must be a string or RegExp, got number';
-
-    // Act & Assert
-    expect(() => findAll(text, invalidPattern)).toThrow(TypeError);
-    expect(() => findAll(text, invalidPattern)).toThrow(expectedMessage);
-  });
-
-  it('13. should throw TypeError when flags is not a string', () => {
-    // Arrange
-    const text = 'test';
-    const pattern = 'test';
-    const invalidFlags: any = {};
-    const expectedMessage = 'flags must be a string, got object';
-
-    // Act & Assert
-    expect(() => findAll(text, pattern, invalidFlags)).toThrow(TypeError);
-    expect(() => findAll(text, pattern, invalidFlags)).toThrow(expectedMessage);
-  });
-
   it('14. should throw Error when pattern is invalid', () => {
     // Arrange
     const text = 'test';

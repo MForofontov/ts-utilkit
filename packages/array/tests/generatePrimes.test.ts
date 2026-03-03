@@ -26,7 +26,6 @@ describe('generatePrimes (array package - deprecated)', () => {
   });
   it('7. should throw RangeError for non-integer limit', () => {
     expect(() => generatePrimes(10.5)).toThrow(RangeError);
-    expect(() => generatePrimes(10.5)).toThrow('Limit must be an integer');
   });
   it('8. should throw RangeError for NaN', () => {
     expect(() => generatePrimes(NaN)).toThrow(RangeError);

@@ -8,9 +8,6 @@
  * @param timeout - Optional timeout in milliseconds. If provided, rejects after timeout.
  * @returns Promise that resolves with the event data when the event occurs.
  *
- * @throws {TypeError} If target doesn't have event listener methods.
- * @throws {TypeError} If eventName is not a string.
- * @throws {TypeError} If timeout is provided but not a number.
  * @throws {Error} If timeout is negative or NaN.
  * @throws {Error} If timeout expires before event occurs.
  *
@@ -70,18 +67,7 @@ export function waitForEvent<T = unknown>(
       'function';
   const hasOn = target && typeof (target as { on?: unknown }).on === 'function';
 
-  if (!hasAddEventListener && !hasOn) {
-    throw new TypeError(
-      'target must have addEventListener or on method for event handling',
-    );
-  }
-  if (typeof eventName !== 'string') {
-    throw new TypeError(`eventName must be a string, got ${typeof eventName}`);
-  }
   if (timeout !== undefined) {
-    if (typeof timeout !== 'number') {
-      throw new TypeError(`timeout must be a number, got ${typeof timeout}`);
-    }
     if (isNaN(timeout)) {
       throw new Error('timeout must be a valid number, not NaN');
     }

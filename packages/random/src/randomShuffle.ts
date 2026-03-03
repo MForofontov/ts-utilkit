@@ -6,7 +6,6 @@
  * @param inPlace - Whether to shuffle in-place or return a new array (default: false).
  * @returns A shuffled array.
  *
- * @throws {TypeError} If array is not an array or inPlace is not a boolean.
  * @throws {Error} If array is empty.
  *
  * @example
@@ -23,12 +22,6 @@
  * @complexity Time: O(n), Space: O(n) for new array or O(1) for in-place
  */
 export function randomShuffle<T>(array: T[], inPlace: boolean = false): T[] {
-  if (!Array.isArray(array)) {
-    throw new TypeError(`array must be an array, got ${typeof array}`);
-  }
-  if (typeof inPlace !== 'boolean') {
-    throw new TypeError(`inPlace must be a boolean, got ${typeof inPlace}`);
-  }
   if (array.length === 0) {
     throw new Error('array cannot be empty');
   }

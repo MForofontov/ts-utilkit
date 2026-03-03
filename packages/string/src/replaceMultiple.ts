@@ -5,9 +5,6 @@
  * @param replacements - An object mapping search strings (keys) to replacement strings (values).
  * @returns A new string with all specified substrings replaced with their corresponding values.
  *
- * @throws {TypeError} If str is not a string.
- * @throws {TypeError} If replacements is not an object.
- *
  * @example
  * // Basic usage
  * replaceMultiple("hello world", { "hello": "hi", "world": "everyone" });

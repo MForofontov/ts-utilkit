@@ -123,4 +123,5 @@ describe('toKebabCase', () => {
     const result: string = toKebabCase(str);
     expect(result).toBe(expected);
   });
+
 });

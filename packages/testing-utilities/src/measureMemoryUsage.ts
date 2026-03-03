@@ -15,8 +15,6 @@ export interface MemoryUsageResult {
  * @param fn - The function to test.
  * @returns Object with memory usage information in bytes.
  *
- * @throws {TypeError} If fn is not a function.
- *
  * @example
  * const memUsage = measureMemoryUsage(() => {
  *   const largeArray = new Array(1000000).fill(0);
@@ -36,9 +34,6 @@ export interface MemoryUsageResult {
  * @complexity Time: O(1) + time of fn, Space: O(1) + space of fn
  */
 export function measureMemoryUsage(fn: () => unknown): MemoryUsageResult {
-  if (typeof fn !== 'function') {
-    throw new TypeError(`fn must be a function, got ${typeof fn}`);
-  }
 
   // Force garbage collection if available
   if (global.gc) {

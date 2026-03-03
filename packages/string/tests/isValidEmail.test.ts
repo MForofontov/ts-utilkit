@@ -124,19 +124,4 @@ describe('isValidEmail', () => {
     expect(result).toBe(expected);
   });
 
-  // Test case 16: should throw TypeError for non-string input
-  it('16. should throw TypeError when email is not a string', () => {
-    expect(() => isValidEmail(null as unknown as string)).toThrow(TypeError);
-    expect(() => isValidEmail(null as unknown as string)).toThrow(
-      'email must be a string, got object',
-    );
-  });
-
-  // Test case 17: should throw TypeError for number input
-  it('17. should throw TypeError when email is a number', () => {
-    expect(() => isValidEmail(123 as unknown as string)).toThrow(TypeError);
-    expect(() => isValidEmail(123 as unknown as string)).toThrow(
-      'email must be a string, got number',
-    );
-  });
 });

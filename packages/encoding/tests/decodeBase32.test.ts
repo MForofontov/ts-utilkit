@@ -59,20 +59,6 @@ describe('decodeBase32', () => {
     }
   });
 
-  it('13. should throw TypeError when str is not a string', () => {
-    expect(() => decodeBase32(42 as unknown as string)).toThrow(TypeError);
-    expect(() => decodeBase32(42 as unknown as string)).toThrow(
-      'str must be a string, got number',
-    );
-  });
-
-  it('14. should throw TypeError for null input', () => {
-    expect(() => decodeBase32(null as unknown as string)).toThrow(TypeError);
-    expect(() => decodeBase32(null as unknown as string)).toThrow(
-      'str must be a string, got object',
-    );
-  });
-
   it('15. should throw Error for characters outside the Base32 alphabet', () => {
     // '!' is not in A–Z or 2–7
     expect(() => decodeBase32('NBSWY3DP!')).toThrow(Error);

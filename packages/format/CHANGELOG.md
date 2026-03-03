@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Remove all runtime `typeof`/`instanceof` TypeError guards; rely on TypeScript type system for type safety
+- Remove all `@throws {TypeError}` JSDoc tags from all affected functions
+- Remove all TypeError test cases from all test files
+
+
 ### Added
 - `formatBytes`: new optional `iecUnits` parameter (default: `false`); when `true` with `binary=true`, uses IEC unit labels (KiB, MiB, GiB) instead of SI labels (KB, MB, GB)
 - `formatList`: format an array of strings into a locale-aware conjunction list ("Alice, Bob, and Carol") using `Intl.ListFormat`; supports "and", "or", and "none" conjunction modes

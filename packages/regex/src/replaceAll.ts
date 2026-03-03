@@ -7,10 +7,6 @@
  * @param flags - Optional flags for string patterns (default: 'g').
  * @returns String with all matches replaced.
  *
- * @throws {TypeError} If text is not a string.
- * @throws {TypeError} If pattern is not a string or RegExp.
- * @throws {TypeError} If replacement is not a string or function.
- * @throws {TypeError} If flags is provided and not a string.
  * @throws {Error} If pattern is invalid.
  *
  * @example
@@ -38,25 +34,6 @@ export function replaceAll(
   replacement: string | ((substring: string, ...args: any[]) => string),
   flags?: string,
 ): string {
-  if (typeof text !== 'string') {
-    throw new TypeError(`text must be a string, got ${typeof text}`);
-  }
-
-  if (typeof pattern !== 'string' && !(pattern instanceof RegExp)) {
-    throw new TypeError(
-      `pattern must be a string or RegExp, got ${typeof pattern}`,
-    );
-  }
-
-  if (typeof replacement !== 'string' && typeof replacement !== 'function') {
-    throw new TypeError(
-      `replacement must be a string or function, got ${typeof replacement}`,
-    );
-  }
-
-  if (flags !== undefined && typeof flags !== 'string') {
-    throw new TypeError(`flags must be a string, got ${typeof flags}`);
-  }
 
   let regex: RegExp;
 

@@ -4,8 +4,6 @@
  * @param str - The string to trim.
  * @returns The string with leading and trailing whitespace removed.
  *
- * @throws {TypeError} If str is not a string.
- *
  * @example
  * // Basic usage
  * trimWhitespace("   hello   "); // "hello"

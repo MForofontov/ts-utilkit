@@ -89,31 +89,4 @@ describe('removeAccents', () => {
 
   // ─── Error cases ───────────────────────────────────────────────────────────
 
-  it('18. should throw TypeError when str is a number', () => {
-    expect(() => removeAccents(42 as unknown as string)).toThrow(TypeError);
-    expect(() => removeAccents(42 as unknown as string)).toThrow(
-      'str must be a string, got number',
-    );
-  });
-
-  it('19. should throw TypeError when str is null', () => {
-    expect(() => removeAccents(null as unknown as string)).toThrow(TypeError);
-    expect(() => removeAccents(null as unknown as string)).toThrow(
-      'str must be a string, got object',
-    );
-  });
-
-  it('20. should throw TypeError when str is undefined', () => {
-    expect(() => removeAccents(undefined as unknown as string)).toThrow(TypeError);
-    expect(() => removeAccents(undefined as unknown as string)).toThrow(
-      'str must be a string, got undefined',
-    );
-  });
-
-  it('21. should throw TypeError when str is a boolean', () => {
-    expect(() => removeAccents(true as unknown as string)).toThrow(TypeError);
-    expect(() => removeAccents(true as unknown as string)).toThrow(
-      'str must be a string, got boolean',
-    );
-  });
 });

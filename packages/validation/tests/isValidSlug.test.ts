@@ -147,14 +147,4 @@ describe('isValidSlug', () => {
     expect(isValidSlug('my-Blog-post')).toBe(false);
   });
 
-  // Test case 17: Throw TypeError when slug is not a string
-  it('17. should throw TypeError when slug is not a string', () => {
-    // Arrange
-    const invalidInput = 12345 as unknown as string;
-    const expectedMessage = 'slug must be a string, got number';
-
-    // Act & Assert
-    expect(() => isValidSlug(invalidInput)).toThrow(TypeError);
-    expect(() => isValidSlug(invalidInput)).toThrow(expectedMessage);
-  });
 });

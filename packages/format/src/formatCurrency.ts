@@ -45,9 +45,6 @@ const CURRENCY_SYMBOLS: Record<string, string> = {
  * @param customSymbol - Optional custom symbol to use instead of auto-detected (default: undefined).
  * @returns A formatted currency string in standard format "$1,234.56" or "1,234.56 XXX" for unknown currencies.
  *
- * @throws {TypeError} If value is not a number or is NaN.
- * @throws {TypeError} If currency is not a string.
- * @throws {TypeError} If decimals is not a number or is NaN.
  * @throws {Error} If decimals is negative.
  *
  * @example
@@ -83,20 +80,6 @@ export function formatCurrency(
   customSymbol?: string,
 ): string {
   // Input validation
-  if (typeof value !== 'number' || isNaN(value)) {
-    throw new TypeError(`value must be a number, got ${typeof value}`);
-  }
-  if (typeof currency !== 'string') {
-    throw new TypeError(`currency must be a string, got ${typeof currency}`);
-  }
-  if (typeof decimals !== 'number' || isNaN(decimals)) {
-    throw new TypeError(`decimals must be a number, got ${typeof decimals}`);
-  }
-  if (customSymbol !== undefined && typeof customSymbol !== 'string') {
-    throw new TypeError(
-      `customSymbol must be a string, got ${typeof customSymbol}`,
-    );
-  }
 
   if (decimals < 0) {
     throw new Error(`decimals must be non-negative, got ${decimals}`);

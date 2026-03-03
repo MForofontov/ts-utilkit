@@ -62,20 +62,6 @@ describe('decodeBase64URL', () => {
     }
   });
 
-  it('12. should throw TypeError when str is not a string', () => {
-    expect(() => decodeBase64URL(42 as unknown as string)).toThrow(TypeError);
-    expect(() => decodeBase64URL(42 as unknown as string)).toThrow(
-      'str must be a string, got number',
-    );
-  });
-
-  it('13. should throw TypeError for null input', () => {
-    expect(() => decodeBase64URL(null as unknown as string)).toThrow(TypeError);
-    expect(() => decodeBase64URL(null as unknown as string)).toThrow(
-      'str must be a string, got object',
-    );
-  });
-
   it('14. should throw Error for strings with invalid characters', () => {
     expect(() => decodeBase64URL('hello world!')).toThrow(Error);
     expect(() => decodeBase64URL('hello world!')).toThrow('Invalid Base64URL string');

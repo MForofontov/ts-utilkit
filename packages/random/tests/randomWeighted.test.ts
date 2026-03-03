@@ -131,22 +131,6 @@ describe('randomWeighted', () => {
     expect(results.get('C')! / iterations).toBeLessThan(0.75);
   });
 
-  // Error Test case 11: TypeError for non-array items
-  it('11. should throw TypeError when items is not an array', () => {
-    expect(() => randomWeighted('not array' as any, [1])).toThrow(TypeError);
-    expect(() => randomWeighted('not array' as any, [1])).toThrow(
-      'items must be an array, got string',
-    );
-  });
-
-  // Error Test case 12: TypeError for non-array weights
-  it('12. should throw TypeError when weights is not an array', () => {
-    expect(() => randomWeighted([1], 'not array' as any)).toThrow(TypeError);
-    expect(() => randomWeighted([1], 'not array' as any)).toThrow(
-      'weights must be an array, got string',
-    );
-  });
-
   // Error Test case 13: Error for empty items
   it('13. should throw Error when items array is empty', () => {
     expect(() => randomWeighted([], [])).toThrow(Error);

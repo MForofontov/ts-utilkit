@@ -66,28 +66,6 @@ describe('getEnv', () => {
     expect(result).toBe('value with spaces');
   });
 
-  // Error cases
-  it('9. should throw TypeError when key is not a string', () => {
-    expect(() => getEnv(123 as any)).toThrow(TypeError);
-    expect(() => getEnv(123 as any)).toThrow(
-      'key must be a string, got number',
-    );
-  });
-
-  it('10. should throw TypeError when key is null', () => {
-    expect(() => getEnv(null as any)).toThrow(TypeError);
-    expect(() => getEnv(null as any)).toThrow(
-      'key must be a string, got object',
-    );
-  });
-
-  it('11. should throw TypeError when key is undefined', () => {
-    expect(() => getEnv(undefined as any)).toThrow(TypeError);
-    expect(() => getEnv(undefined as any)).toThrow(
-      'key must be a string, got undefined',
-    );
-  });
-
   it('12. should throw Error when key is empty string', () => {
     expect(() => getEnv('')).toThrow(Error);
     expect(() => getEnv('')).toThrow('key cannot be an empty string');

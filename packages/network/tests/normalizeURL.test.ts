@@ -125,23 +125,9 @@ describe('normalizeURL', () => {
     expect(result).toBe('http://[2001:db8::1]:8080/path');
   });
 
-  // Test case 18: Error case - non-string URL
-  it('18. should throw TypeError for non-string URL', () => {
-    const input = 12345 as unknown as string;
-    expect(() => normalizeURL(input)).toThrow(TypeError);
-    expect(() => normalizeURL(input)).toThrow('url must be a string');
-  });
-
   // Test case 19: Error case - invalid URL
   it('19. should throw Error for invalid URL format', () => {
     expect(() => normalizeURL('not a valid url')).toThrow('Invalid URL');
   });
 
-  // Test case 20: Error case - non-object options
-  it('20. should throw TypeError for non-object options', () => {
-    const options = 'string' as unknown as Parameters<typeof normalizeURL>[1];
-    expect(() => normalizeURL('https://example.com', options)).toThrow(
-      TypeError,
-    );
-  });
 });

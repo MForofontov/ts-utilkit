@@ -142,24 +142,4 @@ describe('asyncDeduplication', () => {
     expect(fn).toHaveBeenCalledTimes(1);
   });
 
-  // Error cases
-  // Test case 8: Throws TypeError when fn is not a function
-  it('8. should throw TypeError when fn is not a function', () => {
-    expect(() =>
-      asyncDeduplication(42 as unknown as () => Promise<void>),
-    ).toThrow(TypeError);
-    expect(() =>
-      asyncDeduplication(42 as unknown as () => Promise<void>),
-    ).toThrow('fn must be a function, got number');
-  });
-
-  // Test case 9: Throws TypeError when keyFn is not a function
-  it('9. should throw TypeError when keyFn is not a function', () => {
-    expect(() =>
-      asyncDeduplication(async () => 1, 'key' as unknown as () => string),
-    ).toThrow(TypeError);
-    expect(() =>
-      asyncDeduplication(async () => 1, 'key' as unknown as () => string),
-    ).toThrow('keyFn must be a function, got string');
-  });
 });

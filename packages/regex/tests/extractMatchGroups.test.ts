@@ -180,49 +180,6 @@ describe('extractMatchGroups', () => {
     expect(result).toEqual([]);
   });
 
-  // Error cases
-  it('13. should throw TypeError when text is not a string', () => {
-    // Arrange
-    const invalidText: any = 123;
-    const pattern = /(\d+)/g;
-    const expectedMessage = 'text must be a string, got number';
-
-    // Act & Assert
-    expect(() => extractMatchGroups(invalidText, pattern)).toThrow(TypeError);
-    expect(() => extractMatchGroups(invalidText, pattern)).toThrow(
-      expectedMessage,
-    );
-  });
-
-  it('14. should throw TypeError when pattern is invalid type', () => {
-    // Arrange
-    const text = 'test';
-    const invalidPattern: any = null;
-    const expectedMessage = 'pattern must be a string or RegExp, got object';
-
-    // Act & Assert
-    expect(() => extractMatchGroups(text, invalidPattern)).toThrow(TypeError);
-    expect(() => extractMatchGroups(text, invalidPattern)).toThrow(
-      expectedMessage,
-    );
-  });
-
-  it('15. should throw TypeError when flags is not a string', () => {
-    // Arrange
-    const text = 'test';
-    const pattern = '(\\w+)';
-    const invalidFlags: any = true;
-    const expectedMessage = 'flags must be a string, got boolean';
-
-    // Act & Assert
-    expect(() => extractMatchGroups(text, pattern, invalidFlags)).toThrow(
-      TypeError,
-    );
-    expect(() => extractMatchGroups(text, pattern, invalidFlags)).toThrow(
-      expectedMessage,
-    );
-  });
-
   it('16. should throw Error when pattern is invalid', () => {
     // Arrange
     const text = 'test';

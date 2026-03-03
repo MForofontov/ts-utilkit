@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Changed
+- Remove all runtime `typeof`/`instanceof` TypeError guards; rely on TypeScript type system for type safety
+- Remove all `@throws {TypeError}` JSDoc tags from all affected functions
+- Remove all TypeError test cases from all test files
 - `compactObject`: add `@see` cross-reference to `removeEmptyValues` in JSDoc to clarify the difference (recursive vs shallow, omits empty strings vs not)
 - `removeEmptyValues`: add `@see` cross-reference to `compactObject` in JSDoc to clarify the difference
 
@@ -21,12 +24,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `findKey`: returns the first key whose value satisfies a predicate
 - `renameKey`: renames a single key immutably, preserving insertion order
 - `transformKeys`: applies a custom function to all keys, keeping values unchanged
-
-### Changed
-- Changes to existing functionality
-
-### Fixed
-- Bug fixes
 
 ## [0.1.0] - 2026-01-26
 

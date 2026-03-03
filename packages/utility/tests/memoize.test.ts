@@ -147,26 +147,4 @@ describe('memoize', () => {
 
   // ─── Error cases ───────────────────────────────────────────────────────────
 
-  it('16. should throw TypeError when fn is not a function', () => {
-    expect(() => memoize(42 as unknown as () => number)).toThrow(TypeError);
-    expect(() => memoize(42 as unknown as () => number)).toThrow(
-      'fn must be a function, got number',
-    );
-  });
-
-  it('17. should throw TypeError when fn is null', () => {
-    expect(() => memoize(null as unknown as () => number)).toThrow(TypeError);
-    expect(() => memoize(null as unknown as () => number)).toThrow(
-      'fn must be a function, got object',
-    );
-  });
-
-  it('18. should throw TypeError when keyFn is provided but not a function', () => {
-    expect(() =>
-      memoize((n: number) => n, 'bad' as unknown as () => string),
-    ).toThrow(TypeError);
-    expect(() =>
-      memoize((n: number) => n, 'bad' as unknown as () => string),
-    ).toThrow('keyFn must be a function, got string');
-  });
 });

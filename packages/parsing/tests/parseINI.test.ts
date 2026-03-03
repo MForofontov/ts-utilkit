@@ -163,16 +163,6 @@ key3=value3
     expect(result).toEqual(expected);
   });
 
-  // Test case 9: Throw TypeError for non-string input
-  it('9. should throw TypeError when input is not a string', () => {
-    // Arrange
-    const input = 123 as unknown as string;
-
-    // Act & Assert
-    expect(() => parseINI(input)).toThrow(TypeError);
-    expect(() => parseINI(input)).toThrow('input must be a string');
-  });
-
   // Test case 10: Throw Error for empty input
   it('10. should throw Error when input is empty', () => {
     // Arrange

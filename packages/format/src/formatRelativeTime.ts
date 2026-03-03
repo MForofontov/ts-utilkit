@@ -26,8 +26,6 @@ function toDate(value: Date | string | number): Date {
  * @param baseDate - The reference "now" date (default: current time). Accepts the same types as `date`.
  * @returns A human-friendly relative time string.
  *
- * @throws {TypeError} If date is not a Date, string, or number.
- * @throws {TypeError} If baseDate is provided but is not a Date, string, or number.
  * @throws {Error} If date represents an invalid date.
  * @throws {Error} If baseDate represents an invalid date.
  *
@@ -68,19 +66,6 @@ export function formatRelativeTime(
 ): string {
   // Input validation
   const validTypes = ['object', 'string', 'number'];
-  if (!validTypes.includes(typeof date) || date === null) {
-    throw new TypeError(
-      `date must be a Date, string, or number, got ${date === null ? 'null' : typeof date}`,
-    );
-  }
-  if (
-    baseDate !== undefined &&
-    (!validTypes.includes(typeof baseDate) || baseDate === null)
-  ) {
-    throw new TypeError(
-      `baseDate must be a Date, string, or number, got ${baseDate === null ? 'null' : typeof baseDate}`,
-    );
-  }
 
   const target = toDate(date);
   const base = toDate(baseDate);

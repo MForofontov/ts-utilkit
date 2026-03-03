@@ -59,17 +59,4 @@ describe('encodeHex', () => {
     }
   });
 
-  it('12. should throw TypeError when str is not a string', () => {
-    expect(() => encodeHex(42 as unknown as string)).toThrow(TypeError);
-    expect(() => encodeHex(42 as unknown as string)).toThrow(
-      'str must be a string, got number',
-    );
-  });
-
-  it('13. should throw TypeError for null input', () => {
-    expect(() => encodeHex(null as unknown as string)).toThrow(TypeError);
-    expect(() => encodeHex(null as unknown as string)).toThrow(
-      'str must be a string, got object',
-    );
-  });
 });

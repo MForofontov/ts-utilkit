@@ -7,8 +7,6 @@
  *   Must be greater than 0.
  * @returns A random floating-point number drawn from the N(mean, stdDev²) distribution.
  *
- * @throws {TypeError} If mean is not a number.
- * @throws {TypeError} If stdDev is not a number.
  * @throws {Error} If mean is NaN.
  * @throws {Error} If stdDev is NaN or not greater than 0.
  *
@@ -33,12 +31,6 @@
  * @complexity Time: O(1), Space: O(1)
  */
 export function randomGaussian(mean: number = 0, stdDev: number = 1): number {
-  if (typeof mean !== 'number') {
-    throw new TypeError(`mean must be a number, got ${typeof mean}`);
-  }
-  if (typeof stdDev !== 'number') {
-    throw new TypeError(`stdDev must be a number, got ${typeof stdDev}`);
-  }
   if (isNaN(mean)) {
     throw new Error('mean must be a valid number, not NaN');
   }

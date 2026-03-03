@@ -16,16 +16,4 @@ describe('replaceSubstring', () => {
   it('5. should handle only one occurrence', () => {
     expect(replaceSubstring('hello world', 'world', 'earth')).toBe('hello earth');
   });
-  it('6. should throw TypeError when str is not a string', () => {
-    expect(() => replaceSubstring(123 as unknown as string, 'x', 'y')).toThrow(TypeError);
-    expect(() => replaceSubstring(123 as unknown as string, 'x', 'y')).toThrow('str must be a string, got number');
-  });
-  it('7. should throw TypeError when search is not a string', () => {
-    expect(() => replaceSubstring('hello', 123 as unknown as string, 'y')).toThrow(TypeError);
-    expect(() => replaceSubstring('hello', 123 as unknown as string, 'y')).toThrow('search must be a string, got number');
-  });
-  it('8. should throw TypeError when replacement is not a string', () => {
-    expect(() => replaceSubstring('hello', 'x', 123 as unknown as string)).toThrow(TypeError);
-    expect(() => replaceSubstring('hello', 'x', 123 as unknown as string)).toThrow('replacement must be a string, got number');
-  });
 });

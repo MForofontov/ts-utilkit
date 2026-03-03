@@ -142,23 +142,6 @@ describe('asyncMemoize', () => {
     expect(fn).toHaveBeenCalledTimes(2);
   });
 
-  // Error cases
-  // Test case 9: Throws TypeError when fn is not a function
-  it('9. should throw TypeError when fn is not a function', () => {
-    expect(() => asyncMemoize('not a function' as unknown as () => Promise<void>)).toThrow(TypeError);
-    expect(() => asyncMemoize('not a function' as unknown as () => Promise<void>)).toThrow(
-      'fn must be a function, got string',
-    );
-  });
-
-  // Test case 10: Throws TypeError when ttl is not a number
-  it('10. should throw TypeError when ttl is not a number', () => {
-    expect(() => asyncMemoize(async () => 1, { ttl: 'fast' as unknown as number })).toThrow(TypeError);
-    expect(() => asyncMemoize(async () => 1, { ttl: 'fast' as unknown as number })).toThrow(
-      'ttl must be a number, got string',
-    );
-  });
-
   // Test case 11: Throws Error when ttl is negative
   it('11. should throw Error when ttl is negative', () => {
     expect(() => asyncMemoize(async () => 1, { ttl: -100 })).toThrow(Error);
@@ -167,13 +150,4 @@ describe('asyncMemoize', () => {
     );
   });
 
-  // Test case 12: Throws TypeError when keyFn is not a function
-  it('12. should throw TypeError when keyFn is not a function', () => {
-    expect(() =>
-      asyncMemoize(async () => 1, { keyFn: 42 as unknown as () => string }),
-    ).toThrow(TypeError);
-    expect(() =>
-      asyncMemoize(async () => 1, { keyFn: 42 as unknown as () => string }),
-    ).toThrow('keyFn must be a function, got number');
-  });
 });

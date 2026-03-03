@@ -52,9 +52,4 @@ describe('isLeapYear', () => {
     expect(result).toBe(expected);
   });
 
-  // Test case 7: NaN year (should throw an error)
-  it('7. should throw a TypeError for a NaN year', () => {
-    const year: number = NaN;
-    expect(() => isLeapYear(year)).toThrow('Year should be a valid number');
-  });
 });

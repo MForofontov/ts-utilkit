@@ -147,16 +147,6 @@ describe('parseDuration', () => {
     expect(result).toBe(expected);
   });
 
-  // Test case 12: Throw TypeError for non-string input
-  it('12. should throw TypeError when input is not a string', () => {
-    // Arrange
-    const input = 123 as unknown as string;
-
-    // Act & Assert
-    expect(() => parseDuration(input)).toThrow(TypeError);
-    expect(() => parseDuration(input)).toThrow('input must be a string');
-  });
-
   // Test case 13: Throw Error for empty input
   it('13. should throw Error when input is empty', () => {
     // Arrange

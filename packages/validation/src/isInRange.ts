@@ -7,7 +7,6 @@
  * @param inclusive - Whether the range is inclusive of min and max values (default: true).
  * @returns True if the value is within the specified range, false otherwise.
  *
- * @throws {TypeError} If value, min, or max is not a number, or if inclusive is not a boolean.
  * @throws {Error} If any of the numbers are NaN, or if min is greater than max.
  *
  * @example
@@ -40,21 +39,6 @@ export function isInRange(
   max: number,
   inclusive: boolean = true,
 ): boolean {
-  if (typeof value !== 'number') {
-    throw new TypeError(`value must be a number, got ${typeof value}`);
-  }
-
-  if (typeof min !== 'number') {
-    throw new TypeError(`min must be a number, got ${typeof min}`);
-  }
-
-  if (typeof max !== 'number') {
-    throw new TypeError(`max must be a number, got ${typeof max}`);
-  }
-
-  if (typeof inclusive !== 'boolean') {
-    throw new TypeError(`inclusive must be a boolean, got ${typeof inclusive}`);
-  }
 
   if (isNaN(value)) {
     throw new Error('value must be a valid number, not NaN');

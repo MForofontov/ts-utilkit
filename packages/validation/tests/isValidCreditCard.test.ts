@@ -138,14 +138,4 @@ describe('isValidCreditCard', () => {
     expect(isValidCreditCard('0000000000000000')).toBe(true);
   });
 
-  // Test case 18: Throw TypeError when cardNumber is not a string
-  it('18. should throw TypeError when cardNumber is not a string', () => {
-    // Arrange
-    const invalidInput = 4532015112830366 as unknown as string;
-    const expectedMessage = 'cardNumber must be a string, got number';
-
-    // Act & Assert
-    expect(() => isValidCreditCard(invalidInput)).toThrow(TypeError);
-    expect(() => isValidCreditCard(invalidInput)).toThrow(expectedMessage);
-  });
 });

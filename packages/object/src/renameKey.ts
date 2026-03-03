@@ -9,9 +9,6 @@
  * @param newKey - The new name for the key.
  * @returns A new object with the key renamed.
  *
- * @throws {TypeError} If obj is not a non-null object.
- * @throws {TypeError} If oldKey is not a string.
- * @throws {TypeError} If newKey is not a string.
  * @throws {Error} If oldKey does not exist on the object.
  * @throws {Error} If newKey already exists on the object (prevents silent overwrite).
  *
@@ -39,15 +36,6 @@ export function renameKey<T>(
   oldKey: string,
   newKey: string,
 ): Record<string, T> {
-  if (obj === null || typeof obj !== 'object' || Array.isArray(obj)) {
-    throw new TypeError(`obj must be a non-null object, got ${obj === null ? 'null' : typeof obj}`);
-  }
-  if (typeof oldKey !== 'string') {
-    throw new TypeError(`oldKey must be a string, got ${typeof oldKey}`);
-  }
-  if (typeof newKey !== 'string') {
-    throw new TypeError(`newKey must be a string, got ${typeof newKey}`);
-  }
   if (!Object.prototype.hasOwnProperty.call(obj, oldKey)) {
     throw new Error(`Key "${oldKey}" does not exist on the object`);
   }

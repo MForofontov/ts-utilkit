@@ -7,8 +7,6 @@
  * @param defaultValue - The value to return if the path cannot be resolved (default: undefined).
  * @returns The value at the specified path or the default value if not found.
  *
- * @throws {TypeError} If obj is not a non-null object.
- *
  * @example
  * // Basic nested property access
  * const user = { name: 'John', address: { city: 'New York', zip: 10001 } };
@@ -49,9 +47,6 @@ export function safeGet<T extends Record<string, unknown>, D>(
   defaultValue: D = undefined as unknown as D,
   // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
 ): D | unknown {
-  if (typeof obj !== 'object' || obj === null) {
-    throw new TypeError('Input must be a non-null object');
-  }
   if (path === '') return obj;
   if (Object.prototype.hasOwnProperty.call(obj, path)) {
     return obj[path];

@@ -257,13 +257,4 @@ describe('parseURL', () => {
     expect(() => parseURL(url)).toThrow('Invalid URL');
   });
 
-  // Test case 20: Error case - non-string input
-  it('20. should throw TypeError for non-string input', () => {
-    // Arrange
-    const input = 12345 as unknown as string;
-
-    // Act & Assert
-    expect(() => parseURL(input)).toThrow(TypeError);
-    expect(() => parseURL(input)).toThrow('url must be a string');
-  });
 });

@@ -4,7 +4,6 @@
  * @param xmlString - The XML string to parse.
  * @returns Object representation of XML.
  *
- * @throws {TypeError} If xmlString is not a string.
  * @throws {Error} If XML is malformed.
  *
  * @example
@@ -22,9 +21,6 @@
  * @complexity Time: O(n), Space: O(n) where n is XML string length
  */
 export function deserializeFromXML(xmlString: string): Record<string, any> {
-  if (typeof xmlString !== 'string') {
-    throw new TypeError(`xmlString must be a string, got ${typeof xmlString}`);
-  }
 
   const unescapeXML = (str: string): string => {
     return str

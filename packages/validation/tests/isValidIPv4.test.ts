@@ -69,14 +69,4 @@ describe('isValidIPv4', () => {
     expect(endTime - startTime).toBeLessThan(10); // Should complete quickly
   });
 
-  // Test case 6: TypeError for invalid input type
-  it('6. should throw TypeError for non-string input', () => {
-    // Arrange
-    const invalidInputs: unknown[] = [null, undefined, 42, {}, [], true];
-
-    // Act & Assert
-    for (const input of invalidInputs) {
-      expect(() => isValidIPv4(input as string)).toThrow(TypeError);
-    }
-  });
 });

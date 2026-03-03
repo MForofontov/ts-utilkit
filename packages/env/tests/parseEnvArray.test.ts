@@ -82,24 +82,9 @@ describe('parseEnvArray', () => {
     expect(result).toEqual(['John Doe', 'Jane Smith', 'Bob Jones']);
   });
 
-  // Error cases
-  it('12. should throw TypeError when key is not a string', () => {
-    expect(() => parseEnvArray(123 as any)).toThrow(TypeError);
-    expect(() => parseEnvArray(123 as any)).toThrow(
-      'key must be a string, got number',
-    );
-  });
-
   it('13. should throw Error when key is empty string', () => {
     expect(() => parseEnvArray('')).toThrow(Error);
     expect(() => parseEnvArray('')).toThrow('key cannot be an empty string');
-  });
-
-  it('14. should throw TypeError when delimiter is not a string', () => {
-    expect(() => parseEnvArray('KEY', 123 as any)).toThrow(TypeError);
-    expect(() => parseEnvArray('KEY', 123 as any)).toThrow(
-      'delimiter must be a string, got number',
-    );
   });
 
   it('15. should throw Error when delimiter is empty string', () => {
@@ -109,12 +94,4 @@ describe('parseEnvArray', () => {
     );
   });
 
-  it('16. should throw TypeError when defaultValue is not an array', () => {
-    expect(() => parseEnvArray('KEY', ',', 'not an array' as any)).toThrow(
-      TypeError,
-    );
-    expect(() => parseEnvArray('KEY', ',', 'not an array' as any)).toThrow(
-      'defaultValue must be an array, got string',
-    );
-  });
 });

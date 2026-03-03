@@ -54,23 +54,6 @@ describe('isValidPattern', () => {
     expect(endTime - startTime).toBeLessThan(10);
   });
 
-  // Test case 5: TypeError for invalid input types
-  it('5. should throw TypeError for invalid input types', () => {
-    const invalidInputs = [123, null, undefined, [], {}, true];
-
-    invalidInputs.forEach((input) => {
-      expect(() =>
-        isValidPattern(input as unknown as string, '[A-Z]+'),
-      ).toThrow(TypeError);
-      expect(() => isValidPattern('test', input as unknown as string)).toThrow(
-        TypeError,
-      );
-      expect(() =>
-        isValidPattern('test', '[A-Z]+', input as unknown as string),
-      ).toThrow(TypeError);
-    });
-  });
-
   // Test case 6: Error for invalid regex patterns
   it('6. should throw Error for invalid regex patterns', () => {
     const invalidPatterns = ['[', ')', '*', '+{', '(?'];

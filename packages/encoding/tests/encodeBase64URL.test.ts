@@ -65,17 +65,4 @@ describe('encodeBase64URL', () => {
     }
   });
 
-  it('13. should throw TypeError when str is not a string', () => {
-    expect(() => encodeBase64URL(123 as unknown as string)).toThrow(TypeError);
-    expect(() => encodeBase64URL(123 as unknown as string)).toThrow(
-      'str must be a string, got number',
-    );
-  });
-
-  it('14. should throw TypeError for null input', () => {
-    expect(() => encodeBase64URL(null as unknown as string)).toThrow(TypeError);
-    expect(() => encodeBase64URL(null as unknown as string)).toThrow(
-      'str must be a string, got object',
-    );
-  });
 });

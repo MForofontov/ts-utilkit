@@ -4,7 +4,6 @@
  * @param maps - Two or more Maps to merge.
  * @returns A new Map containing all entries from all input Maps.
  *
- * @throws {TypeError} If any argument is not a Map.
  * @throws {Error} If fewer than two Maps are provided.
  *
  * @example
@@ -37,11 +36,6 @@ export function mapMerge<K, V>(...maps: Map<K, V>[]): Map<K, V> {
   }
 
   for (let i = 0; i < maps.length; i++) {
-    if (!(maps[i] instanceof Map)) {
-      throw new TypeError(
-        `All arguments must be Maps, argument ${i} is ${typeof maps[i]}`,
-      );
-    }
   }
 
   const result = new Map<K, V>();

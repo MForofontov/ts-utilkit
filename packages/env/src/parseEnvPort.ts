@@ -10,8 +10,6 @@
  * @param defaultValue - Optional default port number (must be 1–65535).
  * @returns The validated port number as an integer.
  *
- * @throws {TypeError} If key is not a string.
- * @throws {TypeError} If defaultValue is provided but is not a number.
  * @throws {Error} If key is an empty string.
  * @throws {Error} If defaultValue is provided but outside the range 1–65535 or NaN.
  * @throws {Error} If the variable is not set and no default was provided.
@@ -45,18 +43,12 @@
  * @complexity Time: O(1), Space: O(1)
  */
 export function parseEnvPort(key: string, defaultValue?: number): number {
-  if (typeof key !== 'string') {
-    throw new TypeError(`key must be a string, got ${typeof key}`);
-  }
 
   if (key.length === 0) {
     throw new Error('key cannot be an empty string');
   }
 
   if (defaultValue !== undefined) {
-    if (typeof defaultValue !== 'number') {
-      throw new TypeError(`defaultValue must be a number, got ${typeof defaultValue}`);
-    }
     if (isNaN(defaultValue) || !Number.isInteger(defaultValue) || defaultValue < 1 || defaultValue > 65535) {
       throw new Error(
         `defaultValue must be a valid port (1–65535), got ${defaultValue}`,

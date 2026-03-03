@@ -138,17 +138,6 @@ describe('asyncWaterfall', () => {
     expect(end - start).toBeLessThan(1000);
   });
 
-  // Error cases
-  // Test case 11: Throws TypeError when tasks is not an array
-  it('11. should throw TypeError when tasks is not an array', () => {
-    expect(() =>
-      asyncWaterfall('not an array' as unknown as Array<(n: number) => Promise<number>>, 0),
-    ).toThrow(TypeError);
-    expect(() =>
-      asyncWaterfall('not an array' as unknown as Array<(n: number) => Promise<number>>, 0),
-    ).toThrow('tasks must be an array, got string');
-  });
-
   // Test case 12: Throws Error when a task element is not a function
   it('12. should throw Error when a task element is not a function', () => {
     const tasks = [

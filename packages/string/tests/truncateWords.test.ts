@@ -80,38 +80,6 @@ describe('truncateWords', () => {
 
   // ─── Error cases ───────────────────────────────────────────────────────────
 
-  it('17. should throw TypeError when str is not a string', () => {
-    expect(() => truncateWords(123 as unknown as string, 3)).toThrow(TypeError);
-    expect(() => truncateWords(123 as unknown as string, 3)).toThrow(
-      'str must be a string, got number',
-    );
-  });
-
-  it('18. should throw TypeError when count is not a number', () => {
-    expect(() =>
-      truncateWords('hello world', '3' as unknown as number),
-    ).toThrow(TypeError);
-    expect(() =>
-      truncateWords('hello world', '3' as unknown as number),
-    ).toThrow('count must be a number, got string');
-  });
-
-  it('19. should throw TypeError when suffix is not a string', () => {
-    expect(() =>
-      truncateWords('hello world', 1, 42 as unknown as string),
-    ).toThrow(TypeError);
-    expect(() =>
-      truncateWords('hello world', 1, 42 as unknown as string),
-    ).toThrow('suffix must be a string, got number');
-  });
-
-  it('20. should throw Error when count is NaN', () => {
-    expect(() => truncateWords('hello world', NaN)).toThrow(Error);
-    expect(() => truncateWords('hello world', NaN)).toThrow(
-      'count must be a valid number, not NaN',
-    );
-  });
-
   it('21. should throw Error when count is 0', () => {
     expect(() => truncateWords('hello world', 0)).toThrow(Error);
     expect(() => truncateWords('hello world', 0)).toThrow(

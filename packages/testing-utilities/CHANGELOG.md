@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Remove all runtime `typeof`/`instanceof` TypeError guards; rely on TypeScript type system for type safety
+- Remove all `@throws {TypeError}` JSDoc tags from all affected functions
+- Remove all TypeError test cases from all test files
+
+
 ### Deprecated
 - `generateRandomString`: use `randomSequence` from `@ts-utilkit/random` directly. Note: this function is NOT cryptographically secure — for secure random strings use `generateRandomString` from `@ts-utilkit/string`.
 

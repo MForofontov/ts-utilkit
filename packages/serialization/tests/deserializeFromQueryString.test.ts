@@ -172,40 +172,4 @@ describe('deserializeFromQueryString', () => {
     expect(result.text).toBe('Hello+World');
   });
 
-  // Error cases
-  it('15. should throw TypeError when queryString is not a string', () => {
-    // Arrange
-    const input: any = { name: 'John' };
-    const expectedMessage = 'queryString must be a string, got object';
-
-    // Act & Assert
-    expect(() => deserializeFromQueryString(input)).toThrow(TypeError);
-    expect(() => deserializeFromQueryString(input)).toThrow(expectedMessage);
-  });
-
-  it('16. should throw TypeError when decodeValues is not boolean', () => {
-    // Arrange
-    const input = 'name=John';
-    const options: any = { decodeValues: 'true' };
-    const expectedMessage = 'decodeValues must be a boolean, got string';
-
-    // Act & Assert
-    expect(() => deserializeFromQueryString(input, options)).toThrow(TypeError);
-    expect(() => deserializeFromQueryString(input, options)).toThrow(
-      expectedMessage,
-    );
-  });
-
-  it('17. should throw TypeError for invalid arrayFormat', () => {
-    // Arrange
-    const input = 'items=1&items=2';
-    const options: any = { arrayFormat: 'invalid' };
-    const expectedMessage = "arrayFormat must be 'brackets' or 'auto'";
-
-    // Act & Assert
-    expect(() => deserializeFromQueryString(input, options)).toThrow(TypeError);
-    expect(() => deserializeFromQueryString(input, options)).toThrow(
-      expectedMessage,
-    );
-  });
 });

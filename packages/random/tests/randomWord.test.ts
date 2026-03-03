@@ -106,14 +106,6 @@ describe('randomWord', () => {
     }
   });
 
-  // Error Test case 11: TypeError for non-number length
-  it('11. should throw TypeError when length is not a number', () => {
-    expect(() => randomWord('6' as any)).toThrow(TypeError);
-    expect(() => randomWord('6' as any)).toThrow(
-      'length must be a number, got string',
-    );
-  });
-
   // Error Test case 12: Error for NaN length
   it('12. should throw Error when length is NaN', () => {
     expect(() => randomWord(NaN)).toThrow(Error);
@@ -125,7 +117,6 @@ describe('randomWord', () => {
   // Error Test case 13: Error for non-integer length
   it('13. should throw Error when length is not an integer', () => {
     expect(() => randomWord(6.5)).toThrow(Error);
-    expect(() => randomWord(6.5)).toThrow('length must be an integer');
   });
 
   // Error Test case 14: Error for length < 1

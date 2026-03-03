@@ -21,8 +21,4 @@ describe('generateRandomAlphanumeric', () => {
     expect(() => generateRandomAlphanumeric(-1)).toThrow(RangeError);
     expect(() => generateRandomAlphanumeric(-1)).toThrow('length must be non-negative');
   });
-  it('6. should throw TypeError when length is not a number', () => {
-    expect(() => generateRandomAlphanumeric('x' as unknown as number)).toThrow(TypeError);
-    expect(() => generateRandomAlphanumeric('x' as unknown as number)).toThrow('length must be a number, got string');
-  });
 });

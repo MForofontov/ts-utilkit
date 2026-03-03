@@ -54,12 +54,6 @@ describe('extractDomain', () => {
     expect(result).toBe('localhost');
   });
 
-  it('11. should throw TypeError for non-string URL', () => {
-    const url = 123 as unknown as string;
-    expect(() => extractDomain(url)).toThrow(TypeError);
-    expect(() => extractDomain(url)).toThrow('url must be a string');
-  });
-
   it('12. should throw Error for invalid URL', () => {
     expect(() => extractDomain('not a url')).toThrow('Invalid URL');
   });

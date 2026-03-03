@@ -5,7 +5,6 @@
  * @param separator - The separator character (default: ':').
  * @returns True if the MAC address is valid, false otherwise.
  *
- * @throws {TypeError} If mac or separator is not a string.
  * @throws {Error} If separator is not a single character.
  *
  * @example
@@ -28,13 +27,6 @@ export function isValidMACAddress(
   mac: string,
   separator: string = ':',
 ): boolean {
-  if (typeof mac !== 'string') {
-    throw new TypeError(`mac must be a string, got ${typeof mac}`);
-  }
-
-  if (typeof separator !== 'string') {
-    throw new TypeError(`separator must be a string, got ${typeof separator}`);
-  }
 
   if (separator.length > 1) {
     throw new Error(`separator must be a single character, got "${separator}"`);

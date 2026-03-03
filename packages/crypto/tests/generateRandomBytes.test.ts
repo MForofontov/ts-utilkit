@@ -62,26 +62,6 @@ describe('generateRandomBytes', () => {
     );
   });
 
-  // Test case 9: Throw error for null
-  it('9. should throw TypeError when length is null', () => {
-    expect(() => generateRandomBytes(null as unknown as number)).toThrow(
-      TypeError,
-    );
-    expect(() => generateRandomBytes(null as unknown as number)).toThrow(
-      'length must be a number',
-    );
-  });
-
-  // Test case 10: Throw error for string
-  it('10. should throw TypeError when length is a string', () => {
-    expect(() => generateRandomBytes('16' as unknown as number)).toThrow(
-      TypeError,
-    );
-    expect(() => generateRandomBytes('16' as unknown as number)).toThrow(
-      'length must be a number',
-    );
-  });
-
   // Test case 11: Throw error for NaN
   it('11. should throw Error when length is NaN', () => {
     expect(() => generateRandomBytes(NaN)).toThrow(Error);
@@ -90,13 +70,4 @@ describe('generateRandomBytes', () => {
     );
   });
 
-  // Test case 12: Throw error for object
-  it('12. should throw TypeError when length is an object', () => {
-    expect(() => generateRandomBytes({} as unknown as number)).toThrow(
-      TypeError,
-    );
-    expect(() => generateRandomBytes({} as unknown as number)).toThrow(
-      'length must be a number',
-    );
-  });
 });

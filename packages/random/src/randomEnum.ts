@@ -7,7 +7,6 @@ import { randomChoice } from './randomChoice';
  * @param enumObj - The enum or object to pick from.
  * @returns A random value from the enum/object.
  *
- * @throws {TypeError} If enumObj is not an object.
  * @throws {Error} If enumObj has no enumerable values.
  *
  * @example
@@ -27,9 +26,6 @@ import { randomChoice } from './randomChoice';
 export function randomEnum<T extends Record<string, any>>(
   enumObj: T,
 ): T[keyof T] {
-  if (typeof enumObj !== 'object' || enumObj === null) {
-    throw new TypeError('enumObj must be an object');
-  }
 
   const values = Object.values(enumObj).filter(
     (value) => typeof value !== 'number', // Filter out reverse mappings in numeric enums

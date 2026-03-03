@@ -131,27 +131,4 @@ describe('pipe', () => {
     );
   });
 
-  it('16. should throw TypeError when a non-function is passed', () => {
-    expect(() =>
-      (pipe as unknown as (...a: unknown[]) => unknown)(
-        (x: number) => x,
-        42,
-      ),
-    ).toThrow(TypeError);
-    expect(() =>
-      (pipe as unknown as (...a: unknown[]) => unknown)(
-        (x: number) => x,
-        42,
-      ),
-    ).toThrow('All arguments must be functions, got number at index 1');
-  });
-
-  it('17. should throw TypeError when the first argument is not a function', () => {
-    expect(() =>
-      (pipe as unknown as (...a: unknown[]) => unknown)('not a fn'),
-    ).toThrow(TypeError);
-    expect(() =>
-      (pipe as unknown as (...a: unknown[]) => unknown)('not a fn'),
-    ).toThrow('All arguments must be functions, got string at index 0');
-  });
 });

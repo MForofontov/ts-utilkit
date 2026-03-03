@@ -5,9 +5,6 @@
  * @param mapper - Function to transform each entry's value.
  * @returns A new Map with transformed values.
  *
- * @throws {TypeError} If map is not a Map.
- * @throws {TypeError} If mapper is not a function.
- *
  * @example
  * // Double all values
  * const map = new Map([['a', 1], ['b', 2], ['c', 3]]);
@@ -33,13 +30,6 @@ export function mapMap<K, V, R>(
   map: Map<K, V>,
   mapper: (entry: [K, V], index: number) => R,
 ): Map<K, R> {
-  if (!(map instanceof Map)) {
-    throw new TypeError(`map must be a Map, got ${typeof map}`);
-  }
-
-  if (typeof mapper !== 'function') {
-    throw new TypeError(`mapper must be a function, got ${typeof mapper}`);
-  }
 
   const result = new Map<K, R>();
   let index = 0;

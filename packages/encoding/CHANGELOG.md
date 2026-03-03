@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Remove all runtime `typeof`/`instanceof` TypeError guards; rely on TypeScript type system for type safety
+- Remove all `@throws {TypeError}` JSDoc tags from all affected functions
+- Remove all TypeError test cases from all test files
+
+
 ### Added
 - New function `encodeBase64URL` for URL-safe Base64 encoding (RFC 4648 §5) without padding — used in JWTs and OAuth tokens
 - New function `decodeBase64URL` for decoding URL-safe Base64 strings with strict alphabet validation
@@ -14,9 +20,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - New function `decodeHex` for decoding hexadecimal strings back to UTF-8, with length and character validation
 - New function `encodeBase32` for RFC 4648 Base32 encoding — the standard format for TOTP/2FA shared secrets
 - New function `decodeBase32` for decoding Base32 strings, case-insensitive with optional padding support
-
-### Changed
-- Changes to existing functionality
 
 ### Fixed
 - `encodeBase64`: was incorrectly producing URL-safe base64 (`-`, `_`, no `=` padding) — now correctly produces standard RFC 4648 §4 base64 (`+`, `/`, `=` padding preserved). URL-safe output remains available via the dedicated `encodeBase64URL` function.

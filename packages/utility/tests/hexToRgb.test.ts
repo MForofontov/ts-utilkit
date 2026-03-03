@@ -41,11 +41,4 @@ describe('hexToRgb', () => {
     expect(hexToRgb('#1234567')).toBeNull();
   });
 
-  // Test case 9: should throw TypeError when hex is not a string
-  it('9. should throw TypeError when hex is not a string', () => {
-    expect(() => hexToRgb(123 as unknown as string)).toThrow(TypeError);
-    expect(() => hexToRgb(123 as unknown as string)).toThrow(
-      'hex must be a string, got number',
-    );
-  });
 });

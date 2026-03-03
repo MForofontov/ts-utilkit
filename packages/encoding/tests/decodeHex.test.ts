@@ -50,20 +50,6 @@ describe('decodeHex', () => {
     }
   });
 
-  it('12. should throw TypeError when str is not a string', () => {
-    expect(() => decodeHex(42 as unknown as string)).toThrow(TypeError);
-    expect(() => decodeHex(42 as unknown as string)).toThrow(
-      'str must be a string, got number',
-    );
-  });
-
-  it('13. should throw TypeError for null input', () => {
-    expect(() => decodeHex(null as unknown as string)).toThrow(TypeError);
-    expect(() => decodeHex(null as unknown as string)).toThrow(
-      'str must be a string, got object',
-    );
-  });
-
   it('14. should throw Error for odd-length hex strings', () => {
     expect(() => decodeHex('abc')).toThrow(Error);
     expect(() => decodeHex('abc')).toThrow('Invalid hex string: length must be even');

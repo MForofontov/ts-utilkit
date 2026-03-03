@@ -6,7 +6,6 @@
  * @param interval - Check interval in milliseconds (default: 50).
  * @returns Promise that resolves when condition is met or rejects on timeout.
  *
- * @throws {TypeError} If condition is not a function.
  * @throws {Error} If timeout or interval are not positive numbers.
  * @throws {Error} If condition is not met within timeout.
  *
@@ -29,11 +28,6 @@ export async function waitForCondition(
   timeout: number = 5000,
   interval: number = 50,
 ): Promise<void> {
-  if (typeof condition !== 'function') {
-    throw new TypeError(
-      `condition must be a function, got ${typeof condition}`,
-    );
-  }
   if (typeof timeout !== 'number' || timeout <= 0) {
     throw new Error('timeout must be a positive number');
   }

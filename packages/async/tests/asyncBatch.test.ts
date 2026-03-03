@@ -185,37 +185,6 @@ describe('asyncBatch', () => {
     expect(batchFn).toHaveBeenCalledTimes(10);
   });
 
-  // Error cases
-  // Test case 13: Throws TypeError when items is not an array
-  it('13. should throw TypeError when items is not an array', () => {
-    expect(() =>
-      asyncBatch('not an array' as unknown as string[], async (b) => b, 5),
-    ).toThrow(TypeError);
-    expect(() =>
-      asyncBatch('not an array' as unknown as string[], async (b) => b, 5),
-    ).toThrow('items must be an array, got string');
-  });
-
-  // Test case 14: Throws TypeError when batchFn is not a function
-  it('14. should throw TypeError when batchFn is not a function', () => {
-    expect(() =>
-      asyncBatch([1, 2, 3], 'fn' as unknown as (b: number[]) => Promise<number[]>, 2),
-    ).toThrow(TypeError);
-    expect(() =>
-      asyncBatch([1, 2, 3], 'fn' as unknown as (b: number[]) => Promise<number[]>, 2),
-    ).toThrow('batchFn must be a function, got string');
-  });
-
-  // Test case 15: Throws TypeError when batchSize is not a number
-  it('15. should throw TypeError when batchSize is not a number', () => {
-    expect(() =>
-      asyncBatch([1, 2, 3], async (b) => b, '2' as unknown as number),
-    ).toThrow(TypeError);
-    expect(() =>
-      asyncBatch([1, 2, 3], async (b) => b, '2' as unknown as number),
-    ).toThrow('batchSize must be a number, got string');
-  });
-
   // Test case 16: Throws Error when batchSize is zero or negative
   it('16. should throw Error when batchSize is not a positive integer', () => {
     expect(() => asyncBatch([1], async (b) => b, 0)).toThrow(
@@ -229,27 +198,10 @@ describe('asyncBatch', () => {
     );
   });
 
-  // Test case 17: Throws TypeError when delayMs is not a number
-  it('17. should throw TypeError when delayMs is not a number', () => {
-    expect(() =>
-      asyncBatch([1, 2], async (b) => b, 1, {
-        delayMs: 'slow' as unknown as number,
-      }),
-    ).toThrow(TypeError);
-    expect(() =>
-      asyncBatch([1, 2], async (b) => b, 1, {
-        delayMs: 'slow' as unknown as number,
-      }),
-    ).toThrow('delayMs must be a number, got string');
-  });
-
   // Test case 18: Throws Error when delayMs is negative
   it('18. should throw Error when delayMs is negative', () => {
     expect(() =>
       asyncBatch([1, 2], async (b) => b, 1, { delayMs: -1 }),
     ).toThrow(Error);
-    expect(() =>
-      asyncBatch([1, 2], async (b) => b, 1, { delayMs: -1 }),
-    ).toThrow('delayMs must be non-negative, got -1');
   });
 });

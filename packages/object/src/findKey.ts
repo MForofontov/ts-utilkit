@@ -8,9 +8,6 @@
  *   for the key to return.
  * @returns The first matching key string, or `undefined` if none is found.
  *
- * @throws {TypeError} If obj is not a non-null object.
- * @throws {TypeError} If predicate is not a function.
- *
  * @example
  * // Find the key with a specific value
  * findKey({ a: 1, b: 2, c: 3 }, v => v === 2);
@@ -41,12 +38,6 @@ export function findKey<T>(
   obj: Record<string, T>,
   predicate: (value: T, key: string) => boolean,
 ): string | undefined {
-  if (obj === null || typeof obj !== 'object' || Array.isArray(obj)) {
-    throw new TypeError(`obj must be a non-null object, got ${obj === null ? 'null' : typeof obj}`);
-  }
-  if (typeof predicate !== 'function') {
-    throw new TypeError(`predicate must be a function, got ${typeof predicate}`);
-  }
 
   for (const key of Object.keys(obj)) {
     if (predicate(obj[key], key)) {

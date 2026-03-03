@@ -5,8 +5,6 @@
  * @param cardNumber - The credit card number to validate (digits only or with spaces/hyphens).
  * @returns True if valid credit card number, false otherwise.
  *
- * @throws {TypeError} If cardNumber is not a string.
- *
  * @example
  * // Valid credit card numbers (test numbers)
  * isValidCreditCard("4532015112830366"); // true (Visa)
@@ -31,11 +29,6 @@
  * @complexity Time: O(n) where n is number of digits, Space: O(n)
  */
 export function isValidCreditCard(cardNumber: string): boolean {
-  if (typeof cardNumber !== 'string') {
-    throw new TypeError(
-      `cardNumber must be a string, got ${typeof cardNumber}`,
-    );
-  }
 
   // Remove spaces and hyphens
   const cleaned = cardNumber.replace(/[\s-]/g, '');

@@ -4,8 +4,6 @@
  * @param flatObj - The flattened object with dot notation keys.
  * @returns Nested object structure.
  *
- * @throws {TypeError} If flatObj is not an object.
- *
  * @example
  * // Unflatten object
  * unflattenFromSerialization({ 'a.b.c': 1 }); // { a: { b: { c: 1 } } }
@@ -22,15 +20,6 @@
 export function unflattenFromSerialization(
   flatObj: Record<string, any>,
 ): Record<string, any> {
-  if (
-    flatObj === null ||
-    typeof flatObj !== 'object' ||
-    Array.isArray(flatObj)
-  ) {
-    throw new TypeError(
-      `flatObj must be an object, got ${Array.isArray(flatObj) ? 'array' : typeof flatObj}`,
-    );
-  }
 
   const result: any = {};
 

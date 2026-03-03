@@ -4,8 +4,6 @@
  * @param str - The string containing HTML to process.
  * @returns The string with all HTML tags removed.
  *
- * @throws {TypeError} If str is not a string.
- *
  * @example
  * // Basic usage
  * stripHtmlTags("<p>Hello <b>world</b></p>"); // "Hello world"

@@ -6,8 +6,6 @@
  * @param url - The URL string to test.
  * @returns `true` if the URL is absolute (has a scheme), `false` otherwise.
  *
- * @throws {TypeError} If url is not a string.
- *
  * @example
  * // Absolute URLs
  * isAbsoluteURL('https://example.com/path');  // true
@@ -30,9 +28,6 @@
  * @complexity Time: O(n), Space: O(1)
  */
 export function isAbsoluteURL(url: string): boolean {
-  if (typeof url !== 'string') {
-    throw new TypeError(`url must be a string, got ${typeof url}`);
-  }
   try {
     new URL(url);
     return true;

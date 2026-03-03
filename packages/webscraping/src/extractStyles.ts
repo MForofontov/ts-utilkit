@@ -13,8 +13,6 @@ export interface StyleData {
  * @param html - The HTML content to extract styles from.
  * @returns Array of style objects with href (external) or inline content.
  *
- * @throws {TypeError} If html is not a string.
- *
  * @example
  * const html = '<link rel="stylesheet" href="styles.css">';
  * const styles = extractStyles(html);
@@ -29,9 +27,6 @@ export interface StyleData {
  * @complexity Time: O(n) where n is html length, Space: O(m) where m is number of styles
  */
 export function extractStyles(html: string): StyleData[] {
-  if (typeof html !== 'string') {
-    throw new TypeError(`html must be a string, got ${typeof html}`);
-  }
 
   const styles: StyleData[] = [];
 

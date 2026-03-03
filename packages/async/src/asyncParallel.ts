@@ -5,7 +5,6 @@
  * @param concurrency - Maximum number of concurrent executions (default: 5).
  * @returns Promise that resolves with array of results in the same order as input tasks.
  *
- * @throws {TypeError} If tasks is not an array or concurrency is not a number.
  * @throws {Error} If concurrency is less than 1 or tasks array contains non-functions.
  *
  * @example
@@ -41,19 +40,8 @@ export function asyncParallel<T>(
   tasks: Array<() => Promise<T>>,
   concurrency?: number,
 ): Promise<T[]> {
-  if (!Array.isArray(tasks)) {
-    throw new TypeError(`tasks must be an array, got ${typeof tasks}`);
-  }
 
   // Validate concurrency if provided
-  if (
-    concurrency !== undefined &&
-    (typeof concurrency !== 'number' || isNaN(concurrency))
-  ) {
-    throw new TypeError(
-      `concurrency must be a number, got ${typeof concurrency}`,
-    );
-  }
 
   // Default concurrency
   const actualConcurrency = concurrency ?? 5;

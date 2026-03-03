@@ -5,8 +5,6 @@
  * @param set2 - The second set.
  * @returns True if the sets have no elements in common, false otherwise.
  *
- * @throws {TypeError} If either argument is not a Set.
- *
  * @example
  * // Disjoint sets
  * const set1 = new Set([1, 2, 3]);
@@ -36,13 +34,6 @@
  * @complexity Time: O(min(n, m)) where n and m are set sizes, Space: O(1)
  */
 export function isDisjoint<T>(set1: Set<T>, set2: Set<T>): boolean {
-  if (!(set1 instanceof Set)) {
-    throw new TypeError(`First argument must be a Set, got ${typeof set1}`);
-  }
-
-  if (!(set2 instanceof Set)) {
-    throw new TypeError(`Second argument must be a Set, got ${typeof set2}`);
-  }
 
   // Optimize: iterate over the smaller set
   const smallerSet = set1.size <= set2.size ? set1 : set2;

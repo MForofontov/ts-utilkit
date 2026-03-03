@@ -25,9 +25,6 @@ export interface TryCatchResult<T> {
  *   provides a fallback value.
  * @returns A `TryCatchResult<T>` object with `value` and `error` fields.
  *
- * @throws {TypeError} If `fn` is not a function.
- * @throws {TypeError} If `onError` is provided but is not a function.
- *
  * @example
  * // Safe JSON parse — no try/catch in calling code
  * const { value, error } = tryCatch(() => JSON.parse('not json'));
@@ -57,12 +54,6 @@ export function tryCatch<T>(
   fn: () => T,
   onError?: (error: Error) => T,
 ): TryCatchResult<T> {
-  if (typeof fn !== 'function') {
-    throw new TypeError(`fn must be a function, got ${typeof fn}`);
-  }
-  if (onError !== undefined && typeof onError !== 'function') {
-    throw new TypeError(`onError must be a function, got ${typeof onError}`);
-  }
 
   try {
     return { value: fn(), error: undefined };

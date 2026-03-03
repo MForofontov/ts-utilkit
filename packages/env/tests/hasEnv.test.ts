@@ -65,20 +65,6 @@ describe('hasEnv', () => {
     expect(process.env.STABLE_VAR).toBe(before);
   });
 
-  it('11. should throw TypeError when key is not a string', () => {
-    expect(() => hasEnv(123 as unknown as string)).toThrow(TypeError);
-    expect(() => hasEnv(123 as unknown as string)).toThrow(
-      'key must be a string, got number',
-    );
-  });
-
-  it('12. should throw TypeError for null key', () => {
-    expect(() => hasEnv(null as unknown as string)).toThrow(TypeError);
-    expect(() => hasEnv(null as unknown as string)).toThrow(
-      'key must be a string, got object',
-    );
-  });
-
   it('13. should throw Error for an empty string key', () => {
     expect(() => hasEnv('')).toThrow(Error);
     expect(() => hasEnv('')).toThrow('key cannot be an empty string');

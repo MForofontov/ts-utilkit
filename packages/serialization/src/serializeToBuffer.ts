@@ -5,7 +5,6 @@
  * @param encoding - The character encoding (default: 'utf8').
  * @returns Buffer containing serialized data.
  *
- * @throws {TypeError} If encoding is not a string.
  * @throws {Error} If serialization fails.
  *
  * @example
@@ -24,9 +23,6 @@ export function serializeToBuffer(
   data: any,
   encoding: BufferEncoding = 'utf8',
 ): Buffer {
-  if (typeof encoding !== 'string') {
-    throw new TypeError(`encoding must be a string, got ${typeof encoding}`);
-  }
 
   try {
     const jsonString = typeof data === 'string' ? data : JSON.stringify(data);

@@ -273,14 +273,4 @@ describe('extractScripts', () => {
     expect(result).toEqual(expected);
   });
 
-  // Test case 15: Throw TypeError when html is not a string
-  it('15. should throw TypeError when html is not a string', () => {
-    // Arrange
-    const invalidInput = { html: '<script></script>' } as unknown as string;
-    const expectedMessage = 'html must be a string, got object';
-
-    // Act & Assert
-    expect(() => extractScripts(invalidInput)).toThrow(TypeError);
-    expect(() => extractScripts(invalidInput)).toThrow(expectedMessage);
-  });
 });

@@ -10,7 +10,6 @@ import { randomInt } from './randomInt';
  *                   - Any other character is preserved as-is
  * @returns A random string matching the template pattern.
  *
- * @throws {TypeError} If template is not a string.
  * @throws {Error} If template is empty.
  * @throws {Error} If template is longer than 100 characters.
  *
@@ -37,9 +36,6 @@ import { randomInt } from './randomInt';
  * @complexity Time: O(n), Space: O(n) where n is template length
  */
 export function randomPattern(template: string): string {
-  if (typeof template !== 'string') {
-    throw new TypeError(`template must be a string, got ${typeof template}`);
-  }
   if (template.length === 0) {
     throw new Error('template cannot be empty');
   }

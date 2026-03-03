@@ -57,27 +57,6 @@ describe('isValidMACAddress', () => {
     expect(endTime - startTime).toBeLessThan(10); // Should complete quickly
   });
 
-  // Test case 5: TypeError for invalid input types
-  it('5. should throw TypeError for invalid input types', () => {
-    // Arrange & Act & Assert
-    expect(() => isValidMACAddress(123 as unknown as string)).toThrow(
-      TypeError,
-    );
-    expect(() =>
-      isValidMACAddress('00:1B:44:11:3A:B7', 123 as unknown as string),
-    ).toThrow(TypeError);
-
-    const expectedMacMessage = 'mac must be a string, got number';
-    const expectedSeparatorMessage = 'separator must be a string, got number';
-
-    expect(() => isValidMACAddress(123 as unknown as string)).toThrow(
-      expectedMacMessage,
-    );
-    expect(() =>
-      isValidMACAddress('00:1B:44:11:3A:B7', 123 as unknown as string),
-    ).toThrow(expectedSeparatorMessage);
-  });
-
   // Test case 6: Error for invalid separator length
   it('6. should throw Error for multi-character separator', () => {
     // Arrange

@@ -16,16 +16,4 @@ describe('replaceFirst', () => {
   it('5. should handle empty source string', () => {
     expect(replaceFirst('', 'x', 'y')).toBe('');
   });
-  it('6. should throw TypeError when str is not a string', () => {
-    expect(() => replaceFirst(123 as unknown as string, 'x', 'y')).toThrow(TypeError);
-    expect(() => replaceFirst(123 as unknown as string, 'x', 'y')).toThrow('str must be a string, got number');
-  });
-  it('7. should throw TypeError when search is not a string', () => {
-    expect(() => replaceFirst('hello', 123 as unknown as string, 'y')).toThrow(TypeError);
-    expect(() => replaceFirst('hello', 123 as unknown as string, 'y')).toThrow('search must be a string, got number');
-  });
-  it('8. should throw TypeError when replacement is not a string', () => {
-    expect(() => replaceFirst('hello', 'x', 123 as unknown as string)).toThrow(TypeError);
-    expect(() => replaceFirst('hello', 'x', 123 as unknown as string)).toThrow('replacement must be a string, got number');
-  });
 });

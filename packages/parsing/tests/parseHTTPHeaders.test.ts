@@ -104,17 +104,4 @@ describe('parseHTTPHeaders', () => {
     expect(() => parseHTTPHeaders('   ')).toThrow('raw header string cannot be empty');
   });
 
-  it('16. should throw TypeError when raw is not a string', () => {
-    expect(() => parseHTTPHeaders(42 as unknown as string)).toThrow(TypeError);
-    expect(() => parseHTTPHeaders(42 as unknown as string)).toThrow(
-      'raw must be a string, got number',
-    );
-  });
-
-  it('17. should throw TypeError when raw is null', () => {
-    expect(() => parseHTTPHeaders(null as unknown as string)).toThrow(TypeError);
-    expect(() => parseHTTPHeaders(null as unknown as string)).toThrow(
-      'raw must be a string, got object',
-    );
-  });
 });

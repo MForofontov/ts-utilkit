@@ -4,7 +4,6 @@
  * @param ms - The delay in milliseconds (must be non-negative).
  * @returns A promise that resolves after the specified delay with no value.
  *
- * @throws {TypeError} If ms is not a number.
  * @throws {Error} If ms is negative or NaN.
  *
  * @example
@@ -32,9 +31,6 @@
  * @complexity Time: O(1), Space: O(1)
  */
 export function delay(ms: number): Promise<void> {
-  if (typeof ms !== 'number') {
-    throw new TypeError(`ms must be a number, got ${typeof ms}`);
-  }
   if (Number.isNaN(ms) || ms < 0) {
     throw new Error('ms must be a non-negative number');
   }

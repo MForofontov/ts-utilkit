@@ -115,40 +115,6 @@ describe('randomSubset', () => {
     expect(result.length).toBeLessThanOrEqual(8);
   });
 
-  // Error Test case 14: TypeError for non-array
-  it('14. should throw TypeError when array is not an array', () => {
-    expect(() => randomSubset('not array' as any)).toThrow(TypeError);
-    expect(() => randomSubset('not array' as any)).toThrow(
-      'array must be an array',
-    );
-  });
-
-  // Error Test case 15: TypeError for non-number minSize
-  it('15. should throw TypeError when minSize is not a number', () => {
-    expect(() => randomSubset([1, 2, 3], '2' as any)).toThrow(TypeError);
-    expect(() => randomSubset([1, 2, 3], '2' as any)).toThrow(
-      'minSize must be a number',
-    );
-  });
-
-  // Error Test case 16: TypeError for non-number maxSize
-  it('16. should throw TypeError when maxSize is not a number', () => {
-    expect(() => randomSubset([1, 2, 3], 1, '3' as any)).toThrow(TypeError);
-    expect(() => randomSubset([1, 2, 3], 1, '3' as any)).toThrow(
-      'maxSize must be a number',
-    );
-  });
-
-  // Error Test case 17: TypeError for non-boolean allowDuplicates
-  it('17. should throw TypeError when allowDuplicates is not a boolean', () => {
-    expect(() => randomSubset([1, 2, 3], 1, 3, 'true' as any)).toThrow(
-      TypeError,
-    );
-    expect(() => randomSubset([1, 2, 3], 1, 3, 'true' as any)).toThrow(
-      'allowDuplicates must be a boolean',
-    );
-  });
-
   // Error Test case 18: Error for empty array
   it('18. should throw Error when array is empty', () => {
     expect(() => randomSubset([])).toThrow(Error);

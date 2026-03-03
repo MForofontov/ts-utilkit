@@ -11,7 +11,6 @@ import { formatBytes } from '@ts-utilkit/format';
  *   If false, uses base-1000 (decimal) with SI units (KB, MB, etc.). Default: true.
  * @returns The size as a formatted string with appropriate units.
  *
- * @throws {TypeError} If bytes is not a number or binary is not a boolean.
  * @throws {Error} If bytes is negative or NaN.
  *
  * @example
@@ -21,17 +20,11 @@ import { formatBytes } from '@ts-utilkit/format';
  * @complexity Time: O(1), Space: O(1)
  */
 export function bytesToSize(bytes: number, binary: boolean = true): string {
-  if (typeof bytes !== 'number') {
-    throw new TypeError(`bytes must be a number, got ${typeof bytes}`);
-  }
   if (isNaN(bytes)) {
     throw new Error('bytes must be a valid number, not NaN');
   }
   if (bytes < 0) {
     throw new Error(`bytes must be non-negative, got ${bytes}`);
-  }
-  if (typeof binary !== 'boolean') {
-    throw new TypeError(`binary must be a boolean, got ${typeof binary}`);
   }
   return formatBytes(bytes, 2, binary, binary);
 }

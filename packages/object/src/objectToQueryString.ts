@@ -8,8 +8,6 @@
  * @param obj - The object whose properties will be converted to query parameters.
  * @returns A URL-encoded query string without the leading '?'.
  *
- * @throws {TypeError} If obj is not an object or is null.
- *
  * @example
  * // Basic usage
  * objectToQueryString({ name: 'John Doe', age: 30 });
@@ -44,9 +42,6 @@
  * @complexity Time: O(n), Space: O(n) - Where n is the number of properties
  */
 export function objectToQueryString(obj: Record<string, unknown>): string {
-  if (typeof obj !== 'object' || obj === null) {
-    throw new TypeError('Input must be a non-null object');
-  }
   return Object.entries(obj)
     .map(
       ([key, value]) =>

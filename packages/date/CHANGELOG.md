@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Remove all runtime `typeof`/`instanceof` TypeError guards; rely on TypeScript type system for type safety
+- Remove all `@throws {TypeError}` JSDoc tags from all affected functions
+- Remove all TypeError test cases from all test files
+
+
 ### Deprecated
 - `getCurrentDateTimeISO`: thin wrapper around `new Date().toISOString()`; use that directly. Will be removed in the next major version.
 - `oneWeekAgo`: convenience alias for `addDays(date, -7)`; use that call directly. Will be removed in the next major version.

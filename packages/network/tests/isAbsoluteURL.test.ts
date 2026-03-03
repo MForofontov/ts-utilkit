@@ -85,25 +85,4 @@ describe('isAbsoluteURL', () => {
 
   // ── Error cases ───────────────────────────────────────────────────────────
 
-  it('16. should throw TypeError when url is a number', () => {
-    // Act & Assert
-    expect(() => isAbsoluteURL(123 as unknown as string)).toThrow(TypeError);
-    expect(() => isAbsoluteURL(123 as unknown as string)).toThrow(
-      'url must be a string, got number',
-    );
-  });
-
-  it('17. should throw TypeError when url is null', () => {
-    expect(() => isAbsoluteURL(null as unknown as string)).toThrow(TypeError);
-    expect(() => isAbsoluteURL(null as unknown as string)).toThrow(
-      'url must be a string, got object',
-    );
-  });
-
-  it('18. should throw TypeError when url is undefined', () => {
-    expect(() => isAbsoluteURL(undefined as unknown as string)).toThrow(TypeError);
-    expect(() => isAbsoluteURL(undefined as unknown as string)).toThrow(
-      'url must be a string, got undefined',
-    );
-  });
 });

@@ -5,8 +5,6 @@
  * @param indent - Spaces per indentation level (default: 2).
  * @returns YAML-like string representation.
  *
- * @throws {TypeError} If data is not an object or indent is not a number.
- *
  * @example
  * // Convert to YAML
  * serializeToYAML({ name: 'John', age: 30 });
@@ -22,9 +20,6 @@
  * @complexity Time: O(n), Space: O(n) where n is object depth
  */
 export function serializeToYAML(data: any, indent: number = 2): string {
-  if (typeof indent !== 'number' || isNaN(indent)) {
-    throw new TypeError(`indent must be a valid number, got ${typeof indent}`);
-  }
 
   const serialize = (obj: any, depth: number = 0): string => {
     const spacing = ' '.repeat(depth * indent);

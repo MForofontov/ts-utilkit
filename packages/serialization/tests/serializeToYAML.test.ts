@@ -174,27 +174,4 @@ describe('serializeToYAML', () => {
     expect(result).toContain('d: value');
   });
 
-  // Error cases
-  it('15. should throw TypeError when indent is not a number', () => {
-    // Arrange
-    const input = { a: 1 };
-    const invalidIndent: any = '2';
-    const expectedMessage = 'indent must be a valid number, got string';
-
-    // Act & Assert
-    expect(() => serializeToYAML(input, invalidIndent)).toThrow(TypeError);
-    expect(() => serializeToYAML(input, invalidIndent)).toThrow(
-      expectedMessage,
-    );
-  });
-
-  it('16. should throw TypeError when indent is NaN', () => {
-    // Arrange
-    const input = { a: 1 };
-    const expectedMessage = 'indent must be a valid number, got number';
-
-    // Act & Assert
-    expect(() => serializeToYAML(input, NaN)).toThrow(TypeError);
-    expect(() => serializeToYAML(input, NaN)).toThrow(expectedMessage);
-  });
 });

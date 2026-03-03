@@ -114,9 +114,6 @@ export const CommonPatterns = {
 export function getCommonPattern(
   patternName: keyof typeof CommonPatterns,
 ): RegExp {
-  if (typeof patternName !== 'string') {
-    throw new TypeError(`name must be a string, got ${typeof patternName}`);
-  }
 
   if (!(patternName in CommonPatterns)) {
     throw new Error(
@@ -134,7 +131,6 @@ export function getCommonPattern(
  * @param patternName - Name of the common pattern.
  * @returns True if text matches the pattern, false otherwise.
  *
- * @throws {TypeError} If text is not a string.
  * @throws {Error} If pattern name is not recognized.
  *
  * @example
@@ -152,13 +148,6 @@ export function testCommonPattern(
   text: string,
   patternName: keyof typeof CommonPatterns,
 ): boolean {
-  if (typeof text !== 'string') {
-    throw new TypeError(`text must be a string, got ${typeof text}`);
-  }
-
-  if (typeof patternName !== 'string') {
-    throw new TypeError(`name must be a string, got ${typeof patternName}`);
-  }
 
   const pattern = getCommonPattern(patternName);
   return pattern.test(text);

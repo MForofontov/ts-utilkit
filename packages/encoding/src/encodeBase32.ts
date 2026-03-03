@@ -15,8 +15,6 @@ const BASE32_ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
  * @param str - The UTF-8 string to encode.
  * @returns The Base32 encoded string in uppercase with `=` padding.
  *
- * @throws {TypeError} If str is not a string.
- *
  * @example
  * // Basic usage
  * encodeBase32('hello'); // 'NBSWY3DP'  (no padding needed for 5 bytes)
@@ -41,9 +39,6 @@ const BASE32_ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
  * @complexity Time: O(n), Space: O(n) where n is the byte length of the UTF-8 string
  */
 export function encodeBase32(str: string): string {
-  if (typeof str !== 'string') {
-    throw new TypeError(`str must be a string, got ${typeof str}`);
-  }
 
   if (str.length === 0) {
     return '';

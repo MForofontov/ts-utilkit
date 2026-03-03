@@ -5,8 +5,6 @@
  * @param cloneFn - A function that transforms each non-object value during cloning.
  * @returns A deep copy with values transformed by the custom function.
  *
- * @throws {TypeError} If obj is not an object or is null.
- *
  * @example
  * // Double all number values in the object
  * const original = { name: 'John', age: 30, scores: [80, 90] };
@@ -59,9 +57,6 @@ export function deepCloneWith<T>(
   obj: T,
   cloneFn: (value: unknown) => unknown,
 ): T {
-  if (typeof obj !== 'object' || obj === null) {
-    throw new TypeError('Input must be a non-null object');
-  }
 
   const clone = (value: unknown): unknown => {
     if (Array.isArray(value)) {

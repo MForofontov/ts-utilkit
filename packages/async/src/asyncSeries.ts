@@ -4,7 +4,6 @@
  * @param tasks - Array of async functions to execute.
  * @returns Promise that resolves with array of results in execution order.
  *
- * @throws {TypeError} If tasks is not an array.
  * @throws {Error} If any task is not a function.
  *
  * @example
@@ -36,9 +35,6 @@
  * @complexity Time: O(n) where n is number of tasks, Space: O(n)
  */
 export function asyncSeries<T>(tasks: Array<() => Promise<T>>): Promise<T[]> {
-  if (!Array.isArray(tasks)) {
-    throw new TypeError(`tasks must be an array, got ${typeof tasks}`);
-  }
 
   // Validate all tasks are functions
   tasks.forEach((task, index) => {

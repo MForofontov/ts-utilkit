@@ -41,8 +41,4 @@ describe('setToArray', () => {
     expect(result1).toEqual(result2);
   });
 
-  it('7. should throw TypeError when argument is not a Set', () => {
-    const invalidSet = [1, 2, 3] as unknown as Set<number>;
-    expect(() => setToArray(invalidSet)).toThrow(TypeError);
-  });
 });

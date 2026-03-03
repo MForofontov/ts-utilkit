@@ -90,40 +90,9 @@ describe('parseEnvEnum', () => {
     ).toThrow("has invalid value 'Production'");
   });
 
-  it('12. should throw TypeError when key is not a string', () => {
-    expect(() =>
-      parseEnvEnum(42 as unknown as string, ['a', 'b']),
-    ).toThrow(TypeError);
-    expect(() =>
-      parseEnvEnum(42 as unknown as string, ['a', 'b']),
-    ).toThrow('key must be a string, got number');
-  });
-
   it('13. should throw Error when key is empty', () => {
     expect(() => parseEnvEnum('', ['a', 'b'])).toThrow(Error);
     expect(() => parseEnvEnum('', ['a', 'b'])).toThrow('key cannot be an empty string');
   });
 
-  it('14. should throw TypeError when allowedValues is not an array', () => {
-    expect(() =>
-      parseEnvEnum('KEY', 'debug' as unknown as string[]),
-    ).toThrow(TypeError);
-    expect(() =>
-      parseEnvEnum('KEY', 'debug' as unknown as string[]),
-    ).toThrow('allowedValues must be a non-empty array');
-  });
-
-  it('15. should throw TypeError when allowedValues is an empty array', () => {
-    expect(() => parseEnvEnum('KEY', [])).toThrow(TypeError);
-    expect(() => parseEnvEnum('KEY', [])).toThrow('allowedValues must be a non-empty array');
-  });
-
-  it('16. should throw TypeError when defaultValue is not in allowedValues', () => {
-    expect(() =>
-      parseEnvEnum('LOG_LEVEL', ['debug', 'info'], 'verbose' as 'debug' | 'info'),
-    ).toThrow(TypeError);
-    expect(() =>
-      parseEnvEnum('LOG_LEVEL', ['debug', 'info'], 'verbose' as 'debug' | 'info'),
-    ).toThrow("defaultValue 'verbose' is not in allowedValues: debug, info");
-  });
 });

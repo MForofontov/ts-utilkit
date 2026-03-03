@@ -386,19 +386,4 @@ describe('onceEvent', () => {
     document.body.removeChild(div2);
   });
 
-  // Test case 20: TypeError for invalid handler
-  it('20. should throw TypeError when handler is not a function', () => {
-    // Arrange
-    const invalidInputs = [123, 'string', null, undefined, [], {}, true];
-
-    // Act & Assert
-    invalidInputs.forEach((input) => {
-      expect(() => onceEvent(input as unknown as () => void)).toThrow(
-        TypeError,
-      );
-      expect(() => onceEvent(input as unknown as () => void)).toThrow(
-        'handler must be a function',
-      );
-    });
-  });
 });

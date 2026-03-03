@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Remove all runtime `typeof`/`instanceof` TypeError guards; rely on TypeScript type system for type safety
+- Remove all `@throws {TypeError}` JSDoc tags from all affected functions
+- Remove all TypeError test cases from all test files
+
+
 ### Deprecated
 - `oddOrEven`: redundant with `isEven` and `isOdd`; use those directly. Will be removed in the next major version.
 - `calculateBinomialCoefficient`: mathematically identical to `calculateCombination(n, k)`; use `calculateCombination` instead. Will be removed in the next major version.
@@ -16,8 +22,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - `generatePrimes`: Sieve of Eratosthenes implementation moved from `@ts-utilkit/array` — this is a number theory function and belongs in the math package
-
-### Added
 - Declare `@ts-utilkit/array` as an explicit package dependency (formalises existing cross-package import)
 - `clamp(n, min, max)`: clamp a number to an inclusive range; throws for NaN inputs or min > max
 - `lerp(a, b, t)`: linear interpolation between two values; t outside [0, 1] extrapolates

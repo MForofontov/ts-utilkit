@@ -57,38 +57,4 @@ describe('sortObjectKeys', () => {
     expect(result).toEqual(expected);
   });
 
-  // Test case 8: Throw error for non-object input (number)
-  it('8. should throw a TypeError if input is a number', () => {
-    expect(() =>
-      sortObjectKeys(42 as unknown as Record<string, unknown>),
-    ).toThrow(TypeError);
-  });
-
-  // Test case 9: Throw error for non-object input (string)
-  it('9. should throw a TypeError if input is a string', () => {
-    expect(() =>
-      sortObjectKeys('string' as unknown as Record<string, unknown>),
-    ).toThrow(TypeError);
-  });
-
-  // Test case 10: Throw error for non-object input (boolean)
-  it('10. should throw a TypeError if input is a boolean', () => {
-    expect(() =>
-      sortObjectKeys(true as unknown as Record<string, unknown>),
-    ).toThrow(TypeError);
-  });
-
-  // Test case 11: Throw error for null input
-  it('11. should throw a TypeError if input is null', () => {
-    expect(() =>
-      sortObjectKeys(null as unknown as Record<string, unknown>),
-    ).toThrow(TypeError);
-  });
-
-  // Test case 12: Throw error for undefined input
-  it('12. should throw a TypeError if input is undefined', () => {
-    expect(() =>
-      sortObjectKeys(undefined as unknown as Record<string, unknown>),
-    ).toThrow(TypeError);
-  });
 });

@@ -4,8 +4,6 @@
  * @param str - The string to check.
  * @returns True if the string contains at least one uppercase letter, false otherwise.
  *
- * @throws {TypeError} If str is not a string.
- *
  * @example
  * // Basic usage
  * hasUppercase("Hello"); // true
@@ -36,8 +34,5 @@
  * @complexity Time: O(n), Space: O(1) where n is the length of the string
  */
 export function hasUppercase(str: string): boolean {
-  if (typeof str !== 'string') {
-    throw new TypeError(`str must be a string, got ${typeof str}`);
-  }
   return /[A-Z]/.test(str);
 }

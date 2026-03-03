@@ -7,14 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Added
-- New features go here
+### Changed
+- Remove all runtime `typeof`/`instanceof` TypeError guards; rely on TypeScript type system for type safety
+- Remove all `@throws {TypeError}` JSDoc tags from all affected functions
+- Remove all TypeError test cases from all test files
 
 ### Changed
-- Changes to existing functionality
-
-### Fixed
-- Bug fixes
+- `combinePatterns`: unknown pattern types (non-string, non-RegExp entries) are now silently skipped instead of throwing `TypeError`; only valid patterns contribute to the combined result
 
 ## [0.1.0] - 2026-01-26
 

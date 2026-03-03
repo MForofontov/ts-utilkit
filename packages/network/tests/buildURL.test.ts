@@ -224,32 +224,4 @@ describe('buildURL', () => {
     expect(result).toBe('https://example.com#section');
   });
 
-  // Test case 22: Error case - non-object config
-  it('22. should throw TypeError for non-object config', () => {
-    const config = 'https://example.com' as unknown as Parameters<
-      typeof buildURL
-    >[0];
-    expect(() => buildURL(config)).toThrow(TypeError);
-    expect(() => buildURL(config)).toThrow('components must be an object');
-  });
-
-  // Test case 23: Error case - invalid protocol type
-  it('23. should throw TypeError for non-string protocol', () => {
-    const config = {
-      protocol: 123,
-      hostname: 'example.com',
-    } as unknown as Parameters<typeof buildURL>[0];
-    expect(() => buildURL(config)).toThrow(TypeError);
-    expect(() => buildURL(config)).toThrow('protocol must be a string');
-  });
-
-  // Test case 24: Error case - invalid hostname type
-  it('24. should throw TypeError for non-string hostname', () => {
-    const config = {
-      protocol: 'https',
-      hostname: 123,
-    } as unknown as Parameters<typeof buildURL>[0];
-    expect(() => buildURL(config)).toThrow(TypeError);
-    expect(() => buildURL(config)).toThrow('hostname must be a string');
-  });
 });

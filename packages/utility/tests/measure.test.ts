@@ -107,31 +107,4 @@ describe('measure', () => {
 
   // ─── Error cases ───────────────────────────────────────────────────────────
 
-  it('18. should throw TypeError when fn is not a function', () => {
-    expect(() => measure(42 as unknown as () => number)).toThrow(TypeError);
-    expect(() => measure(42 as unknown as () => number)).toThrow(
-      'fn must be a function, got number',
-    );
-  });
-
-  it('19. should throw TypeError when fn is null', () => {
-    expect(() => measure(null as unknown as () => number)).toThrow(TypeError);
-    expect(() => measure(null as unknown as () => number)).toThrow(
-      'fn must be a function, got object',
-    );
-  });
-
-  it('20. should throw TypeError when label is not a string', () => {
-    expect(() => measure(() => 1, 42 as unknown as string)).toThrow(TypeError);
-    expect(() => measure(() => 1, 42 as unknown as string)).toThrow(
-      'label must be a string, got number',
-    );
-  });
-
-  it('21. should throw TypeError when label is a boolean', () => {
-    expect(() => measure(() => 1, true as unknown as string)).toThrow(TypeError);
-    expect(() => measure(() => 1, true as unknown as string)).toThrow(
-      'label must be a string, got boolean',
-    );
-  });
 });

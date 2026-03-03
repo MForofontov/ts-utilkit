@@ -5,8 +5,6 @@
  * @param str - The string to encode.
  * @returns The encoded string safe for use in URLs.
  *
- * @throws {TypeError} If str is not a string.
- *
  * @example
  * // Basic encoding
  * encodeURLComponent('hello world');
@@ -28,9 +26,6 @@
  */
 export function encodeURLComponent(str: string): string {
   // Input validation
-  if (typeof str !== 'string') {
-    throw new TypeError(`str must be a string, got ${typeof str}`);
-  }
 
   // Use native encodeURIComponent with additional replacements
   return encodeURIComponent(str).replace(

@@ -85,18 +85,4 @@ describe('isValidIPv6', () => {
     expect(isValidIPv6('1::2:3:4:5:6:7')).toBe(true);
   });
 
-  // Test case 7: TypeError for invalid input type
-  it('7. should throw TypeError for non-string input', () => {
-    // Arrange
-    const invalidInputs = [123, null, undefined, [], {}, true];
-    const expectedMessage = 'ip must be a string, got';
-
-    // Act & Assert
-    invalidInputs.forEach((input) => {
-      expect(() => isValidIPv6(input as unknown as string)).toThrow(TypeError);
-      expect(() => isValidIPv6(input as unknown as string)).toThrow(
-        expectedMessage,
-      );
-    });
-  });
 });

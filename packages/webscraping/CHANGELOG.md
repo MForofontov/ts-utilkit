@@ -7,17 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Remove all runtime `typeof`/`instanceof` TypeError guards; rely on TypeScript type system for type safety
+- Remove all `@throws {TypeError}` JSDoc tags from all affected functions
+- Remove all TypeError test cases from all test files
+
 ### Deprecated
 - `parseJSON`: use `safeJSONParse(str, null)` from `@ts-utilkit/utility` instead — functionally equivalent and is the canonical implementation. Will be removed in the next major version.
-
-### Added
-- New features go here
-
-### Changed
-- Changes to existing functionality
-
-### Fixed
-- Bug fixes
 
 ## [0.1.0] - 2026-01-26
 

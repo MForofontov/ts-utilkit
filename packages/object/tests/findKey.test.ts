@@ -58,33 +58,4 @@ describe('findKey', () => {
 
   // ── Error cases ───────────────────────────────────────────────────────────
 
-  it('10. should throw TypeError when obj is null', () => {
-    expect(() => findKey(null as unknown as Record<string, number>, (v) => !!v)).toThrow(TypeError);
-    expect(() => findKey(null as unknown as Record<string, number>, (v) => !!v)).toThrow(
-      'obj must be a non-null object, got null',
-    );
-  });
-
-  it('11. should throw TypeError when obj is an array', () => {
-    expect(() => findKey([1, 2] as unknown as Record<string, number>, (v) => !!v)).toThrow(TypeError);
-    expect(() => findKey([1, 2] as unknown as Record<string, number>, (v) => !!v)).toThrow(
-      'obj must be a non-null object, got object',
-    );
-  });
-
-  it('12. should throw TypeError when obj is a string', () => {
-    expect(() => findKey('abc' as unknown as Record<string, number>, (v) => !!v)).toThrow(TypeError);
-    expect(() => findKey('abc' as unknown as Record<string, number>, (v) => !!v)).toThrow(
-      'obj must be a non-null object, got string',
-    );
-  });
-
-  it('13. should throw TypeError when predicate is not a function', () => {
-    expect(() =>
-      findKey({ a: 1 }, 'not-a-fn' as unknown as (v: number) => boolean),
-    ).toThrow(TypeError);
-    expect(() =>
-      findKey({ a: 1 }, 'not-a-fn' as unknown as (v: number) => boolean),
-    ).toThrow('predicate must be a function, got string');
-  });
 });

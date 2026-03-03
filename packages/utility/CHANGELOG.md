@@ -7,13 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Remove all runtime `typeof`/`instanceof` TypeError guards; rely on TypeScript type system for type safety
+- Remove all `@throws {TypeError}` JSDoc tags from all affected functions
+- Remove all TypeError test cases from all test files
+
+
 ### Deprecated
 - `isNil`: thin wrapper over `value === null || value === undefined` — use `value == null` or an explicit null-check directly
 - `bytesToSize`: pure delegate to `formatBytes` from `@ts-utilkit/format` with no added logic — use `formatBytes` directly
-
-### Fixed
-- `hexToRgb`: added runtime `typeof` guard to enforce the documented `@throws {TypeError}` when a non-string is passed (previously the documented error was never thrown)
-- `rgbToHex`: added runtime `typeof`/null guard with `@throws {TypeError}` in JSDoc for null or non-object arguments
 
 ### Added
 - Declare `@ts-utilkit/format` as an explicit package dependency

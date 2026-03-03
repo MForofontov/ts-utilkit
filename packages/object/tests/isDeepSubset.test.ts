@@ -148,27 +148,4 @@ describe('isDeepSubset', () => {
 
   // Error-handling test cases
 
-  // Test case 19: Handle non-object subset
-  it('19. should throw a TypeError if subset is not an object', () => {
-    expect(() =>
-      isDeepSubset(null as unknown as Record<string, unknown>, { a: 1 }),
-    ).toThrow(TypeError);
-  });
-
-  // Test case 20: Handle non-object obj
-  it('20. should throw a TypeError if obj is not an object', () => {
-    expect(() =>
-      isDeepSubset({ a: 1 }, null as unknown as Record<string, unknown>),
-    ).toThrow(TypeError);
-  });
-
-  // Test case 21: Handle both subset and obj as non-objects
-  it('21. should throw a TypeError if both subset and obj are not objects', () => {
-    expect(() =>
-      isDeepSubset(
-        null as unknown as Record<string, unknown>,
-        null as unknown as Record<string, unknown>,
-      ),
-    ).toThrow(TypeError);
-  });
 });

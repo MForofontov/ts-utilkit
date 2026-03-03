@@ -56,38 +56,4 @@ describe('queryStringToObject', () => {
     expect(result).toEqual({ note: 'foo=bar=baz', data: 'hello=world' });
   });
 
-  // Test case 5: Handle non-string input (number)
-  it('5. should throw a TypeError if input is a number', () => {
-    expect(() => queryStringToObject(42 as unknown as string)).toThrow(
-      TypeError,
-    );
-  });
-
-  // Test case 6: Handle non-string input (object)
-  it('6. should throw a TypeError if input is an object', () => {
-    expect(() => queryStringToObject({} as unknown as string)).toThrow(
-      TypeError,
-    );
-  });
-
-  // Test case 7: Handle non-string input (boolean)
-  it('7. should throw a TypeError if input is a boolean', () => {
-    expect(() => queryStringToObject(true as unknown as string)).toThrow(
-      TypeError,
-    );
-  });
-
-  // Test case 8: Handle non-string input (null)
-  it('8. should throw a TypeError if input is null', () => {
-    expect(() => queryStringToObject(null as unknown as string)).toThrow(
-      TypeError,
-    );
-  });
-
-  // Test case 9: Handle non-string input (undefined)
-  it('9. should throw a TypeError if input is undefined', () => {
-    expect(() => queryStringToObject(undefined as unknown as string)).toThrow(
-      TypeError,
-    );
-  });
 });

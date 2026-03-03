@@ -7,9 +7,6 @@
  * @param keyFn - A function that derives a string key from each element.
  * @returns A `Map<string, number>` mapping each key to its occurrence count.
  *
- * @throws {TypeError} If `arr` is not an array.
- * @throws {TypeError} If `keyFn` is not a function.
- *
  * @example
  * // Count by remainder (even vs odd)
  * countBy([1, 2, 3, 4, 5, 6], n => n % 2 === 0 ? 'even' : 'odd');
@@ -44,12 +41,6 @@ export function countBy<T>(
   arr: T[],
   keyFn: (value: T, index: number, array: T[]) => string,
 ): Map<string, number> {
-  if (!Array.isArray(arr)) {
-    throw new TypeError(`arr must be an array, got ${typeof arr}`);
-  }
-  if (typeof keyFn !== 'function') {
-    throw new TypeError(`keyFn must be a function, got ${typeof keyFn}`);
-  }
 
   const result = new Map<string, number>();
 

@@ -5,8 +5,6 @@
  * @param defaultValue - The default value to return if parsing fails.
  * @returns The parsed object of type T, or the default value if parsing fails.
  *
- * @throws {TypeError} If jsonString is not a string.
- *
  * @example
  * // Basic usage with valid JSON
  * safeJSONParse('{"name":"John"}', {}); // { name: 'John' }

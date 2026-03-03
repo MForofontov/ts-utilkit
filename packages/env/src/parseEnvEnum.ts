@@ -15,9 +15,6 @@
  * @returns The validated environment variable value, or the default value if
  *   the variable is not set and a default was provided.
  *
- * @throws {TypeError} If key is not a string.
- * @throws {TypeError} If allowedValues is not a non-empty array.
- * @throws {TypeError} If defaultValue is provided but is not one of allowedValues.
  * @throws {Error} If key is an empty string.
  * @throws {Error} If the variable is not set and no default was provided.
  * @throws {Error} If the variable's value is not in allowedValues.
@@ -50,25 +47,9 @@ export function parseEnvEnum<T extends string>(
   allowedValues: T[],
   defaultValue?: T,
 ): T {
-  if (typeof key !== 'string') {
-    throw new TypeError(`key must be a string, got ${typeof key}`);
-  }
 
   if (key.length === 0) {
     throw new Error('key cannot be an empty string');
-  }
-
-  if (!Array.isArray(allowedValues) || allowedValues.length === 0) {
-    throw new TypeError('allowedValues must be a non-empty array');
-  }
-
-  if (
-    defaultValue !== undefined &&
-    !(allowedValues as string[]).includes(defaultValue)
-  ) {
-    throw new TypeError(
-      `defaultValue '${defaultValue}' is not in allowedValues: ${allowedValues.join(', ')}`,
-    );
   }
 
   const raw = process.env[key];

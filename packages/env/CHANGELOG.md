@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Remove all runtime `typeof`/`instanceof` TypeError guards; rely on TypeScript type system for type safety
+- Remove all `@throws {TypeError}` JSDoc tags from all affected functions
+- Remove all TypeError test cases from all test files
+
+
 ### Added
 - New function `hasEnv` for checking environment variable existence without throwing
 - New function `parseEnvEnum` for parsing and validating env vars against a fixed set of allowed values with TypeScript generics
@@ -17,9 +23,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `getEnv`: added TypeScript overload signatures so callers passing a `defaultValue` now receive `string` (not `string | undefined`) — fully backward-compatible, no runtime change
 - `parseEnvInt`: added TypeScript overload signatures so callers passing a `defaultValue` now receive `number` (not `number | undefined`) — fully backward-compatible, no runtime change
 - `parseEnvFloat`: added TypeScript overload signatures so callers passing a `defaultValue` now receive `number` (not `number | undefined`) — fully backward-compatible, no runtime change
-
-### Fixed
-- Bug fixes
 
 ## [0.1.0] - 2026-02-17
 

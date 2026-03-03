@@ -200,27 +200,4 @@ describe('extractText', () => {
     expect(result).toBe(expected);
   });
 
-  // Error cases
-  it('16. should throw TypeError when html is not a string', () => {
-    // Arrange
-    const html = 123 as unknown as string;
-    const expectedMessage = 'html must be a string, got number';
-
-    // Act & Assert
-    expect(() => extractText(html)).toThrow(TypeError);
-    expect(() => extractText(html)).toThrow(expectedMessage);
-  });
-
-  it('17. should throw TypeError when preserveWhitespace is not a boolean', () => {
-    // Arrange
-    const html = '<p>Text</p>';
-    const preserveWhitespace = 'true' as unknown as boolean;
-    const expectedMessage = 'preserveWhitespace must be a boolean, got string';
-
-    // Act & Assert
-    expect(() => extractText(html, preserveWhitespace)).toThrow(TypeError);
-    expect(() => extractText(html, preserveWhitespace)).toThrow(
-      expectedMessage,
-    );
-  });
 });

@@ -124,13 +124,6 @@ describe('getQueryParams', () => {
     expect(result.param49).toBe('value49');
   });
 
-  // Test case 19: Error case - non-string input
-  it('19. should throw TypeError for non-string input', () => {
-    const input = 12345 as unknown as string;
-    expect(() => getQueryParams(input)).toThrow(TypeError);
-    expect(() => getQueryParams(input)).toThrow('url must be a string');
-  });
-
   // Test case 20: Only query string (no protocol/domain)
   it('20. should throw for invalid URL format', () => {
     expect(() => getQueryParams('?name=John')).toThrow();

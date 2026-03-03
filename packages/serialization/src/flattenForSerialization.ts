@@ -5,8 +5,6 @@
  * @param prefix - Optional prefix for keys (used in recursion).
  * @returns Flattened object with dot notation keys.
  *
- * @throws {TypeError} If obj is not an object.
- *
  * @example
  * // Flatten nested object
  * flattenForSerialization({ a: { b: { c: 1 } } });
@@ -25,9 +23,6 @@ export function flattenForSerialization(
   obj: Record<string, any>,
   prefix: string = '',
 ): Record<string, any> {
-  if (obj === null || typeof obj !== 'object') {
-    throw new TypeError(`obj must be an object, got ${typeof obj}`);
-  }
 
   const result: Record<string, any> = {};
 

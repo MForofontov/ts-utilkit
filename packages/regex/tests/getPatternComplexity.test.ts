@@ -86,28 +86,6 @@ describe('getPatternComplexity', () => {
     expect(result.captureGroups).toBe(0); // Non-capturing groups don't count
   });
 
-  // Error cases
-  it('13. should throw TypeError when pattern is not a string or RegExp', () => {
-    expect(() => getPatternComplexity(123 as any)).toThrow(TypeError);
-    expect(() => getPatternComplexity(123 as any)).toThrow(
-      'pattern must be a string or RegExp',
-    );
-  });
-
-  it('14. should throw TypeError when pattern is null', () => {
-    expect(() => getPatternComplexity(null as any)).toThrow(TypeError);
-    expect(() => getPatternComplexity(null as any)).toThrow(
-      'pattern must be a string or RegExp',
-    );
-  });
-
-  it('15. should throw TypeError when pattern is undefined', () => {
-    expect(() => getPatternComplexity(undefined as any)).toThrow(TypeError);
-    expect(() => getPatternComplexity(undefined as any)).toThrow(
-      'pattern must be a string or RegExp',
-    );
-  });
-
   // Complex real-world patterns
   it('16. should analyze email pattern complexity', () => {
     const result = getPatternComplexity(

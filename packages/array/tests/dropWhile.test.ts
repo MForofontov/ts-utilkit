@@ -128,28 +128,4 @@ describe('dropWhile', () => {
     expect(end - start).toBeLessThan(100);
   });
 
-  // Error cases
-  // Test case 15: Throws TypeError when arr is not an array
-  it('15. should throw TypeError when arr is not an array', () => {
-    expect(() => dropWhile('not an array' as unknown as string[], (x) => !!x)).toThrow(TypeError);
-    expect(() => dropWhile('not an array' as unknown as string[], (x) => !!x)).toThrow(
-      'arr must be an array, got string',
-    );
-  });
-
-  // Test case 16: Throws TypeError when arr is null
-  it('16. should throw TypeError when arr is null', () => {
-    expect(() => dropWhile(null as unknown as never[], (x) => !!x)).toThrow(TypeError);
-    expect(() => dropWhile(null as unknown as never[], (x) => !!x)).toThrow(
-      'arr must be an array, got object',
-    );
-  });
-
-  // Test case 17: Throws TypeError when predicate is not a function
-  it('17. should throw TypeError when predicate is not a function', () => {
-    expect(() => dropWhile([1, 2, 3], true as unknown as () => boolean)).toThrow(TypeError);
-    expect(() => dropWhile([1, 2, 3], true as unknown as () => boolean)).toThrow(
-      'predicate must be a function, got boolean',
-    );
-  });
 });

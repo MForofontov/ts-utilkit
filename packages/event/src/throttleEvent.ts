@@ -9,8 +9,6 @@
  * @param options.trailing - If true, execute on the trailing edge (default: true).
  * @returns A throttled version of the handler with a cancel method.
  *
- * @throws {TypeError} If handler is not a function.
- * @throws {TypeError} If limit is not a number.
  * @throws {Error} If limit is negative or NaN.
  *
  * @example
@@ -44,12 +42,6 @@ export function throttleEvent<T extends unknown[]>(
   limit: number,
   options: { leading?: boolean; trailing?: boolean } = {},
 ): ((...args: T) => void) & { cancel: () => void } {
-  if (typeof handler !== 'function') {
-    throw new TypeError(`handler must be a function, got ${typeof handler}`);
-  }
-  if (typeof limit !== 'number') {
-    throw new TypeError(`limit must be a number, got ${typeof limit}`);
-  }
   if (isNaN(limit)) {
     throw new Error('limit must be a valid number, not NaN');
   }
@@ -58,13 +50,6 @@ export function throttleEvent<T extends unknown[]>(
   }
 
   const { leading = true, trailing = true } = options;
-
-  if (typeof leading !== 'boolean') {
-    throw new TypeError(`leading must be a boolean, got ${typeof leading}`);
-  }
-  if (typeof trailing !== 'boolean') {
-    throw new TypeError(`trailing must be a boolean, got ${typeof trailing}`);
-  }
 
   let lastCallTime = 0;
   let timeoutId: ReturnType<typeof setTimeout> | null = null;

@@ -8,10 +8,6 @@
  * @param decimalSeparator - Character to use for decimal separator (default: ".").
  * @returns A formatted number string.
  *
- * @throws {TypeError} If value is not a number or is NaN.
- * @throws {TypeError} If decimals is not a number or is NaN.
- * @throws {TypeError} If thousandsSeparator is not a string.
- * @throws {TypeError} If decimalSeparator is not a string.
  * @throws {Error} If decimals is negative.
  * @throws {Error} If thousandsSeparator or decimalSeparator is not exactly one character.
  *
@@ -47,22 +43,6 @@ export function formatNumber(
   decimalSeparator: string = '.',
 ): string {
   // Input validation
-  if (typeof value !== 'number' || isNaN(value)) {
-    throw new TypeError(`value must be a number, got ${typeof value}`);
-  }
-  if (typeof decimals !== 'number' || isNaN(decimals)) {
-    throw new TypeError(`decimals must be a number, got ${typeof decimals}`);
-  }
-  if (typeof thousandsSeparator !== 'string') {
-    throw new TypeError(
-      `thousandsSeparator must be a string, got ${typeof thousandsSeparator}`,
-    );
-  }
-  if (typeof decimalSeparator !== 'string') {
-    throw new TypeError(
-      `decimalSeparator must be a string, got ${typeof decimalSeparator}`,
-    );
-  }
 
   if (decimals < 0) {
     throw new Error(`decimals must be non-negative, got ${decimals}`);

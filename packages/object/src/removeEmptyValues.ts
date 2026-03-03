@@ -7,8 +7,6 @@
  * @param obj - The source object to filter.
  * @returns A new object containing only properties with non-empty values.
  *
- * @throws {TypeError} If obj is not an object or is null.
- *
  * @example
  * // Basic usage
  * const obj = { a: 1, b: null, c: '', d: undefined, e: 'value' };
@@ -58,9 +56,6 @@
 export function removeEmptyValues(
   obj: Record<string, unknown>,
 ): Partial<Record<string, unknown>> {
-  if (typeof obj !== 'object' || obj === null) {
-    throw new TypeError('Input must be a non-null object');
-  }
 
   const clean = (value: unknown): unknown => {
     if (Array.isArray(value)) {

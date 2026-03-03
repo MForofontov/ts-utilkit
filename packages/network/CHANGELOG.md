@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Remove all runtime `typeof`/`instanceof` TypeError guards; rely on TypeScript type system for type safety
+- Remove all `@throws {TypeError}` JSDoc tags from all affected functions
+- Remove all TypeError test cases from all test files
+
+
 ### Added
 - `isAbsoluteURL`: checks whether a URL string has a scheme and can be parsed without a base URL
 - `isRelativeURL`: checks whether a URL string is a valid relative reference (no scheme, requires a base)

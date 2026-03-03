@@ -16,8 +16,4 @@ describe('reverseString', () => {
   it('5. should reverse string with spaces', () => {
     expect(reverseString('hello world')).toBe('dlrow olleh');
   });
-  it('6. should throw TypeError when str is not a string', () => {
-    expect(() => reverseString(123 as unknown as string)).toThrow(TypeError);
-    expect(() => reverseString(123 as unknown as string)).toThrow('str must be a string, got number');
-  });
 });

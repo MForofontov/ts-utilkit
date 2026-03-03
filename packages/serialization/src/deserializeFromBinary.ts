@@ -5,7 +5,6 @@
  * @param separator - Optional separator between bytes (default: '').
  * @returns The decoded string.
  *
- * @throws {TypeError} If binaryString or separator is not a string.
  * @throws {Error} If binary string is invalid.
  *
  * @example
@@ -24,15 +23,6 @@ export function deserializeFromBinary(
   binaryString: string,
   separator: string = '',
 ): string {
-  if (typeof binaryString !== 'string') {
-    throw new TypeError(
-      `binaryString must be a string, got ${typeof binaryString}`,
-    );
-  }
-
-  if (typeof separator !== 'string') {
-    throw new TypeError(`separator must be a string, got ${typeof separator}`);
-  }
 
   const binaryArray = separator ? binaryString.split(separator) : [];
 

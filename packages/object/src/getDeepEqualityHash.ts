@@ -5,8 +5,6 @@
  * @param obj - The object to generate a hash for.
  * @returns A numeric hash code representing the object's content.
  *
- * @throws {TypeError} If obj is not an object or is null.
- *
  * @example
  * // Objects with the same content produce the same hash
  * const hash1 = getDeepEqualityHash({ a: 1, b: [2, 3] });
@@ -47,9 +45,6 @@
  * @complexity Time: O(n), Space: O(n) - Where n is the total number of properties (including nested)
  */
 export function getDeepEqualityHash(obj: unknown): number {
-  if (typeof obj !== 'object' || obj === null) {
-    throw new TypeError('Input must be a non-null object');
-  }
   return JSON.stringify(obj)
     .split('')
     .reduce((hash, char) => {

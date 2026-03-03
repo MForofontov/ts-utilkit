@@ -4,8 +4,7 @@
  * @param email - The string to validate as an email address.
  * @returns True if the string matches a valid email format, false otherwise.
  *
- * @throws {TypeError} If email is not a string.
- *
+
  * @example
  * // Valid email addresses
  * isValidEmail("test@example.com"); // true
@@ -34,9 +33,6 @@
  * @complexity Time: O(n), Space: O(1) where n is the length of the email string
  */
 export function isValidEmail(email: string): boolean {
-  if (typeof email !== 'string') {
-    throw new TypeError(`email must be a string, got ${typeof email}`);
-  }
   const emailRegex = /^[^\s@]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   return emailRegex.test(email);
 }

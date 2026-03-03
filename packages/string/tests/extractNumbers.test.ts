@@ -87,31 +87,4 @@ describe('extractNumbers', () => {
 
   // ─── Error cases ───────────────────────────────────────────────────────────
 
-  it('19. should throw TypeError when str is a number', () => {
-    expect(() => extractNumbers(42 as unknown as string)).toThrow(TypeError);
-    expect(() => extractNumbers(42 as unknown as string)).toThrow(
-      'str must be a string, got number',
-    );
-  });
-
-  it('20. should throw TypeError when str is null', () => {
-    expect(() => extractNumbers(null as unknown as string)).toThrow(TypeError);
-    expect(() => extractNumbers(null as unknown as string)).toThrow(
-      'str must be a string, got object',
-    );
-  });
-
-  it('21. should throw TypeError when str is undefined', () => {
-    expect(() => extractNumbers(undefined as unknown as string)).toThrow(TypeError);
-    expect(() => extractNumbers(undefined as unknown as string)).toThrow(
-      'str must be a string, got undefined',
-    );
-  });
-
-  it('22. should throw TypeError when str is an array', () => {
-    expect(() => extractNumbers(['1', '2'] as unknown as string)).toThrow(TypeError);
-    expect(() => extractNumbers(['1', '2'] as unknown as string)).toThrow(
-      'str must be a string, got object',
-    );
-  });
 });

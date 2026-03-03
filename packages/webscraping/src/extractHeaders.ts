@@ -14,9 +14,6 @@ export interface HeaderData {
  * @param includeAttributes - Whether to include id attributes (default: true).
  * @returns Array of header objects with level, text, and optional id.
  *
- * @throws {TypeError} If html is not a string.
- * @throws {TypeError} If includeAttributes is not a boolean.
- *
  * @example
  * const html = '<h1>Title</h1><h2 id="section">Section</h2>';
  * const headers = extractHeaders(html);
@@ -33,14 +30,6 @@ export function extractHeaders(
   html: string,
   includeAttributes: boolean = true,
 ): HeaderData[] {
-  if (typeof html !== 'string') {
-    throw new TypeError(`html must be a string, got ${typeof html}`);
-  }
-  if (typeof includeAttributes !== 'boolean') {
-    throw new TypeError(
-      `includeAttributes must be a boolean, got ${typeof includeAttributes}`,
-    );
-  }
 
   const headers: HeaderData[] = [];
   const headerRegex = /<h([1-6])([^>]*)>([\s\S]*?)<\/h\1>/gi;

@@ -96,33 +96,12 @@ describe('randomDate', () => {
     expect(result.getTime()).toBeLessThanOrEqual(end.getTime());
   });
 
-  // Error Test case 10: TypeError for non-Date start
-  it('10. should throw TypeError when start is not a Date', () => {
-    const end = new Date('2024-12-31');
-
-    expect(() => randomDate('2024-01-01' as any, end)).toThrow(TypeError);
-    expect(() => randomDate('2024-01-01' as any, end)).toThrow(
-      'start must be a Date object',
-    );
-  });
-
-  // Error Test case 11: TypeError for non-Date end
-  it('11. should throw TypeError when end is not a Date', () => {
-    const start = new Date('2024-01-01');
-
-    expect(() => randomDate(start, '2024-12-31' as any)).toThrow(TypeError);
-    expect(() => randomDate(start, '2024-12-31' as any)).toThrow(
-      'end must be a Date object',
-    );
-  });
-
   // Error Test case 12: Error for invalid start date
   it('12. should throw Error when start is invalid', () => {
     const start = new Date('invalid');
     const end = new Date('2024-12-31');
 
     expect(() => randomDate(start, end)).toThrow(Error);
-    expect(() => randomDate(start, end)).toThrow('start must be a valid date');
   });
 
   // Error Test case 13: Error for invalid end date
@@ -131,7 +110,6 @@ describe('randomDate', () => {
     const end = new Date('invalid');
 
     expect(() => randomDate(start, end)).toThrow(Error);
-    expect(() => randomDate(start, end)).toThrow('end must be a valid date');
   });
 
   // Error Test case 14: Error when start > end

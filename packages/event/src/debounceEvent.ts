@@ -7,8 +7,6 @@
  * @param immediate - If true, execute handler on the leading edge instead of trailing (default: false).
  * @returns A debounced version of the handler with a cancel method.
  *
- * @throws {TypeError} If handler is not a function.
- * @throws {TypeError} If delay is not a number.
  * @throws {Error} If delay is negative.
  *
  * @example
@@ -42,20 +40,11 @@ export function debounceEvent<T extends unknown[]>(
   delay: number,
   immediate: boolean = false,
 ): ((...args: T) => void) & { cancel: () => void } {
-  if (typeof handler !== 'function') {
-    throw new TypeError(`handler must be a function, got ${typeof handler}`);
-  }
-  if (typeof delay !== 'number') {
-    throw new TypeError(`delay must be a number, got ${typeof delay}`);
-  }
   if (isNaN(delay)) {
     throw new Error('delay must be a valid number, not NaN');
   }
   if (delay < 0) {
     throw new Error(`delay must be non-negative, got ${delay}`);
-  }
-  if (typeof immediate !== 'boolean') {
-    throw new TypeError(`immediate must be a boolean, got ${typeof immediate}`);
   }
 
   let timeoutId: ReturnType<typeof setTimeout> | null = null;

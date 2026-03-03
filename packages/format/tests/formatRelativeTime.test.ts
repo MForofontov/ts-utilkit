@@ -164,16 +164,6 @@ describe('formatRelativeTime', () => {
 
   // ─── Error Cases ───────────────────────────────────────────────────────────
 
-  // Test case 26: Throws TypeError if date is null
-  it('26. should throw TypeError if date is null', () => {
-    expect(() =>
-      formatRelativeTime(null as unknown as Date),
-    ).toThrow(TypeError);
-    expect(() =>
-      formatRelativeTime(null as unknown as Date),
-    ).toThrow('date must be a Date, string, or number, got null');
-  });
-
   // Test case 27: Throws TypeError if date is an object that is not a Date
   it('27. should throw Error if date is an invalid date string', () => {
     expect(() => formatRelativeTime('not-a-date', BASE)).toThrow(Error);

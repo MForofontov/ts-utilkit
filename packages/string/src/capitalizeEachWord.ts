@@ -4,8 +4,6 @@
  * @param str - The string to capitalize.
  * @returns A new string with the first letter of each word capitalized and other letters unchanged.
  *
- * @throws {TypeError} If str is not a string.
- *
  * @example
  * // Basic usage
  * capitalizeEachWord("hello world"); // "Hello World"

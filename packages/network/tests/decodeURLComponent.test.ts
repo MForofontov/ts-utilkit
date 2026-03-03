@@ -54,13 +54,6 @@ describe('decodeURLComponent', () => {
     expect(result).toBe('');
   });
 
-  // Test case 9: Throw when non-string input is provided
-  it('9. should throw TypeError for non-string input', () => {
-    const input = 123 as unknown as string;
-    expect(() => decodeURLComponent(input)).toThrow(TypeError);
-    expect(() => decodeURLComponent(input)).toThrow('str must be a string');
-  });
-
   // Test case 10: Decode encoded slashes
   it('10. should decode slashes', () => {
     const result = decodeURLComponent('path%2Fto%2Ffile');

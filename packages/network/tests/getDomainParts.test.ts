@@ -74,12 +74,6 @@ describe('getDomainParts', () => {
     });
   });
 
-  it('8. should throw TypeError for non-string URL', () => {
-    const url = 123 as unknown as string;
-    expect(() => getDomainParts(url)).toThrow(TypeError);
-    expect(() => getDomainParts(url)).toThrow('url must be a string');
-  });
-
   it('9. should throw Error for invalid URL', () => {
     expect(() => getDomainParts('not a url')).toThrow('Invalid URL');
   });

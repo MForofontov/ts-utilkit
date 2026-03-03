@@ -7,8 +7,6 @@
  * @param obj2 - The second object to compare.
  * @returns True if objects have identical own enumerable properties, false otherwise.
  *
- * @throws {TypeError} If either input is not an object or is null.
- *
  * @example
  * // Objects with same properties and values
  * shallowEqual({ a: 1, b: 2 }, { a: 1, b: 2 }); // true
@@ -47,14 +45,6 @@ export function shallowEqual(
   obj1: Record<string, unknown>,
   obj2: Record<string, unknown>,
 ): boolean {
-  if (
-    typeof obj1 !== 'object' ||
-    obj1 === null ||
-    typeof obj2 !== 'object' ||
-    obj2 === null
-  ) {
-    throw new TypeError('Both inputs must be non-null objects');
-  }
 
   const keys1 = Object.keys(obj1);
   const keys2 = Object.keys(obj2);

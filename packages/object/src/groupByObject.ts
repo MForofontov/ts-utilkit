@@ -5,8 +5,6 @@
  * @param key - The property name to group by.
  * @returns An object where keys are unique property values and values are arrays of matching elements.
  *
- * @throws {TypeError} If array is not an array.
- *
  * @example
  * // Group people by age
  * const people = [
@@ -75,9 +73,6 @@ export function groupByObject<T>(
   array: T[],
   key: keyof T,
 ): Record<string, T[]> {
-  if (!Array.isArray(array)) {
-    throw new TypeError('Input must be an array');
-  }
 
   return array.reduce<Record<string, T[]>>((acc, item) => {
     if (Object.prototype.hasOwnProperty.call(item, key)) {

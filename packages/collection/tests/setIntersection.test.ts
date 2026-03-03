@@ -75,15 +75,4 @@ describe('setIntersection', () => {
     );
   });
 
-  it('11. should throw TypeError when first argument is not a Set', () => {
-    const invalidSet = [1, 2, 3] as unknown as Set<number>;
-    const validSet = new Set([4, 5, 6]);
-    expect(() => setIntersection(invalidSet, validSet)).toThrow(TypeError);
-  });
-
-  it('12. should throw TypeError when second argument is not a Set', () => {
-    const validSet = new Set([1, 2, 3]);
-    const invalidSet = 'not a set' as unknown as Set<number>;
-    expect(() => setIntersection(validSet, invalidSet)).toThrow(TypeError);
-  });
 });

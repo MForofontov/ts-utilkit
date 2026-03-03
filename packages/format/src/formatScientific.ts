@@ -6,8 +6,6 @@
  * @param decimals - Number of decimal places in the mantissa (default: 2).
  * @returns A string in scientific notation (e.g., "1.23e+5").
  *
- * @throws {TypeError} If value is not a number or is NaN.
- * @throws {TypeError} If decimals is not a number or is NaN.
  * @throws {Error} If decimals is negative.
  *
  * @example
@@ -37,12 +35,6 @@
  */
 export function formatScientific(value: number, decimals: number = 2): string {
   // Input validation
-  if (typeof value !== 'number' || isNaN(value)) {
-    throw new TypeError(`value must be a number, got ${typeof value}`);
-  }
-  if (typeof decimals !== 'number' || isNaN(decimals)) {
-    throw new TypeError(`decimals must be a number, got ${typeof decimals}`);
-  }
 
   if (decimals < 0) {
     throw new Error(`decimals must be non-negative, got ${decimals}`);

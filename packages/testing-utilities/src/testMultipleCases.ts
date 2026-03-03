@@ -29,8 +29,6 @@ export interface TestCaseResult<R> {
  * @param testCases - Array of test cases with input and expected output.
  * @returns Array of test results (true if passed, false if failed).
  *
- * @throws {TypeError} If fn is not a function or testCases is not an array.
- *
  * @example
  * const results = testMultipleCases(
  *   myFunction,
@@ -54,12 +52,6 @@ export function testMultipleCases<T, R>(
   fn: (input: T) => R,
   testCases: TestCase<T, R>[],
 ): TestCaseResult<R>[] {
-  if (typeof fn !== 'function') {
-    throw new TypeError(`fn must be a function, got ${typeof fn}`);
-  }
-  if (!Array.isArray(testCases)) {
-    throw new TypeError('testCases must be an array');
-  }
 
   return testCases.map((testCase) => {
     const actual = fn(testCase.input);

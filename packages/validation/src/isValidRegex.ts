@@ -5,9 +5,6 @@
  * @param flags - Optional regex flags (e.g., 'i', 'g', 'im').
  * @returns True if the pattern is valid, false otherwise.
  *
- * @throws {TypeError} If pattern is not a string.
- * @throws {TypeError} If flags is provided and not a string.
- *
  * @example
  * // Valid patterns
  * isValidRegex("^[a-z]+$"); // true
@@ -29,13 +26,6 @@
  * @complexity Time: O(1), Space: O(1)
  */
 export function isValidRegex(pattern: string, flags?: string): boolean {
-  if (typeof pattern !== 'string') {
-    throw new TypeError(`pattern must be a string, got ${typeof pattern}`);
-  }
-
-  if (arguments.length > 1 && typeof flags !== 'string') {
-    throw new TypeError(`flags must be a string, got ${typeof flags}`);
-  }
 
   try {
     new RegExp(pattern, flags);

@@ -6,8 +6,6 @@ import { Buffer } from 'buffer';
  * @param str - The string to encode.
  * @returns The standard base64 encoded string, including `+`, `/`, and `=` padding.
  *
- * @throws {TypeError} If str is not a string.
- *
  * @example
  * // Basic usage
  * encodeBase64("hello world"); // "aGVsbG8gd29ybGQ="
@@ -37,9 +35,6 @@ import { Buffer } from 'buffer';
  * @complexity Time: O(n), Space: O(n) where n is the length of the input string
  */
 export function encodeBase64(str: string): string {
-  if (typeof str !== 'string') {
-    throw new TypeError(`str must be a string, got ${typeof str}`);
-  }
 
   return Buffer.from(str, 'utf8').toString('base64');
 }

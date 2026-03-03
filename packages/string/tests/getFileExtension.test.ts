@@ -83,4 +83,5 @@ describe('getFileExtension', () => {
     const result: string = getFileExtension(filename);
     expect(result).toBe(expected);
   });
+
 });

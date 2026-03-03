@@ -150,32 +150,6 @@ describe('deserializeFromBinary', () => {
     expect(result).toBe(expected);
   });
 
-  // Error cases
-  it('13. should throw TypeError when binaryString is not a string', () => {
-    // Arrange
-    const input: any = 123;
-    const expectedMessage = 'binaryString must be a string, got number';
-
-    // Act & Assert
-    expect(() => deserializeFromBinary(input)).toThrow(TypeError);
-    expect(() => deserializeFromBinary(input)).toThrow(expectedMessage);
-  });
-
-  it('14. should throw TypeError when separator is not a string', () => {
-    // Arrange
-    const input = '01000001';
-    const invalidSeparator: any = 123;
-    const expectedMessage = 'separator must be a string, got number';
-
-    // Act & Assert
-    expect(() => deserializeFromBinary(input, invalidSeparator)).toThrow(
-      TypeError,
-    );
-    expect(() => deserializeFromBinary(input, invalidSeparator)).toThrow(
-      expectedMessage,
-    );
-  });
-
   it('15. should throw Error when length not divisible by 8', () => {
     // Arrange
     const input = '0100000'; // Only 7 bits

@@ -66,24 +66,4 @@ describe('renameKey', () => {
     );
   });
 
-  it('11. should throw TypeError when obj is null', () => {
-    expect(() => renameKey(null as unknown as Record<string, number>, 'a', 'b')).toThrow(TypeError);
-    expect(() => renameKey(null as unknown as Record<string, number>, 'a', 'b')).toThrow(
-      'obj must be a non-null object, got null',
-    );
-  });
-
-  it('12. should throw TypeError when oldKey is not a string', () => {
-    expect(() => renameKey({ a: 1 }, 1 as unknown as string, 'b')).toThrow(TypeError);
-    expect(() => renameKey({ a: 1 }, 1 as unknown as string, 'b')).toThrow(
-      'oldKey must be a string, got number',
-    );
-  });
-
-  it('13. should throw TypeError when newKey is not a string', () => {
-    expect(() => renameKey({ a: 1 }, 'a', 1 as unknown as string)).toThrow(TypeError);
-    expect(() => renameKey({ a: 1 }, 'a', 1 as unknown as string)).toThrow(
-      'newKey must be a string, got number',
-    );
-  });
 });

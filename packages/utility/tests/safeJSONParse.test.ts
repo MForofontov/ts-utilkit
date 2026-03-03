@@ -57,4 +57,5 @@ describe('safeJSONParse', () => {
     const json = '{"user":{"name":"John"}}';
     expect(safeJSONParse(json, {})).toEqual({ user: { name: 'John' } });
   });
+
 });

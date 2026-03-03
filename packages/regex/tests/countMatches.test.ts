@@ -58,30 +58,6 @@ describe('countMatches', () => {
     expect(result).toBe(2); // Matches "aa" at positions 0 and 2
   });
 
-  // Error cases
-  it('11. should throw TypeError when text is not a string', () => {
-    expect(() => countMatches(123 as any, /test/)).toThrow(TypeError);
-    expect(() => countMatches(123 as any, /test/)).toThrow(
-      'text must be a string',
-    );
-  });
-
-  it('12. should throw TypeError when pattern is invalid type', () => {
-    expect(() => countMatches('test', 123 as any)).toThrow(TypeError);
-    expect(() => countMatches('test', 123 as any)).toThrow(
-      'pattern must be a string or RegExp',
-    );
-  });
-
-  it('13. should throw TypeError when flags is not a string', () => {
-    expect(() => countMatches('test', 'pattern', 123 as any)).toThrow(
-      TypeError,
-    );
-    expect(() => countMatches('test', 'pattern', 123 as any)).toThrow(
-      'flags must be a string',
-    );
-  });
-
   it('14. should throw Error when pattern is invalid', () => {
     expect(() => countMatches('test', '[unclosed')).toThrow(Error);
     expect(() => countMatches('test', '[unclosed')).toThrow(

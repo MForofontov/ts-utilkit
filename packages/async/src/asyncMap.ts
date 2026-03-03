@@ -6,7 +6,6 @@
  * @param concurrency - Maximum number of concurrent operations (default: 5).
  * @returns Promise that resolves with array of mapped results.
  *
- * @throws {TypeError} If array is not an array or asyncFn is not a function.
  * @throws {Error} If concurrency is less than 1.
  *
  * @example
@@ -50,23 +49,8 @@ export function asyncMap<T, R>(
   asyncFn: (item: T, index: number) => Promise<R>,
   concurrency?: number,
 ): Promise<R[]> {
-  if (!Array.isArray(array)) {
-    throw new TypeError(`array must be an array, got ${typeof array}`);
-  }
-
-  if (typeof asyncFn !== 'function') {
-    throw new TypeError(`asyncFn must be a function, got ${typeof asyncFn}`);
-  }
 
   // Validate concurrency if provided
-  if (
-    concurrency !== undefined &&
-    (typeof concurrency !== 'number' || isNaN(concurrency))
-  ) {
-    throw new TypeError(
-      `concurrency must be a number, got ${typeof concurrency}`,
-    );
-  }
 
   // Default concurrency
   const actualConcurrency = concurrency ?? 5;

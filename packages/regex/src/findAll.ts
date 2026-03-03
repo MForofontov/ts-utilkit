@@ -20,9 +20,6 @@ export interface MatchInfo {
  * @param flags - Optional flags for string patterns (default: 'g').
  * @returns Array of MatchInfo objects with match details and positions.
  *
- * @throws {TypeError} If text is not a string.
- * @throws {TypeError} If pattern is not a string or RegExp.
- * @throws {TypeError} If flags is provided and not a string.
  * @throws {Error} If pattern is invalid.
  *
  * @example
@@ -48,19 +45,6 @@ export function findAll(
   pattern: string | RegExp,
   flags?: string,
 ): MatchInfo[] {
-  if (typeof text !== 'string') {
-    throw new TypeError(`text must be a string, got ${typeof text}`);
-  }
-
-  if (typeof pattern !== 'string' && !(pattern instanceof RegExp)) {
-    throw new TypeError(
-      `pattern must be a string or RegExp, got ${typeof pattern}`,
-    );
-  }
-
-  if (flags !== undefined && typeof flags !== 'string') {
-    throw new TypeError(`flags must be a string, got ${typeof flags}`);
-  }
 
   let regex: RegExp;
 

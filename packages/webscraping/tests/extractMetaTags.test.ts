@@ -216,14 +216,4 @@ describe('extractMetaTags', () => {
     expect(result).toEqual(expected);
   });
 
-  // Error cases
-  it('15. should throw TypeError when html is not a string', () => {
-    // Arrange
-    const html = 123 as unknown as string;
-    const expectedMessage = 'html must be a string, got number';
-
-    // Act & Assert
-    expect(() => extractMetaTags(html)).toThrow(TypeError);
-    expect(() => extractMetaTags(html)).toThrow(expectedMessage);
-  });
 });

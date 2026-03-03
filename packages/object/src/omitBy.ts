@@ -7,8 +7,6 @@
  *                    Return true to omit a property, false to keep it.
  * @returns A new object with all properties where predicate returned false.
  *
- * @throws {TypeError} If obj is not an object or is null.
- *
  * @example
  * // Remove all properties with value 2
  * const obj = { a: 1, b: 2, c: 3 };
@@ -51,9 +49,6 @@ export function omitBy<T extends Record<string, unknown>>(
   obj: T,
   predicate: (value: unknown, key: string) => boolean,
 ): Partial<T> {
-  if (typeof obj !== 'object' || obj === null) {
-    throw new TypeError('Input must be a non-null object');
-  }
 
   return Object.fromEntries(
     Object.entries(obj).filter(([key, value]) => !predicate(value, key)),

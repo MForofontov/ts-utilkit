@@ -10,7 +10,6 @@ import { Buffer } from 'buffer';
  * @param str - The hexadecimal string to decode (e.g. `'68656c6c6f'`).
  * @returns The decoded UTF-8 string.
  *
- * @throws {TypeError} If str is not a string.
  * @throws {Error} If str has an odd length (cannot form complete byte pairs).
  * @throws {Error} If str contains characters outside the hex alphabet.
  *
@@ -43,9 +42,6 @@ import { Buffer } from 'buffer';
  * @complexity Time: O(n), Space: O(n) where n is the length of the hex string
  */
 export function decodeHex(str: string): string {
-  if (typeof str !== 'string') {
-    throw new TypeError(`str must be a string, got ${typeof str}`);
-  }
 
   if (str.length % 2 !== 0) {
     throw new Error('Invalid hex string: length must be even');

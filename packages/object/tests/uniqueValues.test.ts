@@ -94,38 +94,4 @@ describe('uniqueValues', () => {
     expect(result).toEqual(expected);
   });
 
-  // Test case 12: Throw error if input is not an object (number)
-  it('12. should throw a TypeError if input is a number', () => {
-    expect(() =>
-      uniqueValues(42 as unknown as Record<string, unknown>),
-    ).toThrow(TypeError);
-  });
-
-  // Test case 13: Throw error if input is not an object (string)
-  it('13. should throw a TypeError if input is a string', () => {
-    expect(() =>
-      uniqueValues('string' as unknown as Record<string, unknown>),
-    ).toThrow(TypeError);
-  });
-
-  // Test case 14: Throw error if input is not an object (boolean)
-  it('14. should throw a TypeError if input is a boolean', () => {
-    expect(() =>
-      uniqueValues(true as unknown as Record<string, unknown>),
-    ).toThrow(TypeError);
-  });
-
-  // Test case 15: Throw error if input is null
-  it('15. should throw a TypeError if input is null', () => {
-    expect(() =>
-      uniqueValues(null as unknown as Record<string, unknown>),
-    ).toThrow(TypeError);
-  });
-
-  // Test case 16: Throw error if input is undefined
-  it('16. should throw a TypeError if input is undefined', () => {
-    expect(() =>
-      uniqueValues(undefined as unknown as Record<string, unknown>),
-    ).toThrow(TypeError);
-  });
 });

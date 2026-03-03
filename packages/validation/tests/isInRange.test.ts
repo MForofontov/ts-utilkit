@@ -49,27 +49,6 @@ describe('isInRange', () => {
     expect(endTime - startTime).toBeLessThan(10);
   });
 
-  // Test case 5: TypeError for invalid input types
-  it('5. should throw TypeError for invalid input types', () => {
-    const invalidInputs = ['string', null, undefined, [], {}, true];
-
-    invalidInputs.forEach((input) => {
-      expect(() => isInRange(input as unknown as number, 1, 10)).toThrow(
-        TypeError,
-      );
-      expect(() => isInRange(5, input as unknown as number, 10)).toThrow(
-        TypeError,
-      );
-      expect(() => isInRange(5, 1, input as unknown as number)).toThrow(
-        TypeError,
-      );
-    });
-
-    expect(() => isInRange(5, 1, 10, 'invalid' as unknown as boolean)).toThrow(
-      TypeError,
-    );
-  });
-
   // Test case 6: Error for NaN values
   it('6. should throw Error for NaN values', () => {
     expect(() => isInRange(NaN, 1, 10)).toThrow(Error);

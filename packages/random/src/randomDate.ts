@@ -7,7 +7,6 @@ import { randomInt } from './randomInt';
  * @param end - The end date (inclusive).
  * @returns A random Date between start and end.
  *
- * @throws {TypeError} If start or end is not a Date object.
  * @throws {Error} If start or end is an invalid date or if start is after end.
  *
  * @example
@@ -25,12 +24,6 @@ import { randomInt } from './randomInt';
  * @complexity Time: O(1), Space: O(1)
  */
 export function randomDate(start: Date, end: Date): Date {
-  if (!(start instanceof Date)) {
-    throw new TypeError('start must be a Date object');
-  }
-  if (!(end instanceof Date)) {
-    throw new TypeError('end must be a Date object');
-  }
   if (isNaN(start.getTime())) {
     throw new Error('start must be a valid date');
   }

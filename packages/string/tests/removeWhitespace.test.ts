@@ -123,4 +123,5 @@ describe('removeWhitespace', () => {
     const result: string = removeWhitespace(str);
     expect(result).toBe(expected);
   });
+
 });

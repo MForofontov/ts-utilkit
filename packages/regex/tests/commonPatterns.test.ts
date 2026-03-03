@@ -140,10 +140,6 @@ describe('getCommonPattern', () => {
     );
   });
 
-  it('20. should throw TypeError when name is not a string', () => {
-    expect(() => getCommonPattern(123 as any)).toThrow(TypeError);
-    expect(() => getCommonPattern(123 as any)).toThrow('name must be a string');
-  });
 });
 
 describe('testCommonPattern', () => {
@@ -156,20 +152,6 @@ describe('testCommonPattern', () => {
     expect(testCommonPattern('https://example.com', 'url')).toBe(true);
     expect(testCommonPattern('192.168.1.1', 'ipv4')).toBe(true);
     expect(testCommonPattern('#fff', 'hexColor')).toBe(true);
-  });
-
-  it('23. should throw TypeError when text is not a string', () => {
-    expect(() => testCommonPattern(123 as any, 'email')).toThrow(TypeError);
-    expect(() => testCommonPattern(123 as any, 'email')).toThrow(
-      'text must be a string',
-    );
-  });
-
-  it('24. should throw TypeError when name is not a string', () => {
-    expect(() => testCommonPattern('test', 123 as any)).toThrow(TypeError);
-    expect(() => testCommonPattern('test', 123 as any)).toThrow(
-      'name must be a string',
-    );
   });
 
   it('25. should throw Error for unknown pattern name', () => {

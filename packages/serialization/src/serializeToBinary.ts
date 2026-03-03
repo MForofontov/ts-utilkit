@@ -5,8 +5,6 @@
  * @param separator - Optional separator between bytes (default: '').
  * @returns Binary string representation.
  *
- * @throws {TypeError} If input or separator is not a string.
- *
  * @example
  * // Convert to binary
  * serializeToBinary('A'); // '01000001'
@@ -23,13 +21,6 @@ export function serializeToBinary(
   input: string,
   separator: string = '',
 ): string {
-  if (typeof input !== 'string') {
-    throw new TypeError(`input must be a string, got ${typeof input}`);
-  }
-
-  if (typeof separator !== 'string') {
-    throw new TypeError(`separator must be a string, got ${typeof separator}`);
-  }
 
   const binaryArray: string[] = [];
 

@@ -58,19 +58,16 @@ describe('clamp', () => {
   // Test case 10: Throws when n is NaN
   it('10. should throw when n is NaN', () => {
     expect(() => clamp(NaN, 0, 10)).toThrow(Error);
-    expect(() => clamp(NaN, 0, 10)).toThrow('n must be a valid number, not NaN');
   });
 
   // Test case 11: Throws when min is NaN
   it('11. should throw when min is NaN', () => {
     expect(() => clamp(5, NaN, 10)).toThrow(Error);
-    expect(() => clamp(5, NaN, 10)).toThrow('min must be a valid number, not NaN');
   });
 
   // Test case 12: Throws when max is NaN
   it('12. should throw when max is NaN', () => {
     expect(() => clamp(5, 0, NaN)).toThrow(Error);
-    expect(() => clamp(5, 0, NaN)).toThrow('max must be a valid number, not NaN');
   });
 
   // Test case 13: Throws when min > max

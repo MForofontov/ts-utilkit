@@ -7,14 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Remove all runtime `typeof`/`instanceof` TypeError guards; rely on TypeScript type system for type safety
+- Remove all `@throws {TypeError}` JSDoc tags from all affected functions
+- Remove all TypeError test cases from all test files
+
+
 ### Added
 - New function `validateConfig` - Validates configuration object against required keys schema (migrated from deprecated @ts-utilkit/configuration package)
-
-### Changed
-- Changes to existing functionality
-
-### Fixed
-- Bug fixes
 
 ## [0.1.0] - 2026-01-26
 

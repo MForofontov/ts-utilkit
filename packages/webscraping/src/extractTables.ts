@@ -4,8 +4,6 @@
  * @param html - The HTML content containing tables.
  * @returns Array of tables, where each table is an array of rows (arrays of cell values).
  *
- * @throws {TypeError} If html is not a string.
- *
  * @example
  * const html = '<table><tr><td>A</td><td>B</td></tr><tr><td>C</td><td>D</td></tr></table>';
  * const tables = extractTables(html);
@@ -20,9 +18,6 @@
  * @complexity Time: O(n) where n is html length, Space: O(m) where m is table data size
  */
 export function extractTables(html: string): string[][][] {
-  if (typeof html !== 'string') {
-    throw new TypeError(`html must be a string, got ${typeof html}`);
-  }
 
   const tables: string[][][] = [];
   const tableRegex = /<table[^>]*>([\s\S]*?)<\/table>/gi;

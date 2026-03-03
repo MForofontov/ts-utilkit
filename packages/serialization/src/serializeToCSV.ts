@@ -5,7 +5,6 @@
  * @param options - CSV options (delimiter, includeHeaders).
  * @returns The CSV string representation.
  *
- * @throws {TypeError} If data is not an array or options are invalid.
  * @throws {Error} If data is empty or objects have no keys.
  *
  * @example
@@ -26,25 +25,12 @@ export function serializeToCSV(
   data: Record<string, any>[],
   options: { delimiter?: string; includeHeaders?: boolean } = {},
 ): string {
-  if (!Array.isArray(data)) {
-    throw new TypeError(`data must be an array, got ${typeof data}`);
-  }
 
   if (data.length === 0) {
     throw new Error('data array cannot be empty');
   }
 
   const { delimiter = ',', includeHeaders = true } = options;
-
-  if (typeof delimiter !== 'string') {
-    throw new TypeError(`delimiter must be a string, got ${typeof delimiter}`);
-  }
-
-  if (typeof includeHeaders !== 'boolean') {
-    throw new TypeError(
-      `includeHeaders must be a boolean, got ${typeof includeHeaders}`,
-    );
-  }
 
   const keys = Object.keys(data[0]);
 

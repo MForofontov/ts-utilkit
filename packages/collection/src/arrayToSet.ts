@@ -4,8 +4,6 @@
  * @param array - The array to convert.
  * @returns A new Set containing unique elements from the array.
  *
- * @throws {TypeError} If array is not an array.
- *
  * @example
  * // Remove duplicates
  * const array = [1, 2, 2, 3, 3, 3];
@@ -30,9 +28,6 @@
  * @complexity Time: O(n) where n is array length, Space: O(n)
  */
 export function arrayToSet<T>(array: T[]): Set<T> {
-  if (!Array.isArray(array)) {
-    throw new TypeError(`array must be an array, got ${typeof array}`);
-  }
 
   return new Set(array);
 }

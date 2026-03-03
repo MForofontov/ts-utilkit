@@ -106,23 +106,9 @@ describe('requireEnvAll', () => {
     );
   });
 
-  it('12. should throw TypeError when keys is not an array', () => {
-    expect(() => requireEnvAll('MY_VAR' as unknown as string[])).toThrow(TypeError);
-    expect(() => requireEnvAll('MY_VAR' as unknown as string[])).toThrow(
-      'keys must be an array, got string',
-    );
-  });
-
   it('13. should throw Error when keys array is empty', () => {
     expect(() => requireEnvAll([])).toThrow(Error);
     expect(() => requireEnvAll([])).toThrow('keys array cannot be empty');
-  });
-
-  it('14. should throw TypeError when any element is not a string', () => {
-    expect(() => requireEnvAll(['VALID', 42 as unknown as string])).toThrow(TypeError);
-    expect(() => requireEnvAll(['VALID', 42 as unknown as string])).toThrow(
-      'each key must be a string, got number',
-    );
   });
 
   it('15. should throw Error when any key is an empty string', () => {

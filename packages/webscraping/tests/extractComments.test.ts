@@ -173,14 +173,4 @@ describe('extractComments', () => {
     expect(result).toEqual(expected);
   });
 
-  // Test case 12: Throw TypeError when html is not a string
-  it('12. should throw TypeError when html is not a string', () => {
-    // Arrange
-    const invalidInput = 12345 as unknown as string;
-    const expectedMessage = 'html must be a string, got number';
-
-    // Act & Assert
-    expect(() => extractComments(invalidInput)).toThrow(TypeError);
-    expect(() => extractComments(invalidInput)).toThrow(expectedMessage);
-  });
 });

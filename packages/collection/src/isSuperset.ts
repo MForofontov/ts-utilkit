@@ -5,8 +5,6 @@
  * @param subset - The potential subset.
  * @returns True if superset contains all elements of subset, false otherwise.
  *
- * @throws {TypeError} If either argument is not a Set.
- *
  * @example
  * // True superset
  * const superset = new Set([1, 2, 3, 4]);
@@ -36,13 +34,6 @@
  * @complexity Time: O(n) where n is size of subset, Space: O(1)
  */
 export function isSuperset<T>(superset: Set<T>, subset: Set<T>): boolean {
-  if (!(superset instanceof Set)) {
-    throw new TypeError(`First argument must be a Set, got ${typeof superset}`);
-  }
-
-  if (!(subset instanceof Set)) {
-    throw new TypeError(`Second argument must be a Set, got ${typeof subset}`);
-  }
 
   // If superset is smaller, it cannot be a superset
   if (superset.size < subset.size) {

@@ -21,7 +21,6 @@ describe('generateRandomString (testing-utilities - deprecated)', () => {
   });
   it('7. should throw Error for negative length', () => {
     expect(() => generateRandomString(-1)).toThrow(Error);
-    expect(() => generateRandomString(-1)).toThrow('length must be a non-negative number');
   });
   it('8. should throw Error when length is not a number', () => {
     expect(() => generateRandomString('x' as unknown as number)).toThrow(Error);

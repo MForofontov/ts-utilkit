@@ -8,7 +8,6 @@ import { _parseURL } from './_parseURL';
  * @param url2 - The second URL to compare.
  * @returns True if both URLs have the same origin, false otherwise.
  *
- * @throws {TypeError} If url1 or url2 is not a string.
  * @throws {Error} If either URL is invalid.
  *
  * @example
@@ -39,12 +38,6 @@ import { _parseURL } from './_parseURL';
 export function isSameOrigin(url1: string, url2: string): boolean {
   // _parseURL validates type and throws TypeError/Error for each URL.
   // For isSameOrigin we provide a combined error message on failure.
-  if (typeof url1 !== 'string') {
-    throw new TypeError(`url1 must be a string, got ${typeof url1}`);
-  }
-  if (typeof url2 !== 'string') {
-    throw new TypeError(`url2 must be a string, got ${typeof url2}`);
-  }
 
   try {
     const urlObj1 = _parseURL(url1);

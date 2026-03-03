@@ -5,8 +5,6 @@
  * @param str - The string to escape.
  * @returns String with all regex special characters escaped.
  *
- * @throws {TypeError} If str is not a string.
- *
  * @example
  * // Escape dots and other special characters
  * escapeRegex("hello.world"); // "hello\\.world"
@@ -27,10 +25,6 @@
  * @complexity Time: O(n), Space: O(n)
  */
 export function escapeRegex(str: string): string {
-  if (typeof str !== 'string') {
-    throw new TypeError(`str must be a string, got ${typeof str}`);
-  }
-
   // Escape all regex special characters
   return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/\//g, '\\/');
 }

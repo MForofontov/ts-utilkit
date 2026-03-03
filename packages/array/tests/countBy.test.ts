@@ -142,28 +142,4 @@ describe('countBy', () => {
     expect(end - start).toBeLessThan(100);
   });
 
-  // Error cases
-  // Test case 13: Throws TypeError when arr is not an array
-  it('13. should throw TypeError when arr is not an array', () => {
-    expect(() => countBy('not an array' as unknown as string[], (x) => x)).toThrow(TypeError);
-    expect(() => countBy('not an array' as unknown as string[], (x) => x)).toThrow(
-      'arr must be an array, got string',
-    );
-  });
-
-  // Test case 14: Throws TypeError when arr is null
-  it('14. should throw TypeError when arr is null', () => {
-    expect(() => countBy(null as unknown as never[], (x) => String(x))).toThrow(TypeError);
-    expect(() => countBy(null as unknown as never[], (x) => String(x))).toThrow(
-      'arr must be an array, got object',
-    );
-  });
-
-  // Test case 15: Throws TypeError when keyFn is not a function
-  it('15. should throw TypeError when keyFn is not a function', () => {
-    expect(() => countBy([1, 2, 3], 'not a function' as unknown as () => string)).toThrow(TypeError);
-    expect(() => countBy([1, 2, 3], 'not a function' as unknown as () => string)).toThrow(
-      'keyFn must be a function, got string',
-    );
-  });
 });

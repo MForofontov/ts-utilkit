@@ -6,7 +6,6 @@
  * @param step - Step between values (default: 1).
  * @returns Array of numbers in the specified range.
  *
- * @throws {TypeError} If start, end, or step are not valid numbers.
  * @throws {Error} If step is not positive.
  *
  * @example
@@ -30,12 +29,6 @@ export function generateRange(
   end: number,
   step: number = 1,
 ): number[] {
-  if (typeof start !== 'number' || isNaN(start)) {
-    throw new TypeError('start must be a valid number');
-  }
-  if (typeof end !== 'number' || isNaN(end)) {
-    throw new TypeError('end must be a valid number');
-  }
   if (typeof step !== 'number' || isNaN(step) || step <= 0) {
     throw new Error('step must be a positive number');
   }

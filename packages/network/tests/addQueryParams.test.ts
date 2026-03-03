@@ -116,37 +116,6 @@ describe('addQueryParams', () => {
     expect(result).toContain('#hash');
   });
 
-  // Test case 16: Error case - non-string URL
-  it('16. should throw TypeError for non-string URL', () => {
-    const url = 123 as unknown as string;
-    expect(() => addQueryParams(url, { a: 1 })).toThrow(TypeError);
-    expect(() => addQueryParams(url, { a: 1 })).toThrow('url must be a string');
-  });
-
-  // Test case 17: Error case - non-object params
-  it('17. should throw TypeError for non-object params', () => {
-    const params = 'string' as unknown as Record<string, string>;
-    expect(() => addQueryParams('https://example.com', params)).toThrow(
-      TypeError,
-    );
-  });
-
-  // Test case 18: Error case - array params
-  it('18. should throw TypeError for array params', () => {
-    const params = ['a', 'b'] as unknown as Record<string, string>;
-    expect(() => addQueryParams('https://example.com', params)).toThrow(
-      TypeError,
-    );
-  });
-
-  // Test case 19: Error case - null params
-  it('19. should throw TypeError for null params', () => {
-    const params = null as unknown as Record<string, string>;
-    expect(() => addQueryParams('https://example.com', params)).toThrow(
-      TypeError,
-    );
-  });
-
   // Test case 20: Error case - invalid URL
   it('20. should throw Error for invalid URL', () => {
     expect(() => addQueryParams('not a url', { a: 1 })).toThrow('Invalid URL');

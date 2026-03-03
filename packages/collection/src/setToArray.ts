@@ -4,8 +4,6 @@
  * @param set - The Set to convert.
  * @returns A new array containing all elements from the set.
  *
- * @throws {TypeError} If set is not a Set.
- *
  * @example
  * // Basic conversion
  * const set = new Set([1, 2, 3]);
@@ -30,9 +28,6 @@
  * @complexity Time: O(n) where n is set size, Space: O(n)
  */
 export function setToArray<T>(set: Set<T>): T[] {
-  if (!(set instanceof Set)) {
-    throw new TypeError(`set must be a Set, got ${typeof set}`);
-  }
 
   return Array.from(set);
 }

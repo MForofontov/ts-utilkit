@@ -265,30 +265,4 @@ describe('extractListItems', () => {
     expect(result).toEqual(expected);
   });
 
-  // Test case 14: Throw TypeError when html is not a string
-  it('14. should throw TypeError when html is not a string', () => {
-    // Arrange
-    const invalidInput = ['<ul><li>test</li></ul>'] as unknown as string;
-    const expectedMessage = 'html must be a string, got object';
-
-    // Act & Assert
-    expect(() => extractListItems(invalidInput)).toThrow(TypeError);
-    expect(() => extractListItems(invalidInput)).toThrow(expectedMessage);
-  });
-
-  // Test case 15: Throw TypeError when preserveNesting is not a boolean
-  it('15. should throw TypeError when preserveNesting is not a boolean', () => {
-    // Arrange
-    const html = '<ul><li>test</li></ul>';
-    const invalidPreserveNesting = 'true' as unknown as boolean;
-    const expectedMessage = 'preserveNesting must be a boolean, got string';
-
-    // Act & Assert
-    expect(() => extractListItems(html, invalidPreserveNesting)).toThrow(
-      TypeError,
-    );
-    expect(() => extractListItems(html, invalidPreserveNesting)).toThrow(
-      expectedMessage,
-    );
-  });
 });

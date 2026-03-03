@@ -14,10 +14,6 @@ export type TemperatureUnit = 'C' | 'F' | 'K';
  * @returns A formatted temperature string, e.g. `"100.00°C"`, `"212.00°F"`, `"373.15K"`.
  *   Kelvin uses no degree symbol; Celsius and Fahrenheit use "°".
  *
- * @throws {TypeError} If value is not a number or is NaN.
- * @throws {TypeError} If from is not a string.
- * @throws {TypeError} If to is not a string.
- * @throws {TypeError} If decimals is not a number or is NaN.
  * @throws {Error} If from is not "C", "F", or "K".
  * @throws {Error} If to is not "C", "F", or "K".
  * @throws {Error} If decimals is negative.
@@ -53,18 +49,6 @@ export function formatTemperature(
   decimals: number = 2,
 ): string {
   // Input validation
-  if (typeof value !== 'number' || isNaN(value)) {
-    throw new TypeError(`value must be a number, got ${typeof value}`);
-  }
-  if (typeof from !== 'string') {
-    throw new TypeError(`from must be a string, got ${typeof from}`);
-  }
-  if (typeof to !== 'string') {
-    throw new TypeError(`to must be a string, got ${typeof to}`);
-  }
-  if (typeof decimals !== 'number' || isNaN(decimals)) {
-    throw new TypeError(`decimals must be a number, got ${typeof decimals}`);
-  }
 
   const validUnits: TemperatureUnit[] = ['C', 'F', 'K'];
   if (!validUnits.includes(from as TemperatureUnit)) {

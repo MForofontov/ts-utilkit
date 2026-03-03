@@ -25,38 +25,4 @@ describe('countProperties', () => {
     expect(result).toBe(expected);
   });
 
-  // Test case 4: Handle non-object input (number)
-  it('4. should throw a TypeError if input is a number', () => {
-    expect(() =>
-      countProperties(42 as unknown as Record<string, unknown>),
-    ).toThrow(TypeError);
-  });
-
-  // Test case 5: Handle non-object input (string)
-  it('5. should throw a TypeError if input is a string', () => {
-    expect(() =>
-      countProperties('string' as unknown as Record<string, unknown>),
-    ).toThrow(TypeError);
-  });
-
-  // Test case 6: Handle non-object input (boolean)
-  it('6. should throw a TypeError if input is a boolean', () => {
-    expect(() =>
-      countProperties(true as unknown as Record<string, unknown>),
-    ).toThrow(TypeError);
-  });
-
-  // Test case 7: Handle non-object input (null)
-  it('7. should throw a TypeError if input is null', () => {
-    expect(() =>
-      countProperties(null as unknown as Record<string, unknown>),
-    ).toThrow(TypeError);
-  });
-
-  // Test case 8: Handle non-object input (undefined)
-  it('8. should throw a TypeError if input is undefined', () => {
-    expect(() =>
-      countProperties(undefined as unknown as Record<string, unknown>),
-    ).toThrow(TypeError);
-  });
 });

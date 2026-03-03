@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Remove all runtime `typeof`/`instanceof` type guards from all string functions; TypeScript type system is the contract — no runtime type checking for a TS-first library
+- Remove all corresponding `@throws {TypeError}` JSDoc tags from all affected functions
+- Remove all TypeError test cases from all string package test files
+- Remove NaN-specific `Error` guards from `truncateString`, `wrapText`, `truncateWords`, and `maskString` (merged into existing value-range checks or removed); update/remove corresponding tests
+- `countCharacterOccurrences`: replace inline regex-escape pattern with `escapeRegex` from the same package
+- `countSubstring`: replace inline regex-escape pattern with `escapeRegex` from the same package
+- `replaceMultiple`: replace inline regex-escape pattern with `escapeRegex` from the same package
+- `generateRandomAlphanumeric`: delegate character generation to `randomSequence` from `@ts-utilkit/random`
+
 ### Deprecated
 - `startsWith`: pure native wrapper over `String.prototype.startsWith()` — use native method directly
 - `endsWith`: pure native wrapper over `String.prototype.endsWith()` — use native method directly
@@ -18,20 +28,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `repeatString`: pure native wrapper over `String.prototype.repeat()` — use native method directly
 - `replaceFirst`: thin wrapper over `String.prototype.replace()` with no meaningful added logic
 - `replaceSubstring`: thin wrapper over `str.split(s).join(r)` with no meaningful added logic
-
-### Fixed
-- `countVowels`, `countWords`, `findLongestWord`, `firstNonRepeatingCharacter`, `hasLowercase`, `hasUppercase`, `isAlpha`, `isAlphanumeric`, `isNumeric`, `isPalindrome`, `isValidEmail`, `isWhitespace`: added runtime `typeof` guard to enforce the documented `@throws {TypeError}` when a non-string argument is passed (previously the documented error was never thrown)
-- `extractSubstring`: thin wrapper over `String.prototype.slice()` with minimal bounds validation
-- `reverseString`: one-liner `str.split('').reverse().join('')` with no added logic
-- `generateRandomAlphanumeric`: previously deprecated delegate to `randomSequence`; now removed
-
-### Changed
-- `countCharacterOccurrences`: replace inline regex-escape pattern with `escapeRegex` from the same package
-- `countSubstring`: replace inline regex-escape pattern with `escapeRegex` from the same package
-- `replaceMultiple`: replace inline regex-escape pattern with `escapeRegex` from the same package
-- `generateRandomAlphanumeric`: delegate character generation to `randomSequence` from `@ts-utilkit/random`
-
-### Deprecated
 - `generateRandomAlphanumeric`: use `randomSequence` from `@ts-utilkit/random` directly with the alphanumeric charset. Will be removed in the next major version.
 
 ### Added

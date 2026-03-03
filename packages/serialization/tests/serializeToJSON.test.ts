@@ -161,43 +161,6 @@ describe('serializeToJSON', () => {
     expect(result).toContain('\\"');
   });
 
-  // Error cases
-  it('14. should throw TypeError when pretty is not boolean', () => {
-    // Arrange
-    const input = { a: 1 };
-    const invalidPretty: any = 'true';
-    const expectedMessage = 'pretty must be a boolean, got string';
-
-    // Act & Assert
-    expect(() => serializeToJSON(input, invalidPretty)).toThrow(TypeError);
-    expect(() => serializeToJSON(input, invalidPretty)).toThrow(
-      expectedMessage,
-    );
-  });
-
-  it('15. should throw TypeError when space is not number', () => {
-    // Arrange
-    const input = { a: 1 };
-    const invalidSpace: any = '2';
-    const expectedMessage = 'space must be a number, got string';
-
-    // Act & Assert
-    expect(() => serializeToJSON(input, true, invalidSpace)).toThrow(TypeError);
-    expect(() => serializeToJSON(input, true, invalidSpace)).toThrow(
-      expectedMessage,
-    );
-  });
-
-  it('16. should throw TypeError when space is NaN', () => {
-    // Arrange
-    const input = { a: 1 };
-    const expectedMessage = 'space must be a valid number, not NaN';
-
-    // Act & Assert
-    expect(() => serializeToJSON(input, true, NaN)).toThrow(TypeError);
-    expect(() => serializeToJSON(input, true, NaN)).toThrow(expectedMessage);
-  });
-
   it('17. should throw Error for circular references', () => {
     // Arrange
     const input: any = { a: 1 };

@@ -11,9 +11,6 @@ const pbkdf2Async = promisify(pbkdf2);
  * @param iterations - Number of iterations. Defaults to 100,000. Higher is more secure but slower.
  * @returns Promise resolving to hex string representation of the password hash.
  *
- * @throws {TypeError} If password is not a string.
- * @throws {TypeError} If salt is not a string.
- * @throws {TypeError} If iterations is not a number.
  * @throws {Error} If password is empty.
  * @throws {Error} If salt is empty.
  * @throws {Error} If salt contains non-hexadecimal characters.
@@ -63,19 +60,6 @@ export async function hashPassword(
   salt: string,
   iterations: number = 100000,
 ): Promise<string> {
-  if (typeof password !== 'string') {
-    throw new TypeError(`password must be a string, got ${typeof password}`);
-  }
-
-  if (typeof salt !== 'string') {
-    throw new TypeError(`salt must be a string, got ${typeof salt}`);
-  }
-
-  if (typeof iterations !== 'number') {
-    throw new TypeError(
-      `iterations must be a number, got ${typeof iterations}`,
-    );
-  }
 
   if (password.length === 0) {
     throw new Error('password cannot be empty');

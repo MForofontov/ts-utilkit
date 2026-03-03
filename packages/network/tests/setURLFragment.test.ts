@@ -73,24 +73,6 @@ describe('setURLFragment', () => {
 
   // ── Error cases ───────────────────────────────────────────────────────────
 
-  it('10. should throw TypeError when url is not a string', () => {
-    expect(() => setURLFragment(null as unknown as string, 'frag')).toThrow(
-      TypeError,
-    );
-    expect(() => setURLFragment(null as unknown as string, 'frag')).toThrow(
-      'url must be a string, got object',
-    );
-  });
-
-  it('11. should throw TypeError when fragment is not a string', () => {
-    expect(() =>
-      setURLFragment('https://example.com', 42 as unknown as string),
-    ).toThrow(TypeError);
-    expect(() =>
-      setURLFragment('https://example.com', 42 as unknown as string),
-    ).toThrow('fragment must be a string, got number');
-  });
-
   it('12. should throw Error when url is not a valid URL', () => {
     expect(() => setURLFragment('not-a-url', 'frag')).toThrow(Error);
     expect(() => setURLFragment('not-a-url', 'frag')).toThrow(

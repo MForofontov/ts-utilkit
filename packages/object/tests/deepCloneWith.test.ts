@@ -78,38 +78,4 @@ describe('deepCloneWith', () => {
     expect(result[sym]).toBe(obj[sym]); // Ensure symbol is not cloned
   });
 
-  // Test case 9: Handle non-object input (number)
-  it('9. should throw a TypeError if input is a number', () => {
-    expect(() => deepCloneWith(42 as unknown as object, cloneFn)).toThrow(
-      TypeError,
-    );
-  });
-
-  // Test case 10: Handle non-object input (string)
-  it('10. should throw a TypeError if input is a string', () => {
-    expect(() => deepCloneWith('string' as unknown as object, cloneFn)).toThrow(
-      TypeError,
-    );
-  });
-
-  // Test case 11: Handle non-object input (boolean)
-  it('11. should throw a TypeError if input is a boolean', () => {
-    expect(() => deepCloneWith(true as unknown as object, cloneFn)).toThrow(
-      TypeError,
-    );
-  });
-
-  // Test case 12: Handle non-object input (null)
-  it('12. should throw a TypeError if input is null', () => {
-    expect(() => deepCloneWith(null as unknown as object, cloneFn)).toThrow(
-      TypeError,
-    );
-  });
-
-  // Test case 13: Handle non-object input (undefined)
-  it('13. should throw a TypeError if input is undefined', () => {
-    expect(() =>
-      deepCloneWith(undefined as unknown as object, cloneFn),
-    ).toThrow(TypeError);
-  });
 });

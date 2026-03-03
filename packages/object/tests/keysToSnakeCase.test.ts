@@ -69,42 +69,4 @@ describe('keysToSnakeCase', () => {
     expect(result).toEqual(expected);
   });
 
-  // Test case 8: Handle non-object input (number)
-  it('8. should throw a TypeError if input is a number', () => {
-    expect(() =>
-      keysToSnakeCase(42 as unknown as Record<string, unknown> | unknown[]),
-    ).toThrow(TypeError);
-  });
-
-  // Test case 9: Handle non-object input (string)
-  it('9. should throw a TypeError if input is a string', () => {
-    expect(() =>
-      keysToSnakeCase(
-        'string' as unknown as Record<string, unknown> | unknown[],
-      ),
-    ).toThrow(TypeError);
-  });
-
-  // Test case 10: Handle non-object input (boolean)
-  it('10. should throw a TypeError if input is a boolean', () => {
-    expect(() =>
-      keysToSnakeCase(true as unknown as Record<string, unknown> | unknown[]),
-    ).toThrow(TypeError);
-  });
-
-  // Test case 11: Handle non-object input (null)
-  it('11. should throw a TypeError if input is null', () => {
-    expect(() =>
-      keysToSnakeCase(null as unknown as Record<string, unknown> | unknown[]),
-    ).toThrow(TypeError);
-  });
-
-  // Test case 12: Handle non-object input (undefined)
-  it('12. should throw a TypeError if input is undefined', () => {
-    expect(() =>
-      keysToSnakeCase(
-        undefined as unknown as Record<string, unknown> | unknown[],
-      ),
-    ).toThrow(TypeError);
-  });
 });

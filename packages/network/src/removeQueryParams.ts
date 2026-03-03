@@ -8,8 +8,6 @@ import { _parseURL } from './_parseURL';
  * @param keys - Array of parameter keys to remove.
  * @returns The URL with specified parameters removed.
  *
- * @throws {TypeError} If url is not a string.
- * @throws {TypeError} If keys is not an array.
  * @throws {Error} If url is invalid.
  *
  * @example
@@ -34,9 +32,6 @@ import { _parseURL } from './_parseURL';
 
 export function removeQueryParams(url: string, keys: string[]): string {
   // Input validation
-  if (!Array.isArray(keys)) {
-    throw new TypeError(`keys must be an array, got ${typeof keys}`);
-  }
 
   const urlObj = _parseURL(url);
   const searchParams = urlObj.searchParams;

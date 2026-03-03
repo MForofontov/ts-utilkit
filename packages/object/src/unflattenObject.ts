@@ -4,8 +4,6 @@
  * @param obj - The flat object with dot-notation keys.
  * @returns A nested object structure representing the original hierarchy.
  *
- * @throws {TypeError} If obj is not an object or is null.
- *
  * @example
  * // Basic dot notation
  * unflattenObject({ 'a.b.c': 1, 'a.b.d': 2, 'e': 3 });
@@ -54,9 +52,6 @@
 export function unflattenObject(
   obj: Record<string, unknown>,
 ): Record<string, unknown> {
-  if (typeof obj !== 'object' || obj === null) {
-    throw new TypeError('Input must be a non-null object');
-  }
 
   const result: Record<string, unknown> = {};
 

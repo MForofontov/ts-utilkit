@@ -5,8 +5,6 @@
  * @param max - The maximum value (inclusive).
  * @returns A random integer in the range [min, max].
  *
- * @throws {TypeError} If min is not a number.
- * @throws {TypeError} If max is not a number.
  * @throws {Error} If min or max is NaN.
  * @throws {Error} If min is greater than max.
  * @throws {Error} If min or max is not a safe integer.
@@ -29,12 +27,6 @@
  * @complexity Time: O(1), Space: O(1)
  */
 export function randomInt(min: number, max: number): number {
-  if (typeof min !== 'number') {
-    throw new TypeError(`min must be a number, got ${typeof min}`);
-  }
-  if (typeof max !== 'number') {
-    throw new TypeError(`max must be a number, got ${typeof max}`);
-  }
   if (isNaN(min)) {
     throw new Error('min must be a valid number, not NaN');
   }

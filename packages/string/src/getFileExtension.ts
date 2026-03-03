@@ -4,8 +4,6 @@
  * @param filename - The filename or file path to extract the extension from.
  * @returns The file extension without the dot, or an empty string if none exists.
  *
- * @throws {TypeError} If filename is not a string.
- *
  * @example
  * // Basic usage
  * getFileExtension("example.txt"); // "txt"

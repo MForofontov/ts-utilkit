@@ -112,34 +112,6 @@ describe('formatTemperature', () => {
 
   // ─── Error Cases ───────────────────────────────────────────────────────────
 
-  // Test case 17: Throws TypeError if value is not a number
-  it('17. should throw TypeError if value is not a number', () => {
-    expect(() => formatTemperature('hot' as unknown as number, 'C', 'F')).toThrow(
-      TypeError,
-    );
-    expect(() => formatTemperature('hot' as unknown as number, 'C', 'F')).toThrow(
-      'value must be a number, got string',
-    );
-  });
-
-  // Test case 18: Throws TypeError if value is NaN
-  it('18. should throw TypeError if value is NaN', () => {
-    expect(() => formatTemperature(NaN, 'C', 'F')).toThrow(TypeError);
-    expect(() => formatTemperature(NaN, 'C', 'F')).toThrow(
-      'value must be a number, got number',
-    );
-  });
-
-  // Test case 19: Throws TypeError if from is not a string
-  it('19. should throw TypeError if from is not a string', () => {
-    expect(() =>
-      formatTemperature(100, 1 as unknown as 'C', 'F'),
-    ).toThrow(TypeError);
-    expect(() =>
-      formatTemperature(100, 1 as unknown as 'C', 'F'),
-    ).toThrow('from must be a string, got number');
-  });
-
   // Test case 20: Throws Error if from is an invalid unit string
   it('20. should throw Error if from is an unrecognised unit', () => {
     expect(() =>
@@ -148,16 +120,6 @@ describe('formatTemperature', () => {
     expect(() =>
       formatTemperature(100, 'X' as unknown as 'C', 'F'),
     ).toThrow('from must be "C", "F", or "K", got "X"');
-  });
-
-  // Test case 21: Throws TypeError if to is not a string
-  it('21. should throw TypeError if to is not a string', () => {
-    expect(() =>
-      formatTemperature(100, 'C', 2 as unknown as 'F'),
-    ).toThrow(TypeError);
-    expect(() =>
-      formatTemperature(100, 'C', 2 as unknown as 'F'),
-    ).toThrow('to must be a string, got number');
   });
 
   // Test case 22: Throws Error if to is an invalid unit string

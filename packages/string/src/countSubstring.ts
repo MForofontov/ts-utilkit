@@ -5,9 +5,6 @@
  * @param substring - The substring to count occurrences of.
  * @returns The number of times the substring appears in the string.
  *
- * @throws {TypeError} If str is not a string.
- * @throws {TypeError} If substring is not a string.
- *
  * @example
  * // Basic usage
  * countSubstring("hello world, hello universe", "hello"); // 2

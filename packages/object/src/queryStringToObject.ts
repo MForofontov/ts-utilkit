@@ -8,8 +8,6 @@
  * @param queryString - The URL query string to parse (without the leading '?').
  * @returns An object containing the parsed query parameters.
  *
- * @throws {TypeError} If queryString is not a string.
- *
  * @example
  * // Basic usage
  * queryStringToObject('name=John%20Doe&age=30');
@@ -46,9 +44,6 @@
 export function queryStringToObject(
   queryString: string,
 ): Record<string, string> {
-  if (typeof queryString !== 'string') {
-    throw new TypeError('Input must be a string');
-  }
   const str = queryString.replace(/^\?/, '').trim();
   if (str === '') return {};
 

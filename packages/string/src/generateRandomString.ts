@@ -7,10 +7,7 @@ import { randomBytes } from 'crypto';
  * @param charset - Optional custom character set. Defaults to alphanumeric (a-zA-Z0-9).
  * @returns A random string of the specified length.
  *
- * @throws {TypeError} If length is not a number.
- * @throws {TypeError} If charset is not a string.
  * @throws {Error} If length is not a positive integer.
- * @throws {Error} If length is NaN.
  * @throws {Error} If charset is empty.
  *
  * @example
@@ -42,20 +39,8 @@ export function generateRandomString(
   length: number,
   charset: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789',
 ): string {
-  if (typeof length !== 'number') {
-    throw new TypeError(`length must be a number, got ${typeof length}`);
-  }
-
-  if (isNaN(length)) {
-    throw new Error('length must be a valid number, not NaN');
-  }
-
   if (length <= 0 || !Number.isInteger(length)) {
     throw new Error(`length must be a positive integer, got ${length}`);
-  }
-
-  if (typeof charset !== 'string') {
-    throw new TypeError(`charset must be a string, got ${typeof charset}`);
   }
 
   if (charset.length === 0) {

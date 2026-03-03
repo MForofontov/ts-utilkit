@@ -89,31 +89,4 @@ describe('toCamelCase', () => {
 
   // ─── Error cases ───────────────────────────────────────────────────────────
 
-  it('19. should throw TypeError when str is a number', () => {
-    expect(() => toCamelCase(42 as unknown as string)).toThrow(TypeError);
-    expect(() => toCamelCase(42 as unknown as string)).toThrow(
-      'str must be a string, got number',
-    );
-  });
-
-  it('20. should throw TypeError when str is null', () => {
-    expect(() => toCamelCase(null as unknown as string)).toThrow(TypeError);
-    expect(() => toCamelCase(null as unknown as string)).toThrow(
-      'str must be a string, got object',
-    );
-  });
-
-  it('21. should throw TypeError when str is undefined', () => {
-    expect(() => toCamelCase(undefined as unknown as string)).toThrow(TypeError);
-    expect(() => toCamelCase(undefined as unknown as string)).toThrow(
-      'str must be a string, got undefined',
-    );
-  });
-
-  it('22. should throw TypeError when str is an array', () => {
-    expect(() => toCamelCase([] as unknown as string)).toThrow(TypeError);
-    expect(() => toCamelCase([] as unknown as string)).toThrow(
-      'str must be a string, got object',
-    );
-  });
 });

@@ -11,8 +11,6 @@
  * @param keys - An array of environment variable names that must all be set.
  * @returns A record mapping each key to its (non-empty) string value.
  *
- * @throws {TypeError} If keys is not an array.
- * @throws {TypeError} If any element of keys is not a string.
  * @throws {Error} If keys is empty.
  * @throws {Error} If any key is an empty string.
  * @throws {Error} If one or more variables are not set, reporting all missing keys.
@@ -42,18 +40,12 @@
  * @complexity Time: O(n), Space: O(n) where n is the number of keys
  */
 export function requireEnvAll(keys: string[]): Record<string, string> {
-  if (!Array.isArray(keys)) {
-    throw new TypeError(`keys must be an array, got ${typeof keys}`);
-  }
 
   if (keys.length === 0) {
     throw new Error('keys array cannot be empty');
   }
 
   for (const key of keys) {
-    if (typeof key !== 'string') {
-      throw new TypeError(`each key must be a string, got ${typeof key}`);
-    }
     if (key.length === 0) {
       throw new Error('keys array must not contain empty strings');
     }

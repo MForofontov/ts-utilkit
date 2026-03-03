@@ -123,4 +123,5 @@ describe('stringToBoolean', () => {
     const result: boolean = stringToBoolean(str);
     expect(result).toBe(expected);
   });
+
 });

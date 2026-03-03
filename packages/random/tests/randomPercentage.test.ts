@@ -106,18 +106,9 @@ describe('randomPercentage', () => {
     expect(buckets.high).toBeGreaterThan(250);
   });
 
-  // Error Test case 11: TypeError for non-number
-  it('11. should throw TypeError when decimals is not a number', () => {
-    expect(() => randomPercentage('2' as any)).toThrow(TypeError);
-    expect(() => randomPercentage('2' as any)).toThrow(
-      'decimals must be a number',
-    );
-  });
-
   // Error Test case 12: Error for non-integer
   it('12. should throw Error when decimals is not an integer', () => {
     expect(() => randomPercentage(2.5)).toThrow(Error);
-    expect(() => randomPercentage(2.5)).toThrow('decimals must be an integer');
   });
 
   // Error Test case 13: Error for negative decimals

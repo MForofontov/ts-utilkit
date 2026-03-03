@@ -7,9 +7,6 @@
  * @param paramName - Name of the parameter being validated.
  * @returns Array of boolean results (true if TypeError was thrown).
  *
- * @throws {TypeError} If fn is not a function or invalidInputs is not an array.
- * @throws {TypeError} If paramName is not a string.
- *
  * @example
  * const results = testInvalidTypes(
  *   myFunction,
@@ -32,15 +29,6 @@ export function testInvalidTypes(
   invalidInputs: unknown[],
   paramName: string,
 ): boolean[] {
-  if (typeof fn !== 'function') {
-    throw new TypeError(`fn must be a function, got ${typeof fn}`);
-  }
-  if (!Array.isArray(invalidInputs)) {
-    throw new TypeError('invalidInputs must be an array');
-  }
-  if (typeof paramName !== 'string') {
-    throw new TypeError(`paramName must be a string, got ${typeof paramName}`);
-  }
 
   return invalidInputs.map((input) => {
     try {

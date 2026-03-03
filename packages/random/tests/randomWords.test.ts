@@ -111,22 +111,6 @@ describe('randomWords', () => {
     expect(endTime - startTime).toBeLessThan(100);
   });
 
-  // Error Test case 12: TypeError for non-number count
-  it('12. should throw TypeError when count is not a number', () => {
-    expect(() => randomWords('5' as any)).toThrow(TypeError);
-    expect(() => randomWords('5' as any)).toThrow(
-      'count must be a number, got string',
-    );
-  });
-
-  // Error Test case 13: TypeError for non-number wordLength
-  it('13. should throw TypeError when wordLength is not a number', () => {
-    expect(() => randomWords(3, '6' as any)).toThrow(TypeError);
-    expect(() => randomWords(3, '6' as any)).toThrow(
-      'wordLength must be a number, got string',
-    );
-  });
-
   // Error Test case 14: Error for NaN count
   it('14. should throw Error when count is NaN', () => {
     expect(() => randomWords(NaN)).toThrow(Error);
@@ -146,13 +130,11 @@ describe('randomWords', () => {
   // Error Test case 16: Error for non-integer count
   it('16. should throw Error when count is not an integer', () => {
     expect(() => randomWords(3.5)).toThrow(Error);
-    expect(() => randomWords(3.5)).toThrow('count must be an integer');
   });
 
   // Error Test case 17: Error for non-integer wordLength
   it('17. should throw Error when wordLength is not an integer', () => {
     expect(() => randomWords(3, 6.5)).toThrow(Error);
-    expect(() => randomWords(3, 6.5)).toThrow('wordLength must be an integer');
   });
 
   // Error Test case 18: Error for count < 1

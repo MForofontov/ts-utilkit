@@ -82,31 +82,9 @@ describe('parseEnvInt', () => {
     expect(result).toBe(42);
   });
 
-  // Error cases
-  it('12. should throw TypeError when key is not a string', () => {
-    expect(() => parseEnvInt(123 as any)).toThrow(TypeError);
-    expect(() => parseEnvInt(123 as any)).toThrow(
-      'key must be a string, got number',
-    );
-  });
-
   it('13. should throw Error when key is empty string', () => {
     expect(() => parseEnvInt('')).toThrow(Error);
     expect(() => parseEnvInt('')).toThrow('key cannot be an empty string');
-  });
-
-  it('14. should throw TypeError when defaultValue is not a number', () => {
-    expect(() => parseEnvInt('KEY', 'not a number' as any)).toThrow(TypeError);
-    expect(() => parseEnvInt('KEY', 'not a number' as any)).toThrow(
-      'defaultValue must be a number, got string',
-    );
-  });
-
-  it('15. should throw TypeError when defaultValue is NaN', () => {
-    expect(() => parseEnvInt('KEY', NaN)).toThrow(TypeError);
-    expect(() => parseEnvInt('KEY', NaN)).toThrow(
-      'defaultValue must be a valid number, not NaN',
-    );
   });
 
   it('16. should return a number (never undefined) when a defaultValue is provided', () => {

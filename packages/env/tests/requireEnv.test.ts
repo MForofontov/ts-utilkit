@@ -63,20 +63,6 @@ describe('requireEnv', () => {
     );
   });
 
-  it('8. should throw TypeError when key is not a string', () => {
-    expect(() => requireEnv(123 as any)).toThrow(TypeError);
-    expect(() => requireEnv(123 as any)).toThrow(
-      'key must be a string, got number',
-    );
-  });
-
-  it('9. should throw TypeError when key is null', () => {
-    expect(() => requireEnv(null as any)).toThrow(TypeError);
-    expect(() => requireEnv(null as any)).toThrow(
-      'key must be a string, got object',
-    );
-  });
-
   it('10. should throw Error when key is empty string', () => {
     expect(() => requireEnv('')).toThrow(Error);
     expect(() => requireEnv('')).toThrow('key cannot be an empty string');

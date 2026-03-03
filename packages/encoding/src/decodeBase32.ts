@@ -13,7 +13,6 @@ const BASE32_ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
  * @param str - The Base32 encoded string to decode (case-insensitive, padding optional).
  * @returns The decoded UTF-8 string.
  *
- * @throws {TypeError} If str is not a string.
  * @throws {Error} If the string contains characters outside the Base32 alphabet
  *   (A–Z, a–z, 2–7, and `=` padding).
  *
@@ -46,9 +45,6 @@ const BASE32_ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
  * @complexity Time: O(n), Space: O(n) where n is the length of the encoded string
  */
 export function decodeBase32(str: string): string {
-  if (typeof str !== 'string') {
-    throw new TypeError(`str must be a string, got ${typeof str}`);
-  }
 
   const normalized = str.toUpperCase().replace(/=+$/, '');
 

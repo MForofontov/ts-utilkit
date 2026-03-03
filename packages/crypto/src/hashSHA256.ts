@@ -6,8 +6,6 @@ import { createHash } from 'crypto';
  * @param data - The data to hash (string or Buffer).
  * @returns Hex string representation of the SHA-256 hash.
  *
- * @throws {TypeError} If data is not a string or Buffer.
- *
  * @example
  * // Hash a string
  * hashSHA256('hello world');
@@ -29,9 +27,6 @@ import { createHash } from 'crypto';
  * @complexity Time: O(n) where n is the length of input data, Space: O(1)
  */
 export function hashSHA256(data: string | Buffer): string {
-  if (typeof data !== 'string' && !Buffer.isBuffer(data)) {
-    throw new TypeError(`data must be a string or Buffer, got ${typeof data}`);
-  }
 
   return createHash('sha256').update(data).digest('hex');
 }

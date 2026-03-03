@@ -5,8 +5,6 @@
  * @param options - Options for decoding (decodeValues, arrayFormat).
  * @returns Object representation of query string.
  *
- * @throws {TypeError} If queryString is not a string or options are invalid.
- *
  * @example
  * // Parse query string
  * deserializeFromQueryString('name=John&age=30'); // { name: 'John', age: '30' }
@@ -24,25 +22,8 @@ export function deserializeFromQueryString(
   queryString: string,
   options: { decodeValues?: boolean; arrayFormat?: 'brackets' | 'auto' } = {},
 ): Record<string, any> {
-  if (typeof queryString !== 'string') {
-    throw new TypeError(
-      `queryString must be a string, got ${typeof queryString}`,
-    );
-  }
 
   const { decodeValues = true, arrayFormat = 'auto' } = options;
-
-  if (typeof decodeValues !== 'boolean') {
-    throw new TypeError(
-      `decodeValues must be a boolean, got ${typeof decodeValues}`,
-    );
-  }
-
-  if (!['brackets', 'auto'].includes(arrayFormat)) {
-    throw new TypeError(
-      `arrayFormat must be 'brackets' or 'auto', got ${arrayFormat}`,
-    );
-  }
 
   // Remove leading ?
   const cleanString = queryString.startsWith('?')

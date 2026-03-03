@@ -5,8 +5,6 @@
  * @param urlOrHostname - A URL string or hostname to check.
  * @returns True if the URL/hostname represents localhost, false otherwise.
  *
- * @throws {TypeError} If urlOrHostname is not a string.
- *
  * @example
  * // Hostname checks
  * isLocalhost('localhost'); // true
@@ -29,11 +27,6 @@
  */
 export function isLocalhost(urlOrHostname: string): boolean {
   // Input validation
-  if (typeof urlOrHostname !== 'string') {
-    throw new TypeError(
-      `urlOrHostname must be a string, got ${typeof urlOrHostname}`,
-    );
-  }
 
   let hostname = urlOrHostname;
 
