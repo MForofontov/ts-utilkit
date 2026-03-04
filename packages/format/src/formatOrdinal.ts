@@ -33,8 +33,6 @@
  * @complexity Time: O(1), Space: O(1)
  */
 export function formatOrdinal(value: number): string {
-  // Input validation
-
   const absValue = Math.abs(value);
   const lastDigit = absValue % 10;
   const lastTwoDigits = absValue % 100;

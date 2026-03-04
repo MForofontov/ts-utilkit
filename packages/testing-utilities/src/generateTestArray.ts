@@ -23,7 +23,7 @@
  */
 export function generateTestArray<T>(
   length: number,
-  generator: (index: number) => T = ((i: number) =>
+  generator: (index: number) => T = ((_i: number) =>
     Math.floor(Math.random() * 100)) as (index: number) => T,
 ): T[] {
   if (typeof length !== 'number' || length < 0) {

@@ -51,10 +51,10 @@ export function formatTemperature(
   // Input validation
 
   const validUnits: TemperatureUnit[] = ['C', 'F', 'K'];
-  if (!validUnits.includes(from as TemperatureUnit)) {
+  if (!validUnits.includes(from)) {
     throw new Error(`from must be "C", "F", or "K", got "${from}"`);
   }
-  if (!validUnits.includes(to as TemperatureUnit)) {
+  if (!validUnits.includes(to)) {
     throw new Error(`to must be "C", "F", or "K", got "${to}"`);
   }
   if (decimals < 0) {

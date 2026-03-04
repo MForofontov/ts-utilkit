@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Remove all runtime `typeof`/`instanceof` TypeError guards; rely on TypeScript type system for type safety
 - Remove all `@throws {TypeError}` JSDoc tags from all affected functions
 - Remove all TypeError test cases from all test files
+- `catch (e)` → `catch` in 12 functions (`countMatches`, `extractMatchGroups`, `extractMatches`, `findAll`, `getPatternComplexity`, `hasBacktracking`, `highlightMatches`, `optimizePattern`, `replaceAll`, `replaceWithCallback`, `splitByPattern`, `testPattern`) where the caught error is not referenced in the handler body
 
 ### Changed
 - `combinePatterns`: unknown pattern types (non-string, non-RegExp entries) are now silently skipped instead of throwing `TypeError`; only valid patterns contribute to the combined result

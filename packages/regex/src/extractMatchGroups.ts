@@ -66,7 +66,7 @@ export function extractMatchGroups(
         regex = pattern;
       }
     }
-  } catch (e) {
+  } catch {
     throw new Error(
       `Invalid regular expression pattern: ${pattern instanceof RegExp ? pattern.source : pattern}`,
     );

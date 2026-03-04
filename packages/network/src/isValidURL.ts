@@ -23,8 +23,6 @@
  * @complexity Time: O(n), Space: O(1)
  */
 export function isValidURL(url: string, allowedSchemes?: string[]): boolean {
-  // Input validation
-
   try {
     const parsed = new URL(url);
 

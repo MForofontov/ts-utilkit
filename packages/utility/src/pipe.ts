@@ -72,7 +72,5 @@ export function pipe(
   if (fns.length === 0) {
     throw new Error('pipe requires at least one function');
   }
-  for (let i = 0; i < fns.length; i++) {
-  }
   return (arg: unknown) => fns.reduce((acc, fn) => fn(acc), arg);
 }

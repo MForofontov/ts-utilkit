@@ -41,8 +41,6 @@ export interface DomainParts {
  * @complexity Time: O(1), Space: O(1)
  */
 export function getDomainParts(url: string): DomainParts {
-  // Input validation
-
   let hostname: string;
 
   // Try to parse as URL first

@@ -34,9 +34,5 @@
  * @complexity Time: O(n), Space: O(n) where n is the number of entries
  */
 export function entriesToObject<T>(entries: [string, unknown][]): T {
-
-  for (const entry of entries) {
-  }
-
   return Object.fromEntries(entries) as T;
 }

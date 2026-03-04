@@ -65,7 +65,6 @@ export function waitForEvent<T = unknown>(
     target &&
     typeof (target as { addEventListener?: unknown }).addEventListener ===
       'function';
-  const hasOn = target && typeof (target as { on?: unknown }).on === 'function';
 
   if (timeout !== undefined) {
     if (isNaN(timeout)) {

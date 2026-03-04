@@ -25,8 +25,6 @@
  * @complexity Time: O(n), Space: O(n)
  */
 export function encodeURLComponent(str: string): string {
-  // Input validation
-
   // Use native encodeURIComponent with additional replacements
   return encodeURIComponent(str).replace(
     /[!'()*]/g,

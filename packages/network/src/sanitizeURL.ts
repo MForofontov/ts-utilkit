@@ -32,8 +32,6 @@ export function sanitizeURL(
   url: string,
   allowedProtocols: string[] = ['http', 'https', 'mailto', 'tel'],
 ): string {
-  // Input validation
-
   // List of dangerous protocols
   const dangerousProtocols = [
     'javascript',

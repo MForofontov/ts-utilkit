@@ -27,9 +27,8 @@
 export function testInvalidTypes(
   fn: (arg: unknown) => unknown,
   invalidInputs: unknown[],
-  paramName: string,
+  _paramName: string,
 ): boolean[] {
-
   return invalidInputs.map((input) => {
     try {
       fn(input);

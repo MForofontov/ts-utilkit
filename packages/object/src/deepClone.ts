@@ -42,7 +42,7 @@
  */
 export function deepClone<T>(obj: T): T {
   if (typeof globalThis.structuredClone === 'function') {
-    return globalThis.structuredClone(obj) as T;
+    return globalThis.structuredClone(obj);
   }
   return JSON.parse(JSON.stringify(obj)) as T;
 }

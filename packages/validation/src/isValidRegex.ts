@@ -30,7 +30,7 @@ export function isValidRegex(pattern: string, flags?: string): boolean {
   try {
     new RegExp(pattern, flags);
     return true;
-  } catch (e) {
+  } catch {
     return false;
   }
 }

@@ -73,7 +73,5 @@ export function compose(
   if (fns.length === 0) {
     throw new Error('compose requires at least one function');
   }
-  for (let i = 0; i < fns.length; i++) {
-  }
   return (arg: unknown) => fns.reduceRight((acc, fn) => fn(acc), arg);
 }

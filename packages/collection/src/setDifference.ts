@@ -41,9 +41,6 @@ export function setDifference<T>(
     );
   }
 
-  for (let i = 0; i < otherSets.length; i++) {
-  }
-
   const result = new Set<T>();
 
   for (const item of firstSet) {

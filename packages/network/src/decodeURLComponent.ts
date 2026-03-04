@@ -24,8 +24,6 @@
  * @complexity Time: O(n), Space: O(n)
  */
 export function decodeURLComponent(str: string): string {
-  // Input validation
-
   try {
     // Attempt to decode
     return decodeURIComponent(str);

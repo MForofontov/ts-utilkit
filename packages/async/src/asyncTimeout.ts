@@ -43,9 +43,6 @@ export function asyncTimeout<T>(
   timeoutMs: number,
   timeoutMessage?: string,
 ): Promise<T> {
-  // Runtime validation for promise parameter (defensive check despite TypeScript typing)
-  // eslint-disable-next-line @typescript-eslint/no-misused-promises -- Validating promise interface at runtime
-
   if (timeoutMs < 0) {
     throw new Error(`timeoutMs must be non-negative, got ${timeoutMs}`);
   }

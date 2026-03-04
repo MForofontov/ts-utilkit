@@ -64,9 +64,6 @@ export function formatRelativeTime(
   date: Date | string | number,
   baseDate: Date | string | number = new Date(),
 ): string {
-  // Input validation
-  const validTypes = ['object', 'string', 'number'];
-
   const target = toDate(date);
   const base = toDate(baseDate);
 

@@ -35,9 +35,6 @@ export function setIntersection<T>(...sets: Set<T>[]): Set<T> {
     throw new Error(`At least two sets are required, got ${sets.length}`);
   }
 
-  for (let i = 0; i < sets.length; i++) {
-  }
-
   // Start with the first set's elements
   const result = new Set<T>();
   const firstSet = sets[0];

@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Remove all runtime `typeof`/`instanceof` TypeError guards; rely on TypeScript type system for type safety
 - Remove all `@throws {TypeError}` JSDoc tags from all affected functions
 - Remove all TypeError test cases from all test files
+- Remove orphaned `// Input validation` section comments from 12 functions (`buildURL`, `decodeURLComponent`, `encodeURLComponent`, `getDomainParts`, `getURLsFromText`, `isLocalhost`, `isSubdomain`, `isValidURL`, `normalizeURL`, `removeQueryParams`, `sanitizeURL`) where the typeof guard was removed but the section comment was not
 
 
 ### Added

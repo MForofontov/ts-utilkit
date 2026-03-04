@@ -36,8 +36,6 @@ export function formatList(
   locale: string = 'en',
 ): string {
   // Input validation
-  for (let i = 0; i < items.length; i++) {
-  }
   if (!['and', 'or', 'none'].includes(conjunction)) {
     throw new Error(
       `conjunction must be "and", "or", or "none", got "${conjunction}"`,

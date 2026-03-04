@@ -44,8 +44,6 @@ export function normalizeURL(
   url: string,
   options: NormalizeOptions = {},
 ): string {
-  // Input validation
-
   // Set defaults
   const opts: Required<NormalizeOptions> = {
     removeTrailingSlash: options.removeTrailingSlash ?? true,

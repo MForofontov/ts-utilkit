@@ -32,9 +32,6 @@ export function joinURLPaths(...paths: string[]): string {
     throw new Error('At least one path segment is required');
   }
 
-  for (const path of paths) {
-  }
-
   // Track if the original first path started with /
   const startsWithSlash = paths[0].startsWith('/');
 

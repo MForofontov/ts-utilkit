@@ -37,8 +37,6 @@ export function zipObject<T>(keys: string[], values: T[]): Record<string, T> {
       `keys and values must have the same length, got ${keys.length} and ${values.length}`,
     );
   }
-  for (let i = 0; i < keys.length; i++) {
-  }
 
   const result: Record<string, T> = {};
   for (let i = 0; i < keys.length; i++) {

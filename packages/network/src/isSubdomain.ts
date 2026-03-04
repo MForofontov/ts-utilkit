@@ -28,8 +28,6 @@
  * @complexity Time: O(1), Space: O(1)
  */
 export function isSubdomain(subdomainUrl: string, parentUrl: string): boolean {
-  // Input validation
-
   let subdomainHostname: string;
   let parentHostname: string;
 

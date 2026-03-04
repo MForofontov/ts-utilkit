@@ -31,8 +31,6 @@ import { _parseURL } from './_parseURL';
  */
 
 export function removeQueryParams(url: string, keys: string[]): string {
-  // Input validation
-
   const urlObj = _parseURL(url);
   const searchParams = urlObj.searchParams;
 

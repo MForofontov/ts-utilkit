@@ -26,8 +26,6 @@
  * @complexity Time: O(1), Space: O(1)
  */
 export function isLocalhost(urlOrHostname: string): boolean {
-  // Input validation
-
   let hostname = urlOrHostname;
 
   // Try to parse as URL first

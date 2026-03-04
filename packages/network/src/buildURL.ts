@@ -56,8 +56,6 @@ export interface URLComponents {
  * @complexity Time: O(n), Space: O(n)
  */
 export function buildURL(components: URLComponents): string {
-  // Input validation
-
   let url = `${components.protocol}://${components.hostname}`;
 
   // Add port if specified

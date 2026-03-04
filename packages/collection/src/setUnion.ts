@@ -35,9 +35,6 @@ export function setUnion<T>(...sets: Set<T>[]): Set<T> {
     throw new Error(`At least two sets are required, got ${sets.length}`);
   }
 
-  for (let i = 0; i < sets.length; i++) {
-  }
-
   const result = new Set<T>();
 
   for (const set of sets) {
