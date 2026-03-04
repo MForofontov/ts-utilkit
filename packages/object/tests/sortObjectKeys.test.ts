@@ -56,5 +56,4 @@ describe('sortObjectKeys', () => {
     const expected = { apple: 2, banana: 4, mango: 3, zebra: 1 };
     expect(result).toEqual(expected);
   });
-
 });

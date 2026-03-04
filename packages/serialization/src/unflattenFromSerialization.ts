@@ -20,7 +20,6 @@
 export function unflattenFromSerialization(
   flatObj: Record<string, any>,
 ): Record<string, any> {
-
   const result: any = {};
 
   for (const [path, value] of Object.entries(flatObj)) {

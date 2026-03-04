@@ -25,7 +25,6 @@ export function parseEnvFloat(
   key: string,
   defaultValue?: number,
 ): number | undefined {
-
   if (key.length === 0) {
     throw new Error('key cannot be an empty string');
   }

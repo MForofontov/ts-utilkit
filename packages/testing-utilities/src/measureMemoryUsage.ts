@@ -34,7 +34,6 @@ export interface MemoryUsageResult {
  * @complexity Time: O(1) + time of fn, Space: O(1) + space of fn
  */
 export function measureMemoryUsage(fn: () => unknown): MemoryUsageResult {
-
   // Force garbage collection if available
   if (global.gc) {
     global.gc();

@@ -15,7 +15,9 @@ describe('hasQueryParam', () => {
   });
 
   it('2. should return true for a second existing parameter', () => {
-    expect(hasQueryParam('https://example.com?page=1&limit=10', 'limit')).toBe(true);
+    expect(hasQueryParam('https://example.com?page=1&limit=10', 'limit')).toBe(
+      true,
+    );
   });
 
   it('3. should return true for a key-only parameter (no value)', () => {
@@ -28,7 +30,9 @@ describe('hasQueryParam', () => {
   });
 
   it('5. should return true for a multi-value parameter', () => {
-    expect(hasQueryParam('https://example.com?tag=a&tag=b&tag=c', 'tag')).toBe(true);
+    expect(hasQueryParam('https://example.com?tag=a&tag=b&tag=c', 'tag')).toBe(
+      true,
+    );
   });
 
   it('6. should return true when there is only one parameter', () => {

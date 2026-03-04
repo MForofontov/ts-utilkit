@@ -35,7 +35,6 @@ import { createCipheriv, randomBytes, scryptSync } from 'crypto';
  * @complexity Time: O(n) where n is data length, Space: O(n)
  */
 export function encryptAES256(data: string, key: string): string {
-
   if (data.length === 0) {
     throw new Error('data cannot be empty');
   }

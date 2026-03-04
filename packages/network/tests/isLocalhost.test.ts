@@ -106,5 +106,4 @@ describe('isLocalhost', () => {
     // With port in hostname format, it's not parsed as URL, so not detected
     expect(isLocalhost('127.0.0.1:8080')).toBe(false);
   });
-
 });

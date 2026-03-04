@@ -32,7 +32,6 @@ export function countMatches(
   pattern: string | RegExp,
   flags?: string,
 ): number {
-
   let regex: RegExp;
 
   try {

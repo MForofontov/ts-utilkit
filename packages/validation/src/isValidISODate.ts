@@ -34,7 +34,6 @@ export function isValidISODate(
   dateString: string,
   allowTime: boolean = true,
 ): boolean {
-
   // Basic ISO 8601 patterns
   const dateOnlyPattern = /^\d{4}-\d{2}-\d{2}$/;
   const dateTimePattern =

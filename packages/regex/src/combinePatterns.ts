@@ -35,7 +35,6 @@ export function combinePatterns(
   operator: 'and' | 'or',
   flags?: string,
 ): RegExp {
-
   if (patterns.length === 0) {
     throw new Error('patterns array cannot be empty');
   }

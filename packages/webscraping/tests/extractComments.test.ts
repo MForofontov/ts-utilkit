@@ -172,5 +172,4 @@ describe('extractComments', () => {
     // Assert
     expect(result).toEqual(expected);
   });
-
 });

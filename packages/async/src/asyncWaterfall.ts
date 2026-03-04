@@ -49,7 +49,6 @@ export function asyncWaterfall<T>(
   tasks: Array<(input: T) => Promise<T>>,
   initialValue: T,
 ): Promise<T> {
-
   tasks.forEach((task, index) => {
     if (typeof task !== 'function') {
       throw new Error(

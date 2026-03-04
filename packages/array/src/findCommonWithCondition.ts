@@ -40,8 +40,6 @@ export function findCommonWithCondition<T>(
 ): T[] {
   // First, find common elements using deep equality, then apply the condition
   return arr1
-    .filter((item1) =>
-      arr2.some((item2) => deepEqual(item1, item2)),
-    )
+    .filter((item1) => arr2.some((item2) => deepEqual(item1, item2)))
     .filter(condition);
 }

@@ -45,7 +45,6 @@ const BASE32_ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
  * @complexity Time: O(n), Space: O(n) where n is the length of the encoded string
  */
 export function decodeBase32(str: string): string {
-
   const normalized = str.toUpperCase().replace(/=+$/, '');
 
   if (normalized.length === 0) {

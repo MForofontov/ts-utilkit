@@ -131,5 +131,4 @@ describe('isValidHexColor', () => {
     expect(isValidHexColor('##FF5733')).toBe(false);
     expect(isValidHexColor('#FF#5733')).toBe(false);
   });
-
 });

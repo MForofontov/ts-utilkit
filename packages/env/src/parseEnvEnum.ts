@@ -47,7 +47,6 @@ export function parseEnvEnum<T extends string>(
   allowedValues: T[],
   defaultValue?: T,
 ): T {
-
   if (key.length === 0) {
     throw new Error('key cannot be an empty string');
   }

@@ -50,7 +50,6 @@
 export function fromDotNotation(
   obj: Record<string, unknown>,
 ): Record<string, unknown> {
-
   const result: Record<string, unknown> = {};
 
   for (const key in obj) {

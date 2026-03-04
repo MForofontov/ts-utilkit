@@ -56,7 +56,6 @@
 export function removeEmptyValues(
   obj: Record<string, unknown>,
 ): Partial<Record<string, unknown>> {
-
   const clean = (value: unknown): unknown => {
     if (Array.isArray(value)) {
       return value

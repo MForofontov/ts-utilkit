@@ -295,5 +295,4 @@ describe('extractStructuredData', () => {
     // Assert
     expect(result).toEqual(expected);
   });
-
 });

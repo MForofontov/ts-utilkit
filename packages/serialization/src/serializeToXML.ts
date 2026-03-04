@@ -25,7 +25,6 @@ export function serializeToXML(
   rootTag: string = 'root',
   pretty: boolean = false,
 ): string {
-
   if (rootTag.length === 0) {
     throw new Error('rootTag cannot be empty');
   }

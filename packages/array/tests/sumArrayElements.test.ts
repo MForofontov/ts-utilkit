@@ -258,5 +258,4 @@ describe('sumArrayElements', () => {
     // Assert
     expect(result).toBeCloseTo(expected, -10); // Less precision for very large numbers
   });
-
 });

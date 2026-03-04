@@ -8,11 +8,9 @@ describe('dropWhile', () => {
 
   // Test case 2: Drop leading blank strings
   it('2. should drop leading empty/whitespace strings', () => {
-    expect(dropWhile(['', ' ', 'hello', '', 'world'], (s) => s.trim() === '')).toEqual([
-      'hello',
-      '',
-      'world',
-    ]);
+    expect(
+      dropWhile(['', ' ', 'hello', '', 'world'], (s) => s.trim() === ''),
+    ).toEqual(['hello', '', 'world']);
   });
 
   // Test case 3: Drop objects while a property satisfies condition
@@ -110,7 +108,10 @@ describe('dropWhile', () => {
 
   // Test case 13: Works correctly with boolean array
   it('13. should drop leading true values from a boolean array', () => {
-    expect(dropWhile([true, true, false, true], (b) => b)).toEqual([false, true]);
+    expect(dropWhile([true, true, false, true], (b) => b)).toEqual([
+      false,
+      true,
+    ]);
   });
 
   // Test case 14: Large array performance
@@ -127,5 +128,4 @@ describe('dropWhile', () => {
     expect(result).toHaveLength(5000);
     expect(end - start).toBeLessThan(100);
   });
-
 });

@@ -141,5 +141,4 @@ describe('countBy', () => {
     expect(result.get('odd')).toBe(5000);
     expect(end - start).toBeLessThan(100);
   });
-
 });

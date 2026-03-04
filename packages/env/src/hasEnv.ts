@@ -38,7 +38,6 @@
  * @complexity Time: O(1), Space: O(1)
  */
 export function hasEnv(key: string): boolean {
-
   if (key.length === 0) {
     throw new Error('key cannot be an empty string');
   }

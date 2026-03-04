@@ -35,7 +35,9 @@ describe('tryCatch', () => {
 
   it('5. should return fallback value from onError callback', () => {
     const { value } = tryCatch(
-      () => { throw new Error('fail'); },
+      () => {
+        throw new Error('fail');
+      },
       () => 'fallback',
     );
     expect(value).toBe('fallback');
@@ -43,7 +45,9 @@ describe('tryCatch', () => {
 
   it('6. should still populate error when onError provides a fallback', () => {
     const { value, error } = tryCatch(
-      () => { throw new Error('oops'); },
+      () => {
+        throw new Error('oops');
+      },
       () => 99,
     );
     expect(value).toBe(99);
@@ -54,8 +58,13 @@ describe('tryCatch', () => {
   it('7. should pass the caught error to the onError callback', () => {
     let receivedError: Error | undefined;
     tryCatch(
-      () => { throw new Error('original'); },
-      (err) => { receivedError = err; return null; },
+      () => {
+        throw new Error('original');
+      },
+      (err) => {
+        receivedError = err;
+        return null;
+      },
     );
     expect(receivedError?.message).toBe('original');
   });
@@ -85,21 +94,27 @@ describe('tryCatch', () => {
 
   it('12. should wrap a non-Error throw in an Error', () => {
     // eslint-disable-next-line @typescript-eslint/no-throw-literal
-    const { error } = tryCatch(() => { throw 'string error'; });
+    const { error } = tryCatch(() => {
+      throw 'string error';
+    });
     expect(error).toBeInstanceOf(Error);
     expect(error?.message).toBe('string error');
   });
 
   it('13. should wrap a thrown number in an Error', () => {
     // eslint-disable-next-line @typescript-eslint/no-throw-literal
-    const { error } = tryCatch(() => { throw 42; });
+    const { error } = tryCatch(() => {
+      throw 42;
+    });
     expect(error).toBeInstanceOf(Error);
     expect(error?.message).toBe('42');
   });
 
   it('14. should handle nested tryCatch safely', () => {
     const outer = tryCatch(() =>
-      tryCatch(() => { throw new Error('inner'); }),
+      tryCatch(() => {
+        throw new Error('inner');
+      }),
     );
     // Outer succeeds (inner tryCatch never throws)
     expect(outer.error).toBeUndefined();
@@ -126,5 +141,4 @@ describe('tryCatch', () => {
   });
 
   // ─── Error cases ───────────────────────────────────────────────────────────
-
 });

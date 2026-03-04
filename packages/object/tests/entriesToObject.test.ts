@@ -46,5 +46,4 @@ describe('entriesToObject', () => {
     const expected = { a: 1, b: 'string', c: true, d: null, e: undefined };
     expect(result).toEqual(expected);
   });
-
 });

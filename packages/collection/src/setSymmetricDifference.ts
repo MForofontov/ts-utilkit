@@ -35,7 +35,6 @@
  * @complexity Time: O(n + m) where n and m are set sizes, Space: O(n + m)
  */
 export function setSymmetricDifference<T>(set1: Set<T>, set2: Set<T>): Set<T> {
-
   const result = new Set<T>();
 
   // Add elements from set1 that are not in set2

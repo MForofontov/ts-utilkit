@@ -123,5 +123,4 @@ describe('countConsonants', () => {
     const result: number = countConsonants(str);
     expect(result).toBe(expected);
   });
-
 });

@@ -18,7 +18,6 @@
  * @complexity Time: O(n) where n is html length, Space: O(m) where m is number of phone numbers
  */
 export function extractPhoneNumbers(html: string): string[] {
-
   const phones = new Set<string>();
 
   // Extract from tel: links

@@ -309,5 +309,4 @@ describe('delegateEvent', () => {
     // Cleanup
     document.body.removeChild(parent);
   });
-
 });

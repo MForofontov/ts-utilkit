@@ -44,7 +44,9 @@ describe('randomGaussian', () => {
   it('6. should place ~68% of samples within ±1 stdDev of the mean', () => {
     const mean = 50;
     const stdDev = 10;
-    const samples = Array.from({ length: 5000 }, () => randomGaussian(mean, stdDev));
+    const samples = Array.from({ length: 5000 }, () =>
+      randomGaussian(mean, stdDev),
+    );
     const within1Sigma = samples.filter(
       (v) => v >= mean - stdDev && v <= mean + stdDev,
     ).length;

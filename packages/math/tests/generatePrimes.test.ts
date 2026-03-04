@@ -40,7 +40,9 @@ describe('generatePrimes', () => {
 
   // Test case 7: Normal usage - limit is 50
   it('7. should generate all prime numbers up to 50', () => {
-    expect(generatePrimes(50)).toEqual([2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]);
+    expect(generatePrimes(50)).toEqual([
+      2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47,
+    ]);
   });
 
   // Test case 8: Verify all returned numbers are actually prime

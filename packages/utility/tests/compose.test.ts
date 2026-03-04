@@ -13,36 +13,36 @@ describe('compose', () => {
 
   it('2. should apply two functions right-to-left', () => {
     const fn = compose(
-      (x: number) => x * 2,  // applied second
-      (x: number) => x + 1,  // applied first
+      (x: number) => x * 2, // applied second
+      (x: number) => x + 1, // applied first
     );
     expect(fn(5)).toBe(12); // (5+1)*2
   });
 
   it('3. should apply three functions right-to-left', () => {
     const fn = compose(
-      (x: number) => x - 2,  // applied third
-      (x: number) => x * 3,  // applied second
-      (x: number) => x + 1,  // applied first
+      (x: number) => x - 2, // applied third
+      (x: number) => x * 3, // applied second
+      (x: number) => x + 1, // applied first
     );
     expect(fn(5)).toBe(16); // ((5+1)*3)-2
   });
 
   it('4. should apply four functions right-to-left', () => {
     const fn = compose(
-      (x: number) => x - 1,   // applied fourth
-      (x: number) => x / 2,   // applied third
-      (x: number) => x + 10,  // applied second
-      (x: number) => x * 2,   // applied first
+      (x: number) => x - 1, // applied fourth
+      (x: number) => x / 2, // applied third
+      (x: number) => x + 10, // applied second
+      (x: number) => x * 2, // applied first
     );
     expect(fn(1)).toBe(5); // ((1*2)+10)/2-1
   });
 
   it('5. should work with string transformations', () => {
     const transform = compose(
-      (s: string) => s.replace(/\s+/g, '-'),  // applied third
-      (s: string) => s.toLowerCase(),          // applied second
-      (s: string) => s.trim(),                 // applied first
+      (s: string) => s.replace(/\s+/g, '-'), // applied third
+      (s: string) => s.toLowerCase(), // applied second
+      (s: string) => s.trim(), // applied first
     );
     expect(transform('  Hello World  ')).toBe('hello-world');
   });
@@ -50,8 +50,14 @@ describe('compose', () => {
   it('6. should call functions in reverse order', () => {
     const calls: string[] = [];
     const fn = compose(
-      (x: number) => { calls.push('f1'); return x * 2; },
-      (x: number) => { calls.push('f2'); return x + 1; },
+      (x: number) => {
+        calls.push('f1');
+        return x * 2;
+      },
+      (x: number) => {
+        calls.push('f2');
+        return x + 1;
+      },
     );
     fn(3);
     expect(calls).toEqual(['f2', 'f1']); // f2 (rightmost) first
@@ -60,8 +66,8 @@ describe('compose', () => {
   it('7. should produce the opposite result from pipe with the same functions', () => {
     // compose(f, g)(x) = f(g(x)) — g applied first
     const doubleThenAdd = compose(
-      (x: number) => x + 1,  // applied second
-      (x: number) => x * 2,  // applied first
+      (x: number) => x + 1, // applied second
+      (x: number) => x * 2, // applied first
     );
     expect(doubleThenAdd(4)).toBe(9); // (4*2)+1
   });
@@ -139,5 +145,4 @@ describe('compose', () => {
       (compose as unknown as (...a: unknown[]) => unknown)(),
     ).toThrow('compose requires at least one function');
   });
-
 });

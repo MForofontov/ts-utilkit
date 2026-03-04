@@ -26,7 +26,6 @@
  * @complexity Time: O(n), Space: O(n)
  */
 export function isValidJSON(jsonString: string): boolean {
-
   if (jsonString.trim() === '') {
     return false;
   }

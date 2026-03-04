@@ -123,5 +123,4 @@ describe('reverseWords', () => {
     const result: string = reverseWords(str);
     expect(result).toBe(expected);
   });
-
 });

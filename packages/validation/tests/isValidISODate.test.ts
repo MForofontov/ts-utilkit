@@ -91,5 +91,4 @@ describe('isValidISODate', () => {
     expect(isValidISODate('2023-12-25T00:00:00Z')).toBe(true);
     expect(isValidISODate('2023-12-25T23:59:59Z')).toBe(true);
   });
-
 });

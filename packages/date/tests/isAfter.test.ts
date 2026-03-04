@@ -64,12 +64,20 @@ describe('isAfter', () => {
   });
 
   it('12. should throw Error for invalid date1', () => {
-    expect(() => isAfter(new Date('invalid'), new Date('2025-01-01'))).toThrow(Error);
-    expect(() => isAfter(new Date('invalid'), new Date('2025-01-01'))).toThrow('Invalid date');
+    expect(() => isAfter(new Date('invalid'), new Date('2025-01-01'))).toThrow(
+      Error,
+    );
+    expect(() => isAfter(new Date('invalid'), new Date('2025-01-01'))).toThrow(
+      'Invalid date',
+    );
   });
 
   it('13. should throw Error for invalid date2', () => {
-    expect(() => isAfter(new Date('2025-01-01'), new Date('invalid'))).toThrow(Error);
-    expect(() => isAfter(new Date('2025-01-01'), new Date('invalid'))).toThrow('Invalid date');
+    expect(() => isAfter(new Date('2025-01-01'), new Date('invalid'))).toThrow(
+      Error,
+    );
+    expect(() => isAfter(new Date('2025-01-01'), new Date('invalid'))).toThrow(
+      'Invalid date',
+    );
   });
 });

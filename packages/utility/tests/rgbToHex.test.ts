@@ -58,5 +58,4 @@ describe('rgbToHex', () => {
   it('10. should return #ffNaN00 when a channel is NaN', () => {
     expect(rgbToHex({ r: 255, g: Number.NaN, b: 0 })).toBe('#ffNaN00');
   });
-
 });

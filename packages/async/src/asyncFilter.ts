@@ -51,7 +51,6 @@ export function asyncFilter<T>(
   array: T[],
   asyncPredicate: (item: T, index: number) => Promise<boolean>,
 ): Promise<T[]> {
-
   // After validation, return the async implementation
   return (async () => {
     if (array.length === 0) {

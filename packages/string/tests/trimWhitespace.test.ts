@@ -107,5 +107,4 @@ describe('trimWhitespace', () => {
     const result: string = trimWhitespace(str);
     expect(result).toBe(expected);
   });
-
 });

@@ -31,7 +31,6 @@
  * @complexity Time: O(1), Space: O(1)
  */
 export function isValidSlug(slug: string): boolean {
-
   // Empty string is not a valid slug
   if (slug.length === 0) {
     return false;

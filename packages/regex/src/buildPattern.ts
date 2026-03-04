@@ -80,7 +80,6 @@ export class PatternBuilder {
    * @returns The builder instance for chaining.
    */
   group(name?: string): this {
-
     const pattern = this.parts.join('');
     this.parts = [];
     this.parts.push(name ? `(?<${name}>${pattern})` : `(${pattern})`);

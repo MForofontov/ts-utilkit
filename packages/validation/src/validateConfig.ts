@@ -24,9 +24,7 @@ export function validateConfig<T extends Record<string, any>>(
   config: T,
   requiredKeys: string[],
 ): boolean {
-
   for (const key of requiredKeys) {
-
     const value = getNestedValue(config, key);
 
     if (value === undefined) {

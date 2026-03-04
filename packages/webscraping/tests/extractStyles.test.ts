@@ -224,5 +224,4 @@ describe('extractStyles', () => {
     // Assert
     expect(result).toEqual(expected);
   });
-
 });

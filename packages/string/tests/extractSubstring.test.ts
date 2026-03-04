@@ -18,10 +18,14 @@ describe('extractSubstring', () => {
   });
   it('6. should throw RangeError for negative startIndex', () => {
     expect(() => extractSubstring('hello', -1, 2)).toThrow(RangeError);
-    expect(() => extractSubstring('hello', -1, 2)).toThrow('startIndex must be non-negative');
+    expect(() => extractSubstring('hello', -1, 2)).toThrow(
+      'startIndex must be non-negative',
+    );
   });
   it('7. should throw RangeError for negative length', () => {
     expect(() => extractSubstring('hello', 0, -1)).toThrow(RangeError);
-    expect(() => extractSubstring('hello', 0, -1)).toThrow('length must be non-negative');
+    expect(() => extractSubstring('hello', 0, -1)).toThrow(
+      'length must be non-negative',
+    );
   });
 });

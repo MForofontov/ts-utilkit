@@ -71,5 +71,4 @@ describe('deepMerge', () => {
     const expected = { [sym1]: 1, [sym2]: 2 };
     expect(result).toEqual(expected);
   });
-
 });

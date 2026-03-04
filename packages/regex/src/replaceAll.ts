@@ -34,7 +34,6 @@ export function replaceAll(
   replacement: string | ((substring: string, ...args: any[]) => string),
   flags?: string,
 ): string {
-
   let regex: RegExp;
 
   try {

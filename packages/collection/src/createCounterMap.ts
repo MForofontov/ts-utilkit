@@ -32,7 +32,6 @@
  * @complexity Time: O(n), Space: O(k) where n is array length and k is number of unique items
  */
 export function createCounterMap<T>(items: T[]): Map<T, number> {
-
   const counter = new Map<T, number>();
 
   for (const item of items) {

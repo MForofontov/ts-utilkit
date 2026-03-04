@@ -1,6 +1,6 @@
 # @ts-utilkit/webscraping
 
-web Scraping  Functions - TypeScript utility functions for webscraping operations.
+web Scraping Functions - TypeScript utility functions for webscraping operations.
 
 ## Installation
 
@@ -42,7 +42,7 @@ import { scrapeText } from '@ts-utilkit/webscraping';
 
 // Extract text content from HTML
 const html = '<div><p>Hello</p><p>World</p></div>';
-const text = scrapeText(html);       // 'Hello World'
+const text = scrapeText(html); // 'Hello World'
 ```
 
 ## License

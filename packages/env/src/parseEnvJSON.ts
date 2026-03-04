@@ -24,7 +24,6 @@ export function parseEnvJSON<T = any>(
   key: string,
   defaultValue?: T,
 ): T | undefined {
-
   if (key.length === 0) {
     throw new Error('key cannot be an empty string');
   }

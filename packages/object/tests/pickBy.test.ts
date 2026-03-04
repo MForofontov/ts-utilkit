@@ -57,5 +57,4 @@ describe('pickBy', () => {
     const expected = { b: date };
     expect(result).toEqual(expected);
   });
-
 });

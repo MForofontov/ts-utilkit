@@ -60,7 +60,6 @@ export function asyncMemoize<T, Args extends unknown[]>(
     keyFn?: (...args: Args) => string;
   } = {},
 ): (...args: Args) => Promise<T> {
-
   const { ttl, keyFn } = options;
 
   if (ttl !== undefined) {

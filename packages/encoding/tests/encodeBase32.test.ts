@@ -50,7 +50,16 @@ describe('encodeBase32', () => {
   });
 
   it('10. should produce output whose length is a multiple of 8', () => {
-    const inputs = ['a', 'ab', 'abc', 'abcd', 'abcde', 'abcdef', 'abcdefg', 'abcdefgh'];
+    const inputs = [
+      'a',
+      'ab',
+      'abc',
+      'abcd',
+      'abcde',
+      'abcdef',
+      'abcdefg',
+      'abcdefgh',
+    ];
     for (const input of inputs) {
       expect(encodeBase32(input).length % 8).toBe(0);
     }
@@ -64,10 +73,18 @@ describe('encodeBase32', () => {
 
   it('12. should round-trip correctly with decodeBase32', () => {
     const { decodeBase32 } = require('../src/decodeBase32');
-    const inputs = ['hello', 'f', 'fo', 'foo', 'foob', 'fooba', 'foobar', '12345678901234567890'];
+    const inputs = [
+      'hello',
+      'f',
+      'fo',
+      'foo',
+      'foob',
+      'fooba',
+      'foobar',
+      '12345678901234567890',
+    ];
     for (const input of inputs) {
       expect(decodeBase32(encodeBase32(input))).toBe(input);
     }
   });
-
 });

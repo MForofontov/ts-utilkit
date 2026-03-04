@@ -385,5 +385,4 @@ describe('onceEvent', () => {
     document.body.removeChild(div1);
     document.body.removeChild(div2);
   });
-
 });

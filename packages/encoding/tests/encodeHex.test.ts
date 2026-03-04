@@ -58,5 +58,4 @@ describe('encodeHex', () => {
       expect(decodeHex(encodeHex(input))).toBe(input);
     }
   });
-
 });

@@ -51,5 +51,4 @@ describe('decodeBase64', () => {
   it('9. should throw an error for base64 with invalid length', () => {
     expect(() => decodeBase64('Y')).toThrow('Invalid base64 string');
   });
-
 });

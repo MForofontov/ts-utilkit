@@ -114,7 +114,6 @@ export const CommonPatterns = {
 export function getCommonPattern(
   patternName: keyof typeof CommonPatterns,
 ): RegExp {
-
   if (!(patternName in CommonPatterns)) {
     throw new Error(
       `Unknown pattern name: ${patternName}. Available patterns: ${Object.keys(CommonPatterns).join(', ')}`,
@@ -148,7 +147,6 @@ export function testCommonPattern(
   text: string,
   patternName: keyof typeof CommonPatterns,
 ): boolean {
-
   const pattern = getCommonPattern(patternName);
   return pattern.test(text);
 }

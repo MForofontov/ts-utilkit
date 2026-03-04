@@ -123,5 +123,4 @@ describe('isAlpha', () => {
     const result: boolean = isAlpha(str);
     expect(result).toBe(expected);
   });
-
 });

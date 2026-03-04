@@ -207,5 +207,4 @@ describe('parseJSON', () => {
     // Assert
     expect(result).toEqual(expected);
   });
-
 });

@@ -40,5 +40,4 @@ describe('setToArray', () => {
     expect(result1).not.toBe(result2);
     expect(result1).toEqual(result2);
   });
-
 });

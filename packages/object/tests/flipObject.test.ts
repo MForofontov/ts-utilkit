@@ -56,5 +56,4 @@ describe('flipObject', () => {
     };
     expect(result).toEqual(expected);
   });
-
 });

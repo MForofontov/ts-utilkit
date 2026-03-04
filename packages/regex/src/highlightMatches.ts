@@ -42,7 +42,6 @@ export function highlightMatches(
   },
   flags?: string,
 ): string {
-
   const before = options?.before ?? '<mark>';
   const after = options?.after ?? '</mark>';
 

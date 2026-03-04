@@ -39,9 +39,7 @@ export function calculatePercentile(arr: number[], p: number): number {
     throw new Error('p must be a valid number, not NaN');
   }
   if (p < 0 || p > 100) {
-    throw new Error(
-      `p must be in the range [0, 100], got ${p}`,
-    );
+    throw new Error(`p must be in the range [0, 100], got ${p}`);
   }
   if (arr.length === 0) {
     return NaN;

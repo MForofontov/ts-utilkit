@@ -217,5 +217,4 @@ describe('extractPhoneNumbers', () => {
     // Assert
     expect(result).toEqual(expected);
   });
-
 });

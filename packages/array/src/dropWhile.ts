@@ -39,7 +39,6 @@ export function dropWhile<T>(
   arr: T[],
   predicate: (value: T, index: number, array: T[]) => boolean,
 ): T[] {
-
   let dropIndex = 0;
 
   while (dropIndex < arr.length && predicate(arr[dropIndex], dropIndex, arr)) {

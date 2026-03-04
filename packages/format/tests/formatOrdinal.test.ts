@@ -198,5 +198,4 @@ describe('formatOrdinal', () => {
     // Assert
     expect(result).toBe(expected);
   });
-
 });

@@ -50,7 +50,10 @@
  *
  * @complexity Time: O(1), Space: O(1)
  */
-export function formatRelativeTime(date: Date, baseDate: Date = new Date()): string {
+export function formatRelativeTime(
+  date: Date,
+  baseDate: Date = new Date(),
+): string {
   if (isNaN(date.getTime())) {
     throw new Error('Invalid date');
   }

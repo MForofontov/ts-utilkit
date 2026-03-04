@@ -151,5 +151,4 @@ describe('testMultipleCases', () => {
     expect(results[2].passed).toBe(true);
     expect(results[3].passed).toBe(false);
   });
-
 });

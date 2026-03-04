@@ -125,5 +125,4 @@ describe('groupByObject', () => {
     };
     expect(result).toEqual(expected);
   });
-
 });

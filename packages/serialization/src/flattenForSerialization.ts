@@ -23,7 +23,6 @@ export function flattenForSerialization(
   obj: Record<string, any>,
   prefix: string = '',
 ): Record<string, any> {
-
   const result: Record<string, any> = {};
 
   const flatten = (current: any, path: string): void => {

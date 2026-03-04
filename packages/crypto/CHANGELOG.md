@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Changed
+
 - Remove all runtime `typeof`/`instanceof` TypeError guards; rely on TypeScript type system for type safety
 - Remove all `@throws {TypeError}` JSDoc tags from all affected functions
 - Remove all TypeError test cases from all test files
@@ -15,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.0] - 2026-01-26
 
 ### Added
+
 - Initial release of @ts-utilkit/crypto with 11 functions
 - Hashing algorithms: `hashSHA256`, `hashSHA512`, `hashMD5` (legacy only)
 - Password security: `hashPassword` with PBKDF2
@@ -30,6 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Workflow
 
 As you make changes, immediately add them to the **[Unreleased]** section:
+
 1. Add item under appropriate category (Added/Changed/Fixed/Deprecated/Removed/Security)
 2. When releasing, rename [Unreleased] to version number with date
 3. Create new empty [Unreleased] section at the top

@@ -142,5 +142,4 @@ describe('truncateString', () => {
     const result: string = truncateString(str, maxLength);
     expect(result).toBe(expected);
   });
-
 });

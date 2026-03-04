@@ -123,5 +123,4 @@ describe('isValidEmail', () => {
     const result: boolean = isValidEmail(email);
     expect(result).toBe(expected);
   });
-
 });

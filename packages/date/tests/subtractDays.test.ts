@@ -23,12 +23,16 @@ describe('subtractDays', () => {
 
   it('5. should handle leap year: subtract 1 from March 1 in non-leap year', () => {
     // 2025 is not a leap year — Feb has 28 days
-    expect(subtractDays(new Date('2025-03-01'), 1)).toEqual(new Date('2025-02-28'));
+    expect(subtractDays(new Date('2025-03-01'), 1)).toEqual(
+      new Date('2025-02-28'),
+    );
   });
 
   it('6. should handle leap year: subtract 1 from March 1 in leap year', () => {
     // 2024 is a leap year — Feb has 29 days
-    expect(subtractDays(new Date('2024-03-01'), 1)).toEqual(new Date('2024-02-29'));
+    expect(subtractDays(new Date('2024-03-01'), 1)).toEqual(
+      new Date('2024-02-29'),
+    );
   });
 
   it('7. should not modify the original date', () => {
@@ -67,6 +71,5 @@ describe('subtractDays', () => {
     expect(() => subtractDays(new Date('invalid'), 5)).toThrow('Invalid date');
   });
 
-  it('12. should throw Error when days is NaN', () => {
-  });
+  it('12. should throw Error when days is NaN', () => {});
 });

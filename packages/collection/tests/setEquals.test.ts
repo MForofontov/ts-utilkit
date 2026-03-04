@@ -64,5 +64,4 @@ describe('setEquals', () => {
     const result = setEquals(set1, set2);
     expect(result).toBe(false);
   });
-
 });

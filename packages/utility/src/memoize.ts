@@ -46,7 +46,6 @@ export function memoize<T, Args extends unknown[]>(
   fn: (...args: Args) => T,
   keyFn?: (...args: Args) => string,
 ): (...args: Args) => T {
-
   const cache = new Map<string, T>();
 
   return (...args: Args): T => {

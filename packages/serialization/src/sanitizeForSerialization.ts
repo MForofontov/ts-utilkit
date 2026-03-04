@@ -22,7 +22,6 @@ export function sanitizeForSerialization(
   obj: any,
   removeNull: boolean = false,
 ): any {
-
   const sanitize = (value: any): any => {
     if (value === undefined) {
       return undefined;

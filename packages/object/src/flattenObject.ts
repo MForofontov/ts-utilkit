@@ -68,7 +68,6 @@ export function flattenObject(
   obj: Record<string, unknown>,
   prefix = '',
 ): Record<string, unknown> {
-
   const result: Record<string, unknown> = {};
 
   for (const key in obj) {

@@ -66,5 +66,4 @@ describe('keysToCamelCase', () => {
     const expected = { userId: 42, apiToken: 'abc' };
     expect(result).toEqual(expected);
   });
-
 });

@@ -129,5 +129,4 @@ describe('normalizeURL', () => {
   it('19. should throw Error for invalid URL format', () => {
     expect(() => normalizeURL('not a valid url')).toThrow('Invalid URL');
   });
-
 });

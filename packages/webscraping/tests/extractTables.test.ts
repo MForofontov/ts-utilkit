@@ -273,5 +273,4 @@ describe('extractTables', () => {
     expect(result.length).toBeGreaterThanOrEqual(1);
     expect(result[0]).toContainEqual(['Outer']);
   });
-
 });

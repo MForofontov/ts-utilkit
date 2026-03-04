@@ -66,5 +66,4 @@ describe('getDeepEqualityHash', () => {
     const result = getDeepEqualityHash(obj);
     expect(typeof result).toBe('number');
   });
-
 });

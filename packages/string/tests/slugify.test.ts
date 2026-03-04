@@ -123,5 +123,4 @@ describe('slugify', () => {
     const result: string = slugify(str);
     expect(result).toBe(expected);
   });
-
 });

@@ -161,5 +161,4 @@ describe('generateTestArray', () => {
       'length must be a non-negative number',
     );
   });
-
 });

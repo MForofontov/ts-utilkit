@@ -19,6 +19,8 @@ describe('generateRandomAlphanumeric', () => {
   });
   it('5. should throw RangeError for negative length', () => {
     expect(() => generateRandomAlphanumeric(-1)).toThrow(RangeError);
-    expect(() => generateRandomAlphanumeric(-1)).toThrow('length must be non-negative');
+    expect(() => generateRandomAlphanumeric(-1)).toThrow(
+      'length must be non-negative',
+    );
   });
 });

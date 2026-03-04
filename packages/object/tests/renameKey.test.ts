@@ -46,7 +46,11 @@ describe('renameKey', () => {
   });
 
   it('8. should work with null value', () => {
-    const result = renameKey({ key: null } as Record<string, null>, 'key', 'renamedKey');
+    const result = renameKey(
+      { key: null } as Record<string, null>,
+      'key',
+      'renamedKey',
+    );
     expect(result).toEqual({ renamedKey: null });
   });
 
@@ -65,5 +69,4 @@ describe('renameKey', () => {
       'Key "b" already exists on the object',
     );
   });
-
 });

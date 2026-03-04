@@ -113,5 +113,4 @@ describe('addDays', () => {
     const date: Date = new Date('2023-01-01');
     const days: number = NaN;
   });
-
 });

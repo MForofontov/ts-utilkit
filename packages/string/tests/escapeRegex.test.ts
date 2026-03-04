@@ -189,5 +189,4 @@ describe('escapeRegex', () => {
     // Assert
     expect(result).toBe(expected);
   });
-
 });

@@ -27,7 +27,6 @@ export function deserializeFromBuffer<T = any>(
   encoding: BufferEncoding = 'utf8',
   parseJSON: boolean = true,
 ): T {
-
   try {
     const str = buffer.toString(encoding);
 

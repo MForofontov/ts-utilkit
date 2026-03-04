@@ -48,5 +48,4 @@ describe('applyDefaults', () => {
     const expected = {};
     expect(result).toEqual(expected);
   });
-
 });

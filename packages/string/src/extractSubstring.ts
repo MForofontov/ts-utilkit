@@ -23,9 +23,7 @@ export function extractSubstring(
   length: number,
 ): string {
   if (startIndex < 0) {
-    throw new RangeError(
-      `startIndex must be non-negative, got ${startIndex}`,
-    );
+    throw new RangeError(`startIndex must be non-negative, got ${startIndex}`);
   }
   if (length < 0) {
     throw new RangeError(`length must be non-negative, got ${length}`);

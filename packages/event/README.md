@@ -1,6 +1,6 @@
 # @ts-utilkit/event
 
-event  Functions - TypeScript utility functions for event operations.
+event Functions - TypeScript utility functions for event operations.
 
 ## Installation
 

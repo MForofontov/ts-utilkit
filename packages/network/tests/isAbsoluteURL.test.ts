@@ -41,7 +41,9 @@ describe('isAbsoluteURL', () => {
   });
 
   it('6. should return true for an https URL with port, path, query and fragment', () => {
-    expect(isAbsoluteURL('https://api.example.com:8080/v1/items?page=2#top')).toBe(true);
+    expect(
+      isAbsoluteURL('https://api.example.com:8080/v1/items?page=2#top'),
+    ).toBe(true);
   });
 
   // ── Relative URLs (should return false) ──────────────────────────────────
@@ -84,5 +86,4 @@ describe('isAbsoluteURL', () => {
   });
 
   // ── Error cases ───────────────────────────────────────────────────────────
-
 });

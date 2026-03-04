@@ -25,7 +25,6 @@ export function serializeToCSV(
   data: Record<string, any>[],
   options: { delimiter?: string; includeHeaders?: boolean } = {},
 ): string {
-
   if (data.length === 0) {
     throw new Error('data array cannot be empty');
   }

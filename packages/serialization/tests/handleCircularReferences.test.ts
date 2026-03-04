@@ -173,5 +173,4 @@ describe('handleCircularReferences', () => {
     // Assert
     expect(input.self).toBe(input); // Original unchanged
   });
-
 });

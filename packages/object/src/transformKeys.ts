@@ -32,7 +32,6 @@ export function transformKeys(
   obj: Record<string, unknown>,
   fn: (key: string) => string,
 ): Record<string, unknown> {
-
   const result: Record<string, unknown> = {};
   for (const key of Object.keys(obj)) {
     const newKey = fn(key);

@@ -137,5 +137,4 @@ describe('isValidCreditCard', () => {
     // but would be rejected by payment processors
     expect(isValidCreditCard('0000000000000000')).toBe(true);
   });
-
 });

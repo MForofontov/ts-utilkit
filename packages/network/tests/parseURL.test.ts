@@ -256,5 +256,4 @@ describe('parseURL', () => {
     expect(() => parseURL(url)).toThrow(Error);
     expect(() => parseURL(url)).toThrow('Invalid URL');
   });
-
 });

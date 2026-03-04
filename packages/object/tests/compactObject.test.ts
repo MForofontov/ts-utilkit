@@ -73,5 +73,4 @@ describe('compactObject', () => {
     const expected = { a: BigInt(123), c: 'string' };
     expect(result).toEqual(expected);
   });
-
 });

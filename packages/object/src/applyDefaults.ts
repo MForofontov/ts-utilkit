@@ -47,6 +47,5 @@ export function applyDefaults<T extends Record<string, unknown>>(
   obj: T,
   defaults: Partial<T>,
 ): T {
-
   return { ...defaults, ...obj };
 }

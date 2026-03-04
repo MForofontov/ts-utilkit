@@ -66,5 +66,4 @@ describe('objectMap', () => {
     const expected = { a: 'undefined', b: 2 };
     expect(result).toEqual(expected);
   });
-
 });

@@ -222,5 +222,4 @@ describe('sanitizeHTML', () => {
     expect(result).not.toContain('script');
     expect(result).not.toContain('evil.js');
   });
-
 });

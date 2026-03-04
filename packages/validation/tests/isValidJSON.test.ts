@@ -43,5 +43,4 @@ describe('isValidJSON', () => {
     expect(results).toEqual([true, true, false, true, true]);
     expect(endTime - startTime).toBeLessThan(10);
   });
-
 });

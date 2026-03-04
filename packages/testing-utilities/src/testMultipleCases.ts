@@ -52,7 +52,6 @@ export function testMultipleCases<T, R>(
   fn: (input: T) => R,
   testCases: TestCase<T, R>[],
 ): TestCaseResult<R>[] {
-
   return testCases.map((testCase) => {
     const actual = fn(testCase.input);
     const passed = deepEqual(actual, testCase.expected as unknown);

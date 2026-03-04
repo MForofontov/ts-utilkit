@@ -272,5 +272,4 @@ describe('extractScripts', () => {
     // Assert
     expect(result).toEqual(expected);
   });
-
 });

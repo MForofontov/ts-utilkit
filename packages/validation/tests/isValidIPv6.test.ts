@@ -84,5 +84,4 @@ describe('isValidIPv6', () => {
     expect(isValidIPv6('::1:2:3:4:5:6:7')).toBe(true);
     expect(isValidIPv6('1::2:3:4:5:6:7')).toBe(true);
   });
-
 });

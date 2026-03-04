@@ -173,5 +173,4 @@ describe('serializeToYAML', () => {
     expect(result).toContain('c:');
     expect(result).toContain('d: value');
   });
-
 });

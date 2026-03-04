@@ -18,7 +18,6 @@
  * @complexity Time: O(n) where n is html length, Space: O(m) where m is number of comments
  */
 export function extractComments(html: string): string[] {
-
   const comments: string[] = [];
   const commentRegex = /<!--([\s\S]*?)-->/g;
   let match: RegExpExecArray | null;

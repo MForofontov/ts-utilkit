@@ -162,5 +162,4 @@ describe('flattenForSerialization', () => {
     // Assert
     expect(result).toEqual(expected);
   });
-
 });

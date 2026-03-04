@@ -25,7 +25,6 @@ export function handleCircularReferences(
   obj: any,
   replacer: any = '[Circular]',
 ): any {
-
   const seen = new WeakSet();
 
   const handle = (value: any): any => {

@@ -23,7 +23,6 @@ export function serializeToBuffer(
   data: any,
   encoding: BufferEncoding = 'utf8',
 ): Buffer {
-
   try {
     const jsonString = typeof data === 'string' ? data : JSON.stringify(data);
     return Buffer.from(jsonString, encoding);

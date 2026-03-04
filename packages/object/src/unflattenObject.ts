@@ -52,7 +52,6 @@
 export function unflattenObject(
   obj: Record<string, unknown>,
 ): Record<string, unknown> {
-
   const result: Record<string, unknown> = {};
 
   for (const [flatKey, value] of Object.entries(obj)) {

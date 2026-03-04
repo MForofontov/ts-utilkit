@@ -21,7 +21,6 @@ export function extractListItems(
   html: string,
   preserveNesting: boolean = false,
 ): string[][] {
-
   const lists: string[][] = [];
   const listRegex = /<[ou]l[^>]*>([\s\S]*?)<\/[ou]l>/gi;
   let listMatch: RegExpExecArray | null;

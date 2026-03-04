@@ -27,7 +27,6 @@ export function isValidMACAddress(
   mac: string,
   separator: string = ':',
 ): boolean {
-
   if (separator.length > 1) {
     throw new Error(`separator must be a single character, got "${separator}"`);
   }

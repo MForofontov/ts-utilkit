@@ -64,12 +64,18 @@ describe('decodeBase64URL', () => {
 
   it('14. should throw Error for strings with invalid characters', () => {
     expect(() => decodeBase64URL('hello world!')).toThrow(Error);
-    expect(() => decodeBase64URL('hello world!')).toThrow('Invalid Base64URL string');
+    expect(() => decodeBase64URL('hello world!')).toThrow(
+      'Invalid Base64URL string',
+    );
   });
 
   it('15. should throw Error for strings containing "+" or "/"', () => {
     // Standard Base64 characters are not valid Base64URL
-    expect(() => decodeBase64URL('aGVsb+8')).toThrow('Invalid Base64URL string');
-    expect(() => decodeBase64URL('aGVsb/8')).toThrow('Invalid Base64URL string');
+    expect(() => decodeBase64URL('aGVsb+8')).toThrow(
+      'Invalid Base64URL string',
+    );
+    expect(() => decodeBase64URL('aGVsb/8')).toThrow(
+      'Invalid Base64URL string',
+    );
   });
 });

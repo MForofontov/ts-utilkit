@@ -75,5 +75,4 @@ describe('mapMerge', () => {
     const map = new Map([['a', 1]]);
     expect(() => mapMerge(map)).toThrow('At least two maps are required');
   });
-
 });

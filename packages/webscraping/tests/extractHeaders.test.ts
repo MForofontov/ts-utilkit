@@ -216,5 +216,4 @@ describe('extractHeaders', () => {
     expect(result[1]).toEqual({ level: 2, text: 'Section 1', id: 'section1' });
     expect(result[2]).toEqual({ level: 2, text: 'Section 2', id: 'section2' });
   });
-
 });

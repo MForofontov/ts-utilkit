@@ -26,7 +26,6 @@ import { randomChoice } from './randomChoice';
 export function randomEnum<T extends Record<string, any>>(
   enumObj: T,
 ): T[keyof T] {
-
   const values = Object.values(enumObj).filter(
     (value) => typeof value !== 'number', // Filter out reverse mappings in numeric enums
   );

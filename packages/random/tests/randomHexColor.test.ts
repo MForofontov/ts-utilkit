@@ -129,5 +129,4 @@ describe('randomHexColor', () => {
     const result = randomHexColor(true);
     expect(result).toMatch(/^#[0-9A-F]{6}$/);
   });
-
 });

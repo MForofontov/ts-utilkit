@@ -78,5 +78,4 @@ describe('mapMap', () => {
     const result = mapMap(map, ([, value]) => value * 2);
     expect(result).toEqual(new Map());
   });
-
 });

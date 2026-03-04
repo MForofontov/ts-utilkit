@@ -93,5 +93,4 @@ describe('uniqueValues', () => {
     const expected = [1, 2, 3];
     expect(result).toEqual(expected);
   });
-
 });

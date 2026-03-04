@@ -73,7 +73,6 @@ export function groupByObject<T>(
   array: T[],
   key: keyof T,
 ): Record<string, T[]> {
-
   return array.reduce<Record<string, T[]>>((acc, item) => {
     if (Object.prototype.hasOwnProperty.call(item, key)) {
       const group = String(item[key]);

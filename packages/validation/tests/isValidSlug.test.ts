@@ -146,5 +146,4 @@ describe('isValidSlug', () => {
     expect(isValidSlug('test_slug-123')).toBe(false);
     expect(isValidSlug('my-Blog-post')).toBe(false);
   });
-
 });

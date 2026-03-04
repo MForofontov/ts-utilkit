@@ -57,7 +57,6 @@ export function differenceBy<T extends Record<string, unknown>>(
   obj2: T,
   comparator: (a: unknown, b: unknown) => boolean,
 ): Partial<T> {
-
   const keys = Reflect.ownKeys(obj1);
   const result: Partial<T> = {};
   for (const key of keys) {

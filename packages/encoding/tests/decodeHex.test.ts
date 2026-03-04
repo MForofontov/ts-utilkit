@@ -52,7 +52,9 @@ describe('decodeHex', () => {
 
   it('14. should throw Error for odd-length hex strings', () => {
     expect(() => decodeHex('abc')).toThrow(Error);
-    expect(() => decodeHex('abc')).toThrow('Invalid hex string: length must be even');
+    expect(() => decodeHex('abc')).toThrow(
+      'Invalid hex string: length must be even',
+    );
   });
 
   it('15. should throw Error for strings with non-hex characters', () => {

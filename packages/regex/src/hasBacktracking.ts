@@ -27,7 +27,6 @@
  * @complexity Time: O(n), Space: O(1) where n is pattern length
  */
 export function hasBacktracking(pattern: string | RegExp): boolean {
-
   let source: string;
 
   try {

@@ -63,5 +63,4 @@ describe('generateSalt', () => {
   it('11. should throw Error when length is NaN', () => {
     expect(() => generateSalt(NaN)).toThrow(Error);
   });
-
 });

@@ -1,6 +1,6 @@
 # @ts-utilkit/collection
 
-collection  Functions - TypeScript utility functions for collection operations.
+collection Functions - TypeScript utility functions for collection operations.
 
 ## Installation
 
@@ -42,11 +42,16 @@ npm install @ts-utilkit/collection
 import { setUnion, setIntersection, mapToObject } from '@ts-utilkit/collection';
 
 // Set operations
-setUnion(new Set([1, 2]), new Set([2, 3]));     // Set {1, 2, 3}
+setUnion(new Set([1, 2]), new Set([2, 3])); // Set {1, 2, 3}
 setIntersection(new Set([1, 2]), new Set([2, 3])); // Set {2}
 
 // Map conversions
-mapToObject(new Map([['a', 1], ['b', 2]]));     // {a: 1, b: 2}
+mapToObject(
+  new Map([
+    ['a', 1],
+    ['b', 2],
+  ]),
+); // {a: 1, b: 2}
 ```
 
 ## License

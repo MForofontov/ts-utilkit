@@ -33,7 +33,6 @@ export function isValidPattern(
   pattern: string,
   flags?: string,
 ): boolean {
-
   // Check if flags is explicitly passed and not a string
 
   try {

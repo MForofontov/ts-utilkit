@@ -55,7 +55,6 @@ export function asyncBatch<T, R>(
   batchSize: number,
   options: { delayMs?: number } = {},
 ): Promise<R[]> {
-
   if (!Number.isInteger(batchSize) || batchSize <= 0) {
     throw new Error(`batchSize must be a positive integer, got ${batchSize}`);
   }

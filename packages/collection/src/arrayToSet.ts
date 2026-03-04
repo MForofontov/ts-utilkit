@@ -28,6 +28,5 @@
  * @complexity Time: O(n) where n is array length, Space: O(n)
  */
 export function arrayToSet<T>(array: T[]): Set<T> {
-
   return new Set(array);
 }

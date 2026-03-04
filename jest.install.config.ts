@@ -23,9 +23,7 @@ const config = {
     '^@ts-utilkit/(.*)$': '<rootDir>/node_modules/@ts-utilkit/$1',
   },
   testEnvironment: 'node',
-  testMatch: [
-    '**/packages/*/tests/**/*.test.ts',
-  ],
+  testMatch: ['**/packages/*/tests/**/*.test.ts'],
   coverageDirectory: 'coverage-install',
   collectCoverageFrom: [
     'node_modules/@ts-utilkit/*/dist/**/*.js',

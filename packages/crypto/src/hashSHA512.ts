@@ -28,6 +28,5 @@ import { createHash } from 'crypto';
  * @complexity Time: O(n) where n is the length of input data, Space: O(1)
  */
 export function hashSHA512(data: string | Buffer): string {
-
   return createHash('sha512').update(data).digest('hex');
 }

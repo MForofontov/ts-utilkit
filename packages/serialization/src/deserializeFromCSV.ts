@@ -25,7 +25,6 @@ export function deserializeFromCSV(
   csvString: string,
   options: { delimiter?: string; hasHeaders?: boolean } = {},
 ): Record<string, string>[] {
-
   if (csvString.length === 0) {
     throw new Error('csvString cannot be empty');
   }

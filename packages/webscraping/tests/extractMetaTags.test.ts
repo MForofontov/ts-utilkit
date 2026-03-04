@@ -215,5 +215,4 @@ describe('extractMetaTags', () => {
     // Assert
     expect(result).toEqual(expected);
   });
-
 });

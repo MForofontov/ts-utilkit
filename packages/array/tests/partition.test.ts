@@ -176,5 +176,4 @@ describe('partition', () => {
     expect(odds).toHaveLength(5000);
     expect(end - start).toBeLessThan(100);
   });
-
 });

@@ -31,7 +31,6 @@ export function sanitizeHTML(
     'div',
   ],
 ): string {
-
   // Remove script and style tags entirely
   let sanitized = html.replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '');
   sanitized = sanitized.replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '');

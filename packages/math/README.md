@@ -1,6 +1,6 @@
 # @ts-utilkit/math
 
-math  Functions - TypeScript utility functions for math operations.
+math Functions - TypeScript utility functions for math operations.
 
 ## Installation
 
@@ -80,10 +80,10 @@ npm install @ts-utilkit/math
 ```typescript
 import { calculateMean, isPrime, factorial, power } from '@ts-utilkit/math';
 
-calculateMean([1, 2, 3, 4, 5]);      // 3
-isPrime(17);                         // true
-factorial(5);                        // 120
-power(2, 10);                        // 1024
+calculateMean([1, 2, 3, 4, 5]); // 3
+isPrime(17); // true
+factorial(5); // 120
+power(2, 10); // 1024
 ```
 
 ## License

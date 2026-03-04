@@ -41,7 +41,6 @@ export function generateHMAC(
   secret: string,
   algorithm: 'sha256' | 'sha512' = 'sha256',
 ): string {
-
   if (secret.length === 0) {
     throw new Error('secret cannot be empty');
   }

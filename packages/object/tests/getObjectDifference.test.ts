@@ -69,5 +69,4 @@ describe('getObjectDifference', () => {
     };
     expect(result).toEqual(expected);
   });
-
 });

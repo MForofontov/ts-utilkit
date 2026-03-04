@@ -40,7 +40,6 @@
  * @complexity Time: O(n), Space: O(n) where n is the number of keys
  */
 export function requireEnvAll(keys: string[]): Record<string, string> {
-
   if (keys.length === 0) {
     throw new Error('keys array cannot be empty');
   }

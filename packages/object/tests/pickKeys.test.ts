@@ -68,5 +68,4 @@ describe('pickKeys', () => {
     const expected = {};
     expect(result).toEqual(expected);
   });
-
 });

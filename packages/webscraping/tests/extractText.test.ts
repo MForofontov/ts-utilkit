@@ -199,5 +199,4 @@ describe('extractText', () => {
     // Assert
     expect(result).toBe(expected);
   });
-
 });

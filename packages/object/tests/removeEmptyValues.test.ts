@@ -49,5 +49,4 @@ describe('removeEmptyValues', () => {
     const expected = {};
     expect(result).toEqual(expected);
   });
-
 });

@@ -25,8 +25,8 @@ describe('parseHTTPHeaders', () => {
   it('3. should parse multiple headers separated by LF only', () => {
     const raw = 'Authorization: Bearer token\nAccept: application/json';
     expect(parseHTTPHeaders(raw)).toEqual({
-      'authorization': 'Bearer token',
-      'accept': 'application/json',
+      authorization: 'Bearer token',
+      accept: 'application/json',
     });
   });
 
@@ -36,16 +36,17 @@ describe('parseHTTPHeaders', () => {
   });
 
   it('5. should ignore an HTTP status line prefix', () => {
-    const raw = 'HTTP/1.1 200 OK\r\nContent-Length: 42\r\nConnection: keep-alive';
+    const raw =
+      'HTTP/1.1 200 OK\r\nContent-Length: 42\r\nConnection: keep-alive';
     expect(parseHTTPHeaders(raw)).toEqual({
       'content-length': '42',
-      'connection': 'keep-alive',
+      connection: 'keep-alive',
     });
   });
 
   it('6. should handle headers with colons in the value', () => {
     const result = parseHTTPHeaders('Location: https://example.com/path');
-    expect(result).toEqual({ 'location': 'https://example.com/path' });
+    expect(result).toEqual({ location: 'https://example.com/path' });
   });
 
   it('7. should keep the last value for duplicate header names', () => {
@@ -63,13 +64,13 @@ describe('parseHTTPHeaders', () => {
   it('9. should skip blank lines in the header block', () => {
     const raw = 'Content-Type: text/html\r\n\r\nAccept: */*';
     const result = parseHTTPHeaders(raw);
-    expect(result).toEqual({ 'content-type': 'text/html', 'accept': '*/*' });
+    expect(result).toEqual({ 'content-type': 'text/html', accept: '*/*' });
   });
 
   it('10. should skip malformed lines without a colon', () => {
     const raw = 'Content-Type: text/html\r\nmalformed-line\r\nAccept: */*';
     const result = parseHTTPHeaders(raw);
-    expect(result).toEqual({ 'content-type': 'text/html', 'accept': '*/*' });
+    expect(result).toEqual({ 'content-type': 'text/html', accept: '*/*' });
   });
 
   it('11. should handle a header block with only a status line and blank lines', () => {
@@ -84,10 +85,11 @@ describe('parseHTTPHeaders', () => {
   });
 
   it('13. should parse an HTTP/2 style header', () => {
-    const raw = 'HTTP/2 301\r\nlocation: https://example.com/\r\ncontent-length: 0';
+    const raw =
+      'HTTP/2 301\r\nlocation: https://example.com/\r\ncontent-length: 0';
     const result = parseHTTPHeaders(raw);
     expect(result).toEqual({
-      'location': 'https://example.com/',
+      location: 'https://example.com/',
       'content-length': '0',
     });
   });
@@ -96,12 +98,15 @@ describe('parseHTTPHeaders', () => {
 
   it('14. should throw Error for an empty string', () => {
     expect(() => parseHTTPHeaders('')).toThrow(Error);
-    expect(() => parseHTTPHeaders('')).toThrow('raw header string cannot be empty');
+    expect(() => parseHTTPHeaders('')).toThrow(
+      'raw header string cannot be empty',
+    );
   });
 
   it('15. should throw Error for a whitespace-only string', () => {
     expect(() => parseHTTPHeaders('   ')).toThrow(Error);
-    expect(() => parseHTTPHeaders('   ')).toThrow('raw header string cannot be empty');
+    expect(() => parseHTTPHeaders('   ')).toThrow(
+      'raw header string cannot be empty',
+    );
   });
-
 });

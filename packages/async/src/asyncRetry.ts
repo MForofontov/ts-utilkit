@@ -53,7 +53,6 @@ export function asyncRetry<T>(
     onRetry?: (attempt: number, error: Error) => void;
   } = {},
 ): Promise<T> {
-
   const { maxAttempts = 3, delay = 1000, backoff = 'fixed', onRetry } = options;
 
   if (typeof maxAttempts !== 'number' || maxAttempts < 1) {

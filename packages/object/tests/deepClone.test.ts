@@ -48,5 +48,4 @@ describe('deepClone', () => {
     expect(result.r).not.toBe(obj.r);
     expect(Object.prototype.toString.call(result.r)).toBe('[object RegExp]');
   });
-
 });

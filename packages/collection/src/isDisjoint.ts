@@ -34,7 +34,6 @@
  * @complexity Time: O(min(n, m)) where n and m are set sizes, Space: O(1)
  */
 export function isDisjoint<T>(set1: Set<T>, set2: Set<T>): boolean {
-
   // Optimize: iterate over the smaller set
   const smallerSet = set1.size <= set2.size ? set1 : set2;
   const largerSet = set1.size <= set2.size ? set2 : set1;

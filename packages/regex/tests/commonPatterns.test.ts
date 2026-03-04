@@ -139,7 +139,6 @@ describe('getCommonPattern', () => {
       'Unknown pattern name: unknown',
     );
   });
-
 });
 
 describe('testCommonPattern', () => {

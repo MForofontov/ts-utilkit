@@ -62,5 +62,4 @@ describe('setNestedValue', () => {
     const expected = { a: 1, b: { c: { d: 2 } } };
     expect(obj).toEqual(expected);
   });
-
 });

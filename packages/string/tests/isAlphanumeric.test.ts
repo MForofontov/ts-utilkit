@@ -123,5 +123,4 @@ describe('isAlphanumeric', () => {
     const result: boolean = isAlphanumeric(str);
     expect(result).toBe(expected);
   });
-
 });

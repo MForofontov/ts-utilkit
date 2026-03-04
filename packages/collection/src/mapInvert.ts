@@ -25,7 +25,6 @@
  * @complexity Time: O(n) where n is map size, Space: O(n)
  */
 export function mapInvert<K, V>(map: Map<K, V>): Map<V, K> {
-
   const result = new Map<V, K>();
 
   for (const [key, value] of map.entries()) {

@@ -123,5 +123,4 @@ describe('wordsToSentence', () => {
     const result: string = wordsToSentence(words);
     expect(result).toBe(expected);
   });
-
 });

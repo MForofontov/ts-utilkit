@@ -32,6 +32,5 @@ import { createHash } from 'crypto';
  * @complexity Time: O(n) where n is the length of input data, Space: O(1)
  */
 export function hashMD5(data: string | Buffer): string {
-
   return createHash('md5').update(data).digest('hex');
 }

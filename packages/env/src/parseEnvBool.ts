@@ -26,7 +26,6 @@ export function parseEnvBool(
   key: string,
   defaultValue?: boolean,
 ): boolean | undefined {
-
   if (key.length === 0) {
     throw new Error('key cannot be an empty string');
   }

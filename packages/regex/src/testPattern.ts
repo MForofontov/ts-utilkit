@@ -38,7 +38,6 @@ export function testPattern(
   },
   flags?: string,
 ): boolean {
-
   let regex: RegExp;
 
   try {

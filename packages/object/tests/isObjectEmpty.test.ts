@@ -43,5 +43,4 @@ describe('isObjectEmpty', () => {
     const result = isObjectEmpty(obj);
     expect(result).toBe(false);
   });
-
 });

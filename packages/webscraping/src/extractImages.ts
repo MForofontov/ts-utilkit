@@ -18,7 +18,6 @@
  * @complexity Time: O(n) where n is html length, Space: O(m) where m is number of images
  */
 export function extractImages(html: string, baseUrl?: string): string[] {
-
   const images: string[] = [];
   const srcRegex = /<img[^>]+src=["']([^"']+)["']/gi;
   let match: RegExpExecArray | null;

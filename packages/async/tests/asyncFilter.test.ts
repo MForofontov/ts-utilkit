@@ -108,5 +108,4 @@ describe('asyncFilter', () => {
       .map((time, i) => Math.abs(time - executionTimes[i]));
     timeDifferences.forEach((diff) => expect(diff).toBeLessThan(20));
   });
-
 });

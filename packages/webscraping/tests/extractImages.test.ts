@@ -189,5 +189,4 @@ describe('extractImages', () => {
     // Assert
     expect(result).toEqual(expected);
   });
-
 });

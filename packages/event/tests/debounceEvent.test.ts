@@ -334,5 +334,4 @@ describe('debounceEvent', () => {
       'delay must be non-negative',
     );
   });
-
 });

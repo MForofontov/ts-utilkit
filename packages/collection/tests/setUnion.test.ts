@@ -169,5 +169,4 @@ describe('setUnion', () => {
     expect(() => setUnion()).toThrow(Error);
     expect(() => setUnion()).toThrow(expectedMessage);
   });
-
 });

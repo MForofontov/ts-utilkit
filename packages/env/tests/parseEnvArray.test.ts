@@ -93,5 +93,4 @@ describe('parseEnvArray', () => {
       'delimiter cannot be an empty string',
     );
   });
-
 });

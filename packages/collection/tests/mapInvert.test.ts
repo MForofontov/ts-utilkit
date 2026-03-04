@@ -61,5 +61,4 @@ describe('mapInvert', () => {
     mapInvert(map);
     expect(map).toEqual(original);
   });
-
 });

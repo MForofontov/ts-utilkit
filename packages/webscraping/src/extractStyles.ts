@@ -27,7 +27,6 @@ export interface StyleData {
  * @complexity Time: O(n) where n is html length, Space: O(m) where m is number of styles
  */
 export function extractStyles(html: string): StyleData[] {
-
   const styles: StyleData[] = [];
 
   // Extract link tags

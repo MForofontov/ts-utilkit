@@ -28,7 +28,6 @@
 export function objectToMap<V>(
   obj: Record<string | symbol, V>,
 ): Map<string | symbol, V> {
-
   const result = new Map<string | symbol, V>();
 
   // Add string keys

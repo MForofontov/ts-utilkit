@@ -40,5 +40,4 @@ describe('hexToRgb', () => {
   it('8. should return null for hex string longer than 6 digits', () => {
     expect(hexToRgb('#1234567')).toBeNull();
   });
-
 });

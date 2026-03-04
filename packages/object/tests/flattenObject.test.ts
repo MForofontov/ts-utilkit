@@ -110,5 +110,4 @@ describe('flattenObject', () => {
     const expected = { 'a.b.c.d.e': 5 };
     expect(result).toEqual(expected);
   });
-
 });

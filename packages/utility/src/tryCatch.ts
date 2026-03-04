@@ -54,7 +54,6 @@ export function tryCatch<T>(
   fn: () => T,
   onError?: (error: Error) => T,
 ): TryCatchResult<T> {
-
   try {
     return { value: fn(), error: undefined };
   } catch (err) {

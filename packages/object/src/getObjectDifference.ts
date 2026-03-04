@@ -48,7 +48,6 @@ export function getObjectDifference(
   obj1: Record<string, unknown>,
   obj2: Record<string, unknown>,
 ): Record<string, unknown> {
-
   const diff: Record<string, unknown> = {};
 
   const allKeys = new Set([...Object.keys(obj1), ...Object.keys(obj2)]);

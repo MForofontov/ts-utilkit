@@ -75,5 +75,4 @@ describe('mapFilter', () => {
     const result = mapFilter(map, ([, value]) => value > 0);
     expect(result).toEqual(new Map());
   });
-
 });

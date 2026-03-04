@@ -18,7 +18,6 @@
  * @complexity Time: O(n) where n is html length, Space: O(m) where m is table data size
  */
 export function extractTables(html: string): string[][][] {
-
   const tables: string[][][] = [];
   const tableRegex = /<table[^>]*>([\s\S]*?)<\/table>/gi;
   let tableMatch: RegExpExecArray | null;

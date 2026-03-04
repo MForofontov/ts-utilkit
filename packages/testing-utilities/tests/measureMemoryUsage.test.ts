@@ -114,5 +114,4 @@ describe('measureMemoryUsage', () => {
     expect(result.result).toBe(1000);
     expect(typeof result.heapUsedDelta).toBe('number');
   });
-
 });

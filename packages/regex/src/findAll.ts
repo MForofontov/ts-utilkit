@@ -45,7 +45,6 @@ export function findAll(
   pattern: string | RegExp,
   flags?: string,
 ): MatchInfo[] {
-
   let regex: RegExp;
 
   try {

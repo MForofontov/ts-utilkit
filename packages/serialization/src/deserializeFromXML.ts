@@ -21,7 +21,6 @@
  * @complexity Time: O(n), Space: O(n) where n is XML string length
  */
 export function deserializeFromXML(xmlString: string): Record<string, any> {
-
   const unescapeXML = (str: string): string => {
     return str
       .replace(/&apos;/g, "'")

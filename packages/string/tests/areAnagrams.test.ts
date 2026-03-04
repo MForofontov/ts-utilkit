@@ -123,5 +123,4 @@ describe('areAnagrams', () => {
     const result: boolean = areAnagrams(str1, str2);
     expect(result).toBe(false);
   });
-
 });

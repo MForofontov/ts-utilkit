@@ -49,5 +49,4 @@ describe('setDifference', () => {
     const set1 = new Set([1, 2, 3]);
     expect(() => setDifference(set1)).toThrow('At least two sets are required');
   });
-
 });

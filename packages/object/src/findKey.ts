@@ -38,7 +38,6 @@ export function findKey<T>(
   obj: Record<string, T>,
   predicate: (value: T, key: string) => boolean,
 ): string | undefined {
-
   for (const key of Object.keys(obj)) {
     if (predicate(obj[key], key)) {
       return key;

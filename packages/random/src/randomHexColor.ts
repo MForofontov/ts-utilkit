@@ -25,7 +25,6 @@ import { randomInt } from './randomInt';
  * @complexity Time: O(1), Space: O(1)
  */
 export function randomHexColor(includeHash: boolean = true): string {
-
   const hex = randomInt(0, 16777215)
     .toString(16)
     .padStart(6, '0')

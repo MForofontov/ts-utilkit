@@ -193,12 +193,11 @@ describe('formatList', () => {
   // Test case 18: Throws Error if conjunction is an invalid string
   it('18. should throw Error if conjunction is an unrecognized value', () => {
     // Act & Assert
-    expect(() =>
-      formatList(['a', 'b'], 'xor' as unknown as 'and'),
-    ).toThrow(Error);
-    expect(() =>
-      formatList(['a', 'b'], 'xor' as unknown as 'and'),
-    ).toThrow('conjunction must be "and", "or", or "none", got "xor"');
+    expect(() => formatList(['a', 'b'], 'xor' as unknown as 'and')).toThrow(
+      Error,
+    );
+    expect(() => formatList(['a', 'b'], 'xor' as unknown as 'and')).toThrow(
+      'conjunction must be "and", "or", or "none", got "xor"',
+    );
   });
-
 });

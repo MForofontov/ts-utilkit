@@ -81,7 +81,9 @@ describe('requireEnvAll', () => {
     delete process.env.JWT_SECRET;
     process.env.PORT = '3000';
 
-    expect(() => requireEnvAll(['DB_URL', 'JWT_SECRET', 'PORT'])).toThrow(Error);
+    expect(() => requireEnvAll(['DB_URL', 'JWT_SECRET', 'PORT'])).toThrow(
+      Error,
+    );
     expect(() => requireEnvAll(['DB_URL', 'JWT_SECRET', 'PORT'])).toThrow(
       'Missing required environment variables: DB_URL, JWT_SECRET',
     );

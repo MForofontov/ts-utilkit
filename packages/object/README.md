@@ -1,6 +1,6 @@
 # @ts-utilkit/object
 
-object  Functions - TypeScript utility functions for object operations.
+object Functions - TypeScript utility functions for object operations.
 
 ## Installation
 
@@ -61,11 +61,16 @@ npm install @ts-utilkit/object
 ## Quick Example
 
 ```typescript
-import { deepMerge, safeGet, flattenObject, pickProperties } from '@ts-utilkit/object';
+import {
+  deepMerge,
+  safeGet,
+  flattenObject,
+  pickProperties,
+} from '@ts-utilkit/object';
 
-deepMerge({a: 1}, {b: 2});           // {a: 1, b: 2}
-safeGet({a: {b: 'c'}}, 'a.b');       // 'c'
-flattenObject({a: {b: {c: 1}}});     // {'a.b.c': 1}
+deepMerge({ a: 1 }, { b: 2 }); // {a: 1, b: 2}
+safeGet({ a: { b: 'c' } }, 'a.b'); // 'c'
+flattenObject({ a: { b: { c: 1 } } }); // {'a.b.c': 1}
 pickProperties(obj, ['id', 'name']); // {id: 1, name: 'Alice'}
 ```
 

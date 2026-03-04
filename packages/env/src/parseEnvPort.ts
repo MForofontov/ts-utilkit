@@ -43,13 +43,17 @@
  * @complexity Time: O(1), Space: O(1)
  */
 export function parseEnvPort(key: string, defaultValue?: number): number {
-
   if (key.length === 0) {
     throw new Error('key cannot be an empty string');
   }
 
   if (defaultValue !== undefined) {
-    if (isNaN(defaultValue) || !Number.isInteger(defaultValue) || defaultValue < 1 || defaultValue > 65535) {
+    if (
+      isNaN(defaultValue) ||
+      !Number.isInteger(defaultValue) ||
+      defaultValue < 1 ||
+      defaultValue > 65535
+    ) {
       throw new Error(
         `defaultValue must be a valid port (1–65535), got ${defaultValue}`,
       );

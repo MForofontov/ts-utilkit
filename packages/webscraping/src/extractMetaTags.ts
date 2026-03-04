@@ -27,7 +27,6 @@ export interface MetaTag {
  * @complexity Time: O(n) where n is html length, Space: O(m) where m is number of meta tags
  */
 export function extractMetaTags(html: string): MetaTag[] {
-
   const metaTags: MetaTag[] = [];
   const metaRegex = /<meta\s+([^>]+)>/gi;
   let match: RegExpExecArray | null;

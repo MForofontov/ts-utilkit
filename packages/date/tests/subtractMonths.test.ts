@@ -82,9 +82,10 @@ describe('subtractMonths', () => {
   });
 
   it('11. should throw Error for invalid date', () => {
-    expect(() => subtractMonths(new Date('invalid'), 3)).toThrow('Invalid date');
+    expect(() => subtractMonths(new Date('invalid'), 3)).toThrow(
+      'Invalid date',
+    );
   });
 
-  it('12. should throw Error when months is NaN', () => {
-  });
+  it('12. should throw Error when months is NaN', () => {});
 });

@@ -36,7 +36,6 @@ export function isValidTime(
   allowSeconds: boolean = true,
   format24Hour: boolean = true,
 ): boolean {
-
   const cleanTimeString = timeString.trim();
   let hour: number;
   let minute: number;

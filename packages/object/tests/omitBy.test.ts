@@ -57,5 +57,4 @@ describe('omitBy', () => {
     const expected = { a: 1, c: 3 };
     expect(result).toEqual(expected);
   });
-
 });

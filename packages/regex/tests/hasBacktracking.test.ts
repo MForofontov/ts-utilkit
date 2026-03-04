@@ -67,5 +67,4 @@ describe('hasBacktracking', () => {
     );
     expect(result).toBe(false);
   });
-
 });

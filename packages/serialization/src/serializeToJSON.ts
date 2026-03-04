@@ -25,7 +25,6 @@ export function serializeToJSON(
   pretty: boolean = false,
   space: number = 2,
 ): string {
-
   try {
     return JSON.stringify(data, null, pretty ? space : undefined);
   } catch (error) {

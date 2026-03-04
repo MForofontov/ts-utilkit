@@ -43,7 +43,6 @@
 export function uniqueValues<T extends Record<string, unknown>>(
   obj: T,
 ): unknown[] {
-
   const result: unknown[] = [];
   const seen = new Set<string>();
   for (const value of Object.values(obj)) {

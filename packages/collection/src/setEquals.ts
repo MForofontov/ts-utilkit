@@ -35,7 +35,6 @@
  * @complexity Time: O(n) where n is set size, Space: O(1)
  */
 export function setEquals<T>(set1: Set<T>, set2: Set<T>): boolean {
-
   // Quick check: if sizes differ, sets are not equal
   if (set1.size !== set2.size) {
     return false;

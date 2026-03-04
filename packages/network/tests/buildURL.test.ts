@@ -223,5 +223,4 @@ describe('buildURL', () => {
     // The function should handle the leading # correctly
     expect(result).toBe('https://example.com#section');
   });
-
 });

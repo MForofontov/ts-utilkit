@@ -18,7 +18,6 @@
  * @complexity Time: O(n) where n is html length, Space: O(m) where m is number of links
  */
 export function extractLinks(html: string, baseUrl?: string): string[] {
-
   const links: string[] = [];
   const hrefRegex = /<a[^>]+href=["']([^"']+)["']/gi;
   let match: RegExpExecArray | null;

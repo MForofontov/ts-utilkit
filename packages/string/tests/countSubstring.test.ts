@@ -147,5 +147,4 @@ describe('countSubstring', () => {
     const result: number = countSubstring(str, substring);
     expect(result).toBe(expected);
   });
-
 });

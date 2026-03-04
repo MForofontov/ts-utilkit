@@ -55,5 +55,4 @@ describe('objectToQueryString', () => {
     const expected = '';
     expect(result).toBe(expected);
   });
-
 });

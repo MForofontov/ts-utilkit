@@ -48,7 +48,6 @@ export function isDeepSubset<T extends Record<string, unknown>>(
   subset: T,
   obj: T,
 ): boolean {
-
   return Object.keys(subset).every((key) => {
     const subsetValue = subset[key];
 

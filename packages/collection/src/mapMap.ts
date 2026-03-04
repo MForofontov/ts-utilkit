@@ -30,7 +30,6 @@ export function mapMap<K, V, R>(
   map: Map<K, V>,
   mapper: (entry: [K, V], index: number) => R,
 ): Map<K, R> {
-
   const result = new Map<K, R>();
   let index = 0;
 

@@ -327,5 +327,4 @@ describe('EventEmitter', () => {
     });
     expect(endTime - startTime).toBeLessThan(100);
   });
-
 });

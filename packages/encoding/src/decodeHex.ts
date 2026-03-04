@@ -42,7 +42,6 @@ import { Buffer } from 'buffer';
  * @complexity Time: O(n), Space: O(n) where n is the length of the hex string
  */
 export function decodeHex(str: string): string {
-
   if (str.length % 2 !== 0) {
     throw new Error('Invalid hex string: length must be even');
   }

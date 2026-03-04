@@ -33,9 +33,7 @@ describe('removeAccents', () => {
   });
 
   it('7. should handle French accents in a full phrase', () => {
-    expect(removeAccents('être ou ne pas être')).toBe(
-      'etre ou ne pas etre',
-    );
+    expect(removeAccents('être ou ne pas être')).toBe('etre ou ne pas etre');
   });
 
   it('8. should handle uppercase accented characters', () => {
@@ -88,5 +86,4 @@ describe('removeAccents', () => {
   });
 
   // ─── Error cases ───────────────────────────────────────────────────────────
-
 });

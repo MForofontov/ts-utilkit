@@ -164,5 +164,4 @@ describe('serializeToBinary', () => {
     // Assert
     expect(result).toBe(expected);
   });
-
 });

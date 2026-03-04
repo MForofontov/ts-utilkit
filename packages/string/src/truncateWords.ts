@@ -43,7 +43,10 @@ export function truncateWords(
     throw new Error(`count must be at least 1, got ${count}`);
   }
 
-  const words = str.trim().split(/\s+/).filter((word) => word.length > 0);
+  const words = str
+    .trim()
+    .split(/\s+/)
+    .filter((word) => word.length > 0);
 
   if (words.length <= count) {
     return str.trim();

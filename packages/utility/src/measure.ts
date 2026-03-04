@@ -45,7 +45,6 @@ export interface MeasureResult<T> {
  * @complexity Time: O(1) + O(fn), Space: O(1)
  */
 export function measure<T>(fn: () => T, label?: string): MeasureResult<T> {
-
   const start = performance.now();
   const result = fn();
   const durationMs = performance.now() - start;

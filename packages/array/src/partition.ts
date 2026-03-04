@@ -40,7 +40,6 @@ export function partition<T>(
   arr: T[],
   predicate: (value: T, index: number, array: T[]) => boolean,
 ): [T[], T[]] {
-
   const matches: T[] = [];
   const nonMatches: T[] = [];
 

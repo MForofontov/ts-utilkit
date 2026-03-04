@@ -102,5 +102,4 @@ describe('fromDotNotation', () => {
     const expected = { 'key\\with\\backslash': 6, d: { e: 3 } };
     expect(result).toEqual(expected);
   });
-
 });

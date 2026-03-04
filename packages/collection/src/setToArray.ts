@@ -28,6 +28,5 @@
  * @complexity Time: O(n) where n is set size, Space: O(n)
  */
 export function setToArray<T>(set: Set<T>): T[] {
-
   return Array.from(set);
 }

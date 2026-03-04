@@ -42,7 +42,6 @@ import { createDecipheriv, scryptSync } from 'crypto';
  * @complexity Time: O(n) where n is encrypted data length, Space: O(n)
  */
 export function decryptAES256(encrypted: string, key: string): string {
-
   if (encrypted.length === 0) {
     throw new Error('encrypted cannot be empty');
   }

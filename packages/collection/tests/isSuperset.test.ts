@@ -48,5 +48,4 @@ describe('isSuperset', () => {
     const result = isSuperset(superset, subset);
     expect(result).toBe(true);
   });
-
 });

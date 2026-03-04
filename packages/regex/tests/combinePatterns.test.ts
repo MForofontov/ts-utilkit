@@ -82,5 +82,4 @@ describe('combinePatterns', () => {
       'patterns array cannot be empty',
     );
   });
-
 });

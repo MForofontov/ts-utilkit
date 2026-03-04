@@ -51,7 +51,6 @@ export function pickBy<T extends Record<string, unknown>>(
   obj: T,
   predicate: (value: unknown, key: string) => boolean,
 ): Partial<T> {
-
   return Object.fromEntries(
     Object.entries(obj).filter(([key, value]) => predicate(value, key)),
   ) as Partial<T>;

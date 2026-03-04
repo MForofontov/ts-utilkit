@@ -111,10 +111,7 @@ Every function must follow this structure:
  *
  * @complexity Time: O(n), Space: O(1)
  */
-export function functionName(
-  param1: number,
-  param2: string,
-): ReturnType {
+export function functionName(param1: number, param2: string): ReturnType {
   // Input validation
   if (typeof param1 !== 'number' || isNaN(param1)) {
     throw new TypeError(`param1 must be a number, got ${typeof param1}`);
@@ -146,12 +143,14 @@ export function functionName(
 ### Project Philosophy: Use Battle-Tested Packages
 
 **DO use existing packages for:**
+
 - HTTP operations → `axios`, `node-fetch`, `http` (stdlib)
 - Date/time → `date-fns`, `dayjs`, `luxon`
 - Validation → `zod`, `yup`, `joi`
 - Cryptography → **ALWAYS** use Node.js `crypto` module
 
 **DO add value on top with:**
+
 - ✅ Workflow logic (retry strategies, error recovery)
 - ✅ Validation & type safety (input validation, TypeScript generics)
 - ✅ Convenience features (smart defaults, method chaining)
@@ -159,6 +158,7 @@ export function functionName(
 - ✅ Error handling (consistent error types, descriptive messages)
 
 **DON'T:**
+
 - ❌ Create thin wrappers with no added value
 - ❌ Reimplement existing package functionality
 - ❌ Add functions that are just one-line calls to existing packages
@@ -193,7 +193,7 @@ describe('functionName', () => {
   it('23. should throw TypeError when param is not a string', () => {
     expect(() => functionName(invalidInput)).toThrow(TypeError);
     expect(() => functionName(invalidInput)).toThrow(
-      'param must be a string, got number'
+      'param must be a string, got number',
     );
   });
 });

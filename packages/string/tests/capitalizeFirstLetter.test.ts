@@ -123,5 +123,4 @@ describe('capitalizeFirstLetter', () => {
     const result: string = capitalizeFirstLetter(str);
     expect(result).toBe(expected);
   });
-
 });

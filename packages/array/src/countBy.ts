@@ -41,7 +41,6 @@ export function countBy<T>(
   arr: T[],
   keyFn: (value: T, index: number, array: T[]) => string,
 ): Map<string, number> {
-
   const result = new Map<string, number>();
 
   for (let i = 0; i < arr.length; i++) {

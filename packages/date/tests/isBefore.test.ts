@@ -55,16 +55,26 @@ describe('isBefore', () => {
 
   it('10. should compare correctly when same month/day but different year', () => {
     expect(isBefore(new Date('2020-03-15'), new Date('2025-03-15'))).toBe(true);
-    expect(isBefore(new Date('2025-03-15'), new Date('2020-03-15'))).toBe(false);
+    expect(isBefore(new Date('2025-03-15'), new Date('2020-03-15'))).toBe(
+      false,
+    );
   });
 
   it('11. should throw Error for invalid date1', () => {
-    expect(() => isBefore(new Date('invalid'), new Date('2025-01-01'))).toThrow(Error);
-    expect(() => isBefore(new Date('invalid'), new Date('2025-01-01'))).toThrow('Invalid date');
+    expect(() => isBefore(new Date('invalid'), new Date('2025-01-01'))).toThrow(
+      Error,
+    );
+    expect(() => isBefore(new Date('invalid'), new Date('2025-01-01'))).toThrow(
+      'Invalid date',
+    );
   });
 
   it('12. should throw Error for invalid date2', () => {
-    expect(() => isBefore(new Date('2025-01-01'), new Date('invalid'))).toThrow(Error);
-    expect(() => isBefore(new Date('2025-01-01'), new Date('invalid'))).toThrow('Invalid date');
+    expect(() => isBefore(new Date('2025-01-01'), new Date('invalid'))).toThrow(
+      Error,
+    );
+    expect(() => isBefore(new Date('2025-01-01'), new Date('invalid'))).toThrow(
+      'Invalid date',
+    );
   });
 });

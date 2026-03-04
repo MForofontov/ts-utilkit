@@ -114,22 +114,22 @@ describe('formatTemperature', () => {
 
   // Test case 20: Throws Error if from is an invalid unit string
   it('20. should throw Error if from is an unrecognised unit', () => {
-    expect(() =>
-      formatTemperature(100, 'X' as unknown as 'C', 'F'),
-    ).toThrow(Error);
-    expect(() =>
-      formatTemperature(100, 'X' as unknown as 'C', 'F'),
-    ).toThrow('from must be "C", "F", or "K", got "X"');
+    expect(() => formatTemperature(100, 'X' as unknown as 'C', 'F')).toThrow(
+      Error,
+    );
+    expect(() => formatTemperature(100, 'X' as unknown as 'C', 'F')).toThrow(
+      'from must be "C", "F", or "K", got "X"',
+    );
   });
 
   // Test case 22: Throws Error if to is an invalid unit string
   it('22. should throw Error if to is an unrecognised unit', () => {
-    expect(() =>
-      formatTemperature(100, 'C', 'Z' as unknown as 'F'),
-    ).toThrow(Error);
-    expect(() =>
-      formatTemperature(100, 'C', 'Z' as unknown as 'F'),
-    ).toThrow('to must be "C", "F", or "K", got "Z"');
+    expect(() => formatTemperature(100, 'C', 'Z' as unknown as 'F')).toThrow(
+      Error,
+    );
+    expect(() => formatTemperature(100, 'C', 'Z' as unknown as 'F')).toThrow(
+      'to must be "C", "F", or "K", got "Z"',
+    );
   });
 
   // Test case 23: Throws Error if decimals is negative

@@ -184,5 +184,4 @@ describe('extractLinks', () => {
     // Assert
     expect(result).toEqual(expected);
   });
-
 });

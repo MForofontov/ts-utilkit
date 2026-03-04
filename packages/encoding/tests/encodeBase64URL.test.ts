@@ -64,5 +64,4 @@ describe('encodeBase64URL', () => {
       expect(decodeBase64URL(encodeBase64URL(input))).toBe(input);
     }
   });
-
 });

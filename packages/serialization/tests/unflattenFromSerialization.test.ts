@@ -161,5 +161,4 @@ describe('unflattenFromSerialization', () => {
     // Assert
     expect(result).toEqual(expected);
   });
-
 });

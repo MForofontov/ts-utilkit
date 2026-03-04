@@ -21,7 +21,6 @@ export function serializeToBinary(
   input: string,
   separator: string = '',
 ): string {
-
   const binaryArray: string[] = [];
 
   for (let i = 0; i < input.length; i++) {

@@ -23,7 +23,6 @@
  * @complexity Time: O(n), Space: O(1)
  */
 export function isValidIPv6(ip: string): boolean {
-
   // Handle zone identifier if present (e.g., %lo0)
   const zoneIndex = ip.indexOf('%');
   let cleanIp = ip;

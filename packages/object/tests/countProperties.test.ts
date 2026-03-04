@@ -24,5 +24,4 @@ describe('countProperties', () => {
     const expected = 0;
     expect(result).toBe(expected);
   });
-
 });

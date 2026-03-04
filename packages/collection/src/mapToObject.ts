@@ -30,7 +30,6 @@
 export function mapToObject<V>(
   map: Map<string | symbol, V>,
 ): Record<string | symbol, V> {
-
   const result: Record<string | symbol, V> = {};
 
   for (const [key, value] of map.entries()) {

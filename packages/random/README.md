@@ -1,6 +1,6 @@
 # @ts-utilkit/random
 
-random  Functions - TypeScript utility functions for random operations.
+random Functions - TypeScript utility functions for random operations.
 
 ## Installation
 
@@ -47,12 +47,17 @@ npm install @ts-utilkit/random
 ## Quick Example
 
 ```typescript
-import { randomInt, randomFloat, selectRandom, shuffleArray } from '@ts-utilkit/random';
+import {
+  randomInt,
+  randomFloat,
+  selectRandom,
+  shuffleArray,
+} from '@ts-utilkit/random';
 
-randomInt(1, 6);                     // 4
-randomFloat(0, 1);                   // 0.7234
-selectRandom(['a', 'b', 'c']);       // 'b'
-shuffleArray([1, 2, 3, 4]);          // [3, 1, 4, 2]
+randomInt(1, 6); // 4
+randomFloat(0, 1); // 0.7234
+selectRandom(['a', 'b', 'c']); // 'b'
+shuffleArray([1, 2, 3, 4]); // [3, 1, 4, 2]
 ```
 
 ## License

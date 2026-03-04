@@ -68,5 +68,4 @@ describe('keysToSnakeCase', () => {
     const expected = { parse_http_response: true, simple_xml: false };
     expect(result).toEqual(expected);
   });
-
 });

@@ -69,5 +69,8 @@ export function deepMerge<T extends object, U extends object>(
     return t;
   };
 
-  return merge({ ...target } as Record<string, unknown>, source as Record<string, unknown>) as T & U;
+  return merge(
+    { ...target } as Record<string, unknown>,
+    source as Record<string, unknown>,
+  ) as T & U;
 }

@@ -68,5 +68,4 @@ describe('isValidIPv4', () => {
     expect(results).toEqual([true, true, true, false, false]);
     expect(endTime - startTime).toBeLessThan(10); // Should complete quickly
   });
-
 });

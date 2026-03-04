@@ -87,8 +87,14 @@ describe('memoize', () => {
   it('9. should isolate caches between separate memoized instances', () => {
     let calls1 = 0;
     let calls2 = 0;
-    const fn1 = memoize(() => { calls1++; return 'a'; });
-    const fn2 = memoize(() => { calls2++; return 'b'; });
+    const fn1 = memoize(() => {
+      calls1++;
+      return 'a';
+    });
+    const fn2 = memoize(() => {
+      calls2++;
+      return 'b';
+    });
     fn1();
     fn1();
     fn2();
@@ -98,7 +104,10 @@ describe('memoize', () => {
 
   it('10. should cache a function returning undefined', () => {
     let callCount = 0;
-    const fn = memoize(() => { callCount++; return undefined; });
+    const fn = memoize(() => {
+      callCount++;
+      return undefined;
+    });
     fn();
     fn();
     expect(callCount).toBe(1);
@@ -106,7 +115,10 @@ describe('memoize', () => {
 
   it('11. should cache a function returning false', () => {
     let callCount = 0;
-    const fn = memoize((n: number) => { callCount++; return n > 0; });
+    const fn = memoize((n: number) => {
+      callCount++;
+      return n > 0;
+    });
     fn(-1);
     fn(-1);
     expect(callCount).toBe(1);
@@ -115,7 +127,10 @@ describe('memoize', () => {
 
   it('12. should work with no arguments', () => {
     let callCount = 0;
-    const fn = memoize(() => { callCount++; return 42; });
+    const fn = memoize(() => {
+      callCount++;
+      return 42;
+    });
     expect(fn()).toBe(42);
     expect(fn()).toBe(42);
     expect(callCount).toBe(1);
@@ -124,7 +139,7 @@ describe('memoize', () => {
   // ─── Edge cases ────────────────────────────────────────────────────────────
 
   it('13. should handle null as an argument', () => {
-    const fn = memoize((v: null | number) => v === null ? 0 : v);
+    const fn = memoize((v: null | number) => (v === null ? 0 : v));
     expect(fn(null)).toBe(0);
     expect(fn(null)).toBe(0);
   });
@@ -137,7 +152,10 @@ describe('memoize', () => {
 
   it('15. should not share cache when wrapping the same function twice', () => {
     let callCount = 0;
-    const raw = (n: number) => { callCount++; return n; };
+    const raw = (n: number) => {
+      callCount++;
+      return n;
+    };
     const m1 = memoize(raw);
     const m2 = memoize(raw);
     m1(1);
@@ -146,5 +164,4 @@ describe('memoize', () => {
   });
 
   // ─── Error cases ───────────────────────────────────────────────────────────
-
 });

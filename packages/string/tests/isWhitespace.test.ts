@@ -123,5 +123,4 @@ describe('isWhitespace', () => {
     const result: boolean = isWhitespace(str);
     expect(result).toBe(expected);
   });
-
 });

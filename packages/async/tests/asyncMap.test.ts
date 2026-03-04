@@ -126,5 +126,4 @@ describe('asyncMap', () => {
       'Error on second item',
     );
   });
-
 });

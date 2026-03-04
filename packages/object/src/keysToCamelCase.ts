@@ -36,7 +36,6 @@
 export function keysToCamelCase(
   obj: Record<string, unknown> | unknown[],
 ): Record<string, unknown> | unknown[] {
-
   const transform = (value: unknown): unknown => {
     if (Array.isArray(value)) {
       return value.map((v) => transform(v));

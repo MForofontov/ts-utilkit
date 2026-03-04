@@ -101,5 +101,4 @@ describe('optimizePattern', () => {
     expect(result).toHaveProperty('canOptimize');
     expect(result).toHaveProperty('suggestions');
   });
-
 });

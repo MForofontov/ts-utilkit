@@ -7,12 +7,16 @@ describe('toUnixTimestamp', () => {
 
   it('2. should return the correct timestamp for a known date', () => {
     // 2025-01-01T00:00:00.000Z = 1735689600
-    expect(toUnixTimestamp(new Date('2025-01-01T00:00:00.000Z'))).toBe(1_735_689_600);
+    expect(toUnixTimestamp(new Date('2025-01-01T00:00:00.000Z'))).toBe(
+      1_735_689_600,
+    );
   });
 
   it('3. should truncate milliseconds (floor behaviour)', () => {
     // 2025-01-01T00:00:00.999Z should still be 1735689600
-    expect(toUnixTimestamp(new Date('2025-01-01T00:00:00.999Z'))).toBe(1_735_689_600);
+    expect(toUnixTimestamp(new Date('2025-01-01T00:00:00.999Z'))).toBe(
+      1_735_689_600,
+    );
   });
 
   it('4. should return a negative number for dates before epoch', () => {
@@ -33,12 +37,16 @@ describe('toUnixTimestamp', () => {
 
   it('7. should return the correct timestamp for the Y2K date', () => {
     // 2000-01-01T00:00:00.000Z = 946,684,800 seconds
-    expect(toUnixTimestamp(new Date('2000-01-01T00:00:00.000Z'))).toBe(946_684_800);
+    expect(toUnixTimestamp(new Date('2000-01-01T00:00:00.000Z'))).toBe(
+      946_684_800,
+    );
   });
 
   it('8. should handle a date far in the future (year 2100)', () => {
     // 2100-01-01T00:00:00.000Z = 4,102,444,800 seconds
-    expect(toUnixTimestamp(new Date('2100-01-01T00:00:00.000Z'))).toBe(4_102_444_800);
+    expect(toUnixTimestamp(new Date('2100-01-01T00:00:00.000Z'))).toBe(
+      4_102_444_800,
+    );
   });
 
   it('9. should throw Error for invalid date', () => {

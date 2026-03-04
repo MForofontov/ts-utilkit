@@ -61,7 +61,6 @@ export function asyncPoll<T>(
     onPoll?: (result: T, attempt: number) => void;
   } = {},
 ): Promise<T> {
-
   const { intervalMs = 1000, timeoutMs = 30000, onPoll } = options;
 
   if (intervalMs <= 0) {

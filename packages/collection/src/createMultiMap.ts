@@ -140,7 +140,6 @@ export function createMultiMap<K, V>(): MultiMap<K, V> {
 
   const multiMap: MultiMap<K, V> = {
     set(key: K, value: V): MultiMap<K, V> {
-
       const existing = store.get(key);
       if (existing !== undefined) {
         existing.push(value);
@@ -152,7 +151,6 @@ export function createMultiMap<K, V>(): MultiMap<K, V> {
     },
 
     setAll(key: K, values: V[]): MultiMap<K, V> {
-
       const existing = store.get(key);
       if (existing !== undefined) {
         existing.push(...values);

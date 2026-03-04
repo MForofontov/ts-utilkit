@@ -72,5 +72,4 @@ describe('hasKey', () => {
     const result = hasKey(obj, 'z');
     expect(result).toBe(false);
   });
-
 });

@@ -24,7 +24,6 @@
  * @complexity Time: O(1), Space: O(1)
  */
 export function isValidIPv4(ip: string): boolean {
-
   const octets = ip.split('.');
 
   // Must have exactly 4 octets

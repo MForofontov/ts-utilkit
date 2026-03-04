@@ -18,7 +18,6 @@
  * @complexity Time: O(n) where n is html length, Space: O(m) where m is number of emails
  */
 export function extractEmails(html: string): string[] {
-
   const emails = new Set<string>();
 
   // Extract from mailto: links

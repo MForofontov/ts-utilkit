@@ -74,5 +74,4 @@ describe('setIntersection', () => {
       'At least two sets are required',
     );
   });
-
 });

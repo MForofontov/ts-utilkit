@@ -20,9 +20,8 @@ describe('transformKeys', () => {
   });
 
   it('3. should strip a common prefix from all keys', () => {
-    const result = transformKeys(
-      { data_id: 1, data_name: 'Bob' },
-      (k) => k.replace('data_', ''),
+    const result = transformKeys({ data_id: 1, data_name: 'Bob' }, (k) =>
+      k.replace('data_', ''),
     );
     expect(result).toEqual({ id: 1, name: 'Bob' });
   });
@@ -34,7 +33,10 @@ describe('transformKeys', () => {
 
   it('5. should pass the key to the transform function', () => {
     const seen: string[] = [];
-    transformKeys({ a: 1, b: 2 }, (k) => { seen.push(k); return k; });
+    transformKeys({ a: 1, b: 2 }, (k) => {
+      seen.push(k);
+      return k;
+    });
     expect(seen).toEqual(['a', 'b']);
   });
 
@@ -69,5 +71,4 @@ describe('transformKeys', () => {
   });
 
   // ── Error cases ───────────────────────────────────────────────────────────
-
 });

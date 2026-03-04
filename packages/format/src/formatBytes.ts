@@ -55,8 +55,28 @@ export function formatBytes(
   }
 
   const k = binary ? 1024 : 1000;
-  const standardUnits = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-  const binaryUnits = ['Bytes', 'KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB'];
+  const standardUnits = [
+    'Bytes',
+    'KB',
+    'MB',
+    'GB',
+    'TB',
+    'PB',
+    'EB',
+    'ZB',
+    'YB',
+  ];
+  const binaryUnits = [
+    'Bytes',
+    'KiB',
+    'MiB',
+    'GiB',
+    'TiB',
+    'PiB',
+    'EiB',
+    'ZiB',
+    'YiB',
+  ];
   const units = iecUnits && binary ? binaryUnits : standardUnits;
   const i = Math.floor(Math.log(bytes) / Math.log(k));
 

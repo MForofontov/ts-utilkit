@@ -48,7 +48,6 @@ export function replaceWithCallback(
   callback: ReplaceCallback,
   flags?: string,
 ): string {
-
   let regex: RegExp;
 
   try {

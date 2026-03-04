@@ -29,7 +29,6 @@
  * @complexity Time: O(n) where n is number of digits, Space: O(n)
  */
 export function isValidCreditCard(cardNumber: string): boolean {
-
   // Remove spaces and hyphens
   const cleaned = cardNumber.replace(/[\s-]/g, '');
 

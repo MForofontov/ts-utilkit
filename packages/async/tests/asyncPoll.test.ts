@@ -103,7 +103,9 @@ describe('asyncPoll', () => {
     let call = 0;
     const fn = jest
       .fn<Promise<{ status: string }>, []>()
-      .mockImplementation(async () => ({ status: call++ < 2 ? 'pending' : 'complete' }));
+      .mockImplementation(async () => ({
+        status: call++ < 2 ? 'pending' : 'complete',
+      }));
 
     // Act
     const result = await asyncPoll(fn, (r) => r.status === 'complete', {
@@ -129,19 +131,30 @@ describe('asyncPoll', () => {
   // Test case 12: Throws Error when intervalMs is not positive
   it('12. should throw Error when intervalMs is not positive', () => {
     expect(() =>
-      asyncPoll(async () => 1, () => true, { intervalMs: 0 }),
+      asyncPoll(
+        async () => 1,
+        () => true,
+        { intervalMs: 0 },
+      ),
     ).toThrow('intervalMs must be a positive number');
 
     expect(() =>
-      asyncPoll(async () => 1, () => true, { intervalMs: -10 }),
+      asyncPoll(
+        async () => 1,
+        () => true,
+        { intervalMs: -10 },
+      ),
     ).toThrow('intervalMs must be a positive number');
   });
 
   // Test case 14: Throws Error when timeoutMs is not positive
   it('14. should throw Error when timeoutMs is not positive', () => {
     expect(() =>
-      asyncPoll(async () => 1, () => true, { timeoutMs: 0 }),
+      asyncPoll(
+        async () => 1,
+        () => true,
+        { timeoutMs: 0 },
+      ),
     ).toThrow('timeoutMs must be a positive number');
   });
-
 });

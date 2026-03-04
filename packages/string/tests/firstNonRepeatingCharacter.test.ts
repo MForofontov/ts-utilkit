@@ -131,5 +131,4 @@ describe('firstNonRepeatingCharacter', () => {
     const result: string | null = firstNonRepeatingCharacter(str);
     expect(result).toBe(expected);
   });
-
 });

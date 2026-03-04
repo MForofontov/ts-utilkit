@@ -5,9 +5,9 @@ describe('asyncBatch', () => {
   it('1. should process all items and return concatenated results', async () => {
     // Arrange
     const items = [1, 2, 3, 4, 5];
-    const batchFn = jest.fn().mockImplementation(async (batch: number[]) =>
-      batch.map((n) => n * 2),
-    );
+    const batchFn = jest
+      .fn()
+      .mockImplementation(async (batch: number[]) => batch.map((n) => n * 2));
 
     // Act
     const result = await asyncBatch(items, batchFn, 2);
@@ -78,9 +78,9 @@ describe('asyncBatch', () => {
   it('6. should process each item individually when batchSize is 1', async () => {
     // Arrange
     const items = ['a', 'b', 'c'];
-    const batchFn = jest.fn().mockImplementation(async (b: string[]) =>
-      b.map((s) => s.toUpperCase()),
-    );
+    const batchFn = jest
+      .fn()
+      .mockImplementation(async (b: string[]) => b.map((s) => s.toUpperCase()));
 
     // Act
     const result = await asyncBatch(items, batchFn, 1);
@@ -140,9 +140,7 @@ describe('asyncBatch', () => {
   // Test case 10: Propagates batchFn rejection
   it('10. should propagate an error thrown by batchFn', async () => {
     // Arrange
-    const batchFn = jest
-      .fn()
-      .mockRejectedValue(new Error('batch failed'));
+    const batchFn = jest.fn().mockRejectedValue(new Error('batch failed'));
 
     // Act & Assert
     await expect(asyncBatch([1, 2, 3], batchFn, 2)).rejects.toThrow(

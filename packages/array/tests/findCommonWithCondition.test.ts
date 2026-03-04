@@ -166,5 +166,4 @@ describe('findCommonWithCondition', () => {
     );
     expect(findCommonWithCondition(arr1, arr2, condition)).toEqual(expected);
   });
-
 });

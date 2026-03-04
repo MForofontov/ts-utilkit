@@ -57,7 +57,6 @@ export function deepCloneWith<T>(
   obj: T,
   cloneFn: (value: unknown) => unknown,
 ): T {
-
   const clone = (value: unknown): unknown => {
     if (Array.isArray(value)) {
       return value.map(clone);

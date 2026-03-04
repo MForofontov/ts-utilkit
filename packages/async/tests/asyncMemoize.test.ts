@@ -74,7 +74,9 @@ describe('asyncMemoize', () => {
   // Test case 5: Custom keyFn controls cache grouping
   it('5. should use a custom keyFn to derive cache keys', async () => {
     // Arrange
-    const fn = jest.fn().mockImplementation(async (a: number, b: number) => a + b);
+    const fn = jest
+      .fn()
+      .mockImplementation(async (a: number, b: number) => a + b);
     const memoized = asyncMemoize(fn, {
       keyFn: (a, b) => `${a}-${b}`,
     });
@@ -129,7 +131,9 @@ describe('asyncMemoize', () => {
   // Test case 8: Multiple distinct keys are all independently cached
   it('8. should independently cache multiple distinct argument sets', async () => {
     // Arrange
-    const fn = jest.fn().mockImplementation(async (s: string) => s.toUpperCase());
+    const fn = jest
+      .fn()
+      .mockImplementation(async (s: string) => s.toUpperCase());
     const memoized = asyncMemoize(fn);
 
     // Act
@@ -149,5 +153,4 @@ describe('asyncMemoize', () => {
       'ttl must be non-negative, got -100',
     );
   });
-
 });

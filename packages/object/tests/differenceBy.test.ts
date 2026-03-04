@@ -115,5 +115,4 @@ describe('differenceBy', () => {
     const expected = { [sym2]: 2 };
     expect(result).toEqual(expected);
   });
-
 });

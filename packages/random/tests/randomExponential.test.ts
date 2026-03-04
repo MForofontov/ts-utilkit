@@ -23,7 +23,9 @@ describe('randomExponential', () => {
   it('4. should produce a sample mean close to 1/lambda', () => {
     // Exponential(λ=0.5) → mean = 1/0.5 = 2
     const lambda = 0.5;
-    const samples = Array.from({ length: 5000 }, () => randomExponential(lambda));
+    const samples = Array.from({ length: 5000 }, () =>
+      randomExponential(lambda),
+    );
     const mean = samples.reduce((s, v) => s + v, 0) / samples.length;
     const expectedMean = 1 / lambda; // 2
     expect(mean).toBeGreaterThan(expectedMean * 0.9);
@@ -32,7 +34,9 @@ describe('randomExponential', () => {
 
   it('5. should produce a sample mean close to 1/lambda for lambda=2', () => {
     const lambda = 2;
-    const samples = Array.from({ length: 5000 }, () => randomExponential(lambda));
+    const samples = Array.from({ length: 5000 }, () =>
+      randomExponential(lambda),
+    );
     const mean = samples.reduce((s, v) => s + v, 0) / samples.length;
     const expectedMean = 1 / lambda; // 0.5
     expect(mean).toBeGreaterThan(expectedMean * 0.9);
@@ -66,7 +70,9 @@ describe('randomExponential', () => {
   });
 
   it('10. should generate distinct values across calls', () => {
-    const values = new Set(Array.from({ length: 100 }, () => randomExponential(1)));
+    const values = new Set(
+      Array.from({ length: 100 }, () => randomExponential(1)),
+    );
     expect(values.size).toBeGreaterThan(90);
   });
 

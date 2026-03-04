@@ -50,7 +50,11 @@ describe('parseEnvEnum', () => {
   it('7. should accept the default when variable is unset and default is the first element', () => {
     delete process.env.NODE_ENV;
     expect(
-      parseEnvEnum('NODE_ENV', ['development', 'production', 'test'], 'development'),
+      parseEnvEnum(
+        'NODE_ENV',
+        ['development', 'production', 'test'],
+        'development',
+      ),
     ).toBe('development');
   });
 
@@ -92,7 +96,8 @@ describe('parseEnvEnum', () => {
 
   it('13. should throw Error when key is empty', () => {
     expect(() => parseEnvEnum('', ['a', 'b'])).toThrow(Error);
-    expect(() => parseEnvEnum('', ['a', 'b'])).toThrow('key cannot be an empty string');
+    expect(() => parseEnvEnum('', ['a', 'b'])).toThrow(
+      'key cannot be an empty string',
+    );
   });
-
 });

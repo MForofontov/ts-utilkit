@@ -49,5 +49,4 @@ describe('isDisjoint', () => {
     const result = isDisjoint(set1, set2);
     expect(result).toBe(true);
   });
-
 });

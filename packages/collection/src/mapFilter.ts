@@ -29,7 +29,6 @@ export function mapFilter<K, V>(
   map: Map<K, V>,
   predicate: (entry: [K, V], index: number) => boolean,
 ): Map<K, V> {
-
   const result = new Map<K, V>();
   let index = 0;
 

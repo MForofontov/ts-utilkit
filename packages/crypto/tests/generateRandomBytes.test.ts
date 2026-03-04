@@ -69,5 +69,4 @@ describe('generateRandomBytes', () => {
       'length must be a valid number',
     );
   });
-
 });

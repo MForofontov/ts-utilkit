@@ -48,5 +48,4 @@ describe('shallowEqual', () => {
     const result = shallowEqual(obj1, obj2);
     expect(result).toBe(false);
   });
-
 });

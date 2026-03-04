@@ -36,9 +36,6 @@
       "@ts-utilkit/webscraping": ["packages/webscraping/src"]
     }
   },
-  "include": [
-    "index.ts",
-    "packages/*/src/**/*"
-  ],
+  "include": ["index.ts", "packages/*/src/**/*"],
   "exclude": ["dist", "node_modules", "packages/*/tests/**/*"]
 }

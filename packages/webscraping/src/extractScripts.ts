@@ -29,7 +29,6 @@ export interface ScriptData {
  * @complexity Time: O(n) where n is html length, Space: O(m) where m is number of scripts
  */
 export function extractScripts(html: string): ScriptData[] {
-
   const scripts: ScriptData[] = [];
   const scriptRegex = /<script([^>]*)>([\s\S]*?)<\/script>/gi;
   let match: RegExpExecArray | null;

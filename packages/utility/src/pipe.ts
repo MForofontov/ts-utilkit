@@ -36,10 +36,7 @@
  * @complexity Time: O(n) where n is the number of functions, Space: O(1)
  */
 export function pipe<A, B>(fn1: (a: A) => B): (a: A) => B;
-export function pipe<A, B, C>(
-  fn1: (a: A) => B,
-  fn2: (b: B) => C,
-): (a: A) => C;
+export function pipe<A, B, C>(fn1: (a: A) => B, fn2: (b: B) => C): (a: A) => C;
 export function pipe<A, B, C, D>(
   fn1: (a: A) => B,
   fn2: (b: B) => C,

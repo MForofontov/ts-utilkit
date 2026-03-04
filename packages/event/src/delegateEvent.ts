@@ -55,7 +55,6 @@ export function delegateEvent<K extends keyof HTMLElementEventMap>(
   selector: string,
   handler: (event: HTMLElementEventMap[K], target: Element) => void,
 ): () => void {
-
   const listener = (event: Event): void => {
     // Find the target element that matches the selector
     let target = event.target as Element | null;

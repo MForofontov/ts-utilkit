@@ -142,5 +142,4 @@ describe('formatPlural', () => {
     expect(() => formatPlural(count, word)).toThrow(Error);
     expect(() => formatPlural(count, word)).toThrow('singular cannot be empty');
   });
-
 });

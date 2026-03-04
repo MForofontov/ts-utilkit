@@ -25,9 +25,7 @@
  * @complexity Time: O(1), Space: O(1)
  */
 export function isValidUUID(uuid: string, version?: number): boolean {
-
   if (version !== undefined) {
-
     if (![1, 3, 4, 5].includes(version)) {
       throw new Error('version must be 1, 3, 4, or 5');
     }

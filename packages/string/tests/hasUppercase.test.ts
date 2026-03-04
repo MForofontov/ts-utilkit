@@ -107,5 +107,4 @@ describe('hasUppercase', () => {
     const result: boolean = hasUppercase(str);
     expect(result).toBe(expected);
   });
-
 });

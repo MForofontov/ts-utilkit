@@ -154,5 +154,4 @@ describe('formatBytes', () => {
     expect(() => formatBytes(bytes, decimals)).toThrow(Error);
     expect(() => formatBytes(bytes, decimals)).toThrow('must be non-negative');
   });
-
 });

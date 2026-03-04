@@ -30,7 +30,9 @@ describe('decodeBase32', () => {
   });
 
   it('8. should decode the TOTP test vector (RFC 6238 reference)', () => {
-    expect(decodeBase32('GEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQ')).toBe('12345678901234567890');
+    expect(decodeBase32('GEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQ')).toBe(
+      '12345678901234567890',
+    );
   });
 
   it('9. should be case-insensitive', () => {
@@ -53,7 +55,16 @@ describe('decodeBase32', () => {
 
   it('12. should round-trip correctly with encodeBase32', () => {
     const { encodeBase32 } = require('../src/encodeBase32');
-    const inputs = ['hello', 'f', 'fo', 'foo', 'foob', 'fooba', 'foobar', '12345678901234567890'];
+    const inputs = [
+      'hello',
+      'f',
+      'fo',
+      'foo',
+      'foob',
+      'fooba',
+      'foobar',
+      '12345678901234567890',
+    ];
     for (const input of inputs) {
       expect(decodeBase32(encodeBase32(input))).toBe(input);
     }

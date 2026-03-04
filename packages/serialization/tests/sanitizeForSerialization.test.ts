@@ -189,5 +189,4 @@ describe('sanitizeForSerialization', () => {
     // Assert
     expect(input).toEqual(original);
   });
-
 });

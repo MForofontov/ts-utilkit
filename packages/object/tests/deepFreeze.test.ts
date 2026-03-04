@@ -52,5 +52,4 @@ describe('deepFreeze', () => {
       frozenObj.a = 2;
     }).toThrow();
   });
-
 });

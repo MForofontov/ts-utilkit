@@ -40,5 +40,4 @@ describe('invertObject', () => {
     const expected = { '1,2': 'a', '3,4': 'b' };
     expect(result).toEqual(expected);
   });
-
 });

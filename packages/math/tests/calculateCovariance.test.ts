@@ -29,9 +29,7 @@ describe('calculateCovariance', () => {
 
   // Test case 6: Negative values in both arrays
   it('6. should handle negative values', () => {
-    expect(
-      calculateCovariance([-2, -1, 0, 1, 2], [-4, -2, 0, 2, 4]),
-    ).toBe(4);
+    expect(calculateCovariance([-2, -1, 0, 1, 2], [-4, -2, 0, 2, 4])).toBe(4);
   });
 
   // Test case 7: Mixed positive and negative values

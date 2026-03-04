@@ -123,5 +123,4 @@ describe('countWords', () => {
     const result: number = countWords(str);
     expect(result).toBe(expected);
   });
-
 });

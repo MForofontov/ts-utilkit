@@ -39,5 +39,4 @@ describe('arrayToSet', () => {
     const result = arrayToSet(array);
     expect(result).toEqual(new Set([1, 2, 3, 4]));
   });
-
 });

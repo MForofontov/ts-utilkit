@@ -26,7 +26,6 @@
  * @complexity Time: O(1), Space: O(1)
  */
 export function isValidRegex(pattern: string, flags?: string): boolean {
-
   try {
     new RegExp(pattern, flags);
     return true;

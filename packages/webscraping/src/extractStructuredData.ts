@@ -17,7 +17,6 @@
  * @complexity Time: O(n) where n is html length, Space: O(m) where m is structured data size
  */
 export function extractStructuredData(html: string): unknown[] {
-
   const structuredData: unknown[] = [];
   const jsonLdRegex =
     /<script[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi;

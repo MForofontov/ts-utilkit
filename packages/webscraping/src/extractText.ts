@@ -21,7 +21,6 @@ export function extractText(
   html: string,
   preserveWhitespace: boolean = false,
 ): string {
-
   // Remove script and style tags with their content
   let text = html.replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '');
   text = text.replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '');

@@ -60,7 +60,6 @@ export async function hashPassword(
   salt: string,
   iterations: number = 100000,
 ): Promise<string> {
-
   if (password.length === 0) {
     throw new Error('password cannot be empty');
   }

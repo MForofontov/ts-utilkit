@@ -66,5 +66,4 @@ describe('zipObject', () => {
       'keys and values must have the same length, got 2 and 1',
     );
   });
-
 });

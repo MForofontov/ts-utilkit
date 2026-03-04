@@ -42,7 +42,6 @@ import { Buffer } from 'buffer';
  * @complexity Time: O(n), Space: O(n) where n is the length of the encoded string
  */
 export function decodeBase64URL(str: string): string {
-
   if (!/^[A-Za-z0-9\-_=]*$/.test(str)) {
     throw new Error('Invalid Base64URL string');
   }

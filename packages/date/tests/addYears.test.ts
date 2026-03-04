@@ -6,7 +6,9 @@ describe('addYears', () => {
   });
 
   it('2. should subtract years with a negative value', () => {
-    expect(addYears(new Date('2025-06-15'), -5)).toEqual(new Date('2020-06-15'));
+    expect(addYears(new Date('2025-06-15'), -5)).toEqual(
+      new Date('2020-06-15'),
+    );
   });
 
   it('3. should return the same date when adding zero years', () => {
@@ -26,7 +28,9 @@ describe('addYears', () => {
   });
 
   it('6. should add a large number of years', () => {
-    expect(addYears(new Date('2025-01-01'), 100)).toEqual(new Date('2125-01-01'));
+    expect(addYears(new Date('2025-01-01'), 100)).toEqual(
+      new Date('2125-01-01'),
+    );
   });
 
   it('7. should preserve time components', () => {
@@ -69,6 +73,5 @@ describe('addYears', () => {
     expect(() => addYears(new Date('invalid'), 1)).toThrow('Invalid date');
   });
 
-  it('13. should throw Error when years is NaN', () => {
-  });
+  it('13. should throw Error when years is NaN', () => {});
 });

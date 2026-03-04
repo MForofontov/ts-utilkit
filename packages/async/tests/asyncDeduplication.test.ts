@@ -50,8 +50,8 @@ describe('asyncDeduplication', () => {
     const deduplicated = asyncDeduplication(fn);
 
     // Act
-    const first = await deduplicated('key');          // in-flight + settles
-    const second = await deduplicated('key');         // fresh call after settlement
+    const first = await deduplicated('key'); // in-flight + settles
+    const second = await deduplicated('key'); // fresh call after settlement
 
     // Assert
     expect(first).toBe(1);
@@ -111,9 +111,9 @@ describe('asyncDeduplication', () => {
 
     // Act
     const [r1, r2, r3] = await Promise.all([
-      deduplicated(1, 2),  // key '1:2'
-      deduplicated(1, 2),  // same key → deduplicated
-      deduplicated(1, 3),  // key '1:3' → separate call
+      deduplicated(1, 2), // key '1:2'
+      deduplicated(1, 2), // same key → deduplicated
+      deduplicated(1, 3), // key '1:3' → separate call
     ]);
 
     // Assert
@@ -141,5 +141,4 @@ describe('asyncDeduplication', () => {
     expect(b).toBe(1);
     expect(fn).toHaveBeenCalledTimes(1);
   });
-
 });

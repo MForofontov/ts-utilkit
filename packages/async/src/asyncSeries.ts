@@ -35,7 +35,6 @@
  * @complexity Time: O(n) where n is number of tasks, Space: O(n)
  */
 export function asyncSeries<T>(tasks: Array<() => Promise<T>>): Promise<T[]> {
-
   // Validate all tasks are functions
   tasks.forEach((task, index) => {
     if (typeof task !== 'function') {

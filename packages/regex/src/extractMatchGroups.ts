@@ -49,7 +49,6 @@ export function extractMatchGroups(
   pattern: string | RegExp,
   flags?: string,
 ): MatchGroup[] {
-
   let regex: RegExp;
 
   try {

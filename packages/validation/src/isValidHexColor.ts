@@ -40,7 +40,6 @@
  * @complexity Time: O(1), Space: O(1)
  */
 export function isValidHexColor(color: string): boolean {
-
   // Regex for 3, 4, 6, or 8 digit hex colors with # prefix
   const hexColorRegex =
     /^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{4}|[0-9A-Fa-f]{6}|[0-9A-Fa-f]{8})$/;

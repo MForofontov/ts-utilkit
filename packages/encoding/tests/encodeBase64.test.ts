@@ -56,5 +56,4 @@ describe('encodeBase64', () => {
     const decoded = Buffer.from(encoded, 'base64').toString('utf8');
     expect(decoded).toBe(input);
   });
-
 });

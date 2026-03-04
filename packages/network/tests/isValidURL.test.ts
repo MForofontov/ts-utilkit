@@ -94,5 +94,4 @@ describe('isValidURL', () => {
     expect(isValidURL('custom://example.com', ['custom'])).toBe(true);
     expect(isValidURL('custom://example.com', ['http'])).toBe(false);
   });
-
 });

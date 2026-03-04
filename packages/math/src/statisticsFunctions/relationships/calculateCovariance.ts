@@ -48,10 +48,7 @@ export function calculateCovariance(x: number[], y: number[]): number {
   const meanX = calculateAverage(x);
   const meanY = calculateAverage(y);
 
-  const sum = x.reduce(
-    (acc, xi, i) => acc + (xi - meanX) * (y[i] - meanY),
-    0,
-  );
+  const sum = x.reduce((acc, xi, i) => acc + (xi - meanX) * (y[i] - meanY), 0);
 
   return sum / x.length;
 }

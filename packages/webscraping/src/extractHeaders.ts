@@ -30,7 +30,6 @@ export function extractHeaders(
   html: string,
   includeAttributes: boolean = true,
 ): HeaderData[] {
-
   const headers: HeaderData[] = [];
   const headerRegex = /<h([1-6])([^>]*)>([\s\S]*?)<\/h\1>/gi;
   let match: RegExpExecArray | null;

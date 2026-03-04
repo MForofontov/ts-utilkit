@@ -48,7 +48,6 @@ export function asyncDeduplication<T, Args extends unknown[]>(
   fn: (...args: Args) => Promise<T>,
   keyFn?: (...args: Args) => string,
 ): (...args: Args) => Promise<T> {
-
   const inFlight = new Map<string, Promise<T>>();
 
   return (...args: Args): Promise<T> => {

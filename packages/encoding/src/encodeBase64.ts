@@ -35,6 +35,5 @@ import { Buffer } from 'buffer';
  * @complexity Time: O(n), Space: O(n) where n is the length of the input string
  */
 export function encodeBase64(str: string): string {
-
   return Buffer.from(str, 'utf8').toString('base64');
 }

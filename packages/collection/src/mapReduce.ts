@@ -31,7 +31,6 @@ export function mapReduce<K, V, R>(
   reducer: (accumulator: R, entry: [K, V], index: number) => R,
   initialValue: R,
 ): R {
-
   let accumulator = initialValue;
   let index = 0;
 

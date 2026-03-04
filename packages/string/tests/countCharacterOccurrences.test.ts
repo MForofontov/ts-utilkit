@@ -154,5 +154,4 @@ describe('countCharacterOccurrences', () => {
     const result: number = countCharacterOccurrences(str, char);
     expect(result).toBe(expected);
   });
-
 });

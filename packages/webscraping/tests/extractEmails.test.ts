@@ -203,5 +203,4 @@ describe('extractEmails', () => {
     // Assert
     expect(result).toEqual(expected);
   });
-
 });

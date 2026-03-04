@@ -35,7 +35,6 @@ export interface OptimizationSuggestions {
 export function optimizePattern(
   pattern: string | RegExp,
 ): OptimizationSuggestions {
-
   let source: string;
 
   try {

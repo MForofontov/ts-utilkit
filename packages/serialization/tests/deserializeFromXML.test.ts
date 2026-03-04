@@ -147,5 +147,4 @@ describe('deserializeFromXML', () => {
     expect(result.root.item).toEqual(['1', '2']);
     expect(result.root.other).toBe('3');
   });
-
 });

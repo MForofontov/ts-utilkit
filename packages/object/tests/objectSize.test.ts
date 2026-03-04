@@ -56,5 +56,4 @@ describe('objectSize', () => {
     const expected = 5;
     expect(result).toBe(expected);
   });
-
 });

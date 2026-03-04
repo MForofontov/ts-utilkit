@@ -36,7 +36,6 @@
  * @complexity Time: O(n), Space: O(k) where k is the number of matches
  */
 export function extractNumbers(str: string): number[] {
-
   const matches = str.match(/[+-]?\d+(\.\d+)?/g);
 
   if (!matches) {

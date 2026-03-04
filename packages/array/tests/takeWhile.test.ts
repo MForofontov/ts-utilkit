@@ -8,11 +8,9 @@ describe('takeWhile', () => {
 
   // Test case 2: Take strings by length
   it('2. should take strings while their length is within limit', () => {
-    expect(takeWhile(['hi', 'hey', 'hello', 'world!'], (w) => w.length < 6)).toEqual([
-      'hi',
-      'hey',
-      'hello',
-    ]);
+    expect(
+      takeWhile(['hi', 'hey', 'hello', 'world!'], (w) => w.length < 6),
+    ).toEqual(['hi', 'hey', 'hello']);
   });
 
   // Test case 3: Take objects while a property matches
@@ -104,7 +102,10 @@ describe('takeWhile', () => {
 
   // Test case 12: Works correctly with boolean array
   it('12. should take leading true values from a boolean array', () => {
-    expect(takeWhile([true, true, false, true], (b) => b)).toEqual([true, true]);
+    expect(takeWhile([true, true, false, true], (b) => b)).toEqual([
+      true,
+      true,
+    ]);
   });
 
   // Test case 13: Large array performance
@@ -121,5 +122,4 @@ describe('takeWhile', () => {
     expect(result).toHaveLength(5000);
     expect(end - start).toBeLessThan(100);
   });
-
 });

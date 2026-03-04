@@ -55,5 +55,4 @@ describe('queryStringToObject', () => {
     const result = queryStringToObject(queryString);
     expect(result).toEqual({ note: 'foo=bar=baz', data: 'hello=world' });
   });
-
 });

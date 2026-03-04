@@ -37,7 +37,6 @@ export function takeWhile<T>(
   arr: T[],
   predicate: (value: T, index: number, array: T[]) => boolean,
 ): T[] {
-
   const result: T[] = [];
 
   for (let i = 0; i < arr.length; i++) {

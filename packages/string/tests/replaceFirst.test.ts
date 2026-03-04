@@ -2,7 +2,9 @@ import { replaceFirst } from '../src/replaceFirst';
 
 describe('replaceFirst', () => {
   it('1. should replace only the first occurrence', () => {
-    expect(replaceFirst('hello hello hello', 'hello', 'hi')).toBe('hi hello hello');
+    expect(replaceFirst('hello hello hello', 'hello', 'hi')).toBe(
+      'hi hello hello',
+    );
   });
   it('2. should return the original string when search not found', () => {
     expect(replaceFirst('hello world', 'xyz', 'abc')).toBe('hello world');

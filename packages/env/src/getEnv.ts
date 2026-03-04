@@ -22,7 +22,6 @@
 export function getEnv(key: string): string | undefined;
 export function getEnv(key: string, defaultValue: string): string;
 export function getEnv(key: string, defaultValue?: string): string | undefined {
-
   if (key.length === 0) {
     throw new Error('key cannot be an empty string');
   }

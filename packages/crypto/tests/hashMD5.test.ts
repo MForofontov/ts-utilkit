@@ -55,5 +55,4 @@ describe('hashMD5', () => {
     const result = hashMD5(data);
     expect(result).toBe('d41d8cd98f00b204e9800998ecf8427e');
   });
-
 });

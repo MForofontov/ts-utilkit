@@ -114,9 +114,11 @@ ts-utilkit/
 ### Package Usage Philosophy
 
 #### When to Use Battle-Tested Packages
+
 This library follows a clear philosophy: **Use battle-tested packages as building blocks, but add meaningful logic on top**.
 
 **DO use existing packages for:**
+
 - HTTP client/server → `axios`, `node-fetch`, `http` (stdlib)
 - Date/time manipulation → `date-fns`, `dayjs`, `luxon`
 - Validation → `zod`, `yup`, `joi`
@@ -132,6 +134,7 @@ This library follows a clear philosophy: **Use battle-tested packages as buildin
 - Async utilities → Native Promises, `async/await`
 
 **DO add value on top with:**
+
 - ✅ **Workflow logic**: Retry strategies, error recovery, orchestration
 - ✅ **Validation & type safety**: Input validation, TypeScript generics, runtime checks
 - ✅ **Convenience features**: Smart defaults, method chaining, fluent APIs
@@ -158,7 +161,7 @@ export function hashPassword(
   if (typeof salt !== 'string' || salt.length !== 32) {
     throw new TypeError('salt must be a 32-character hex string');
   }
-  
+
   const hash = crypto.pbkdf2Sync(password, salt, iterations, 64, 'sha512');
   return hash.toString('hex');
 }
@@ -172,43 +175,47 @@ export async function asyncRetry<T>(
   // Uses: Native Promises
   // Adds: Exponential backoff, configurable retries, error aggregation
   let lastError: Error;
-  
+
   for (let attempt = 0; attempt <= maxRetries; attempt++) {
     try {
       return await fn();
     } catch (error) {
       lastError = error as Error;
       if (attempt < maxRetries) {
-        await new Promise(resolve => setTimeout(resolve, delayMs * Math.pow(2, attempt)));
+        await new Promise((resolve) =>
+          setTimeout(resolve, delayMs * Math.pow(2, attempt)),
+        );
       }
     }
   }
-  
+
   throw new Error(`Failed after ${maxRetries} retries: ${lastError.message}`);
 }
 
 // ✅ GOOD: Adds weighted selection logic (not in stdlib)
-export function randomElement<T>(elements: WeightedElement<T>[]): WeightedElement<T> {
+export function randomElement<T>(
+  elements: WeightedElement<T>[],
+): WeightedElement<T> {
   // Uses: Math.random()
   // Adds: Weighted selection algorithm, validation, TypeScript generics
   if (!Array.isArray(elements) || elements.length === 0) {
     throw new Error('elements array cannot be empty');
   }
-  
+
   const totalWeight = elements.reduce((sum, el) => sum + el.weight, 0);
   let random = Math.random() * totalWeight;
-  
+
   for (const element of elements) {
     random -= element.weight;
     if (random <= 0) return element;
   }
-  
+
   return elements[elements.length - 1];
 }
 
 // ❌ BAD: Just a thin wrapper with no added value
 export function parseJSON(text: string): any {
-  return JSON.parse(text);  // No validation, no error handling, no value added
+  return JSON.parse(text); // No validation, no error handling, no value added
 }
 
 // ❌ BAD: Reimplementing existing package functionality
@@ -219,12 +226,13 @@ export function formatDate(date: Date, format: string): string {
 
 // ❌ BAD: Wrapper that adds nothing beyond type annotation
 export function readFileSync(path: string): string {
-  return fs.readFileSync(path, 'utf-8');  // Just use fs directly
+  return fs.readFileSync(path, 'utf-8'); // Just use fs directly
 }
 ```
 
 **Value Proposition:**
 This library provides a **convenience layer with TypeScript best practices** on top of battle-tested foundations:
+
 1. **Consistent TypeScript API** across different underlying libraries
 2. **Type safety with generics** and strict type checking
 3. **Runtime validation** with descriptive error messages
@@ -234,7 +242,9 @@ This library provides a **convenience layer with TypeScript best practices** on 
 7. **Enterprise-ready** error handling and edge case coverage
 
 #### When Adding New Functionality
+
 Before adding a new function or module, ask:
+
 1. **Does a battle-tested package already solve this?** → Use it as a foundation
 2. **What value am I adding?** → Ensure you're adding workflow logic, validation, or convenience
 3. **Is this a thin wrapper?** → Consider if users should just use the underlying package directly
@@ -783,19 +793,23 @@ Each package maintains its own `CHANGELOG.md` following [Keep a Changelog](https
 ## [Unreleased]
 
 ### Added
+
 - New function `arrayUnique` for removing duplicates
 - Support for custom comparator in `sortBy` function
 - TypeScript 5.0 strict mode compatibility
 
 ### Changed
+
 - `deepMerge` now handles circular references
 - Improved performance of `flattenArray` by 40%
 
 ### Fixed
+
 - Fixed NaN handling in `calculateMean`
 - Corrected return type of `asyncRetry` generic
 
 ### Security
+
 - Updated crypto functions to use timing-safe comparisons
 ```
 

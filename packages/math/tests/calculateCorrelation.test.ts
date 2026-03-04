@@ -3,17 +3,23 @@ import { calculateCorrelation } from '../src/statisticsFunctions/relationships/c
 describe('calculateCorrelation', () => {
   // Test case 1: Perfect positive correlation → 1
   it('1. should return 1 for perfectly correlated arrays', () => {
-    expect(calculateCorrelation([1, 2, 3, 4, 5], [2, 4, 6, 8, 10])).toBeCloseTo(1);
+    expect(calculateCorrelation([1, 2, 3, 4, 5], [2, 4, 6, 8, 10])).toBeCloseTo(
+      1,
+    );
   });
 
   // Test case 2: Perfect negative correlation → -1
   it('2. should return -1 for perfectly inversely correlated arrays', () => {
-    expect(calculateCorrelation([1, 2, 3, 4, 5], [10, 8, 6, 4, 2])).toBeCloseTo(-1);
+    expect(calculateCorrelation([1, 2, 3, 4, 5], [10, 8, 6, 4, 2])).toBeCloseTo(
+      -1,
+    );
   });
 
   // Test case 3: Identical arrays — perfect self-correlation → 1
   it('3. should return 1 when both arrays are identical', () => {
-    expect(calculateCorrelation([1, 2, 3, 4, 5], [1, 2, 3, 4, 5])).toBeCloseTo(1);
+    expect(calculateCorrelation([1, 2, 3, 4, 5], [1, 2, 3, 4, 5])).toBeCloseTo(
+      1,
+    );
   });
 
   // Test case 4: Constant y → NaN (undefined correlation)

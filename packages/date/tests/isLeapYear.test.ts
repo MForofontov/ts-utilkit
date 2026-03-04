@@ -51,5 +51,4 @@ describe('isLeapYear', () => {
     const result: boolean = isLeapYear(year);
     expect(result).toBe(expected);
   });
-
 });

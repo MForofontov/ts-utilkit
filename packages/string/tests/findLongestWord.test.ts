@@ -123,5 +123,4 @@ describe('findLongestWord', () => {
     const result: string = findLongestWord(str);
     expect(result).toBe(expected);
   });
-
 });

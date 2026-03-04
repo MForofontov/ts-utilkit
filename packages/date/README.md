@@ -1,6 +1,6 @@
 # @ts-utilkit/date
 
-date  Functions - TypeScript utility functions for date operations.
+date Functions - TypeScript utility functions for date operations.
 
 ## Installation
 
@@ -55,10 +55,10 @@ npm install @ts-utilkit/date
 ```typescript
 import { addDays, formatDate, daysBetween, isLeapYear } from '@ts-utilkit/date';
 
-addDays(new Date(), 7);               // Add 7 days
+addDays(new Date(), 7); // Add 7 days
 formatDate(new Date(), 'YYYY-MM-DD'); // Format date
-daysBetween(date1, date2);            // Days between dates
-isLeapYear(2024);                     // true
+daysBetween(date1, date2); // Days between dates
+isLeapYear(2024); // true
 ```
 
 ## License

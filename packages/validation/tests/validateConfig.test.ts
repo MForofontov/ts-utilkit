@@ -86,5 +86,4 @@ describe('validateConfig', () => {
       "Required configuration key 'a.b.c' is missing or undefined",
     );
   });
-
 });

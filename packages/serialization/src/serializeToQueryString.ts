@@ -25,7 +25,6 @@ export function serializeToQueryString(
     arrayFormat?: 'repeat' | 'brackets' | 'comma';
   } = {},
 ): string {
-
   const { encodeValues = true, arrayFormat = 'repeat' } = options;
 
   const parts: string[] = [];

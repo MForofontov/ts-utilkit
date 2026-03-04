@@ -62,5 +62,4 @@ describe('mapReduce', () => {
     );
     expect(result).toBe(5);
   });
-
 });

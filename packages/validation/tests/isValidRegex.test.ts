@@ -118,5 +118,4 @@ describe('isValidRegex', () => {
     // Arrange & Act & Assert
     expect(isValidRegex('(?<invalid')).toBe(false);
   });
-
 });

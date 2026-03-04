@@ -123,5 +123,4 @@ describe('isPalindrome', () => {
     const result: boolean = isPalindrome(str);
     expect(result).toBe(expected);
   });
-
 });

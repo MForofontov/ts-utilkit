@@ -32,7 +32,6 @@ export function extractMatches(
   pattern: string | RegExp,
   flags?: string,
 ): string[] {
-
   let regex: RegExp;
 
   try {

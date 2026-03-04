@@ -52,7 +52,9 @@ describe('measure', () => {
     const { durationMs } = measure(() => {
       // Busy-wait for a tiny but measurable amount
       const end = Date.now() + 10;
-      while (Date.now() < end) { /* spin */ }
+      while (Date.now() < end) {
+        /* spin */
+      }
     });
     expect(durationMs).toBeGreaterThan(0);
   });
@@ -70,7 +72,9 @@ describe('measure', () => {
   });
 
   it('12. should handle a function returning null', () => {
-    const { result, error } = measure(() => null) as ReturnType<typeof measure> & { error?: unknown };
+    const { result, error } = measure(() => null) as ReturnType<
+      typeof measure
+    > & { error?: unknown };
     expect(result).toBeNull();
     expect(error).toBeUndefined();
   });
@@ -87,7 +91,9 @@ describe('measure', () => {
 
   it('15. should measure an array sort in a reasonable time', () => {
     const arr = Array.from({ length: 10000 }, (_, i) => 10000 - i);
-    const { result, durationMs } = measure(() => [...arr].sort((a, b) => a - b));
+    const { result, durationMs } = measure(() =>
+      [...arr].sort((a, b) => a - b),
+    );
     expect(result[0]).toBe(1);
     expect(durationMs).toBeLessThan(100);
   });
@@ -96,7 +102,9 @@ describe('measure', () => {
 
   it('16. should propagate errors thrown by fn', () => {
     expect(() =>
-      measure(() => { throw new Error('fn error'); }),
+      measure(() => {
+        throw new Error('fn error');
+      }),
     ).toThrow('fn error');
   });
 
@@ -106,5 +114,4 @@ describe('measure', () => {
   });
 
   // ─── Error cases ───────────────────────────────────────────────────────────
-
 });

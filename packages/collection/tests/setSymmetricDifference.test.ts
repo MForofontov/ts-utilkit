@@ -60,5 +60,4 @@ describe('setSymmetricDifference', () => {
     expect(set1).toEqual(original1);
     expect(set2).toEqual(original2);
   });
-
 });

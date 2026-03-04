@@ -67,5 +67,4 @@ describe('keyBy', () => {
     const expected = {};
     expect(result).toEqual(expected);
   });
-
 });

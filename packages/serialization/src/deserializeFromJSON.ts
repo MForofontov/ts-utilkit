@@ -24,7 +24,6 @@ export function deserializeFromJSON<T = any>(
   jsonString: string,
   validate?: (data: any) => boolean,
 ): T {
-
   let data: any;
 
   try {

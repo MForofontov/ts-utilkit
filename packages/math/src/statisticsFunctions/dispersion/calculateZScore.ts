@@ -52,9 +52,7 @@ export function calculateZScore(
     throw new Error('stdDev must be a valid number, not NaN');
   }
   if (stdDev < 0) {
-    throw new Error(
-      `stdDev must be non-negative, got ${stdDev}`,
-    );
+    throw new Error(`stdDev must be non-negative, got ${stdDev}`);
   }
   if (stdDev === 0) {
     return NaN;

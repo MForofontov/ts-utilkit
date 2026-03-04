@@ -39,7 +39,6 @@ export function isInRange(
   max: number,
   inclusive: boolean = true,
 ): boolean {
-
   if (isNaN(value)) {
     throw new Error('value must be a valid number, not NaN');
   }

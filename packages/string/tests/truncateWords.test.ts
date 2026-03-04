@@ -35,8 +35,7 @@ describe('truncateWords', () => {
   });
 
   it('7. should truncate a long article excerpt', () => {
-    const text =
-      'Lorem ipsum dolor sit amet consectetur adipiscing elit';
+    const text = 'Lorem ipsum dolor sit amet consectetur adipiscing elit';
     expect(truncateWords(text, 4)).toBe('Lorem ipsum dolor sit...');
   });
 

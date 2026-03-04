@@ -160,5 +160,4 @@ describe('serializeToQueryString', () => {
     // Assert
     expect(result).toBe(expected);
   });
-
 });

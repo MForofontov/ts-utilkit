@@ -18,9 +18,7 @@
  */
 export function repeatString(str: string, count: number): string {
   if (count < 0 || !Number.isInteger(count)) {
-    throw new RangeError(
-      `count must be a non-negative integer, got ${count}`,
-    );
+    throw new RangeError(`count must be a non-negative integer, got ${count}`);
   }
   return str.repeat(count);
 }

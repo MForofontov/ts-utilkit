@@ -1,6 +1,6 @@
 # @ts-utilkit/string
 
-string  Functions - TypeScript utility functions for string operations.
+string Functions - TypeScript utility functions for string operations.
 
 ## Installation
 
@@ -73,12 +73,17 @@ npm install @ts-utilkit/string
 ## Quick Example
 
 ```typescript
-import { slugify, capitalizeFirstLetter, isPalindrome, truncate } from '@ts-utilkit/string';
+import {
+  slugify,
+  capitalizeFirstLetter,
+  isPalindrome,
+  truncate,
+} from '@ts-utilkit/string';
 
-slugify('Hello World!');             // 'hello-world'
-capitalizeFirstLetter('hello');      // 'Hello'
-isPalindrome('racecar');             // true
-truncate('Long text...', 10);        // 'Long text...'
+slugify('Hello World!'); // 'hello-world'
+capitalizeFirstLetter('hello'); // 'Hello'
+isPalindrome('racecar'); // true
+truncate('Long text...', 10); // 'Long text...'
 ```
 
 ## License

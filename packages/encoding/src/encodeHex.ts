@@ -36,6 +36,5 @@ import { Buffer } from 'buffer';
  * @complexity Time: O(n), Space: O(n) where n is the byte length of the UTF-8 string
  */
 export function encodeHex(str: string): string {
-
   return Buffer.from(str, 'utf8').toString('hex');
 }

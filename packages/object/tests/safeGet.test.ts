@@ -80,5 +80,4 @@ describe('safeGet', () => {
     const expected = 42;
     expect(result).toEqual(expected);
   });
-
 });

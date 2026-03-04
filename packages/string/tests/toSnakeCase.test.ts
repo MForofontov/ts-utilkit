@@ -123,5 +123,4 @@ describe('toSnakeCase', () => {
     const result: string = toSnakeCase(str);
     expect(result).toBe(expected);
   });
-
 });

@@ -22,7 +22,6 @@ export function deserializeFromQueryString(
   queryString: string,
   options: { decodeValues?: boolean; arrayFormat?: 'brackets' | 'auto' } = {},
 ): Record<string, any> {
-
   const { decodeValues = true, arrayFormat = 'auto' } = options;
 
   // Remove leading ?

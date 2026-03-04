@@ -38,7 +38,6 @@
 export function compactObject<T extends Record<string, unknown>>(
   obj: T,
 ): Partial<T> {
-
   const compact = (value: unknown): unknown => {
     if (Array.isArray(value)) {
       return value.map((v: unknown) =>

@@ -47,7 +47,6 @@ export function splitByPattern(
   },
   flags?: string,
 ): string[] {
-
   const includeDelimiters = options?.includeDelimiters ?? false;
   const limit = options?.limit;
 

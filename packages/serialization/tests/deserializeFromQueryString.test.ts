@@ -171,5 +171,4 @@ describe('deserializeFromQueryString', () => {
     // Assert (note: decodeURIComponent doesn't convert + to space, but %20 does)
     expect(result.text).toBe('Hello+World');
   });
-
 });

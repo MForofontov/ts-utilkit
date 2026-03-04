@@ -264,5 +264,4 @@ describe('extractListItems', () => {
     // Assert
     expect(result).toEqual(expected);
   });
-
 });

@@ -30,7 +30,6 @@ import { randomBytes } from 'crypto';
  * @complexity Time: O(n) where n is the length, Space: O(n)
  */
 export function generateRandomBytes(length: number): Buffer {
-
   if (isNaN(length)) {
     throw new Error('length must be a valid number, not NaN');
   }

@@ -112,5 +112,4 @@ describe('parseEnvBool', () => {
     expect(() => parseEnvBool('')).toThrow(Error);
     expect(() => parseEnvBool('')).toThrow('key cannot be an empty string');
   });
-
 });

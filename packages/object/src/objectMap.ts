@@ -48,7 +48,6 @@ export function objectMap<T, U>(
   obj: Record<string, T>,
   fn: (value: T, key: string) => U,
 ): Record<string, U> {
-
   return Object.keys(obj).reduce(
     (acc, key) => {
       acc[key] = fn(obj[key], key);

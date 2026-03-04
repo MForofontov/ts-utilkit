@@ -23,7 +23,6 @@ export function deserializeFromBinary(
   binaryString: string,
   separator: string = '',
 ): string {
-
   const binaryArray = separator ? binaryString.split(separator) : [];
 
   // If no separator, split into 8-bit chunks

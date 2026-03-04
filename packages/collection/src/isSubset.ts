@@ -34,7 +34,6 @@
  * @complexity Time: O(n) where n is size of subset, Space: O(1)
  */
 export function isSubset<T>(subset: Set<T>, superset: Set<T>): boolean {
-
   // If subset is larger, it cannot be a subset
   if (subset.size > superset.size) {
     return false;

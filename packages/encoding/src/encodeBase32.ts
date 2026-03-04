@@ -39,7 +39,6 @@ const BASE32_ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
  * @complexity Time: O(n), Space: O(n) where n is the byte length of the UTF-8 string
  */
 export function encodeBase32(str: string): string {
-
   if (str.length === 0) {
     return '';
   }

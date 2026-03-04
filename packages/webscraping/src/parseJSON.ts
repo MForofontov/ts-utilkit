@@ -21,7 +21,6 @@
  * @complexity Time: O(n) where n is string length, Space: O(n)
  */
 export function parseJSON<T = unknown>(jsonString: string): T | null {
-
   try {
     return JSON.parse(jsonString) as T;
   } catch {

@@ -114,10 +114,14 @@ describe('formatRelativeTime', () => {
   });
 
   it('23. should throw Error for invalid date', () => {
-    expect(() => formatRelativeTime(new Date('invalid'), base)).toThrow('Invalid date');
+    expect(() => formatRelativeTime(new Date('invalid'), base)).toThrow(
+      'Invalid date',
+    );
   });
 
   it('24. should throw Error for invalid baseDate', () => {
-    expect(() => formatRelativeTime(base, new Date('invalid'))).toThrow('Invalid baseDate');
+    expect(() => formatRelativeTime(base, new Date('invalid'))).toThrow(
+      'Invalid baseDate',
+    );
   });
 });

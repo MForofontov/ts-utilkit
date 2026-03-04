@@ -354,5 +354,4 @@ describe('throttleEvent', () => {
       'limit must be non-negative',
     );
   });
-
 });

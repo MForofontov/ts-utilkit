@@ -43,7 +43,6 @@
 export function onceEvent<T extends unknown[], R>(
   handler: (...args: T) => R,
 ): (...args: T) => R {
-
   let called = false;
   let result: R;
 

@@ -29,7 +29,9 @@ describe('wrapText', () => {
   });
 
   it('6. should place a word longer than maxWidth on its own line', () => {
-    expect(wrapText('Hi superlongword there', 5)).toBe('Hi\nsuperlongword\nthere');
+    expect(wrapText('Hi superlongword there', 5)).toBe(
+      'Hi\nsuperlongword\nthere',
+    );
   });
 
   it('7. should handle a single very long word without wrapping it', () => {

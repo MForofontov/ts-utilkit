@@ -115,5 +115,4 @@ describe('stringToNumber', () => {
     const result: number = stringToNumber(str);
     expect(result).toBeNaN();
   });
-
 });

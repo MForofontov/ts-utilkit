@@ -105,5 +105,4 @@ describe('testInvalidTypes', () => {
     expect(results[1]).toBe(false); // 42 is accepted
     expect(results[2]).toBe(false); // null is accepted
   });
-
 });

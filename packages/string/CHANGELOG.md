@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Changed
+
 - Remove all runtime `typeof`/`instanceof` type guards from all string functions; TypeScript type system is the contract — no runtime type checking for a TS-first library
 - Remove all corresponding `@throws {TypeError}` JSDoc tags from all affected functions
 - Remove all TypeError test cases from all string package test files
@@ -16,8 +17,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `countSubstring`: replace inline regex-escape pattern with `escapeRegex` from the same package
 - `replaceMultiple`: replace inline regex-escape pattern with `escapeRegex` from the same package
 - `generateRandomAlphanumeric`: delegate character generation to `randomSequence` from `@ts-utilkit/random`
+- Apply Prettier formatting: remove orphaned blank lines at function-body openings introduced by guard removal
 
 ### Deprecated
+
 - `startsWith`: pure native wrapper over `String.prototype.startsWith()` — use native method directly
 - `endsWith`: pure native wrapper over `String.prototype.endsWith()` — use native method directly
 - `indexOfSubstring`: pure native wrapper over `String.prototype.indexOf()` — use native method directly
@@ -31,6 +34,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `generateRandomAlphanumeric`: use `randomSequence` from `@ts-utilkit/random` directly with the alphanumeric charset. Will be removed in the next major version.
 
 ### Added
+
 - Add `@ts-utilkit/random` as a declared package dependency
 - Add `toCamelCase` function to convert strings to camelCase (handles space, kebab, snake, PascalCase, and mixed-delimiter inputs)
 - Add `toPascalCase` function to convert strings to PascalCase (handles space, kebab, snake, camelCase, and mixed-delimiter inputs)
@@ -44,6 +48,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.0] - 2026-01-26
 
 ### Added
+
 - Initial release of @ts-utilkit/string with 46 functions
 - Case conversion: `capitalizeFirstLetter`, `titleCase`, `toLowerCase`, `toUpperCase`, `toSnakeCase`, `camelize`, `swapCase`
 - String manipulation: `trim`, `trimStart`, `trimEnd`, `padStart`, `padEnd`, `leftPad`, `rightPad`, `repeatString`, `reverseString`
@@ -62,6 +67,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Workflow
 
 As you make changes, immediately add them to the **[Unreleased]** section:
+
 1. Add item under appropriate category (Added/Changed/Fixed/Deprecated/Removed/Security)
 2. When releasing, rename [Unreleased] to version number with date
 3. Create new empty [Unreleased] section at the top

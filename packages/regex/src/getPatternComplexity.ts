@@ -45,7 +45,6 @@ export interface PatternComplexity {
 export function getPatternComplexity(
   pattern: string | RegExp,
 ): PatternComplexity {
-
   let source: string;
 
   try {
