@@ -39,10 +39,10 @@ fi
 PACKAGES=(
   "async"
   "collection"
-  "configuration"
   "crypto"
   "date"
   "encoding"
+  "env"
   "event"
   "format"
   "network"
