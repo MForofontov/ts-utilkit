@@ -4,8 +4,6 @@
  * @param str - The string to process.
  * @returns The string with all whitespace characters removed (spaces, tabs, newlines, etc.).
  *
- * @throws {TypeError} If str is not a string.
- *
  * @example
  * // Basic usage
  * removeWhitespace("   hello   world   "); // "helloworld"

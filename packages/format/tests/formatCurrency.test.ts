@@ -172,45 +172,6 @@ describe('formatCurrency', () => {
     expect(result).toBe(expected);
   });
 
-  // Test case 13: Throw TypeError for non-number value
-  it('13. should throw TypeError when value is not a number', () => {
-    // Arrange
-    const value = 'invalid' as unknown as number;
-    const currency = 'USD';
-
-    // Act & Assert
-    expect(() => formatCurrency(value, currency)).toThrow(TypeError);
-    expect(() => formatCurrency(value, currency)).toThrow(
-      'value must be a number',
-    );
-  });
-
-  // Test case 14: Throw TypeError for NaN
-  it('14. should throw TypeError when value is NaN', () => {
-    // Arrange
-    const value = NaN;
-    const currency = 'USD';
-
-    // Act & Assert
-    expect(() => formatCurrency(value, currency)).toThrow(TypeError);
-    expect(() => formatCurrency(value, currency)).toThrow(
-      'value must be a number',
-    );
-  });
-
-  // Test case 15: Throw TypeError for non-string currency
-  it('15. should throw TypeError when currency is not a string', () => {
-    // Arrange
-    const value = 1234.56;
-    const currency = 123 as unknown as string;
-
-    // Act & Assert
-    expect(() => formatCurrency(value, currency)).toThrow(TypeError);
-    expect(() => formatCurrency(value, currency)).toThrow(
-      'currency must be a string',
-    );
-  });
-
   // Test case 16: Throw Error for negative decimals
   it('16. should throw Error for negative decimals', () => {
     // Arrange

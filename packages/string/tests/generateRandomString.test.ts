@@ -74,18 +74,6 @@ describe('generateRandomString', () => {
     expect(result).toMatch(new RegExp(`^[${charset}]+$`));
   });
 
-  // Test case 8: Generate a random string with non-numeric length
-  it('8. should throw an error when length is non-numeric', () => {
-    const charset: string =
-      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    expect(() =>
-      generateRandomString('a' as unknown as number, charset),
-    ).toThrow(TypeError);
-    expect(() =>
-      generateRandomString('a' as unknown as number, charset),
-    ).toThrow('length must be a number');
-  });
-
   // Test case 9: Generate a random string with negative length
   it('9. should throw an error when length is negative', () => {
     const length: number = -1;
@@ -114,7 +102,7 @@ describe('generateRandomString', () => {
       'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     expect(() => generateRandomString(length, charset)).toThrow(Error);
     expect(() => generateRandomString(length, charset)).toThrow(
-      'length must be a valid number, not NaN',
+      'length must be a positive integer',
     );
   });
 
@@ -140,16 +128,6 @@ describe('generateRandomString', () => {
     }
     // With 20-character strings from 62-character charset, getting 100 unique values is highly likely
     expect(results.size).toBeGreaterThan(95);
-  });
-
-  // Test case 14: Generate with non-string charset (should throw TypeError)
-  it('14. should throw TypeError when charset is not a string', () => {
-    const length: number = 10;
-    const charset = 123 as unknown as string;
-    expect(() => generateRandomString(length, charset)).toThrow(TypeError);
-    expect(() => generateRandomString(length, charset)).toThrow(
-      'charset must be a string',
-    );
   });
 
   // Test case 15: Generate with default charset (alphanumeric)

@@ -4,7 +4,6 @@
  * @param decimals - Number of decimal places (default: 2, range: 0-10).
  * @returns A random percentage value.
  *
- * @throws {TypeError} If decimals is not a number.
  * @throws {Error} If decimals is not an integer or not in range 0-10.
  *
  * @example
@@ -19,9 +18,6 @@
  * @complexity Time: O(1), Space: O(1)
  */
 export function randomPercentage(decimals: number = 2): number {
-  if (typeof decimals !== 'number') {
-    throw new TypeError(`decimals must be a number, got ${typeof decimals}`);
-  }
   if (!Number.isInteger(decimals)) {
     throw new Error('decimals must be an integer');
   }

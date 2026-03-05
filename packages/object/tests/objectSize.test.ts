@@ -56,39 +56,4 @@ describe('objectSize', () => {
     const expected = 5;
     expect(result).toBe(expected);
   });
-
-  // Test case 7: Throw error for non-object input (number)
-  it('7. should throw a TypeError if input is a number', () => {
-    expect(() => objectSize(42 as unknown as Record<string, unknown>)).toThrow(
-      TypeError,
-    );
-  });
-
-  // Test case 8: Throw error for non-object input (string)
-  it('8. should throw a TypeError if input is a string', () => {
-    expect(() =>
-      objectSize('string' as unknown as Record<string, unknown>),
-    ).toThrow(TypeError);
-  });
-
-  // Test case 9: Throw error for non-object input (boolean)
-  it('9. should throw a TypeError if input is a boolean', () => {
-    expect(() =>
-      objectSize(true as unknown as Record<string, unknown>),
-    ).toThrow(TypeError);
-  });
-
-  // Test case 10: Throw error for null input
-  it('10. should throw a TypeError if input is null', () => {
-    expect(() =>
-      objectSize(null as unknown as Record<string, unknown>),
-    ).toThrow(TypeError);
-  });
-
-  // Test case 11: Throw error for undefined input
-  it('11. should throw a TypeError if input is undefined', () => {
-    expect(() =>
-      objectSize(undefined as unknown as Record<string, unknown>),
-    ).toThrow(TypeError);
-  });
 });

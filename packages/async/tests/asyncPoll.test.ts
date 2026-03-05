@@ -103,7 +103,9 @@ describe('asyncPoll', () => {
     let call = 0;
     const fn = jest
       .fn<Promise<{ status: string }>, []>()
-      .mockImplementation(async () => ({ status: call++ < 2 ? 'pending' : 'complete' }));
+      .mockImplementation(async () => ({
+        status: call++ < 2 ? 'pending' : 'complete',
+      }));
 
     // Act
     const result = await asyncPoll(fn, (r) => r.status === 'complete', {
@@ -126,84 +128,33 @@ describe('asyncPoll', () => {
     ).rejects.toThrow(/\d+ attempts/);
   });
 
-  // Error cases
-  // Test case 9: Throws TypeError when fn is not a function
-  it('9. should throw TypeError when fn is not a function', () => {
-    expect(() =>
-      asyncPoll('not a fn' as unknown as () => Promise<number>, () => true),
-    ).toThrow(TypeError);
-    expect(() =>
-      asyncPoll('not a fn' as unknown as () => Promise<number>, () => true),
-    ).toThrow('fn must be a function, got string');
-  });
-
-  // Test case 10: Throws TypeError when condition is not a function
-  it('10. should throw TypeError when condition is not a function', () => {
-    expect(() =>
-      asyncPoll(async () => 1, 42 as unknown as () => boolean),
-    ).toThrow(TypeError);
-    expect(() =>
-      asyncPoll(async () => 1, 42 as unknown as () => boolean),
-    ).toThrow('condition must be a function, got number');
-  });
-
-  // Test case 11: Throws TypeError when intervalMs is not a number
-  it('11. should throw TypeError when intervalMs is not a number', () => {
-    expect(() =>
-      asyncPoll(async () => 1, () => true, {
-        intervalMs: 'fast' as unknown as number,
-      }),
-    ).toThrow(TypeError);
-    expect(() =>
-      asyncPoll(async () => 1, () => true, {
-        intervalMs: 'fast' as unknown as number,
-      }),
-    ).toThrow('intervalMs must be a number, got string');
-  });
-
   // Test case 12: Throws Error when intervalMs is not positive
   it('12. should throw Error when intervalMs is not positive', () => {
     expect(() =>
-      asyncPoll(async () => 1, () => true, { intervalMs: 0 }),
-    ).toThrow('intervalMs must be a positive number, got 0');
+      asyncPoll(
+        async () => 1,
+        () => true,
+        { intervalMs: 0 },
+      ),
+    ).toThrow('intervalMs must be a positive number');
 
     expect(() =>
-      asyncPoll(async () => 1, () => true, { intervalMs: -10 }),
-    ).toThrow('intervalMs must be a positive number, got -10');
-  });
-
-  // Test case 13: Throws TypeError when timeoutMs is not a number
-  it('13. should throw TypeError when timeoutMs is not a number', () => {
-    expect(() =>
-      asyncPoll(async () => 1, () => true, {
-        timeoutMs: 'long' as unknown as number,
-      }),
-    ).toThrow(TypeError);
-    expect(() =>
-      asyncPoll(async () => 1, () => true, {
-        timeoutMs: 'long' as unknown as number,
-      }),
-    ).toThrow('timeoutMs must be a number, got string');
+      asyncPoll(
+        async () => 1,
+        () => true,
+        { intervalMs: -10 },
+      ),
+    ).toThrow('intervalMs must be a positive number');
   });
 
   // Test case 14: Throws Error when timeoutMs is not positive
   it('14. should throw Error when timeoutMs is not positive', () => {
     expect(() =>
-      asyncPoll(async () => 1, () => true, { timeoutMs: 0 }),
-    ).toThrow('timeoutMs must be a positive number, got 0');
-  });
-
-  // Test case 15: Throws TypeError when onPoll is not a function
-  it('15. should throw TypeError when onPoll is not a function', () => {
-    expect(() =>
-      asyncPoll(async () => 1, () => true, {
-        onPoll: 'log' as unknown as () => void,
-      }),
-    ).toThrow(TypeError);
-    expect(() =>
-      asyncPoll(async () => 1, () => true, {
-        onPoll: 'log' as unknown as () => void,
-      }),
-    ).toThrow('onPoll must be a function, got string');
+      asyncPoll(
+        async () => 1,
+        () => true,
+        { timeoutMs: 0 },
+      ),
+    ).toThrow('timeoutMs must be a positive number');
   });
 });

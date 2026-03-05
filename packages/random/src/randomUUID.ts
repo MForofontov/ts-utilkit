@@ -10,8 +10,12 @@
  * // Generate multiple UUIDs
  * const ids = Array.from({ length: 5 }, () => randomUUID());
  *
- * @note Uses Math.random() for generation (not cryptographically secure).
- * For cryptographic purposes, use Node.js crypto.randomUUID() instead.
+ * @note Uses Math.random() for generation (NOT cryptographically secure).
+ *
+ * @deprecated Use `crypto.randomUUID()` (Node.js 14.17+) or `generateRandomBytes` from
+ * `@ts-utilkit/crypto` for cryptographically secure UUIDs. This function uses `Math.random()`
+ * which is predictable and unsuitable for security-sensitive identifiers.
+ * Will be removed in the next major version.
  *
  * @complexity Time: O(1), Space: O(1)
  */

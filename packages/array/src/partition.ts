@@ -8,9 +8,6 @@
  * @returns A tuple `[matches, nonMatches]` where `matches` are elements satisfying the predicate
  * and `nonMatches` are elements that do not.
  *
- * @throws {TypeError} If `arr` is not an array.
- * @throws {TypeError} If `predicate` is not a function.
- *
  * @example
  * // Partition numbers into even and odd
  * partition([1, 2, 3, 4, 5], n => n % 2 === 0);
@@ -43,15 +40,6 @@ export function partition<T>(
   arr: T[],
   predicate: (value: T, index: number, array: T[]) => boolean,
 ): [T[], T[]] {
-  if (!Array.isArray(arr)) {
-    throw new TypeError(`arr must be an array, got ${typeof arr}`);
-  }
-  if (typeof predicate !== 'function') {
-    throw new TypeError(
-      `predicate must be a function, got ${typeof predicate}`,
-    );
-  }
-
   const matches: T[] = [];
   const nonMatches: T[] = [];
 

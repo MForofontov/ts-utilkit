@@ -4,7 +4,6 @@
  * @param key - The environment variable name to retrieve.
  * @returns The environment variable value.
  *
- * @throws {TypeError} If key is not a string.
  * @throws {Error} If key is empty or environment variable is not set.
  *
  * @example
@@ -20,10 +19,6 @@
  * @complexity Time: O(1), Space: O(1)
  */
 export function requireEnv(key: string): string {
-  if (typeof key !== 'string') {
-    throw new TypeError(`key must be a string, got ${typeof key}`);
-  }
-
   if (key.length === 0) {
     throw new Error('key cannot be an empty string');
   }

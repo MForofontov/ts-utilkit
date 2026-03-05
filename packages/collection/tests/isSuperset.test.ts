@@ -48,16 +48,4 @@ describe('isSuperset', () => {
     const result = isSuperset(superset, subset);
     expect(result).toBe(true);
   });
-
-  it('8. should throw TypeError when first argument is not a Set', () => {
-    const invalidSet = [1, 2, 3, 4] as unknown as Set<number>;
-    const validSet = new Set([1, 2]);
-    expect(() => isSuperset(invalidSet, validSet)).toThrow(TypeError);
-  });
-
-  it('9. should throw TypeError when second argument is not a Set', () => {
-    const validSet = new Set([1, 2, 3, 4]);
-    const invalidSet = 'not a set' as unknown as Set<number>;
-    expect(() => isSuperset(validSet, invalidSet)).toThrow(TypeError);
-  });
 });

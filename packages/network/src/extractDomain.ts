@@ -7,7 +7,6 @@ import { getDomainParts } from './getDomainParts';
  * @param url - The URL or hostname to extract domain from.
  * @returns The root domain (domain + TLD).
  *
- * @throws {TypeError} If url is not a string.
  * @throws {Error} If unable to extract domain.
  *
  * @example

@@ -5,7 +5,6 @@
  * @param input - The INI file content as a string.
  * @returns An object with sections as keys, each containing key-value pairs.
  *
- * @throws {TypeError} If input is not a string.
  * @throws {Error} If input is empty.
  * @throws {Error} If a key-value pair is invalid.
  *
@@ -50,9 +49,6 @@ export function parseINI(
   input: string,
 ): Record<string, Record<string, string>> {
   // Input validation
-  if (typeof input !== 'string') {
-    throw new TypeError(`input must be a string, got ${typeof input}`);
-  }
 
   if (input.length === 0) {
     throw new Error('input string cannot be empty');

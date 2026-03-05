@@ -6,8 +6,6 @@
  *                    Return true to keep a property, false to exclude it.
  * @returns A new object with only the properties where predicate returned true.
  *
- * @throws {TypeError} If obj is not an object or is null.
- *
  * @example
  * // Keep only numeric values
  * const data = { a: 1, b: 'string', c: 3, d: false };
@@ -53,10 +51,6 @@ export function pickBy<T extends Record<string, unknown>>(
   obj: T,
   predicate: (value: unknown, key: string) => boolean,
 ): Partial<T> {
-  if (typeof obj !== 'object' || obj === null) {
-    throw new TypeError('Input must be a non-null object');
-  }
-
   return Object.fromEntries(
     Object.entries(obj).filter(([key, value]) => predicate(value, key)),
   ) as Partial<T>;

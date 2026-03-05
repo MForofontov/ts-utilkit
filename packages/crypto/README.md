@@ -35,7 +35,12 @@ npm install @ts-utilkit/crypto
 ## Quick Example
 
 ```typescript
-import { hashPassword, generateSalt, encryptAES256, generateHMAC } from '@ts-utilkit/crypto';
+import {
+  hashPassword,
+  generateSalt,
+  encryptAES256,
+  generateHMAC,
+} from '@ts-utilkit/crypto';
 
 // Password hashing
 const salt = generateSalt();

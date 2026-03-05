@@ -114,16 +114,4 @@ describe('measureMemoryUsage', () => {
     expect(result.result).toBe(1000);
     expect(typeof result.heapUsedDelta).toBe('number');
   });
-
-  // Test case 8: Error - invalid function type
-  it('8. should throw TypeError when fn is not a function', () => {
-    // Arrange
-    const invalidFn = 'not a function' as unknown as () => void;
-
-    // Act & Assert
-    expect(() => measureMemoryUsage(invalidFn)).toThrow(TypeError);
-    expect(() => measureMemoryUsage(invalidFn)).toThrow(
-      'fn must be a function',
-    );
-  });
 });

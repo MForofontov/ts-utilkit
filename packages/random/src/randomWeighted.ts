@@ -8,8 +8,6 @@ import { _weightedPick } from './_weightedPick';
  * @param weights - The array of weights (positive numbers) corresponding to each item.
  * @returns A randomly selected item based on weights.
  *
- * @throws {TypeError} If items is not an array.
- * @throws {TypeError} If weights is not an array.
  * @throws {Error} If items array is empty.
  * @throws {Error} If weights array is empty.
  * @throws {Error} If items and weights arrays have different lengths.
@@ -37,12 +35,6 @@ import { _weightedPick } from './_weightedPick';
  * @complexity Time: O(n), Space: O(1) where n is array length
  */
 export function randomWeighted<T>(items: T[], weights: number[]): T {
-  if (!Array.isArray(items)) {
-    throw new TypeError(`items must be an array, got ${typeof items}`);
-  }
-  if (!Array.isArray(weights)) {
-    throw new TypeError(`weights must be an array, got ${typeof weights}`);
-  }
   if (items.length === 0) {
     throw new Error('items array cannot be empty');
   }

@@ -6,7 +6,6 @@
  * @param space - Number of spaces for indentation when pretty is true (default: 2).
  * @returns The JSON string representation.
  *
- * @throws {TypeError} If space is not a number.
  * @throws {Error} If data contains circular references or cannot be serialized.
  *
  * @example
@@ -26,18 +25,6 @@ export function serializeToJSON(
   pretty: boolean = false,
   space: number = 2,
 ): string {
-  if (typeof pretty !== 'boolean') {
-    throw new TypeError(`pretty must be a boolean, got ${typeof pretty}`);
-  }
-
-  if (typeof space !== 'number') {
-    throw new TypeError(`space must be a number, got ${typeof space}`);
-  }
-
-  if (isNaN(space)) {
-    throw new TypeError('space must be a valid number, not NaN');
-  }
-
   try {
     return JSON.stringify(data, null, pretty ? space : undefined);
   } catch (error) {

@@ -207,15 +207,4 @@ describe('parseJSON', () => {
     // Assert
     expect(result).toEqual(expected);
   });
-
-  // Error cases
-  it('18. should throw TypeError when jsonString is not a string', () => {
-    // Arrange
-    const jsonString = 123 as unknown as string;
-    const expectedMessage = 'jsonString must be a string, got number';
-
-    // Act & Assert
-    expect(() => parseJSON(jsonString)).toThrow(TypeError);
-    expect(() => parseJSON(jsonString)).toThrow(expectedMessage);
-  });
 });

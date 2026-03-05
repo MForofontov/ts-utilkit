@@ -5,8 +5,6 @@
  * @param keysToOmit - Array of keys to exclude from the result.
  * @returns A new object with the specified keys removed.
  *
- * @throws {TypeError} If obj is not a non-null object.
- *
  * @example
  * // Remove sensitive data
  * const user = { id: 1, name: 'John', password: 'secret', role: 'admin' };
@@ -44,9 +42,6 @@ export function omitKeys<T extends Record<string, unknown>>(
   obj: T,
   keysToOmit: (keyof T)[],
 ): Partial<T> {
-  if (typeof obj !== 'object' || obj === null) {
-    throw new TypeError('Input must be a non-null object');
-  }
   return Object.fromEntries(
     Object.entries(obj).filter(([key]) => !keysToOmit.includes(key as keyof T)),
   ) as Partial<T>;

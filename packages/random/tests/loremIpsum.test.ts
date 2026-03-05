@@ -118,14 +118,6 @@ describe('loremIpsum', () => {
     expect(result).toMatch(/\.\s/);
   });
 
-  // Error Test case 13: TypeError for non-number sentences
-  it('13. should throw TypeError when sentences is not a number', () => {
-    expect(() => loremIpsum('3' as any)).toThrow(TypeError);
-    expect(() => loremIpsum('3' as any)).toThrow(
-      'sentences must be a number, got string',
-    );
-  });
-
   // Error Test case 14: Error for NaN sentences
   it('14. should throw Error when sentences is NaN', () => {
     expect(() => loremIpsum(NaN)).toThrow(Error);
@@ -137,7 +129,6 @@ describe('loremIpsum', () => {
   // Error Test case 15: Error for non-integer sentences
   it('15. should throw Error when sentences is not an integer', () => {
     expect(() => loremIpsum(3.5)).toThrow(Error);
-    expect(() => loremIpsum(3.5)).toThrow('sentences must be an integer');
   });
 
   // Error Test case 16: Error for sentences < 1

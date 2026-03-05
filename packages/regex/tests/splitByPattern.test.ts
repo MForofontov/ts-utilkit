@@ -66,30 +66,6 @@ describe('splitByPattern', () => {
     expect(result[result.length - 1]).toBe('');
   });
 
-  // Error cases
-  it('12. should throw TypeError when text is not a string', () => {
-    expect(() => splitByPattern(123 as any, /,/)).toThrow(TypeError);
-    expect(() => splitByPattern(123 as any, /,/)).toThrow(
-      'text must be a string',
-    );
-  });
-
-  it('13. should throw TypeError when pattern is invalid type', () => {
-    expect(() => splitByPattern('test', 123 as any)).toThrow(TypeError);
-    expect(() => splitByPattern('test', 123 as any)).toThrow(
-      'pattern must be a string or RegExp',
-    );
-  });
-
-  it('14. should throw TypeError when options is not an object', () => {
-    expect(() => splitByPattern('test', /,/, 'invalid' as any)).toThrow(
-      TypeError,
-    );
-    expect(() => splitByPattern('test', /,/, 'invalid' as any)).toThrow(
-      'options must be an object',
-    );
-  });
-
   it('15. should throw Error when pattern is invalid', () => {
     expect(() => splitByPattern('test', '[unclosed')).toThrow(Error);
     expect(() => splitByPattern('test', '[unclosed')).toThrow(

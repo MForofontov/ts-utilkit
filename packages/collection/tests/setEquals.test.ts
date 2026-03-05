@@ -64,16 +64,4 @@ describe('setEquals', () => {
     const result = setEquals(set1, set2);
     expect(result).toBe(false);
   });
-
-  it('10. should throw TypeError when first argument is not a Set', () => {
-    const invalidSet = [1, 2, 3] as unknown as Set<number>;
-    const validSet = new Set([1, 2, 3]);
-    expect(() => setEquals(invalidSet, validSet)).toThrow(TypeError);
-  });
-
-  it('11. should throw TypeError when second argument is not a Set', () => {
-    const validSet = new Set([1, 2, 3]);
-    const invalidSet = 'not a set' as unknown as Set<number>;
-    expect(() => setEquals(validSet, invalidSet)).toThrow(TypeError);
-  });
 });

@@ -1,6 +1,6 @@
 # @ts-utilkit/regex
 
-regex  Functions - TypeScript utility functions for regex operations.
+regex Functions - TypeScript utility functions for regex operations.
 
 ## Installation
 
@@ -37,9 +37,13 @@ npm install @ts-utilkit/regex
 ## Quick Example
 
 ```typescript
-import { escapeRegExp, extractURLsFromText, isMatchingPattern } from '@ts-utilkit/regex';
+import {
+  escapeRegExp,
+  extractURLsFromText,
+  isMatchingPattern,
+} from '@ts-utilkit/regex';
 
-escapeRegExp('Price: $10.99');              // 'Price: \$10\.99'
+escapeRegExp('Price: $10.99'); // 'Price: \$10\.99'
 extractURLsFromText('Visit https://a.com'); // ['https://a.com']
 isMatchingPattern('test@email.com', /^\S+@\S+\.\S+$/); // true
 ```

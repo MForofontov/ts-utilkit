@@ -1,5 +1,10 @@
+export { groupByObject as groupBy } from '@ts-utilkit/object';
+
 /**
  * @deprecated Use `groupByObject` from `@ts-utilkit/object` directly.
- * `groupBy` is a thin alias and will be removed in the next major version.
+ * This re-export will be removed in the next major version.
+ *
+ * @see groupByObject
  */
-export { groupByObject as groupBy } from '@ts-utilkit/object';
+// Re-exported above as `groupBy` for backward compatibility.
+// The canonical function is `groupByObject` in `@ts-utilkit/object`.

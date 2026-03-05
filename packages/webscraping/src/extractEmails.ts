@@ -4,8 +4,6 @@
  * @param html - The HTML content to extract emails from.
  * @returns Array of unique email addresses found.
  *
- * @throws {TypeError} If html is not a string.
- *
  * @example
  * const html = '<p>Contact: test@example.com</p>';
  * const emails = extractEmails(html);
@@ -20,10 +18,6 @@
  * @complexity Time: O(n) where n is html length, Space: O(m) where m is number of emails
  */
 export function extractEmails(html: string): string[] {
-  if (typeof html !== 'string') {
-    throw new TypeError(`html must be a string, got ${typeof html}`);
-  }
-
   const emails = new Set<string>();
 
   // Extract from mailto: links

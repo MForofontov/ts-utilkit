@@ -4,7 +4,6 @@
  * @param probability - The probability of returning true (default: 0.5, range: 0-1).
  * @returns A random boolean value.
  *
- * @throws {TypeError} If probability is not a number.
  * @throws {Error} If probability is NaN or not between 0 and 1.
  *
  * @example
@@ -22,11 +21,6 @@
  * @complexity Time: O(1), Space: O(1)
  */
 export function randomBoolean(probability: number = 0.5): boolean {
-  if (typeof probability !== 'number') {
-    throw new TypeError(
-      `probability must be a number, got ${typeof probability}`,
-    );
-  }
   if (isNaN(probability)) {
     throw new Error('probability must be a valid number, not NaN');
   }

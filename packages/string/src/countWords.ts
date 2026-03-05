@@ -4,8 +4,6 @@
  * @param str - The string to analyze.
  * @returns The total count of words (sequences of non-whitespace characters).
  *
- * @throws {TypeError} If str is not a string.
- *
  * @example
  * // Basic usage
  * countWords("Hello world! This is a test."); // 6

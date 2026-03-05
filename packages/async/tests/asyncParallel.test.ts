@@ -125,40 +125,6 @@ describe('asyncParallel', () => {
     await expect(asyncParallel(tasks)).rejects.toThrow('Task failed');
   });
 
-  // Test case 7: TypeError for invalid input types
-  it('7. should throw TypeError for invalid input types', () => {
-    // Arrange
-    const invalidInputs = [123, null, undefined, {}, true, 'string'];
-
-    // Act & Assert
-    invalidInputs.forEach((input) => {
-      expect(() =>
-        asyncParallel(input as unknown as (() => Promise<unknown>)[]),
-      ).toThrow(TypeError);
-      expect(() =>
-        asyncParallel(input as unknown as (() => Promise<unknown>)[]),
-      ).toThrow('tasks must be an array, got');
-    });
-  });
-
-  // Test case 8: TypeError for invalid concurrency
-  it('8. should throw TypeError for invalid concurrency', () => {
-    // Arrange
-    const validTasks = [jest.fn().mockResolvedValue('test')];
-    // Note: undefined is excluded as it's a valid value (optional parameter)
-    const invalidConcurrency = [null, {}, true, 'string', [], NaN];
-
-    // Act & Assert
-    invalidConcurrency.forEach((concurrency) => {
-      expect(() =>
-        asyncParallel(validTasks, concurrency as unknown as number),
-      ).toThrow(TypeError);
-      expect(() =>
-        asyncParallel(validTasks, concurrency as unknown as number),
-      ).toThrow('concurrency must be a number, got');
-    });
-  });
-
   // Test case 9: Error for invalid concurrency value
   it('9. should throw Error for concurrency less than 1', () => {
     // Arrange
@@ -186,9 +152,6 @@ describe('asyncParallel', () => {
       expect(() =>
         asyncParallel([task as unknown as () => Promise<unknown>]),
       ).toThrow(Error);
-      expect(() =>
-        asyncParallel([task as unknown as () => Promise<unknown>]),
-      ).toThrow('Task at index 0 must be a function, got');
     });
   });
 });

@@ -15,8 +15,6 @@ export interface ScriptData {
  * @param html - The HTML content to extract scripts from.
  * @returns Array of script objects with src, inline content, and attributes.
  *
- * @throws {TypeError} If html is not a string.
- *
  * @example
  * const html = '<script src="app.js"></script>';
  * const scripts = extractScripts(html);
@@ -31,10 +29,6 @@ export interface ScriptData {
  * @complexity Time: O(n) where n is html length, Space: O(m) where m is number of scripts
  */
 export function extractScripts(html: string): ScriptData[] {
-  if (typeof html !== 'string') {
-    throw new TypeError(`html must be a string, got ${typeof html}`);
-  }
-
   const scripts: ScriptData[] = [];
   const scriptRegex = /<script([^>]*)>([\s\S]*?)<\/script>/gi;
   let match: RegExpExecArray | null;

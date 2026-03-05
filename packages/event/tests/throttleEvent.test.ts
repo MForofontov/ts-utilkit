@@ -331,39 +331,6 @@ describe('throttleEvent', () => {
     window.removeEventListener('resize', throttledResize);
   });
 
-  // Test case 16: TypeError for invalid handler
-  it('16. should throw TypeError when handler is not a function', () => {
-    // Arrange
-    const invalidInputs = [123, 'string', null, undefined, [], {}, true];
-
-    // Act & Assert
-    invalidInputs.forEach((input) => {
-      expect(() => throttleEvent(input as unknown as () => void, 1000)).toThrow(
-        TypeError,
-      );
-      expect(() => throttleEvent(input as unknown as () => void, 1000)).toThrow(
-        'handler must be a function',
-      );
-    });
-  });
-
-  // Test case 17: TypeError for invalid limit type
-  it('17. should throw TypeError when limit is not a number', () => {
-    // Arrange
-    const handler = jest.fn();
-    const invalidInputs = ['string', null, undefined, [], {}, true];
-
-    // Act & Assert
-    invalidInputs.forEach((input) => {
-      expect(() => throttleEvent(handler, input as unknown as number)).toThrow(
-        TypeError,
-      );
-      expect(() => throttleEvent(handler, input as unknown as number)).toThrow(
-        'limit must be a number',
-      );
-    });
-  });
-
   // Test case 18: Error for NaN limit
   it('18. should throw Error when limit is NaN', () => {
     // Arrange
@@ -386,47 +353,5 @@ describe('throttleEvent', () => {
     expect(() => throttleEvent(handler, -100)).toThrow(
       'limit must be non-negative',
     );
-  });
-
-  // Test case 20: TypeError for invalid leading option
-  it('20. should throw TypeError when leading is not a boolean', () => {
-    // Arrange
-    const handler = jest.fn();
-    const invalidInputs = [123, 'string', null, [], {}];
-
-    // Act & Assert
-    invalidInputs.forEach((input) => {
-      expect(() =>
-        throttleEvent(handler, 1000, {
-          leading: input as unknown as boolean,
-        }),
-      ).toThrow(TypeError);
-      expect(() =>
-        throttleEvent(handler, 1000, {
-          leading: input as unknown as boolean,
-        }),
-      ).toThrow('leading must be a boolean');
-    });
-  });
-
-  // Test case 21: TypeError for invalid trailing option
-  it('21. should throw TypeError when trailing is not a boolean', () => {
-    // Arrange
-    const handler = jest.fn();
-    const invalidInputs = [123, 'string', null, [], {}];
-
-    // Act & Assert
-    invalidInputs.forEach((input) => {
-      expect(() =>
-        throttleEvent(handler, 1000, {
-          trailing: input as unknown as boolean,
-        }),
-      ).toThrow(TypeError);
-      expect(() =>
-        throttleEvent(handler, 1000, {
-          trailing: input as unknown as boolean,
-        }),
-      ).toThrow('trailing must be a boolean');
-    });
   });
 });

@@ -164,55 +164,6 @@ describe('serializeToXML', () => {
     expect(result).toContain('<d>value</d>');
   });
 
-  // Error cases
-  it('14. should throw TypeError when data is not an object', () => {
-    // Arrange
-    const input: any = 'not an object';
-    const expectedMessage = 'data must be an object, got string';
-
-    // Act & Assert
-    expect(() => serializeToXML(input)).toThrow(TypeError);
-    expect(() => serializeToXML(input)).toThrow(expectedMessage);
-  });
-
-  it('15. should throw TypeError when data is null', () => {
-    // Arrange
-    const input: any = null;
-    const expectedMessage = 'data must be an object, got object';
-
-    // Act & Assert
-    expect(() => serializeToXML(input)).toThrow(TypeError);
-    expect(() => serializeToXML(input)).toThrow(expectedMessage);
-  });
-
-  it('16. should throw TypeError when rootTag is not string', () => {
-    // Arrange
-    const input = { a: 1 };
-    const invalidRootTag: any = 123;
-    const expectedMessage = 'rootTag must be a string, got number';
-
-    // Act & Assert
-    expect(() => serializeToXML(input, invalidRootTag)).toThrow(TypeError);
-    expect(() => serializeToXML(input, invalidRootTag)).toThrow(
-      expectedMessage,
-    );
-  });
-
-  it('17. should throw TypeError when pretty is not boolean', () => {
-    // Arrange
-    const input = { a: 1 };
-    const invalidPretty: any = 'true';
-    const expectedMessage = 'pretty must be a boolean, got string';
-
-    // Act & Assert
-    expect(() => serializeToXML(input, 'root', invalidPretty)).toThrow(
-      TypeError,
-    );
-    expect(() => serializeToXML(input, 'root', invalidPretty)).toThrow(
-      expectedMessage,
-    );
-  });
-
   it('18. should throw Error when rootTag is empty', () => {
     // Arrange
     const input = { a: 1 };

@@ -72,24 +72,6 @@ describe('sanitizeURL', () => {
     );
   });
 
-  // Test case 10: Throw when URL argument is not a string
-  it('10. should throw TypeError for non-string URL', () => {
-    const url = 123 as unknown as string;
-    expect(() => sanitizeURL(url)).toThrow(TypeError);
-    expect(() => sanitizeURL(url)).toThrow('url must be a string');
-  });
-
-  // Test case 11: Throw when whitelist argument is not an array
-  it('11. should throw TypeError for non-array whitelist', () => {
-    const whitelist = 'http' as unknown as string[];
-    expect(() => sanitizeURL('http://example.com', whitelist)).toThrow(
-      TypeError,
-    );
-    expect(() => sanitizeURL('http://example.com', whitelist)).toThrow(
-      'allowedProtocols must be an array',
-    );
-  });
-
   // Test case 12: Throw when URL cannot be parsed
   it('12. should throw Error for invalid URL', () => {
     expect(() => sanitizeURL('not a url')).toThrow('Invalid URL');

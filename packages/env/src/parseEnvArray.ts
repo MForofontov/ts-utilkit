@@ -6,7 +6,6 @@
  * @param defaultValue - Optional default array if variable is not set.
  * @returns The parsed array or default value.
  *
- * @throws {TypeError} If key or delimiter is not a string, or defaultValue is not an array.
  * @throws {Error} If key is empty.
  *
  * @example
@@ -26,20 +25,6 @@ export function parseEnvArray(
   delimiter: string = ',',
   defaultValue?: string[],
 ): string[] | undefined {
-  if (typeof key !== 'string') {
-    throw new TypeError(`key must be a string, got ${typeof key}`);
-  }
-
-  if (typeof delimiter !== 'string') {
-    throw new TypeError(`delimiter must be a string, got ${typeof delimiter}`);
-  }
-
-  if (defaultValue !== undefined && !Array.isArray(defaultValue)) {
-    throw new TypeError(
-      `defaultValue must be an array, got ${typeof defaultValue}`,
-    );
-  }
-
   if (key.length === 0) {
     throw new Error('key cannot be an empty string');
   }

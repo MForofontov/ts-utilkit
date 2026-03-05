@@ -13,8 +13,6 @@ export interface MetaTag {
  * @param html - The HTML content to extract meta tags from.
  * @returns Array of meta tag objects with name/property and content.
  *
- * @throws {TypeError} If html is not a string.
- *
  * @example
  * const html = '<meta name="description" content="Example site">';
  * const meta = extractMetaTags(html);
@@ -29,10 +27,6 @@ export interface MetaTag {
  * @complexity Time: O(n) where n is html length, Space: O(m) where m is number of meta tags
  */
 export function extractMetaTags(html: string): MetaTag[] {
-  if (typeof html !== 'string') {
-    throw new TypeError(`html must be a string, got ${typeof html}`);
-  }
-
   const metaTags: MetaTag[] = [];
   const metaRegex = /<meta\s+([^>]+)>/gi;
   let match: RegExpExecArray | null;

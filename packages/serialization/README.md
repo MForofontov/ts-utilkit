@@ -51,11 +51,15 @@ npm install @ts-utilkit/serialization
 ## Quick Example
 
 ```typescript
-import { serializeJSON, deserializeJSON, serializeXML } from '@ts-utilkit/serialization';
+import {
+  serializeJSON,
+  deserializeJSON,
+  serializeXML,
+} from '@ts-utilkit/serialization';
 
-serializeJSON({a: 1});               // '{"a":1}'
-deserializeJSON('{"a":1}');          // {a: 1}
-serializeXML({root: {item: 'value'}}); // '<root><item>value</item></root>'
+serializeJSON({ a: 1 }); // '{"a":1}'
+deserializeJSON('{"a":1}'); // {a: 1}
+serializeXML({ root: { item: 'value' } }); // '<root><item>value</item></root>'
 ```
 
 ## License

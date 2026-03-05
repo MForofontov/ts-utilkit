@@ -12,7 +12,6 @@
  * @returns Promise that resolves with the output of the final task.
  * Returns a Promise resolved with `initialValue` when `tasks` is empty.
  *
- * @throws {TypeError} If `tasks` is not an array.
  * @throws {Error} If any element of `tasks` is not a function.
  *
  * @example
@@ -50,10 +49,6 @@ export function asyncWaterfall<T>(
   tasks: Array<(input: T) => Promise<T>>,
   initialValue: T,
 ): Promise<T> {
-  if (!Array.isArray(tasks)) {
-    throw new TypeError(`tasks must be an array, got ${typeof tasks}`);
-  }
-
   tasks.forEach((task, index) => {
     if (typeof task !== 'function') {
       throw new Error(

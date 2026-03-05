@@ -4,8 +4,6 @@
  * @param str - The string to capitalize.
  * @returns The capitalized string (only first letter uppercase, rest unchanged).
  *
- * @throws {TypeError} If str is not a string.
- *
  * @example
  * // Basic usage
  * capitalizeFirstLetter("hello"); // "Hello"

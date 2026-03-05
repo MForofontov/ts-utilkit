@@ -61,9 +61,4 @@ describe('mapInvert', () => {
     mapInvert(map);
     expect(map).toEqual(original);
   });
-
-  it('6. should throw TypeError when map is not a Map', () => {
-    const invalidMap = { a: 1 } as unknown as Map<string, number>;
-    expect(() => mapInvert(invalidMap)).toThrow(TypeError);
-  });
 });

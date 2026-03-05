@@ -1,6 +1,6 @@
 # @ts-utilkit/encoding
 
-encoding  Functions - TypeScript utility functions for encoding operations.
+encoding Functions - TypeScript utility functions for encoding operations.
 
 ## Installation
 
@@ -26,7 +26,7 @@ npm install @ts-utilkit/encoding
 ```typescript
 import { encodeBase64, decodeBase64 } from '@ts-utilkit/encoding';
 
-encodeBase64('Hello, World!');         // "SGVsbG8sIFdvcmxkIQ=="
+encodeBase64('Hello, World!'); // "SGVsbG8sIFdvcmxkIQ=="
 decodeBase64('SGVsbG8sIFdvcmxkIQ=='); // "Hello, World!"
 ```
 

@@ -89,22 +89,6 @@ describe('randomInt', () => {
     }
   });
 
-  // Error Test case 11: TypeError for non-number min
-  it('11. should throw TypeError when min is not a number', () => {
-    expect(() => randomInt('5' as any, 10)).toThrow(TypeError);
-    expect(() => randomInt('5' as any, 10)).toThrow(
-      'min must be a number, got string',
-    );
-  });
-
-  // Error Test case 12: TypeError for non-number max
-  it('12. should throw TypeError when max is not a number', () => {
-    expect(() => randomInt(5, '10' as any)).toThrow(TypeError);
-    expect(() => randomInt(5, '10' as any)).toThrow(
-      'max must be a number, got string',
-    );
-  });
-
   // Error Test case 13: Error for NaN min
   it('13. should throw Error when min is NaN', () => {
     expect(() => randomInt(NaN, 10)).toThrow(Error);

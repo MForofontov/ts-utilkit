@@ -6,8 +6,6 @@
  * @param key - The property name to use for generating keys.
  * @returns An object where keys are property values from the objects and values are the complete objects.
  *
- * @throws {TypeError} If array is not an array.
- *
  * @example
  * // Create an object indexed by id
  * const users = [
@@ -57,9 +55,6 @@ export function keyBy<T extends Record<string, unknown>>(
   array: T[],
   key: keyof T,
 ): Record<string, T> {
-  if (!Array.isArray(array)) {
-    throw new TypeError('Input must be an array');
-  }
   return array.reduce<Record<string, T>>((acc, item) => {
     if (Object.prototype.hasOwnProperty.call(item, key)) {
       acc[String(item[key])] = item;

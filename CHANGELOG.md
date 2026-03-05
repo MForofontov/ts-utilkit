@@ -7,27 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Added
-- Placeholder for upcoming features
-
 ### Changed
-- Placeholder for upcoming changes
 
-### Deprecated
-- Placeholder for upcoming deprecations
-
-### Removed
-- Placeholder for upcoming removals
-
-### Fixed
-- Placeholder for upcoming bug fixes
-
-### Security
-- Placeholder for upcoming security updates
+- Remove all runtime `typeof`/`instanceof` TypeError guards from ALL packages (array, async, collection, crypto, date, encoding, env, event, format, math, network, object, parsing, random, regex, serialization, string, testing-utilities, utility, validation, webscraping); TypeScript is the contract for this TS-first library
+- Remove all `@throws {TypeError}` JSDoc tags from all affected functions across all packages
+- Remove all TypeError test cases from all package test files (~346 test files modified)
+- `deepFreeze`: add `T extends object` generic constraint to maintain TypeScript compatibility after guard removal
+- `deepMerge`: add explicit cast in `merge()` call to maintain TypeScript compatibility
+- `combinePatterns`: change else-branch from `throw new TypeError(...)` to `continue` (silently skip non-string/non-RegExp patterns)
 
 ## [0.1.0] - 2026-01-26
 
 ### Added
+
 - Initial release of ts-utilkit
 - **Array Functions**: 30+ utilities for array manipulation (chunk, difference, flatten, unique, etc.)
 - **Async Functions**: Promise utilities (retry, timeout, series, parallel, filter, map)

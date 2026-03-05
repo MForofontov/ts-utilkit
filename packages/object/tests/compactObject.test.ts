@@ -73,39 +73,4 @@ describe('compactObject', () => {
     const expected = { a: BigInt(123), c: 'string' };
     expect(result).toEqual(expected);
   });
-
-  // Test case 10: Handle non-object input (number)
-  it('10. should throw a TypeError if input is a number', () => {
-    expect(() =>
-      compactObject(42 as unknown as Record<string, unknown>),
-    ).toThrow(TypeError);
-  });
-
-  // Test case 11: Handle non-object input (string)
-  it('11. should throw a TypeError if input is a string', () => {
-    expect(() =>
-      compactObject('string' as unknown as Record<string, unknown>),
-    ).toThrow(TypeError);
-  });
-
-  // Test case 12: Handle non-object input (boolean)
-  it('12. should throw a TypeError if input is a boolean', () => {
-    expect(() =>
-      compactObject(true as unknown as Record<string, unknown>),
-    ).toThrow(TypeError);
-  });
-
-  // Test case 13: Handle null input
-  it('13. should throw a TypeError if input is null', () => {
-    expect(() =>
-      compactObject(null as unknown as Record<string, unknown>),
-    ).toThrow(TypeError);
-  });
-
-  // Test case 14: Handle undefined input
-  it('14. should throw a TypeError if input is undefined', () => {
-    expect(() =>
-      compactObject(undefined as unknown as Record<string, unknown>),
-    ).toThrow(TypeError);
-  });
 });

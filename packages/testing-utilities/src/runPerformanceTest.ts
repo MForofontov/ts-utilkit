@@ -19,7 +19,6 @@ export interface PerformanceTestResult {
  * @param iterations - Number of iterations to run (default: 1000).
  * @returns Performance test result with duration and average time.
  *
- * @throws {TypeError} If fn is not a function.
  * @throws {Error} If iterations is not a positive number.
  *
  * @example
@@ -36,9 +35,6 @@ export function runPerformanceTest(
   fn: () => unknown,
   iterations: number = 1000,
 ): PerformanceTestResult {
-  if (typeof fn !== 'function') {
-    throw new TypeError(`fn must be a function, got ${typeof fn}`);
-  }
   if (typeof iterations !== 'number' || iterations <= 0) {
     throw new Error('iterations must be a positive number');
   }

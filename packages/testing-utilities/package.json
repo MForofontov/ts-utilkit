@@ -1,6 +1,6 @@
 {
   "name": "@ts-utilkit/testing-utilities",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Testing utilities and helpers for writing comprehensive unit tests with TypeScript and Jest",
   "homepage": "https://github.com/mykfor1/ts-utilkit/tree/main/packages/testing-utilities#readme",
   "bugs": {
@@ -15,6 +15,13 @@
   "author": "Mykyta Forofontov",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "sideEffects": false,
   "files": [
     "dist",
@@ -49,8 +56,8 @@
     "node": ">=20"
   },
   "dependencies": {
-    "@ts-utilkit/object": "*",
-    "@ts-utilkit/random": "*"
+    "@ts-utilkit/object": "^0.2.0",
+    "@ts-utilkit/random": "^0.2.0"
   },
   "publishConfig": {
     "access": "public"

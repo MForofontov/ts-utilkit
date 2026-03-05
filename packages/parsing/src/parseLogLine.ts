@@ -6,8 +6,6 @@
  * @param format - Log format: "common" or "combined" (default: "common").
  * @returns An object containing parsed log components.
  *
- * @throws {TypeError} If logLine is not a string.
- * @throws {TypeError} If format is not a string.
  * @throws {Error} If logLine is empty.
  * @throws {Error} If format is not valid.
  * @throws {Error} If log line doesn't match expected format.
@@ -44,12 +42,6 @@ export function parseLogLine(
   format: 'common' | 'combined' = 'common',
 ): Record<string, string | number> {
   // Input validation
-  if (typeof logLine !== 'string') {
-    throw new TypeError(`logLine must be a string, got ${typeof logLine}`);
-  }
-  if (typeof format !== 'string') {
-    throw new TypeError(`format must be a string, got ${typeof format}`);
-  }
 
   if (logLine.length === 0) {
     throw new Error('logLine cannot be empty');

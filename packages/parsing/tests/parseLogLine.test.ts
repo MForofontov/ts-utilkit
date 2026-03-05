@@ -152,16 +152,6 @@ describe('parseLogLine', () => {
     expect(result).toEqual(expected);
   });
 
-  // Test case 7: Throw TypeError for non-string input
-  it('7. should throw TypeError when logLine is not a string', () => {
-    // Arrange
-    const input = 123 as unknown as string;
-
-    // Act & Assert
-    expect(() => parseLogLine(input)).toThrow(TypeError);
-    expect(() => parseLogLine(input)).toThrow('logLine must be a string');
-  });
-
   // Test case 8: Throw Error for empty input
   it('8. should throw Error when logLine is empty', () => {
     // Arrange

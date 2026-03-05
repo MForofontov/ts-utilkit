@@ -5,8 +5,6 @@
  * @param key - The property name to look for.
  * @returns True if the property exists directly on the object, false otherwise.
  *
- * @throws {TypeError} If obj is not a non-null object or key is not a string.
- *
  * @example
  * // Basic usage
  * hasKey({ a: 1, b: 2 }, 'a'); // true
@@ -35,8 +33,5 @@
  * @complexity Time: O(1), Space: O(1)
  */
 export function hasKey(obj: Record<string, unknown>, key: string): boolean {
-  if (typeof obj !== 'object' || obj === null) {
-    throw new TypeError('Input must be a non-null object');
-  }
   return Object.prototype.hasOwnProperty.call(obj, key);
 }

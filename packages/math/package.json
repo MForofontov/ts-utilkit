@@ -1,6 +1,6 @@
 {
   "name": "@ts-utilkit/math",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Mathematical utilities covering algebra, geometry, statistics, number theory, and combinatorics",
   "homepage": "https://github.com/mykfor1/ts-utilkit/tree/main/packages/math#readme",
   "bugs": {
@@ -15,6 +15,13 @@
   "author": "Mykyta Forofontov",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "sideEffects": false,
   "files": [
     "dist",
@@ -46,7 +53,7 @@
     "node": ">=20"
   },
   "dependencies": {
-    "@ts-utilkit/array": "*"
+    "@ts-utilkit/array": "^0.2.0"
   },
   "publishConfig": {
     "access": "public"

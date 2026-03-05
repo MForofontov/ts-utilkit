@@ -6,8 +6,6 @@
  * @param fn - The function to apply to each value, receives value and key as arguments.
  * @returns A new object with the same keys but transformed values.
  *
- * @throws {TypeError} If obj is not an object or is null.
- *
  * @example
  * // Double all numeric values
  * const original = { a: 1, b: 2, c: 3 };
@@ -50,10 +48,6 @@ export function objectMap<T, U>(
   obj: Record<string, T>,
   fn: (value: T, key: string) => U,
 ): Record<string, U> {
-  if (typeof obj !== 'object' || obj === null) {
-    throw new TypeError('Input must be a non-null object');
-  }
-
   return Object.keys(obj).reduce(
     (acc, key) => {
       acc[key] = fn(obj[key], key);

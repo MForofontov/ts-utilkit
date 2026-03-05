@@ -4,8 +4,6 @@
  * @param ip - The IPv6 address string to validate.
  * @returns True if the IPv6 address is valid, false otherwise.
  *
- * @throws {TypeError} If ip is not a string.
- *
  * @example
  * // Valid IPv6 addresses
  * isValidIPv6("2001:0db8:85a3:0000:0000:8a2e:0370:7334"); // true
@@ -25,10 +23,6 @@
  * @complexity Time: O(n), Space: O(1)
  */
 export function isValidIPv6(ip: string): boolean {
-  if (typeof ip !== 'string') {
-    throw new TypeError(`ip must be a string, got ${typeof ip}`);
-  }
-
   // Handle zone identifier if present (e.g., %lo0)
   const zoneIndex = ip.indexOf('%');
   let cleanIp = ip;

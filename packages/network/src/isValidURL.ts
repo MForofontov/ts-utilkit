@@ -5,9 +5,6 @@
  * @param allowedSchemes - Optional array of allowed URL schemes (e.g., ['http', 'https']). If not provided, all schemes are allowed.
  * @returns True if the URL is valid and matches allowed schemes, false otherwise.
  *
- * @throws {TypeError} If url is not a string.
- * @throws {TypeError} If allowedSchemes is provided but not an array.
- *
  * @example
  * // Basic validation
  * isValidURL('https://example.com'); // true
@@ -26,16 +23,6 @@
  * @complexity Time: O(n), Space: O(1)
  */
 export function isValidURL(url: string, allowedSchemes?: string[]): boolean {
-  // Input validation
-  if (typeof url !== 'string') {
-    throw new TypeError(`url must be a string, got ${typeof url}`);
-  }
-  if (allowedSchemes !== undefined && !Array.isArray(allowedSchemes)) {
-    throw new TypeError(
-      `allowedSchemes must be an array, got ${typeof allowedSchemes}`,
-    );
-  }
-
   try {
     const parsed = new URL(url);
 

@@ -41,6 +41,9 @@ import { calculateFactorial } from './calculateFactorial';
  * @note Common use cases: binomial theorem expansion, probability distributions, combinatorics.
  * @note Uses factorial-based calculation; recursive implementation may hit call stack limits.
  *
+ * @deprecated Use `calculateCombination(n, k)` instead — both functions are mathematically
+ * identical. Will be removed in the next major version.
+ *
  * @complexity Time: O(n), Space: O(n) due to factorial calculation
  */
 export function calculateBinomialCoefficient(n: number, k: number): number {

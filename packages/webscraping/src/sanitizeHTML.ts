@@ -5,9 +5,6 @@
  * @param allowedTags - Array of allowed HTML tags (default: safe tags).
  * @returns Sanitized HTML string.
  *
- * @throws {TypeError} If html is not a string.
- * @throws {TypeError} If allowedTags is provided but not an array.
- *
  * @example
  * const html = '<p>Safe</p><script>alert("XSS")</script>';
  * const safe = sanitizeHTML(html);
@@ -34,13 +31,6 @@ export function sanitizeHTML(
     'div',
   ],
 ): string {
-  if (typeof html !== 'string') {
-    throw new TypeError(`html must be a string, got ${typeof html}`);
-  }
-  if (!Array.isArray(allowedTags)) {
-    throw new TypeError('allowedTags must be an array');
-  }
-
   // Remove script and style tags entirely
   let sanitized = html.replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '');
   sanitized = sanitized.replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '');

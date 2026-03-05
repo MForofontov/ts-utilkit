@@ -132,22 +132,6 @@ describe('randomPattern', () => {
     expect(endTime - startTime).toBeLessThan(100);
   });
 
-  // Error Test case 16: TypeError for non-string template
-  it('16. should throw TypeError when template is not a string', () => {
-    expect(() => randomPattern(123 as any)).toThrow(TypeError);
-    expect(() => randomPattern(123 as any)).toThrow(
-      'template must be a string, got number',
-    );
-  });
-
-  // Error Test case 17: TypeError for null template
-  it('17. should throw TypeError when template is null', () => {
-    expect(() => randomPattern(null as any)).toThrow(TypeError);
-    expect(() => randomPattern(null as any)).toThrow(
-      'template must be a string, got object',
-    );
-  });
-
   // Error Test case 18: Error for empty template
   it('18. should throw Error when template is empty', () => {
     expect(() => randomPattern('')).toThrow(Error);

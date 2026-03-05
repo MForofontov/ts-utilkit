@@ -1,6 +1,6 @@
 # @ts-utilkit/format
 
-format  Functions - TypeScript utility functions for format operations.
+format Functions - TypeScript utility functions for format operations.
 
 ## Installation
 
@@ -30,12 +30,17 @@ npm install @ts-utilkit/format
 ## Quick Example
 
 ```typescript
-import { formatNumber, formatCurrency, formatBytes, pluralize } from '@ts-utilkit/format';
+import {
+  formatNumber,
+  formatCurrency,
+  formatBytes,
+  pluralize,
+} from '@ts-utilkit/format';
 
-formatNumber(1234567.89);             // "1,234,567.89"
-formatCurrency(99.99, 'USD');         // "$99.99"
-formatBytes(1536000);                 // "1.46 MB"
-pluralize('item', 5);                 // "items"
+formatNumber(1234567.89); // "1,234,567.89"
+formatCurrency(99.99, 'USD'); // "$99.99"
+formatBytes(1536000); // "1.46 MB"
+pluralize('item', 5); // "items"
 ```
 
 ## License

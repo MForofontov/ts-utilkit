@@ -88,14 +88,6 @@ describe('parseEnvJSON', () => {
     expect(result).toEqual({ message: 'Line 1\nLine 2' });
   });
 
-  // Error cases
-  it('13. should throw TypeError when key is not a string', () => {
-    expect(() => parseEnvJSON(123 as any)).toThrow(TypeError);
-    expect(() => parseEnvJSON(123 as any)).toThrow(
-      'key must be a string, got number',
-    );
-  });
-
   it('14. should throw Error when key is empty string', () => {
     expect(() => parseEnvJSON('')).toThrow(Error);
     expect(() => parseEnvJSON('')).toThrow('key cannot be an empty string');

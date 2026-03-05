@@ -6,8 +6,6 @@
  * @param options - Optional configuration for URL extraction.
  * @returns Array of unique URLs found in the text.
  *
- * @throws {TypeError} If text is not a string.
- *
  * @example
  * // Basic extraction
  * getURLsFromText('Visit https://example.com and http://test.com');
@@ -38,11 +36,6 @@ export function getURLsFromText(
   text: string,
   options: URLExtractionOptions = {},
 ): string[] {
-  // Input validation
-  if (typeof text !== 'string') {
-    throw new TypeError(`text must be a string, got ${typeof text}`);
-  }
-
   const { includeWWW = true, unique = true } = options;
 
   // Regex pattern for URLs - matches http://, https://, ftp://, and www. URLs

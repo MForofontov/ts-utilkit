@@ -5,7 +5,6 @@
  * @param version - The UUID version to validate (1, 3, 4, or 5). If not specified, validates any version.
  * @returns True if the UUID is valid, false otherwise.
  *
- * @throws {TypeError} If uuid is not a string or version is not a number.
  * @throws {Error} If version is not 1, 3, 4, or 5.
  *
  * @example
@@ -26,15 +25,7 @@
  * @complexity Time: O(1), Space: O(1)
  */
 export function isValidUUID(uuid: string, version?: number): boolean {
-  if (typeof uuid !== 'string') {
-    throw new TypeError(`uuid must be a string, got ${typeof uuid}`);
-  }
-
   if (version !== undefined) {
-    if (typeof version !== 'number' || isNaN(version)) {
-      throw new TypeError(`version must be a number, got ${typeof version}`);
-    }
-
     if (![1, 3, 4, 5].includes(version)) {
       throw new Error('version must be 1, 3, 4, or 5');
     }

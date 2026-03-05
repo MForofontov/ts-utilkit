@@ -4,8 +4,6 @@
  * @param obj - The object to extract values from.
  * @returns An array containing only the unique values from the object.
  *
- * @throws {TypeError} If obj is not an object or is null.
- *
  * @example
  * // Basic usage with duplicates
  * const obj = { a: 1, b: 2, c: 1, d: 3 };
@@ -45,10 +43,6 @@
 export function uniqueValues<T extends Record<string, unknown>>(
   obj: T,
 ): unknown[] {
-  if (typeof obj !== 'object' || obj === null) {
-    throw new TypeError('Input must be a non-null object');
-  }
-
   const result: unknown[] = [];
   const seen = new Set<string>();
   for (const value of Object.values(obj)) {

@@ -9,10 +9,6 @@ import { createHmac, timingSafeEqual } from 'crypto';
  * @param algorithm - The hash algorithm used ('sha256' or 'sha512'). Defaults to 'sha256'.
  * @returns True if the HMAC is valid, false otherwise.
  *
- * @throws {TypeError} If data is not a string or Buffer.
- * @throws {TypeError} If secret is not a string.
- * @throws {TypeError} If hmac is not a string.
- * @throws {TypeError} If algorithm is not a string.
  * @throws {Error} If secret is empty.
  * @throws {Error} If hmac is empty.
  * @throws {Error} If algorithm is not 'sha256' or 'sha512'.
@@ -55,22 +51,6 @@ export function verifyHMAC(
   hmac: string,
   algorithm: 'sha256' | 'sha512' = 'sha256',
 ): boolean {
-  if (typeof data !== 'string' && !Buffer.isBuffer(data)) {
-    throw new TypeError(`data must be a string or Buffer, got ${typeof data}`);
-  }
-
-  if (typeof secret !== 'string') {
-    throw new TypeError(`secret must be a string, got ${typeof secret}`);
-  }
-
-  if (typeof hmac !== 'string') {
-    throw new TypeError(`hmac must be a string, got ${typeof hmac}`);
-  }
-
-  if (typeof algorithm !== 'string') {
-    throw new TypeError(`algorithm must be a string, got ${typeof algorithm}`);
-  }
-
   if (secret.length === 0) {
     throw new Error('secret cannot be empty');
   }

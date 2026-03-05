@@ -118,20 +118,6 @@ describe('randomEnum', () => {
     expect(counts.blue).toBeLessThan(450);
   });
 
-  // Error Test case 11: TypeError for non-object
-  it('11. should throw TypeError when input is not an object', () => {
-    expect(() => randomEnum('not object' as any)).toThrow(TypeError);
-    expect(() => randomEnum('not object' as any)).toThrow(
-      'enumObj must be an object',
-    );
-  });
-
-  // Error Test case 12: TypeError for null
-  it('12. should throw TypeError when input is null', () => {
-    expect(() => randomEnum(null as any)).toThrow(TypeError);
-    expect(() => randomEnum(null as any)).toThrow('enumObj must be an object');
-  });
-
   // Error Test case 13: Error for empty object
   it('13. should throw Error when object has no values', () => {
     const empty = {};

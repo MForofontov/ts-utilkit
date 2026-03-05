@@ -7,8 +7,6 @@
  * @returns Array of generated test data.
  *
  * @throws {Error} If length is not a non-negative number.
- * @throws {TypeError} If generator is not a function.
- *
  * @example
  * const testArray = generateTestArray(100, () => Math.random() * 1000);
  * const result = myArrayFunction(testArray);
@@ -25,16 +23,11 @@
  */
 export function generateTestArray<T>(
   length: number,
-  generator: (index: number) => T = ((i: number) =>
+  generator: (index: number) => T = ((_i: number) =>
     Math.floor(Math.random() * 100)) as (index: number) => T,
 ): T[] {
   if (typeof length !== 'number' || length < 0) {
     throw new Error('length must be a non-negative number');
-  }
-  if (typeof generator !== 'function') {
-    throw new TypeError(
-      `generator must be a function, got ${typeof generator}`,
-    );
   }
 
   return Array.from({ length }, (_, i) => generator(i));

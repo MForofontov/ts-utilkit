@@ -311,39 +311,6 @@ describe('debounceEvent', () => {
     document.body.removeChild(div);
   });
 
-  // Test case 15: TypeError for invalid handler
-  it('15. should throw TypeError when handler is not a function', () => {
-    // Arrange
-    const invalidInputs = [123, 'string', null, undefined, [], {}, true];
-
-    // Act & Assert
-    invalidInputs.forEach((input) => {
-      expect(() => debounceEvent(input as unknown as () => void, 1000)).toThrow(
-        TypeError,
-      );
-      expect(() => debounceEvent(input as unknown as () => void, 1000)).toThrow(
-        'handler must be a function',
-      );
-    });
-  });
-
-  // Test case 16: TypeError for invalid delay type
-  it('16. should throw TypeError when delay is not a number', () => {
-    // Arrange
-    const handler = jest.fn();
-    const invalidInputs = ['string', null, undefined, [], {}, true];
-
-    // Act & Assert
-    invalidInputs.forEach((input) => {
-      expect(() => debounceEvent(handler, input as unknown as number)).toThrow(
-        TypeError,
-      );
-      expect(() => debounceEvent(handler, input as unknown as number)).toThrow(
-        'delay must be a number',
-      );
-    });
-  });
-
   // Test case 17: Error for NaN delay
   it('17. should throw Error when delay is NaN', () => {
     // Arrange
@@ -366,22 +333,5 @@ describe('debounceEvent', () => {
     expect(() => debounceEvent(handler, -100)).toThrow(
       'delay must be non-negative',
     );
-  });
-
-  // Test case 19: TypeError for invalid immediate type
-  it('19. should throw TypeError when immediate is not a boolean', () => {
-    // Arrange
-    const handler = jest.fn();
-    const invalidInputs = [123, 'string', null, [], {}];
-
-    // Act & Assert
-    invalidInputs.forEach((input) => {
-      expect(() =>
-        debounceEvent(handler, 1000, input as unknown as boolean),
-      ).toThrow(TypeError);
-      expect(() =>
-        debounceEvent(handler, 1000, input as unknown as boolean),
-      ).toThrow('immediate must be a boolean');
-    });
   });
 });

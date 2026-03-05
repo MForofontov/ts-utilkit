@@ -4,8 +4,6 @@
  * @param str - The string to analyze.
  * @returns An array of unique characters in the order they first appear.
  *
- * @throws {TypeError} If str is not a string.
- *
  * @example
  * // Basic usage
  * uniqueCharacters("hello"); // ['h', 'e', 'l', 'o']

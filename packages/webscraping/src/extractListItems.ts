@@ -5,9 +5,6 @@
  * @param preserveNesting - Whether to preserve nested list structure (default: false).
  * @returns Array of lists, where each list contains array of items.
  *
- * @throws {TypeError} If html is not a string.
- * @throws {TypeError} If preserveNesting is not a boolean.
- *
  * @example
  * const html = '<ul><li>Item 1</li><li>Item 2</li></ul>';
  * const lists = extractListItems(html);
@@ -24,15 +21,6 @@ export function extractListItems(
   html: string,
   preserveNesting: boolean = false,
 ): string[][] {
-  if (typeof html !== 'string') {
-    throw new TypeError(`html must be a string, got ${typeof html}`);
-  }
-  if (typeof preserveNesting !== 'boolean') {
-    throw new TypeError(
-      `preserveNesting must be a boolean, got ${typeof preserveNesting}`,
-    );
-  }
-
   const lists: string[][] = [];
   const listRegex = /<[ou]l[^>]*>([\s\S]*?)<\/[ou]l>/gi;
   let listMatch: RegExpExecArray | null;

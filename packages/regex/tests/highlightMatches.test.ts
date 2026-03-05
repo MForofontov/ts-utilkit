@@ -72,30 +72,6 @@ describe('highlightMatches', () => {
     expect(result).toBe('<mark>123</mark>test<mark>456</mark>');
   });
 
-  // Error cases
-  it('12. should throw TypeError when text is not a string', () => {
-    expect(() => highlightMatches(123 as any, /test/)).toThrow(TypeError);
-    expect(() => highlightMatches(123 as any, /test/)).toThrow(
-      'text must be a string',
-    );
-  });
-
-  it('13. should throw TypeError when pattern is invalid type', () => {
-    expect(() => highlightMatches('test', 123 as any)).toThrow(TypeError);
-    expect(() => highlightMatches('test', 123 as any)).toThrow(
-      'pattern must be a string or RegExp',
-    );
-  });
-
-  it('14. should throw TypeError when options is not an object', () => {
-    expect(() => highlightMatches('test', /test/, 'invalid' as any)).toThrow(
-      TypeError,
-    );
-    expect(() => highlightMatches('test', /test/, 'invalid' as any)).toThrow(
-      'options must be an object',
-    );
-  });
-
   it('15. should throw Error when pattern is invalid', () => {
     expect(() => highlightMatches('test', '[unclosed')).toThrow(Error);
     expect(() => highlightMatches('test', '[unclosed')).toThrow(

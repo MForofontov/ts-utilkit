@@ -222,26 +222,4 @@ describe('sanitizeHTML', () => {
     expect(result).not.toContain('script');
     expect(result).not.toContain('evil.js');
   });
-
-  // Error cases
-  it('18. should throw TypeError when html is not a string', () => {
-    // Arrange
-    const html = 123 as unknown as string;
-    const expectedMessage = 'html must be a string, got number';
-
-    // Act & Assert
-    expect(() => sanitizeHTML(html)).toThrow(TypeError);
-    expect(() => sanitizeHTML(html)).toThrow(expectedMessage);
-  });
-
-  it('19. should throw TypeError when allowedTags is not an array', () => {
-    // Arrange
-    const html = '<p>Text</p>';
-    const allowedTags = 'p' as unknown as string[];
-    const expectedMessage = 'allowedTags must be an array';
-
-    // Act & Assert
-    expect(() => sanitizeHTML(html, allowedTags)).toThrow(TypeError);
-    expect(() => sanitizeHTML(html, allowedTags)).toThrow(expectedMessage);
-  });
 });

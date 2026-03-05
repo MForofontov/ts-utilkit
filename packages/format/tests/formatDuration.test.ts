@@ -147,30 +147,6 @@ describe('formatDuration', () => {
     expect(result).toBe(expected);
   });
 
-  // Test case 12: Throw TypeError for non-number input
-  it('12. should throw TypeError when milliseconds is not a number', () => {
-    // Arrange
-    const milliseconds = 'invalid' as unknown as number;
-
-    // Act & Assert
-    expect(() => formatDuration(milliseconds)).toThrow(TypeError);
-    expect(() => formatDuration(milliseconds)).toThrow(
-      'milliseconds must be a number',
-    );
-  });
-
-  // Test case 13: Throw TypeError for NaN
-  it('13. should throw TypeError when milliseconds is NaN', () => {
-    // Arrange
-    const milliseconds = NaN;
-
-    // Act & Assert
-    expect(() => formatDuration(milliseconds)).toThrow(TypeError);
-    expect(() => formatDuration(milliseconds)).toThrow(
-      'milliseconds must be a number',
-    );
-  });
-
   // Test case 14: Throw Error for negative milliseconds
   it('14. should throw Error for negative milliseconds', () => {
     // Arrange

@@ -4,8 +4,6 @@
  * @param ip - The IP address string to validate.
  * @returns True if the IP address is valid, false otherwise.
  *
- * @throws {TypeError} If ip is not a string.
- *
  * @example
  * // Valid IPv4 addresses
  * isValidIPv4("192.168.1.1"); // true
@@ -26,10 +24,6 @@
  * @complexity Time: O(1), Space: O(1)
  */
 export function isValidIPv4(ip: string): boolean {
-  if (typeof ip !== 'string') {
-    throw new TypeError(`ip must be a string, got ${typeof ip}`);
-  }
-
   const octets = ip.split('.');
 
   // Must have exactly 4 octets

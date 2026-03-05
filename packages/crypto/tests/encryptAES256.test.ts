@@ -77,46 +77,6 @@ describe('encryptAES256', () => {
     expect(decrypted).toBe(testData);
   });
 
-  // Test case 10: Throw error for null data
-  it('10. should throw TypeError when data is null', () => {
-    expect(() =>
-      encryptAES256(null as unknown as string, testPassword),
-    ).toThrow(TypeError);
-    expect(() =>
-      encryptAES256(null as unknown as string, testPassword),
-    ).toThrow('data must be a string');
-  });
-
-  // Test case 11: Throw error for undefined data
-  it('11. should throw TypeError when data is undefined', () => {
-    expect(() =>
-      encryptAES256(undefined as unknown as string, testPassword),
-    ).toThrow(TypeError);
-    expect(() =>
-      encryptAES256(undefined as unknown as string, testPassword),
-    ).toThrow('data must be a string');
-  });
-
-  // Test case 12: Throw error for null key
-  it('12. should throw TypeError when key is null', () => {
-    expect(() => encryptAES256(testData, null as unknown as string)).toThrow(
-      TypeError,
-    );
-    expect(() => encryptAES256(testData, null as unknown as string)).toThrow(
-      'key must be a string',
-    );
-  });
-
-  // Test case 13: Throw error for undefined key
-  it('13. should throw TypeError when key is undefined', () => {
-    expect(() =>
-      encryptAES256(testData, undefined as unknown as string),
-    ).toThrow(TypeError);
-    expect(() =>
-      encryptAES256(testData, undefined as unknown as string),
-    ).toThrow('key must be a string');
-  });
-
   // Test case 14: Throw error for empty data
   it('14. should throw Error when data is empty', () => {
     expect(() => encryptAES256('', testPassword)).toThrow(Error);

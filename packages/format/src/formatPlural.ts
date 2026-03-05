@@ -8,10 +8,6 @@
  * @param includeCount - Whether to include the count in the output (default: true).
  * @returns The formatted string with proper pluralization.
  *
- * @throws {TypeError} If count is not a number or is NaN.
- * @throws {TypeError} If singular is not a string.
- * @throws {TypeError} If plural is provided but not a string.
- * @throws {TypeError} If includeCount is not a boolean.
  * @throws {Error} If singular is empty.
  *
  * @example
@@ -45,20 +41,6 @@ export function formatPlural(
   includeCount: boolean = true,
 ): string {
   // Input validation
-  if (typeof count !== 'number' || isNaN(count)) {
-    throw new TypeError(`count must be a number, got ${typeof count}`);
-  }
-  if (typeof singular !== 'string') {
-    throw new TypeError(`singular must be a string, got ${typeof singular}`);
-  }
-  if (plural !== undefined && typeof plural !== 'string') {
-    throw new TypeError(`plural must be a string, got ${typeof plural}`);
-  }
-  if (typeof includeCount !== 'boolean') {
-    throw new TypeError(
-      `includeCount must be a boolean, got ${typeof includeCount}`,
-    );
-  }
 
   if (singular.length === 0) {
     throw new Error('singular cannot be empty');

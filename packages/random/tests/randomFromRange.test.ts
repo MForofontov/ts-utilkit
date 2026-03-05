@@ -88,30 +88,6 @@ describe('randomFromRange', () => {
     expect([1, 10]).toContain(result);
   });
 
-  // Error Test case 13: TypeError for non-number min
-  it('13. should throw TypeError when min is not a number', () => {
-    expect(() => randomFromRange('0' as any, 10)).toThrow(TypeError);
-    expect(() => randomFromRange('0' as any, 10)).toThrow(
-      'min must be a number',
-    );
-  });
-
-  // Error Test case 14: TypeError for non-number max
-  it('14. should throw TypeError when max is not a number', () => {
-    expect(() => randomFromRange(0, '10' as any)).toThrow(TypeError);
-    expect(() => randomFromRange(0, '10' as any)).toThrow(
-      'max must be a number',
-    );
-  });
-
-  // Error Test case 15: TypeError for non-number step
-  it('15. should throw TypeError when step is not a number', () => {
-    expect(() => randomFromRange(0, 10, '1' as any)).toThrow(TypeError);
-    expect(() => randomFromRange(0, 10, '1' as any)).toThrow(
-      'step must be a number',
-    );
-  });
-
   // Error Test case 16: Error for NaN min
   it('16. should throw Error when min is NaN', () => {
     expect(() => randomFromRange(NaN, 10)).toThrow(Error);

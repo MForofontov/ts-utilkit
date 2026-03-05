@@ -19,7 +19,6 @@ export interface DomainParts {
  * @param url - The URL or hostname to parse.
  * @returns An object containing domain parts.
  *
- * @throws {TypeError} If url is not a string.
  * @throws {Error} If unable to parse domain.
  *
  * @example
@@ -42,11 +41,6 @@ export interface DomainParts {
  * @complexity Time: O(1), Space: O(1)
  */
 export function getDomainParts(url: string): DomainParts {
-  // Input validation
-  if (typeof url !== 'string') {
-    throw new TypeError(`url must be a string, got ${typeof url}`);
-  }
-
   let hostname: string;
 
   // Try to parse as URL first

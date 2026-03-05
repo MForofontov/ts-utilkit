@@ -328,58 +328,6 @@ describe('waitForEvent', () => {
     document.body.removeChild(form);
   });
 
-  // Test case 17: TypeError for invalid target
-  it('17. should throw TypeError for invalid target', () => {
-    // Arrange
-    const invalidTargets = [null, undefined, 'string', 123, {}, []];
-
-    // Act & Assert
-    invalidTargets.forEach((invalid) => {
-      expect(() =>
-        waitForEvent(invalid as unknown as EventTarget, 'event'),
-      ).toThrow(TypeError);
-      expect(() =>
-        waitForEvent(invalid as unknown as EventTarget, 'event'),
-      ).toThrow(
-        'target must have addEventListener or on method for event handling',
-      );
-    });
-  });
-
-  // Test case 18: TypeError for invalid eventName
-  it('18. should throw TypeError when eventName is not a string', () => {
-    // Arrange
-    const emitter = new EventEmitter();
-    const invalidInputs = [123, null, undefined, [], {}, true];
-
-    // Act & Assert
-    invalidInputs.forEach((input) => {
-      expect(() => waitForEvent(emitter, input as unknown as string)).toThrow(
-        TypeError,
-      );
-      expect(() => waitForEvent(emitter, input as unknown as string)).toThrow(
-        'eventName must be a string',
-      );
-    });
-  });
-
-  // Test case 19: TypeError for invalid timeout type
-  it('19. should throw TypeError when timeout is not a number', () => {
-    // Arrange
-    const emitter = new EventEmitter();
-    const invalidInputs = ['string', [], {}, true];
-
-    // Act & Assert
-    invalidInputs.forEach((input) => {
-      expect(() =>
-        waitForEvent(emitter, 'event', input as unknown as number),
-      ).toThrow(TypeError);
-      expect(() =>
-        waitForEvent(emitter, 'event', input as unknown as number),
-      ).toThrow('timeout must be a number');
-    });
-  });
-
   // Test case 20: Error for NaN timeout
   it('20. should throw Error when timeout is NaN', () => {
     // Arrange

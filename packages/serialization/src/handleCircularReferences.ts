@@ -5,8 +5,6 @@
  * @param replacer - Optional replacer for circular references (default: '[Circular]').
  * @returns Object with circular references replaced.
  *
- * @throws {TypeError} If obj is not an object.
- *
  * @example
  * // Handle circular reference
  * const obj: any = { a: 1 };
@@ -27,10 +25,6 @@ export function handleCircularReferences(
   obj: any,
   replacer: any = '[Circular]',
 ): any {
-  if (obj === null || typeof obj !== 'object') {
-    throw new TypeError(`obj must be an object, got ${typeof obj}`);
-  }
-
   const seen = new WeakSet();
 
   const handle = (value: any): any => {

@@ -147,20 +147,6 @@ describe('serializeToBuffer', () => {
     expect(result.toString()).toContain('\\"');
   });
 
-  // Error cases
-  it('13. should throw TypeError when encoding is not a string', () => {
-    // Arrange
-    const input = 'hello';
-    const invalidEncoding: any = 123;
-    const expectedMessage = 'encoding must be a string, got number';
-
-    // Act & Assert
-    expect(() => serializeToBuffer(input, invalidEncoding)).toThrow(TypeError);
-    expect(() => serializeToBuffer(input, invalidEncoding)).toThrow(
-      expectedMessage,
-    );
-  });
-
   it('14. should throw Error for circular references', () => {
     // Arrange
     const input: any = { a: 1 };

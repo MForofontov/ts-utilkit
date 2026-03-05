@@ -78,15 +78,4 @@ describe('mapMap', () => {
     const result = mapMap(map, ([, value]) => value * 2);
     expect(result).toEqual(new Map());
   });
-
-  it('7. should throw TypeError when map is not a Map', () => {
-    const invalidMap = { a: 1 } as unknown as Map<string, number>;
-    expect(() => mapMap(invalidMap, () => 0)).toThrow(TypeError);
-  });
-
-  it('8. should throw TypeError when mapper is not a function', () => {
-    const map = new Map([['a', 1]]);
-    const invalidMapper = 'not a function' as unknown as () => number;
-    expect(() => mapMap(map, invalidMapper)).toThrow(TypeError);
-  });
 });

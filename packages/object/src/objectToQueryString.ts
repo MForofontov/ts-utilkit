@@ -1,10 +1,12 @@
 /**
  * Converts an object into a URL-encoded query string suitable for HTTP requests.
  *
+ * @deprecated Use `serializeToQueryString` from `@ts-utilkit/serialization` instead.
+ * The serialization package version supports richer options (arrayFormat, encodeValues).
+ * Will be removed in the next major version.
+ *
  * @param obj - The object whose properties will be converted to query parameters.
  * @returns A URL-encoded query string without the leading '?'.
- *
- * @throws {TypeError} If obj is not an object or is null.
  *
  * @example
  * // Basic usage
@@ -40,9 +42,6 @@
  * @complexity Time: O(n), Space: O(n) - Where n is the number of properties
  */
 export function objectToQueryString(obj: Record<string, unknown>): string {
-  if (typeof obj !== 'object' || obj === null) {
-    throw new TypeError('Input must be a non-null object');
-  }
   return Object.entries(obj)
     .map(
       ([key, value]) =>

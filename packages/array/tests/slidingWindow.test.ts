@@ -134,39 +134,6 @@ describe('slidingWindow', () => {
     expect(end - start).toBeLessThan(100);
   });
 
-  // Error cases
-  // Test case 14: Throws TypeError when arr is not an array
-  it('14. should throw TypeError when arr is not an array', () => {
-    expect(() => slidingWindow('not an array' as unknown as string[], 2)).toThrow(TypeError);
-    expect(() => slidingWindow('not an array' as unknown as string[], 2)).toThrow(
-      'arr must be an array, got string',
-    );
-  });
-
-  // Test case 15: Throws TypeError when arr is null
-  it('15. should throw TypeError when arr is null', () => {
-    expect(() => slidingWindow(null as unknown as never[], 2)).toThrow(TypeError);
-    expect(() => slidingWindow(null as unknown as never[], 2)).toThrow(
-      'arr must be an array, got object',
-    );
-  });
-
-  // Test case 16: Throws TypeError when size is not a number
-  it('16. should throw TypeError when size is not a number', () => {
-    expect(() => slidingWindow([1, 2, 3], '2' as unknown as number)).toThrow(TypeError);
-    expect(() => slidingWindow([1, 2, 3], '2' as unknown as number)).toThrow(
-      'size must be a number, got string',
-    );
-  });
-
-  // Test case 17: Throws TypeError when size is NaN
-  it('17. should throw TypeError when size is NaN', () => {
-    expect(() => slidingWindow([1, 2, 3], NaN)).toThrow(TypeError);
-    expect(() => slidingWindow([1, 2, 3], NaN)).toThrow(
-      'size must be a number, got number',
-    );
-  });
-
   // Test case 18: Throws Error when size is zero
   it('18. should throw Error when size is 0', () => {
     expect(() => slidingWindow([1, 2, 3], 0)).toThrow(Error);

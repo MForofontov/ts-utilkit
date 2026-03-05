@@ -19,7 +19,6 @@ export interface WeightedElement<T> {
  * @param elements - Array of weighted elements.
  * @returns The selected weighted element.
  *
- * @throws {TypeError} If elements is not an array.
  * @throws {Error} If elements is empty, has invalid structure, or invalid weights.
  *
  * @example
@@ -35,9 +34,6 @@ export interface WeightedElement<T> {
 export function randomElement<T>(
   elements: WeightedElement<T>[],
 ): WeightedElement<T> {
-  if (!Array.isArray(elements)) {
-    throw new TypeError(`elements must be an array, got ${typeof elements}`);
-  }
   if (elements.length === 0) {
     throw new Error('elements array cannot be empty');
   }

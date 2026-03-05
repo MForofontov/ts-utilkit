@@ -5,8 +5,6 @@
  * @param alphabet - The alphabet to use (default: alphanumeric).
  * @returns A random sequence of the specified length.
  *
- * @throws {TypeError} If length is not a number.
- * @throws {TypeError} If alphabet is provided and not a string.
  * @throws {Error} If length is NaN.
  * @throws {Error} If length is negative or not an integer.
  * @throws {Error} If alphabet is empty.
@@ -32,12 +30,6 @@ export function randomSequence(
   length: number,
   alphabet: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789',
 ): string {
-  if (typeof length !== 'number') {
-    throw new TypeError(`length must be a number, got ${typeof length}`);
-  }
-  if (typeof alphabet !== 'string') {
-    throw new TypeError(`alphabet must be a string, got ${typeof alphabet}`);
-  }
   if (isNaN(length)) {
     throw new Error('length must be a valid number, not NaN');
   }

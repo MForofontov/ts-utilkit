@@ -6,7 +6,6 @@ import { randomBytes } from 'crypto';
  * @param length - The number of bytes to generate (must be positive integer).
  * @returns A Buffer containing cryptographically secure random bytes.
  *
- * @throws {TypeError} If length is not a number.
  * @throws {Error} If length is not a positive integer.
  * @throws {Error} If length is NaN.
  *
@@ -31,10 +30,6 @@ import { randomBytes } from 'crypto';
  * @complexity Time: O(n) where n is the length, Space: O(n)
  */
 export function generateRandomBytes(length: number): Buffer {
-  if (typeof length !== 'number') {
-    throw new TypeError(`length must be a number, got ${typeof length}`);
-  }
-
   if (isNaN(length)) {
     throw new Error('length must be a valid number, not NaN');
   }

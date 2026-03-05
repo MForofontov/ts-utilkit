@@ -2,10 +2,10 @@
  * Creates a new object with all properties from the source except those with empty values.
  * Empty values are defined as null, undefined, or empty strings.
  *
+ * @see {@link compactObject} for a recursive alternative that only removes `null` and `undefined` (keeps empty strings).
+ *
  * @param obj - The source object to filter.
  * @returns A new object containing only properties with non-empty values.
- *
- * @throws {TypeError} If obj is not an object or is null.
  *
  * @example
  * // Basic usage
@@ -56,10 +56,6 @@
 export function removeEmptyValues(
   obj: Record<string, unknown>,
 ): Partial<Record<string, unknown>> {
-  if (typeof obj !== 'object' || obj === null) {
-    throw new TypeError('Input must be a non-null object');
-  }
-
   const clean = (value: unknown): unknown => {
     if (Array.isArray(value)) {
       return value

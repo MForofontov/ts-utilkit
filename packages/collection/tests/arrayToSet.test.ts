@@ -39,9 +39,4 @@ describe('arrayToSet', () => {
     const result = arrayToSet(array);
     expect(result).toEqual(new Set([1, 2, 3, 4]));
   });
-
-  it('7. should throw TypeError when argument is not an array', () => {
-    const invalidArray = 'not an array' as unknown as number[];
-    expect(() => arrayToSet(invalidArray)).toThrow(TypeError);
-  });
 });

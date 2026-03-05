@@ -22,7 +22,8 @@ export function generateRandomIPv4(private_: boolean = false): string {
     const ranges = [
       () => `192.168.${randomInt(0, 255)}.${randomInt(0, 255)}`,
       () => `10.${randomInt(0, 255)}.${randomInt(0, 255)}.${randomInt(0, 255)}`,
-      () => `172.${randomInt(16, 31)}.${randomInt(0, 255)}.${randomInt(0, 255)}`,
+      () =>
+        `172.${randomInt(16, 31)}.${randomInt(0, 255)}.${randomInt(0, 255)}`,
     ];
     return randomChoice(ranges)();
   }

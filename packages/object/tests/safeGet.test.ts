@@ -80,39 +80,4 @@ describe('safeGet', () => {
     const expected = 42;
     expect(result).toEqual(expected);
   });
-
-  // Test case 11: Handle non-object input (number)
-  it('11. should throw a TypeError if input is a number', () => {
-    expect(() =>
-      safeGet(42 as unknown as Record<string, unknown>, 'a.b.c'),
-    ).toThrow(TypeError);
-  });
-
-  // Test case 12: Handle non-object input (string)
-  it('12. should throw a TypeError if input is a string', () => {
-    expect(() =>
-      safeGet('string' as unknown as Record<string, unknown>, 'a.b.c'),
-    ).toThrow(TypeError);
-  });
-
-  // Test case 13: Handle non-object input (boolean)
-  it('13. should throw a TypeError if input is a boolean', () => {
-    expect(() =>
-      safeGet(true as unknown as Record<string, unknown>, 'a.b.c'),
-    ).toThrow(TypeError);
-  });
-
-  // Test case 14: Handle null input
-  it('14. should throw a TypeError if input is null', () => {
-    expect(() =>
-      safeGet(null as unknown as Record<string, unknown>, 'a.b.c'),
-    ).toThrow(TypeError);
-  });
-
-  // Test case 15: Handle undefined input
-  it('15. should throw a TypeError if input is undefined', () => {
-    expect(() =>
-      safeGet(undefined as unknown as Record<string, unknown>, 'a.b.c'),
-    ).toThrow(TypeError);
-  });
 });

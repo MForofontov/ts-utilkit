@@ -5,8 +5,6 @@
  * @param n - The position of the letter to capitalize (0-based index).
  * @returns A new string with the nth letter capitalized.
  *
- * @throws {TypeError} If str is not a string or n is not a number.
- *
  * @example
  * // Basic usage
  * capitalizeNthLetter("hello world", 0); // "Hello world"

@@ -11,7 +11,6 @@ import { delay as delayFn } from '@ts-utilkit/utility';
  * @param options.onRetry - Callback function called on each retry attempt.
  * @returns Promise that resolves with the successful result or rejects with the final error.
  *
- * @throws {TypeError} If fn is not a function.
  * @throws {Error} If maxAttempts is less than 1 or delay is negative.
  *
  * @example
@@ -54,10 +53,6 @@ export function asyncRetry<T>(
     onRetry?: (attempt: number, error: Error) => void;
   } = {},
 ): Promise<T> {
-  if (typeof fn !== 'function') {
-    throw new TypeError(`fn must be a function, got ${typeof fn}`);
-  }
-
   const { maxAttempts = 3, delay = 1000, backoff = 'fixed', onRetry } = options;
 
   if (typeof maxAttempts !== 'number' || maxAttempts < 1) {
@@ -74,10 +69,6 @@ export function asyncRetry<T>(
     throw new Error(
       `backoff must be 'fixed', 'linear', or 'exponential', got ${backoff}`,
     );
-  }
-
-  if (onRetry !== undefined && typeof onRetry !== 'function') {
-    throw new TypeError(`onRetry must be a function, got ${typeof onRetry}`);
   }
 
   // After validation, return the async implementation

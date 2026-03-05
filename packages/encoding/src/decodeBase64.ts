@@ -6,7 +6,6 @@ import { Buffer } from 'buffer';
  * @param str - The base64 encoded string to decode.
  * @returns The decoded UTF-8 string.
  *
- * @throws {TypeError} If str is not a string.
  * @throws {Error} If the provided string is not valid base64.
  *
  * @example

@@ -8,9 +8,6 @@ import { timingSafeEqual, createHash } from 'crypto';
  * @param algorithm - The hashing algorithm to use ('sha256', 'sha512', or 'md5').
  * @returns True if the hash of data matches the provided hash, false otherwise.
  *
- * @throws {TypeError} If data is not a string or Buffer.
- * @throws {TypeError} If hash is not a string.
- * @throws {TypeError} If algorithm is not a valid string.
  * @throws {Error} If algorithm is not one of the supported values.
  * @throws {Error} If hash length doesn't match expected length for algorithm.
  *
@@ -44,19 +41,10 @@ export function compareHash(
   algorithm: 'sha256' | 'sha512' | 'md5',
 ): boolean {
   // Validate data type
-  if (typeof data !== 'string' && !Buffer.isBuffer(data)) {
-    throw new TypeError(`data must be a string or Buffer, got ${typeof data}`);
-  }
 
   // Validate hash type
-  if (typeof hash !== 'string') {
-    throw new TypeError(`hash must be a string, got ${typeof hash}`);
-  }
 
   // Validate algorithm type
-  if (typeof algorithm !== 'string') {
-    throw new TypeError(`algorithm must be a string, got ${typeof algorithm}`);
-  }
 
   // Validate algorithm value
   const validAlgorithms = ['sha256', 'sha512', 'md5'];

@@ -88,18 +88,6 @@ describe('runPerformanceTest', () => {
     expect(result.result).toEqual({ data: 'test', value: 42 });
   });
 
-  // Test case 7: Error - invalid function type
-  it('7. should throw TypeError when fn is not a function', () => {
-    // Arrange
-    const invalidFn = 'not a function' as unknown as () => void;
-
-    // Act & Assert
-    expect(() => runPerformanceTest(invalidFn, 10)).toThrow(TypeError);
-    expect(() => runPerformanceTest(invalidFn, 10)).toThrow(
-      'fn must be a function',
-    );
-  });
-
   // Test case 8: Error - invalid iterations (zero)
   it('8. should throw Error when iterations is zero', () => {
     // Arrange

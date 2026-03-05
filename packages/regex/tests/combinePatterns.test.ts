@@ -76,43 +76,10 @@ describe('combinePatterns', () => {
     expect(pattern.test('abc123')).toBe(false);
   });
 
-  // Error cases
-  it('11. should throw TypeError when patterns is not an array', () => {
-    expect(() => combinePatterns('invalid' as any, 'or')).toThrow(TypeError);
-    expect(() => combinePatterns('invalid' as any, 'or')).toThrow(
-      'patterns must be an array',
-    );
-  });
-
   it('12. should throw Error when patterns array is empty', () => {
     expect(() => combinePatterns([], 'or')).toThrow(Error);
     expect(() => combinePatterns([], 'or')).toThrow(
       'patterns array cannot be empty',
-    );
-  });
-
-  it('13. should throw TypeError when operator is invalid', () => {
-    expect(() => combinePatterns([/test/], 'invalid' as any)).toThrow(
-      TypeError,
-    );
-    expect(() => combinePatterns([/test/], 'invalid' as any)).toThrow(
-      "operator must be 'and' or 'or'",
-    );
-  });
-
-  it('14. should throw TypeError when flags is not a string', () => {
-    expect(() => combinePatterns([/test/], 'or', 123 as any)).toThrow(
-      TypeError,
-    );
-    expect(() => combinePatterns([/test/], 'or', 123 as any)).toThrow(
-      'flags must be a string',
-    );
-  });
-
-  it('15. should throw Error when pattern array contains invalid types', () => {
-    expect(() => combinePatterns([123 as any, /test/], 'or')).toThrow(Error);
-    expect(() => combinePatterns([123 as any, /test/], 'or')).toThrow(
-      'Each pattern must be a string or RegExp',
     );
   });
 });

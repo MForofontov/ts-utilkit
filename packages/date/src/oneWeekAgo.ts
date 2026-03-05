@@ -37,6 +37,9 @@
  * @note Preserves the time component (hours, minutes, seconds).
  * @note Equivalent to subtracting 7 days.
  *
+ * @deprecated Use `addDays(date, -7)` from `@ts-utilkit/date` directly.
+ * This function is a zero-logic wrapper with a hardcoded offset. Will be removed in the next major version.
+ *
  * @complexity Time: O(1), Space: O(1)
  */
 export function oneWeekAgo(date: Date): Date {

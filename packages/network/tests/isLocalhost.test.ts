@@ -106,11 +106,4 @@ describe('isLocalhost', () => {
     // With port in hostname format, it's not parsed as URL, so not detected
     expect(isLocalhost('127.0.0.1:8080')).toBe(false);
   });
-
-  // Test case 20: Error case - non-string input
-  it('20. should throw TypeError for non-string input', () => {
-    const input = 12345 as unknown as string;
-    expect(() => isLocalhost(input)).toThrow(TypeError);
-    expect(() => isLocalhost(input)).toThrow('urlOrHostname must be a string');
-  });
 });

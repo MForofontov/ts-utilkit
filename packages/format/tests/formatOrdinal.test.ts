@@ -198,24 +198,4 @@ describe('formatOrdinal', () => {
     // Assert
     expect(result).toBe(expected);
   });
-
-  // Test case 16: Throw TypeError for non-number
-  it('16. should throw TypeError when value is not a number', () => {
-    // Arrange
-    const value = 'invalid' as unknown as number;
-
-    // Act & Assert
-    expect(() => formatOrdinal(value)).toThrow(TypeError);
-    expect(() => formatOrdinal(value)).toThrow('value must be a number');
-  });
-
-  // Test case 17: Throw TypeError for NaN
-  it('17. should throw TypeError when value is NaN', () => {
-    // Arrange
-    const value = NaN;
-
-    // Act & Assert
-    expect(() => formatOrdinal(value)).toThrow(TypeError);
-    expect(() => formatOrdinal(value)).toThrow('value must be a number');
-  });
 });

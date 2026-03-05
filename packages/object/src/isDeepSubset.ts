@@ -7,9 +7,6 @@
  * @param obj - The target object to check against.
  * @returns True if all properties in subset exist with identical values in obj, false otherwise.
  *
- * @throws {TypeError} If subset is not an object or is null.
- * @throws {TypeError} If obj is not an object or is null.
- *
  * @example
  * // Basic subset check
  * isDeepSubset({ a: 1, b: 2 }, { a: 1, b: 2, c: 3 }); // true
@@ -51,13 +48,6 @@ export function isDeepSubset<T extends Record<string, unknown>>(
   subset: T,
   obj: T,
 ): boolean {
-  if (typeof subset !== 'object' || subset === null) {
-    throw new TypeError('Subset must be a non-null object');
-  }
-  if (typeof obj !== 'object' || obj === null) {
-    throw new TypeError('Object must be a non-null object');
-  }
-
   return Object.keys(subset).every((key) => {
     const subsetValue = subset[key];
 

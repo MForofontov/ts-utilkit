@@ -7,7 +7,6 @@ import { _parseURL } from './_parseURL';
  * @param url - The URL string containing query parameters.
  * @returns An object where keys are parameter names and values are strings or arrays of strings.
  *
- * @throws {TypeError} If url is not a string.
  * @throws {Error} If url is invalid.
  *
  * @example

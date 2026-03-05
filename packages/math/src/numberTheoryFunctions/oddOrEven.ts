@@ -38,6 +38,9 @@
  * @note Only accepts integers; will throw an error for decimal numbers.
  * @note For boolean checks, use isEven() or isOdd() functions instead.
  *
+ * @deprecated Use `isEven(n)` or `isOdd(n)` which return typed booleans.
+ * `oddOrEven` is redundant alongside the boolean pair. Will be removed in the next major version.
+ *
  * @complexity Time: O(1), Space: O(1)
  */
 export function oddOrEven(n: number): string {

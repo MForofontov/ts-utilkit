@@ -43,16 +43,4 @@ describe('isValidJSON', () => {
     expect(results).toEqual([true, true, false, true, true]);
     expect(endTime - startTime).toBeLessThan(10);
   });
-
-  // Test case 4: TypeError for invalid input types
-  it('4. should throw TypeError for invalid input types', () => {
-    const invalidInputs = [123, null, undefined, [], {}, true];
-
-    invalidInputs.forEach((input) => {
-      expect(() => isValidJSON(input as unknown as string)).toThrow(TypeError);
-      expect(() => isValidJSON(input as unknown as string)).toThrow(
-        'jsonString must be a string, got',
-      );
-    });
-  });
 });

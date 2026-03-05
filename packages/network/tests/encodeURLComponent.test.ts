@@ -52,13 +52,6 @@ describe('encodeURLComponent', () => {
     expect(result).toBe('');
   });
 
-  // Test case 9: Throw when non-string input is provided
-  it('9. should throw TypeError for non-string input', () => {
-    const input = 123 as unknown as string;
-    expect(() => encodeURLComponent(input)).toThrow(TypeError);
-    expect(() => encodeURLComponent(input)).toThrow('str must be a string');
-  });
-
   // Test case 10: Encode strings containing query parameters
   it('10. should encode URL with query parameters', () => {
     const result = encodeURLComponent('search?query=test&filter=active');

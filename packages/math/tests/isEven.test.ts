@@ -64,10 +64,18 @@ describe('isEven', () => {
     expect(result).toBe(false);
   });
 
-  // Test case 10: Check if a floating-point number is identified correctly
-  it('10. should return false for a floating-point number', () => {
-    const input: number = 4.5;
-    const result: boolean = isEven(input);
-    expect(result).toBe(false);
+  // Test case 10: Should throw Error for NaN input
+  it('10. should throw Error for NaN input', () => {
+    expect(() => isEven(NaN)).toThrow(Error);
+  });
+
+  // Test case 11: Should throw Error for floating-point input
+  it('11. should throw Error for a floating-point number', () => {
+    expect(() => isEven(4.5)).toThrow(Error);
+  });
+
+  // Test case 12: Should throw Error for negative floating-point input
+  it('12. should throw Error for a negative floating-point number', () => {
+    expect(() => isEven(-2.1)).toThrow(Error);
   });
 });

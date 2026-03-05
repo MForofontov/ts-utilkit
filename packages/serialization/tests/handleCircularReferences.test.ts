@@ -173,25 +173,4 @@ describe('handleCircularReferences', () => {
     // Assert
     expect(input.self).toBe(input); // Original unchanged
   });
-
-  // Error cases
-  it('15. should throw TypeError when obj is not an object', () => {
-    // Arrange
-    const input: any = 'not an object';
-    const expectedMessage = 'obj must be an object, got string';
-
-    // Act & Assert
-    expect(() => handleCircularReferences(input)).toThrow(TypeError);
-    expect(() => handleCircularReferences(input)).toThrow(expectedMessage);
-  });
-
-  it('16. should throw TypeError when obj is null', () => {
-    // Arrange
-    const input: any = null;
-    const expectedMessage = 'obj must be an object, got object';
-
-    // Act & Assert
-    expect(() => handleCircularReferences(input)).toThrow(TypeError);
-    expect(() => handleCircularReferences(input)).toThrow(expectedMessage);
-  });
 });

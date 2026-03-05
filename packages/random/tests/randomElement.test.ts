@@ -145,14 +145,6 @@ describe('randomElement', () => {
     expect(counts.legendary).toBeLessThan(100);
   });
 
-  // Error Test case 11: TypeError for non-array
-  it('11. should throw TypeError when elements is not an array', () => {
-    expect(() => randomElement('not array' as any)).toThrow(TypeError);
-    expect(() => randomElement('not array' as any)).toThrow(
-      'elements must be an array',
-    );
-  });
-
   // Error Test case 12: Error for empty array
   it('12. should throw Error when elements array is empty', () => {
     expect(() => randomElement([])).toThrow(Error);
@@ -163,7 +155,6 @@ describe('randomElement', () => {
   it('13. should throw Error when element is not an object', () => {
     const elements = ['not', 'objects'] as any;
     expect(() => randomElement(elements)).toThrow(Error);
-    expect(() => randomElement(elements)).toThrow('must be an object');
   });
 
   // Error Test case 14: Error for missing value property

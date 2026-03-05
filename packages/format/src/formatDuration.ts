@@ -6,8 +6,6 @@
  * @param format - Output format: "short" (5m 30s), "long" (5 minutes 30 seconds), "compact" (5:30) (default: "short").
  * @returns A formatted duration string.
  *
- * @throws {TypeError} If milliseconds is not a number or is NaN.
- * @throws {TypeError} If format is not a string.
  * @throws {Error} If milliseconds is negative.
  * @throws {Error} If format is not a valid option.
  *
@@ -42,14 +40,6 @@ export function formatDuration(
   format: 'short' | 'long' | 'compact' = 'short',
 ): string {
   // Input validation
-  if (typeof milliseconds !== 'number' || isNaN(milliseconds)) {
-    throw new TypeError(
-      `milliseconds must be a number, got ${typeof milliseconds}`,
-    );
-  }
-  if (typeof format !== 'string') {
-    throw new TypeError(`format must be a string, got ${typeof format}`);
-  }
 
   if (milliseconds < 0) {
     throw new Error(`milliseconds must be non-negative, got ${milliseconds}`);

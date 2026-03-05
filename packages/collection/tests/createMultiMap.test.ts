@@ -321,39 +321,4 @@ describe('createMultiMap', () => {
   });
 
   // ─── Error cases ───────────────────────────────────────────────────────────
-
-  it('27. should throw TypeError when set() is called with undefined key', () => {
-    // Arrange
-    const mm = createMultiMap<string, number>();
-
-    // Act & Assert
-    expect(() => mm.set(undefined as unknown as string, 1)).toThrow(TypeError);
-    expect(() => mm.set(undefined as unknown as string, 1)).toThrow(
-      'key must not be undefined',
-    );
-  });
-
-  it('28. should throw TypeError when setAll() is called with undefined key', () => {
-    // Arrange
-    const mm = createMultiMap<string, number>();
-
-    // Act & Assert
-    expect(() => mm.setAll(undefined as unknown as string, [1])).toThrow(TypeError);
-    expect(() => mm.setAll(undefined as unknown as string, [1])).toThrow(
-      'key must not be undefined',
-    );
-  });
-
-  it('29. should throw TypeError when setAll() is called with non-array values', () => {
-    // Arrange
-    const mm = createMultiMap<string, number>();
-
-    // Act & Assert
-    expect(() =>
-      mm.setAll('k', 'not-an-array' as unknown as number[]),
-    ).toThrow(TypeError);
-    expect(() =>
-      mm.setAll('k', 'not-an-array' as unknown as number[]),
-    ).toThrow('values must be an array, got string');
-  });
 });

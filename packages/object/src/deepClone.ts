@@ -4,8 +4,6 @@
  * @param obj - The object or array to clone (must be a non-null object).
  * @returns A deep copy of the input object with no shared references.
  *
- * @throws {TypeError} If input is not a non-null object.
- *
  * @example
  * // Clone nested object
  * const original = { name: 'John', address: { city: 'NY', zip: '10001' } };
@@ -43,11 +41,8 @@
  * @complexity Time: O(n) where n is total number of values in object tree, Space: O(n)
  */
 export function deepClone<T>(obj: T): T {
-  if (typeof obj !== 'object' || obj === null) {
-    throw new TypeError('Input must be a non-null object');
-  }
   if (typeof globalThis.structuredClone === 'function') {
-    return globalThis.structuredClone(obj) as T;
+    return globalThis.structuredClone(obj);
   }
   return JSON.parse(JSON.stringify(obj)) as T;
 }

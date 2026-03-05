@@ -8,7 +8,6 @@
  * @param allowDuplicates - Whether to allow duplicate elements (default: false).
  * @returns A random subset of the array.
  *
- * @throws {TypeError} If parameters have incorrect types.
  * @throws {Error} If array is empty or size constraints are invalid.
  *
  * @example
@@ -31,20 +30,6 @@ export function randomSubset<T>(
   maxSize?: number,
   allowDuplicates: boolean = false,
 ): T[] {
-  if (!Array.isArray(array)) {
-    throw new TypeError(`array must be an array, got ${typeof array}`);
-  }
-  if (typeof minSize !== 'number') {
-    throw new TypeError(`minSize must be a number, got ${typeof minSize}`);
-  }
-  if (maxSize !== undefined && typeof maxSize !== 'number') {
-    throw new TypeError(`maxSize must be a number, got ${typeof maxSize}`);
-  }
-  if (typeof allowDuplicates !== 'boolean') {
-    throw new TypeError(
-      `allowDuplicates must be a boolean, got ${typeof allowDuplicates}`,
-    );
-  }
   if (array.length === 0) {
     throw new Error('array cannot be empty');
   }

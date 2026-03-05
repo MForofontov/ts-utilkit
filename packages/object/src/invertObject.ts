@@ -4,8 +4,6 @@
  * @param obj - The object whose keys and values should be swapped.
  * @returns A new object with the original values as keys and original keys as values.
  *
- * @throws {TypeError} If obj is not a non-null object.
- *
  * @example
  * // Basic usage
  * invertObject({ a: 1, b: 2 }); // Returns { '1': 'a', '2': 'b' }
@@ -37,9 +35,6 @@
 export function invertObject(
   obj: Record<string | number | symbol, unknown>,
 ): Record<string, string | number | symbol> {
-  if (typeof obj !== 'object' || obj === null) {
-    throw new TypeError('Input must be a non-null object');
-  }
   const result: Record<string, string | number | symbol> = {};
   for (const key of Reflect.ownKeys(obj)) {
     const value = obj[key];

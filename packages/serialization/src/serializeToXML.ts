@@ -6,8 +6,6 @@
  * @param pretty - Whether to format with indentation (default: false).
  * @returns XML string representation.
  *
- * @throws {TypeError} If data is not an object or parameters are invalid.
- *
  * @example
  * // Convert to XML
  * serializeToXML({ name: 'John', age: 30 }, 'person');
@@ -27,18 +25,6 @@ export function serializeToXML(
   rootTag: string = 'root',
   pretty: boolean = false,
 ): string {
-  if (data === null || typeof data !== 'object') {
-    throw new TypeError(`data must be an object, got ${typeof data}`);
-  }
-
-  if (typeof rootTag !== 'string') {
-    throw new TypeError(`rootTag must be a string, got ${typeof rootTag}`);
-  }
-
-  if (typeof pretty !== 'boolean') {
-    throw new TypeError(`pretty must be a boolean, got ${typeof pretty}`);
-  }
-
   if (rootTag.length === 0) {
     throw new Error('rootTag cannot be empty');
   }

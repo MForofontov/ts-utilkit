@@ -19,7 +19,10 @@ describe('asyncWaterfall', () => {
 
   // Test case 2: Single task — receives initialValue and returns its result
   it('2. should handle a single task correctly', async () => {
-    const result = await asyncWaterfall([async (s: string) => s.toUpperCase()], 'hello');
+    const result = await asyncWaterfall(
+      [async (s: string) => s.toUpperCase()],
+      'hello',
+    );
     expect(result).toBe('HELLO');
   });
 
@@ -66,9 +69,18 @@ describe('asyncWaterfall', () => {
     // Arrange
     const order: string[] = [];
     const tasks = [
-      async (n: number) => { order.push('first'); return n + 1; },
-      async (n: number) => { order.push('second'); return n + 1; },
-      async (n: number) => { order.push('third'); return n + 1; },
+      async (n: number) => {
+        order.push('first');
+        return n + 1;
+      },
+      async (n: number) => {
+        order.push('second');
+        return n + 1;
+      },
+      async (n: number) => {
+        order.push('third');
+        return n + 1;
+      },
     ];
 
     // Act
@@ -79,13 +91,22 @@ describe('asyncWaterfall', () => {
   });
 
   // Test case 7: Each task receives the result of the previous one
-  it('7. should pass each task\'s output as the input to the next task', async () => {
+  it("7. should pass each task's output as the input to the next task", async () => {
     // Arrange
     const received: number[] = [];
     const tasks = [
-      async (n: number) => { received.push(n); return n + 10; },
-      async (n: number) => { received.push(n); return n + 10; },
-      async (n: number) => { received.push(n); return n + 10; },
+      async (n: number) => {
+        received.push(n);
+        return n + 10;
+      },
+      async (n: number) => {
+        received.push(n);
+        return n + 10;
+      },
+      async (n: number) => {
+        received.push(n);
+        return n + 10;
+      },
     ];
 
     // Act
@@ -101,7 +122,9 @@ describe('asyncWaterfall', () => {
     const thirdTask = jest.fn();
     const tasks = [
       async (n: number) => n + 1,
-      async () => { throw new Error('step failed'); },
+      async () => {
+        throw new Error('step failed');
+      },
       thirdTask,
     ];
 
@@ -126,7 +149,10 @@ describe('asyncWaterfall', () => {
   // Test case 10: Large pipeline performance
   it('10. should handle a large pipeline efficiently', async () => {
     // Arrange
-    const tasks = Array.from({ length: 1000 }, () => async (n: number) => n + 1);
+    const tasks = Array.from(
+      { length: 1000 },
+      () => async (n: number) => n + 1,
+    );
 
     // Act
     const start = performance.now();
@@ -136,17 +162,6 @@ describe('asyncWaterfall', () => {
     // Assert
     expect(result).toBe(1000);
     expect(end - start).toBeLessThan(1000);
-  });
-
-  // Error cases
-  // Test case 11: Throws TypeError when tasks is not an array
-  it('11. should throw TypeError when tasks is not an array', () => {
-    expect(() =>
-      asyncWaterfall('not an array' as unknown as Array<(n: number) => Promise<number>>, 0),
-    ).toThrow(TypeError);
-    expect(() =>
-      asyncWaterfall('not an array' as unknown as Array<(n: number) => Promise<number>>, 0),
-    ).toThrow('tasks must be an array, got string');
   });
 
   // Test case 12: Throws Error when a task element is not a function

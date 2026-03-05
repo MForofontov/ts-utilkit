@@ -11,9 +11,11 @@ export type CharsetType =
   | 'special';
 
 /**
- * Generates random strings for testing.
+ * Generates random strings for testing purposes.
  *
  * @deprecated Use `randomSequence` from `@ts-utilkit/random` directly.
+ * Note: this function is NOT cryptographically secure. For secure random strings
+ * use `generateRandomString` from `@ts-utilkit/string`.
  * Will be removed in the next major version.
  *
  * @param length - Length of the string.
@@ -24,12 +26,6 @@ export type CharsetType =
  *
  * @example
  * const randomEmail = `test${generateRandomString(8)}@example.com`;
- * const result = validateEmail(randomEmail);
- *
- * @example
- * // Generate hex string
- * const hexId = generateRandomString(16, 'hex');
- * expect(hexId).toMatch(/^[0-9A-F]{16}$/);
  *
  * @complexity Time: O(n) where n is length, Space: O(n)
  */
@@ -41,7 +37,7 @@ export function generateRandomString(
     throw new Error('length must be a non-negative number');
   }
 
-  const charsets = {
+  const charsets: Record<CharsetType, string> = {
     alphanumeric:
       'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789',
     alpha: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz',

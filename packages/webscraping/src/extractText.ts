@@ -5,9 +5,6 @@
  * @param preserveWhitespace - Whether to preserve whitespace (default: false).
  * @returns Extracted text content.
  *
- * @throws {TypeError} If html is not a string.
- * @throws {TypeError} If preserveWhitespace is not a boolean.
- *
  * @example
  * const html = '<div>Hello <span>World</span>!</div>';
  * const text = extractText(html);
@@ -24,15 +21,6 @@ export function extractText(
   html: string,
   preserveWhitespace: boolean = false,
 ): string {
-  if (typeof html !== 'string') {
-    throw new TypeError(`html must be a string, got ${typeof html}`);
-  }
-  if (typeof preserveWhitespace !== 'boolean') {
-    throw new TypeError(
-      `preserveWhitespace must be a boolean, got ${typeof preserveWhitespace}`,
-    );
-  }
-
   // Remove script and style tags with their content
   let text = html.replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '');
   text = text.replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '');

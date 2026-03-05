@@ -116,22 +116,6 @@ describe('randomSample', () => {
     }
   });
 
-  // Error Test case 12: TypeError for non-array input
-  it('12. should throw TypeError when array is not an array', () => {
-    expect(() => randomSample('not array' as any, 2)).toThrow(TypeError);
-    expect(() => randomSample('not array' as any, 2)).toThrow(
-      'array must be an array, got string',
-    );
-  });
-
-  // Error Test case 13: TypeError for non-number count
-  it('13. should throw TypeError when count is not a number', () => {
-    expect(() => randomSample([1, 2, 3], '2' as any)).toThrow(TypeError);
-    expect(() => randomSample([1, 2, 3], '2' as any)).toThrow(
-      'count must be a number, got string',
-    );
-  });
-
   // Error Test case 14: Error for empty array
   it('14. should throw Error when array is empty', () => {
     expect(() => randomSample([], 1)).toThrow(Error);

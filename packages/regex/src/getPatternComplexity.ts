@@ -26,7 +26,6 @@ export interface PatternComplexity {
  * @param pattern - The regex pattern to analyze (string or RegExp).
  * @returns Complexity analysis object.
  *
- * @throws {TypeError} If pattern is not a string or RegExp.
  * @throws {Error} If pattern is invalid.
  *
  * @example
@@ -46,17 +45,11 @@ export interface PatternComplexity {
 export function getPatternComplexity(
   pattern: string | RegExp,
 ): PatternComplexity {
-  if (typeof pattern !== 'string' && !(pattern instanceof RegExp)) {
-    throw new TypeError(
-      `pattern must be a string or RegExp, got ${typeof pattern}`,
-    );
-  }
-
   let source: string;
 
   try {
     source = typeof pattern === 'string' ? pattern : pattern.source;
-  } catch (e) {
+  } catch {
     throw new Error(
       `Invalid regular expression pattern: ${pattern instanceof RegExp ? pattern.source : pattern}`,
     );

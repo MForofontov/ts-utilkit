@@ -4,8 +4,6 @@
  * @param str - The string to validate.
  * @returns True if string contains only letters with no numbers, spaces, or special characters; false otherwise.
  *
- * @throws {TypeError} If str is not a string.
- *
  * @example
  * // Valid alphabetic strings
  * isAlpha("Hello"); // true

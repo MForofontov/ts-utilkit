@@ -4,8 +4,6 @@
  * @param str - The string to convert.
  * @returns True if the string equals "true" or "1" (case-insensitive, whitespace-trimmed), false otherwise.
  *
- * @throws {TypeError} If str is not a string.
- *
  * @example
  * // String "true" variants
  * stringToBoolean("true"); // true

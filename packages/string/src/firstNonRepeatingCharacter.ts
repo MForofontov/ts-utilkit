@@ -4,8 +4,6 @@
  * @param str - The string to analyze.
  * @returns The first non-repeating character, or null if all characters repeat or string is empty.
  *
- * @throws {TypeError} If str is not a string.
- *
  * @example
  * // Basic usage
  * firstNonRepeatingCharacter("abacabad"); // 'c'

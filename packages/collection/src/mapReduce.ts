@@ -6,9 +6,6 @@
  * @param initialValue - Initial value for the accumulator.
  * @returns The final accumulated value.
  *
- * @throws {TypeError} If map is not a Map.
- * @throws {TypeError} If reducer is not a function.
- *
  * @example
  * // Sum all values
  * const map = new Map([['a', 1], ['b', 2], ['c', 3]]);
@@ -34,14 +31,6 @@ export function mapReduce<K, V, R>(
   reducer: (accumulator: R, entry: [K, V], index: number) => R,
   initialValue: R,
 ): R {
-  if (!(map instanceof Map)) {
-    throw new TypeError(`map must be a Map, got ${typeof map}`);
-  }
-
-  if (typeof reducer !== 'function') {
-    throw new TypeError(`reducer must be a function, got ${typeof reducer}`);
-  }
-
   let accumulator = initialValue;
   let index = 0;
 

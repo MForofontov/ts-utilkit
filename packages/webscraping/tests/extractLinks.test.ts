@@ -184,26 +184,4 @@ describe('extractLinks', () => {
     // Assert
     expect(result).toEqual(expected);
   });
-
-  // Error cases
-  it('15. should throw TypeError when html is not a string', () => {
-    // Arrange
-    const html = 123 as unknown as string;
-    const expectedMessage = 'html must be a string, got number';
-
-    // Act & Assert
-    expect(() => extractLinks(html)).toThrow(TypeError);
-    expect(() => extractLinks(html)).toThrow(expectedMessage);
-  });
-
-  it('16. should throw TypeError when baseUrl is not a string', () => {
-    // Arrange
-    const html = '<a href="/page">Link</a>';
-    const baseUrl = 123 as unknown as string;
-    const expectedMessage = 'baseUrl must be a string, got number';
-
-    // Act & Assert
-    expect(() => extractLinks(html, baseUrl)).toThrow(TypeError);
-    expect(() => extractLinks(html, baseUrl)).toThrow(expectedMessage);
-  });
 });

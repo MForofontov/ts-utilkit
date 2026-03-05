@@ -4,7 +4,6 @@
  * @param length - Length of the word (default: 6). Must be between 1 and 20.
  * @returns A random pronounceable word with alternating consonants and vowels.
  *
- * @throws {TypeError} If length is not a number.
  * @throws {Error} If length is NaN.
  * @throws {Error} If length is not an integer.
  * @throws {Error} If length is less than 1 or greater than 20.
@@ -27,9 +26,6 @@
  * @complexity Time: O(n), Space: O(n) where n is length
  */
 export function randomWord(length: number = 6): string {
-  if (typeof length !== 'number') {
-    throw new TypeError(`length must be a number, got ${typeof length}`);
-  }
   if (isNaN(length)) {
     throw new Error('length must be a valid number, not NaN');
   }

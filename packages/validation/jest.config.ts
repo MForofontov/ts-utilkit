@@ -7,11 +7,7 @@ const config: Config = {
   rootDir: '.',
   setupFilesAfterEnv: ['../../jest.setup.ts'],
   testMatch: ['<rootDir>/tests/**/*.test.ts'],
-  collectCoverageFrom: [
-    'src/**/*.ts',
-    '!src/**/*.test.ts',
-    '!src/**/index.ts',
-  ],
+  collectCoverageFrom: ['src/**/*.ts', '!src/**/*.test.ts', '!src/**/index.ts'],
   coveragePathIgnorePatterns: ['/node_modules/'],
 };
 

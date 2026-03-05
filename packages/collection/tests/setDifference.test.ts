@@ -49,16 +49,4 @@ describe('setDifference', () => {
     const set1 = new Set([1, 2, 3]);
     expect(() => setDifference(set1)).toThrow('At least two sets are required');
   });
-
-  it('8. should throw TypeError when first argument is not a Set', () => {
-    const invalidSet = [1, 2, 3] as unknown as Set<number>;
-    const validSet = new Set([4, 5, 6]);
-    expect(() => setDifference(invalidSet, validSet)).toThrow(TypeError);
-  });
-
-  it('9. should throw TypeError when second argument is not a Set', () => {
-    const validSet = new Set([1, 2, 3]);
-    const invalidSet = 'not a set' as unknown as Set<number>;
-    expect(() => setDifference(validSet, invalidSet)).toThrow(TypeError);
-  });
 });

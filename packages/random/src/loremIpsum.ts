@@ -7,7 +7,6 @@ import { randomInt } from './randomInt';
  * @param sentences - Number of sentences to generate (default: 3). Must be between 1 and 50.
  * @returns A string of Lorem Ipsum text.
  *
- * @throws {TypeError} If sentences is not a number.
  * @throws {Error} If sentences is NaN.
  * @throws {Error} If sentences is not an integer.
  * @throws {Error} If sentences is less than 1 or greater than 50.
@@ -32,9 +31,6 @@ import { randomInt } from './randomInt';
  * @complexity Time: O(n*m), Space: O(n*m) where n is sentences, m is avg words per sentence
  */
 export function loremIpsum(sentences: number = 3): string {
-  if (typeof sentences !== 'number') {
-    throw new TypeError(`sentences must be a number, got ${typeof sentences}`);
-  }
   if (isNaN(sentences)) {
     throw new Error('sentences must be a valid number, not NaN');
   }

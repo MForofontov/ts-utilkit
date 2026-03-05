@@ -8,7 +8,6 @@
  * @param defaultValue - Optional default value if variable is not set.
  * @returns The parsed boolean value or default value.
  *
- * @throws {TypeError} If key is not a string or defaultValue is not a boolean.
  * @throws {Error} If key is empty.
  *
  * @example
@@ -27,16 +26,6 @@ export function parseEnvBool(
   key: string,
   defaultValue?: boolean,
 ): boolean | undefined {
-  if (typeof key !== 'string') {
-    throw new TypeError(`key must be a string, got ${typeof key}`);
-  }
-
-  if (defaultValue !== undefined && typeof defaultValue !== 'boolean') {
-    throw new TypeError(
-      `defaultValue must be a boolean, got ${typeof defaultValue}`,
-    );
-  }
-
   if (key.length === 0) {
     throw new Error('key cannot be an empty string');
   }

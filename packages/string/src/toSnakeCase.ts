@@ -4,8 +4,6 @@
  * @param str - The string to convert.
  * @returns The snake-cased string with lowercase letters and underscores between words.
  *
- * @throws {TypeError} If str is not a string.
- *
  * @example
  * // Basic usage
  * toSnakeCase("Hello World"); // "hello_world"

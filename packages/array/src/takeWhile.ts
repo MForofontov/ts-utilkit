@@ -6,9 +6,6 @@
  * @param predicate - A function that tests each element. Collection stops at the first false result.
  * @returns A new array containing the leading elements that satisfy the predicate.
  *
- * @throws {TypeError} If `arr` is not an array.
- * @throws {TypeError} If `predicate` is not a function.
- *
  * @example
  * // Take while less than 4
  * takeWhile([1, 2, 3, 4, 2, 1], n => n < 4); // Returns [1, 2, 3]
@@ -40,15 +37,6 @@ export function takeWhile<T>(
   arr: T[],
   predicate: (value: T, index: number, array: T[]) => boolean,
 ): T[] {
-  if (!Array.isArray(arr)) {
-    throw new TypeError(`arr must be an array, got ${typeof arr}`);
-  }
-  if (typeof predicate !== 'function') {
-    throw new TypeError(
-      `predicate must be a function, got ${typeof predicate}`,
-    );
-  }
-
   const result: T[] = [];
 
   for (let i = 0; i < arr.length; i++) {

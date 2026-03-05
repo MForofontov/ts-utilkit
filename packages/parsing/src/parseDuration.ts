@@ -5,7 +5,6 @@
  * @param input - The duration string to parse (e.g., "5s", "10 min", "2h 30m").
  * @returns The duration in milliseconds.
  *
- * @throws {TypeError} If input is not a string.
  * @throws {Error} If input is empty.
  * @throws {Error} If input format is invalid.
  * @throws {Error} If the numeric value is negative or NaN.
@@ -38,9 +37,6 @@
  */
 export function parseDuration(input: string): number {
   // Input validation
-  if (typeof input !== 'string') {
-    throw new TypeError(`input must be a string, got ${typeof input}`);
-  }
 
   if (input.length === 0) {
     throw new Error('input string cannot be empty');

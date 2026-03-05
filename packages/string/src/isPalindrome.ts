@@ -4,8 +4,6 @@
  * @param str - The string to check.
  * @returns True if the string is a palindrome, false otherwise.
  *
- * @throws {TypeError} If str is not a string.
- *
  * @example
  * // Basic palindrome
  * isPalindrome("racecar"); // true

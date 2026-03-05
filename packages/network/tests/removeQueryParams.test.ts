@@ -41,19 +41,6 @@ describe('removeQueryParams', () => {
     expect(result).not.toContain('b=2');
   });
 
-  it('7. should throw TypeError for non-string URL', () => {
-    const url = 123 as unknown as string;
-    expect(() => removeQueryParams(url, ['a'])).toThrow(TypeError);
-    expect(() => removeQueryParams(url, ['a'])).toThrow('url must be a string');
-  });
-
-  it('8. should throw TypeError for non-array keys', () => {
-    const keys = 'string' as unknown as string[];
-    expect(() => removeQueryParams('https://example.com', keys)).toThrow(
-      TypeError,
-    );
-  });
-
   it('9. should throw Error for invalid URL', () => {
     expect(() => removeQueryParams('not a url', ['a'])).toThrow('Invalid URL');
   });

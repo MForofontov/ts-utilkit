@@ -6,8 +6,6 @@
  * @param count - The number of elements to sample.
  * @returns An array of randomly selected elements (without duplicates).
  *
- * @throws {TypeError} If array is not an array.
- * @throws {TypeError} If count is not a number.
  * @throws {Error} If array is empty.
  * @throws {Error} If count is NaN.
  * @throws {Error} If count is negative or not an integer.
@@ -32,12 +30,6 @@
  * @complexity Time: O(n), Space: O(n) where n is count
  */
 export function randomSample<T>(array: T[], count: number): T[] {
-  if (!Array.isArray(array)) {
-    throw new TypeError(`array must be an array, got ${typeof array}`);
-  }
-  if (typeof count !== 'number') {
-    throw new TypeError(`count must be a number, got ${typeof count}`);
-  }
   if (array.length === 0) {
     throw new Error('array cannot be empty');
   }

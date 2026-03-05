@@ -273,15 +273,4 @@ describe('extractTables', () => {
     expect(result.length).toBeGreaterThanOrEqual(1);
     expect(result[0]).toContainEqual(['Outer']);
   });
-
-  // Error cases
-  it('16. should throw TypeError when html is not a string', () => {
-    // Arrange
-    const html = 123 as unknown as string;
-    const expectedMessage = 'html must be a string, got number';
-
-    // Act & Assert
-    expect(() => extractTables(html)).toThrow(TypeError);
-    expect(() => extractTables(html)).toThrow(expectedMessage);
-  });
 });

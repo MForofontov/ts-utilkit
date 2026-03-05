@@ -81,32 +81,12 @@ describe('hashPassword', () => {
 
   // Error test cases (always at the end)
 
-  // Test case 10: Throw error for null password
-  it('10. should throw TypeError when password is null', async () => {
-    await expect(
-      hashPassword(null as unknown as string, testSalt),
-    ).rejects.toThrow(TypeError);
-    await expect(
-      hashPassword(null as unknown as string, testSalt),
-    ).rejects.toThrow('password must be a string');
-  });
-
   // Test case 11: Throw error for empty password
   it('11. should throw Error when password is empty', async () => {
     await expect(hashPassword('', testSalt)).rejects.toThrow(Error);
     await expect(hashPassword('', testSalt)).rejects.toThrow(
       'password cannot be empty',
     );
-  });
-
-  // Test case 12: Throw error for null salt
-  it('12. should throw TypeError when salt is null', async () => {
-    await expect(
-      hashPassword(testPassword, null as unknown as string),
-    ).rejects.toThrow(TypeError);
-    await expect(
-      hashPassword(testPassword, null as unknown as string),
-    ).rejects.toThrow('salt must be a string');
   });
 
   // Test case 13: Throw error for empty salt
@@ -136,16 +116,6 @@ describe('hashPassword', () => {
     await expect(hashPassword(testPassword, testSalt, NaN)).rejects.toThrow(
       'iterations must be a valid number, not NaN',
     );
-  });
-
-  // Test case 16: Throw error for invalid iterations type
-  it('16. should throw TypeError when iterations is not a number', async () => {
-    await expect(
-      hashPassword(testPassword, testSalt, 'invalid' as unknown as number),
-    ).rejects.toThrow(TypeError);
-    await expect(
-      hashPassword(testPassword, testSalt, 'invalid' as unknown as number),
-    ).rejects.toThrow('iterations must be a number');
   });
 
   // Test case 17: Throw error for zero iterations

@@ -8,10 +8,6 @@
  * @param suffix - Custom suffix to use instead of "%" (default: "%").
  * @returns A formatted percentage string.
  *
- * @throws {TypeError} If value is not a number or is NaN.
- * @throws {TypeError} If decimals is not a number or is NaN.
- * @throws {TypeError} If notMultiply is not a boolean.
- * @throws {TypeError} If suffix is not a string.
  * @throws {Error} If decimals is negative.
  *
  * @example
@@ -46,20 +42,6 @@ export function formatPercentage(
   suffix: string = '%',
 ): string {
   // Input validation
-  if (typeof value !== 'number' || isNaN(value)) {
-    throw new TypeError(`value must be a number, got ${typeof value}`);
-  }
-  if (typeof decimals !== 'number' || isNaN(decimals)) {
-    throw new TypeError(`decimals must be a number, got ${typeof decimals}`);
-  }
-  if (typeof notMultiply !== 'boolean') {
-    throw new TypeError(
-      `notMultiply must be a boolean, got ${typeof notMultiply}`,
-    );
-  }
-  if (typeof suffix !== 'string') {
-    throw new TypeError(`suffix must be a string, got ${typeof suffix}`);
-  }
 
   if (decimals < 0) {
     throw new Error(`decimals must be non-negative, got ${decimals}`);

@@ -189,15 +189,4 @@ describe('escapeRegex', () => {
     // Assert
     expect(result).toBe(expected);
   });
-
-  // Test case 15: Throw TypeError when input is not a string
-  it('15. should throw TypeError when str is not a string', () => {
-    // Arrange
-    const invalidInput = 12345 as unknown as string;
-    const expectedMessage = 'str must be a string, got number';
-
-    // Act & Assert
-    expect(() => escapeRegex(invalidInput)).toThrow(TypeError);
-    expect(() => escapeRegex(invalidInput)).toThrow(expectedMessage);
-  });
 });

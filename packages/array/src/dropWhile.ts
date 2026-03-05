@@ -8,9 +8,6 @@
  * @param predicate - A function that tests each element. Dropping stops at the first false result.
  * @returns A new array with the leading elements that satisfy the predicate removed.
  *
- * @throws {TypeError} If `arr` is not an array.
- * @throws {TypeError} If `predicate` is not a function.
- *
  * @example
  * // Drop while less than 4
  * dropWhile([1, 2, 3, 4, 2, 1], n => n < 4); // Returns [4, 2, 1]
@@ -42,15 +39,6 @@ export function dropWhile<T>(
   arr: T[],
   predicate: (value: T, index: number, array: T[]) => boolean,
 ): T[] {
-  if (!Array.isArray(arr)) {
-    throw new TypeError(`arr must be an array, got ${typeof arr}`);
-  }
-  if (typeof predicate !== 'function') {
-    throw new TypeError(
-      `predicate must be a function, got ${typeof predicate}`,
-    );
-  }
-
   let dropIndex = 0;
 
   while (dropIndex < arr.length && predicate(arr[dropIndex], dropIndex, arr)) {

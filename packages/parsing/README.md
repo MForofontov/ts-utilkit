@@ -1,6 +1,6 @@
 # @ts-utilkit/parsing
 
-parsing  Functions - TypeScript utility functions for parsing operations.
+parsing Functions - TypeScript utility functions for parsing operations.
 
 ## Installation
 
@@ -29,12 +29,17 @@ npm install @ts-utilkit/parsing
 ## Quick Example
 
 ```typescript
-import { parseCSV, parseJSON, parseQueryString, parseURL } from '@ts-utilkit/parsing';
+import {
+  parseCSV,
+  parseJSON,
+  parseQueryString,
+  parseURL,
+} from '@ts-utilkit/parsing';
 
-parseCSV('a,b\n1,2');                // [{a: '1', b: '2'}]
-parseJSON('{"a":1}');                // {a: 1}
+parseCSV('a,b\n1,2'); // [{a: '1', b: '2'}]
+parseJSON('{"a":1}'); // {a: 1}
 parseQueryString('page=2&sort=asc'); // {page: '2', sort: 'asc'}
-parseURL('https://example.com/path');// {protocol: 'https:', host: 'example.com', ...}
+parseURL('https://example.com/path'); // {protocol: 'https:', host: 'example.com', ...}
 ```
 
 ## License

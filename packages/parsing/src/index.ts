@@ -5,6 +5,7 @@ export * from './parseCSVLine';
 export * from './parseDataSize';
 export * from './parseDuration';
 export * from './parseEnvFile';
+export * from './parseHTTPHeaders';
 export * from './parseINI';
 export * from './parseKeyValue';
 export * from './parseLogLine';

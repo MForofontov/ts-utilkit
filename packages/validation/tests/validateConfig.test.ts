@@ -86,41 +86,4 @@ describe('validateConfig', () => {
       "Required configuration key 'a.b.c' is missing or undefined",
     );
   });
-
-  it('13. should throw TypeError when config is not an object', () => {
-    expect(() => validateConfig('not an object' as any, ['key'])).toThrow(
-      TypeError,
-    );
-    expect(() => validateConfig('not an object' as any, ['key'])).toThrow(
-      'config must be an object, got string',
-    );
-  });
-
-  it('14. should throw TypeError when config is null', () => {
-    expect(() => validateConfig(null as any, ['key'])).toThrow(TypeError);
-    expect(() => validateConfig(null as any, ['key'])).toThrow(
-      'config must be an object, got object',
-    );
-  });
-
-  it('15. should throw TypeError when config is an array', () => {
-    expect(() => validateConfig([1, 2, 3] as any, ['key'])).toThrow(TypeError);
-    expect(() => validateConfig([1, 2, 3] as any, ['key'])).toThrow(
-      'config must be an object, got array',
-    );
-  });
-
-  it('16. should throw TypeError when requiredKeys is not an array', () => {
-    expect(() => validateConfig({}, 'key' as any)).toThrow(TypeError);
-    expect(() => validateConfig({}, 'key' as any)).toThrow(
-      'requiredKeys must be an array, got string',
-    );
-  });
-
-  it('17. should throw TypeError when key in requiredKeys is not a string', () => {
-    expect(() => validateConfig({}, [123 as any])).toThrow(TypeError);
-    expect(() => validateConfig({}, [123 as any])).toThrow(
-      'All required keys must be strings, got number',
-    );
-  });
 });

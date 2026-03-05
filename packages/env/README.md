@@ -32,16 +32,16 @@ npm install @ts-utilkit/env
 import { getEnv, requireEnv, parseEnvInt, parseEnvBool } from '@ts-utilkit/env';
 
 // Get environment variable with default
-const port = getEnv('PORT', '3000');              // '3000' if PORT not set
+const port = getEnv('PORT', '3000'); // '3000' if PORT not set
 
 // Require environment variable (throws if missing)
-const apiKey = requireEnv('API_KEY');             // Throws if API_KEY not set
+const apiKey = requireEnv('API_KEY'); // Throws if API_KEY not set
 
 // Parse as integer
-const maxConnections = parseEnvInt('MAX_CONN', 100);  // 100 if not set or invalid
+const maxConnections = parseEnvInt('MAX_CONN', 100); // 100 if not set or invalid
 
 // Parse as boolean (true/false, 1/0, yes/no)
-const debugMode = parseEnvBool('DEBUG', false);   // false if not set
+const debugMode = parseEnvBool('DEBUG', false); // false if not set
 
 // Parse JSON
 const config = parseEnvJSON('APP_CONFIG', { timeout: 30 });

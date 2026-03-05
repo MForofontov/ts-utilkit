@@ -1,6 +1,6 @@
 # @ts-utilkit/network
 
-network  Functions - TypeScript utility functions for network operations.
+network Functions - TypeScript utility functions for network operations.
 
 ## Installation
 
@@ -42,9 +42,9 @@ npm install @ts-utilkit/network
 ```typescript
 import { isValidURL, isValidIP, getURLParams } from '@ts-utilkit/network';
 
-isValidURL('https://example.com');   // true
-isValidIP('192.168.1.1');            // true
-getURLParams('?page=2&sort=date');   // {page: '2', sort: 'date'}
+isValidURL('https://example.com'); // true
+isValidIP('192.168.1.1'); // true
+getURLParams('?page=2&sort=date'); // {page: '2', sort: 'date'}
 ```
 
 ## License

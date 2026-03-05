@@ -151,36 +151,4 @@ describe('testMultipleCases', () => {
     expect(results[2].passed).toBe(true);
     expect(results[3].passed).toBe(false);
   });
-
-  // Test case 10: Error - invalid function type
-  it('10. should throw TypeError when fn is not a function', () => {
-    // Arrange
-    const invalidFn = 'not a function' as unknown as (
-      input: unknown,
-    ) => unknown;
-    const cases = [{ input: 1, expected: 2, description: 'test' }];
-
-    // Act & Assert
-    expect(() => testMultipleCases(invalidFn, cases)).toThrow(TypeError);
-    expect(() => testMultipleCases(invalidFn, cases)).toThrow(
-      'fn must be a function',
-    );
-  });
-
-  // Test case 11: Error - invalid cases type
-  it('11. should throw TypeError when cases is not an array', () => {
-    // Arrange
-    const testFn = (x: number) => x;
-    const cases = 'not an array' as unknown as Array<{
-      input: number;
-      expected: number;
-      description: string;
-    }>;
-
-    // Act & Assert
-    expect(() => testMultipleCases(testFn, cases)).toThrow(TypeError);
-    expect(() => testMultipleCases(testFn, cases)).toThrow(
-      'testCases must be an array',
-    );
-  });
 });

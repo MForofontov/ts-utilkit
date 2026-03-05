@@ -4,8 +4,6 @@
  * @param str - The string to check.
  * @returns True if the string contains only digits, false otherwise.
  *
- * @throws {TypeError} If str is not a string.
- *
  * @example
  * // Basic usage
  * isNumeric("12345"); // true

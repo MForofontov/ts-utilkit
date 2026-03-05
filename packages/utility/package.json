@@ -1,6 +1,6 @@
 {
   "name": "@ts-utilkit/utility",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "General-purpose utility functions for debouncing, throttling, color conversion, and common patterns",
   "homepage": "https://github.com/mykfor1/ts-utilkit/tree/main/packages/utility#readme",
   "bugs": {
@@ -15,6 +15,13 @@
   "author": "Mykyta Forofontov",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "sideEffects": false,
   "files": [
     "dist",
@@ -46,7 +53,7 @@
     "node": ">=20"
   },
   "dependencies": {
-    "@ts-utilkit/format": "*"
+    "@ts-utilkit/format": "^0.2.0"
   },
   "publishConfig": {
     "access": "public"

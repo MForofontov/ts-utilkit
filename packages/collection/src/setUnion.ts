@@ -4,7 +4,6 @@
  * @param sets - Two or more sets to union.
  * @returns A new Set containing all unique elements from all input sets.
  *
- * @throws {TypeError} If any argument is not a Set.
  * @throws {Error} If fewer than two sets are provided.
  *
  * @example
@@ -34,14 +33,6 @@
 export function setUnion<T>(...sets: Set<T>[]): Set<T> {
   if (sets.length < 2) {
     throw new Error(`At least two sets are required, got ${sets.length}`);
-  }
-
-  for (let i = 0; i < sets.length; i++) {
-    if (!(sets[i] instanceof Set)) {
-      throw new TypeError(
-        `All arguments must be Sets, argument ${i} is ${typeof sets[i]}`,
-      );
-    }
   }
 
   const result = new Set<T>();

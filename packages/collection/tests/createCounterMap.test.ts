@@ -166,37 +166,4 @@ describe('createCounterMap', () => {
   });
 
   // ─── Error cases ───────────────────────────────────────────────────────────
-
-  it('13. should throw TypeError when items is not an array', () => {
-    // Arrange
-    const invalid = 'not-an-array' as unknown as string[];
-
-    // Act & Assert
-    expect(() => createCounterMap(invalid)).toThrow(TypeError);
-    expect(() => createCounterMap(invalid)).toThrow(
-      'items must be an array, got string',
-    );
-  });
-
-  it('14. should throw TypeError when items is null', () => {
-    // Arrange
-    const invalid = null as unknown as string[];
-
-    // Act & Assert
-    expect(() => createCounterMap(invalid)).toThrow(TypeError);
-    expect(() => createCounterMap(invalid)).toThrow(
-      'items must be an array, got object',
-    );
-  });
-
-  it('15. should throw TypeError when items is undefined', () => {
-    // Arrange
-    const invalid = undefined as unknown as string[];
-
-    // Act & Assert
-    expect(() => createCounterMap(invalid)).toThrow(TypeError);
-    expect(() => createCounterMap(invalid)).toThrow(
-      'items must be an array, got undefined',
-    );
-  });
 });

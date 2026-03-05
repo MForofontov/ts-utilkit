@@ -77,36 +77,6 @@ describe('generateHMAC', () => {
 
   // Error test cases (always at the end)
 
-  // Test case 10: Throw error for null data
-  it('10. should throw TypeError when data is null', () => {
-    expect(() =>
-      generateHMAC(null as unknown as string, testKey, 'sha256'),
-    ).toThrow(TypeError);
-    expect(() =>
-      generateHMAC(null as unknown as string, testKey, 'sha256'),
-    ).toThrow('data must be a string or Buffer');
-  });
-
-  // Test case 11: Throw error for null secret
-  it('11. should throw TypeError when secret is null', () => {
-    expect(() =>
-      generateHMAC(testData, null as unknown as string, 'sha256'),
-    ).toThrow(TypeError);
-    expect(() =>
-      generateHMAC(testData, null as unknown as string, 'sha256'),
-    ).toThrow('secret must be a string');
-  });
-
-  // Test case 12: Throw error for algorithm type
-  it('12. should throw TypeError when algorithm is not a string', () => {
-    expect(() =>
-      generateHMAC(testData, testKey, 123 as unknown as 'sha256'),
-    ).toThrow(TypeError);
-    expect(() =>
-      generateHMAC(testData, testKey, 123 as unknown as 'sha256'),
-    ).toThrow('algorithm must be a string');
-  });
-
   // Test case 13: Throw error for empty secret
   it('13. should throw Error when secret is empty', () => {
     expect(() => generateHMAC(testData, '', 'sha256')).toThrow(Error);

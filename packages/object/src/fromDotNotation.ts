@@ -5,8 +5,6 @@
  * @param obj - The flat object with dot or square bracket notation keys.
  * @returns A nested object structure preserving the original hierarchy.
  *
- * @throws {TypeError} If obj is not an object or is null.
- *
  * @example
  * // Basic dot notation
  * fromDotNotation({ 'user.name': 'John', 'user.address.city': 'NY' });
@@ -52,10 +50,6 @@
 export function fromDotNotation(
   obj: Record<string, unknown>,
 ): Record<string, unknown> {
-  if (typeof obj !== 'object' || obj === null) {
-    throw new TypeError('Input must be a non-null object');
-  }
-
   const result: Record<string, unknown> = {};
 
   for (const key in obj) {

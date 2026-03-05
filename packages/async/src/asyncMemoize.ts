@@ -23,11 +23,7 @@ interface MemoizeCacheEntry<T> {
  * @returns A new function with the same signature as `fn` that transparently
  * caches resolved values.
  *
- * @throws {TypeError} If `fn` is not a function.
- * @throws {TypeError} If `options.ttl` is provided but is not a number.
  * @throws {Error} If `options.ttl` is a negative number.
- * @throws {TypeError} If `options.keyFn` is provided but is not a function.
- *
  * @example
  * // Basic memoization — second call is served from cache
  * const fetchUser = asyncMemoize(async (id: number) => {
@@ -64,23 +60,12 @@ export function asyncMemoize<T, Args extends unknown[]>(
     keyFn?: (...args: Args) => string;
   } = {},
 ): (...args: Args) => Promise<T> {
-  if (typeof fn !== 'function') {
-    throw new TypeError(`fn must be a function, got ${typeof fn}`);
-  }
-
   const { ttl, keyFn } = options;
 
   if (ttl !== undefined) {
-    if (typeof ttl !== 'number' || isNaN(ttl)) {
-      throw new TypeError(`ttl must be a number, got ${typeof ttl}`);
-    }
     if (ttl < 0) {
       throw new Error(`ttl must be non-negative, got ${ttl}`);
     }
-  }
-
-  if (keyFn !== undefined && typeof keyFn !== 'function') {
-    throw new TypeError(`keyFn must be a function, got ${typeof keyFn}`);
   }
 
   const cache = new Map<string, MemoizeCacheEntry<T>>();

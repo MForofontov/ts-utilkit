@@ -5,8 +5,6 @@
  * @returns A Map where each key is a unique item from the array and the value is the number
  *   of times it appears.
  *
- * @throws {TypeError} If `items` is not an array.
- *
  * @example
  * // Count string occurrences
  * createCounterMap(['a', 'b', 'a', 'c', 'b', 'a']);
@@ -34,10 +32,6 @@
  * @complexity Time: O(n), Space: O(k) where n is array length and k is number of unique items
  */
 export function createCounterMap<T>(items: T[]): Map<T, number> {
-  if (!Array.isArray(items)) {
-    throw new TypeError(`items must be an array, got ${typeof items}`);
-  }
-
   const counter = new Map<T, number>();
 
   for (const item of items) {

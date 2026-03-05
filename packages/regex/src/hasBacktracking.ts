@@ -4,7 +4,6 @@
  * @param pattern - The regex pattern to analyze (string or RegExp).
  * @returns True if pattern may have backtracking issues, false otherwise.
  *
- * @throws {TypeError} If pattern is not a string or RegExp.
  * @throws {Error} If pattern is invalid.
  *
  * @example
@@ -28,17 +27,11 @@
  * @complexity Time: O(n), Space: O(1) where n is pattern length
  */
 export function hasBacktracking(pattern: string | RegExp): boolean {
-  if (typeof pattern !== 'string' && !(pattern instanceof RegExp)) {
-    throw new TypeError(
-      `pattern must be a string or RegExp, got ${typeof pattern}`,
-    );
-  }
-
   let source: string;
 
   try {
     source = typeof pattern === 'string' ? pattern : pattern.source;
-  } catch (e) {
+  } catch {
     throw new Error(
       `Invalid regular expression pattern: ${pattern instanceof RegExp ? pattern.source : pattern}`,
     );

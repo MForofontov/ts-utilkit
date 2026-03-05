@@ -66,15 +66,6 @@ describe('joinURLPaths', () => {
     );
   });
 
-  // Test case 11: Throw when a non-string segment is passed
-  it('11. should throw TypeError for non-string segment', () => {
-    const segment = 123 as unknown as string;
-    expect(() => joinURLPaths('/api', segment, 'users')).toThrow(TypeError);
-    expect(() => joinURLPaths('/api', segment, 'users')).toThrow(
-      'All paths must be strings',
-    );
-  });
-
   // Test case 12: Collapse multiple consecutive slashes
   it('12. should handle multiple consecutive slashes', () => {
     const result = joinURLPaths('/api//', '//users//', '//123');

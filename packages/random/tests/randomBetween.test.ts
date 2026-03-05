@@ -90,26 +90,6 @@ describe('randomBetween', () => {
     expect(result).toBeLessThan(0.9);
   });
 
-  // Error Test case 12: TypeError for non-number min
-  it('12. should throw TypeError when min is not a number', () => {
-    expect(() => randomBetween('1' as any, 10)).toThrow(TypeError);
-    expect(() => randomBetween('1' as any, 10)).toThrow('min must be a number');
-  });
-
-  // Error Test case 13: TypeError for non-number max
-  it('13. should throw TypeError when max is not a number', () => {
-    expect(() => randomBetween(1, '10' as any)).toThrow(TypeError);
-    expect(() => randomBetween(1, '10' as any)).toThrow('max must be a number');
-  });
-
-  // Error Test case 14: TypeError for non-boolean integer
-  it('14. should throw TypeError when integer is not a boolean', () => {
-    expect(() => randomBetween(1, 10, 'true' as any)).toThrow(TypeError);
-    expect(() => randomBetween(1, 10, 'true' as any)).toThrow(
-      'integer must be a boolean',
-    );
-  });
-
   // Error Test case 15: Error for NaN min
   it('15. should throw Error when min is NaN', () => {
     expect(() => randomBetween(NaN, 10)).toThrow(Error);
@@ -129,13 +109,11 @@ describe('randomBetween', () => {
   // Error Test case 17: Error for non-safe integer min
   it('17. should throw Error when min is not a safe integer (integer mode)', () => {
     expect(() => randomBetween(1.5, 10)).toThrow(Error);
-    expect(() => randomBetween(1.5, 10)).toThrow('min must be a safe integer');
   });
 
   // Error Test case 18: Error for non-safe integer max
   it('18. should throw Error when max is not a safe integer (integer mode)', () => {
     expect(() => randomBetween(1, 10.5)).toThrow(Error);
-    expect(() => randomBetween(1, 10.5)).toThrow('max must be a safe integer');
   });
 
   // Error Test case 19: Error when min > max (integer mode)

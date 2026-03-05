@@ -12,9 +12,6 @@ export class PatternBuilder {
    * @returns The builder instance for chaining.
    */
   literal(text: string): this {
-    if (typeof text !== 'string') {
-      throw new TypeError(`text must be a string, got ${typeof text}`);
-    }
     // Escape regex special characters
     const escaped = text.replace(/[.*+?^${}()|[\]\\/ ]/g, '\\$&');
     this.parts.push(escaped);
@@ -28,9 +25,6 @@ export class PatternBuilder {
    * @returns The builder instance for chaining.
    */
   raw(pattern: string): this {
-    if (typeof pattern !== 'string') {
-      throw new TypeError(`pattern must be a string, got ${typeof pattern}`);
-    }
     this.parts.push(pattern);
     return this;
   }
@@ -43,12 +37,6 @@ export class PatternBuilder {
    * @returns The builder instance for chaining.
    */
   charClass(chars: string, negate: boolean = false): this {
-    if (typeof chars !== 'string') {
-      throw new TypeError(`chars must be a string, got ${typeof chars}`);
-    }
-    if (typeof negate !== 'boolean') {
-      throw new TypeError(`negate must be a boolean, got ${typeof negate}`);
-    }
     this.parts.push(`[${negate ? '^' : ''}${chars}]`);
     return this;
   }
@@ -78,12 +66,6 @@ export class PatternBuilder {
     if (this.parts.length === 0) {
       throw new Error('Cannot add repeat: no pattern parts added yet');
     }
-    if (typeof min !== 'number' || min < 0) {
-      throw new TypeError('min must be a non-negative number');
-    }
-    if (max !== undefined && (typeof max !== 'number' || max < min)) {
-      throw new TypeError('max must be a number >= min');
-    }
 
     const last = this.parts[this.parts.length - 1];
     const quantifier = max === undefined ? `{${min},}` : `{${min},${max}}`;
@@ -98,10 +80,6 @@ export class PatternBuilder {
    * @returns The builder instance for chaining.
    */
   group(name?: string): this {
-    if (name !== undefined && typeof name !== 'string') {
-      throw new TypeError(`name must be a string, got ${typeof name}`);
-    }
-
     const pattern = this.parts.join('');
     this.parts = [];
     this.parts.push(name ? `(?<${name}>${pattern})` : `(${pattern})`);
@@ -155,9 +133,6 @@ export class PatternBuilder {
    * @returns The builder instance for chaining.
    */
   flags(flags: string): this {
-    if (typeof flags !== 'string') {
-      throw new TypeError(`flags must be a string, got ${typeof flags}`);
-    }
     this.regexFlags = flags;
     return this;
   }

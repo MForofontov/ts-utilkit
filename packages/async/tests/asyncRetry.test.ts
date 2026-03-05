@@ -148,22 +148,6 @@ describe('asyncRetry', () => {
     expect(mockFn).toHaveBeenCalledTimes(3);
   });
 
-  // Test case 7: TypeError for invalid input types
-  it('7. should throw TypeError for invalid input types', () => {
-    // Arrange
-    const invalidInputs = [123, null, undefined, [], {}, true, 'string'];
-
-    // Act & Assert
-    invalidInputs.forEach((input) => {
-      expect(() =>
-        asyncRetry(input as unknown as () => Promise<unknown>),
-      ).toThrow(TypeError);
-      expect(() =>
-        asyncRetry(input as unknown as () => Promise<unknown>),
-      ).toThrow('fn must be a function, got');
-    });
-  });
-
   // Test case 8: Error for invalid options
   it('8. should throw Error for invalid options', () => {
     // Arrange
@@ -187,14 +171,5 @@ describe('asyncRetry', () => {
         backoff: 'invalid' as 'fixed' | 'linear' | 'exponential',
       }),
     ).toThrow("backoff must be 'fixed', 'linear', or 'exponential'");
-
-    expect(() =>
-      asyncRetry(mockFn, {
-        onRetry: 'not a function' as unknown as (
-          attempt: number,
-          error: Error,
-        ) => void,
-      }),
-    ).toThrow('onRetry must be a function');
   });
 });

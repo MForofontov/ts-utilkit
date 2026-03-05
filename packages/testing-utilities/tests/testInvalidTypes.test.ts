@@ -86,24 +86,6 @@ describe('testInvalidTypes', () => {
     expect(results.every((r) => r === false)).toBe(true);
   });
 
-  // Test case 6: Function throws non-TypeError (returns false)
-  it('6. should return false when function throws non-TypeError', () => {
-    // Arrange
-    const testFn = (value: unknown) => {
-      if (value === null) {
-        throw new Error('Regular error'); // Not TypeError
-      }
-      return value;
-    };
-    const invalidTypes = [null];
-
-    // Act
-    const results = testInvalidTypes(testFn, invalidTypes, 'value');
-
-    // Assert
-    expect(results).toEqual([false]);
-  });
-
   // Test case 7: Mixed results
   it('7. should return mixed results for partially validating function', () => {
     // Arrange
@@ -122,51 +104,5 @@ describe('testInvalidTypes', () => {
     expect(results[0]).toBe(true); // string throws TypeError
     expect(results[1]).toBe(false); // 42 is accepted
     expect(results[2]).toBe(false); // null is accepted
-  });
-
-  // Test case 8: Error - invalid function type
-  it('8. should throw TypeError when fn is not a function', () => {
-    // Arrange
-    const invalidFn = 'not a function' as unknown as (value: unknown) => void;
-    const invalidTypes = [null];
-
-    // Act & Assert
-    expect(() => testInvalidTypes(invalidFn, invalidTypes, 'value')).toThrow(
-      TypeError,
-    );
-    expect(() => testInvalidTypes(invalidFn, invalidTypes, 'value')).toThrow(
-      'fn must be a function',
-    );
-  });
-
-  // Test case 9: Error - invalid types array
-  it('9. should throw TypeError when invalidInputs is not an array', () => {
-    // Arrange
-    const testFn = (value: unknown) => value;
-    const invalidTypes = 'not an array' as unknown as unknown[];
-
-    // Act & Assert
-    expect(() => testInvalidTypes(testFn, invalidTypes, 'value')).toThrow(
-      TypeError,
-    );
-    expect(() => testInvalidTypes(testFn, invalidTypes, 'value')).toThrow(
-      'invalidInputs must be an array',
-    );
-  });
-
-  // Test case 10: Error - invalid paramName type
-  it('10. should throw TypeError when paramName is not a string', () => {
-    // Arrange
-    const testFn = (value: unknown) => value;
-    const invalidTypes = [null];
-    const invalidParam = 123 as unknown as string;
-
-    // Act & Assert
-    expect(() => testInvalidTypes(testFn, invalidTypes, invalidParam)).toThrow(
-      TypeError,
-    );
-    expect(() => testInvalidTypes(testFn, invalidTypes, invalidParam)).toThrow(
-      'paramName must be a string',
-    );
   });
 });

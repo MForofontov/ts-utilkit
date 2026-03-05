@@ -8,8 +8,6 @@ import { _parseURL } from './_parseURL';
  * @param params - Object containing key-value pairs to add/update.
  * @returns The URL with updated query parameters.
  *
- * @throws {TypeError} If url is not a string.
- * @throws {TypeError} If params is not an object.
  * @throws {Error} If url is invalid.
  *
  * @example
@@ -37,9 +35,6 @@ export function addQueryParams(
   params: Record<string, string | number | boolean>,
 ): string {
   // Input validation handled by _parseURL for url
-  if (typeof params !== 'object' || params === null || Array.isArray(params)) {
-    throw new TypeError(`params must be an object, got ${typeof params}`);
-  }
 
   const urlObj = _parseURL(url);
   const searchParams = urlObj.searchParams;

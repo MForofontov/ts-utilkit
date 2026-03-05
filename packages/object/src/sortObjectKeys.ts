@@ -4,8 +4,6 @@
  * @param obj - The object whose keys should be sorted.
  * @returns A new object with identical properties but keys in alphabetical order.
  *
- * @throws {TypeError} If obj is not an object or is null.
- *
  * @example
  * // Basic usage
  * sortObjectKeys({ c: 3, a: 1, b: 2 });
@@ -40,9 +38,6 @@
  * @complexity Time: O(n log n), Space: O(n) - Where n is the number of keys
  */
 export function sortObjectKeys<T extends Record<string, unknown>>(obj: T): T {
-  if (typeof obj !== 'object' || obj === null) {
-    throw new TypeError('Input must be a non-null object');
-  }
   return Object.fromEntries(
     Object.entries(obj).sort(([keyA], [keyB]) => keyA.localeCompare(keyB)),
   ) as T;

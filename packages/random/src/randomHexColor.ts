@@ -6,8 +6,6 @@ import { randomInt } from './randomInt';
  * @param includeHash - Whether to include '#' prefix (default: true).
  * @returns A random hex color code (e.g., '#A3F9C2' or 'A3F9C2').
  *
- * @throws {TypeError} If includeHash is provided and not a boolean.
- *
  * @example
  * // Generate hex color with hash
  * randomHexColor(); // '#8E44DB'
@@ -27,12 +25,6 @@ import { randomInt } from './randomInt';
  * @complexity Time: O(1), Space: O(1)
  */
 export function randomHexColor(includeHash: boolean = true): string {
-  if (typeof includeHash !== 'boolean') {
-    throw new TypeError(
-      `includeHash must be a boolean, got ${typeof includeHash}`,
-    );
-  }
-
   const hex = randomInt(0, 16777215)
     .toString(16)
     .padStart(6, '0')

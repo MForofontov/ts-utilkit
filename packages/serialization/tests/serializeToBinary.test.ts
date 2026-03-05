@@ -164,28 +164,4 @@ describe('serializeToBinary', () => {
     // Assert
     expect(result).toBe(expected);
   });
-
-  // Error cases
-  it('14. should throw TypeError when input is not a string', () => {
-    // Arrange
-    const input: any = 123;
-    const expectedMessage = 'input must be a string, got number';
-
-    // Act & Assert
-    expect(() => serializeToBinary(input)).toThrow(TypeError);
-    expect(() => serializeToBinary(input)).toThrow(expectedMessage);
-  });
-
-  it('15. should throw TypeError when separator is not a string', () => {
-    // Arrange
-    const input = 'A';
-    const invalidSeparator: any = 123;
-    const expectedMessage = 'separator must be a string, got number';
-
-    // Act & Assert
-    expect(() => serializeToBinary(input, invalidSeparator)).toThrow(TypeError);
-    expect(() => serializeToBinary(input, invalidSeparator)).toThrow(
-      expectedMessage,
-    );
-  });
 });

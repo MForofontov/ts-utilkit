@@ -70,24 +70,6 @@ describe('isSubdomain', () => {
     expect(result).toBe(false);
   });
 
-  it('10. should throw TypeError for non-string subdomainUrl', () => {
-    const url = 123 as unknown as string;
-    expect(() => isSubdomain(url, 'https://example.com')).toThrow(TypeError);
-    expect(() => isSubdomain(url, 'https://example.com')).toThrow(
-      'subdomainUrl must be a string',
-    );
-  });
-
-  it('11. should throw TypeError for non-string parentUrl', () => {
-    const url = 123 as unknown as string;
-    expect(() => isSubdomain('https://api.example.com', url)).toThrow(
-      TypeError,
-    );
-    expect(() => isSubdomain('https://api.example.com', url)).toThrow(
-      'parentUrl must be a string',
-    );
-  });
-
   // Test case 12: should handle plain hostnames without protocol
   it('12. should handle plain hostnames without protocol', () => {
     const result = isSubdomain('api.example.com', 'example.com');

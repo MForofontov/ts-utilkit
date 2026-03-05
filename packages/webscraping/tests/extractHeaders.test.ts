@@ -216,28 +216,4 @@ describe('extractHeaders', () => {
     expect(result[1]).toEqual({ level: 2, text: 'Section 1', id: 'section1' });
     expect(result[2]).toEqual({ level: 2, text: 'Section 2', id: 'section2' });
   });
-
-  // Error cases
-  it('16. should throw TypeError when html is not a string', () => {
-    // Arrange
-    const html = 123 as unknown as string;
-    const expectedMessage = 'html must be a string, got number';
-
-    // Act & Assert
-    expect(() => extractHeaders(html)).toThrow(TypeError);
-    expect(() => extractHeaders(html)).toThrow(expectedMessage);
-  });
-
-  it('17. should throw TypeError when includeAttributes is not a boolean', () => {
-    // Arrange
-    const html = '<h1>Title</h1>';
-    const includeAttributes = 'true' as unknown as boolean;
-    const expectedMessage = 'includeAttributes must be a boolean, got string';
-
-    // Act & Assert
-    expect(() => extractHeaders(html, includeAttributes)).toThrow(TypeError);
-    expect(() => extractHeaders(html, includeAttributes)).toThrow(
-      expectedMessage,
-    );
-  });
 });

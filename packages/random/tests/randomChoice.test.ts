@@ -92,22 +92,6 @@ describe('randomChoice', () => {
     }
   });
 
-  // Error Test case 11: TypeError for non-array input
-  it('11. should throw TypeError when input is not an array', () => {
-    expect(() => randomChoice('not an array' as any)).toThrow(TypeError);
-    expect(() => randomChoice('not an array' as any)).toThrow(
-      'array must be an array, got string',
-    );
-  });
-
-  // Error Test case 12: TypeError for null input
-  it('12. should throw TypeError when input is null', () => {
-    expect(() => randomChoice(null as any)).toThrow(TypeError);
-    expect(() => randomChoice(null as any)).toThrow(
-      'array must be an array, got object',
-    );
-  });
-
   // Error Test case 13: Error for empty array
   it('13. should throw Error when array is empty', () => {
     expect(() => randomChoice([])).toThrow(Error);

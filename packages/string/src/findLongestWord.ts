@@ -4,8 +4,6 @@
  * @param str - The string to analyze.
  * @returns The longest word in the string (or empty string if no words found).
  *
- * @throws {TypeError} If str is not a string.
- *
  * @example
  * // Basic usage
  * findLongestWord("The quick brown fox jumps over the lazy dog."); // "jumps"

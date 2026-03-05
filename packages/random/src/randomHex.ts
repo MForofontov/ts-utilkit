@@ -6,7 +6,6 @@ import { randomSequence } from './randomSequence';
  * @param length - The length of the hex string to generate (number of hex digits).
  * @returns A random hexadecimal string (lowercase).
  *
- * @throws {TypeError} If length is not a number.
  * @throws {Error} If length is NaN.
  * @throws {Error} If length is negative or not an integer.
  *
@@ -28,9 +27,6 @@ import { randomSequence } from './randomSequence';
  * @complexity Time: O(n), Space: O(n) where n is length
  */
 export function randomHex(length: number): string {
-  if (typeof length !== 'number') {
-    throw new TypeError(`length must be a number, got ${typeof length}`);
-  }
   if (isNaN(length)) {
     throw new Error('length must be a valid number, not NaN');
   }

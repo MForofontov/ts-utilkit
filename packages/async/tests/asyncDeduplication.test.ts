@@ -50,8 +50,8 @@ describe('asyncDeduplication', () => {
     const deduplicated = asyncDeduplication(fn);
 
     // Act
-    const first = await deduplicated('key');          // in-flight + settles
-    const second = await deduplicated('key');         // fresh call after settlement
+    const first = await deduplicated('key'); // in-flight + settles
+    const second = await deduplicated('key'); // fresh call after settlement
 
     // Assert
     expect(first).toBe(1);
@@ -111,9 +111,9 @@ describe('asyncDeduplication', () => {
 
     // Act
     const [r1, r2, r3] = await Promise.all([
-      deduplicated(1, 2),  // key '1:2'
-      deduplicated(1, 2),  // same key → deduplicated
-      deduplicated(1, 3),  // key '1:3' → separate call
+      deduplicated(1, 2), // key '1:2'
+      deduplicated(1, 2), // same key → deduplicated
+      deduplicated(1, 3), // key '1:3' → separate call
     ]);
 
     // Assert
@@ -140,26 +140,5 @@ describe('asyncDeduplication', () => {
     expect(a).toBe(1);
     expect(b).toBe(1);
     expect(fn).toHaveBeenCalledTimes(1);
-  });
-
-  // Error cases
-  // Test case 8: Throws TypeError when fn is not a function
-  it('8. should throw TypeError when fn is not a function', () => {
-    expect(() =>
-      asyncDeduplication(42 as unknown as () => Promise<void>),
-    ).toThrow(TypeError);
-    expect(() =>
-      asyncDeduplication(42 as unknown as () => Promise<void>),
-    ).toThrow('fn must be a function, got number');
-  });
-
-  // Test case 9: Throws TypeError when keyFn is not a function
-  it('9. should throw TypeError when keyFn is not a function', () => {
-    expect(() =>
-      asyncDeduplication(async () => 1, 'key' as unknown as () => string),
-    ).toThrow(TypeError);
-    expect(() =>
-      asyncDeduplication(async () => 1, 'key' as unknown as () => string),
-    ).toThrow('keyFn must be a function, got string');
   });
 });

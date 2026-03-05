@@ -4,8 +4,6 @@
  * @param str - The string to split into words.
  * @returns An array of words (non-empty strings separated by whitespace).
  *
- * @throws {TypeError} If str is not a string.
- *
  * @example
  * // Basic usage
  * stringToWords("Hello world!"); // ["Hello", "world!"]

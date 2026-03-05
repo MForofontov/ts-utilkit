@@ -159,45 +159,6 @@ describe('extractMatches', () => {
     expect(result).toEqual(expected);
   });
 
-  // Error cases
-  it('13. should throw TypeError when text is not a string', () => {
-    // Arrange
-    const invalidText: any = 123;
-    const pattern = /\d+/g;
-    const expectedMessage = 'text must be a string, got number';
-
-    // Act & Assert
-    expect(() => extractMatches(invalidText, pattern)).toThrow(TypeError);
-    expect(() => extractMatches(invalidText, pattern)).toThrow(expectedMessage);
-  });
-
-  it('14. should throw TypeError when pattern is invalid type', () => {
-    // Arrange
-    const text = 'test';
-    const invalidPattern: any = 123;
-    const expectedMessage = 'pattern must be a string or RegExp, got number';
-
-    // Act & Assert
-    expect(() => extractMatches(text, invalidPattern)).toThrow(TypeError);
-    expect(() => extractMatches(text, invalidPattern)).toThrow(expectedMessage);
-  });
-
-  it('15. should throw TypeError when flags is not a string', () => {
-    // Arrange
-    const text = 'test';
-    const pattern = 'test';
-    const invalidFlags: any = 123;
-    const expectedMessage = 'flags must be a string, got number';
-
-    // Act & Assert
-    expect(() => extractMatches(text, pattern, invalidFlags)).toThrow(
-      TypeError,
-    );
-    expect(() => extractMatches(text, pattern, invalidFlags)).toThrow(
-      expectedMessage,
-    );
-  });
-
   it('16. should throw Error when pattern is invalid regex', () => {
     // Arrange
     const text = 'test';

@@ -1,6 +1,6 @@
 # @ts-utilkit/utility
 
-utility  Functions - TypeScript utility functions for utility operations.
+utility Functions - TypeScript utility functions for utility operations.
 
 ## Installation
 
@@ -33,10 +33,10 @@ npm install @ts-utilkit/utility
 ```typescript
 import { debounce, throttle, clamp, noop } from '@ts-utilkit/utility';
 
-debounce(fn, 300);                   // Delay until inactivity
-throttle(fn, 100);                   // Limit rate
-clamp(5, 0, 10);                     // 5 (within range)
-noop();                              // No-op function
+debounce(fn, 300); // Delay until inactivity
+throttle(fn, 100); // Limit rate
+clamp(5, 0, 10); // 5 (within range)
+noop(); // No-op function
 ```
 
 ## License

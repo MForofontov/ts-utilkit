@@ -66,24 +66,4 @@ describe('getDeepEqualityHash', () => {
     const result = getDeepEqualityHash(obj);
     expect(typeof result).toBe('number');
   });
-
-  // Test case 9: Handle non-object input (string)
-  it('9. should throw a TypeError if input is a string', () => {
-    expect(() => getDeepEqualityHash('string' as unknown)).toThrow(TypeError);
-  });
-
-  // Test case 10: Handle non-object input (boolean)
-  it('10. should throw a TypeError if input is a boolean', () => {
-    expect(() => getDeepEqualityHash(true as unknown)).toThrow(TypeError);
-  });
-
-  // Test case 11: Handle non-object input (null)
-  it('11. should throw a TypeError if input is null', () => {
-    expect(() => getDeepEqualityHash(null as unknown)).toThrow(TypeError);
-  });
-
-  // Test case 12: Handle non-object input (undefined)
-  it('12. should throw a TypeError if input is undefined', () => {
-    expect(() => getDeepEqualityHash(undefined as unknown)).toThrow(TypeError);
-  });
 });

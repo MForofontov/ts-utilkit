@@ -6,8 +6,6 @@
  * @param format24Hour - Whether to use 24-hour format (default: true).
  * @returns True if the time string is valid, false otherwise.
  *
- * @throws {TypeError} If timeString is not a string, allowSeconds is not a boolean, or format24Hour is not a boolean.
- *
  * @example
  * // Valid 24-hour format times
  * isValidTime("14:30"); // true
@@ -38,24 +36,6 @@ export function isValidTime(
   allowSeconds: boolean = true,
   format24Hour: boolean = true,
 ): boolean {
-  if (typeof timeString !== 'string') {
-    throw new TypeError(
-      `timeString must be a string, got ${typeof timeString}`,
-    );
-  }
-
-  if (typeof allowSeconds !== 'boolean') {
-    throw new TypeError(
-      `allowSeconds must be a boolean, got ${typeof allowSeconds}`,
-    );
-  }
-
-  if (typeof format24Hour !== 'boolean') {
-    throw new TypeError(
-      `format24Hour must be a boolean, got ${typeof format24Hour}`,
-    );
-  }
-
   const cleanTimeString = timeString.trim();
   let hour: number;
   let minute: number;

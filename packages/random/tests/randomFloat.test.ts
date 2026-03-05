@@ -95,30 +95,6 @@ describe('randomFloat', () => {
     expect(lowCount).toBeLessThan(650);
   });
 
-  // Error Test case 11: TypeError for non-number min
-  it('11. should throw TypeError when min is not a number', () => {
-    expect(() => randomFloat('5' as any, 10)).toThrow(TypeError);
-    expect(() => randomFloat('5' as any, 10)).toThrow(
-      'min must be a number, got string',
-    );
-  });
-
-  // Error Test case 12: TypeError for non-number max
-  it('12. should throw TypeError when max is not a number', () => {
-    expect(() => randomFloat(5, '10' as any)).toThrow(TypeError);
-    expect(() => randomFloat(5, '10' as any)).toThrow(
-      'max must be a number, got string',
-    );
-  });
-
-  // Error Test case 13: TypeError for non-number decimals
-  it('13. should throw TypeError when decimals is not a number', () => {
-    expect(() => randomFloat(5, 10, '2' as any)).toThrow(TypeError);
-    expect(() => randomFloat(5, 10, '2' as any)).toThrow(
-      'decimals must be a number, got string',
-    );
-  });
-
   // Error Test case 14: Error for NaN min
   it('14. should throw Error when min is NaN', () => {
     expect(() => randomFloat(NaN, 10)).toThrow(Error);

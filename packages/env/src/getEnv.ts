@@ -5,7 +5,6 @@
  * @param defaultValue - Optional default value if the variable is not set.
  * @returns The environment variable value or default value.
  *
- * @throws {TypeError} If key is not a string.
  * @throws {Error} If key is an empty string.
  *
  * @example
@@ -20,11 +19,9 @@
  *
  * @complexity Time: O(1), Space: O(1)
  */
+export function getEnv(key: string): string | undefined;
+export function getEnv(key: string, defaultValue: string): string;
 export function getEnv(key: string, defaultValue?: string): string | undefined {
-  if (typeof key !== 'string') {
-    throw new TypeError(`key must be a string, got ${typeof key}`);
-  }
-
   if (key.length === 0) {
     throw new Error('key cannot be an empty string');
   }

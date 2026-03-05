@@ -87,29 +87,29 @@ const slug = slugify('Hello World!'); // 'hello-world'
 
 This library provides **408 utility functions** organized into **21 specialized packages**. Each package is independently installable and fully tree-shakeable.
 
-| Package | Functions | Description | Documentation |
-|---------|-----------|-------------|---------------|
-| **@ts-utilkit/array** | 26 | Array manipulation, chunking, flattening, grouping, sorting | [View Functions →](packages/array/README.md) |
-| **@ts-utilkit/async** | 6 | Retry logic, timeouts, parallel/series execution | [View Functions →](packages/async/README.md) |
-| **@ts-utilkit/collection** | 17 | Set and Map operations, conversions | [View Functions →](packages/collection/README.md) |
-| **@ts-utilkit/configuration** | 12 | Environment variables, config management | [View Functions →](packages/configuration/README.md) |
-| **@ts-utilkit/crypto** | 11 | Hashing (SHA, MD5), encryption (AES), HMAC | [View Functions →](packages/crypto/README.md) |
-| **@ts-utilkit/date** | 31 | Date arithmetic, formatting, business days | [View Functions →](packages/date/README.md) |
-| **@ts-utilkit/encoding** | 2 | Base64 encoding/decoding | [View Functions →](packages/encoding/README.md) |
-| **@ts-utilkit/event** | 7 | Event emitters, debouncing, throttling | [View Functions →](packages/event/README.md) |
-| **@ts-utilkit/format** | 8 | Number, currency, byte, duration formatting | [View Functions →](packages/format/README.md) |
-| **@ts-utilkit/math** | 56 | Arithmetic, algebra, geometry, statistics | [View Functions →](packages/math/README.md) |
-| **@ts-utilkit/network** | 18 | URL parsing, query params, domain extraction | [View Functions →](packages/network/README.md) |
-| **@ts-utilkit/object** | 39 | Deep merge/clone, flattening, key transformations | [View Functions →](packages/object/README.md) |
-| **@ts-utilkit/parsing** | 7 | CSV, INI, log, env file parsing | [View Functions →](packages/parsing/README.md) |
-| **@ts-utilkit/random** | 25 | Random generation (numbers, strings, colors, UUIDs) | [View Functions →](packages/random/README.md) |
-| **@ts-utilkit/regex** | 15 | Pattern building, matching, common patterns | [View Functions →](packages/regex/README.md) |
-| **@ts-utilkit/serialization** | 18 | JSON, CSV, XML, YAML, binary serialization | [View Functions →](packages/serialization/README.md) |
-| **@ts-utilkit/string** | 51 | Case conversion, slugs, validation, manipulation | [View Functions →](packages/string/README.md) |
-| **@ts-utilkit/testing-utilities** | 21 | Test data generation, assertions, spies | [View Functions →](packages/testing-utilities/README.md) |
-| **@ts-utilkit/utility** | 9 | Debounce, throttle, color conversion, delays | [View Functions →](packages/utility/README.md) |
-| **@ts-utilkit/validation** | 13 | IP, UUID, email, credit card validation | [View Functions →](packages/validation/README.md) |
-| **@ts-utilkit/webscraping** | 16 | HTML parsing, link/email extraction | [View Functions →](packages/webscraping/README.md) |
+| Package                           | Functions | Description                                                 | Documentation                                            |
+| --------------------------------- | --------- | ----------------------------------------------------------- | -------------------------------------------------------- |
+| **@ts-utilkit/array**             | 26        | Array manipulation, chunking, flattening, grouping, sorting | [View Functions →](packages/array/README.md)             |
+| **@ts-utilkit/async**             | 6         | Retry logic, timeouts, parallel/series execution            | [View Functions →](packages/async/README.md)             |
+| **@ts-utilkit/collection**        | 17        | Set and Map operations, conversions                         | [View Functions →](packages/collection/README.md)        |
+| **@ts-utilkit/configuration**     | 12        | Environment variables, config management                    | [View Functions →](packages/configuration/README.md)     |
+| **@ts-utilkit/crypto**            | 11        | Hashing (SHA, MD5), encryption (AES), HMAC                  | [View Functions →](packages/crypto/README.md)            |
+| **@ts-utilkit/date**              | 31        | Date arithmetic, formatting, business days                  | [View Functions →](packages/date/README.md)              |
+| **@ts-utilkit/encoding**          | 2         | Base64 encoding/decoding                                    | [View Functions →](packages/encoding/README.md)          |
+| **@ts-utilkit/event**             | 7         | Event emitters, debouncing, throttling                      | [View Functions →](packages/event/README.md)             |
+| **@ts-utilkit/format**            | 8         | Number, currency, byte, duration formatting                 | [View Functions →](packages/format/README.md)            |
+| **@ts-utilkit/math**              | 56        | Arithmetic, algebra, geometry, statistics                   | [View Functions →](packages/math/README.md)              |
+| **@ts-utilkit/network**           | 18        | URL parsing, query params, domain extraction                | [View Functions →](packages/network/README.md)           |
+| **@ts-utilkit/object**            | 39        | Deep merge/clone, flattening, key transformations           | [View Functions →](packages/object/README.md)            |
+| **@ts-utilkit/parsing**           | 7         | CSV, INI, log, env file parsing                             | [View Functions →](packages/parsing/README.md)           |
+| **@ts-utilkit/random**            | 25        | Random generation (numbers, strings, colors, UUIDs)         | [View Functions →](packages/random/README.md)            |
+| **@ts-utilkit/regex**             | 15        | Pattern building, matching, common patterns                 | [View Functions →](packages/regex/README.md)             |
+| **@ts-utilkit/serialization**     | 18        | JSON, CSV, XML, YAML, binary serialization                  | [View Functions →](packages/serialization/README.md)     |
+| **@ts-utilkit/string**            | 51        | Case conversion, slugs, validation, manipulation            | [View Functions →](packages/string/README.md)            |
+| **@ts-utilkit/testing-utilities** | 21        | Test data generation, assertions, spies                     | [View Functions →](packages/testing-utilities/README.md) |
+| **@ts-utilkit/utility**           | 9         | Debounce, throttle, color conversion, delays                | [View Functions →](packages/utility/README.md)           |
+| **@ts-utilkit/validation**        | 13        | IP, UUID, email, credit card validation                     | [View Functions →](packages/validation/README.md)        |
+| **@ts-utilkit/webscraping**       | 16        | HTML parsing, link/email extraction                         | [View Functions →](packages/webscraping/README.md)       |
 
 > 💡 **Tip**: Click on "View Functions →" links to see the complete function list for each package with detailed usage examples.
 
@@ -117,29 +117,29 @@ This library provides **408 utility functions** organized into **21 specialized 
 
 Quick reference of functions by category:
 
-| Category | Function Count | Key Functions |
-|----------|----------------|---------------|
-| **Array** | 26 | `chunkArray`, `findDuplicates`, `groupBy`, `flattenArray`, `sortBy` |
-| **Async** | 6 | `asyncRetry`, `asyncTimeout`, `asyncParallel`, `asyncSeries`, `asyncMap` |
-| **Collection** | 17 | `setUnion`, `setIntersection`, `mapToObject`, `setDifference`, `mapMerge` |
-| **Configuration** | 12 | `getEnv`, `parseEnvInt`, `parseEnvBoolean`, `loadEnvFile`, `validateConfig` |
-| **Crypto** | 11 | `hashSHA256`, `hashPassword`, `encryptAES256`, `generateHMAC`, `compareHash` |
-| **Date** | 31 | `addDays`, `formatDate`, `daysBetween`, `isLeapYear`, `getQuarter` |
-| **Encoding** | 2 | `encodeBase64`, `decodeBase64` |
-| **Event** | 7 | `EventEmitter`, `createEventBus`, `debounceEvent`, `throttleEvent`, `waitForEvent` |
-| **Format** | 8 | `formatNumber`, `formatCurrency`, `formatBytes`, `formatDuration`, `formatPlural` |
-| **Math** | 56 | `calculateStandardDeviation`, `isPrime`, `calculateHaversineDistance`, `factorial`, `median` |
-| **Network** | 18 | `parseURL`, `addQueryParams`, `isValidURL`, `normalizeURL`, `extractDomain` |
-| **Object** | 39 | `deepMerge`, `safeGet`, `flattenObject`, `pickKeys`, `deepClone` |
-| **Parsing** | 7 | `parseCSV`, `parseINI`, `parseQueryString`, `parseUserAgent`, `parseMarkdown` |
-| **Random** | 25 | `randomInt`, `randomElement`, `randomUUID`, `randomHex`, `randomShuffle` |
-| **Regex** | 15 | `extractEmails`, `extractURLs`, `escapeRegex`, `matchAll`, `removeHTML` |
-| **Serialization** | 18 | `serializeToJSON`, `deserializeFromJSON`, `handleCircularReferences`, `deepClone` |
-| **String** | 51 | `slugify`, `capitalizeEachWord`, `isPalindrome`, `toKebabCase`, `truncateString` |
-| **Testing** | 21 | `generateRandomString`, `generateRandomEmail`, `assertArraysEqual`, `runPerformanceTest` |
-| **Utility** | 9 | `debounce`, `throttle`, `delay`, `hexToRgb`, `bytesToSize` |
-| **Validation** | 13 | `isValidIPv4`, `isValidUUID`, `isValidJSON`, `isInRange`, `isValidCreditCard` |
-| **Webscraping** | 16 | `extractLinks`, `extractMetaTags`, `extractEmails`, `fetchHTML`, `parseHTML` |
+| Category          | Function Count | Key Functions                                                                                |
+| ----------------- | -------------- | -------------------------------------------------------------------------------------------- |
+| **Array**         | 26             | `chunkArray`, `findDuplicates`, `groupBy`, `flattenArray`, `sortBy`                          |
+| **Async**         | 6              | `asyncRetry`, `asyncTimeout`, `asyncParallel`, `asyncSeries`, `asyncMap`                     |
+| **Collection**    | 17             | `setUnion`, `setIntersection`, `mapToObject`, `setDifference`, `mapMerge`                    |
+| **Configuration** | 12             | `getEnv`, `parseEnvInt`, `parseEnvBoolean`, `loadEnvFile`, `validateConfig`                  |
+| **Crypto**        | 11             | `hashSHA256`, `hashPassword`, `encryptAES256`, `generateHMAC`, `compareHash`                 |
+| **Date**          | 31             | `addDays`, `formatDate`, `daysBetween`, `isLeapYear`, `getQuarter`                           |
+| **Encoding**      | 2              | `encodeBase64`, `decodeBase64`                                                               |
+| **Event**         | 7              | `EventEmitter`, `createEventBus`, `debounceEvent`, `throttleEvent`, `waitForEvent`           |
+| **Format**        | 8              | `formatNumber`, `formatCurrency`, `formatBytes`, `formatDuration`, `formatPlural`            |
+| **Math**          | 56             | `calculateStandardDeviation`, `isPrime`, `calculateHaversineDistance`, `factorial`, `median` |
+| **Network**       | 18             | `parseURL`, `addQueryParams`, `isValidURL`, `normalizeURL`, `extractDomain`                  |
+| **Object**        | 39             | `deepMerge`, `safeGet`, `flattenObject`, `pickKeys`, `deepClone`                             |
+| **Parsing**       | 7              | `parseCSV`, `parseINI`, `parseQueryString`, `parseUserAgent`, `parseMarkdown`                |
+| **Random**        | 25             | `randomInt`, `randomElement`, `randomUUID`, `randomHex`, `randomShuffle`                     |
+| **Regex**         | 15             | `extractEmails`, `extractURLs`, `escapeRegex`, `matchAll`, `removeHTML`                      |
+| **Serialization** | 18             | `serializeToJSON`, `deserializeFromJSON`, `handleCircularReferences`, `deepClone`            |
+| **String**        | 51             | `slugify`, `capitalizeEachWord`, `isPalindrome`, `toKebabCase`, `truncateString`             |
+| **Testing**       | 21             | `generateRandomString`, `generateRandomEmail`, `assertArraysEqual`, `runPerformanceTest`     |
+| **Utility**       | 9              | `debounce`, `throttle`, `delay`, `hexToRgb`, `bytesToSize`                                   |
+| **Validation**    | 13             | `isValidIPv4`, `isValidUUID`, `isValidJSON`, `isInRange`, `isValidCreditCard`                |
+| **Webscraping**   | 16             | `extractLinks`, `extractMetaTags`, `extractEmails`, `fetchHTML`, `parseHTML`                 |
 
 **Total: 408 Functions** across 21 specialized packages
 
@@ -148,11 +148,7 @@ Quick reference of functions by category:
 ### Array Operations
 
 ```typescript
-import {
-  chunkArray,
-  findDuplicates,
-  cartesianProduct,
-} from 'ts-utilkit';
+import { chunkArray, findDuplicates, cartesianProduct } from 'ts-utilkit';
 
 // Split array into chunks
 const data = [1, 2, 3, 4, 5, 6, 7, 8];
@@ -257,11 +253,7 @@ const isPalin = isPalindrome('A man a plan a canal Panama'); // true
 ### Validation
 
 ```typescript
-import {
-  isValidIPv4,
-  isValidUUID,
-  isValidMACAddress,
-} from 'ts-utilkit';
+import { isValidIPv4, isValidUUID, isValidMACAddress } from 'ts-utilkit';
 
 // Network validation
 const isValidIP = isValidIPv4('192.168.1.1'); // true

@@ -4,8 +4,6 @@
  * @param str - The string to analyze.
  * @returns The total count of vowels (a, e, i, o, u) found in the string.
  *
- * @throws {TypeError} If str is not a string.
- *
  * @example
  * // Basic usage
  * countVowels("Hello world"); // 3

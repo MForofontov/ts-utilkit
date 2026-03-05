@@ -7,8 +7,6 @@
  * @returns An array of windows, where each window is a sub-array of length `size`.
  * Returns an empty array if `size` is greater than `arr.length`.
  *
- * @throws {TypeError} If `arr` is not an array.
- * @throws {TypeError} If `size` is not a number.
  * @throws {Error} If `size` is not a positive integer (≤ 0 or non-integer).
  *
  * @example
@@ -41,12 +39,6 @@
  * @complexity Time: O(n * size), Space: O(n * size) - Where n is array length
  */
 export function slidingWindow<T>(arr: T[], size: number): T[][] {
-  if (!Array.isArray(arr)) {
-    throw new TypeError(`arr must be an array, got ${typeof arr}`);
-  }
-  if (typeof size !== 'number' || isNaN(size)) {
-    throw new TypeError(`size must be a number, got ${typeof size}`);
-  }
   if (!Number.isInteger(size) || size <= 0) {
     throw new Error(`size must be a positive integer, got ${size}`);
   }

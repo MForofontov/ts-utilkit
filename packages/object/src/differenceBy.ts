@@ -7,10 +7,6 @@
  * @param comparator - Function that determines if two values are equal.
  * @returns A new object containing only the different key-value pairs from obj1.
  *
- * @throws {TypeError} If obj1 is not an object or is null.
- * @throws {TypeError} If obj2 is not an object or is null.
- * @throws {TypeError} If comparator is not a function.
- *
  * @example
  * // Simple value comparison
  * const obj1 = { a: 1, b: 2, c: 3 };
@@ -61,16 +57,6 @@ export function differenceBy<T extends Record<string, unknown>>(
   obj2: T,
   comparator: (a: unknown, b: unknown) => boolean,
 ): Partial<T> {
-  if (typeof obj1 !== 'object' || obj1 === null) {
-    throw new TypeError('First argument must be a non-null object');
-  }
-  if (typeof obj2 !== 'object' || obj2 === null) {
-    throw new TypeError('Second argument must be a non-null object');
-  }
-  if (typeof comparator !== 'function') {
-    throw new TypeError('Comparator must be a function');
-  }
-
   const keys = Reflect.ownKeys(obj1);
   const result: Partial<T> = {};
   for (const key of keys) {

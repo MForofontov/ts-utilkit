@@ -7,7 +7,6 @@ import { _parseURL } from './_parseURL';
  * @param url - The URL to extract the path from.
  * @returns The pathname of the URL.
  *
- * @throws {TypeError} If url is not a string.
  * @throws {Error} If url is invalid.
  *
  * @example

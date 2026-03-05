@@ -7,8 +7,6 @@ import { createCipheriv, randomBytes, scryptSync } from 'crypto';
  * @param key - The encryption key (string). Will be derived using scrypt.
  * @returns Base64-encoded string containing IV, auth tag, and ciphertext (format: iv:authTag:encrypted).
  *
- * @throws {TypeError} If data is not a string.
- * @throws {TypeError} If key is not a string.
  * @throws {Error} If data is empty.
  * @throws {Error} If key is empty.
  *
@@ -37,14 +35,6 @@ import { createCipheriv, randomBytes, scryptSync } from 'crypto';
  * @complexity Time: O(n) where n is data length, Space: O(n)
  */
 export function encryptAES256(data: string, key: string): string {
-  if (typeof data !== 'string') {
-    throw new TypeError(`data must be a string, got ${typeof data}`);
-  }
-
-  if (typeof key !== 'string') {
-    throw new TypeError(`key must be a string, got ${typeof key}`);
-  }
-
   if (data.length === 0) {
     throw new Error('data cannot be empty');
   }

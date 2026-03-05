@@ -161,17 +161,4 @@ describe('generateTestArray', () => {
       'length must be a non-negative number',
     );
   });
-
-  // Test case 12: Error - invalid generator type
-  it('12. should throw TypeError when generator is not a function', () => {
-    // Arrange
-    const length = 5;
-    const generator = 'not a function' as unknown as (i: number) => number;
-
-    // Act & Assert
-    expect(() => generateTestArray(length, generator)).toThrow(TypeError);
-    expect(() => generateTestArray(length, generator)).toThrow(
-      'generator must be a function',
-    );
-  });
 });

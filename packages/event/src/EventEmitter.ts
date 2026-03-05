@@ -53,8 +53,6 @@ export class EventEmitter {
    * @param listener - The callback function to execute when the event is emitted.
    * @returns The EventEmitter instance for method chaining.
    *
-   * @throws {TypeError} If eventName is not a string.
-   * @throws {TypeError} If listener is not a function.
    *
    * @example
    * const emitter = new EventEmitter();
@@ -63,17 +61,6 @@ export class EventEmitter {
    * @complexity Time: O(1), Space: O(1)
    */
   on<T = unknown>(eventName: string, listener: EventListener<T>): this {
-    if (typeof eventName !== 'string') {
-      throw new TypeError(
-        `eventName must be a string, got ${typeof eventName}`,
-      );
-    }
-    if (typeof listener !== 'function') {
-      throw new TypeError(
-        `listener must be a function, got ${typeof listener}`,
-      );
-    }
-
     if (!this.events.has(eventName)) {
       this.events.set(eventName, []);
     }
@@ -90,8 +77,6 @@ export class EventEmitter {
    * @param listener - The callback function to remove.
    * @returns The EventEmitter instance for method chaining.
    *
-   * @throws {TypeError} If eventName is not a string.
-   * @throws {TypeError} If listener is not a function.
    *
    * @example
    * const emitter = new EventEmitter();
@@ -102,17 +87,6 @@ export class EventEmitter {
    * @complexity Time: O(n) where n is number of listeners, Space: O(1)
    */
   off<T = unknown>(eventName: string, listener: EventListener<T>): this {
-    if (typeof eventName !== 'string') {
-      throw new TypeError(
-        `eventName must be a string, got ${typeof eventName}`,
-      );
-    }
-    if (typeof listener !== 'function') {
-      throw new TypeError(
-        `listener must be a function, got ${typeof listener}`,
-      );
-    }
-
     const listeners = this.events.get(eventName);
     if (!listeners) {
       return this;
@@ -138,7 +112,6 @@ export class EventEmitter {
    * @param data - Optional data to pass to the listeners.
    * @returns True if listeners were called, false if no listeners exist.
    *
-   * @throws {TypeError} If eventName is not a string.
    *
    * @example
    * const emitter = new EventEmitter();
@@ -148,12 +121,6 @@ export class EventEmitter {
    * @complexity Time: O(n) where n is number of listeners, Space: O(1)
    */
   emit<T = unknown>(eventName: string, data?: T): boolean {
-    if (typeof eventName !== 'string') {
-      throw new TypeError(
-        `eventName must be a string, got ${typeof eventName}`,
-      );
-    }
-
     const listeners = this.events.get(eventName);
     if (!listeners || listeners.length === 0) {
       return false;
@@ -175,8 +142,6 @@ export class EventEmitter {
    * @param listener - The callback function to execute once when the event is emitted.
    * @returns The EventEmitter instance for method chaining.
    *
-   * @throws {TypeError} If eventName is not a string.
-   * @throws {TypeError} If listener is not a function.
    *
    * @example
    * const emitter = new EventEmitter();
@@ -187,17 +152,6 @@ export class EventEmitter {
    * @complexity Time: O(1), Space: O(1)
    */
   once<T = unknown>(eventName: string, listener: EventListener<T>): this {
-    if (typeof eventName !== 'string') {
-      throw new TypeError(
-        `eventName must be a string, got ${typeof eventName}`,
-      );
-    }
-    if (typeof listener !== 'function') {
-      throw new TypeError(
-        `listener must be a function, got ${typeof listener}`,
-      );
-    }
-
     const onceWrapper: EventListener<T> = (data: T) => {
       listener(data);
       this.off(eventName, onceWrapper);
@@ -214,7 +168,6 @@ export class EventEmitter {
    * @param eventName - Optional event name. If not provided, removes all listeners for all events.
    * @returns The EventEmitter instance for method chaining.
    *
-   * @throws {TypeError} If eventName is provided but not a string.
    *
    * @example
    * const emitter = new EventEmitter();
@@ -226,12 +179,6 @@ export class EventEmitter {
    * @complexity Time: O(1) for specific event, O(n) for all events, Space: O(1)
    */
   removeAllListeners(eventName?: string): this {
-    if (eventName !== undefined && typeof eventName !== 'string') {
-      throw new TypeError(
-        `eventName must be a string, got ${typeof eventName}`,
-      );
-    }
-
     if (eventName) {
       this.events.delete(eventName);
     } else {
@@ -247,7 +194,6 @@ export class EventEmitter {
    * @param eventName - The name of the event.
    * @returns The number of listeners registered for the event.
    *
-   * @throws {TypeError} If eventName is not a string.
    *
    * @example
    * const emitter = new EventEmitter();
@@ -258,12 +204,6 @@ export class EventEmitter {
    * @complexity Time: O(1), Space: O(1)
    */
   listenerCount(eventName: string): number {
-    if (typeof eventName !== 'string') {
-      throw new TypeError(
-        `eventName must be a string, got ${typeof eventName}`,
-      );
-    }
-
     const listeners = this.events.get(eventName);
     return listeners ? listeners.length : 0;
   }

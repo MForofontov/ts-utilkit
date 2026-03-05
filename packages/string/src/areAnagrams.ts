@@ -5,8 +5,6 @@
  * @param str2 - The second string to compare.
  * @returns True if the strings are anagrams, false otherwise.
  *
- * @throws {TypeError} If str1 or str2 is not a string.
- *
  * @example
  * // Basic usage
  * areAnagrams("listen", "silent"); // true

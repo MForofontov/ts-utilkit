@@ -96,41 +96,6 @@ describe('compareHash', () => {
 
   // Error test cases (always at the end)
 
-  // Test case 11: Throw error for null data
-  it('11. should throw TypeError when data is null', () => {
-    const hash = 'somehash';
-    expect(() =>
-      compareHash(null as unknown as string, hash, 'sha256'),
-    ).toThrow(TypeError);
-    expect(() =>
-      compareHash(null as unknown as string, hash, 'sha256'),
-    ).toThrow('data must be a string or Buffer');
-  });
-
-  // Test case 12: Throw error for null hash
-  it('12. should throw TypeError when hash is null', () => {
-    const data = 'test';
-    expect(() =>
-      compareHash(data, null as unknown as string, 'sha256'),
-    ).toThrow(TypeError);
-    expect(() =>
-      compareHash(data, null as unknown as string, 'sha256'),
-    ).toThrow('hash must be a string');
-  });
-
-  // Test case 13: Throw error for invalid algorithm type
-  it('13. should throw TypeError when algorithm is not a string', () => {
-    const data = 'test';
-    const hash =
-      'b94d27b9934d3e08a52e52d7da7dabfac484efe37a5380ee9088f7ace2efcde9';
-    expect(() => compareHash(data, hash, 123 as unknown as 'sha256')).toThrow(
-      TypeError,
-    );
-    expect(() => compareHash(data, hash, 123 as unknown as 'sha256')).toThrow(
-      'algorithm must be a string',
-    );
-  });
-
   // Test case 14: Throw error for unsupported algorithm
   it('14. should throw Error for unsupported algorithm', () => {
     const data = 'test';

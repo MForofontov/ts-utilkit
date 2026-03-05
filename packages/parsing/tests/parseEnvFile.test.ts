@@ -134,16 +134,6 @@ describe('parseEnvFile', () => {
     expect(result).toEqual(expected);
   });
 
-  // Test case 11: Throw TypeError for non-string input
-  it('11. should throw TypeError when input is not a string', () => {
-    // Arrange
-    const input = 123 as unknown as string;
-
-    // Act & Assert
-    expect(() => parseEnvFile(input)).toThrow(TypeError);
-    expect(() => parseEnvFile(input)).toThrow('input must be a string');
-  });
-
   // Test case 12: Throw Error for empty input
   it('12. should throw Error when input is empty', () => {
     // Arrange

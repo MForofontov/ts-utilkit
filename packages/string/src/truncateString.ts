@@ -5,10 +5,6 @@
  * @param maxLength - The maximum length of the resulting string (including ellipsis).
  * @returns The truncated string with an ellipsis if necessary.
  *
- * @throws {TypeError} If str is not a string.
- * @throws {TypeError} If maxLength is not a number.
- * @throws {Error} If maxLength is NaN.
- *
  * @example
  * // Basic usage
  * truncateString("This is a long string that needs to be truncated.", 20);

@@ -55,44 +55,4 @@ describe('hashMD5', () => {
     const result = hashMD5(data);
     expect(result).toBe('d41d8cd98f00b204e9800998ecf8427e');
   });
-
-  // Test case 8: Throw error for null
-  it('8. should throw TypeError when data is null', () => {
-    expect(() => hashMD5(null as unknown as string)).toThrow(TypeError);
-    expect(() => hashMD5(null as unknown as string)).toThrow(
-      'data must be a string or Buffer',
-    );
-  });
-
-  // Test case 9: Throw error for undefined
-  it('9. should throw TypeError when data is undefined', () => {
-    expect(() => hashMD5(undefined as unknown as string)).toThrow(TypeError);
-    expect(() => hashMD5(undefined as unknown as string)).toThrow(
-      'data must be a string or Buffer',
-    );
-  });
-
-  // Test case 10: Throw error for number
-  it('10. should throw TypeError when data is a number', () => {
-    expect(() => hashMD5(123 as unknown as string)).toThrow(TypeError);
-    expect(() => hashMD5(123 as unknown as string)).toThrow(
-      'data must be a string or Buffer',
-    );
-  });
-
-  // Test case 11: Throw error for object
-  it('11. should throw TypeError when data is an object', () => {
-    expect(() => hashMD5({} as unknown as string)).toThrow(TypeError);
-    expect(() => hashMD5({} as unknown as string)).toThrow(
-      'data must be a string or Buffer',
-    );
-  });
-
-  // Test case 12: Throw error for array
-  it('12. should throw TypeError when data is an array', () => {
-    expect(() => hashMD5([] as unknown as string)).toThrow(TypeError);
-    expect(() => hashMD5([] as unknown as string)).toThrow(
-      'data must be a string or Buffer',
-    );
-  });
 });

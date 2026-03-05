@@ -4,8 +4,6 @@
  * @param words - The array of words to join into a sentence.
  * @returns The joined sentence with single spaces between words, or empty string if no valid words.
  *
- * @throws {TypeError} If words is not an array.
- *
  * @example
  * // Basic usage
  * wordsToSentence(["Hello", "world!"]); // "Hello world!"

@@ -31,7 +31,6 @@ export interface ParsedURL {
  * @param url - The URL string to parse.
  * @returns An object containing all URL components.
  *
- * @throws {TypeError} If url is not a string.
  * @throws {Error} If url is invalid or cannot be parsed.
  *
  * @example

@@ -6,7 +6,6 @@
  * @param defaultValue - Optional default value if variable is not set or invalid JSON.
  * @returns The parsed JSON object or default value.
  *
- * @throws {TypeError} If key is not a string.
  * @throws {Error} If key is empty.
  *
  * @example
@@ -25,10 +24,6 @@ export function parseEnvJSON<T = any>(
   key: string,
   defaultValue?: T,
 ): T | undefined {
-  if (typeof key !== 'string') {
-    throw new TypeError(`key must be a string, got ${typeof key}`);
-  }
-
   if (key.length === 0) {
     throw new Error('key cannot be an empty string');
   }

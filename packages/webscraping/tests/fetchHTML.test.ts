@@ -186,17 +186,6 @@ describe('fetchHTML', () => {
     await expect(fetchHTML(url)).rejects.toThrow('Network error');
   });
 
-  // Error cases
-  it('12. should throw TypeError when url is not a string', async () => {
-    // Arrange
-    const url = 123 as unknown as string;
-    const expectedMessage = 'url must be a string, got number';
-
-    // Act & Assert
-    await expect(fetchHTML(url)).rejects.toThrow(TypeError);
-    await expect(fetchHTML(url)).rejects.toThrow(expectedMessage);
-  });
-
   it('13. should throw Error when url is empty', async () => {
     // Arrange
     const url = '';

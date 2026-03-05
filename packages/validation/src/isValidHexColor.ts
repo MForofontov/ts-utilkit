@@ -5,8 +5,6 @@
  * @param color - The hex color string to validate.
  * @returns True if valid hex color, false otherwise.
  *
- * @throws {TypeError} If color is not a string.
- *
  * @example
  * // Valid 6-digit hex colors
  * isValidHexColor("#FF5733"); // true
@@ -42,10 +40,6 @@
  * @complexity Time: O(1), Space: O(1)
  */
 export function isValidHexColor(color: string): boolean {
-  if (typeof color !== 'string') {
-    throw new TypeError(`color must be a string, got ${typeof color}`);
-  }
-
   // Regex for 3, 4, 6, or 8 digit hex colors with # prefix
   const hexColorRegex =
     /^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{4}|[0-9A-Fa-f]{6}|[0-9A-Fa-f]{8})$/;

@@ -6,8 +6,6 @@
  * @param delay - The debounce delay in milliseconds (time to wait before executing).
  * @returns A debounced version of the function that delays execution.
  *
- * @throws {TypeError} If func is not a function.
- * @throws {TypeError} If delay is not a number.
  * @throws {Error} If delay is negative or NaN.
  *
  * @example
@@ -49,12 +47,6 @@ export function debounce<Args extends unknown[], R>(
   func: (...args: Args) => R,
   delay: number,
 ): (...args: Args) => void {
-  if (typeof func !== 'function') {
-    throw new TypeError(`func must be a function, got ${typeof func}`);
-  }
-  if (typeof delay !== 'number') {
-    throw new TypeError(`delay must be a number, got ${typeof delay}`);
-  }
   if (Number.isNaN(delay) || delay < 0) {
     throw new Error('delay must be a non-negative number');
   }

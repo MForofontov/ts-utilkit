@@ -5,8 +5,6 @@
  * @param allowTime - Whether to allow time component (default: true).
  * @returns True if the date string is valid ISO 8601 format, false otherwise.
  *
- * @throws {TypeError} If dateString is not a string or allowTime is not a boolean.
- *
  * @example
  * // Valid ISO 8601 dates
  * isValidISODate("2023-12-25"); // true
@@ -36,16 +34,6 @@ export function isValidISODate(
   dateString: string,
   allowTime: boolean = true,
 ): boolean {
-  if (typeof dateString !== 'string') {
-    throw new TypeError(
-      `dateString must be a string, got ${typeof dateString}`,
-    );
-  }
-
-  if (typeof allowTime !== 'boolean') {
-    throw new TypeError(`allowTime must be a boolean, got ${typeof allowTime}`);
-  }
-
   // Basic ISO 8601 patterns
   const dateOnlyPattern = /^\d{4}-\d{2}-\d{2}$/;
   const dateTimePattern =

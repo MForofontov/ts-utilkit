@@ -4,7 +4,6 @@
  * @param year - The year to check (positive or negative integer).
  * @returns True if the year is a leap year, false otherwise.
  *
- * @throws {TypeError} If year is not a number.
  * @throws {Error} If year is NaN.
  *
  * @example

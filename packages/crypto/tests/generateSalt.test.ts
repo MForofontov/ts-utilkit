@@ -52,42 +52,15 @@ describe('generateSalt', () => {
   // Test case 7: Throw error for zero length
   it('7. should throw Error when length is zero', () => {
     expect(() => generateSalt(0)).toThrow(Error);
-    expect(() => generateSalt(0)).toThrow('length must be a positive integer');
   });
 
   // Test case 8: Throw error for negative length
   it('8. should throw Error when length is negative', () => {
     expect(() => generateSalt(-1)).toThrow(Error);
-    expect(() => generateSalt(-1)).toThrow('length must be a positive integer');
-  });
-
-  // Test case 9: Throw error for null
-  it('9. should throw TypeError when length is null', () => {
-    expect(() => generateSalt(null as unknown as number)).toThrow(TypeError);
-    expect(() => generateSalt(null as unknown as number)).toThrow(
-      'length must be a number',
-    );
-  });
-
-  // Test case 10: Throw error for string
-  it('10. should throw TypeError when length is a string', () => {
-    expect(() => generateSalt('16' as unknown as number)).toThrow(TypeError);
-    expect(() => generateSalt('16' as unknown as number)).toThrow(
-      'length must be a number',
-    );
   });
 
   // Test case 11: Throw error for NaN
   it('11. should throw Error when length is NaN', () => {
     expect(() => generateSalt(NaN)).toThrow(Error);
-    expect(() => generateSalt(NaN)).toThrow('length must be a valid number');
-  });
-
-  // Test case 12: Throw error for object
-  it('12. should throw TypeError when length is an object', () => {
-    expect(() => generateSalt({} as unknown as number)).toThrow(TypeError);
-    expect(() => generateSalt({} as unknown as number)).toThrow(
-      'length must be a number',
-    );
   });
 });

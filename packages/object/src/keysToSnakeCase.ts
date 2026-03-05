@@ -5,8 +5,6 @@
  * @param obj - The object or array whose keys should be converted.
  * @returns A new object or array with all keys converted to snake_case.
  *
- * @throws {TypeError} If input is not an object, array, or is null.
- *
  * @example
  * // Basic camelCase to snake_case
  * keysToSnakeCase({ firstName: 'John', lastName: 'Doe' });
@@ -38,10 +36,6 @@
 export function keysToSnakeCase(
   obj: Record<string, unknown> | unknown[],
 ): Record<string, unknown> | unknown[] {
-  if (obj === null || typeof obj !== 'object') {
-    throw new TypeError('Input must be a non-null object');
-  }
-
   const transform = (value: unknown): unknown => {
     if (Array.isArray(value)) {
       return value.map((v) => transform(v));

@@ -51,9 +51,9 @@ npm install @ts-utilkit/array
 ```typescript
 import { chunkArray, removeDuplicates, flattenArray } from '@ts-utilkit/array';
 
-chunkArray([1, 2, 3, 4, 5], 2);       // [[1, 2], [3, 4], [5]]
-removeDuplicates([1, 2, 2, 3]);       // [1, 2, 3]
-flattenArray([1, [2, [3, 4]]]);       // [1, 2, 3, 4]
+chunkArray([1, 2, 3, 4, 5], 2); // [[1, 2], [3, 4], [5]]
+removeDuplicates([1, 2, 2, 3]); // [1, 2, 3]
+flattenArray([1, [2, [3, 4]]]); // [1, 2, 3, 4]
 ```
 
 ## License

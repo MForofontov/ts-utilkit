@@ -118,27 +118,4 @@ describe('isValidRegex', () => {
     // Arrange & Act & Assert
     expect(isValidRegex('(?<invalid')).toBe(false);
   });
-
-  // Test case 15: Throw TypeError when pattern is not a string
-  it('15. should throw TypeError when pattern is not a string', () => {
-    // Arrange
-    const invalidInput = 123 as unknown as string;
-    const expectedMessage = 'pattern must be a string, got number';
-
-    // Act & Assert
-    expect(() => isValidRegex(invalidInput)).toThrow(TypeError);
-    expect(() => isValidRegex(invalidInput)).toThrow(expectedMessage);
-  });
-
-  // Test case 16: Throw TypeError when flags is not a string
-  it('16. should throw TypeError when flags is not a string', () => {
-    // Arrange
-    const pattern = 'test';
-    const invalidFlags = 123 as unknown as string;
-    const expectedMessage = 'flags must be a string, got number';
-
-    // Act & Assert
-    expect(() => isValidRegex(pattern, invalidFlags)).toThrow(TypeError);
-    expect(() => isValidRegex(pattern, invalidFlags)).toThrow(expectedMessage);
-  });
 });

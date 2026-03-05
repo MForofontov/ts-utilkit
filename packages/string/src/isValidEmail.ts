@@ -4,8 +4,7 @@
  * @param email - The string to validate as an email address.
  * @returns True if the string matches a valid email format, false otherwise.
  *
- * @throws {TypeError} If email is not a string.
- *
+
  * @example
  * // Valid email addresses
  * isValidEmail("test@example.com"); // true

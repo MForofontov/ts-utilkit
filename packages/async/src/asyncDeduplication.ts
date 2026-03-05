@@ -12,9 +12,6 @@
  * the call arguments. Defaults to `JSON.stringify(args)`.
  * @returns A new function with the same signature as `fn`.
  *
- * @throws {TypeError} If `fn` is not a function.
- * @throws {TypeError} If `keyFn` is provided but is not a function.
- *
  * @example
  * // Without deduplication — 100 concurrent callers each trigger a network request
  * // With deduplication — all 100 share a single request
@@ -51,14 +48,6 @@ export function asyncDeduplication<T, Args extends unknown[]>(
   fn: (...args: Args) => Promise<T>,
   keyFn?: (...args: Args) => string,
 ): (...args: Args) => Promise<T> {
-  if (typeof fn !== 'function') {
-    throw new TypeError(`fn must be a function, got ${typeof fn}`);
-  }
-
-  if (keyFn !== undefined && typeof keyFn !== 'function') {
-    throw new TypeError(`keyFn must be a function, got ${typeof keyFn}`);
-  }
-
   const inFlight = new Map<string, Promise<T>>();
 
   return (...args: Args): Promise<T> => {

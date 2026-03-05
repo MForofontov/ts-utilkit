@@ -4,8 +4,6 @@
  * @param str - The string to check.
  * @returns True if the string contains at least one lowercase letter, false otherwise.
  *
- * @throws {TypeError} If str is not a string.
- *
  * @example
  * // Basic usage
  * hasLowercase("Hello"); // true

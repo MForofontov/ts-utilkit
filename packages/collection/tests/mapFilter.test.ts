@@ -75,15 +75,4 @@ describe('mapFilter', () => {
     const result = mapFilter(map, ([, value]) => value > 0);
     expect(result).toEqual(new Map());
   });
-
-  it('8. should throw TypeError when map is not a Map', () => {
-    const invalidMap = { a: 1 } as unknown as Map<string, number>;
-    expect(() => mapFilter(invalidMap, () => true)).toThrow(TypeError);
-  });
-
-  it('9. should throw TypeError when predicate is not a function', () => {
-    const map = new Map([['a', 1]]);
-    const invalidPredicate = 'not a function' as unknown as () => boolean;
-    expect(() => mapFilter(map, invalidPredicate)).toThrow(TypeError);
-  });
 });

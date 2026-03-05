@@ -4,8 +4,6 @@
  * @param obj - The object to check for emptiness.
  * @returns True if the object has no own enumerable properties, false otherwise.
  *
- * @throws {TypeError} If input is not a non-null object.
- *
  * @example
  * // Basic usage
  * isObjectEmpty({}); // true
@@ -41,8 +39,5 @@
  * @complexity Time: O(1), Space: O(1)
  */
 export function isObjectEmpty(obj: Record<string, unknown>): boolean {
-  if (typeof obj !== 'object' || obj === null) {
-    throw new TypeError('Input must be a non-null object');
-  }
   return Object.keys(obj).length === 0;
 }

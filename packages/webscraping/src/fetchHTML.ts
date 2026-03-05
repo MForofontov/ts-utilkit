@@ -5,7 +5,6 @@
  * @param options - Optional fetch options (headers, timeout, etc.).
  * @returns Promise resolving to the HTML content as a string.
  *
- * @throws {TypeError} If url is not a string.
  * @throws {Error} If url is empty or invalid.
  * @throws {Error} If fetch fails or returns non-OK status.
  *
@@ -25,9 +24,6 @@ export async function fetchHTML(
   url: string,
   options?: RequestInit,
 ): Promise<string> {
-  if (typeof url !== 'string') {
-    throw new TypeError(`url must be a string, got ${typeof url}`);
-  }
   if (url.trim() === '') {
     throw new Error('url cannot be empty');
   }

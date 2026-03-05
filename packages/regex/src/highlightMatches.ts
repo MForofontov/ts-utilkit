@@ -9,10 +9,6 @@
  * @param flags - Optional flags for string patterns (default: 'g').
  * @returns String with matches wrapped in the specified tags.
  *
- * @throws {TypeError} If text is not a string.
- * @throws {TypeError} If pattern is not a string or RegExp.
- * @throws {TypeError} If options is provided and not an object.
- * @throws {TypeError} If flags is provided and not a string.
  * @throws {Error} If pattern is invalid.
  *
  * @example
@@ -46,24 +42,6 @@ export function highlightMatches(
   },
   flags?: string,
 ): string {
-  if (typeof text !== 'string') {
-    throw new TypeError(`text must be a string, got ${typeof text}`);
-  }
-
-  if (typeof pattern !== 'string' && !(pattern instanceof RegExp)) {
-    throw new TypeError(
-      `pattern must be a string or RegExp, got ${typeof pattern}`,
-    );
-  }
-
-  if (options !== undefined && typeof options !== 'object') {
-    throw new TypeError(`options must be an object, got ${typeof options}`);
-  }
-
-  if (flags !== undefined && typeof flags !== 'string') {
-    throw new TypeError(`flags must be a string, got ${typeof flags}`);
-  }
-
   const before = options?.before ?? '<mark>';
   const after = options?.after ?? '</mark>';
 
@@ -83,7 +61,7 @@ export function highlightMatches(
         regex = pattern;
       }
     }
-  } catch (e) {
+  } catch {
     throw new Error(
       `Invalid regular expression pattern: ${pattern instanceof RegExp ? pattern.source : pattern}`,
     );

@@ -42,4 +42,3 @@ export function generateRandomNumber(
 
   return randomFloat(min, max, decimals);
 }
-

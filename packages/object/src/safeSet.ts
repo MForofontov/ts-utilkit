@@ -6,8 +6,6 @@
  * @param path - The dot-notation path where the value should be set (e.g., 'user.address.city').
  * @param value - The value to set at the specified path.
  *
- * @throws {TypeError} If obj is not an object or is null.
- *
  * @example
  * // Set a value in a nested path, creating objects as needed
  * const user = { name: 'John' };
@@ -51,9 +49,6 @@ export function safeSet<T extends Record<string, unknown>, V>(
   path: string,
   value: V,
 ): void {
-  if (typeof obj !== 'object' || obj === null) {
-    throw new TypeError('Input must be a non-null object');
-  }
   if (path === '') return;
   if (Object.prototype.hasOwnProperty.call(obj, path)) {
     (obj as Record<string, unknown>)[path] = value as unknown;

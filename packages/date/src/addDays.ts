@@ -5,7 +5,6 @@
  * @param days - The number of days to add (can be negative to subtract days).
  * @returns A new Date object with the specified days added.
  *
- * @throws {TypeError} If date is not a valid Date object or days is not a number.
  * @throws {Error} If date is invalid (e.g., new Date('invalid')) or days is NaN.
  *
  * @example

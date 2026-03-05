@@ -46,13 +46,6 @@ describe('getURLPath', () => {
     expect(result).toBe('/api/v2/users/123/profile');
   });
 
-  // Test case 8: Throw when the URL is not a string
-  it('8. should throw TypeError for non-string URL', () => {
-    const url = 123 as unknown as string;
-    expect(() => getURLPath(url)).toThrow(TypeError);
-    expect(() => getURLPath(url)).toThrow('url must be a string');
-  });
-
   // Test case 9: Throw on invalid URL inputs
   it('9. should throw Error for invalid URL', () => {
     expect(() => getURLPath('not a url')).toThrow('Invalid URL');

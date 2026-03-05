@@ -63,44 +63,4 @@ describe('hashSHA256', () => {
       'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
     );
   });
-
-  // Test case 8: Throw error for null
-  it('8. should throw TypeError when data is null', () => {
-    expect(() => hashSHA256(null as unknown as string)).toThrow(TypeError);
-    expect(() => hashSHA256(null as unknown as string)).toThrow(
-      'data must be a string or Buffer',
-    );
-  });
-
-  // Test case 9: Throw error for undefined
-  it('9. should throw TypeError when data is undefined', () => {
-    expect(() => hashSHA256(undefined as unknown as string)).toThrow(TypeError);
-    expect(() => hashSHA256(undefined as unknown as string)).toThrow(
-      'data must be a string or Buffer',
-    );
-  });
-
-  // Test case 10: Throw error for number
-  it('10. should throw TypeError when data is a number', () => {
-    expect(() => hashSHA256(123 as unknown as string)).toThrow(TypeError);
-    expect(() => hashSHA256(123 as unknown as string)).toThrow(
-      'data must be a string or Buffer',
-    );
-  });
-
-  // Test case 11: Throw error for object
-  it('11. should throw TypeError when data is an object', () => {
-    expect(() => hashSHA256({} as unknown as string)).toThrow(TypeError);
-    expect(() => hashSHA256({} as unknown as string)).toThrow(
-      'data must be a string or Buffer',
-    );
-  });
-
-  // Test case 12: Throw error for array
-  it('12. should throw TypeError when data is an array', () => {
-    expect(() => hashSHA256([] as unknown as string)).toThrow(TypeError);
-    expect(() => hashSHA256([] as unknown as string)).toThrow(
-      'data must be a string or Buffer',
-    );
-  });
 });

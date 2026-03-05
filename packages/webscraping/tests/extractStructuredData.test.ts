@@ -295,15 +295,4 @@ describe('extractStructuredData', () => {
     // Assert
     expect(result).toEqual(expected);
   });
-
-  // Test case 14: Throw TypeError when html is not a string
-  it('14. should throw TypeError when html is not a string', () => {
-    // Arrange
-    const invalidInput = { data: 'test' } as unknown as string;
-    const expectedMessage = 'html must be a string, got object';
-
-    // Act & Assert
-    expect(() => extractStructuredData(invalidInput)).toThrow(TypeError);
-    expect(() => extractStructuredData(invalidInput)).toThrow(expectedMessage);
-  });
 });

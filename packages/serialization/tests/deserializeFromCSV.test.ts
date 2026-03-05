@@ -161,17 +161,6 @@ describe('deserializeFromCSV', () => {
     expect(result[0].b).toBe('2');
   });
 
-  // Error cases
-  it('13. should throw TypeError when csvString is not a string', () => {
-    // Arrange
-    const input: any = ['name', 'age'];
-    const expectedMessage = 'csvString must be a string, got object';
-
-    // Act & Assert
-    expect(() => deserializeFromCSV(input)).toThrow(TypeError);
-    expect(() => deserializeFromCSV(input)).toThrow(expectedMessage);
-  });
-
   it('14. should throw Error when csvString is empty', () => {
     // Arrange
     const input = '';
@@ -180,28 +169,6 @@ describe('deserializeFromCSV', () => {
     // Act & Assert
     expect(() => deserializeFromCSV(input)).toThrow(Error);
     expect(() => deserializeFromCSV(input)).toThrow(expectedMessage);
-  });
-
-  it('15. should throw TypeError when delimiter is not string', () => {
-    // Arrange
-    const input = 'a,b\n1,2';
-    const options: any = { delimiter: 123 };
-    const expectedMessage = 'delimiter must be a string, got number';
-
-    // Act & Assert
-    expect(() => deserializeFromCSV(input, options)).toThrow(TypeError);
-    expect(() => deserializeFromCSV(input, options)).toThrow(expectedMessage);
-  });
-
-  it('16. should throw TypeError when hasHeaders is not boolean', () => {
-    // Arrange
-    const input = 'a,b\n1,2';
-    const options: any = { hasHeaders: 'true' };
-    const expectedMessage = 'hasHeaders must be a boolean, got string';
-
-    // Act & Assert
-    expect(() => deserializeFromCSV(input, options)).toThrow(TypeError);
-    expect(() => deserializeFromCSV(input, options)).toThrow(expectedMessage);
   });
 
   it('17. should throw Error when only whitespace', () => {

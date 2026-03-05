@@ -117,22 +117,6 @@ describe('randomShuffle', () => {
     expect(endTime - startTime).toBeLessThan(100);
   });
 
-  // Error Test case 12: TypeError for non-array
-  it('12. should throw TypeError when input is not an array', () => {
-    expect(() => randomShuffle('not array' as any)).toThrow(TypeError);
-    expect(() => randomShuffle('not array' as any)).toThrow(
-      'array must be an array',
-    );
-  });
-
-  // Error Test case 13: TypeError for non-boolean inPlace
-  it('13. should throw TypeError when inPlace is not a boolean', () => {
-    expect(() => randomShuffle([1, 2, 3], 'true' as any)).toThrow(TypeError);
-    expect(() => randomShuffle([1, 2, 3], 'true' as any)).toThrow(
-      'inPlace must be a boolean',
-    );
-  });
-
   // Error Test case 14: Error for empty array
   it('14. should throw Error when array is empty', () => {
     expect(() => randomShuffle([])).toThrow(Error);

@@ -169,41 +169,4 @@ describe('setUnion', () => {
     expect(() => setUnion()).toThrow(Error);
     expect(() => setUnion()).toThrow(expectedMessage);
   });
-
-  // Test case 13: Throw TypeError when first argument is not a Set
-  it('13. should throw TypeError when first argument is not a Set', () => {
-    // Arrange
-    const invalidSet = [1, 2, 3] as unknown as Set<number>;
-    const validSet = new Set([4, 5, 6]);
-    const expectedMessage = 'All arguments must be Sets, argument 0 is object';
-
-    // Act & Assert
-    expect(() => setUnion(invalidSet, validSet)).toThrow(TypeError);
-    expect(() => setUnion(invalidSet, validSet)).toThrow(expectedMessage);
-  });
-
-  // Test case 14: Throw TypeError when second argument is not a Set
-  it('14. should throw TypeError when second argument is not a Set', () => {
-    // Arrange
-    const validSet = new Set([1, 2, 3]);
-    const invalidSet = 'not a set' as unknown as Set<number>;
-    const expectedMessage = 'All arguments must be Sets, argument 1 is string';
-
-    // Act & Assert
-    expect(() => setUnion(validSet, invalidSet)).toThrow(TypeError);
-    expect(() => setUnion(validSet, invalidSet)).toThrow(expectedMessage);
-  });
-
-  // Test case 15: Throw TypeError when any argument in multiple sets is not a Set
-  it('15. should throw TypeError when any argument is not a Set', () => {
-    // Arrange
-    const set1 = new Set([1, 2]);
-    const set2 = new Set([3, 4]);
-    const invalidSet = null as unknown as Set<number>;
-    const expectedMessage = 'All arguments must be Sets, argument 2 is object';
-
-    // Act & Assert
-    expect(() => setUnion(set1, set2, invalidSet)).toThrow(TypeError);
-    expect(() => setUnion(set1, set2, invalidSet)).toThrow(expectedMessage);
-  });
 });

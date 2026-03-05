@@ -4,8 +4,6 @@
  * @param str - The string to convert into a slug.
  * @returns The slugified string suitable for URLs.
  *
- * @throws {TypeError} If str is not a string.
- *
  * @example
  * // Basic usage
  * slugify("Hello World!"); // "hello-world"

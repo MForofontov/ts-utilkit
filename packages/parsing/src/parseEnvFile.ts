@@ -6,8 +6,6 @@
  * @param expandVariables - Whether to expand variable references like $VAR or ${VAR} (default: false).
  * @returns An object containing the parsed environment variables.
  *
- * @throws {TypeError} If input is not a string.
- * @throws {TypeError} If expandVariables is not a boolean.
  * @throws {Error} If input is empty.
  * @throws {Error} If a line has invalid format.
  *
@@ -43,14 +41,6 @@ export function parseEnvFile(
   expandVariables: boolean = false,
 ): Record<string, string> {
   // Input validation
-  if (typeof input !== 'string') {
-    throw new TypeError(`input must be a string, got ${typeof input}`);
-  }
-  if (typeof expandVariables !== 'boolean') {
-    throw new TypeError(
-      `expandVariables must be a boolean, got ${typeof expandVariables}`,
-    );
-  }
 
   if (input.length === 0) {
     throw new Error('input string cannot be empty');

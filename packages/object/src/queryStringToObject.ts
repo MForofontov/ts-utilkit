@@ -1,10 +1,12 @@
 /**
  * Converts a URL query string into an object with parameter names as keys.
  *
+ * @deprecated Use `deserializeFromQueryString` from `@ts-utilkit/serialization` instead.
+ * The serialization package version supports richer options (arrayFormat, decodeValues).
+ * Will be removed in the next major version.
+ *
  * @param queryString - The URL query string to parse (without the leading '?').
  * @returns An object containing the parsed query parameters.
- *
- * @throws {TypeError} If queryString is not a string.
  *
  * @example
  * // Basic usage
@@ -42,9 +44,6 @@
 export function queryStringToObject(
   queryString: string,
 ): Record<string, string> {
-  if (typeof queryString !== 'string') {
-    throw new TypeError('Input must be a string');
-  }
   const str = queryString.replace(/^\?/, '').trim();
   if (str === '') return {};
 

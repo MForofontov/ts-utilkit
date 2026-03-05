@@ -6,8 +6,6 @@
  * @param prefix - The prefix for nested keys (used internally for recursion).
  * @returns A flat object with keys in dot or square bracket notation.
  *
- * @throws {TypeError} If obj is not an object or is null.
- *
  * @example
  * // Complex nested structure with arrays and special characters
  * const nested = {
@@ -70,10 +68,6 @@ export function flattenObject(
   obj: Record<string, unknown>,
   prefix = '',
 ): Record<string, unknown> {
-  if (typeof obj !== 'object' || obj === null) {
-    throw new TypeError('Input must be a non-null object');
-  }
-
   const result: Record<string, unknown> = {};
 
   for (const key in obj) {

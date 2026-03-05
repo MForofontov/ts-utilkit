@@ -6,7 +6,6 @@
  * @param flags - Regular expression flags (default: '').
  * @returns True if the string matches the pattern, false otherwise.
  *
- * @throws {TypeError} If input, pattern, or flags is not a string.
  * @throws {Error} If the regular expression pattern is invalid.
  *
  * @example
@@ -34,18 +33,7 @@ export function isValidPattern(
   pattern: string,
   flags?: string,
 ): boolean {
-  if (typeof input !== 'string') {
-    throw new TypeError(`input must be a string, got ${typeof input}`);
-  }
-
-  if (typeof pattern !== 'string') {
-    throw new TypeError(`pattern must be a string, got ${typeof pattern}`);
-  }
-
   // Check if flags is explicitly passed and not a string
-  if (arguments.length > 2 && typeof flags !== 'string') {
-    throw new TypeError(`flags must be a string, got ${typeof flags}`);
-  }
 
   try {
     const regex = new RegExp(pattern, flags || '');

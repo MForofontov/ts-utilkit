@@ -1,6 +1,6 @@
 # @ts-utilkit/validation
 
-validation  Functions - TypeScript utility functions for validation operations.
+validation Functions - TypeScript utility functions for validation operations.
 
 ## Installation
 
@@ -36,12 +36,17 @@ npm install @ts-utilkit/validation
 ## Quick Example
 
 ```typescript
-import { isValidIPv4, isValidUUID, isInRange, isValidJSON } from '@ts-utilkit/validation';
+import {
+  isValidIPv4,
+  isValidUUID,
+  isInRange,
+  isValidJSON,
+} from '@ts-utilkit/validation';
 
-isValidIPv4('192.168.1.1');          // true
-isValidUUID('550e8400-...');         // true
-isInRange(50, 0, 100);               // true
-isValidJSON('{"a":1}');              // true
+isValidIPv4('192.168.1.1'); // true
+isValidUUID('550e8400-...'); // true
+isInRange(50, 0, 100); // true
+isValidJSON('{"a":1}'); // true
 ```
 
 ## License

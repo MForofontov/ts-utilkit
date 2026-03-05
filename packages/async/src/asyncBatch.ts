@@ -19,11 +19,7 @@ import { delay as delayFn } from '@ts-utilkit/utility';
  * @returns Promise that resolves with the concatenated results of all batches
  * in the original item order.
  *
- * @throws {TypeError} If `items` is not an array.
- * @throws {TypeError} If `batchFn` is not a function.
- * @throws {TypeError} If `batchSize` is not a number.
  * @throws {Error} If `batchSize` is not a positive integer.
- * @throws {TypeError} If `options.delayMs` is not a number.
  * @throws {Error} If `options.delayMs` is negative.
  *
  * @example
@@ -59,27 +55,11 @@ export function asyncBatch<T, R>(
   batchSize: number,
   options: { delayMs?: number } = {},
 ): Promise<R[]> {
-  if (!Array.isArray(items)) {
-    throw new TypeError(`items must be an array, got ${typeof items}`);
-  }
-
-  if (typeof batchFn !== 'function') {
-    throw new TypeError(`batchFn must be a function, got ${typeof batchFn}`);
-  }
-
-  if (typeof batchSize !== 'number' || isNaN(batchSize)) {
-    throw new TypeError(`batchSize must be a number, got ${typeof batchSize}`);
-  }
-
   if (!Number.isInteger(batchSize) || batchSize <= 0) {
     throw new Error(`batchSize must be a positive integer, got ${batchSize}`);
   }
 
   const { delayMs = 0 } = options;
-
-  if (typeof delayMs !== 'number' || isNaN(delayMs)) {
-    throw new TypeError(`delayMs must be a number, got ${typeof delayMs}`);
-  }
 
   if (delayMs < 0) {
     throw new Error(`delayMs must be non-negative, got ${delayMs}`);

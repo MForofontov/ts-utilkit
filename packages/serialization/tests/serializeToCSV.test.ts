@@ -156,17 +156,6 @@ describe('serializeToCSV', () => {
     expect(result).toBe(expected);
   });
 
-  // Error cases
-  it('13. should throw TypeError when data is not an array', () => {
-    // Arrange
-    const input: any = { name: 'John' };
-    const expectedMessage = 'data must be an array, got object';
-
-    // Act & Assert
-    expect(() => serializeToCSV(input)).toThrow(TypeError);
-    expect(() => serializeToCSV(input)).toThrow(expectedMessage);
-  });
-
   it('14. should throw Error when array is empty', () => {
     // Arrange
     const input: any[] = [];
@@ -175,28 +164,6 @@ describe('serializeToCSV', () => {
     // Act & Assert
     expect(() => serializeToCSV(input)).toThrow(Error);
     expect(() => serializeToCSV(input)).toThrow(expectedMessage);
-  });
-
-  it('15. should throw TypeError when delimiter is not string', () => {
-    // Arrange
-    const input = [{ a: 1 }];
-    const options: any = { delimiter: 123 };
-    const expectedMessage = 'delimiter must be a string, got number';
-
-    // Act & Assert
-    expect(() => serializeToCSV(input, options)).toThrow(TypeError);
-    expect(() => serializeToCSV(input, options)).toThrow(expectedMessage);
-  });
-
-  it('16. should throw TypeError when includeHeaders is not boolean', () => {
-    // Arrange
-    const input = [{ a: 1 }];
-    const options: any = { includeHeaders: 'true' };
-    const expectedMessage = 'includeHeaders must be a boolean, got string';
-
-    // Act & Assert
-    expect(() => serializeToCSV(input, options)).toThrow(TypeError);
-    expect(() => serializeToCSV(input, options)).toThrow(expectedMessage);
   });
 
   it('17. should throw Error when objects have no keys', () => {

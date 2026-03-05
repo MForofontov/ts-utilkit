@@ -6,9 +6,6 @@
  * @param flags - Optional flags for string patterns (default: 'g').
  * @returns Number of matches found.
  *
- * @throws {TypeError} If text is not a string.
- * @throws {TypeError} If pattern is not a string or RegExp.
- * @throws {TypeError} If flags is provided and not a string.
  * @throws {Error} If pattern is invalid.
  *
  * @example
@@ -35,20 +32,6 @@ export function countMatches(
   pattern: string | RegExp,
   flags?: string,
 ): number {
-  if (typeof text !== 'string') {
-    throw new TypeError(`text must be a string, got ${typeof text}`);
-  }
-
-  if (typeof pattern !== 'string' && !(pattern instanceof RegExp)) {
-    throw new TypeError(
-      `pattern must be a string or RegExp, got ${typeof pattern}`,
-    );
-  }
-
-  if (flags !== undefined && typeof flags !== 'string') {
-    throw new TypeError(`flags must be a string, got ${typeof flags}`);
-  }
-
   let regex: RegExp;
 
   try {
@@ -65,7 +48,7 @@ export function countMatches(
         regex = pattern;
       }
     }
-  } catch (e) {
+  } catch {
     throw new Error(
       `Invalid regular expression pattern: ${pattern instanceof RegExp ? pattern.source : pattern}`,
     );

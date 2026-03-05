@@ -108,29 +108,6 @@ describe('parseKeyValue', () => {
     expect(result).toEqual(expected);
   });
 
-  // Test case 9: Throw TypeError for non-string input
-  it('9. should throw TypeError when input is not a string', () => {
-    // Arrange
-    const input = 123 as unknown as string;
-
-    // Act & Assert
-    expect(() => parseKeyValue(input)).toThrow(TypeError);
-    expect(() => parseKeyValue(input)).toThrow('input must be a string');
-  });
-
-  // Test case 10: Throw TypeError for non-string delimiters
-  it('10. should throw TypeError when pairDelimiter is not a string', () => {
-    // Arrange
-    const input = 'key=value';
-    const delimiter = 123 as unknown as string;
-
-    // Act & Assert
-    expect(() => parseKeyValue(input, delimiter)).toThrow(TypeError);
-    expect(() => parseKeyValue(input, delimiter)).toThrow(
-      'pairDelimiter must be a string',
-    );
-  });
-
   // Test case 11: Throw Error for empty input
   it('11. should throw Error when input is empty', () => {
     // Arrange

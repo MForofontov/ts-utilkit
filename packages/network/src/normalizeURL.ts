@@ -8,8 +8,6 @@ import { _parseURL } from './_parseURL';
  * @param options - Optional normalization options.
  * @returns A normalized URL string.
  *
- * @throws {TypeError} If url is not a string.
- * @throws {TypeError} If options is provided but not an object.
  * @throws {Error} If url is invalid.
  *
  * @example
@@ -46,11 +44,6 @@ export function normalizeURL(
   url: string,
   options: NormalizeOptions = {},
 ): string {
-  // Input validation
-  if (typeof options !== 'object' || options === null) {
-    throw new TypeError(`options must be an object, got ${typeof options}`);
-  }
-
   // Set defaults
   const opts: Required<NormalizeOptions> = {
     removeTrailingSlash: options.removeTrailingSlash ?? true,

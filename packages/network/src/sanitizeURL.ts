@@ -6,8 +6,6 @@
  * @param allowedProtocols - Optional array of allowed protocols (default: ['http', 'https', 'mailto', 'tel']).
  * @returns The sanitized URL if safe, otherwise throws an error.
  *
- * @throws {TypeError} If url is not a string.
- * @throws {TypeError} If allowedProtocols is provided but not an array.
  * @throws {Error} If URL uses a dangerous or disallowed protocol.
  * @throws {Error} If URL is invalid.
  *
@@ -34,16 +32,6 @@ export function sanitizeURL(
   url: string,
   allowedProtocols: string[] = ['http', 'https', 'mailto', 'tel'],
 ): string {
-  // Input validation
-  if (typeof url !== 'string') {
-    throw new TypeError(`url must be a string, got ${typeof url}`);
-  }
-  if (!Array.isArray(allowedProtocols)) {
-    throw new TypeError(
-      `allowedProtocols must be an array, got ${typeof allowedProtocols}`,
-    );
-  }
-
   // List of dangerous protocols
   const dangerousProtocols = [
     'javascript',

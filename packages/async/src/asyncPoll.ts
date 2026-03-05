@@ -14,13 +14,8 @@ import { delay as delayFn } from '@ts-utilkit/utility';
  * result and the 1-based attempt number.
  * @returns Promise that resolves with the first result that satisfies `condition`.
  *
- * @throws {TypeError} If `fn` is not a function.
- * @throws {TypeError} If `condition` is not a function.
- * @throws {TypeError} If `options.intervalMs` is not a number.
  * @throws {Error} If `options.intervalMs` is not a positive number.
- * @throws {TypeError} If `options.timeoutMs` is not a number.
  * @throws {Error} If `options.timeoutMs` is not a positive number.
- * @throws {TypeError} If `options.onPoll` is provided but is not a function.
  * @throws {Error} If the timeout is exceeded before the condition is met.
  *
  * @example
@@ -66,45 +61,20 @@ export function asyncPoll<T>(
     onPoll?: (result: T, attempt: number) => void;
   } = {},
 ): Promise<T> {
-  if (typeof fn !== 'function') {
-    throw new TypeError(`fn must be a function, got ${typeof fn}`);
-  }
-
-  if (typeof condition !== 'function') {
-    throw new TypeError(
-      `condition must be a function, got ${typeof condition}`,
-    );
-  }
-
   const { intervalMs = 1000, timeoutMs = 30000, onPoll } = options;
 
-  if (typeof intervalMs !== 'number' || isNaN(intervalMs)) {
-    throw new TypeError(
-      `intervalMs must be a number, got ${typeof intervalMs}`,
-    );
-  }
   if (intervalMs <= 0) {
     throw new Error(`intervalMs must be a positive number, got ${intervalMs}`);
   }
 
-  if (typeof timeoutMs !== 'number' || isNaN(timeoutMs)) {
-    throw new TypeError(
-      `timeoutMs must be a number, got ${typeof timeoutMs}`,
-    );
-  }
   if (timeoutMs <= 0) {
     throw new Error(`timeoutMs must be a positive number, got ${timeoutMs}`);
-  }
-
-  if (onPoll !== undefined && typeof onPoll !== 'function') {
-    throw new TypeError(`onPoll must be a function, got ${typeof onPoll}`);
   }
 
   return (async () => {
     const deadline = Date.now() + timeoutMs;
     let attempt = 0;
 
-    // eslint-disable-next-line no-constant-condition
     while (true) {
       if (Date.now() >= deadline) {
         throw new Error(

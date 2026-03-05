@@ -4,8 +4,6 @@
  * @param str - The string to reverse the words in.
  * @returns The string with words in reverse order, with leading/trailing whitespace removed and multiple spaces normalized to single spaces.
  *
- * @throws {TypeError} If str is not a string.
- *
  * @example
  * // Basic usage
  * reverseWords("hello world"); // "world hello"
