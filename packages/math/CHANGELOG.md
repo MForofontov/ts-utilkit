@@ -7,12 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-03-05
+
 ### Changed
 
 - Remove all runtime `typeof`/`instanceof` TypeError guards; rely on TypeScript type system for type safety
 - Remove all `@throws {TypeError}` JSDoc tags from all affected functions
 - Remove all TypeError test cases from all test files
 - Apply Prettier formatting: remove orphaned blank lines at function-body openings introduced by guard removal
+
+- Add `exports` field to `package.json` for explicit ESM/CJS/types entry-point resolution by modern bundlers and Node.js `exports` map
+- Pin `@ts-utilkit/array` dependency from `*` to `^0.2.0`
 
 ### Deprecated
 

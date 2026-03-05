@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-03-05
+
 ### Changed
 
 - Remove all runtime `typeof`/`instanceof` TypeError guards; rely on TypeScript type system for type safety
@@ -17,6 +19,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `groupBy`: replaced with a pure `export { groupByObject as groupBy }` re-export from `@ts-utilkit/object`; eliminates all duplicated logic
 - `findCommonWithCondition`: replace `JSON.stringify(item1) === JSON.stringify(item2)` with `deepEqual` from `@ts-utilkit/object` — correctly handles NaN, Date, RegExp, and deeply nested values that JSON.stringify cannot
 - Apply Prettier formatting: remove orphaned blank lines at function-body openings introduced by guard removal
+
+- Add `exports` field to `package.json` for explicit ESM/CJS/types entry-point resolution by modern bundlers and Node.js `exports` map
+- Pin `@ts-utilkit/object` dependency from `*` to `^0.2.0`
 
 ### Deprecated
 

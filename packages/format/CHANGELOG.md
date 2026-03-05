@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-03-05
+
 ### Changed
 
 - Remove all runtime `typeof`/`instanceof` TypeError guards; rely on TypeScript type system for type safety
@@ -14,6 +16,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Remove all TypeError test cases from all test files
 - Remove orphaned `// Input validation` section comment from `formatOrdinal` where the typeof guard was removed but the comment was not
 - Apply Prettier formatting: remove orphaned blank lines and reformat long array literals at function-body openings introduced by guard removal
+
+- Add `exports` field to `package.json` for explicit ESM/CJS/types entry-point resolution by modern bundlers and Node.js `exports` map
 
 ### Added
 

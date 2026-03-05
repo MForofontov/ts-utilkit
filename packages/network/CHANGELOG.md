@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-03-05
+
 ### Changed
 
 - Remove all runtime `typeof`/`instanceof` TypeError guards; rely on TypeScript type system for type safety
@@ -21,6 +23,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `parseURL`: use `_parseURL` internal helper instead of inline `new URL()` try/catch
 - `isSameOrigin`: use `_parseURL` internal helper instead of inline `new URL()` try/catch
 - `extractDomain`: delegate to `getDomainParts` internally, removing ~55 lines of duplicated hostname-parsing logic
+
+- Add `exports` field to `package.json` for explicit ESM/CJS/types entry-point resolution by modern bundlers and Node.js `exports` map
 
 ### Added
 

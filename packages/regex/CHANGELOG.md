@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-03-05
+
 ### Changed
 
 - Remove all runtime `typeof`/`instanceof` TypeError guards; rely on TypeScript type system for type safety
@@ -15,7 +17,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `catch (e)` → `catch` in 12 functions (`countMatches`, `extractMatchGroups`, `extractMatches`, `findAll`, `getPatternComplexity`, `hasBacktracking`, `highlightMatches`, `optimizePattern`, `replaceAll`, `replaceWithCallback`, `splitByPattern`, `testPattern`) where the caught error is not referenced in the handler body
 - `combinePatterns`: unknown pattern types (non-string, non-RegExp entries) are now silently skipped instead of throwing `TypeError`; only valid patterns contribute to the combined result
 - Apply Prettier formatting: remove orphaned blank lines at function-body openings introduced by guard removal
+- `testPattern`: replace broken `setTimeout`-based timeout with `vm.runInContext` + V8 script execution timer — timeout now genuinely interrupts catastrophic backtracking instead of being a no-op post-hoc check
 
+- Add `exports` field to `package.json` for explicit ESM/CJS/types entry-point resolution by modern bundlers and Node.js `exports` map
 ## [0.1.0] - 2026-01-26
 
 ### Added

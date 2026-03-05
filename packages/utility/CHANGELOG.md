@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-03-05
+
 ### Changed
 
 - Remove all runtime `typeof`/`instanceof` TypeError guards; rely on TypeScript type system for type safety
@@ -15,6 +17,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `bytesToSize`: delegate implementation to `formatBytes` from `@ts-utilkit/format`; behaviour unchanged (IEC units in binary mode, 2 decimal places)
 - `bytesToSize`: marked `@deprecated` — use `formatBytes` from `@ts-utilkit/format` directly; will be removed in the next major version
 - Apply Prettier formatting: remove orphaned blank lines at function-body openings introduced by guard removal
+
+- Add `exports` field to `package.json` for explicit ESM/CJS/types entry-point resolution by modern bundlers and Node.js `exports` map
+- Pin `@ts-utilkit/format` dependency from `*` to `^0.2.0`
 
 ### Deprecated
 

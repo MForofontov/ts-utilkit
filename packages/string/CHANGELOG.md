@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-03-05
+
 ### Changed
 
 - Remove all runtime `typeof`/`instanceof` type guards from all string functions; TypeScript type system is the contract — no runtime type checking for a TS-first library
@@ -18,6 +20,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `replaceMultiple`: replace inline regex-escape pattern with `escapeRegex` from the same package
 - `generateRandomAlphanumeric`: delegate character generation to `randomSequence` from `@ts-utilkit/random`
 - Apply Prettier formatting: remove orphaned blank lines at function-body openings introduced by guard removal
+
+- Add `exports` field to `package.json` for explicit ESM/CJS/types entry-point resolution by modern bundlers and Node.js `exports` map
+- Pin `@ts-utilkit/random` dependency from `*` to `^0.2.0`
 
 ### Deprecated
 

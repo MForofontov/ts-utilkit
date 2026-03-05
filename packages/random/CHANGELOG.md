@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-03-05
+
+### Fixed
+
+- `randomBase64` performance test: raised threshold from 100 ms to 200 ms to avoid flaky failures in slow CI environments
+
 ### Changed
 
 - Remove all runtime `typeof`/`instanceof` TypeError guards; rely on TypeScript type system for type safety
@@ -28,6 +34,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `randomDate`: replace float timestamp formula with `randomInt(startTime, endTime)` for cleaner millisecond-precision date generation
 - `randomBetween`: delegate integer path to `randomInt(min, max)` and float path to `randomFloat(min, max, 15)`
 - Apply Prettier formatting: remove orphaned blank lines at function-body openings introduced by guard removal
+
+- Add `exports` field to `package.json` for explicit ESM/CJS/types entry-point resolution by modern bundlers and Node.js `exports` map
 
 ### Added
 

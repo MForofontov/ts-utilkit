@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-03-05
+
 ### Changed
 
 - Remove all runtime `typeof`/`instanceof` TypeError guards; rely on TypeScript type system for type safety
@@ -25,6 +27,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `assertArraysEqual`: replace `JSON.stringify(sorted) === JSON.stringify(sorted)` with `deepEqual` from `@ts-utilkit/object` — handles NaN, Date, RegExp correctly
 - `testMultipleCases`: replace `JSON.stringify(actual) === JSON.stringify(expected)` with `deepEqual` from `@ts-utilkit/object`
 - Apply Prettier formatting: remove orphaned blank lines at function-body openings introduced by guard removal
+
+- Add `exports` field to `package.json` for explicit ESM/CJS/types entry-point resolution by modern bundlers and Node.js `exports` map
+- Pin `@ts-utilkit/object` and `@ts-utilkit/random` dependencies from `*` to `^0.2.0`
 
 ### Deprecated
 
