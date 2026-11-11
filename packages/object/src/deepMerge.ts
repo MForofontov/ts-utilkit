@@ -37,8 +37,9 @@
  *
  * @note Creates a new object; does not modify the input objects.
  * @note Arrays are concatenated, not recursively merged.
+ * @note Date, RegExp, Map, and Set values are replaced (source wins), not deep-merged.
  * @note For conflicting primitive values, source overwrites target.
- * @note Nested objects are recursively merged.
+ * @note Nested plain objects are recursively merged.
  * @note Useful for configuration merging, state management, default options.
  *
  * @complexity Time: O(n) where n is total number of properties across all nesting levels, Space: O(n)
@@ -47,8 +48,14 @@ export function deepMerge<T extends object, U extends object>(
   target: T,
   source: U,
 ): T & U {
-  const isObject = (obj: unknown): obj is Record<string, unknown> =>
-    !!obj && typeof obj === 'object';
+  const isPlainObject = (obj: unknown): obj is Record<string, unknown> =>
+    !!obj &&
+    typeof obj === 'object' &&
+    !Array.isArray(obj) &&
+    !(obj instanceof Date) &&
+    !(obj instanceof RegExp) &&
+    !(obj instanceof Map) &&
+    !(obj instanceof Set);
 
   const merge = (
     t: Record<string, unknown>,
@@ -60,7 +67,7 @@ export function deepMerge<T extends object, U extends object>(
       const sourceValue = s[key];
       if (Array.isArray(targetValue) && Array.isArray(sourceValue)) {
         t[key] = targetValue.concat(sourceValue);
-      } else if (isObject(targetValue) && isObject(sourceValue)) {
+      } else if (isPlainObject(targetValue) && isPlainObject(sourceValue)) {
         t[key] = merge({ ...targetValue }, sourceValue);
       } else {
         t[key] = sourceValue;

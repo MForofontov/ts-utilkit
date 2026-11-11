@@ -4,7 +4,7 @@
  * @param xmlString - The XML string to parse.
  * @returns Object representation of XML.
  *
- * @throws {Error} If XML is malformed.
+ * @throws {Error} If XML is malformed (e.g. unclosed tags).
  *
  * @example
  * // Parse XML
@@ -47,8 +47,12 @@ export function deserializeFromXML(xmlString: string): Record<string, any> {
         pos++;
       }
 
-      if (pos >= trimmed.length || trimmed[pos] !== '<') {
+      if (pos >= trimmed.length) {
         break;
+      }
+
+      if (trimmed[pos] !== '<') {
+        throw new Error('unexpected text content outside of tags');
       }
 
       // Check for self-closing tag
@@ -70,51 +74,55 @@ export function deserializeFromXML(xmlString: string): Record<string, any> {
 
       // Check for regular tag
       const tagMatch = trimmed.slice(pos).match(/^<([^/>\s]+)[^>]*>/);
-      if (tagMatch) {
-        const tag = tagMatch[1];
-        pos += tagMatch[0].length;
+      if (!tagMatch) {
+        throw new Error(`malformed tag near position ${pos}`);
+      }
 
-        // Find the closing tag
-        const closingTag = `</${tag}>`;
-        let depth = 1;
-        const contentStart = pos;
+      const tag = tagMatch[1];
+      pos += tagMatch[0].length;
 
-        while (pos < trimmed.length && depth > 0) {
-          if (trimmed.slice(pos).startsWith(`<${tag}`)) {
-            // Another opening tag
-            const nextTag = trimmed.slice(pos).match(/^<[^/>\s]+[^>]*>/);
-            if (nextTag) {
-              pos += nextTag[0].length;
-              depth++;
-            } else {
-              pos++;
-            }
-          } else if (trimmed.slice(pos).startsWith(closingTag)) {
-            depth--;
-            if (depth === 0) {
-              const content = trimmed.slice(contentStart, pos);
-              const parsedContent = content ? parse(content) : null;
+      // Find the closing tag
+      const closingTag = `</${tag}>`;
+      let depth = 1;
+      const contentStart = pos;
 
-              if (result[tag] !== undefined) {
-                if (Array.isArray(result[tag])) {
-                  result[tag].push(parsedContent);
-                } else {
-                  result[tag] = [result[tag], parsedContent];
-                }
-              } else {
-                result[tag] = parsedContent;
-              }
-
-              pos += closingTag.length;
-            } else {
-              pos++;
-            }
+      while (pos < trimmed.length && depth > 0) {
+        if (trimmed.slice(pos).startsWith(`<${tag}`)) {
+          // Another opening tag
+          const nextTag = trimmed.slice(pos).match(/^<[^/>\s]+[^>]*>/);
+          if (nextTag) {
+            pos += nextTag[0].length;
+            depth++;
           } else {
             pos++;
           }
+        } else if (trimmed.slice(pos).startsWith(closingTag)) {
+          depth--;
+          if (depth === 0) {
+            const content = trimmed.slice(contentStart, pos);
+            const parsedContent = content ? parse(content) : null;
+
+            if (result[tag] !== undefined) {
+              if (Array.isArray(result[tag])) {
+                result[tag].push(parsedContent);
+              } else {
+                result[tag] = [result[tag], parsedContent];
+              }
+            } else {
+              result[tag] = parsedContent;
+            }
+
+            pos += closingTag.length;
+          } else {
+            pos++;
+          }
+        } else {
+          pos++;
         }
-      } else {
-        pos++;
+      }
+
+      if (depth !== 0) {
+        throw new Error(`unclosed tag <${tag}>`);
       }
     }
 

@@ -71,4 +71,23 @@ describe('deepMerge', () => {
     const expected = { [sym1]: 1, [sym2]: 2 };
     expect(result).toEqual(expected);
   });
+
+  // Test case 6: Date values are replaced, not merged as plain objects
+  it('6. should replace Date values instead of merging them', () => {
+    const d1 = new Date('2020-01-01');
+    const d2 = new Date('2025-01-01');
+    const result = deepMerge({ created: d1 }, { created: d2 });
+    expect(result.created).toBe(d2);
+  });
+
+  // Test case 7: Map/Set/RegExp are replaced
+  it('7. should replace Map, Set, and RegExp values', () => {
+    const result = deepMerge(
+      { m: new Map([['a', 1]]), s: new Set([1]), r: /a/g },
+      { m: new Map([['b', 2]]), s: new Set([2]), r: /b/i },
+    );
+    expect(result.m).toEqual(new Map([['b', 2]]));
+    expect(result.s).toEqual(new Set([2]));
+    expect(result.r).toEqual(/b/i);
+  });
 });

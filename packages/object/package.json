@@ -1,6 +1,6 @@
 {
   "name": "@ts-utilkit/object",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Object manipulation utilities for deep merging, cloning, path access, and transformation",
   "homepage": "https://github.com/mykfor1/ts-utilkit/tree/main/packages/object#readme",
   "bugs": {
@@ -17,9 +17,9 @@
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "require": "./dist/index.js",
-      "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "import": "./dist/index.js"
     }
   },
   "sideEffects": false,

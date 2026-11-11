@@ -163,4 +163,15 @@ describe('deserializeFromXML', () => {
   it('15. should return text-only content when no tags present', () => {
     expect(deserializeFromXML('plain text')).toBe('plain text');
   });
+
+  it('16. should throw for unclosed tags', () => {
+    expect(() => deserializeFromXML('<root><item>1')).toThrow(
+      /Failed to parse XML/,
+    );
+    expect(() => deserializeFromXML('<root><item>1')).toThrow(/unclosed tag/);
+  });
+
+  it('17. should throw for malformed tags', () => {
+    expect(() => deserializeFromXML('<root><<<')).toThrow(/Failed to parse XML/);
+  });
 });

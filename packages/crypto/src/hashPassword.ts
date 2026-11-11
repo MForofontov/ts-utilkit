@@ -38,10 +38,13 @@ const pbkdf2Async = promisify(pbkdf2);
  * }
  *
  * @example
- * // Password verification
+ * // Password verification (use timing-safe comparison)
  * async function verifyPassword(password: string, storedSalt: string, storedHash: string) {
  *   const hash = await hashPassword(password, storedSalt);
- *   return hash === storedHash;
+ *   const { timingSafeEqual } = await import('crypto');
+ *   const a = Buffer.from(hash, 'hex');
+ *   const b = Buffer.from(storedHash, 'hex');
+ *   return a.length === b.length && timingSafeEqual(a, b);
  * }
  *
  * @note PBKDF2 is designed to be computationally expensive to resist brute-force

@@ -7,8 +7,8 @@
  * @param binary - Whether to use binary (1024) or decimal (1000) multiplier (default: true).
  * @returns A formatted string with the appropriate unit (e.g., "5.00 KB").
  *
- * @throws {Error} If bytes is negative.
- * @throws {Error} If decimals is negative.
+ * @throws {Error} If bytes is negative or not finite (NaN / Infinity).
+ * @throws {Error} If decimals is negative or not finite (NaN / Infinity).
  *
  * @example
  * // Basic usage
@@ -46,8 +46,14 @@ export function formatBytes(
   if (bytes < 0) {
     throw new Error(`bytes must be non-negative, got ${bytes}`);
   }
+  if (!Number.isFinite(bytes)) {
+    throw new Error(`bytes must be a finite number, got ${bytes}`);
+  }
   if (decimals < 0) {
     throw new Error(`decimals must be non-negative, got ${decimals}`);
+  }
+  if (!Number.isFinite(decimals)) {
+    throw new Error(`decimals must be a finite number, got ${decimals}`);
   }
 
   if (bytes === 0) {

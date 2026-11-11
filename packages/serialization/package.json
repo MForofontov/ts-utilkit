@@ -1,6 +1,6 @@
 {
   "name": "@ts-utilkit/serialization",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Serialization and deserialization utilities for various data formats",
   "homepage": "https://github.com/mykfor1/ts-utilkit/tree/main/packages/serialization#readme",
   "bugs": {
@@ -17,9 +17,9 @@
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "require": "./dist/index.js",
-      "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "import": "./dist/index.js"
     }
   },
   "sideEffects": false,

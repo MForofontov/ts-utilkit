@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-07-29
+
+### Changed
+
+- **Breaking for invalid input:** `deserializeFromXML` now throws on unclosed or malformed tags instead of returning partial objects.
+- `exports` field: `types` condition listed first for better TypeScript resolution.
+
 ## [0.2.0] - 2026-03-05
 
 ### Changed

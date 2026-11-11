@@ -154,4 +154,16 @@ describe('formatBytes', () => {
     expect(() => formatBytes(bytes, decimals)).toThrow(Error);
     expect(() => formatBytes(bytes, decimals)).toThrow('must be non-negative');
   });
+
+  // Test case 15: Throw Error for NaN bytes
+  it('15. should throw Error for NaN bytes', () => {
+    expect(() => formatBytes(Number.NaN)).toThrow('must be a finite number');
+  });
+
+  // Test case 16: Throw Error for Infinity bytes
+  it('16. should throw Error for Infinity bytes', () => {
+    expect(() => formatBytes(Number.POSITIVE_INFINITY)).toThrow(
+      'must be a finite number',
+    );
+  });
 });

@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.1] - 2026-07-29
+
+### Changed
+
+- `hashPassword` docs: verification example now uses timing-safe comparison instead of `===`.
+- `exports` field: `types` condition listed first for better TypeScript resolution.
+
 ## [0.3.0] - 2026-07-29
 
 ### Changed
