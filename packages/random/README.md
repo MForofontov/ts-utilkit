@@ -1,5 +1,7 @@
 # @ts-utilkit/random
 
+Version: [0.3.1](https://www.npmjs.com/package/@ts-utilkit/random/v/0.3.1). Requires Node.js 20 or later.
+
 random Functions - TypeScript utility functions for random operations.
 
 ## Installation
@@ -11,7 +13,7 @@ npm install @ts-utilkit/random
 ## Features
 
 - 🚀 TypeScript-first with complete type definitions
-- ✅ Comprehensive test coverage (>95%)
+- ✅ Repository tests with >95% global coverage
 - 📦 CommonJS builds with import and require entry points
 - 🔒 Type-safe with strict TypeScript configuration
 - 📖 Extensive JSDoc documentation

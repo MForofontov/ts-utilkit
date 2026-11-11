@@ -1,5 +1,7 @@
 # @ts-utilkit/network
 
+Version: [0.2.2](https://www.npmjs.com/package/@ts-utilkit/network/v/0.2.2). Requires Node.js 20 or later.
+
 network Functions - TypeScript utility functions for network operations.
 
 ## Installation
@@ -11,7 +13,7 @@ npm install @ts-utilkit/network
 ## Features
 
 - 🚀 TypeScript-first with complete type definitions
-- ✅ Comprehensive test coverage (>95%)
+- ✅ Repository tests with >95% global coverage
 - 📦 CommonJS builds with import and require entry points
 - 🔒 Type-safe with strict TypeScript configuration
 - 📖 Extensive JSDoc documentation

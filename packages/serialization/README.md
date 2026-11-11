@@ -1,5 +1,7 @@
 # @ts-utilkit/serialization
 
+Version: [0.2.3](https://www.npmjs.com/package/@ts-utilkit/serialization/v/0.2.3). Requires Node.js 20 or later.
+
 Data serialization and deserialization utilities for TypeScript.
 
 ## Installation
@@ -11,7 +13,7 @@ npm install @ts-utilkit/serialization
 ## Features
 
 - 🚀 TypeScript-first with complete type definitions
-- ✅ Comprehensive test coverage (>95%)
+- ✅ Repository tests with >95% global coverage
 - 📦 CommonJS builds with import and require entry points
 - 🔒 Type-safe with strict TypeScript configuration
 - 📖 Extensive JSDoc documentation

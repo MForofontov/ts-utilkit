@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.5.0] - 2026-11-08
 
-- Align the format dependency range with the current local 0.3.x package.
+- Require `@ts-utilkit/format` `^0.3.1`, matching the tested release.
 - Fix throttle at timestamp zero, replace obsolete trailing timers, and apply the same limit to reentrant callbacks.
 - Reject synchronous callback throws through the debounceAsync promise and allow subsequent calls after failure.
 - Add `once` with runtime input validation, public exports, documentation, and boundary tests.

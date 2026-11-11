@@ -1,5 +1,7 @@
 # @ts-utilkit/webscraping
 
+Version: [0.3.2](https://www.npmjs.com/package/@ts-utilkit/webscraping/v/0.3.2). Requires Node.js 20 or later.
+
 web Scraping Functions - TypeScript utility functions for webscraping operations.
 
 ## Installation
@@ -11,7 +13,7 @@ npm install @ts-utilkit/webscraping
 ## Features
 
 - 🚀 TypeScript-first with complete type definitions
-- ✅ Comprehensive test coverage (>95%)
+- ✅ Repository tests with >95% global coverage
 - 📦 CommonJS builds with import and require entry points
 - 🔒 Type-safe with strict TypeScript configuration
 - 📖 Extensive JSDoc documentation

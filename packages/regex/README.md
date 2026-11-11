@@ -1,5 +1,7 @@
 # @ts-utilkit/regex
 
+Version: [0.3.1](https://www.npmjs.com/package/@ts-utilkit/regex/v/0.3.1). Requires Node.js 20 or later.
+
 regex Functions - TypeScript utility functions for regex operations.
 
 ## Installation
@@ -11,7 +13,7 @@ npm install @ts-utilkit/regex
 ## Features
 
 - 🚀 TypeScript-first with complete type definitions
-- ✅ Comprehensive test coverage (>95%)
+- ✅ Repository tests with >95% global coverage
 - 📦 CommonJS builds with import and require entry points
 - 🔒 Type-safe with strict TypeScript configuration
 - 📖 Extensive JSDoc documentation
@@ -43,7 +45,11 @@ npm install @ts-utilkit/regex
 ## Quick Example
 
 ```typescript
-import { extractMatches, testCommonPattern, testPattern } from '@ts-utilkit/regex';
+import {
+  extractMatches,
+  testCommonPattern,
+  testPattern,
+} from '@ts-utilkit/regex';
 
 extractMatches('Visit https://a.com', /https?:\/\/\S+/g); // ['https://a.com']
 testCommonPattern('test@email.com', 'email'); // true

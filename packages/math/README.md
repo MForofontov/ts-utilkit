@@ -1,5 +1,7 @@
 # @ts-utilkit/math
 
+Version: [0.3.2](https://www.npmjs.com/package/@ts-utilkit/math/v/0.3.2). Requires Node.js 20 or later.
+
 math Functions - TypeScript utility functions for math operations.
 
 ## Installation
@@ -11,7 +13,7 @@ npm install @ts-utilkit/math
 ## Features
 
 - 🚀 TypeScript-first with complete type definitions
-- ✅ Comprehensive test coverage (>95%)
+- ✅ Repository tests with >95% global coverage
 - 📦 CommonJS builds with import and require entry points
 - 🔒 Type-safe with strict TypeScript configuration
 - 📖 Extensive JSDoc documentation

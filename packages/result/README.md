@@ -1,5 +1,7 @@
 # @ts-utilkit/result
 
+Version: [0.3.0](https://www.npmjs.com/package/@ts-utilkit/result/v/0.3.0). Requires Node.js 20 or later.
+
 Discriminated `Result<T, E>` helpers for explicit success/failure without relying on thrown exceptions.
 
 ## Installation

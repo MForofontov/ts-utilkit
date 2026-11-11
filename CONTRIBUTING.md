@@ -11,7 +11,7 @@ Thank you for your interest in contributing to ts-utilkit! This document provide
 - [Testing Standards](#testing-standards)
 - [Code Style](#code-style)
 - [Pull Request Process](#pull-request-process)
-- [Project Philosophy](#project-philosophy)
+- [Project Philosophy](#project-philosophy-use-battle-tested-packages)
 
 ## Code of Conduct
 
@@ -102,22 +102,17 @@ Every function must follow this structure:
  * @param param2 - Description of parameter 2.
  * @returns Description of return value.
  *
- * @throws {TypeError} If parameters are of wrong type.
- * @throws {Error} If parameters have invalid values.
+ * @throws {Error} If param1 is NaN or negative.
  *
  * @example
  * // Basic usage
- * functionName(42, "hello"); // ExpectedOutput
+ * functionName(42, "count"); // 'count: 42'
  *
- * @complexity Time: O(n), Space: O(1)
+ * @complexity Time: O(n), Space: O(n), where n is the output length.
  */
-export function functionName(param1: number, param2: string): ReturnType {
-  // Input validation
-  if (typeof param1 !== 'number' || isNaN(param1)) {
-    throw new TypeError(`param1 must be a number, got ${typeof param1}`);
-  }
-  if (typeof param2 !== 'string') {
-    throw new TypeError(`param2 must be a string, got ${typeof param2}`);
+export function functionName(param1: number, param2: string): string {
+  if (Number.isNaN(param1)) {
+    throw new Error('param1 must not be NaN');
   }
 
   // Additional validation
@@ -125,20 +120,17 @@ export function functionName(param1: number, param2: string): ReturnType {
     throw new Error('param1 must be non-negative');
   }
 
-  // Function logic here
-  const result = performOperation(param1, param2);
-
-  return result;
+  return `${param2}: ${param1}`;
 }
 ```
 
 ### Input Validation Requirements
 
-- **Type Checking**: Validate all input types with `typeof` checks
-- **NaN Validation**: Always check for `NaN` when accepting numbers
-- **Value Validation**: Check ranges, constraints, and business logic
-- **Descriptive Errors**: Include parameter name and expected/actual types
-- **Consistent Messages**: Use format: `"param_name must be <expected>, got <actual>"`
+- **Type contracts**: Describe accepted types in TypeScript declarations. Preserve existing signatures and documented runtime checks.
+- **Value validation**: Check ranges, NaN, and other limits where required by the function's contract. Some numeric APIs intentionally return NaN or accept Infinity.
+- **Runtime type guards**: Add them where the API promises runtime validation; do not assume every existing function performs blanket type checks.
+- **Descriptive errors**: Name the invalid parameter and constraint. Preserve existing error messages when fixing compatible behavior.
+- **Documentation**: List only the errors and optional/null behavior that the implementation supports.
 
 ### Project Philosophy: Use Battle-Tested Packages
 
@@ -171,29 +163,28 @@ export function functionName(param1: number, param2: string): ReturnType {
 import { functionName } from '../path/to/function';
 
 describe('functionName', () => {
-  // Test case 1: Normal/happy path (first ~60% of tests)
+  // Normal input
   it('1. should handle typical input correctly', () => {
     // Arrange
-    const input = validInput;
-    const expected = expectedOutput;
+    const input = 42;
+    const expected = 'count: 42';
 
     // Act
-    const result = functionName(input);
+    const result = functionName(input, 'count');
 
     // Assert
     expect(result).toBe(expected);
   });
 
-  // Test case 2-N: Edge cases (middle ~30% of tests)
-  it('15. should handle edge case with empty array', () => {
-    expect(functionName([])).toEqual([]);
+  // Boundary input
+  it('2. should accept zero and an empty label', () => {
+    expect(functionName(0, '')).toBe(': 0');
   });
 
-  // Error cases ALWAYS LAST (~10% of tests)
-  it('23. should throw TypeError when param is not a string', () => {
-    expect(() => functionName(invalidInput)).toThrow(TypeError);
-    expect(() => functionName(invalidInput)).toThrow(
-      'param must be a string, got number',
+  // Documented errors
+  it('3. should reject negative values', () => {
+    expect(() => functionName(-1, 'count')).toThrow(
+      'param1 must be non-negative',
     );
   });
 });
@@ -219,7 +210,7 @@ describe('functionName', () => {
 - Examples:
   - `'1. should return true for valid HTTP URL'`
   - `'15. should handle empty string gracefully'`
-  - `'23. should throw TypeError when url is not a string'`
+  - `'23. should reject an invalid timeout'`
 
 ## Code Style
 
@@ -322,7 +313,7 @@ npm ci --ignore-scripts
 npm run build
 npm run typecheck
 npm test
-npm run lint -- --max-warnings=290
+npm run lint -- --max-warnings=277
 npm run format:check
 npm run audit:exports
 npm run audit:docs

@@ -8,7 +8,8 @@ release preparation below updates those versions at the user's request.
 All 23 packages were published to npm on 2026-11-08 and verified through a fresh
 public-registry installation. GitHub and npm rollout verification is recorded below.
 
-Latest verification (reviewed 2026-11-02; runs completed 2026-10-30): **6,350 tests
+Latest runtime verification: hosted GitHub Actions passed all six platform/runtime
+jobs on 2026-11-08. The local matrix (runs completed 2026-10-30) records **6,350 tests
 pass across 552 suites on each of the six Windows/Linux and Node 20/22/24
 combinations**, all 23
 package builds and source/test/Jest-configuration type checks pass, and full lint
@@ -801,3 +802,44 @@ Evidence is retained under `local-testing/npm-release/`, including
 `publish-results.json`, `published-verification.json`, `github-ci.json`, and the
 `public-install.log`, `public-types.log`, and `public-runtime.log` consumer checks.
 All 23 published versions are listed in the release-preparation section above.
+
+## Documentation and main-branch alignment (2026-11-08)
+
+The pre-update local and remote `main` both matched
+`99b1e57f01ca4bbd2966ecf2fe2bf323ccc19b7c`, with a clean working tree. Public
+registry inspection confirmed that all **23 package.json versions match npm's
+latest releases**. The workspace root remains 0.1.0 and is excluded from npm
+publication.
+
+- All **23 package READMEs** now show their actual release version with a direct
+  npm version link and Node 20+ requirement. The root package overview lists all
+  23 release versions and explains the separately versioned development root.
+- Corrected the root footer from 408 functions to **516 runtime exports**, removed
+  unconditional tree-shaking and zero-dependency claims, described the actual
+  CommonJS output, and clarified per-function runtime validation and global
+  coverage. Added the missing testing/contributing sections and fixed navigation.
+- Corrected root README calls to `findDuplicates`, `asyncRetry`, and
+  `calculateHaversineDistance`, the population standard-deviation result, and
+  async concurrency examples. The TypeScript configuration uses Node16 module
+  resolution, matching the verified public consumer setup.
+- Separated the env migration's deprecated import from the current runnable
+  example. Current async/utility changelog dependency references now match the
+  installed release ranges. Older dated release history remains historical.
+- Contributor examples now illustrate the existing per-function validation
+  contract and use the current **277-warning** lint cap. The aggregate changelog
+  distinguishes the 2026-11-08 package releases from unreleased documentation work.
+- `audit:docs` now checks README release versions/links, current package changelog
+  versions, root/package export counts, unknown package imports, and every README
+  code block that imports a workspace package. It passes **31 examples**, including
+  **7 root examples** and all **23 package Quick Examples**, with no mismatches or
+  example errors.
+- Five isolated in-memory negative controls confirm rejection of stale package,
+  root overview, and changelog versions, an incorrect root count, and invalid
+  example arguments. No project documents were modified by the negative controls.
+  Export auditing still reports **516 runtime exports**; changed-file formatting
+  and Git whitespace checks pass.
+
+Evidence is retained under `local-testing/docs-alignment/`, including the live
+registry comparison, positive audit report, negative-control reports, export
+inventory, and formatting checks. These changes update repository documentation
+and its audit; npm versions and previously published tarballs remain unchanged.

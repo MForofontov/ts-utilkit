@@ -1,5 +1,7 @@
 # @ts-utilkit/testing-utilities
 
+Version: [0.3.1](https://www.npmjs.com/package/@ts-utilkit/testing-utilities/v/0.3.1). Requires Node.js 20 or later.
+
 Comprehensive testing utilities and helpers for writing robust unit tests with TypeScript and Jest.
 
 ## Installation
@@ -45,7 +47,11 @@ npm install --save-dev @ts-utilkit/testing-utilities
 ## Quick Example
 
 ```typescript
-import { generateTestArray, createSpy, waitForCondition } from '@ts-utilkit/testing-utilities';
+import {
+  generateTestArray,
+  createSpy,
+  waitForCondition,
+} from '@ts-utilkit/testing-utilities';
 
 const users = generateTestArray(2, (id) => ({ id, name: `User${id}` }));
 // [{ id: 0, name: 'User0' }, { id: 1, name: 'User1' }]

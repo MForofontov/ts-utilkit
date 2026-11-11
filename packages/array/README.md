@@ -1,5 +1,7 @@
 # @ts-utilkit/array
 
+Version: [0.4.0](https://www.npmjs.com/package/@ts-utilkit/array/v/0.4.0). Requires Node.js 20 or later.
+
 Comprehensive array manipulation utilities with 35 functions for sorting, filtering, transformation, and mathematical operations on arrays.
 
 ## Installation
@@ -11,7 +13,7 @@ npm install @ts-utilkit/array
 ## Features
 
 - 🚀 TypeScript-first with complete type definitions
-- ✅ Comprehensive test coverage (>95%)
+- ✅ Repository tests with >95% global coverage
 - 📦 CommonJS builds with import and require entry points
 - 🔒 Type-safe with strict TypeScript configuration
 - ⚡ Performance-optimized implementations

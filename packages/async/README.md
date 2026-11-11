@@ -1,5 +1,7 @@
 # @ts-utilkit/async
 
+Version: [0.3.0](https://www.npmjs.com/package/@ts-utilkit/async/v/0.3.0). Requires Node.js 20 or later.
+
 Asynchronous operation utilities for retry logic, timeouts, parallel execution, and promise management.
 
 ## Installation

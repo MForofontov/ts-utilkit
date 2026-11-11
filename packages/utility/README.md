@@ -1,5 +1,7 @@
 # @ts-utilkit/utility
 
+Version: [0.5.0](https://www.npmjs.com/package/@ts-utilkit/utility/v/0.5.0). Requires Node.js 20 or later.
+
 utility Functions - TypeScript utility functions for utility operations.
 
 ## Installation
@@ -11,7 +13,7 @@ npm install @ts-utilkit/utility
 ## Features
 
 - 🚀 TypeScript-first with complete type definitions
-- ✅ Comprehensive test coverage (>95%)
+- ✅ Repository tests with >95% global coverage
 - 📦 CommonJS builds with import and require entry points
 - 🔒 Type-safe with strict TypeScript configuration
 - 📖 Extensive JSDoc documentation

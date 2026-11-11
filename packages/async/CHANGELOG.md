@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.3.0] - 2026-11-08
 
-- Align the utility dependency range with the current local 0.4.0 package so installed consumers resolve the tested implementation.
+- Require `@ts-utilkit/utility` `^0.5.0` so installed consumers resolve the tested release.
 - Append batch results without spread-call argument limits, retaining sparse-result and ordering behavior for large batches.
 - Validate timeout durations, handle Infinity without timers, schedule long waits in bounded chunks, and honor fractional deadlines using monotonic elapsed time.
 - Reject NaN retry/poll options and fractional retry counts before invoking callbacks; preserve Infinity retry counts, unbounded poll timeouts, and fractional poll intervals.

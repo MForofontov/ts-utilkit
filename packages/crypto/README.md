@@ -1,5 +1,7 @@
 # @ts-utilkit/crypto
 
+Version: [0.3.3](https://www.npmjs.com/package/@ts-utilkit/crypto/v/0.3.3). Requires Node.js 20 or later.
+
 Cryptographic utilities for hashing, encryption, HMAC, and secure password management using Node.js built-in crypto module.
 
 ## Installation

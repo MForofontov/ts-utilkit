@@ -14,8 +14,8 @@ A collection of **TypeScript utility functions** organized into specialized pack
 - 🎯 **516 Runtime Exports**: Utilities across array, async, crypto, date, math, object, string, result, path, and more
 - 🔒 **Type Safe**: Full TypeScript support with strict type checking
 - 📝 **Well Documented**: JSDoc comments with examples and complexity notes
-- 🧪 **Extensively Tested**: ~550 Jest test files with high code coverage
-- 📦 **Tree Shakeable**: Import only what you need from scoped packages
+- 🧪 **Extensively Tested**: Hundreds of Jest suites with >95% global coverage
+- 📦 **Scoped Packages**: CommonJS builds with `require` and dynamic `import` support
 - 🛡️ **Input Validation**: Descriptive errors where runtime checks apply
 - ⚖️ **MIT Licensed**: Free for personal and commercial use
 
@@ -23,7 +23,7 @@ A collection of **TypeScript utility functions** organized into specialized pack
 
 - [Installation](#-installation)
 - [Quick Start](#-quick-start)
-- [Packages Overview](#-packages-overview)
+- [Packages Overview](#packages-overview)
 - [Function Summary](#-function-summary)
 - [Usage Examples](#-usage-examples)
 - [API Documentation](#-api-documentation)
@@ -35,6 +35,13 @@ A collection of **TypeScript utility functions** organized into specialized pack
 ## 🚀 Installation
 
 This library requires **Node.js 20 or later** and supports modern TypeScript environments.
+
+Each scoped package has its own npm version, listed in the package overview.
+The root `package.json` version, **0.1.0**, identifies the development workspace;
+the workspace root is excluded from publication.
+
+Packages emit CommonJS. The `import` and `require` export conditions resolve to
+the same CommonJS build; bundler optimization depends on CommonJS support.
 
 ### Package Manager
 
@@ -62,8 +69,9 @@ Ensure your `tsconfig.json` includes:
 {
   "compilerOptions": {
     "target": "ES2023",
+    "module": "Node16",
     "strict": true,
-    "moduleResolution": "node"
+    "moduleResolution": "Node16"
   }
 }
 ```
@@ -71,6 +79,8 @@ Ensure your `tsconfig.json` includes:
 ## ⚡ Quick Start
 
 Import from scoped packages to limit dependencies:
+
+Examples containing `await` assume an async function or an ES module.
 
 ```typescript
 import { chunkArray } from '@ts-utilkit/array';
@@ -91,31 +101,31 @@ const slug = slugify('Hello World!'); // 'hello-world'
 
 This library provides utility functions organized into **23 specialized packages**. Each package is independently installable and ships TypeScript declarations.
 
-| Package                           | Description                                                 | Documentation                                            |
-| --------------------------------- | ----------------------------------------------------------- | -------------------------------------------------------- |
-| **@ts-utilkit/array**             | Array manipulation, chunking, flattening, grouping, sorting | [View Functions →](packages/array/README.md)             |
-| **@ts-utilkit/async**             | Retry logic, timeouts, parallel/series execution            | [View Functions →](packages/async/README.md)             |
-| **@ts-utilkit/collection**        | Set and Map operations, conversions                         | [View Functions →](packages/collection/README.md)        |
-| **@ts-utilkit/crypto**            | Hashing (SHA, MD5), encryption (AES), HMAC                  | [View Functions →](packages/crypto/README.md)            |
-| **@ts-utilkit/date**              | Date arithmetic, formatting, business days                  | [View Functions →](packages/date/README.md)              |
-| **@ts-utilkit/encoding**          | Base64 / Base64URL / hex / Base32                           | [View Functions →](packages/encoding/README.md)          |
-| **@ts-utilkit/env**               | Environment variables and config parsing                    | [View Functions →](packages/env/README.md)               |
-| **@ts-utilkit/event**             | Event emitters, debouncing, throttling                      | [View Functions →](packages/event/README.md)             |
-| **@ts-utilkit/format**            | Number, currency, byte, duration formatting                 | [View Functions →](packages/format/README.md)            |
-| **@ts-utilkit/math**              | Arithmetic, algebra, geometry, statistics                   | [View Functions →](packages/math/README.md)              |
-| **@ts-utilkit/network**           | URL parsing, query params, domain extraction                | [View Functions →](packages/network/README.md)           |
-| **@ts-utilkit/object**            | Deep merge/clone, flattening, key transformations           | [View Functions →](packages/object/README.md)            |
-| **@ts-utilkit/parsing**           | CSV, INI, log, env file parsing                             | [View Functions →](packages/parsing/README.md)           |
-| **@ts-utilkit/path**              | POSIX path join, normalize, basename, extensions            | [View Functions →](packages/path/README.md)              |
-| **@ts-utilkit/random**            | Random generation (numbers, strings, colors, UUIDs)         | [View Functions →](packages/random/README.md)            |
-| **@ts-utilkit/regex**             | Pattern building, matching, common patterns                 | [View Functions →](packages/regex/README.md)             |
-| **@ts-utilkit/result**            | Ok/Err Result type, map, match, fromThrowable               | [View Functions →](packages/result/README.md)            |
-| **@ts-utilkit/serialization**     | JSON, CSV, XML, YAML, binary serialization                  | [View Functions →](packages/serialization/README.md)     |
-| **@ts-utilkit/string**            | Case conversion, slugs, validation, manipulation            | [View Functions →](packages/string/README.md)            |
-| **@ts-utilkit/testing-utilities** | Test data generation, assertions, spies                     | [View Functions →](packages/testing-utilities/README.md) |
-| **@ts-utilkit/utility**           | Debounce, throttle, color conversion, delays                | [View Functions →](packages/utility/README.md)           |
-| **@ts-utilkit/validation**        | IP, UUID, JSON, credit card validation                      | [View Functions →](packages/validation/README.md)        |
-| **@ts-utilkit/webscraping**       | HTML parsing, link/email extraction                         | [View Functions →](packages/webscraping/README.md)       |
+| Package                           | npm release                                                                  | Description                                                 | Documentation                                            |
+| --------------------------------- | ---------------------------------------------------------------------------- | ----------------------------------------------------------- | -------------------------------------------------------- |
+| **@ts-utilkit/array**             | [0.4.0](https://www.npmjs.com/package/@ts-utilkit/array/v/0.4.0)             | Array manipulation, chunking, flattening, grouping, sorting | [View Functions →](packages/array/README.md)             |
+| **@ts-utilkit/async**             | [0.3.0](https://www.npmjs.com/package/@ts-utilkit/async/v/0.3.0)             | Retry logic, timeouts, parallel/series execution            | [View Functions →](packages/async/README.md)             |
+| **@ts-utilkit/collection**        | [0.2.1](https://www.npmjs.com/package/@ts-utilkit/collection/v/0.2.1)        | Set and Map operations, conversions                         | [View Functions →](packages/collection/README.md)        |
+| **@ts-utilkit/crypto**            | [0.3.3](https://www.npmjs.com/package/@ts-utilkit/crypto/v/0.3.3)            | Hashing (SHA, MD5), encryption (AES), HMAC                  | [View Functions →](packages/crypto/README.md)            |
+| **@ts-utilkit/date**              | [0.3.0](https://www.npmjs.com/package/@ts-utilkit/date/v/0.3.0)              | Date arithmetic, formatting, business days                  | [View Functions →](packages/date/README.md)              |
+| **@ts-utilkit/encoding**          | [0.2.2](https://www.npmjs.com/package/@ts-utilkit/encoding/v/0.2.2)          | Base64 / Base64URL / hex / Base32                           | [View Functions →](packages/encoding/README.md)          |
+| **@ts-utilkit/env**               | [0.3.1](https://www.npmjs.com/package/@ts-utilkit/env/v/0.3.1)               | Environment variables and config parsing                    | [View Functions →](packages/env/README.md)               |
+| **@ts-utilkit/event**             | [0.2.1](https://www.npmjs.com/package/@ts-utilkit/event/v/0.2.1)             | Event emitters, debouncing, throttling                      | [View Functions →](packages/event/README.md)             |
+| **@ts-utilkit/format**            | [0.3.1](https://www.npmjs.com/package/@ts-utilkit/format/v/0.3.1)            | Number, currency, byte, duration formatting                 | [View Functions →](packages/format/README.md)            |
+| **@ts-utilkit/math**              | [0.3.2](https://www.npmjs.com/package/@ts-utilkit/math/v/0.3.2)              | Arithmetic, algebra, geometry, statistics                   | [View Functions →](packages/math/README.md)              |
+| **@ts-utilkit/network**           | [0.2.2](https://www.npmjs.com/package/@ts-utilkit/network/v/0.2.2)           | URL parsing, query params, domain extraction                | [View Functions →](packages/network/README.md)           |
+| **@ts-utilkit/object**            | [0.4.0](https://www.npmjs.com/package/@ts-utilkit/object/v/0.4.0)            | Deep merge/clone, flattening, key transformations           | [View Functions →](packages/object/README.md)            |
+| **@ts-utilkit/parsing**           | [0.2.2](https://www.npmjs.com/package/@ts-utilkit/parsing/v/0.2.2)           | CSV, INI, log, env file parsing                             | [View Functions →](packages/parsing/README.md)           |
+| **@ts-utilkit/path**              | [0.2.1](https://www.npmjs.com/package/@ts-utilkit/path/v/0.2.1)              | POSIX path join, normalize, basename, extensions            | [View Functions →](packages/path/README.md)              |
+| **@ts-utilkit/random**            | [0.3.1](https://www.npmjs.com/package/@ts-utilkit/random/v/0.3.1)            | Random generation (numbers, strings, colors, UUIDs)         | [View Functions →](packages/random/README.md)            |
+| **@ts-utilkit/regex**             | [0.3.1](https://www.npmjs.com/package/@ts-utilkit/regex/v/0.3.1)             | Pattern building, matching, common patterns                 | [View Functions →](packages/regex/README.md)             |
+| **@ts-utilkit/result**            | [0.3.0](https://www.npmjs.com/package/@ts-utilkit/result/v/0.3.0)            | Ok/Err Result type, map, match, fromThrowable               | [View Functions →](packages/result/README.md)            |
+| **@ts-utilkit/serialization**     | [0.2.3](https://www.npmjs.com/package/@ts-utilkit/serialization/v/0.2.3)     | JSON, CSV, XML, YAML, binary serialization                  | [View Functions →](packages/serialization/README.md)     |
+| **@ts-utilkit/string**            | [0.2.2](https://www.npmjs.com/package/@ts-utilkit/string/v/0.2.2)            | Case conversion, slugs, validation, manipulation            | [View Functions →](packages/string/README.md)            |
+| **@ts-utilkit/testing-utilities** | [0.3.1](https://www.npmjs.com/package/@ts-utilkit/testing-utilities/v/0.3.1) | Test data generation, assertions, spies                     | [View Functions →](packages/testing-utilities/README.md) |
+| **@ts-utilkit/utility**           | [0.5.0](https://www.npmjs.com/package/@ts-utilkit/utility/v/0.5.0)           | Debounce, throttle, color conversion, delays                | [View Functions →](packages/utility/README.md)           |
+| **@ts-utilkit/validation**        | [0.3.1](https://www.npmjs.com/package/@ts-utilkit/validation/v/0.3.1)        | IP, UUID, JSON, credit card validation                      | [View Functions →](packages/validation/README.md)        |
+| **@ts-utilkit/webscraping**       | [0.3.2](https://www.npmjs.com/package/@ts-utilkit/webscraping/v/0.3.2)       | HTML parsing, link/email extraction                         | [View Functions →](packages/webscraping/README.md)       |
 
 > Tip: Click on "View Functions →" links to see the complete function list for each package with detailed usage examples. See [KNOWN_ISSUES.md](KNOWN_ISSUES.md) for documented limitations.
 
@@ -170,9 +180,9 @@ import {
 const data = [1, 2, 3, 4, 5, 6, 7, 8];
 const chunks = chunkArray(data, 3); // [[1, 2, 3], [4, 5, 6], [7, 8]]
 
-// Find duplicates with custom equality
+// Find duplicates using deep equality
 const items = [{ id: 1 }, { id: 2 }, { id: 1 }];
-const duplicates = findDuplicates(items, (a, b) => a.id === b.id);
+const duplicates = findDuplicates(items); // [{ id: 1 }]
 
 // Generate cartesian product
 const colors = ['red', 'blue'];
@@ -187,23 +197,21 @@ const combinations = cartesianProduct(colors, sizes);
 import { asyncRetry, asyncTimeout, asyncMap } from '@ts-utilkit/async';
 
 // Retry with exponential backoff
-const result = await asyncRetry(() => fetch('/api/data'), {
-  retries: 3,
+const result = await asyncRetry(() => fetch('https://example.com/api/data'), {
+  maxAttempts: 3,
   delay: 1000,
   backoff: 'exponential',
 });
 
 // Add timeout to promise
 const dataWithTimeout = await asyncTimeout(
-  fetch('/api/slow-endpoint'),
+  fetch('https://example.com/api/slow-endpoint'),
   5000, // 5 second timeout
 );
 
 // Async map with concurrency control
-const urls = ['url1', 'url2', 'url3'];
-const responses = await asyncMap(urls, async (url) => {
-  return await fetch(url);
-});
+const urls = ['https://example.com/api/1', 'https://example.com/api/2'];
+const responses = await asyncMap(urls, async (url) => fetch(url), 2);
 ```
 
 ### Object Manipulation
@@ -211,7 +219,7 @@ const responses = await asyncMap(urls, async (url) => {
 ```typescript
 import { deepMerge, safeGet, flattenObject } from '@ts-utilkit/object';
 
-// Deep merge with conflict resolution
+// Deep merge nested objects
 const config = deepMerge(
   { api: { timeout: 5000 }, features: { auth: true } },
   { api: { retries: 3 }, features: { logging: true } },
@@ -239,13 +247,15 @@ import {
 
 // Statistical calculations
 const data = [2, 4, 4, 4, 5, 5, 7, 9];
-const stdDev = calculateStandardDeviation(data); // ~2.138
+const stdDev = calculateStandardDeviation(data); // 2 (population standard deviation)
 
 // Geographic distance calculation
 const distance = calculateHaversineDistance(
-  { lat: 40.7128, lng: -74.006 }, // New York
-  { lat: 34.0522, lng: -118.2437 }, // Los Angeles
-); // ~3944.42 km
+  40.7128,
+  -74.006, // New York latitude and longitude
+  34.0522,
+  -118.2437, // Los Angeles latitude and longitude
+); // ~3935.75 km
 
 // Number theory
 const primeCheck = isPrime(97); // true
@@ -286,7 +296,8 @@ const isValidMAC = isValidMACAddress('00:1B:44:11:3A:B7'); // true
 
 ### Function Signatures
 
-All functions follow consistent patterns with comprehensive type safety:
+Public APIs document parameters, return values, errors, and complexity. A JSDoc
+template looks like this; include only the errors the implementation can throw:
 
 ```typescript
 /**
@@ -296,44 +307,57 @@ All functions follow consistent patterns with comprehensive type safety:
  * @param param2 - Description of parameter 2.
  * @returns Description of return value.
  *
- * @throws {TypeError} If parameters are of wrong type.
- * @throws {Error} If parameters have invalid values.
+ * @throws {Error} For documented invalid values.
  *
  * @example
  * functionName(42, "hello"); // Expected output
  *
  * @complexity Time: O(n), Space: O(1)
  */
-export function functionName(param1: number, param2: string): ReturnType;
+export declare function functionName(param1: number, param2: string): string;
 ```
 
 ### Error Handling
 
-All functions provide comprehensive input validation:
+TypeScript declarations describe accepted parameter types. Runtime checks vary
+by function: consult its JSDoc for supported values, range constraints, NaN
+behavior, optional inputs, and thrown errors. Blanket runtime type validation or
+null handling is not guaranteed across the library.
 
-- **Type Validation**: Checks parameter types with descriptive error messages
-- **Value Validation**: Validates ranges, constraints, and business logic
-- **NaN Handling**: Explicit NaN checks for numeric inputs
-- **Null Safety**: Proper null/undefined handling
-
-```typescript
-// Example error messages
-throw new TypeError('param must be a number, got string');
-throw new Error('array cannot be empty');
-throw new Error('timeout must be non-negative, got -1');
-```
+`Result` helpers provide explicit success/failure values when callers need to
+capture synchronous throws or asynchronous rejections.
 
 ## 🛠️ Development
 
-**Requirements**: Node.js 20+, TypeScript
+**Requirements**: Node.js 20+, TypeScript. `.nvmrc` selects Node 24 for development.
 
 ```bash
-npm install
+npm ci --ignore-scripts
 npm run build
 npm test
 ```
 
-**Test Coverage**: >95% across all functions
+## 🧪 Testing
+
+All four global coverage metrics must exceed 95%.
+
+```bash
+npm test
+npm run typecheck
+npm run lint -- --max-warnings=277
+npm run format:check
+npm run audit:exports
+npm run audit:docs
+```
+
+Build before running `npm run test:install:full` to check all packed packages.
+The `quality` workflow covers Windows/Linux with Node 20, 22, and 24, including
+date tests in UTC and Europe/Lisbon.
+
+## 🤝 Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for development, testing, and release
+guidelines. Run `npm run audit:docs` after updating package versions or examples.
 
 ## 📄 License
 
@@ -345,4 +369,4 @@ MIT License - Copyright (c) 2026 Mykyta Forofontov
 
 ---
 
-**408 functions** • **>95% coverage** • **TypeScript-first** • **Zero dependencies**
+**516 runtime exports** • **>95% global coverage** • **TypeScript-first** • **23 scoped packages**

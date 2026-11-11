@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Show the verified npm versions in all package READMEs and the root overview; check version links, changelog headers, export counts, and runnable README examples in `audit:docs`.
+- Correct root README examples, module-output and validation descriptions, navigation links, and contributor guidance.
+
+## Workspace package releases - 2026-11-08
+
+Published all 23 independently versioned `@ts-utilkit/*` packages. See each package's changelog for its release version; the root development workspace remains 0.1.0.
+
 ### Added
 
 - `arrayDifferenceBy`, `arrayIntersectionBy`, and `fromAsyncThrowable`, with public exports, examples, boundary tests, and packed-consumer checks.
@@ -23,9 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Optimize larger primitive array difference/intersection comparisons while retaining deep-equality and accessor fallbacks.
 - Select Node 24 in `.nvmrc`, retaining Node 20+ support; narrow internal serialization, validation, and regex types without changing public signatures.
-- Remove all runtime `typeof`/`instanceof` TypeError guards from ALL packages (array, async, collection, crypto, date, encoding, env, event, format, math, network, object, parsing, random, regex, serialization, string, testing-utilities, utility, validation, webscraping); TypeScript is the contract for this TS-first library
-- Remove all `@throws {TypeError}` JSDoc tags from all affected functions across all packages
-- Remove all TypeError test cases from all package test files (~346 test files modified)
+- Remove legacy blanket TypeError guards and obsolete tests from existing functions; retain documented per-function runtime checks and explicit validation in new APIs.
 - `deepFreeze`: add `T extends object` generic constraint to maintain TypeScript compatibility after guard removal
 - `deepMerge`: add explicit cast in `merge()` call to maintain TypeScript compatibility
 - `combinePatterns`: change else-branch from `throw new TypeError(...)` to `continue` (silently skip non-string/non-RegExp patterns)

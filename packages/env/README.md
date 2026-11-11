@@ -1,5 +1,7 @@
 # @ts-utilkit/env
 
+Version: [0.3.1](https://www.npmjs.com/package/@ts-utilkit/env/v/0.3.1). Requires Node.js 20 or later.
+
 Environment variable utilities for parsing and validation.
 
 ## Installation
@@ -11,7 +13,7 @@ npm install @ts-utilkit/env
 ## Features
 
 - 🚀 TypeScript-first with complete type definitions
-- ✅ Comprehensive test coverage (>95%)
+- ✅ Repository tests with >95% global coverage
 - 📦 CommonJS builds with import and require entry points
 - 🔒 Type-safe environment variable parsing
 - 📖 Extensive JSDoc documentation
@@ -37,7 +39,12 @@ npm install @ts-utilkit/env
 
 ```typescript
 import {
-  getEnv, requireEnv, parseEnvInt, parseEnvBool, parseEnvJSON, parseEnvArray,
+  getEnv,
+  requireEnv,
+  parseEnvInt,
+  parseEnvBool,
+  parseEnvJSON,
+  parseEnvArray,
 } from '@ts-utilkit/env';
 
 // Get environment variable with default
@@ -63,11 +70,15 @@ const allowedHosts = parseEnvArray('ALLOWED_HOSTS', ',', ['localhost']);
 
 This package contains the environment variable functions that were previously in `@ts-utilkit/configuration`:
 
-```typescript
-// Old (deprecated)
-import { getEnv, requireEnv } from '@ts-utilkit/configuration';
+Old import (deprecated):
 
-// New
+```text
+import { getEnv, requireEnv } from '@ts-utilkit/configuration';
+```
+
+Current import:
+
+```typescript
 import { getEnv, requireEnv } from '@ts-utilkit/env';
 ```
 
