@@ -1,3 +1,5 @@
+import { setOwn } from './_setOwn';
+
 /**
  * Creates an object from an array of objects, using the specified property value
  * of each object as the key and the entire object as the value.
@@ -51,13 +53,14 @@
  *
  * @complexity Time: O(n), Space: O(n) - Where n is the array length
  */
+
 export function keyBy<T extends Record<string, unknown>>(
   array: T[],
   key: keyof T,
 ): Record<string, T> {
   return array.reduce<Record<string, T>>((acc, item) => {
     if (Object.prototype.hasOwnProperty.call(item, key)) {
-      acc[String(item[key])] = item;
+      setOwn(acc, String(item[key]), item);
     }
     return acc;
   }, {});

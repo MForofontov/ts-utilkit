@@ -1,3 +1,5 @@
+import { setOwn } from './_setOwn';
+
 /**
  * Reconstructs a nested object from a flat object with dot-notation keys.
  *
@@ -49,6 +51,7 @@
  *
  * @complexity Time: O(n * d), Space: O(n) - Where n is keys, d is average depth
  */
+
 export function unflattenObject(
   obj: Record<string, unknown>,
 ): Record<string, unknown> {
@@ -56,37 +59,22 @@ export function unflattenObject(
 
   for (const [flatKey, value] of Object.entries(obj)) {
     const parts = flatKey.replace(/\[(\d+)\]/g, '.$1').split('.');
-    let current: Record<string, unknown> | unknown[] = result;
+    let current: Record<string, unknown> = result;
 
     parts.forEach((part, idx) => {
       const isLast = idx === parts.length - 1;
       const nextIsIndex = /^\d+$/.test(parts[idx + 1]);
-      const isIndex = /^\d+$/.test(part);
-
       if (isLast) {
-        if (isIndex) {
-          if (!Array.isArray(current)) {
-            current = [];
-          }
-          current[Number(part)] = value;
-        } else {
-          (current as Record<string, unknown>)[part] = value;
-        }
-      } else if (isIndex) {
-        if (!Array.isArray(current)) {
-          current = [];
-        }
-        const arr = current;
-        if (!arr[Number(part)] || typeof arr[Number(part)] !== 'object') {
-          arr[Number(part)] = nextIsIndex ? [] : {};
-        }
-        current = arr[Number(part)] as Record<string, unknown> | unknown[];
+        setOwn(current, part, value);
       } else {
-        const objRef = current as Record<string, unknown>;
-        if (!objRef[part] || typeof objRef[part] !== 'object') {
-          objRef[part] = nextIsIndex ? [] : {};
+        if (
+          !Object.hasOwn(current, part) ||
+          !current[part] ||
+          typeof current[part] !== 'object'
+        ) {
+          setOwn(current, part, nextIsIndex ? [] : {});
         }
-        current = objRef[part] as Record<string, unknown> | unknown[];
+        current = current[part] as Record<string, unknown>;
       }
     });
   }

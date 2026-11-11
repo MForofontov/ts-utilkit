@@ -16,14 +16,16 @@ import { _parseURL } from './_parseURL';
  *
  * @example
  * // Sort query parameters
- * normalizeURL('https://example.com?z=1&a=2'); // 'https://example.com?a=2&z=1'
+ * normalizeURL('https://example.com?z=1&a=2'); // 'https://example.com/?a=2&z=1'
  *
  * @example
  * // With custom options
  * normalizeURL('HTTPS://EXAMPLE.COM/Path', { lowercaseHostname: false });
- * // 'https://EXAMPLE.COM/Path'
+ * // 'https://example.com/Path' (URL itself canonicalizes the hostname)
  *
  * @note Helps with URL comparison and caching.
+ * @note Empty entries are removed individually; repeated non-empty values keep their order.
+ * @note Hostname and default-port canonicalization performed by URL cannot be disabled.
  *
  * @complexity Time: O(n log n), Space: O(n)
  */
@@ -34,7 +36,7 @@ export interface NormalizeOptions {
   lowercaseHostname?: boolean;
   /** Sort query parameters alphabetically (default: true) */
   sortQueryParams?: boolean;
-  /** Remove default ports (80 for http, 443 for https) (default: true) */
+  /** Legacy flag: URL canonicalizes default HTTP(S) ports regardless of this value. */
   removeDefaultPorts?: boolean;
   /** Remove empty query parameters (default: true) */
   removeEmptyParams?: boolean;
@@ -60,15 +62,7 @@ export function normalizeURL(
     parsed.hostname = parsed.hostname.toLowerCase();
   }
 
-  // Remove default ports
-  if (opts.removeDefaultPorts) {
-    if (
-      (parsed.protocol === 'http:' && parsed.port === '80') ||
-      (parsed.protocol === 'https:' && parsed.port === '443')
-    ) {
-      parsed.port = '';
-    }
-  }
+  // Default HTTP(S) ports are already canonicalized by URL.
 
   // Remove trailing slash from pathname
   if (opts.removeTrailingSlash && parsed.pathname.endsWith('/')) {
@@ -77,31 +71,26 @@ export function normalizeURL(
 
   // Handle query parameters
   if (parsed.search) {
-    const params = new URLSearchParams(parsed.search);
+    let params = new URLSearchParams(parsed.search);
 
-    // Remove empty parameters
+    // Filter entries without discarding other values of the same key.
     if (opts.removeEmptyParams) {
-      const keysToDelete: string[] = [];
-      params.forEach((value, key) => {
-        if (value === '') {
-          keysToDelete.push(key);
-        }
+      let hasEmpty = false;
+      params.forEach((value) => {
+        if (value === '') hasEmpty = true;
       });
-      keysToDelete.forEach((key) => params.delete(key));
+      if (hasEmpty) {
+        const nonEmpty = new URLSearchParams();
+        params.forEach((value, key) => {
+          if (value !== '') nonEmpty.append(key, value);
+        });
+        params = nonEmpty;
+      }
     }
 
-    // Sort query parameters
-    if (opts.sortQueryParams) {
-      const sortedParams = new URLSearchParams();
-      const keys = Array.from(params.keys()).sort();
-      keys.forEach((key) => {
-        const values = params.getAll(key);
-        values.forEach((value) => sortedParams.append(key, value));
-      });
-      parsed.search = sortedParams.toString();
-    } else {
-      parsed.search = params.toString();
-    }
+    // Native sorting is stable for repeated keys and compares UTF-16 code units.
+    if (opts.sortQueryParams) params.sort();
+    parsed.search = params.toString();
   }
 
   return parsed.toString();

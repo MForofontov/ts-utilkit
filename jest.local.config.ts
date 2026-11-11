@@ -1,16 +1,28 @@
-module.exports = {
-  preset: 'ts-jest',
-  globals: {
-    'ts-jest': {
-      tsconfig: 'tsconfig.test.json',
+export default {
+  transform: {
+    '^.+\\.tsx?$': ['ts-jest', { tsconfig: 'tsconfig.jest.json' }],
+  },
+  moduleNameMapper: {
+    '^@ts-utilkit/(.*)$': '<rootDir>/packages/$1/src',
+  },
+  testEnvironment: 'node',
+  maxWorkers: 2,
+  workerIdleMemoryLimit: '512MB',
+  reporters: ['default'],
+  collectCoverage: true,
+  coverageThreshold: {
+    global: {
+      branches: 95.01,
+      functions: 95.01,
+      lines: 95.01,
+      statements: 95.01,
     },
   },
-  testEnvironment: 'node', // Change to standard node environment
-  reporters: [
-    'default', // default jest reporter
-    ['jest-html-reporter', { outputPath: 'local-testing/jest.html' }], // jest html reporter
+  collectCoverageFrom: [
+    'packages/*/src/**/*.ts',
+    '!packages/*/src/**/*.test.ts',
+    '!packages/*/src/**/index.ts',
   ],
-  collectCoverage: true,
   coverageDirectory: 'local-testing/coverage',
   coverageReporters: ['json', 'lcov', 'text', 'clover'],
   testPathIgnorePatterns: ['/node_modules/', '/dist/'],

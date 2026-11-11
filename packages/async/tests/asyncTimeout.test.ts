@@ -101,3 +101,127 @@ describe('asyncTimeout', () => {
     );
   });
 });
+
+describe('deterministic timeout boundaries', () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+  afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
+  });
+  it('rejects NaN before scheduling a timer', () => {
+    expect(() => {
+      void asyncTimeout(Promise.resolve(1), NaN).catch(() => undefined);
+    }).toThrow('timeoutMs');
+    expect(jest.getTimerCount()).toBe(0);
+  });
+  it('treats Infinity as an unbounded wait without scheduling a timer', async () => {
+    const pending = asyncTimeout(Promise.resolve(42), Infinity);
+    expect(jest.getTimerCount()).toBe(0);
+    await expect(pending).resolves.toBe(42);
+  });
+  it('does not expire a duration above the native timer limit early', async () => {
+    let settled = false;
+    const pending = asyncTimeout(
+      new Promise<never>(() => undefined),
+      2147483657,
+      'deadline',
+    );
+    const assertion = expect(pending).rejects.toThrow('deadline');
+    void pending.catch(() => {
+      settled = true;
+    });
+    await jest.advanceTimersByTimeAsync(2147483647);
+    expect(settled).toBe(false);
+    expect(jest.getTimerCount()).toBe(1);
+    await jest.advanceTimersByTimeAsync(9);
+    expect(settled).toBe(false);
+    await jest.advanceTimersByTimeAsync(1);
+    await assertion;
+    expect(jest.getTimerCount()).toBe(0);
+  });
+  it('does not expire a fractional duration before its deadline', async () => {
+    let settled = false;
+    const pending = asyncTimeout(new Promise<never>(() => undefined), 2.5);
+    const assertion = expect(pending).rejects.toThrow('Operation timed out');
+    void pending.catch(() => {
+      settled = true;
+    });
+    await jest.advanceTimersByTimeAsync(2);
+    expect(settled).toBe(false);
+    await jest.advanceTimersByTimeAsync(1);
+    await assertion;
+    expect(jest.getTimerCount()).toBe(0);
+  });
+});
+
+describe('timeout cleanup and monotonic clock', () => {
+  beforeEach(() => {
+    jest.useFakeTimers({ now: 1000 });
+  });
+  afterEach(() => {
+    jest.clearAllTimers();
+    jest.useRealTimers();
+  });
+  it.each([true, false])(
+    'cleans up an intermediate long-wait chunk on settlement (resolve=%s)',
+    async (succeeds) => {
+      let resolve!: (value: number) => void;
+      let reject!: (reason: unknown) => void;
+      const original = new Promise<number>((yes, no) => {
+        resolve = yes;
+        reject = no;
+      });
+      const pending = asyncTimeout(original, 2147483657);
+      const reason = { message: 'arbitrary reason' };
+      const assertion = succeeds
+        ? expect(pending).resolves.toBe(42)
+        : expect(pending).rejects.toBe(reason);
+      await jest.advanceTimersByTimeAsync(2147483647);
+      expect(jest.getTimerCount()).toBe(1);
+      if (succeeds) resolve(42);
+      else reject(reason);
+      await assertion;
+      expect(jest.getTimerCount()).toBe(0);
+    },
+  );
+  it('uses elapsed monotonic time when the wall clock jumps', async () => {
+    const pending = asyncTimeout(new Promise<never>(() => undefined), 10);
+    const assertion = expect(pending).rejects.toThrow('Operation timed out');
+    jest.setSystemTime(-100000);
+    await jest.advanceTimersByTimeAsync(10);
+    await assertion;
+    expect(jest.getTimerCount()).toBe(0);
+  });
+  it('cleans up zero timeout when the original promise is already fulfilled', async () => {
+    await expect(asyncTimeout(Promise.resolve(42), 0)).resolves.toBe(42);
+    expect(jest.getTimerCount()).toBe(0);
+  });
+  it('preserves an unbounded rejection without creating a timer', async () => {
+    // eslint-disable-next-line @typescript-eslint/prefer-promise-reject-errors -- Verify preservation of non-Error rejection reasons
+    await expect(asyncTimeout(Promise.reject('reason'), Infinity)).rejects.toBe(
+      'reason',
+    );
+    expect(jest.getTimerCount()).toBe(0);
+  });
+  it('handles a late original settlement after timeout without creating more timers', async () => {
+    let finish!: (value: number) => void;
+    const original = new Promise<number>((resolve) => {
+      finish = resolve;
+    });
+    const pending = asyncTimeout(original, 1);
+    const assertion = expect(pending).rejects.toThrow('Operation timed out');
+    await jest.advanceTimersByTimeAsync(1);
+    await assertion;
+    finish(42);
+    await Promise.resolve();
+    expect(jest.getTimerCount()).toBe(0);
+  });
+  it('validates a custom message before scheduling a timer', () => {
+    expect(() =>
+      asyncTimeout(Promise.resolve(42), 10, 1 as unknown as string),
+    ).toThrow('timeoutMessage');
+    expect(jest.getTimerCount()).toBe(0);
+  });
+});

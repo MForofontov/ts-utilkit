@@ -54,11 +54,18 @@ export function requireEnvAll(keys: string[]): Record<string, string> {
   const result: Record<string, string> = {};
 
   for (const key of keys) {
-    const value = process.env[key];
+    const value = Object.hasOwn(process.env, key)
+      ? process.env[key]
+      : undefined;
     if (value === undefined || value === '') {
       missing.push(key);
     } else {
-      result[key] = value;
+      Object.defineProperty(result, key, {
+        value,
+        enumerable: true,
+        configurable: true,
+        writable: true,
+      });
     }
   }
 

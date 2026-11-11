@@ -1,3 +1,5 @@
+import { setOwn } from './_setOwn';
+
 /**
  * Returns an object containing properties that differ between two objects,
  * using values from the second object when they differ.
@@ -53,7 +55,7 @@ export function getObjectDifference(
   const allKeys = new Set([...Object.keys(obj1), ...Object.keys(obj2)]);
   allKeys.forEach((key) => {
     if (obj1[key] !== obj2[key]) {
-      diff[key] = obj2[key];
+      setOwn(diff, key, obj2[key]);
     }
   });
 

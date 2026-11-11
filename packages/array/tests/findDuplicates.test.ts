@@ -121,3 +121,26 @@ describe('findDuplicates', () => {
     expect(findDuplicates(arr)).toEqual(expected);
   });
 });
+
+it('preserves discovery order, signed-zero representative, and mixed equality semantics', () => {
+  const symbol = Symbol('x');
+  const object = { a: 1 };
+  const input: unknown[] = [
+    0,
+    '0',
+    NaN,
+    object,
+    symbol,
+    -0,
+    { a: 1 },
+    NaN,
+    '0',
+    symbol,
+    0,
+    object,
+  ];
+  const result = findDuplicates(input);
+  expect(result).toEqual([-0, object, NaN, '0', symbol]);
+  expect(Object.is(result[0], -0)).toBe(true);
+  expect(result[1]).toBe(input[6]);
+});

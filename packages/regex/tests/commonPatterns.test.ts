@@ -8,6 +8,17 @@ import {
  * Unit tests for common patterns and helper functions.
  */
 describe('CommonPatterns', () => {
+  it.each(['constructor', '__proto__', 'toString', 'valueOf'])(
+    'rejects inherited names as unknown presets: %s',
+    (name) => {
+      const key = name as keyof typeof CommonPatterns;
+      expect(() => getCommonPattern(key)).toThrow('Unknown pattern name');
+      expect(() => testCommonPattern('text', key)).toThrow(
+        'Unknown pattern name',
+      );
+    },
+  );
+
   // Email pattern tests
   it('1. should validate email addresses', () => {
     expect(CommonPatterns.email.test('test@example.com')).toBe(true);

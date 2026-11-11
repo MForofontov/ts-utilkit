@@ -51,7 +51,7 @@ export function coordinateDistance(
   }
   const dx = x2 - x1;
   const dy = y2 - y1;
-  return Math.sqrt(dx * dx + dy * dy);
+  return Math.hypot(dx, dy);
 }
 
 // Example usage:

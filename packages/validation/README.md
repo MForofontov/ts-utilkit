@@ -12,7 +12,7 @@ npm install @ts-utilkit/validation
 
 - 🚀 TypeScript-first with complete type definitions
 - ✅ Comprehensive test coverage (>95%)
-- 📦 Tree-shakeable ESM and CommonJS support
+- 📦 CommonJS builds with import and require entry points
 - 🔒 Type-safe with strict TypeScript configuration
 - 📖 Extensive JSDoc documentation
 

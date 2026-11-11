@@ -1,6 +1,60 @@
 import { findUniqueElements } from '../src/findUniqueElements';
 
 describe('findUniqueElements', () => {
+  it('preserves first representatives and SameValueZero primitive equality', () => {
+    const symbol = Symbol('same');
+    const fn = () => 1;
+    const first = { x: 1 };
+    const result = findUniqueElements<unknown>([
+      -0,
+      0,
+      NaN,
+      NaN,
+      symbol,
+      symbol,
+      fn,
+      fn,
+      null,
+      undefined,
+      1n,
+      first,
+      { x: 1 },
+      { x: 2 },
+    ]);
+    expect(result).toEqual([
+      -0,
+      NaN,
+      symbol,
+      fn,
+      null,
+      undefined,
+      1n,
+      first,
+      { x: 2 },
+    ]);
+    expect(Object.is(result[0], -0)).toBe(true);
+    expect(result[7]).toBe(first);
+  });
+
+  it('visits sparse holes as undefined and respects getter order', () => {
+    const values = new Array<unknown>(4);
+    const calls: number[] = [];
+    Object.defineProperty(values, '1', {
+      get() {
+        calls.push(1);
+        return 'value';
+      },
+    });
+    Object.defineProperty(values, '3', {
+      get() {
+        calls.push(3);
+        return 'value';
+      },
+    });
+    expect(findUniqueElements(values)).toEqual([undefined, 'value']);
+    expect(calls).toEqual([1, 3]);
+  });
+
   // Test case 1: Normal array of numbers
   it('1. should return unique elements from a normal array of numbers', () => {
     const arr: number[] = [1, 2, 3, 4, 5];

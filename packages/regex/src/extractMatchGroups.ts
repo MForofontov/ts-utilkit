@@ -62,7 +62,7 @@ export function extractMatchGroups(
         const currentFlags = pattern.flags;
         regex = new RegExp(pattern.source, currentFlags + 'g');
       } else {
-        regex = pattern;
+        regex = new RegExp(pattern.source, pattern.flags);
       }
     }
   } catch {
@@ -72,9 +72,7 @@ export function extractMatchGroups(
   }
 
   const results: MatchGroup[] = [];
-  let match: RegExpExecArray | null;
-
-  while ((match = regex.exec(text)) !== null) {
+  for (const match of text.matchAll(regex)) {
     const matchGroup: MatchGroup = {
       match: match[0],
       groups: match.slice(1),

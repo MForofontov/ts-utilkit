@@ -27,13 +27,21 @@ import { deepEqual } from '@ts-utilkit/object';
  * which makes it suitable for finding unique elements among complex objects and nested structures.
  * The original order of appearance is preserved for the first occurrence of each unique element.
  *
- * @complexity Time: O(n²), Space: O(1) - Where n is array length, due to the some() method with deep equality checks
+ * @complexity Time: O(n) for primitives, O(n²) for objects; Space: O(n).
  */
 export function findUniqueElements<T>(arr: T[]): T[] {
   const uniqueElements: T[] = [];
+  const primitiveSeen = new Set<T>();
+  const objectSeen: T[] = [];
 
   for (const item of arr) {
-    if (!uniqueElements.some((uniqueItem) => deepEqual(uniqueItem, item))) {
+    if (item === null || typeof item !== 'object') {
+      if (!primitiveSeen.has(item)) {
+        primitiveSeen.add(item);
+        uniqueElements.push(item);
+      }
+    } else if (!objectSeen.some((uniqueItem) => deepEqual(uniqueItem, item))) {
+      objectSeen.push(item);
       uniqueElements.push(item);
     }
   }

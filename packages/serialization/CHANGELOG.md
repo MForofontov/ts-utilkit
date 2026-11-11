@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.3] - 2026-11-02
+
+- Narrow internal YAML/XML/CSV serialization values to unknown while retaining public signatures and output behavior.
+- Fix XML same-prefix and self-closing nested element handling; preserve special and repeated tag names as own data.
+- Quote blank single-column/whitespace-delimited cells and carriage returns, preserving rows and blank headers through serialization round trips.
+- Retain repeated atomic class instances instead of incorrectly replacing subsequent occurrences with a circular marker.
+- Preserve quoted CSV newlines and CRLF rows; retain embedded query equals signs and prototype-like keys; use own-property path traversal and safe writes during serialization transforms.
+
 ### Changed
 
 - Second-pass audit: re-verified circular-reference and type-preservation behavior; first-audit fixes confirmed.
@@ -28,6 +36,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Apply Prettier formatting: remove orphaned blank lines at function-body openings introduced by guard removal
 
 - Add `exports` field to `package.json` for explicit ESM/CJS/types entry-point resolution by modern bundlers and Node.js `exports` map
+
 ## [0.1.0] - 2026-01-26
 
 ### Added

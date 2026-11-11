@@ -1,3 +1,5 @@
+import { setOwn } from './_setOwn';
+
 /**
  * Reconstructs a nested object structure from a flat object with dot or square bracket notation keys.
  * Handles arrays, nested objects, and escaped special characters.
@@ -47,6 +49,7 @@
  *
  * @complexity Time: O(n * d), Space: O(n) - Where n is keys, d is average path depth
  */
+
 export function fromDotNotation(
   obj: Record<string, unknown>,
 ): Record<string, unknown> {
@@ -69,11 +72,15 @@ export function fromDotNotation(
         const isLast = i === parts.length - 1;
 
         if (isLast) {
-          current[cleanPart] = obj[key];
+          setOwn(current, cleanPart, obj[key]);
         } else {
-          if (!current[cleanPart] || typeof current[cleanPart] !== 'object') {
+          if (
+            !Object.hasOwn(current, cleanPart) ||
+            !current[cleanPart] ||
+            typeof current[cleanPart] !== 'object'
+          ) {
             // Create an array if the next part is a numeric index
-            current[cleanPart] = /^\d+$/.test(parts[i + 1]) ? [] : {};
+            setOwn(current, cleanPart, /^\d+$/.test(parts[i + 1]) ? [] : {});
           }
           current = current[cleanPart] as Record<string, unknown>;
         }

@@ -51,20 +51,22 @@ export function throttleEvent<T extends unknown[]>(
 
   const { leading = true, trailing = true } = options;
 
-  let lastCallTime = 0;
+  let lastCallTime: number | null = null;
   let timeoutId: ReturnType<typeof setTimeout> | null = null;
   let lastArgs: T | null = null;
 
   const throttledFn = (...args: T): void => {
+    if (!leading && !trailing) return;
     const now = Date.now();
-    const timeSinceLastCall = now - lastCallTime;
 
     lastArgs = args;
 
-    if (lastCallTime === 0 && !leading) {
+    if (lastCallTime === null && !leading) {
       lastCallTime = now;
-      return;
     }
+
+    const timeSinceLastCall =
+      lastCallTime === null ? limit : now - lastCallTime;
 
     if (timeSinceLastCall >= limit) {
       if (timeoutId !== null) {
@@ -75,7 +77,7 @@ export function throttleEvent<T extends unknown[]>(
       handler(...args);
     } else if (trailing && timeoutId === null) {
       timeoutId = setTimeout(() => {
-        lastCallTime = leading ? Date.now() : 0;
+        lastCallTime = leading ? Date.now() : null;
         timeoutId = null;
         if (lastArgs !== null) {
           handler(...lastArgs);
@@ -90,7 +92,7 @@ export function throttleEvent<T extends unknown[]>(
       clearTimeout(timeoutId);
       timeoutId = null;
     }
-    lastCallTime = 0;
+    lastCallTime = null;
     lastArgs = null;
   };
 

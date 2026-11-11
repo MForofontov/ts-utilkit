@@ -38,9 +38,10 @@ import { calculateFactorial } from './calculateFactorial';
  * @note For large values, results may overflow JavaScript's number precision limits.
  * @note When k = n, this equals n! (factorial).
  * @note Common use cases: arranging people in a line, password possibilities, race placements.
- * @note Uses factorial-based calculation; recursive implementation may hit call stack limits.
+ * @note Retains factorial ratios through n=170; larger n uses a direct product to avoid intermediate factorial overflow.
+ * @note Results remain floating-point approximations; values beyond Number range return Infinity.
  *
- * @complexity Time: O(n), Space: O(n) due to factorial calculation
+ * @complexity Time: O(k) for n > 170, bounded cached work otherwise; Space: O(1)
  */
 export function calculatePermutation(n: number, k: number): number {
   if (isNaN(n) || isNaN(k)) {
@@ -55,5 +56,11 @@ export function calculatePermutation(n: number, k: number): number {
   if (k > n) {
     return 0;
   }
-  return calculateFactorial(n) / calculateFactorial(n - k);
+  if (n <= 170) return calculateFactorial(n) / calculateFactorial(n - k);
+  let result = 1;
+  for (let i = 0; i < k; i++) {
+    result *= n - i;
+    if (!Number.isFinite(result)) return Infinity;
+  }
+  return result;
 }

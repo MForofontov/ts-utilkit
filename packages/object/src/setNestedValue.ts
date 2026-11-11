@@ -1,3 +1,5 @@
+import { setOwn } from './_setOwn';
+
 /**
  * Sets a value at a specified nested path within an object, creating intermediate objects as needed.
  *
@@ -43,6 +45,7 @@
  *
  * @complexity Time: O(d), Space: O(d) - Where d is the path depth
  */
+
 export function setNestedValue(
   obj: Record<string, unknown>,
   path: string,
@@ -51,10 +54,14 @@ export function setNestedValue(
   const keys = path.split('.');
   let current: Record<string, unknown> = obj;
   for (let i = 0; i < keys.length - 1; i++) {
-    if (typeof current[keys[i]] !== 'object' || current[keys[i]] === null) {
-      current[keys[i]] = {};
+    if (
+      !Object.hasOwn(current, keys[i]) ||
+      typeof current[keys[i]] !== 'object' ||
+      current[keys[i]] === null
+    ) {
+      setOwn(current, keys[i], {});
     }
     current = current[keys[i]] as Record<string, unknown>;
   }
-  current[keys[keys.length - 1]] = value;
+  setOwn(current, keys[keys.length - 1], value);
 }

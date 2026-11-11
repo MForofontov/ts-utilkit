@@ -1,3 +1,5 @@
+import { setOwn } from './_setOwn';
+
 /**
  * Creates an object containing key-value pairs from the first object that are different
  * from the second object, based on a custom comparison function.
@@ -45,7 +47,8 @@
  * // { theme: 'light' } (old values that changed)
  *
  * @note Keys that exist only in the first object are included in the result.
- * @note The comparator receives values from both objects (or undefined if key missing).
+ * @note Missing own keys in obj2 are included without calling the comparator.
+ * Inherited values in obj2 are ignored; present own values use the comparator.
  * @note Returns empty object if all values are equal per the comparator.
  * @note Similar to getObjectDifference but with custom equality logic.
  * @note Useful for custom comparisons like fuzzy matching or type coercion.
@@ -61,8 +64,8 @@ export function differenceBy<T extends Record<string, unknown>>(
   const result: Partial<T> = {};
   for (const key of keys) {
     const k = key as keyof T;
-    if (!comparator(obj1[k], obj2[k])) {
-      result[k] = obj1[k];
+    if (!Object.hasOwn(obj2, k) || !comparator(obj1[k], obj2[k])) {
+      setOwn(result, k, obj1[k]);
     }
   }
   return result;

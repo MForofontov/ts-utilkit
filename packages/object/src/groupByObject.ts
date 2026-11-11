@@ -1,3 +1,5 @@
+import { setOwn } from './_setOwn';
+
 /**
  * Groups the elements of an array into separate arrays based on the values of a specified property.
  *
@@ -69,6 +71,7 @@
  *
  * @complexity Time: O(n), Space: O(n) - Where n is array length
  */
+
 export function groupByObject<T>(
   array: T[],
   key: keyof T,
@@ -76,7 +79,7 @@ export function groupByObject<T>(
   return array.reduce<Record<string, T[]>>((acc, item) => {
     if (Object.prototype.hasOwnProperty.call(item, key)) {
       const group = String(item[key]);
-      if (!acc[group]) acc[group] = [];
+      if (!Object.hasOwn(acc, group)) setOwn(acc, group, []);
       acc[group].push(item);
     }
     return acc;

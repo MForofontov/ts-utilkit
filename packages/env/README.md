@@ -12,11 +12,11 @@ npm install @ts-utilkit/env
 
 - 🚀 TypeScript-first with complete type definitions
 - ✅ Comprehensive test coverage (>95%)
-- 📦 Tree-shakeable ESM and CommonJS support
+- 📦 CommonJS builds with import and require entry points
 - 🔒 Type-safe environment variable parsing
 - 📖 Extensive JSDoc documentation
 
-## Available Functions (7)
+## Available Functions (11)
 
 - **`getEnv`** - Gets an environment variable with optional default
 - **`requireEnv`** - Gets a required environment variable or throws
@@ -26,10 +26,19 @@ npm install @ts-utilkit/env
 - **`parseEnvArray`** - Parses a comma-separated environment variable as array
 - **`parseEnvJSON`** - Parses an environment variable as JSON
 
+## Additional exports
+
+- **`hasEnv`** — Checks whether an environment variable is set to a non-empty value.
+- **`requireEnvAll`** — Requires that all of the specified environment variables are set to non-empty values, throwing a single descriptive error that lists every missing variable.
+- **`parseEnvEnum`** — Parses an environment variable and validates it against a fixed set of allowed values.
+- **`parseEnvPort`** — Parses an environment variable as a valid TCP/UDP port number (1–65535).
+
 ## Quick Example
 
 ```typescript
-import { getEnv, requireEnv, parseEnvInt, parseEnvBool } from '@ts-utilkit/env';
+import {
+  getEnv, requireEnv, parseEnvInt, parseEnvBool, parseEnvJSON, parseEnvArray,
+} from '@ts-utilkit/env';
 
 // Get environment variable with default
 const port = getEnv('PORT', '3000'); // '3000' if PORT not set
@@ -47,7 +56,7 @@ const debugMode = parseEnvBool('DEBUG', false); // false if not set
 const config = parseEnvJSON('APP_CONFIG', { timeout: 30 });
 
 // Parse array
-const allowedHosts = parseEnvArray('ALLOWED_HOSTS', ['localhost']);
+const allowedHosts = parseEnvArray('ALLOWED_HOSTS', ',', ['localhost']);
 ```
 
 ## Migration from @ts-utilkit/configuration

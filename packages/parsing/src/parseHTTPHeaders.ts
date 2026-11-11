@@ -62,7 +62,12 @@ export function parseHTTPHeaders(raw: string): Record<string, string> {
     const value = trimmed.slice(colonIndex + 1).trim();
 
     if (name.length > 0) {
-      result[name] = value;
+      Object.defineProperty(result, name, {
+        value,
+        enumerable: true,
+        configurable: true,
+        writable: true,
+      });
     }
   }
 

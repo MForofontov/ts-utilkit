@@ -88,9 +88,14 @@ export function sanitizeForSerialization(
           continue;
         }
 
-        const sanitized = sanitize((value as any)[key]);
+        const sanitized = sanitize(value[key]);
         if (sanitized !== undefined) {
-          result[key] = sanitized;
+          Object.defineProperty(result, key, {
+            value: sanitized,
+            enumerable: true,
+            configurable: true,
+            writable: true,
+          });
         }
       }
 

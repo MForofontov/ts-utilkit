@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-11-02
+
+- Append large createMultiMap.setAll batches without exceeding the engine argument limit.
+- Preserve **proto** as an own data property when converting a Map to an object.
+
 ## [0.2.0] - 2026-03-05
 
 ### Changed

@@ -38,18 +38,22 @@ npm install @ts-utilkit/crypto
 import {
   hashPassword,
   generateSalt,
+  generateRandomBytes,
   encryptAES256,
   generateHMAC,
 } from '@ts-utilkit/crypto';
 
 // Password hashing
 const salt = generateSalt();
-const hash = hashPassword('password123', salt);
+const hash = await hashPassword('password123', salt);
 
-// Encryption (requires 64-char hex key)
+// Encryption uses a per-message derived key
+const key = generateRandomBytes(32).toString('hex');
 const encrypted = encryptAES256('secret', key);
 
 // HMAC signatures
+const data = 'request payload';
+const secret = generateRandomBytes(32).toString('hex');
 const signature = generateHMAC(data, secret, 'sha256');
 ```
 

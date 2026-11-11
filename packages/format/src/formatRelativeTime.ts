@@ -3,9 +3,6 @@
  * Accepts a Date, ISO/timestamp string, or Unix timestamp (milliseconds).
  */
 function toDate(value: Date | string | number): Date {
-  if (value instanceof Date) {
-    return value;
-  }
   const d = new Date(value);
   if (isNaN(d.getTime())) {
     throw new Error(`Invalid date value: ${String(value)}`);

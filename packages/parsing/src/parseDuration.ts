@@ -7,7 +7,7 @@
  *
  * @throws {Error} If input is empty.
  * @throws {Error} If input format is invalid.
- * @throws {Error} If the numeric value is negative or NaN.
+ * @throws {Error} If the numeric value is negative or malformed.
  * @throws {Error} If the unit is not recognized.
  *
  * @example
@@ -83,7 +83,7 @@ export function parseDuration(input: string): number {
     }
 
     hasMatches = true;
-    const numericValue = parseFloat(match[1]);
+    const numericValue = Number(match[1]);
     const unit = match[2].toLowerCase();
 
     if (isNaN(numericValue)) {
@@ -95,7 +95,7 @@ export function parseDuration(input: string): number {
       );
     }
 
-    if (!(unit in units)) {
+    if (!Object.hasOwn(units, unit)) {
       throw new Error(
         `Unrecognized unit: "${unit}" (valid units: ms, s/sec/second, m/min/minute, h/hr/hour, d/day, w/week)`,
       );

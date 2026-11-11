@@ -79,7 +79,7 @@ export function parseINI(
   const lines = input.split(/\r?\n/);
 
   for (let lineNum = 0; lineNum < lines.length; lineNum++) {
-    let line = lines[lineNum].trim();
+    const line = lines[lineNum].trim();
 
     // Skip empty lines
     if (line.length === 0) {
@@ -97,8 +97,13 @@ export function parseINI(
       if (currentSection.length === 0) {
         throw new Error(`Empty section name at line ${lineNum + 1}`);
       }
-      if (!result[currentSection]) {
-        result[currentSection] = {};
+      if (!Object.hasOwn(result, currentSection)) {
+        Object.defineProperty(result, currentSection, {
+          value: {},
+          enumerable: true,
+          configurable: true,
+          writable: true,
+        });
       }
       continue;
     }
@@ -118,7 +123,12 @@ export function parseINI(
       throw new Error(`Empty key at line ${lineNum + 1}`);
     }
 
-    result[currentSection][key] = value;
+    Object.defineProperty(result[currentSection], key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    });
   }
 
   // Remove _global section if empty

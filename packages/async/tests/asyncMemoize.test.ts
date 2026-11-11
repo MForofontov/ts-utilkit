@@ -20,7 +20,9 @@ describe('asyncMemoize', () => {
   // Test case 2: Different arguments produce separate cache entries
   it('2. should call fn separately for different arguments', async () => {
     // Arrange
-    const fn = jest.fn().mockImplementation(async (n: number) => n * 2);
+    const fn = jest
+      .fn()
+      .mockImplementation(async (n: number) => await Promise.resolve(n * 2));
     const memoized = asyncMemoize(fn);
 
     // Act
@@ -39,7 +41,9 @@ describe('asyncMemoize', () => {
   it('3. should expire the cache entry after the TTL and re-call fn', async () => {
     // Arrange
     let callCount = 0;
-    const fn = jest.fn().mockImplementation(async () => ++callCount);
+    const fn = jest
+      .fn()
+      .mockImplementation(async () => await Promise.resolve(++callCount));
     const memoized = asyncMemoize(fn, { ttl: 50 });
 
     // Act
@@ -59,7 +63,9 @@ describe('asyncMemoize', () => {
   it('4. should re-call fn on every invocation when ttl is 0', async () => {
     // Arrange
     let count = 0;
-    const fn = jest.fn().mockImplementation(async () => ++count);
+    const fn = jest
+      .fn()
+      .mockImplementation(async () => await Promise.resolve(++count));
     const memoized = asyncMemoize(fn, { ttl: 0 });
 
     // Act & Assert
@@ -76,7 +82,9 @@ describe('asyncMemoize', () => {
     // Arrange
     const fn = jest
       .fn()
-      .mockImplementation(async (a: number, b: number) => a + b);
+      .mockImplementation(
+        async (a: number, b: number) => await Promise.resolve(a + b),
+      );
     const memoized = asyncMemoize(fn, {
       keyFn: (a, b) => `${a}-${b}`,
     });
@@ -115,7 +123,9 @@ describe('asyncMemoize', () => {
   it('7. should correctly cache results for no-argument functions', async () => {
     // Arrange
     let calls = 0;
-    const fn = jest.fn().mockImplementation(async () => ++calls);
+    const fn = jest
+      .fn()
+      .mockImplementation(async () => await Promise.resolve(++calls));
     const memoized = asyncMemoize(fn);
 
     // Act
@@ -133,7 +143,9 @@ describe('asyncMemoize', () => {
     // Arrange
     const fn = jest
       .fn()
-      .mockImplementation(async (s: string) => s.toUpperCase());
+      .mockImplementation(
+        async (s: string) => await Promise.resolve(s.toUpperCase()),
+      );
     const memoized = asyncMemoize(fn);
 
     // Act
@@ -148,10 +160,12 @@ describe('asyncMemoize', () => {
 
   // Test case 11: Throws Error when ttl is negative
   it('11. should throw Error when ttl is negative', () => {
-    expect(() => asyncMemoize(async () => 1, { ttl: -100 })).toThrow(Error);
-    expect(() => asyncMemoize(async () => 1, { ttl: -100 })).toThrow(
-      'ttl must be non-negative, got -100',
-    );
+    expect(() =>
+      asyncMemoize(async () => await Promise.resolve(1), { ttl: -100 }),
+    ).toThrow(Error);
+    expect(() =>
+      asyncMemoize(async () => await Promise.resolve(1), { ttl: -100 }),
+    ).toThrow('ttl must be non-negative, got -100');
   });
 
   it('12. should deduplicate concurrent calls with the same arguments', async () => {

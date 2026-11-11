@@ -1,4 +1,4 @@
-import { findAll, MatchInfo } from '../src/findAll';
+import { findAll } from '../src/findAll';
 
 /**
  * Unit tests for the findAll function.

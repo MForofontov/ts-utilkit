@@ -51,7 +51,7 @@ export function parseEnvEnum<T extends string>(
     throw new Error('key cannot be an empty string');
   }
 
-  const raw = process.env[key];
+  const raw = Object.hasOwn(process.env, key) ? process.env[key] : undefined;
 
   if (raw === undefined || raw === '') {
     if (defaultValue !== undefined) {

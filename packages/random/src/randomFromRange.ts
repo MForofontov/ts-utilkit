@@ -9,6 +9,7 @@ import { randomChoice } from './randomChoice';
  * @returns A random number from the range.
  *
  * @throws {Error} If parameters are invalid (NaN, min > max, step <= 0, etc.).
+ * @throws {RangeError} If endpoints are not finite or step cannot advance the range.
  *
  * @example
  * // Random from 0, 5, 10, 15, 20
@@ -38,6 +39,9 @@ export function randomFromRange(
   if (isNaN(step)) {
     throw new Error('step must be a valid number, not NaN');
   }
+  if (!Number.isFinite(min) || !Number.isFinite(max)) {
+    throw new RangeError('min and max must be finite numbers');
+  }
   if (min > max) {
     throw new Error('min must be less than or equal to max');
   }
@@ -47,8 +51,14 @@ export function randomFromRange(
 
   // Generate all valid values in the range
   const values: number[] = [];
-  for (let value = min; value <= max; value += step) {
+  for (let value = min; value <= max; ) {
     values.push(value);
+    if (value === max) break;
+    const next = value + step;
+    if (next === value) {
+      throw new RangeError('step is too small to advance the range');
+    }
+    value = next;
   }
 
   if (values.length === 0) {

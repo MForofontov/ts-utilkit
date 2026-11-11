@@ -157,8 +157,7 @@ describe('deserializeFromCSV', () => {
     const result = deserializeFromCSV(input);
 
     // Assert
-    expect(result[0].a).toBe('1');
-    expect(result[0].b).toBe('2');
+    expect(result).toEqual(expected);
   });
 
   it('14. should throw Error when csvString is empty', () => {

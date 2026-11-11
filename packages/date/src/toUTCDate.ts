@@ -32,7 +32,7 @@
  * @note Example: "2024-09-19 3:45 PM local" becomes "2024-09-19 3:45 PM UTC".
  * @note For actual timezone conversion, use date.toUTCString() or Intl.DateTimeFormat.
  * @note Creates a new Date object; does not modify the original.
- * @note Preserves milliseconds precision.
+ * @note Preserves milliseconds precision and literal years, including years 0–99.
  *
  * @complexity Time: O(1), Space: O(1)
  */
@@ -40,15 +40,13 @@ export function toUTCDate(date: Date): Date {
   if (isNaN(date.getTime())) {
     throw new Error('Invalid date');
   }
-  return new Date(
-    Date.UTC(
-      date.getFullYear(),
-      date.getMonth(),
-      date.getDate(),
-      date.getHours(),
-      date.getMinutes(),
-      date.getSeconds(),
-      date.getMilliseconds(),
-    ),
+  const result = new Date(0);
+  result.setUTCFullYear(date.getFullYear(), date.getMonth(), date.getDate());
+  result.setUTCHours(
+    date.getHours(),
+    date.getMinutes(),
+    date.getSeconds(),
+    date.getMilliseconds(),
   );
+  return result;
 }

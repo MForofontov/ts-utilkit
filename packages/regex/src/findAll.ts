@@ -68,10 +68,7 @@ export function findAll(
   }
 
   const results: MatchInfo[] = [];
-  let match: RegExpExecArray | null;
-  let lastIndex = 0;
-
-  while ((match = regex.exec(text)) !== null) {
+  for (const match of text.matchAll(regex)) {
     const matchValue = match[0];
     results.push({
       value: matchValue,
@@ -79,14 +76,6 @@ export function findAll(
       endIndex: match.index + matchValue.length,
       length: matchValue.length,
     });
-
-    // Guard against zero-length matches causing an infinite loop.
-    if (matchValue.length === 0) {
-      if (regex.lastIndex === lastIndex) {
-        regex.lastIndex++;
-      }
-      lastIndex = regex.lastIndex;
-    }
   }
 
   return results;

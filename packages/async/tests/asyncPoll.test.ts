@@ -22,7 +22,9 @@ describe('asyncPoll', () => {
   it('2. should poll multiple times until condition is met', async () => {
     // Arrange
     let attempt = 0;
-    const fn = jest.fn().mockImplementation(async () => ++attempt);
+    const fn = jest
+      .fn()
+      .mockImplementation(async () => await Promise.resolve(++attempt));
     const condition = (n: number) => n === 3;
 
     // Act
@@ -40,7 +42,9 @@ describe('asyncPoll', () => {
   it('3. should call onPoll with the result and 1-based attempt number', async () => {
     // Arrange
     let counter = 0;
-    const fn = jest.fn().mockImplementation(async () => ++counter);
+    const fn = jest
+      .fn()
+      .mockImplementation(async () => await Promise.resolve(++counter));
     const polled: Array<{ result: number; attempt: number }> = [];
     const onPoll = jest.fn((result: number, attempt: number) => {
       polled.push({ result, attempt });
@@ -101,11 +105,12 @@ describe('asyncPoll', () => {
   it('7. should correctly evaluate condition against object results', async () => {
     // Arrange
     let call = 0;
-    const fn = jest
-      .fn<Promise<{ status: string }>, []>()
-      .mockImplementation(async () => ({
-        status: call++ < 2 ? 'pending' : 'complete',
-      }));
+    const fn = jest.fn<Promise<{ status: string }>, []>().mockImplementation(
+      async () =>
+        await Promise.resolve({
+          status: call++ < 2 ? 'pending' : 'complete',
+        }),
+    );
 
     // Act
     const result = await asyncPoll(fn, (r) => r.status === 'complete', {
@@ -132,7 +137,7 @@ describe('asyncPoll', () => {
   it('12. should throw Error when intervalMs is not positive', () => {
     expect(() =>
       asyncPoll(
-        async () => 1,
+        async () => await Promise.resolve(1),
         () => true,
         { intervalMs: 0 },
       ),
@@ -140,7 +145,7 @@ describe('asyncPoll', () => {
 
     expect(() =>
       asyncPoll(
-        async () => 1,
+        async () => await Promise.resolve(1),
         () => true,
         { intervalMs: -10 },
       ),
@@ -151,10 +156,78 @@ describe('asyncPoll', () => {
   it('14. should throw Error when timeoutMs is not positive', () => {
     expect(() =>
       asyncPoll(
-        async () => 1,
+        async () => await Promise.resolve(1),
         () => true,
         { timeoutMs: 0 },
       ),
     ).toThrow('timeoutMs must be a positive number');
   });
 });
+
+it.each(['intervalMs', 'timeoutMs'] as const)(
+  'rejects NaN %s before polling',
+  (key) => {
+    const fn = jest.fn(() => Promise.resolve(1));
+    expect(() => asyncPoll(fn, () => true, { [key]: NaN })).toThrow(key);
+    expect(fn).not.toHaveBeenCalled();
+  },
+);
+
+it('retains unbounded timeout and fractional intervals with deterministic timers', async () => {
+  jest.useFakeTimers();
+  try {
+    const fn = jest
+      .fn<Promise<number>, []>()
+      .mockResolvedValueOnce(0)
+      .mockResolvedValue(42);
+    const onPoll = jest.fn();
+    const pending = asyncPoll(fn, (n) => n === 42, {
+      intervalMs: 1.5,
+      timeoutMs: Infinity,
+      onPoll,
+    });
+    await Promise.resolve();
+    expect(fn).toHaveBeenCalledTimes(1);
+    await jest.advanceTimersByTimeAsync(2);
+    await expect(pending).resolves.toBe(42);
+    expect(onPoll.mock.calls).toEqual([
+      [0, 1],
+      [42, 2],
+    ]);
+    expect(jest.getTimerCount()).toBe(0);
+  } finally {
+    jest.clearAllTimers();
+    jest.useRealTimers();
+  }
+});
+
+it.each([false, true])(
+  'handles a poll completing after the deadline when condition=%s',
+  async (matches) => {
+    jest.useFakeTimers({ now: 0 });
+    try {
+      let finish!: (value: number) => void;
+      const fn = jest.fn(
+        () =>
+          new Promise<number>((resolve) => {
+            finish = resolve;
+          }),
+      );
+      const pending = asyncPoll(fn, () => matches, {
+        intervalMs: 1,
+        timeoutMs: 10,
+      });
+      const assertion = matches
+        ? expect(pending).resolves.toBe(42)
+        : expect(pending).rejects.toThrow('1 attempts');
+      jest.setSystemTime(11);
+      finish(42);
+      await assertion;
+      expect(fn).toHaveBeenCalledTimes(1);
+      expect(jest.getTimerCount()).toBe(0);
+    } finally {
+      jest.clearAllTimers();
+      jest.useRealTimers();
+    }
+  },
+);

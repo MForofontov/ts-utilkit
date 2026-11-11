@@ -1,5 +1,7 @@
+const factorials: number[] = [1, 1];
+
 /**
- * Calculates the factorial of a non-negative integer using a recursive implementation.
+ * Calculates the factorial of a non-negative integer using cached iterative products.
  *
  * The factorial of n (denoted n!) is the product of all positive integers less than or equal to n.
  * By definition, 0! = 1.
@@ -28,13 +30,13 @@
  * // Moderate values
  * calculateFactorial(10); // 3628800
  *
- * @note Uses a recursive implementation which may hit call stack limits for very large inputs.
+ * @note Caches at most 171 ascending products; repeated calls reuse the same rounded results.
  * @note For n > 170, JavaScript returns Infinity due to floating-point number limits.
  * @note JavaScript's maximum safe integer is 2^53 - 1; factorials exceed this quickly.
- * @note Consider using an iterative implementation or BigInt for large factorials.
+ * @note Use BigInt arithmetic when exact large integer results are required.
  * @note Common use cases: permutations, combinations, probability calculations.
  *
- * @complexity Time: O(n), Space: O(n) due to recursive call stack
+ * @complexity Time: O(n) on first extension, O(1) for cached values; bounded Space: O(1)
  */
 export function calculateFactorial(n: number): number {
   if (isNaN(n)) {
@@ -46,8 +48,9 @@ export function calculateFactorial(n: number): number {
   if (n < 0) {
     throw new Error('Input must be a non-negative integer');
   }
-  if (n === 0) {
-    return 1;
+  if (n > 170) return Infinity;
+  for (let i = factorials.length; i <= n; i++) {
+    factorials.push(factorials[i - 1] * i);
   }
-  return n * calculateFactorial(n - 1);
+  return factorials[n];
 }

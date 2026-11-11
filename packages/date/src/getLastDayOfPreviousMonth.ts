@@ -1,3 +1,4 @@
+import { calendarDate } from './_calendarDate';
 /**
  * Calculates the last day of the month immediately before the month of a given date.
  *
@@ -46,5 +47,5 @@ export function getLastDayOfPreviousMonth(date: Date): Date {
 
   const year = date.getFullYear();
   const month = date.getMonth();
-  return new Date(year, month, 0);
+  return calendarDate(year, month, 0);
 }

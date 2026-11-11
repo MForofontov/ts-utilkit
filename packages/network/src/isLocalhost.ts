@@ -56,13 +56,21 @@ export function isLocalhost(urlOrHostname: string): boolean {
 
   // Check for 127.x.x.x range (IPv4 loopback)
   const ipv4LoopbackRegex = /^127\.\d{1,3}\.\d{1,3}\.\d{1,3}$/;
-  if (ipv4LoopbackRegex.test(hostname)) {
+  if (
+    ipv4LoopbackRegex.test(hostname) &&
+    hostname.split('.').every((octet) => Number(octet) <= 255)
+  ) {
     return true;
   }
 
   // Check for [::1] variant and other IPv6 loopback notations
-  if (hostname.startsWith('[::') && hostname.endsWith(']')) {
-    return true;
+  if (hostname.includes(':')) {
+    try {
+      const bracketed = hostname.startsWith('[') ? hostname : `[${hostname}]`;
+      return new URL(`http://${bracketed}/`).hostname === '[::1]';
+    } catch {
+      return false;
+    }
   }
 
   return false;

@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.test.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "allowImportingTsExtensions": true
+  },
+  "include": [
+    "index.ts",
+    "packages/**/src/**/*.ts",
+    "packages/**/tests/**/*.ts",
+    "packages/*/jest.config.ts",
+    "jest*.ts"
+  ]
+}

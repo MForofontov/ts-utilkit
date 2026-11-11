@@ -1,0 +1,52 @@
+name: quality
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: ${{ matrix.os }} / Node ${{ matrix.node }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        node: [20, 22, 24]
+    env:
+      TZ: UTC
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: npm run build
+      - run: npm run typecheck
+      - run: npm run lint -- --max-warnings=277
+      - run: npm run format:check
+      - run: npm run audit:exports
+      - run: npm run audit:docs
+      - name: Full tests with coverage
+        if: matrix.os == 'ubuntu-latest' && matrix.node == 24
+        run: npm test -- --coverage
+      - name: Full tests
+        if: matrix.os != 'ubuntu-latest' || matrix.node != 24
+        run: npm test -- --coverage=false
+      - name: Date tests in Europe/Lisbon
+        env:
+          TZ: Europe/Lisbon
+        run: npm test -- --coverage=false --testPathPatterns=packages/date/tests
+      - run: npm run test:install:full
+      - uses: actions/upload-artifact@v4
+        if: always() && matrix.os == 'ubuntu-latest' && matrix.node == 24
+        with:
+          name: coverage
+          path: local-testing/coverage
+          if-no-files-found: ignore

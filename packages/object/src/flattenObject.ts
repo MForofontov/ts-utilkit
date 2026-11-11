@@ -1,3 +1,5 @@
+import { setOwn } from './_setOwn';
+
 /**
  * Converts a nested object structure into a flat object with dot notation and
  * bracket notation for arrays and special characters.
@@ -64,6 +66,7 @@
  *
  * @complexity Time: O(n), Space: O(n) - Where n is total properties including nested
  */
+
 export function flattenObject(
   obj: Record<string, unknown>,
   prefix = '',
@@ -92,7 +95,7 @@ export function flattenObject(
               flattenObject(item as Record<string, unknown>, arrayKey),
             );
           } else {
-            result[arrayKey] = item;
+            setOwn(result, arrayKey, item);
           }
         });
       } else if (typeof obj[key] === 'object' && obj[key] !== null) {
@@ -103,7 +106,7 @@ export function flattenObject(
         );
       } else {
         // Add primitive values directly
-        result[newKey] = obj[key];
+        setOwn(result, newKey, obj[key]);
       }
     }
   }

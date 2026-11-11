@@ -31,6 +31,7 @@
  * @note The result is NOT clamped to [0, 1]. Values outside [min, max] produce results
  * outside [0, 1]. Use clamp(result, 0, 1) if strict normalization is needed.
  * @note Formula: (value - min) / (max - min)
+ * Finite operands are halved before subtraction when an intermediate difference overflows.
  * @note When min === max the range is degenerate and NaN is returned.
  *
  * @complexity Time: O(1), Space: O(1)
@@ -52,5 +53,15 @@ export function normalizeValue(
   if (min === max) {
     return NaN;
   }
-  return (value - min) / (max - min);
+  const numerator = value - min;
+  const denominator = max - min;
+  if (
+    (!Number.isFinite(numerator) || !Number.isFinite(denominator)) &&
+    Number.isFinite(value) &&
+    Number.isFinite(min) &&
+    Number.isFinite(max)
+  ) {
+    return (value / 2 - min / 2) / (max / 2 - min / 2);
+  }
+  return numerator / denominator;
 }

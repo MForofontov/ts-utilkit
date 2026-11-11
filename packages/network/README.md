@@ -12,11 +12,11 @@ npm install @ts-utilkit/network
 
 - 🚀 TypeScript-first with complete type definitions
 - ✅ Comprehensive test coverage (>95%)
-- 📦 Tree-shakeable ESM and CommonJS support
+- 📦 CommonJS builds with import and require entry points
 - 🔒 Type-safe with strict TypeScript configuration
 - 📖 Extensive JSDoc documentation
 
-## Available Functions (18)
+## Available Functions (22)
 
 - **`addQueryParams`** - Adds query parameters to a URL
 - **`buildURL`** - Constructs a URL from components
@@ -27,7 +27,10 @@ npm install @ts-utilkit/network
 - **`getQueryParams`** - Extracts query parameters from a URL
 - **`getURLPath`** - Extracts the path from a URL
 - **`getURLsFromText`** - Extracts all URLs from text
+- **`hasQueryParam`** - Checks whether a query parameter with the given key exists in a URL.
+- **`isAbsoluteURL`** - Determines whether a URL string is absolute (has a scheme/protocol).
 - **`isLocalhost`** - Checks if URL is localhost
+- **`isRelativeURL`** - Determines whether a URL string is relative (has no scheme/protocol).
 - **`isSameOrigin`** - Checks if two URLs have the same origin
 - **`isSubdomain`** - Checks if URL is a subdomain of another
 - **`isValidURL`** - Validates if a string is a valid URL
@@ -36,15 +39,22 @@ npm install @ts-utilkit/network
 - **`parseURL`** - Parses a URL into its components
 - **`removeQueryParams`** - Removes query parameters from a URL
 - **`sanitizeURL`** - Sanitizes URL by removing dangerous protocols
+- **`setURLFragment`** - Sets or replaces the fragment (hash) of a URL and returns the updated URL string.
 
 ## Quick Example
 
 ```typescript
-import { isValidURL, isValidIP, getURLParams } from '@ts-utilkit/network';
+import {
+  isValidURL,
+  getQueryParams,
+  joinURLPaths,
+  normalizeURL,
+} from '@ts-utilkit/network';
 
 isValidURL('https://example.com'); // true
-isValidIP('192.168.1.1'); // true
-getURLParams('?page=2&sort=date'); // {page: '2', sort: 'date'}
+getQueryParams('https://example.com/?page=2&sort=date'); // {page: '2', sort: 'date'}
+joinURLPaths('/api//v1', 'users'); // '/api/v1/users'
+normalizeURL('https://example.com/?tag=&tag=one&b=2'); // 'https://example.com/?b=2&tag=one'
 ```
 
 ## License

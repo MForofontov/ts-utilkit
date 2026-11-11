@@ -12,7 +12,7 @@ npm install @ts-utilkit/event
 
 - 🚀 TypeScript-first with complete type definitions
 - ✅ Comprehensive test coverage (>95%)
-- 📦 Tree-shakeable ESM and CommonJS support
+- 📦 CommonJS builds with import and require entry points
 - 🔒 Type-safe with strict TypeScript configuration
 - 📖 Extensive JSDoc documentation
 
@@ -34,10 +34,14 @@ import { EventEmitter, createEventBus, waitForEvent } from '@ts-utilkit/event';
 // Event emitter
 const emitter = new EventEmitter();
 emitter.on('data', (payload) => console.log(payload));
+const nextPayload = waitForEvent(emitter, 'data');
 emitter.emit('data', { message: 'Hello' });
+await nextPayload; // { message: 'Hello' }
 
 // Event bus
 const bus = createEventBus();
+const handler = (payload: { message: string }) => console.log(payload.message);
+const data = { message: 'Hello from the event bus' };
 bus.subscribe('event', handler);
 bus.publish('event', data);
 ```

@@ -1,6 +1,6 @@
 {
   "name": "@ts-utilkit/string",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "String manipulation utilities for formatting, transformation, and text processing",
   "homepage": "https://github.com/mykfor1/ts-utilkit/tree/main/packages/string#readme",
   "bugs": {
@@ -52,7 +52,7 @@
     "node": ">=20"
   },
   "dependencies": {
-    "@ts-utilkit/random": "^0.2.0"
+    "@ts-utilkit/random": "^0.3.1"
   },
   "publishConfig": {
     "access": "public"

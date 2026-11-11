@@ -1,3 +1,4 @@
+import { calendarDate } from './_calendarDate';
 /**
  * Calculates the last day of the month for a given date.
  *
@@ -44,6 +45,6 @@ export function getEndOfMonth(date: Date): Date {
     throw new Error('Invalid date');
   }
 
-  const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+  const lastDay = calendarDate(date.getFullYear(), date.getMonth() + 1, 0);
   return lastDay;
 }

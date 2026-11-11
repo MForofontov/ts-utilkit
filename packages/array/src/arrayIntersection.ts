@@ -1,4 +1,5 @@
 import { deepEqual } from '@ts-utilkit/object';
+import { primitiveMembership } from './_primitiveMembership';
 
 /**
  * Returns the intersection of two arrays (elements that are present in both arrays).
@@ -24,17 +25,21 @@ import { deepEqual } from '@ts-utilkit/object';
  * arrayIntersection([], [1, 2]); // Returns []
  * arrayIntersection([1, 2], []); // Returns []
  *
- * @note This implementation performs a nested iteration with deep equality,
- * which has O(n*m) complexity. For arrays containing only primitive values,
- * a Set-based approach would be more efficient.
+ * @note Larger data-only arrays use native membership when arr2 contains no objects.
+ * Small, object-containing, accessor, and inherited-element inputs retain nested
+ * deep comparisons. Order, duplicates, and sparse-array filtering are preserved.
  *
- * @complexity Time: O(n*m), Space: O(n) - Where n, m are arr1, arr2 lengths
+ * @complexity Time: O(n+m) on the native path, otherwise O(n*m) deep comparisons;
+ * Space: O(n+m), where n and m are input lengths, excluding deepEqual traversal.
  */
 export function arrayIntersection<T>(arr1: T[], arr2: T[]): T[] {
   // Validate input
   if (!Array.isArray(arr1) || !Array.isArray(arr2)) {
     throw new Error('Both arguments must be arrays.');
   }
+
+  const keys = primitiveMembership(arr1, arr2);
+  if (keys !== undefined) return arr1.filter((item) => keys.has(item));
 
   // Filter arr1 to find common elements based on deep equality
   return arr1.filter((item1) => arr2.some((item2) => deepEqual(item1, item2)));

@@ -1,13 +1,36 @@
 import { asyncBatch } from '../src/asyncBatch';
 
 describe('asyncBatch', () => {
+  it('retains a batch larger than the engine argument limit', async () => {
+    const values = Array.from({ length: 200000 }, (_, index) => index);
+    const result = await asyncBatch(
+      values,
+      (batch) => Promise.resolve(batch),
+      values.length,
+    );
+    expect(result).toEqual(values);
+  });
+
+  it('materializes holes in batch results like spread and retains references', async () => {
+    const value = { id: 1 };
+    const batch = new Array<unknown>(3);
+    batch[1] = value;
+    const result = await asyncBatch([1], () => Promise.resolve(batch), 1);
+    expect(result).toEqual([undefined, value, undefined]);
+    expect(Object.keys(result)).toEqual(['0', '1', '2']);
+    expect(result[1]).toBe(value);
+  });
+
   // Test case 1: Processes all items and returns concatenated results
   it('1. should process all items and return concatenated results', async () => {
     // Arrange
     const items = [1, 2, 3, 4, 5];
     const batchFn = jest
       .fn()
-      .mockImplementation(async (batch: number[]) => batch.map((n) => n * 2));
+      .mockImplementation(
+        async (batch: number[]) =>
+          await Promise.resolve(batch.map((n) => n * 2)),
+      );
 
     // Act
     const result = await asyncBatch(items, batchFn, 2);
@@ -20,7 +43,9 @@ describe('asyncBatch', () => {
   it('2. should call batchFn the correct number of times', async () => {
     // Arrange
     const items = [1, 2, 3, 4, 5];
-    const batchFn = jest.fn().mockImplementation(async (b: number[]) => b);
+    const batchFn = jest
+      .fn()
+      .mockImplementation(async (b: number[]) => await Promise.resolve(b));
 
     // Act
     await asyncBatch(items, batchFn, 2);
@@ -36,7 +61,7 @@ describe('asyncBatch', () => {
     const batches: number[][] = [];
     const batchFn = jest.fn().mockImplementation(async (b: number[]) => {
       batches.push([...b]);
-      return b;
+      return await Promise.resolve(b);
     });
 
     // Act
@@ -50,7 +75,9 @@ describe('asyncBatch', () => {
   it('4. should process all items in a single batch when batchSize equals items length', async () => {
     // Arrange
     const items = [10, 20, 30];
-    const batchFn = jest.fn().mockImplementation(async (b: number[]) => b);
+    const batchFn = jest
+      .fn()
+      .mockImplementation(async (b: number[]) => await Promise.resolve(b));
 
     // Act
     const result = await asyncBatch(items, batchFn, 3);
@@ -64,7 +91,9 @@ describe('asyncBatch', () => {
   it('5. should process all items in one batch when batchSize exceeds items length', async () => {
     // Arrange
     const items = [1, 2];
-    const batchFn = jest.fn().mockImplementation(async (b: number[]) => b);
+    const batchFn = jest
+      .fn()
+      .mockImplementation(async (b: number[]) => await Promise.resolve(b));
 
     // Act
     const result = await asyncBatch(items, batchFn, 100);
@@ -80,7 +109,10 @@ describe('asyncBatch', () => {
     const items = ['a', 'b', 'c'];
     const batchFn = jest
       .fn()
-      .mockImplementation(async (b: string[]) => b.map((s) => s.toUpperCase()));
+      .mockImplementation(
+        async (b: string[]) =>
+          await Promise.resolve(b.map((s) => s.toUpperCase())),
+      );
 
     // Act
     const result = await asyncBatch(items, batchFn, 1);
@@ -107,7 +139,9 @@ describe('asyncBatch', () => {
   it('8. should preserve the original item order in the concatenated results', async () => {
     // Arrange
     const items = [3, 1, 4, 1, 5, 9, 2, 6];
-    const batchFn = jest.fn().mockImplementation(async (b: number[]) => b);
+    const batchFn = jest
+      .fn()
+      .mockImplementation(async (b: number[]) => await Promise.resolve(b));
 
     // Act
     const result = await asyncBatch(items, batchFn, 3);
@@ -122,8 +156,9 @@ describe('asyncBatch', () => {
     const items = [{ id: 1 }, { id: 2 }, { id: 3 }];
     const batchFn = jest
       .fn()
-      .mockImplementation(async (b: { id: number }[]) =>
-        b.map((x) => ({ ...x, processed: true })),
+      .mockImplementation(
+        async (b: { id: number }[]) =>
+          await Promise.resolve(b.map((x) => ({ ...x, processed: true }))),
       );
 
     // Act
@@ -155,7 +190,7 @@ describe('asyncBatch', () => {
     const start = Date.now();
     const batchFn = jest.fn().mockImplementation(async (b: number[]) => {
       callTimes.push(Date.now() - start);
-      return b;
+      return await Promise.resolve(b);
     });
 
     // Act
@@ -170,7 +205,9 @@ describe('asyncBatch', () => {
   it('12. should handle large arrays efficiently', async () => {
     // Arrange
     const items = Array.from({ length: 1000 }, (_, i) => i);
-    const batchFn = jest.fn().mockImplementation(async (b: number[]) => b);
+    const batchFn = jest
+      .fn()
+      .mockImplementation(async (b: number[]) => await Promise.resolve(b));
 
     // Act
     const start = performance.now();
@@ -185,21 +222,23 @@ describe('asyncBatch', () => {
 
   // Test case 16: Throws Error when batchSize is zero or negative
   it('16. should throw Error when batchSize is not a positive integer', () => {
-    expect(() => asyncBatch([1], async (b) => b, 0)).toThrow(
-      'batchSize must be a positive integer, got 0',
-    );
-    expect(() => asyncBatch([1], async (b) => b, -5)).toThrow(
-      'batchSize must be a positive integer, got -5',
-    );
-    expect(() => asyncBatch([1], async (b) => b, 1.5)).toThrow(
-      'batchSize must be a positive integer, got 1.5',
-    );
+    expect(() =>
+      asyncBatch([1], async (b) => await Promise.resolve(b), 0),
+    ).toThrow('batchSize must be a positive integer, got 0');
+    expect(() =>
+      asyncBatch([1], async (b) => await Promise.resolve(b), -5),
+    ).toThrow('batchSize must be a positive integer, got -5');
+    expect(() =>
+      asyncBatch([1], async (b) => await Promise.resolve(b), 1.5),
+    ).toThrow('batchSize must be a positive integer, got 1.5');
   });
 
   // Test case 18: Throws Error when delayMs is negative
   it('18. should throw Error when delayMs is negative', () => {
     expect(() =>
-      asyncBatch([1, 2], async (b) => b, 1, { delayMs: -1 }),
+      asyncBatch([1, 2], async (b) => await Promise.resolve(b), 1, {
+        delayMs: -1,
+      }),
     ).toThrow(Error);
   });
 });

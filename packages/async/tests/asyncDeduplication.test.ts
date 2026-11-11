@@ -30,7 +30,11 @@ describe('asyncDeduplication', () => {
   // Test case 2: Calls with different args launch separate executions
   it('2. should launch separate executions for calls with different arguments', async () => {
     // Arrange
-    const fn = jest.fn().mockImplementation(async (id: number) => `item-${id}`);
+    const fn = jest
+      .fn()
+      .mockImplementation(
+        async (id: number) => await Promise.resolve(`item-${id}`),
+      );
     const deduplicated = asyncDeduplication(fn);
 
     // Act
@@ -46,7 +50,9 @@ describe('asyncDeduplication', () => {
   it('3. should start a fresh execution after the in-flight promise has settled', async () => {
     // Arrange
     let count = 0;
-    const fn = jest.fn().mockImplementation(async () => ++count);
+    const fn = jest
+      .fn()
+      .mockImplementation(async () => await Promise.resolve(++count));
     const deduplicated = asyncDeduplication(fn);
 
     // Act
@@ -106,7 +112,11 @@ describe('asyncDeduplication', () => {
   // Test case 6: Custom keyFn groups calls by derived key
   it('6. should deduplicate based on the custom keyFn result', async () => {
     // Arrange
-    const fn = jest.fn().mockImplementation(async (a: number, _b: number) => a);
+    const fn = jest
+      .fn()
+      .mockImplementation(
+        async (a: number, _b: number) => await Promise.resolve(a),
+      );
     const deduplicated = asyncDeduplication(fn, (a, b) => `${a}:${b}`);
 
     // Act

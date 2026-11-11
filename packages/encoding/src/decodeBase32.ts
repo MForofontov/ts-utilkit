@@ -46,6 +46,14 @@ const BASE32_ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
  */
 export function decodeBase32(str: string): string {
   const normalized = str.toUpperCase().replace(/=+$/, '');
+  const remainder = normalized.length % 8;
+  const padding = str.length - normalized.length;
+  if (
+    ![0, 2, 4, 5, 7].includes(remainder) ||
+    (padding > 0 && (remainder === 0 || padding !== 8 - remainder))
+  ) {
+    throw new Error('Invalid Base32 string');
+  }
 
   if (normalized.length === 0) {
     return '';

@@ -38,7 +38,8 @@
  * // Ensures polling doesn't exceed once per 5 seconds
  *
  * @note Executes immediately on first call, then enforces rate limit.
- * @note Uses timestamps to track last execution time.
+ * @note Uses timestamps to track last execution time, including timestamp zero.
+ * @note Reentrant calls observe the same limit; immediate calls replace obsolete trailing work.
  * @note Includes trailing call mechanism - ensures last call executes if within limit.
  * @note Preserves function context (this) and passes through all arguments.
  * @note Common use cases: scroll events, mouse movements, window resize, API polling.
@@ -54,23 +55,28 @@ export function throttle<Args extends unknown[]>(
     throw new Error('limit must be a non-negative number');
   }
 
-  let lastFunc: NodeJS.Timeout | null;
+  let lastFunc: ReturnType<typeof setTimeout> | undefined;
   let lastRan: number | null = null;
   return function (this: unknown, ...args: Args) {
-    if (!lastRan || Date.now() - lastRan >= limit) {
+    const now = Date.now();
+    if (lastRan === null || now - lastRan >= limit) {
+      if (lastFunc !== undefined) {
+        clearTimeout(lastFunc);
+        lastFunc = undefined;
+      }
+      lastRan = now;
       func.apply(this, args);
-      lastRan = Date.now();
     } else {
-      if (lastFunc) {
+      if (lastFunc !== undefined) {
         clearTimeout(lastFunc);
       }
       lastFunc = setTimeout(
         () => {
-          func.apply(this, args);
+          lastFunc = undefined;
           lastRan = Date.now();
-          lastFunc = null;
+          func.apply(this, args);
         },
-        limit - (Date.now() - lastRan),
+        limit - (now - lastRan),
       );
     }
   };

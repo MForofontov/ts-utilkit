@@ -12,11 +12,11 @@ npm install @ts-utilkit/object
 
 - 🚀 TypeScript-first with complete type definitions
 - ✅ Comprehensive test coverage (>95%)
-- 📦 Tree-shakeable ESM and CommonJS support
+- 📦 CommonJS builds with import and require entry points
 - 🔒 Type-safe with strict TypeScript configuration
 - 📖 Extensive JSDoc documentation
 
-## Available Functions (39)
+## Available Functions (44)
 
 - **`applyDefaults`** - Apply default values to object
 - **`compactObject`** - Remove undefined/null values
@@ -58,6 +58,13 @@ npm install @ts-utilkit/object
 - **`unflattenObject`** - Unflatten dot notation object
 - **`uniqueValues`** - Get unique values from object
 
+## Additional exports
+
+- **`findKey`** — Returns the first key in an object whose value satisfies the given predicate. Returns `undefined` if no key matches.
+- **`renameKey`** — Returns a new object with a single key renamed, preserving all other keys and values unchanged. The key order in the result follows the original object's insertion order, with the renamed key at its original position.
+- **`transformKeys`** — Returns a new object with all keys transformed by a given function, while keeping values unchanged.
+- **`zipObject`** — Creates an object from two separate arrays: one of keys and one of values. Pairs each key with the value at the same index.
+
 ## Quick Example
 
 ```typescript
@@ -65,13 +72,14 @@ import {
   deepMerge,
   safeGet,
   flattenObject,
-  pickProperties,
+  pickKeys,
 } from '@ts-utilkit/object';
 
 deepMerge({ a: 1 }, { b: 2 }); // {a: 1, b: 2}
 safeGet({ a: { b: 'c' } }, 'a.b'); // 'c'
 flattenObject({ a: { b: { c: 1 } } }); // {'a.b.c': 1}
-pickProperties(obj, ['id', 'name']); // {id: 1, name: 'Alice'}
+const obj = { id: 1, name: 'Alice', active: true };
+pickKeys(obj, ['id', 'name']); // {id: 1, name: 'Alice'}
 ```
 
 ## License
@@ -81,3 +89,9 @@ MIT © [Mykyta Forofontov](https://github.com/MForofontov)
 ## Contributing
 
 Contributions are welcome! Please see the [main repository](https://github.com/MForofontov/ts-utilkit) for contribution guidelines.
+
+## Added utilities
+
+- **`omitDeep`** — see the signature, examples, and contract in [omitDeep.ts](src/omitDeep.ts).
+
+Full examples and boundary behavior are documented in [FUNCTION_IDEAS.md](../../FUNCTION_IDEAS.md).

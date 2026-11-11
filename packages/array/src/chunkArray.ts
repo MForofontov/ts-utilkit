@@ -3,9 +3,9 @@
  * This is useful for batch processing, pagination, or displaying data in grids.
  *
  * @param arr - The array to be split into chunks.
- * @param size - The size of each chunk (must be greater than 0).
+ * @param size - The size of each chunk (must be finite and greater than 0).
  * @returns A two-dimensional array with the elements divided into chunks.
- * @throws Error if the size is less than or equal to 0.
+ * @throws Error if the size is non-finite or less than or equal to 0.
  *
  * @example
  * // Basic usage
@@ -31,6 +31,10 @@
 export function chunkArray<T>(arr: T[], size: number): T[][] {
   if (size <= 0) {
     throw new Error('Chunk size must be greater than 0.');
+  }
+
+  if (!Number.isFinite(size)) {
+    throw new Error('Chunk size must be a finite positive number.');
   }
 
   return Array.from({ length: Math.ceil(arr.length / size) }, (_, i) =>

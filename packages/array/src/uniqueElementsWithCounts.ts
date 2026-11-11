@@ -1,4 +1,4 @@
-import { getDeepEqualityHash } from '@ts-utilkit/object';
+import { deepEqual } from '@ts-utilkit/object';
 
 /**
  * Gets unique elements in an array and their counts using deep equality comparison.
@@ -26,30 +26,31 @@ import { getDeepEqualityHash } from '@ts-utilkit/object';
  * uniqueElementsWithCounts([1, '1', true, 1]);
  * // Returns [{ element: 1, count: 2 }, { element: '1', count: 1 }, { element: true, count: 1 }]
  *
- * @note Objects are hashed using getDeepEqualityHash, making the function
- * suitable for counting occurrences of complex objects and nested structures.
+ * @note Objects are compared with deepEqual; primitives use Map key equality.
  * The order of elements in the result follows their first occurrence in the input array.
  *
- * @complexity Time: O(n), Space: O(n) - Where n is array length (avg case)
- * hashing and Map lookups to count elements while preserving insertion order
+ * @complexity Time: O(n) for primitives, O(n²) deep comparisons for objects;
+ * Space: O(n). Deep comparison cost also depends on object size.
  */
 export function uniqueElementsWithCounts<T>(
   arr: T[],
 ): { element: T; count: number }[] {
-  const map = new Map<unknown, { element: T; count: number }>();
+  const primitives = new Map<unknown, { element: T; count: number }>();
+  const objects: { element: T; count: number }[] = [];
+  const result: { element: T; count: number }[] = [];
   arr.forEach((item) => {
-    const key =
-      typeof item === 'object' && item !== null
-        ? item instanceof RegExp
-          ? getDeepEqualityHash({ source: item.source, flags: item.flags })
-          : getDeepEqualityHash(item as object)
-        : item;
-    const existing = map.get(key);
+    const isObject = typeof item === 'object' && item !== null;
+    const existing = isObject
+      ? objects.find((entry) => deepEqual(entry.element, item))
+      : primitives.get(item);
     if (existing) {
       existing.count++;
     } else {
-      map.set(key, { element: item, count: 1 });
+      const entry = { element: item, count: 1 };
+      result.push(entry);
+      if (isObject) objects.push(entry);
+      else primitives.set(item, entry);
     }
   });
-  return Array.from(map.values());
+  return result;
 }

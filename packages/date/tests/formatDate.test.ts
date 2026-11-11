@@ -1,5 +1,5 @@
 import { formatDate } from '../src/formatDate';
-import { localDate, expectSameCalendarDay } from './dateTestUtils';
+import { localDate } from './dateTestUtils';
 
 /**
  * Unit tests for the formatDate function.

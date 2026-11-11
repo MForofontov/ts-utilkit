@@ -1,3 +1,4 @@
+import { decodeBase32 } from '../src/decodeBase32';
 import { encodeBase32 } from '../src/encodeBase32';
 
 describe('encodeBase32', () => {
@@ -67,12 +68,10 @@ describe('encodeBase32', () => {
 
   it('11. should encode UTF-8 multi-byte characters', () => {
     // Round-trip is the validation; exact value tested in decodeBase32
-    const { decodeBase32 } = require('../src/decodeBase32');
     expect(decodeBase32(encodeBase32('café'))).toBe('café');
   });
 
   it('12. should round-trip correctly with decodeBase32', () => {
-    const { decodeBase32 } = require('../src/decodeBase32');
     const inputs = [
       'hello',
       'f',

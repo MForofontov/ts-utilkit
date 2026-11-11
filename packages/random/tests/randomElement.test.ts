@@ -1,5 +1,4 @@
-import type { WeightedElement } from '../src/randomElement';
-import { randomElement } from '../src/randomElement';
+import { randomElement, type WeightedElement } from '../src/randomElement';
 
 /**
  * Unit tests for the randomElement function.

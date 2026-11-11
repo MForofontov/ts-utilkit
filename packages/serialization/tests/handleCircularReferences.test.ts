@@ -188,3 +188,33 @@ describe('handleCircularReferences', () => {
     expect(result.m).not.toBe(map);
   });
 });
+
+it('preserves repeated atomic class instances across branches and collections', () => {
+  class Value {
+    readonly id = 1;
+  }
+  const value = new Value();
+  const input = {
+    first: value,
+    second: value,
+    list: [value],
+    map: new Map([[value, value]]),
+    set: new Set([value]),
+  };
+  const result = handleCircularReferences(input) as typeof input;
+  expect(result.first).toBe(value);
+  expect(result.second).toBe(value);
+  expect(result.list[0]).toBe(value);
+  expect(result.map.get(value)).toBe(value);
+  expect(result.set.has(value)).toBe(true);
+});
+
+it('clones regular expressions without mutating the input', () => {
+  const value = /hello/giu;
+  value.lastIndex = 3;
+  const result = handleCircularReferences({ value }) as { value: RegExp };
+  expect(result.value).not.toBe(value);
+  expect(result.value.source).toBe(value.source);
+  expect(result.value.flags).toBe(value.flags);
+  expect(value.lastIndex).toBe(3);
+});

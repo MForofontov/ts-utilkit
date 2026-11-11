@@ -1,3 +1,4 @@
+import { calendarDate } from './_calendarDate';
 /**
  * Formats a date as an ISO 8601 week date string (YYYY-Www-D format).
  *
@@ -52,7 +53,7 @@ export function getISOWeekDate(date: Date): string {
   const tempDate = new Date(date.getTime());
   tempDate.setHours(0, 0, 0, 0);
   tempDate.setDate(tempDate.getDate() + 3 - ((tempDate.getDay() + 6) % 7));
-  const week1 = new Date(tempDate.getFullYear(), 0, 4);
+  const week1 = calendarDate(tempDate.getFullYear(), 0, 4);
   const weekNumber =
     Math.round(
       ((tempDate.getTime() - week1.getTime()) / 86400000 -

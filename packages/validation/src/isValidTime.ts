@@ -1,3 +1,14 @@
+const timePatterns = {
+  twentyFourHour: {
+    withSeconds: /^([0-1]?[0-9]|2[0-3]):([0-5]?[0-9]):([0-5]?[0-9])$/,
+    withoutSeconds: /^([0-1]?[0-9]|2[0-3]):([0-5]?[0-9])$/,
+  },
+  twelveHour: {
+    withSeconds: /^([1-9]|1[0-2]):([0-5]?[0-9]):([0-5]?[0-9]) (AM|PM)$/i,
+    withoutSeconds: /^([1-9]|1[0-2]):([0-5]?[0-9]) (AM|PM)$/i,
+  },
+};
+
 /**
  * Validates if a string is a valid time in HH:MM or HH:MM:SS format.
  *
@@ -37,95 +48,11 @@ export function isValidTime(
   format24Hour: boolean = true,
 ): boolean {
   const cleanTimeString = timeString.trim();
-  let hour: number;
-  let minute: number;
-  let second: number = 0;
-
-  if (format24Hour) {
-    // 24-hour format: HH:MM or HH:MM:SS
-    const patterns = {
-      withSeconds: /^([0-1]?[0-9]|2[0-3]):([0-5]?[0-9]):([0-5]?[0-9])$/,
-      withoutSeconds: /^([0-1]?[0-9]|2[0-3]):([0-5]?[0-9])$/,
-    };
-
-    let match;
-    if (allowSeconds) {
-      match =
-        cleanTimeString.match(patterns.withSeconds) ||
-        cleanTimeString.match(patterns.withoutSeconds);
-    } else {
-      match = cleanTimeString.match(patterns.withoutSeconds);
-      // If seconds are present but not allowed, return false
-      if (
-        cleanTimeString.includes(':') &&
-        cleanTimeString.split(':').length > 2
-      ) {
-        return false;
-      }
-    }
-
-    if (!match) {
-      return false;
-    }
-
-    hour = parseInt(match[1], 10);
-    minute = parseInt(match[2], 10);
-    if (match[3]) {
-      second = parseInt(match[3], 10);
-    }
-  } else {
-    // 12-hour format: H:MM AM/PM or H:MM:SS AM/PM
-    const patterns = {
-      withSeconds: /^([1-9]|1[0-2]):([0-5]?[0-9]):([0-5]?[0-9]) (AM|PM)$/i,
-      withoutSeconds: /^([1-9]|1[0-2]):([0-5]?[0-9]) (AM|PM)$/i,
-    };
-
-    let match;
-    if (allowSeconds) {
-      match =
-        cleanTimeString.match(patterns.withSeconds) ||
-        cleanTimeString.match(patterns.withoutSeconds);
-    } else {
-      match = cleanTimeString.match(patterns.withoutSeconds);
-      // If seconds are present but not allowed, return false
-      if (
-        cleanTimeString.includes(':') &&
-        cleanTimeString.split(' ')[0].split(':').length > 2
-      ) {
-        return false;
-      }
-    }
-
-    if (!match) {
-      return false;
-    }
-
-    hour = parseInt(match[1], 10);
-    minute = parseInt(match[2], 10);
-    if (match[3] && match[3] !== 'AM' && match[3] !== 'PM') {
-      second = parseInt(match[3], 10);
-    }
-
-    // Validate 12-hour format specific rules
-    if (hour < 1 || hour > 12) {
-      return false;
-    }
-  }
-
-  // Validate hour, minute, second ranges
-  if (format24Hour) {
-    if (hour < 0 || hour > 23) {
-      return false;
-    }
-  }
-
-  if (minute < 0 || minute > 59) {
-    return false;
-  }
-
-  if (second < 0 || second > 59) {
-    return false;
-  }
-
-  return true;
+  const patterns = format24Hour
+    ? timePatterns.twentyFourHour
+    : timePatterns.twelveHour;
+  return (
+    (allowSeconds && patterns.withSeconds.test(cleanTimeString)) ||
+    patterns.withoutSeconds.test(cleanTimeString)
+  );
 }

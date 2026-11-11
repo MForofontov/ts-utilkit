@@ -1,3 +1,4 @@
+import { encodeHex } from '../src/encodeHex';
 import { decodeHex } from '../src/decodeHex';
 
 describe('decodeHex', () => {
@@ -43,7 +44,6 @@ describe('decodeHex', () => {
   });
 
   it('11. should round-trip correctly with encodeHex', () => {
-    const { encodeHex } = require('../src/encodeHex');
     const inputs = ['hello', '', 'Hi!', 'café', '😀'];
     for (const input of inputs) {
       expect(decodeHex(encodeHex(input))).toBe(input);

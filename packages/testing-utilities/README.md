@@ -45,24 +45,18 @@ npm install --save-dev @ts-utilkit/testing-utilities
 ## Quick Example
 
 ```typescript
-import {
-  createFixture,
-  delay,
-  expectAsync,
-  createSpy,
-} from '@ts-utilkit/testing-utilities';
+import { generateTestArray, createSpy, waitForCondition } from '@ts-utilkit/testing-utilities';
 
-// Create test fixtures
-const user = createFixture({ name: 'John', age: 30 });
+const users = generateTestArray(2, (id) => ({ id, name: `User${id}` }));
+// [{ id: 0, name: 'User0' }, { id: 1, name: 'User1' }]
 
-// Delay in tests
-await delay(100);
+const spy = createSpy((...args: unknown[]) => args.length);
+spy('hello');
+spy.callCount; // 1
 
-// Async expectations
-await expectAsync(promise).toResolve();
-
-// Spy on function calls
-const spy = createSpy(fn);
+async function waitForCallback() {
+  await waitForCondition(() => spy.callCount > 0);
+}
 ```
 
 ## License

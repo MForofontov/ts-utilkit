@@ -23,7 +23,7 @@ export function requireEnv(key: string): string {
     throw new Error('key cannot be an empty string');
   }
 
-  const value = process.env[key];
+  const value = Object.hasOwn(process.env, key) ? process.env[key] : undefined;
 
   if (value === undefined || value === '') {
     throw new Error(`Required environment variable '${key}' is not set`);

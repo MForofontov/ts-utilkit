@@ -43,6 +43,7 @@
  * @note Earlier invocations are cancelled, not queued (only the last call executes).
  * @note Superseded invocations reject with an `AbortError` so callers are not left pending.
  * @note Returns a Promise that resolves with the result of the async function.
+ * @note Both synchronous throws and asynchronous failures reject the returned Promise.
  *
  * @complexity Time: O(1) per invocation, Space: O(1)
  */
@@ -71,7 +72,12 @@ export function debounceAsync<Args extends unknown[], R>(
       timeoutId = setTimeout(() => {
         rejectPending = undefined;
         timeoutId = undefined;
-        void func(...args).then(resolve, reject);
+        try {
+          void func(...args).then(resolve, reject);
+        } catch (error) {
+          // eslint-disable-next-line @typescript-eslint/prefer-promise-reject-errors -- Preserve the original thrown value, including non-Error reasons
+          reject(error);
+        }
       }, wait);
     });
 }

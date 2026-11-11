@@ -83,9 +83,9 @@ describe('testPattern', () => {
     // 30 'a' characters with no trailing 'b', naive backtracking is super-exponential.
     // vm.runInContext uses V8's hard script execution timer to truly interrupt it.
     const evil = 'a'.repeat(30);
-    expect(() =>
-      testPattern(evil, '(a+)+b', { timeout: 200 }),
-    ).toThrow('Pattern test exceeded timeout of 200ms');
+    expect(() => testPattern(evil, '(a+)+b', { timeout: 200 })).toThrow(
+      'Pattern test exceeded timeout of 200ms',
+    );
   }, 10000);
 
   // Error cases

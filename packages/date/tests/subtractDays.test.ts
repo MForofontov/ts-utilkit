@@ -71,5 +71,9 @@ describe('subtractDays', () => {
     expect(() => subtractDays(new Date('invalid'), 5)).toThrow('Invalid date');
   });
 
-  it('12. should throw Error when days is NaN', () => {});
+  it('12. should throw Error when days is NaN', () => {
+    expect(() => subtractDays(new Date(2026, 0, 1), NaN)).toThrow(
+      'Days must be a number',
+    );
+  });
 });

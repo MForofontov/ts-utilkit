@@ -4,6 +4,20 @@ import { isValidTime } from '../src/isValidTime';
  * Unit tests for the isValidTime function.
  */
 describe('isValidTime', () => {
+  it.each<[string, boolean, boolean, boolean]>([
+    ['1:2', false, true, true],
+    ['1:2:3', true, true, true],
+    ['1:2:3', false, true, false],
+    ['1:2 pm', false, false, true],
+    ['1:2:3 aM', true, false, true],
+    ['1:2:3 PM', false, false, false],
+    ['0:00 AM', true, false, false],
+    ['13:00 PM', true, false, false],
+    ['\n12:59:59 PM\t', true, false, true],
+  ])('retains time format rules for %s', (text, seconds, hours24, expected) => {
+    expect(isValidTime(text, seconds, hours24)).toBe(expected);
+  });
+
   // Test case 1: Valid 24-hour format times
   it('1. should return true for valid 24-hour format times', () => {
     expect(isValidTime('14:30')).toBe(true);

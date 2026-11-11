@@ -1,3 +1,5 @@
+import { setOwn } from './_setOwn';
+
 /**
  * Creates a deep clone of an object while customizing how individual values are cloned.
  *
@@ -64,7 +66,7 @@ export function deepCloneWith<T>(
     if (value && typeof value === 'object') {
       return Reflect.ownKeys(value).reduce<Record<PropertyKey, unknown>>(
         (acc, k) => {
-          acc[k] = clone((value as Record<PropertyKey, unknown>)[k]);
+          setOwn(acc, k, clone((value as Record<PropertyKey, unknown>)[k]));
           return acc;
         },
         {},

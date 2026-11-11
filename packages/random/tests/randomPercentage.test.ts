@@ -55,31 +55,25 @@ describe('randomPercentage', () => {
   });
 
   // Test case 7: Can produce 0
-  it('7. should occasionally produce 0', () => {
-    let hasZero = false;
-
-    for (let i = 0; i < 1000; i++) {
-      if (randomPercentage(0) === 0) {
-        hasZero = true;
-        break;
-      }
+  it('7. should produce 0 at the lower random boundary', () => {
+    const random = jest.spyOn(Math, 'random').mockReturnValue(0);
+    try {
+      expect(randomPercentage(0)).toBe(0);
+    } finally {
+      random.mockRestore();
     }
-
-    expect(hasZero).toBe(true);
   });
 
   // Test case 8: Can produce 100
-  it('8. should occasionally produce 100', () => {
-    let has100 = false;
-
-    for (let i = 0; i < 1000; i++) {
-      if (randomPercentage(0) === 100) {
-        has100 = true;
-        break;
-      }
+  it('8. should round to 100 near the upper random boundary', () => {
+    const random = jest
+      .spyOn(Math, 'random')
+      .mockReturnValue(1 - Number.EPSILON);
+    try {
+      expect(randomPercentage(0)).toBe(100);
+    } finally {
+      random.mockRestore();
     }
-
-    expect(has100).toBe(true);
   });
 
   // Test case 9: High precision (10 decimals)

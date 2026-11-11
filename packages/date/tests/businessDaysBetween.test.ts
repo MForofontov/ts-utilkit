@@ -119,3 +119,19 @@ describe('businessDaysBetween', () => {
     expect(businessDaysBetween(start, end)).toBe(2);
   });
 });
+
+it('counts the actual weekday in literal year zero and preserves inputs', () => {
+  const start = new Date(2000, 0, 3, 12);
+  start.setFullYear(0); // Monday
+  const end = new Date(start);
+  end.setHours(15);
+  expect(businessDaysBetween(start, end)).toBe(1);
+  expect(start.getHours()).toBe(12);
+  expect(end.getHours()).toBe(15);
+});
+
+it('does not reinterpret a Saturday in year zero as a weekday in 1900', () => {
+  const input = new Date(2000, 0, 1, 12);
+  input.setFullYear(0);
+  expect(businessDaysBetween(input, input)).toBe(0);
+});

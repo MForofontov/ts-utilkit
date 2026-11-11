@@ -34,7 +34,7 @@ export function getQueryParams(url: string): Record<string, string | string[]> {
 
   // Iterate through all search parameters
   parsed.searchParams.forEach((value, key) => {
-    if (params[key]) {
+    if (Object.hasOwn(params, key)) {
       // Parameter already exists
       if (Array.isArray(params[key])) {
         // Already an array, add to it
@@ -45,7 +45,12 @@ export function getQueryParams(url: string): Record<string, string | string[]> {
       }
     } else {
       // First occurrence of this parameter
-      params[key] = value;
+      Object.defineProperty(params, key, {
+        value,
+        enumerable: true,
+        configurable: true,
+        writable: true,
+      });
     }
   });
 

@@ -26,6 +26,6 @@ export function getEnv(key: string, defaultValue?: string): string | undefined {
     throw new Error('key cannot be an empty string');
   }
 
-  const value = process.env[key];
+  const value = Object.hasOwn(process.env, key) ? process.env[key] : undefined;
   return value !== undefined ? value : defaultValue;
 }

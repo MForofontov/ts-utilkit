@@ -76,5 +76,7 @@ describe('radiansToDegrees', () => {
   // Test case 10: Convert NaN to degrees (should throw an error)
   it('10. should throw an error for NaN input', () => {
     const radians: number = NaN;
+
+    expect(() => radiansToDegrees(radians)).toThrow('Radians must be a number');
   });
 });

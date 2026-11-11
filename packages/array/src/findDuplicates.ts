@@ -1,6 +1,8 @@
 import { deepEqual } from '@ts-utilkit/object';
 
-function isPrimitiveKeyable(value: unknown): boolean {
+type KeyablePrimitive = string | number | boolean | bigint | null | undefined;
+
+function isPrimitiveKeyable(value: unknown): value is KeyablePrimitive {
   const type = typeof value;
   return (
     value === null ||
@@ -12,7 +14,7 @@ function isPrimitiveKeyable(value: unknown): boolean {
   );
 }
 
-function primitiveKey(value: unknown): string {
+function primitiveKey(value: KeyablePrimitive): string {
   if (value === undefined) return '__undefined__';
   if (value === null) return '__null__';
   if (typeof value === 'number' && Number.isNaN(value)) return '__nan__';
@@ -52,13 +54,15 @@ function primitiveKey(value: unknown): string {
 export function findDuplicates<T>(arr: T[]): T[] {
   const duplicates: T[] = [];
   const primitiveSeen = new Map<string, T>();
+  const primitiveEmitted = new Set<string>();
   const objectSeen: T[] = [];
 
   for (const item of arr) {
     if (isPrimitiveKeyable(item)) {
       const key = primitiveKey(item);
       if (primitiveSeen.has(key)) {
-        if (!duplicates.some((duplicate) => deepEqual(duplicate, item))) {
+        if (!primitiveEmitted.has(key)) {
+          primitiveEmitted.add(key);
           duplicates.push(item);
         }
       } else {

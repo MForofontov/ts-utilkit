@@ -1,3 +1,5 @@
+import { setOwn } from './_setOwn';
+
 /**
  * Returns a new object with all keys transformed by a given function,
  * while keeping values unchanged.
@@ -35,7 +37,7 @@ export function transformKeys(
   const result: Record<string, unknown> = {};
   for (const key of Object.keys(obj)) {
     const newKey = fn(key);
-    result[newKey] = obj[key];
+    setOwn(result, newKey, obj[key]);
   }
   return result;
 }

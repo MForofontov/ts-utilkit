@@ -8,7 +8,7 @@
  *
  * @throws {Error} If input is empty.
  * @throws {Error} If input format is invalid.
- * @throws {Error} If the numeric value is negative or NaN.
+ * @throws {Error} If the numeric value is negative or malformed.
  * @throws {Error} If the unit is not recognized.
  *
  * @example
@@ -34,7 +34,7 @@
  * @note Units are case-insensitive. Whitespace between number and unit is optional.
  * Binary mode (default) uses 1024 multiplier, decimal mode uses 1000.
  *
- * @complexity Time: O(1), Space: O(1)
+ * @complexity Time: O(n), Space: O(n) where n is input length
  */
 export function parseDataSize(input: string, binary: boolean = true): number {
   // Input validation
@@ -51,7 +51,7 @@ export function parseDataSize(input: string, binary: boolean = true): number {
     );
   }
 
-  const numericValue = parseFloat(match[1]);
+  const numericValue = Number(match[1]);
   const unit = match[2].toUpperCase();
 
   if (isNaN(numericValue)) {
@@ -75,7 +75,7 @@ export function parseDataSize(input: string, binary: boolean = true): number {
     YB: multiplier ** 8,
   };
 
-  if (!(unit in units)) {
+  if (!Object.hasOwn(units, unit)) {
     throw new Error(
       `Unrecognized unit: "${unit}" (valid units: B, KB, MB, GB, TB, PB, EB, ZB, YB)`,
     );

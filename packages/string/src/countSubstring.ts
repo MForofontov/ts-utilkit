@@ -33,15 +33,25 @@
  *
  * @note Counting is case-sensitive.
  * @note Counts non-overlapping occurrences only.
- * @note Handles special regex characters by escaping them.
+ * @note Searches literally, including regex metacharacters and UTF-16 code units.
  * @note Returns 0 if substring is empty or not found.
  *
- * @complexity Time: O(n), Space: O(1) where n is the length of the string
+ * @complexity Time: O(n), Space: O(n) where n is the length of the string
  */
 import { escapeRegex } from './escapeRegex';
 
 export function countSubstring(str: string, substring: string): number {
   if (substring.length === 0) return 0;
-  const escapedSubstring = escapeRegex(substring);
-  return (str.match(new RegExp(escapedSubstring, 'g')) || []).length;
+  // Dense long inputs are faster with V8's native global matcher. The literal
+  // loop avoids regex construction and match allocation on short strings.
+  if (str.length > 256) {
+    return (str.match(new RegExp(escapeRegex(substring), 'g')) || []).length;
+  }
+  let count = 0;
+  let position = str.indexOf(substring);
+  while (position !== -1) {
+    count++;
+    position = str.indexOf(substring, position + substring.length);
+  }
+  return count;
 }

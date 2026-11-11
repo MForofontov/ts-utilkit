@@ -29,7 +29,9 @@ export interface WeightedElement<T> {
  * ];
  * randomElement(items); // { value: 'common', weight: 70, metadata: {...} }
  *
- * @complexity Time: O(n), Space: O(1) where n is number of elements
+ * @note Finite overflowing or subnormal totals are scaled to retain relative weights.
+ * Zero-weight entries are excluded, including floating-point fallback selection.
+ * @complexity Time: O(n), Space: O(n) where n is number of elements
  */
 export function randomElement<T>(
   elements: WeightedElement<T>[],

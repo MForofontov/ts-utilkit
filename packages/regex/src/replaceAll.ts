@@ -58,5 +58,7 @@ export function replaceAll(
     );
   }
 
-  return text.replace(regex, replacement as any);
+  return typeof replacement === 'string'
+    ? text.replace(regex, replacement)
+    : text.replace(regex, replacement);
 }

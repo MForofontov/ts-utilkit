@@ -44,7 +44,7 @@ export function validateConfig<T extends Record<string, any>>(
 /**
  * Helper function to get nested value using dot notation.
  */
-function getNestedValue(obj: any, path: string): any {
+function getNestedValue(obj: unknown, path: string): unknown {
   const keys = path.split('.');
   let current = obj;
 
@@ -56,7 +56,7 @@ function getNestedValue(obj: any, path: string): any {
     ) {
       return undefined;
     }
-    current = current[key];
+    current = (current as Record<string, unknown>)[key];
   }
 
   return current;

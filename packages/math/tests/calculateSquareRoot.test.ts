@@ -63,5 +63,7 @@ describe('calculateSquareRoot', () => {
   // Test case 8: Square root of NaN (should throw an error)
   it('8. should throw an error for NaN input', () => {
     const input: number = NaN;
+
+    expect(() => calculateSquareRoot(input)).toThrow('Input must be a number');
   });
 });

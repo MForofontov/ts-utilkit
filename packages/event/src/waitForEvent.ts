@@ -132,7 +132,7 @@ export function waitForEvent<T = unknown>(
       ).on(eventName, listener);
     }
 
-    if (timeout !== undefined) {
+    if (timeout !== undefined && !resolved) {
       timeoutId = setTimeout(() => {
         if (resolved) return;
         resolved = true;

@@ -72,7 +72,12 @@ export function cloneTestData<T>(data: T): T {
   const cloned: Record<string, unknown> = {};
   for (const key in data) {
     if (Object.prototype.hasOwnProperty.call(data, key)) {
-      cloned[key] = cloneTestData((data as Record<string, unknown>)[key]);
+      Object.defineProperty(cloned, key, {
+        value: cloneTestData((data as Record<string, unknown>)[key]),
+        enumerable: true,
+        configurable: true,
+        writable: true,
+      });
     }
   }
 

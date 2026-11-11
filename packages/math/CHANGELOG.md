@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.2] - 2026-11-02
+
+- Avoid intermediate overflow for finite inputs in `lerp`, `normalizeValue`, and `mapRange`; retain ordinary arithmetic, unclamped extrapolation, validation messages, and degenerate/non-finite behavior.
+- Handle large distinct-value inputs in calculateMode without spread-call limits; add assertions to previously vacuous numeric validation tests.
+- Keep the deprecated `calculateBinomialCoefficient` alias equivalent to `calculateCombination`, including overflow-safe results.
+- Avoid intermediate factorial overflow in combinations and permutations; preserve previous finite factorial ratios, cache at most 171 factorial values, and clarify numeric precision limits.
+- Avoid intermediate overflow/underflow in distance helpers, stack overflow in factorial, and argument limits in calculateRange.
+
 ### Changed
 
 - Second-pass audit: re-verified statistical and recursive helpers; first-audit guards confirmed.

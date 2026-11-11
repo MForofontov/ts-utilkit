@@ -48,7 +48,7 @@ export function extractMatches(
         const currentFlags = pattern.flags;
         regex = new RegExp(pattern.source, currentFlags + 'g');
       } else {
-        regex = pattern;
+        regex = new RegExp(pattern.source, pattern.flags);
       }
     }
   } catch {
@@ -58,9 +58,7 @@ export function extractMatches(
   }
 
   const matches: string[] = [];
-  let match: RegExpExecArray | null;
-
-  while ((match = regex.exec(text)) !== null) {
+  for (const match of text.matchAll(regex)) {
     matches.push(match[0]);
   }
 

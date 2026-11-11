@@ -173,3 +173,48 @@ describe('asyncRetry', () => {
     ).toThrow("backoff must be 'fixed', 'linear', or 'exponential'");
   });
 });
+
+it.each([NaN, 1.5])(
+  'rejects invalid attempt count %s before invoking the callback',
+  (maxAttempts) => {
+    const fn = jest.fn(() => Promise.resolve(1));
+    expect(() => {
+      const pending = asyncRetry(fn, { maxAttempts });
+      void pending.catch(() => undefined);
+    }).toThrow('maxAttempts');
+    expect(fn).not.toHaveBeenCalled();
+  },
+);
+it('rejects a NaN retry delay before invoking the callback', () => {
+  const fn = jest.fn(() => Promise.resolve(1));
+  expect(() => asyncRetry(fn, { delay: NaN })).toThrow('delay');
+  expect(fn).not.toHaveBeenCalled();
+});
+
+it('retains Infinity attempts and caps oversized delays with deterministic timers', async () => {
+  jest.useFakeTimers();
+  try {
+    const error = new Error('retry');
+    const fn = jest
+      .fn<Promise<number>, []>()
+      .mockRejectedValueOnce(error)
+      .mockResolvedValue(42);
+    const onRetry = jest.fn();
+    const pending = asyncRetry(fn, {
+      maxAttempts: Infinity,
+      delay: Infinity,
+      onRetry,
+    });
+    await Promise.resolve();
+    expect(fn).toHaveBeenCalledTimes(1);
+    expect(onRetry).toHaveBeenCalledWith(1, error);
+    await jest.advanceTimersByTimeAsync(2147483646);
+    expect(fn).toHaveBeenCalledTimes(1);
+    await jest.advanceTimersByTimeAsync(1);
+    await expect(pending).resolves.toBe(42);
+    expect(jest.getTimerCount()).toBe(0);
+  } finally {
+    jest.clearAllTimers();
+    jest.useRealTimers();
+  }
+});

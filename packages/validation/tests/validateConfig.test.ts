@@ -88,8 +88,8 @@ describe('validateConfig', () => {
   });
 
   it('13. should throw Error when config is null', () => {
-    expect(() => validateConfig(null as unknown as Record<string, unknown>, [])).toThrow(
-      'config must be a non-null object',
-    );
+    expect(() =>
+      validateConfig(null as unknown as Record<string, unknown>, []),
+    ).toThrow('config must be a non-null object');
   });
 });

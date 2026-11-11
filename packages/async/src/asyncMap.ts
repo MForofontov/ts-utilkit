@@ -58,6 +58,12 @@ export function asyncMap<T, R>(
     throw new Error(`concurrency must be at least 1, got ${actualConcurrency}`);
   }
 
+  if (actualConcurrency !== Infinity && !Number.isInteger(actualConcurrency)) {
+    throw new Error(
+      `concurrency must be a positive integer or Infinity, got ${actualConcurrency}`,
+    );
+  }
+
   // After validation, return the async implementation
   return (async () => {
     if (array.length === 0) {

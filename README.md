@@ -11,10 +11,10 @@ A collection of **TypeScript utility functions** organized into specialized pack
 
 ## ✨ Features
 
-- 🎯 **~500 Functions**: Utilities across array, async, crypto, date, math, object, string, result, path, and more
+- 🎯 **516 Runtime Exports**: Utilities across array, async, crypto, date, math, object, string, result, path, and more
 - 🔒 **Type Safe**: Full TypeScript support with strict type checking
 - 📝 **Well Documented**: JSDoc comments with examples and complexity notes
-- 🧪 **Extensively Tested**: ~500 Jest test files with high code coverage
+- 🧪 **Extensively Tested**: ~550 Jest test files with high code coverage
 - 📦 **Tree Shakeable**: Import only what you need from scoped packages
 - 🛡️ **Input Validation**: Descriptive errors where runtime checks apply
 - ⚖️ **MIT Licensed**: Free for personal and commercial use
@@ -70,7 +70,7 @@ Ensure your `tsconfig.json` includes:
 
 ## ⚡ Quick Start
 
-Import from scoped packages for optimal tree-shaking:
+Import from scoped packages to limit dependencies:
 
 ```typescript
 import { chunkArray } from '@ts-utilkit/array';
@@ -89,7 +89,7 @@ const slug = slugify('Hello World!'); // 'hello-world'
 
 ## Packages Overview
 
-This library provides utility functions organized into **23 specialized packages**. Each package is independently installable and fully tree-shakeable.
+This library provides utility functions organized into **23 specialized packages**. Each package is independently installable and ships TypeScript declarations.
 
 | Package                           | Description                                                 | Documentation                                            |
 | --------------------------------- | ----------------------------------------------------------- | -------------------------------------------------------- |
@@ -121,40 +121,50 @@ This library provides utility functions organized into **23 specialized packages
 
 ## 📊 Function Summary
 
-Quick reference of functions by category:
+There are **516 public runtime exports** across 23 packages, including functions,
+classes, and constants. Type-only exports are excluded. Reproduce the inventory
+with `npm run audit:exports`.
 
-| Category          | Function Count | Key Functions                                                                                |
-| ----------------- | -------------- | -------------------------------------------------------------------------------------------- |
-| **Array**         | 26             | `chunkArray`, `findDuplicates`, `groupBy`, `flattenArray`, `sortBy`                          |
-| **Async**         | 6              | `asyncRetry`, `asyncTimeout`, `asyncParallel`, `asyncSeries`, `asyncMap`                     |
-| **Collection**    | 17             | `setUnion`, `setIntersection`, `mapToObject`, `setDifference`, `mapMerge`                    |
-| **Configuration** | 12             | `getEnv`, `parseEnvInt`, `parseEnvBoolean`, `loadEnvFile`, `validateConfig`                  |
-| **Crypto**        | 11             | `hashSHA256`, `hashPassword`, `encryptAES256`, `generateHMAC`, `compareHash`                 |
-| **Date**          | 31             | `addDays`, `formatDate`, `daysBetween`, `isLeapYear`, `getQuarter`                           |
-| **Encoding**      | 2              | `encodeBase64`, `decodeBase64`                                                               |
-| **Event**         | 7              | `EventEmitter`, `createEventBus`, `debounceEvent`, `throttleEvent`, `waitForEvent`           |
-| **Format**        | 8              | `formatNumber`, `formatCurrency`, `formatBytes`, `formatDuration`, `formatPlural`            |
-| **Math**          | 56             | `calculateStandardDeviation`, `isPrime`, `calculateHaversineDistance`, `factorial`, `median` |
-| **Network**       | 18             | `parseURL`, `addQueryParams`, `isValidURL`, `normalizeURL`, `extractDomain`                  |
-| **Object**        | 39             | `deepMerge`, `safeGet`, `flattenObject`, `pickKeys`, `deepClone`                             |
-| **Parsing**       | 7              | `parseCSV`, `parseINI`, `parseQueryString`, `parseUserAgent`, `parseMarkdown`                |
-| **Random**        | 25             | `randomInt`, `randomElement`, `randomUUID`, `randomHex`, `randomShuffle`                     |
-| **Regex**         | 15             | `extractEmails`, `extractURLs`, `escapeRegex`, `matchAll`, `removeHTML`                      |
-| **Serialization** | 18             | `serializeToJSON`, `deserializeFromJSON`, `handleCircularReferences`, `deepClone`            |
-| **String**        | 51             | `slugify`, `capitalizeEachWord`, `isPalindrome`, `toKebabCase`, `truncateString`             |
-| **Testing**       | 21             | `generateRandomString`, `generateRandomEmail`, `assertArraysEqual`, `runPerformanceTest`     |
-| **Utility**       | 9              | `debounce`, `throttle`, `delay`, `hexToRgb`, `bytesToSize`                                   |
-| **Validation**    | 13             | `isValidIPv4`, `isValidUUID`, `isValidJSON`, `isInRange`, `isValidCreditCard`                |
-| **Webscraping**   | 16             | `extractLinks`, `extractMetaTags`, `extractEmails`, `fetchHTML`, `parseHTML`                 |
+| Package               | Runtime exports | Examples                                                                                                               |
+| --------------------- | --------------: | ---------------------------------------------------------------------------------------------------------------------- |
+| **array**             |              35 | `arrayDifference`, `arrayIntersection`, `cartesianProduct`, `chunkArray`, `countBy`                                    |
+| **async**             |              13 | `asyncBatch`, `asyncDeduplication`, `asyncFilter`, `asyncMap`, `asyncMapSettled`                                       |
+| **collection**        |              19 | `arrayToSet`, `createCounterMap`, `createMultiMap`, `isDisjoint`, `isSubset`                                           |
+| **crypto**            |              11 | `compareHash`, `decryptAES256`, `encryptAES256`, `generateHMAC`, `generateRandomBytes`                                 |
+| **date**              |              51 | `addDays`, `addBusinessDays`, `addHours`, `addMinutes`, `addMonths`                                                    |
+| **encoding**          |               8 | `decodeBase32`, `decodeBase64`, `decodeBase64URL`, `decodeHex`, `encodeBase32`                                         |
+| **env**               |              11 | `getEnv`, `hasEnv`, `requireEnv`, `requireEnvAll`, `parseEnvArray`                                                     |
+| **event**             |               7 | `EventEmitter`, `createEventBus`, `debounceEvent`, `delegateEvent`, `onceEvent`                                        |
+| **format**            |              11 | `formatBytes`, `formatCurrency`, `formatDuration`, `formatList`, `formatNumber`                                        |
+| **math**              |              65 | `calculateCubeRoot`, `calculateLogarithm`, `calculateSquareRoot`, `calculatePercentage`, `ceilValue`                   |
+| **network**           |              22 | `addQueryParams`, `buildURL`, `decodeURLComponent`, `encodeURLComponent`, `extractDomain`                              |
+| **object**            |              44 | `applyDefaults`, `compactObject`, `countProperties`, `deepClone`, `deepCloneWith`                                      |
+| **parsing**           |               8 | `parseCSVLine`, `parseDataSize`, `parseDuration`, `parseEnvFile`, `parseHTTPHeaders`                                   |
+| **path**              |              10 | `joinPath`, `normalizePath`, `basename`, `dirname`, `extname`                                                          |
+| **random**            |              27 | `loremIpsum`, `randomBase64`, `randomBetween`, `randomBoolean`, `randomChoice`                                         |
+| **regex**             |              18 | `buildPattern`, `PatternBuilder`, `combinePatterns`, `getCommonPattern`, `testCommonPattern`                           |
+| **result**            |              13 | `ok`, `err`, `isOk`, `isErr`, `map`                                                                                    |
+| **serialization**     |              18 | `cloneViaSerialization`, `deserializeFromBinary`, `deserializeFromBuffer`, `deserializeFromCSV`, `deserializeFromJSON` |
+| **string**            |              59 | `areAnagrams`, `capitalizeEachWord`, `capitalizeFirstLetter`, `capitalizeNthLetter`, `countCharacterOccurrences`       |
+| **testing-utilities** |              21 | `assertArraysEqual`, `cloneTestData`, `createSpy`, `generateRandomBoolean`, `generateRandomDate`                       |
+| **utility**           |              15 | `bytesToSize`, `compose`, `debounce`, `debounceAsync`, `delay`                                                         |
+| **validation**        |              14 | `isInRange`, `isValidCreditCard`, `isValidHexColor`, `isValidIPv4`, `isValidIPv6`                                      |
+| **webscraping**       |              16 | `extractComments`, `extractEmails`, `extractHeaders`, `extractImages`, `extractLinks`                                  |
 
-**Total: ~500 exported symbols** across 23 specialized packages
+See [KNOWN_ISSUES.md](KNOWN_ISSUES.md) for limitations,
+[AUDIT.md](AUDIT.md) for validation results, and
+[FUNCTION_IDEAS.md](FUNCTION_IDEAS.md) for the eleven added functions.
 
 ## 💡 Usage Examples
 
 ### Array Operations
 
 ```typescript
-import { chunkArray, findDuplicates, cartesianProduct } from '@ts-utilkit/array';
+import {
+  chunkArray,
+  findDuplicates,
+  cartesianProduct,
+} from '@ts-utilkit/array';
 
 // Split array into chunks
 const data = [1, 2, 3, 4, 5, 6, 7, 8];
@@ -260,7 +270,11 @@ const isPalin = isPalindrome('A man a plan a canal Panama'); // true
 ### Validation
 
 ```typescript
-import { isValidIPv4, isValidUUID, isValidMACAddress } from '@ts-utilkit/validation';
+import {
+  isValidIPv4,
+  isValidUUID,
+  isValidMACAddress,
+} from '@ts-utilkit/validation';
 
 // Network validation
 const isValidIP = isValidIPv4('192.168.1.1'); // true

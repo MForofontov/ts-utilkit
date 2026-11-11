@@ -6,7 +6,16 @@ import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
   {
-    ignores: ['eslint.config.mjs', 'node_modules/**', 'dist/**', 'coverage/**', 'scripts/**/*.js', '**/*.js'],
+    ignores: [
+      'eslint.config.mjs',
+      'node_modules/**',
+      '**/dist/**',
+      '**/coverage/**',
+      'local-testing/**',
+      'scripts/**/*.js',
+      '**/*.js',
+      '**/*.cjs',
+    ],
   },
   eslint.configs.recommended,
   ...tseslint.configs.recommendedTypeChecked,
@@ -21,7 +30,7 @@ export default tseslint.config(
       ecmaVersion: 2024,
       sourceType: 'module',
       parserOptions: {
-        project: ['./tsconfig.json', './tsconfig.test.json'],
+        project: ['./tsconfig.eslint.json'],
         tsconfigRootDir: import.meta.dirname,
       },
     },
@@ -29,11 +38,14 @@ export default tseslint.config(
   {
     rules: {
       // Let Prettier handle all formatting
-      'prettier/prettier': ['error', {
-        singleQuote: true,
-        tabWidth: 2
-      }],
-      
+      'prettier/prettier': [
+        'error',
+        {
+          singleQuote: true,
+          tabWidth: 2,
+        },
+      ],
+
       // Warn on use of console.log, console.error, etc.
       'no-console': 'warn',
 
@@ -44,7 +56,10 @@ export default tseslint.config(
       '@typescript-eslint/no-explicit-any': 'warn',
 
       // Warn on unused variables, but ignore arguments that start with '_'
-      '@typescript-eslint/no-unused-vars': ['warn', { 'argsIgnorePattern': '^_' }],
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        { argsIgnorePattern: '^_' },
+      ],
 
       // Warn if a Promise is created but not handled (avoids unhandled async bugs)
       '@typescript-eslint/no-floating-promises': 'warn',

@@ -38,7 +38,12 @@ export function mapToObject<V>(
         `Map keys must be strings or symbols for object conversion, got ${typeof key}`,
       );
     }
-    result[key] = value;
+    Object.defineProperty(result, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    });
   }
 
   return result;

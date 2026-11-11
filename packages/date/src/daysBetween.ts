@@ -34,7 +34,7 @@
  *
  * @note Always provide date1 as the earlier date and date2 as the later date.
  * @note Returns the number of whole days (fractional days are floored).
- * @note The calculation ignores time components (hours, minutes, seconds).
+ * @note Counts elapsed complete 24-hour periods; time components and DST affect the result.
  * @note For negative time spans, the function throws an error instead of returning negative values.
  * @note Useful for calculating date ranges, age calculations, and duration measurements.
  *

@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.1] - 2026-11-02
+
+- Prevent non-advancing and infinite-endpoint loops in `randomFromRange`; retain repeated floating-point addition, finite singleton results, and positive infinite steps.
+- Preserve weighted probabilities when finite totals overflow or are subnormal; exclude zero weights from the rounding fallback in `randomWeighted` and `randomElement`.
+- Correct `randomChoice` documentation and `randomElement` auxiliary-space complexity.
+- Replace probabilistic percentage endpoint assertions with deterministic random-boundary checks.
+
 ## [0.3.0] - 2026-08-04
 
 ### Fixed

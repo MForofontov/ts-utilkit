@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.1] - 2026-11-02
+
+- Narrow internal configuration traversal to unknown without changing presence validation or public signatures.
+- Reuse private time regexes and remove redundant range checks already enforced by them, preserving accepted formats and mode switches.
+- Validate ISO years 0000–0099 without the Date constructor 1900-year offset.
+
 ## [0.3.0] - 2026-08-04
 
 ### Fixed

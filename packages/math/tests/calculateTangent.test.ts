@@ -77,5 +77,7 @@ describe('calculateTangent', () => {
   // Test case 10: Tangent of NaN (should throw an error)
   it('10. should throw an error for NaN input', () => {
     const degrees: number = NaN;
+
+    expect(() => calculateTangent(degrees)).toThrow('Degrees must be a number');
   });
 });

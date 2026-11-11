@@ -33,6 +33,8 @@
  *
  * @note The function rounds to the specified number of decimal places.
  * Supports negative numbers with proper sign placement.
+ * Large finite values are expanded to grouped decimal notation. NaN and
+ * infinities use their standard string representations without decimal suffixes.
  *
  * @complexity Time: O(n), Space: O(n) - Where n is the number of digits
  */
@@ -58,18 +60,32 @@ export function formatNumber(
     );
   }
 
+  if (!Number.isFinite(value)) return value.toFixed(decimals);
+
   // Handle sign
   const isNegative = value < 0;
   const absoluteValue = Math.abs(value);
 
   // Round to specified decimals
   const factor = Math.pow(10, decimals);
-  const rounded = Math.round(absoluteValue * factor) / factor;
+  // Numbers this large have no representable fractional component. Scaling
+  // them can overflow even though the original number is finite.
+  const rounded =
+    absoluteValue >= 1e21
+      ? absoluteValue
+      : Math.round(absoluteValue * factor) / factor;
 
   // Split into integer and decimal parts
-  const parts = rounded.toFixed(decimals).split('.');
-  const integerPart = parts[0];
-  const decimalPart = parts[1];
+  const fixed = rounded.toFixed(decimals);
+  const parts = fixed.split('.');
+  let integerPart = parts[0];
+  let decimalPart = parts[1];
+  if (fixed.includes('e+')) {
+    const [coefficient, exponent] = fixed.split('e+');
+    const digits = coefficient.replace('.', '');
+    integerPart = digits + '0'.repeat(Number(exponent) + 1 - digits.length);
+    decimalPart = '0'.repeat(decimals);
+  }
 
   // Add thousands separators
   const formattedInteger = integerPart.replace(

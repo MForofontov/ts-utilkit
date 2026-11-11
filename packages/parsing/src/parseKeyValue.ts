@@ -59,13 +59,20 @@ export function parseKeyValue(
     }
 
     const key = trimmedPair.substring(0, delimiterIndex).trim();
-    const value = trimmedPair.substring(delimiterIndex + 1).trim();
+    const value = trimmedPair
+      .substring(delimiterIndex + keyValueDelimiter.length)
+      .trim();
 
     if (key.length === 0) {
       throw new Error(`Invalid key-value pair: "${trimmedPair}" (empty key)`);
     }
 
-    result[key] = value;
+    Object.defineProperty(result, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    });
   }
 
   return result;

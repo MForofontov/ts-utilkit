@@ -130,3 +130,63 @@ describe('normalizeURL', () => {
     expect(() => normalizeURL('not a valid url')).toThrow('Invalid URL');
   });
 });
+
+it.each([true, false])(
+  'retains non-empty repeated values when sorting=%s',
+  (sortQueryParams) => {
+    const result = normalizeURL(
+      'https://example.com/?b=3&a=&a=one&b=&a=two&a=',
+      { sortQueryParams },
+    );
+    expect(result).toBe(
+      sortQueryParams
+        ? 'https://example.com/?a=one&a=two&b=3'
+        : 'https://example.com/?b=3&a=one&a=two',
+    );
+  },
+);
+
+it.each([true, false])(
+  'preserves stable Unicode query ordering with removeEmptyParams=%s',
+  (removeEmptyParams) => {
+    const params = new URLSearchParams();
+    const keys = [
+      'z',
+      '😀',
+      'A',
+      'é',
+      'a',
+      '𐀀',
+      '__proto__',
+      'constructor',
+      'é',
+    ];
+    for (const key of keys) {
+      params.append(key, 'first');
+      params.append(key, '');
+      params.append(key, 'last');
+    }
+    const original = Array.from(params);
+    const expected = original
+      .filter(([, value]) => !removeEmptyParams || value !== '')
+      .sort(([a], [b]) => (a < b ? -1 : a > b ? 1 : 0));
+    const result = normalizeURL(
+      'https://example.com/path/?' + params.toString() + '#part',
+      { removeEmptyParams },
+    );
+    expect(Array.from(new URL(result).searchParams)).toEqual(expected);
+    expect(normalizeURL(result, { removeEmptyParams })).toBe(result);
+    expect(new URL(result).hash).toBe('#part');
+  },
+);
+
+it.each([
+  ['http://example.com:80/path', 'http://example.com/path'],
+  ['https://example.com:443/path', 'https://example.com/path'],
+  ['https://example.com:8443/path', 'https://example.com:8443/path'],
+])(
+  'retains native port canonicalization with the legacy flag disabled for %s',
+  (input, expected) => {
+    expect(normalizeURL(input, { removeDefaultPorts: false })).toBe(expected);
+  },
+);

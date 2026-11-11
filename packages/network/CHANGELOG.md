@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.2] - 2026-11-02
+
+- Preserve non-empty repeated query values when removing empty entries, use stable native query sorting, and collapse slash runs inside joined path segments.
+- Retain repeated and empty query parameters without duplicating them during normalization; preserve prototype-like keys; reject non-loopback IPv6 and invalid IPv4 localhost matches.
+
 ### Changed
 
 - Second-pass audit: re-verified URL extraction defaults; first-audit `includeWWW` change confirmed.

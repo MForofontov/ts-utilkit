@@ -31,7 +31,7 @@
  *
  * @note Automatically accounts for leap years when calculating February days.
  * @note Returns the same value regardless of the day of month in the input date.
- * @note Uses JavaScript's Date() constructor with day=0 to get last day of previous month.
+ * @note Uses Gregorian leap-year arithmetic, including literal years 0–99.
  * @note Possible return values: 28, 29, 30, or 31.
  *
  * @complexity Time: O(1), Space: O(1)
@@ -43,5 +43,8 @@ export function getDaysInMonth(date: Date): number {
 
   const year = date.getFullYear();
   const month = date.getMonth();
-  return new Date(year, month + 1, 0).getDate();
+  if (month === 1) {
+    return year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0) ? 29 : 28;
+  }
+  return [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][month];
 }

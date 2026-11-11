@@ -26,7 +26,7 @@
  * @note The function returns multiple values when there are multiple modes.
  * The returned array is always sorted in ascending numerical order.
  *
- * @complexity Time: O(n), Space: O(n) - Where n is array length
+ * @complexity Time: O(n + k log k), Space: O(k) - Where n is array length and k is distinct values
  */
 export function calculateMode(arr: number[]): number[] {
   const frequency: { [key: string]: number } = {};
@@ -34,7 +34,10 @@ export function calculateMode(arr: number[]): number[] {
     frequency[num] = (frequency[num] || 0) + 1;
   });
 
-  const maxFreq: number = Math.max(...Object.values(frequency));
+  let maxFreq = -Infinity;
+  for (const count of Object.values(frequency)) {
+    if (count > maxFreq) maxFreq = count;
+  }
   return Object.keys(frequency)
     .filter((num: string) => frequency[num] === maxFreq)
     .map(Number)

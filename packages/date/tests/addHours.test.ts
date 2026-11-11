@@ -76,5 +76,9 @@ describe('addHours', () => {
     expect(() => addHours(new Date('invalid'), 1)).toThrow('Invalid date');
   });
 
-  it('13. should throw Error when hours is NaN', () => {});
+  it('13. should throw Error when hours is NaN', () => {
+    expect(() => addHours(new Date(2026, 0, 1), NaN)).toThrow(
+      'Hours must be a number',
+    );
+  });
 });

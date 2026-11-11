@@ -18,6 +18,7 @@
  * handleCircularReferences(obj, null); // { a: 1, self: null }
  *
  * @note Creates new object with circular references replaced.
+ * @note Class instances are atomic and retained by reference, including repeated instances.
  *
  * @complexity Time: O(n), Space: O(n) where n is object size
  */
@@ -82,13 +83,19 @@ export function handleCircularReferences(
     }
 
     if (!isPlainObject(value)) {
+      seen.delete(value as object);
       return value;
     }
 
     const result: Record<string | symbol, any> = {};
 
     for (const key of Reflect.ownKeys(value)) {
-      result[key] = handle((value as Record<PropertyKey, unknown>)[key]);
+      Object.defineProperty(result, key, {
+        value: handle((value as Record<PropertyKey, unknown>)[key]),
+        enumerable: true,
+        configurable: true,
+        writable: true,
+      });
     }
 
     seen.delete(value); // Allow same object at different branches

@@ -77,5 +77,7 @@ describe('calculateCosine', () => {
   // Test case 10: Cosine of NaN (should throw an error)
   it('10. should throw an error for NaN input', () => {
     const degrees: number = NaN;
+
+    expect(() => calculateCosine(degrees)).toThrow('Degrees must be a number');
   });
 });

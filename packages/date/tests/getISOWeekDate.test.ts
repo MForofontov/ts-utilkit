@@ -72,3 +72,12 @@ describe('getISOWeekDate', () => {
     );
   });
 });
+
+it.each([
+  [0, 0, 4, '0000-W01-2'],
+  [0, 0, 1, '-000001-W52-6'],
+])('formats an early-year ISO week boundary', (year, month, day, expected) => {
+  const input = new Date(2000, Number(month), Number(day), 12);
+  input.setFullYear(Number(year));
+  expect(getISOWeekDate(input)).toBe(expected);
+});

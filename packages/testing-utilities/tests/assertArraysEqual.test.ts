@@ -167,9 +167,9 @@ describe('assertArraysEqual', () => {
   });
 
   it('13. should compare object elements regardless of order', () => {
-    expect(assertArraysEqual([{ id: 1 }, { id: 2 }], [{ id: 2 }, { id: 1 }])).toBe(
-      true,
-    );
+    expect(
+      assertArraysEqual([{ id: 1 }, { id: 2 }], [{ id: 2 }, { id: 1 }]),
+    ).toBe(true);
   });
 
   it('14. should return false for symbol arrays instead of throwing', () => {

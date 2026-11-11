@@ -1,6 +1,6 @@
 {
   "name": "@ts-utilkit/result",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Result type utilities for Ok/Err error handling without exceptions",
   "homepage": "https://github.com/mykfor1/ts-utilkit/tree/main/packages/result#readme",
   "bugs": {

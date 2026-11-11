@@ -282,43 +282,74 @@ describe('functionName', () => {
 
 ## Project Structure
 
-```
-ts-utilkit/
-├── arrayFunctions/          # Array manipulation utilities
-├── asyncFunctions/          # Asynchronous operation utilities
-├── cryptoFunctions/         # Cryptographic utilities
-├── dateFunctions/           # Date and time utilities
-├── eventFunctions/          # Event handling utilities
-├── mathFunctions/           # Mathematical operations
-│   ├── algebraFunctions/
-│   ├── arithmeticFunctions/
-│   ├── combinatoricsFunctions/
-│   ├── geometricFunctions/
-│   ├── numberTheoryFunctions/
-│   ├── sequenceFunctions/
-│   └── statisticsFunctions/
-├── objectFunctions/         # Object manipulation utilities
-├── stringFunctions/         # String processing utilities
-├── validationFunctions/     # Validation utilities
-└── functionsUnittests/      # Test suites mirroring src structure
+Each independently published package lives under `packages/<category>/`:
+
+```text
+packages/<category>/
+  src/<function>.ts       # Implementation and JSDoc
+  src/index.ts            # Named public exports
+  tests/<function>.test.ts
+  package.json
+  tsconfig.json
+  README.md
+  CHANGELOG.md
 ```
 
 ## Adding New Functions
 
-1. **Choose the correct category**: Determine which directory your function belongs in
-2. **Create the function file**: Follow the function structure template
-3. **Add comprehensive tests**: Create test file in `functionsUnittests/[category]Unittests/`
-4. **Export the function**: Add to `index.ts`
-5. **Document thoroughly**: Include JSDoc with examples and complexity analysis
+1. Choose an existing package and check its exports for equivalent behavior.
+2. Add the implementation under `src/`, following the standards above.
+3. Add meaningful tests under `tests/`, including boundaries and error cases.
+4. Add the public export to `src/index.ts` and update the package documentation.
+5. Run `npm run build`, `npm run test:local`, and `npm run lint`.
 
-## Adding New Modules
+The root build command builds workspace dependencies before their consumers.
+Use `npm run audit:exports` to inspect the public runtime-export inventory and
+matching test-file coverage. Test-file presence does not establish behavioral coverage.
+Run `npm run audit:docs` to check README imports, public export listings, and
+advertised export counts, and to type-check all 23 package Quick Examples.
+Type-aware lint includes source, tests, and Jest
+configuration through `tsconfig.eslint.json` without changing build inputs.
 
-If adding an entirely new category:
+### Full repository verification
 
-1. Create new directory: `[category]Functions/`
-2. Create test directory: `functionsUnittests/[category]FunctionsUnittest/`
-3. Update `.github/copilot-instructions.md` to document the new module
-4. Ensure the category is distinct and doesn't overlap with existing ones
+Use Node 20 or newer. The portable test command uses two workers and a 512 MB
+idle-worker memory limit. Jest transpiles tests in isolation; run the separate
+semantic type checks as well.
+
+```bash
+npm ci --ignore-scripts
+npm run build
+npm run typecheck
+npm test
+npm run lint -- --max-warnings=290
+npm run format:check
+npm run audit:exports
+npm run audit:docs
+npm run test:install:full
+npm run benchmark:substring
+```
+
+`format:check` checks TypeScript without writing files and excludes generated
+output. Full tests require all four global coverage metrics to exceed 95%.
+Use `--coverage=false` for focused test runs. Benchmarks verify equal results and
+report repeated-sample medians; their timings never determine test success.
+
+Build before `test:install:full`. It discovers workspaces, packs all packages,
+installs the tarballs together in a temporary consumer, and verifies CommonJS,
+dynamic imports, declarations, runtime behavior, and local dependency resolution.
+It cleans up its temporary directory and does not install into the checkout.
+
+The `quality` workflow runs on pull requests and pushes to `main`, on Windows and
+Linux with Node 20, 22, and 24. It runs date tests in UTC and Europe/Lisbon and
+collects coverage on the Linux/Node 24 job. Manual reporting workflows remain
+available. Local results only establish the runtime and platform actually tested.
+
+## Adding New Packages
+
+Create a directory under `packages/` with the same structure, add its TypeScript
+path mapping to the root configuration, and add the package to the root README.
+Keep the package distinct from existing categories and declare workspace dependencies.
 
 ## Questions or Issues?
 

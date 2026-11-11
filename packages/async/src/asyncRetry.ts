@@ -5,13 +5,13 @@ import { delay as delayFn } from '@ts-utilkit/utility';
  *
  * @param fn - The async function to retry.
  * @param options - Configuration options for retry behavior.
- * @param options.maxAttempts - Maximum number of attempts (default: 3).
+ * @param options.maxAttempts - Positive integer attempt limit, or Infinity for unbounded retries (default: 3).
  * @param options.delay - Delay between retries in milliseconds (default: 1000).
  * @param options.backoff - Backoff strategy: 'fixed', 'linear', or 'exponential' (default: 'fixed').
  * @param options.onRetry - Callback function called on each retry attempt.
  * @returns Promise that resolves with the successful result or rejects with the final error.
  *
- * @throws {Error} If maxAttempts is less than 1 or delay is negative.
+ * @throws {Error} If maxAttempts is not a positive integer or Infinity, or delay is negative or NaN.
  *
  * @example
  * // Basic retry with default settings
@@ -55,13 +55,17 @@ export function asyncRetry<T>(
 ): Promise<T> {
   const { maxAttempts = 3, delay = 1000, backoff = 'fixed', onRetry } = options;
 
-  if (typeof maxAttempts !== 'number' || maxAttempts < 1) {
+  if (
+    typeof maxAttempts !== 'number' ||
+    maxAttempts < 1 ||
+    (maxAttempts !== Infinity && !Number.isInteger(maxAttempts))
+  ) {
     throw new Error(
-      `maxAttempts must be a positive number, got ${maxAttempts}`,
+      `maxAttempts must be a positive number (integer or Infinity), got ${maxAttempts}`,
     );
   }
 
-  if (typeof delay !== 'number' || delay < 0) {
+  if (typeof delay !== 'number' || Number.isNaN(delay) || delay < 0) {
     throw new Error(`delay must be a non-negative number, got ${delay}`);
   }
 

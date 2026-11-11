@@ -11,12 +11,21 @@ npm install @ts-utilkit/result
 ## Quick Example
 
 ```typescript
-import { ok, err, map, unwrapOr, fromThrowable } from '@ts-utilkit/result';
+import {
+  ok,
+  err,
+  map,
+  unwrapOr,
+  fromThrowable,
+  fromAsyncThrowable,
+} from '@ts-utilkit/result';
 
 const doubled = map(ok(21), (n) => n * 2); // ok(42)
 unwrapOr(err('missing'), 0); // 0
 
 const parsed = fromThrowable(() => JSON.parse('{"a":1}'));
+const loaded = await fromAsyncThrowable(() => Promise.resolve({ id: 1 }));
+// ok({ id: 1 })
 ```
 
 ## Available Functions
@@ -26,7 +35,19 @@ const parsed = fromThrowable(() => JSON.parse('{"a":1}'));
 - `map` / `mapErr` / `andThen` — transforms
 - `unwrap` / `unwrapOr` / `match` — extract values
 - `fromThrowable` — wrap throwing sync functions
+- `fromAsyncThrowable` — wrap values, promises, and thenables; capture throws and rejections
+
+`fromAsyncThrowable<T>(fn: () => PromiseLike<T> | T): Promise<Result<T, unknown>>`
+invokes the callback once and awaits its result. Success values and error reasons
+retain their identity, including non-Error rejection values. The returned promise
+resolves to `ok(value)` or `err(reason)`.
 
 ## License
 
 MIT © [Mykyta Forofontov](https://github.com/MForofontov)
+
+## Added utilities
+
+- **`collectResults`** — see the signature, examples, and contract in [collectResults.ts](src/collectResults.ts).
+
+Full examples and boundary behavior are documented in [FUNCTION_IDEAS.md](../../FUNCTION_IDEAS.md).

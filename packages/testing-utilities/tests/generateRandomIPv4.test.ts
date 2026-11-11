@@ -53,7 +53,11 @@ describe('generateRandomIPv4', () => {
 
     // Assert - statistically unlikely to be the same
     // Run multiple times to be more confident
-    const ips = Array.from({ length: 10 }, () => generateRandomIPv4());
+    const ips = [
+      ip1,
+      ip2,
+      ...Array.from({ length: 10 }, () => generateRandomIPv4()),
+    ];
     const uniqueIps = new Set(ips);
     expect(uniqueIps.size).toBeGreaterThan(1);
   });

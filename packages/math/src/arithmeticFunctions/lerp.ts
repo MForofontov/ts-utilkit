@@ -31,7 +31,8 @@
  *
  * @note t is not clamped to [0, 1]; values outside this range produce extrapolated results.
  * Use clamp(t, 0, 1) before calling if strict interpolation is required.
- * @note Formula: a + (b - a) * t — equivalent to (1 - t) * a + t * b but more numerically stable.
+ * @note Uses a + (b - a) * t, falling back to (1 - t) * a + t * b when
+ * the difference between finite endpoints overflows. Extrapolation is not clamped.
  *
  * @complexity Time: O(1), Space: O(1)
  */
@@ -45,5 +46,13 @@ export function lerp(a: number, b: number, t: number): number {
   if (isNaN(t)) {
     throw new Error('t must be a valid number, not NaN');
   }
-  return a + (b - a) * t;
+  const difference = b - a;
+  if (
+    !Number.isFinite(difference) &&
+    Number.isFinite(a) &&
+    Number.isFinite(b)
+  ) {
+    return (1 - t) * a + t * b;
+  }
+  return a + difference * t;
 }

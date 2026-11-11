@@ -1,3 +1,4 @@
+import { calendarDate } from './_calendarDate';
 /**
  * Returns a new Date set to the first day of the given date's month at midnight (00:00:00.000).
  *
@@ -34,5 +35,5 @@ export function getStartOfMonth(date: Date): Date {
     throw new Error('Invalid date');
   }
 
-  return new Date(date.getFullYear(), date.getMonth(), 1, 0, 0, 0, 0);
+  return calendarDate(date.getFullYear(), date.getMonth(), 1);
 }

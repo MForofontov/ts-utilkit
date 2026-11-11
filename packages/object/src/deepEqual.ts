@@ -45,7 +45,8 @@
  * @note Does NOT support circular references.
  * @note Property order doesn't matter for plain objects.
  *
- * @complexity Time: O(n) where n is total number of values across both structures, Space: O(d) where d is max depth (recursion stack)
+ * @complexity Time: O(n) for flat primitive Sets; object-valued Sets can require
+ * O(n²) recursive comparisons. Space: O(n + d) for keys, Set matching, and recursion.
  */
 export function deepEqual(a: unknown, b: unknown): boolean {
   // Special case for NaN
@@ -123,9 +124,17 @@ export function deepEqual(a: unknown, b: unknown): boolean {
     }
 
     const bValues = [...b];
+    const bValueSet = new Set(bValues);
     const matchedIndices = new Set<number>();
 
     for (const value of a) {
+      // Native membership has the same equality semantics for non-object values,
+      // including NaN, signed zero, symbols, and function references.
+      if (value === null || typeof value !== 'object') {
+        if (!bValueSet.has(value)) return false;
+        continue;
+      }
+
       let found = false;
       for (let i = 0; i < bValues.length; i++) {
         if (!matchedIndices.has(i) && deepEqual(value, bValues[i])) {

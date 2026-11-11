@@ -93,6 +93,7 @@ describe('randomFloat', () => {
     // Should be roughly 50/50 split (±15%)
     expect(lowCount).toBeGreaterThan(350);
     expect(lowCount).toBeLessThan(650);
+    expect(lowCount + highCount).toBe(1000);
   });
 
   // Error Test case 14: Error for NaN min

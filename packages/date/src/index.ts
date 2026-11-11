@@ -2,6 +2,7 @@
 // This file exports all functions from this module
 
 export * from './addDays';
+export * from './addBusinessDays';
 export * from './addHours';
 export * from './addMinutes';
 export * from './addMonths';

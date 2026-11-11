@@ -15,3 +15,4 @@ export * from './rgbToHex';
 export * from './safeJSONParse';
 export * from './throttle';
 export * from './tryCatch';
+export * from './once';

@@ -1,3 +1,4 @@
+import { encodeBase64URL } from '../src/encodeBase64URL';
 import { decodeBase64URL } from '../src/decodeBase64URL';
 
 describe('decodeBase64URL', () => {
@@ -55,7 +56,6 @@ describe('decodeBase64URL', () => {
   });
 
   it('11. should round-trip correctly with encodeBase64URL', () => {
-    const { encodeBase64URL } = require('../src/encodeBase64URL');
     const inputs = ['hello world', '', 'café', '{"sub":"1234"}', '😀'];
     for (const input of inputs) {
       expect(decodeBase64URL(encodeBase64URL(input))).toBe(input);

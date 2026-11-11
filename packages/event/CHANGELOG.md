@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-11-02
+
+- Avoid scheduling an orphan timeout when waitForEvent receives its event during subscription.
+- Remove once listeners before invocation; handle empty event names explicitly; schedule isolated trailing throttle calls and clocks starting at zero.
+
 ## [0.2.0] - 2026-03-05
 
 ### Changed
@@ -16,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Remove all TypeError test cases from all test files
 
 - Add `exports` field to `package.json` for explicit ESM/CJS/types entry-point resolution by modern bundlers and Node.js `exports` map
+
 ## [0.1.0] - 2026-01-26
 
 ### Added

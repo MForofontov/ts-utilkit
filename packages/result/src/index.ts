@@ -10,3 +10,5 @@ export * from './unwrap';
 export * from './unwrapOr';
 export * from './match';
 export * from './fromThrowable';
+export * from './fromAsyncThrowable';
+export * from './collectResults';

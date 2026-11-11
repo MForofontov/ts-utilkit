@@ -38,7 +38,21 @@ export function deserializeFromXML(xmlString: string): Record<string, any> {
       return unescapeXML(trimmed);
     }
 
-    const result: Record<string, any> = {};
+    const result: Record<string, unknown> = {};
+    const append = (tag: string, value: unknown): void => {
+      if (Object.hasOwn(result, tag)) {
+        const previous = result[tag];
+        if (Array.isArray(previous)) previous.push(value);
+        else result[tag] = [previous, value];
+      } else {
+        Object.defineProperty(result, tag, {
+          value,
+          enumerable: true,
+          configurable: true,
+          writable: true,
+        });
+      }
+    };
     let pos = 0;
 
     while (pos < trimmed.length) {
@@ -59,15 +73,7 @@ export function deserializeFromXML(xmlString: string): Record<string, any> {
       const selfClosingMatch = trimmed.slice(pos).match(/^<([^/>\s]+)[^>]*\/>/);
       if (selfClosingMatch) {
         const tag = selfClosingMatch[1];
-        if (result[tag] !== undefined) {
-          if (Array.isArray(result[tag])) {
-            result[tag].push(null);
-          } else {
-            result[tag] = [result[tag], null];
-          }
-        } else {
-          result[tag] = null;
-        }
+        append(tag, null);
         pos += selfClosingMatch[0].length;
         continue;
       }
@@ -87,12 +93,12 @@ export function deserializeFromXML(xmlString: string): Record<string, any> {
       const contentStart = pos;
 
       while (pos < trimmed.length && depth > 0) {
-        if (trimmed.slice(pos).startsWith(`<${tag}`)) {
-          // Another opening tag
-          const nextTag = trimmed.slice(pos).match(/^<[^/>\s]+[^>]*>/);
+        if (trimmed[pos] === '<' && trimmed[pos + 1] !== '/') {
+          // Count complete same-name opening tags, excluding self-closing tags.
+          const nextTag = trimmed.slice(pos).match(/^<([^/>\s]+)[^>]*>/);
           if (nextTag) {
             pos += nextTag[0].length;
-            depth++;
+            if (nextTag[1] === tag && !nextTag[0].endsWith('/>')) depth++;
           } else {
             pos++;
           }
@@ -102,15 +108,7 @@ export function deserializeFromXML(xmlString: string): Record<string, any> {
             const content = trimmed.slice(contentStart, pos);
             const parsedContent = content ? parse(content) : null;
 
-            if (result[tag] !== undefined) {
-              if (Array.isArray(result[tag])) {
-                result[tag].push(parsedContent);
-              } else {
-                result[tag] = [result[tag], parsedContent];
-              }
-            } else {
-              result[tag] = parsedContent;
-            }
+            append(tag, parsedContent);
 
             pos += closingTag.length;
           } else {

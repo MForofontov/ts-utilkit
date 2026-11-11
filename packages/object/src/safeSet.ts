@@ -1,3 +1,5 @@
+import { setOwn } from './_setOwn';
+
 /**
  * Safely sets a value at a specified path in an object, creating intermediate objects if needed.
  * Uses dot notation to navigate nested properties.
@@ -44,6 +46,7 @@
  *
  * @complexity Time: O(d), Space: O(d) - Where d is the path depth
  */
+
 export function safeSet<T extends Record<string, unknown>, V>(
   obj: T,
   path: string,
@@ -51,23 +54,28 @@ export function safeSet<T extends Record<string, unknown>, V>(
 ): void {
   if (path === '') return;
   if (Object.prototype.hasOwnProperty.call(obj, path)) {
-    (obj as Record<string, unknown>)[path] = value as unknown;
+    setOwn(obj, path, value);
     return;
   }
 
   const keys = path.split('.').filter((k) => k);
+  if (keys.length === 0) return;
   let current: Record<string, unknown> = obj;
   for (let i = 0; i < keys.length - 1; i++) {
     const key = keys[i];
     const rest = keys.slice(i).join('.');
     if (Object.prototype.hasOwnProperty.call(current, rest)) {
-      current[rest] = value as unknown;
+      setOwn(current, rest, value);
       return;
     }
-    if (!current[key] || typeof current[key] !== 'object') {
-      current[key] = {};
+    if (
+      !Object.hasOwn(current, key) ||
+      !current[key] ||
+      typeof current[key] !== 'object'
+    ) {
+      setOwn(current, key, {});
     }
     current = current[key] as Record<string, unknown>;
   }
-  current[keys[keys.length - 1]] = value as unknown;
+  setOwn(current, keys[keys.length - 1], value);
 }

@@ -1,3 +1,5 @@
+import { setOwn } from './_setOwn';
+
 /**
  * Returns a new object with a single key renamed, preserving all other keys
  * and values unchanged. The key order in the result follows the original
@@ -45,7 +47,7 @@ export function renameKey<T>(
 
   const result: Record<string, T> = {};
   for (const key of Object.keys(obj)) {
-    result[key === oldKey ? newKey : key] = obj[key];
+    setOwn(result, key === oldKey ? newKey : key, obj[key]);
   }
   return result;
 }

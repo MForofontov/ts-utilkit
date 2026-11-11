@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.2] - 2026-11-02
+
+- Remove a redundant phone-number filtering branch whose two paths both retained the same matches; preserve extraction behavior and correct the README example import.
+- Resolve relative image and link URLs using URL semantics; preserve absolute schemes and original references when a base URL is invalid.
+
 ### Changed
 
 - Second-pass audit: re-verified `sanitizeHTML` adversarial cases; first-audit attribute allowlist confirmed.

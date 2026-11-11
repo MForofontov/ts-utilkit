@@ -1,6 +1,67 @@
 import { deepEqual } from '../src/deepEqual';
 
 describe('deepEqual', () => {
+  it('retains the right-hand snapshot when an object getter mutates its Set', () => {
+    const right = new Set<unknown>();
+    right.add({
+      get x() {
+        right.delete(1);
+        return 1;
+      },
+    });
+    right.add(1);
+    expect(deepEqual(new Set([{ x: 1 }, 1]), right)).toBe(true);
+    expect(right.size).toBe(1);
+  });
+
+  it('rejects unequal special values in either argument order', () => {
+    const pairs: [unknown, unknown][] = [
+      [new Date(0), {}],
+      [/x/, {}],
+      [new Map(), {}],
+      [new Set(), {}],
+      [new Map([['x', 1]]), new Map()],
+      [new Map([['x', 1]]), new Map([['x', 2]])],
+      [new Set([1]), new Set()],
+      [{}, { x: 1 }],
+      [{ x: 1 }, { y: 1 }],
+      [{ x: 1 }, { x: 2 }],
+      [/x/, /y/],
+    ];
+    for (const [a, b] of pairs) {
+      expect(deepEqual(a, b)).toBe(false);
+      expect(deepEqual(b, a)).toBe(false);
+    }
+  });
+
+  it('matches mixed primitive Sets independently of order', () => {
+    const symbol = Symbol('key');
+    const fn = () => 1;
+    const values = [NaN, -0, null, undefined, 1n, '1', true, symbol, fn];
+    expect(deepEqual(new Set(values), new Set([...values].reverse()))).toBe(
+      true,
+    );
+    expect(deepEqual(new Set([symbol]), new Set([Symbol('key')]))).toBe(false);
+    expect(deepEqual(new Set([fn]), new Set([() => 1]))).toBe(false);
+  });
+
+  it('retains one-to-one deep matching for mixed object-valued Sets', () => {
+    expect(
+      deepEqual(
+        new Set([null, { x: 1 }, { x: 1 }, NaN]),
+        new Set([NaN, { x: 1 }, null, { x: 1 }]),
+      ),
+    ).toBe(true);
+    expect(
+      deepEqual(
+        new Set([null, { x: 1 }, { x: 1 }]),
+        new Set([null, { x: 1 }, { x: 2 }]),
+      ),
+    ).toBe(false);
+    expect(deepEqual(new Set([{}]), new Set([null]))).toBe(false);
+    expect(deepEqual(new Set([1]), new Set([{}]))).toBe(false);
+  });
+
   // Test case 1: Compare two simple objects
   it('1. should return true for two equal simple objects', () => {
     const obj1 = { a: 1, b: 2 };
@@ -79,9 +140,9 @@ describe('deepEqual', () => {
     const sym1 = Symbol('sym1');
     const sym2a = Symbol('sym2');
     const sym2b = Symbol('sym2');
-    expect(deepEqual({ [sym1]: 1, [sym2a]: 2 }, { [sym1]: 1, [sym2b]: 3 })).toBe(
-      false,
-    );
+    expect(
+      deepEqual({ [sym1]: 1, [sym2a]: 2 }, { [sym1]: 1, [sym2b]: 3 }),
+    ).toBe(false);
   });
 
   // Test case 9: Handle non-object input (number)

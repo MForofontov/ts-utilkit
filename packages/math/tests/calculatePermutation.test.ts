@@ -83,3 +83,46 @@ describe('calculatePermutation', () => {
     );
   });
 });
+
+it.each([
+  [171, 0, 1],
+  [171, 1, 171],
+  [200, 2, 39800],
+  [1000, 3, 997002000],
+])('avoids factorial overflow for P(%i,%i)', (n, k, expected) => {
+  expect(calculatePermutation(n, k)).toBe(expected);
+});
+
+it.each([171, 200, 1000])(
+  'matches an exact BigInt oracle across row %i',
+  (n) => {
+    let exact = 1n;
+    for (let k = 0; k <= n; k++) {
+      if (k > 0) exact *= BigInt(n - k + 1);
+      const expected = Number(exact);
+      const actual = calculatePermutation(n, k);
+      if (!Number.isFinite(expected)) expect(actual).toBe(Infinity);
+      else {
+        expect(Math.abs(actual - expected) / expected).toBeLessThan(1e-13);
+        if (Number.isSafeInteger(expected)) expect(actual).toBe(expected);
+      }
+    }
+  },
+);
+it('retains the previous finite factorial ratios bit for bit', () => {
+  const factorials = [1];
+  for (let n = 1; n <= 170; n++) factorials[n] = factorials[n - 1] * n;
+  for (let n = 0; n <= 170; n++)
+    for (let k = 0; k <= n; k++) {
+      expect(calculatePermutation(n, k)).toBe(
+        factorials[n] / factorials[n - k],
+      );
+    }
+});
+it.each([
+  [5, 1.5],
+  [5, -1],
+  [Infinity, 1],
+])('validates n=%s and k=%s', (n, k) => {
+  expect(() => calculatePermutation(n, k)).toThrow();
+});

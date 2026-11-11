@@ -1,3 +1,4 @@
+import { calendarDate } from './_calendarDate';
 /**
  * Calculates the number of business days (Monday to Friday) between two dates, inclusive.
  *
@@ -51,12 +52,12 @@ export function businessDaysBetween(start: Date, end: Date): number {
   }
 
   let count = 0;
-  const startDay = new Date(
+  const startDay = calendarDate(
     start.getFullYear(),
     start.getMonth(),
     start.getDate(),
   );
-  const endDay = new Date(end.getFullYear(), end.getMonth(), end.getDate());
+  const endDay = calendarDate(end.getFullYear(), end.getMonth(), end.getDate());
   const currentDate = new Date(startDay);
 
   while (currentDate <= endDay) {

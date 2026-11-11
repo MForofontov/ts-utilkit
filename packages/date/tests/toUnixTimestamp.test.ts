@@ -1,3 +1,4 @@
+import { fromUnixTimestamp } from '../src/fromUnixTimestamp';
 import { toUnixTimestamp } from '../src/toUnixTimestamp';
 
 describe('toUnixTimestamp', () => {
@@ -30,7 +31,6 @@ describe('toUnixTimestamp', () => {
   });
 
   it('6. should round-trip correctly with fromUnixTimestamp', () => {
-    const { fromUnixTimestamp } = require('../src/fromUnixTimestamp');
     const date = new Date('2025-06-15T00:00:00.000Z');
     expect(fromUnixTimestamp(toUnixTimestamp(date))).toEqual(date);
   });

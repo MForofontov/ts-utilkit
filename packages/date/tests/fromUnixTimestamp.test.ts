@@ -1,3 +1,4 @@
+import { toUnixTimestamp } from '../src/toUnixTimestamp';
 import { fromUnixTimestamp } from '../src/fromUnixTimestamp';
 
 describe('fromUnixTimestamp', () => {
@@ -28,7 +29,6 @@ describe('fromUnixTimestamp', () => {
 
   it('6. should round-trip correctly with toUnixTimestamp', () => {
     const ts = 1_735_689_600;
-    const { toUnixTimestamp } = require('../src/toUnixTimestamp');
     expect(toUnixTimestamp(fromUnixTimestamp(ts))).toBe(ts);
   });
 

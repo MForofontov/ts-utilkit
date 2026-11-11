@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-11-02
+
+- Include missing own keys in `differenceBy` even when their values are undefined; ignore inherited comparison values and getters.
+- Preserve transformed __proto__ keys as own data properties without changing result prototypes.
+- Use native membership for primitive Set values in `deepEqual`, retaining one-to-one deep matching for object entries; correct its complexity documentation.
+- Add `omitDeep` with runtime input validation, public exports, documentation, and boundary tests.
+- Use own-property traversal and safe data-property writes for paths and object builders; fix shallow equality for undefined values; support cycles and symbol-keyed children in deepFreeze.
+
 ### Changed
 
 - Second-pass audit: re-verified `deepEqual`, `deepClone`, and `deepMerge` with adversarial tests; first-audit symbol-key fix confirmed.

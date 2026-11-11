@@ -5,9 +5,9 @@ describe('asyncWaterfall', () => {
   it('1. should pipe the result of each task into the next', async () => {
     // Arrange
     const tasks = [
-      async (n: number) => n * 2, // 5 → 10
-      async (n: number) => n + 3, // 10 → 13
-      async (n: number) => n - 1, // 13 → 12
+      async (n: number) => await Promise.resolve(n * 2), // 5 → 10
+      async (n: number) => await Promise.resolve(n + 3), // 10 → 13
+      async (n: number) => await Promise.resolve(n - 1), // 13 → 12
     ];
 
     // Act
@@ -20,7 +20,7 @@ describe('asyncWaterfall', () => {
   // Test case 2: Single task — receives initialValue and returns its result
   it('2. should handle a single task correctly', async () => {
     const result = await asyncWaterfall(
-      [async (s: string) => s.toUpperCase()],
+      [async (s: string) => await Promise.resolve(s.toUpperCase())],
       'hello',
     );
     expect(result).toBe('HELLO');
@@ -36,9 +36,9 @@ describe('asyncWaterfall', () => {
   it('4. should correctly chain string transformation tasks', async () => {
     // Arrange
     const tasks = [
-      async (s: string) => s.trim(),
-      async (s: string) => s.toLowerCase(),
-      async (s: string) => s.replace(/\s+/g, '-'),
+      async (s: string) => await Promise.resolve(s.trim()),
+      async (s: string) => await Promise.resolve(s.toLowerCase()),
+      async (s: string) => await Promise.resolve(s.replace(/\s+/g, '-')),
     ];
 
     // Act
@@ -53,8 +53,8 @@ describe('asyncWaterfall', () => {
     // Arrange
     type User = { name: string; age?: number; active?: boolean };
     const tasks = [
-      async (u: User) => ({ ...u, age: 30 }),
-      async (u: User) => ({ ...u, active: true }),
+      async (u: User) => await Promise.resolve({ ...u, age: 30 }),
+      async (u: User) => await Promise.resolve({ ...u, active: true }),
     ];
 
     // Act
@@ -71,15 +71,15 @@ describe('asyncWaterfall', () => {
     const tasks = [
       async (n: number) => {
         order.push('first');
-        return n + 1;
+        return await Promise.resolve(n + 1);
       },
       async (n: number) => {
         order.push('second');
-        return n + 1;
+        return await Promise.resolve(n + 1);
       },
       async (n: number) => {
         order.push('third');
-        return n + 1;
+        return await Promise.resolve(n + 1);
       },
     ];
 
@@ -97,15 +97,15 @@ describe('asyncWaterfall', () => {
     const tasks = [
       async (n: number) => {
         received.push(n);
-        return n + 10;
+        return await Promise.resolve(n + 10);
       },
       async (n: number) => {
         received.push(n);
-        return n + 10;
+        return await Promise.resolve(n + 10);
       },
       async (n: number) => {
         received.push(n);
-        return n + 10;
+        return await Promise.resolve(n + 10);
       },
     ];
 
@@ -121,9 +121,9 @@ describe('asyncWaterfall', () => {
     // Arrange
     const thirdTask = jest.fn();
     const tasks = [
-      async (n: number) => n + 1,
+      async (n: number) => await Promise.resolve(n + 1),
       async () => {
-        throw new Error('step failed');
+        throw await Promise.resolve(new Error('step failed'));
       },
       thirdTask,
     ];
@@ -136,7 +136,7 @@ describe('asyncWaterfall', () => {
   // Test case 9: Does not mutate the tasks array
   it('9. should not mutate the tasks array', async () => {
     // Arrange
-    const tasks = [async (n: number) => n + 1];
+    const tasks = [async (n: number) => await Promise.resolve(n + 1)];
     const original = [...tasks];
 
     // Act
@@ -151,7 +151,7 @@ describe('asyncWaterfall', () => {
     // Arrange
     const tasks = Array.from(
       { length: 1000 },
-      () => async (n: number) => n + 1,
+      () => async (n: number) => await Promise.resolve(n + 1),
     );
 
     // Act
@@ -167,7 +167,7 @@ describe('asyncWaterfall', () => {
   // Test case 12: Throws Error when a task element is not a function
   it('12. should throw Error when a task element is not a function', () => {
     const tasks = [
-      async (n: number) => n + 1,
+      async (n: number) => await Promise.resolve(n + 1),
       42 as unknown as (n: number) => Promise<number>,
     ];
 

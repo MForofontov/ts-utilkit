@@ -25,10 +25,10 @@
     "packages/*"
   ],
   "scripts": {
-    "test": "./run-tests.sh",
+    "test": "jest --config jest.local.config.ts --maxWorkers=2 --workerIdleMemoryLimit=512MB",
     "test:github": "./run-tests-github.sh",
     "test:local": "jest --config jest.local.config.ts",
-    "test:install:full": "./test-install-full.sh",
+    "test:install:full": "node scripts/test-install.cjs",
     "test:array": "npm test -w @ts-utilkit/array",
     "test:async": "npm test -w @ts-utilkit/async",
     "test:collection": "npm test -w @ts-utilkit/collection",
@@ -52,10 +52,17 @@
     "test:utility": "npm test -w @ts-utilkit/utility",
     "test:validation": "npm test -w @ts-utilkit/validation",
     "test:webscraping": "npm test -w @ts-utilkit/webscraping",
-    "build": "npm run build --workspaces --if-present",
+    "build": "node scripts/build.cjs",
+    "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p tsconfig.test.json && tsc --noEmit -p tsconfig.eslint.json",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
-    "format": "prettier --write \"**/*.{ts,js,json,md}\""
+    "format": "prettier --write \"**/*.{ts,js,json,md}\"",
+    "format:check": "prettier --check \"**/*.ts\"",
+    "audit:exports": "node scripts/audit-exports.cjs",
+    "audit:docs": "node scripts/audit-docs.cjs",
+    "benchmark:existing": "node scripts/benchmark-existing.cjs",
+    "benchmark:array-membership": "node scripts/benchmark-array-membership.cjs",
+    "benchmark:substring": "node scripts/benchmark-substring.cjs"
   },
   "devDependencies": {
     "@types/jest": "^30.0.0",

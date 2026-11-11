@@ -6,11 +6,6 @@
 
 import * as os from 'os';
 
-const Status = {
-  FAILED: 'failed',
-  BROKEN: 'broken',
-};
-
 const config = {
   preset: 'ts-jest',
   globals: {

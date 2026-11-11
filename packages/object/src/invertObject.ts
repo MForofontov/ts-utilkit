@@ -1,3 +1,5 @@
+import { setOwn } from './_setOwn';
+
 /**
  * Inverts the keys and values of an object, swapping them to create a new object.
  *
@@ -38,7 +40,7 @@ export function invertObject(
   const result: Record<string, string | number | symbol> = {};
   for (const key of Reflect.ownKeys(obj)) {
     const value = obj[key];
-    result[String(value)] = key;
+    setOwn(result, String(value), key);
   }
   return result;
 }

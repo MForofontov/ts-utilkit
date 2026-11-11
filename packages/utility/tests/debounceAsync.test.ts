@@ -58,3 +58,39 @@ describe('debounceAsync', () => {
     await expect(promise).rejects.toThrow('Test error');
   });
 });
+
+it.each([new Error('synchronous failure'), 'failure', undefined, null])(
+  'rejects synchronous throws (%p) without escaping the timer, and permits a later call',
+  async (error) => {
+    jest.useFakeTimers();
+    try {
+      const fn = jest
+        .fn<Promise<number>, []>()
+        .mockImplementationOnce(() => {
+          // eslint-disable-next-line @typescript-eslint/only-throw-error -- Exercise preservation of arbitrary JavaScript thrown values
+          throw error;
+        })
+        .mockResolvedValue(42);
+      const debounced = debounceAsync(fn, 10);
+      const first = debounced();
+      const rejection = expect(first).rejects.toBe(error);
+      expect(() => jest.advanceTimersByTime(10)).not.toThrow();
+      await rejection;
+      const second = debounced();
+      jest.advanceTimersByTime(10);
+      await expect(second).resolves.toBe(42);
+      expect(jest.getTimerCount()).toBe(0);
+    } finally {
+      jest.useRealTimers();
+    }
+  },
+);
+
+it.each([-1, NaN])(
+  'rejects an invalid wait of %s before scheduling a timer',
+  (wait) => {
+    expect(() => debounceAsync(() => Promise.resolve(1), wait)).toThrow(
+      'wait must be a non-negative number',
+    );
+  },
+);

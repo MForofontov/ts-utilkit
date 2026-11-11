@@ -92,5 +92,7 @@ describe('calculateCubeRoot', () => {
   // Test case 12: NaN input (should throw an error)
   it('12. should throw an error for NaN input', () => {
     const input: number = NaN;
+
+    expect(() => calculateCubeRoot(input)).toThrow('Input must be a number');
   });
 });

@@ -1,4 +1,5 @@
 import { deepEqual } from '@ts-utilkit/object';
+import { primitiveMembership } from './_primitiveMembership';
 
 /**
  * Finds the difference between two arrays (elements in the first array that are not in the second).
@@ -21,14 +22,14 @@ import { deepEqual } from '@ts-utilkit/object';
  * arrayDifference([], [1, 2]); // Returns []
  * arrayDifference([1, 2], []); // Returns [1, 2]
  *
- * @note For large arrays, consider using a Set-based approach for better performance
- * with primitive values. This implementation uses deep equality which is more suitable
- * for comparing objects and nested structures but has O(n*m) complexity.
- * @note This implementation uses deep equality comparison which makes it suitable
- * for comparing objects and nested structures, but has higher computational cost.
- * For large arrays with primitive values only, a Set-based approach would be more efficient.
- * @complexity Time: O(n*m), Space: O(n) - Where n, m are arr1, arr2 lengths
+ * @note Larger data-only arrays use native membership when arr2 contains no objects.
+ * Small, object-containing, accessor, and inherited-element inputs retain nested
+ * deep comparisons. Order, duplicates, and sparse-array filtering are preserved.
+ * @complexity Time: O(n+m) on the native path, otherwise O(n*m) deep comparisons;
+ * Space: O(n+m), where n and m are input lengths, excluding deepEqual traversal.
  */
 export function arrayDifference<T>(arr1: T[], arr2: T[]): T[] {
+  const keys = primitiveMembership(arr1, arr2);
+  if (keys !== undefined) return arr1.filter((item) => !keys.has(item));
   return arr1.filter((item1) => !arr2.some((item2) => deepEqual(item1, item2)));
 }

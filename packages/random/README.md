@@ -12,20 +12,20 @@ npm install @ts-utilkit/random
 
 - 🚀 TypeScript-first with complete type definitions
 - ✅ Comprehensive test coverage (>95%)
-- 📦 Tree-shakeable ESM and CommonJS support
+- 📦 CommonJS builds with import and require entry points
 - 🔒 Type-safe with strict TypeScript configuration
 - 📖 Extensive JSDoc documentation
 
-## Available Functions (25)
+## Available Functions (27)
 
 - **`loremIpsum`** - Generates Lorem Ipsum placeholder text
 - **`randomBase64`** - Generates a random Base64 encoded string
 - **`randomBetween`** - Generates a random number between min and max
 - **`randomBoolean`** - Generates a random boolean value
-- **`randomChoice`** - Selects a random element from an array (alias for randomElement)
+- **`randomChoice`** - Selects an unweighted random element from an array
 - **`randomColorFromPalette`** - Selects a random color from a predefined palette
 - **`randomDate`** - Generates a random date within a range
-- **`randomElement`** - Selects a random element from an array
+- **`randomElement`** - Selects a weighted element while retaining its metadata
 - **`randomEnum`** - Selects a random value from an enum
 - **`randomFloat`** - Generates a random floating-point number within a range
 - **`randomFromRange`** - Generates a random number from a specified range
@@ -44,20 +44,35 @@ npm install @ts-utilkit/random
 - **`randomWord`** - Generates a random word
 - **`randomWords`** - Generates multiple random words
 
+## Additional exports
+
+- **`randomExponential`** — Returns a random sample from an exponential distribution using the inverse transform method.
+- **`randomGaussian`** — Returns a random sample from a Gaussian (normal) distribution using the Box-Muller transform.
+
 ## Quick Example
+
+`randomWeighted` and `randomElement` preserve relative probabilities for finite
+weights even when their total overflows or is subnormal. Zero-weight entries are
+excluded from selection, including the floating-point rounding fallback. The
+input arrays and selected item references are preserved.
+
+`randomFromRange` retains repeated floating-point addition and linear enumeration
+of stepped values. Endpoints must be finite, and a step that cannot advance the
+current value throws. A positive infinite step with finite endpoints selects the
+starting value; a singleton range terminates without needing an increment.
 
 ```typescript
 import {
   randomInt,
   randomFloat,
-  selectRandom,
-  shuffleArray,
+  randomSample,
+  randomShuffle,
 } from '@ts-utilkit/random';
 
 randomInt(1, 6); // 4
 randomFloat(0, 1); // 0.7234
-selectRandom(['a', 'b', 'c']); // 'b'
-shuffleArray([1, 2, 3, 4]); // [3, 1, 4, 2]
+randomSample(['a', 'b', 'c'], 1)[0]; // 'b'
+randomShuffle([1, 2, 3, 4]); // [3, 1, 4, 2]
 ```
 
 ## License

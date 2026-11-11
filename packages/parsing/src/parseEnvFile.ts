@@ -93,12 +93,17 @@ export function parseEnvFile(
         /\$\{([A-Z_][A-Z0-9_]*)\}|\$([A-Z_][A-Z0-9_]*)/gi,
         (match, bracedVar, unbracedVar) => {
           const varName = bracedVar || unbracedVar;
-          return result[varName] || '';
+          return Object.hasOwn(result, varName) ? result[varName] : '';
         },
       );
     }
 
-    result[key] = value;
+    Object.defineProperty(result, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    });
   }
 
   return result;

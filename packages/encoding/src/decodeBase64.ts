@@ -49,7 +49,11 @@ export function decodeBase64(str: string): string {
     }
 
     const withoutPadding = normalized.replace(/=+$/, '');
-    if (withoutPadding.length % 4 === 1) {
+    if (
+      withoutPadding.length % 4 === 1 ||
+      (padding.length > 0 &&
+        (normalized.length % 4 !== 0 || withoutPadding.length % 4 === 0))
+    ) {
       throw new Error('Invalid base64 string');
     }
 

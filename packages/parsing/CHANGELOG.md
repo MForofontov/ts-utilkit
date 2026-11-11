@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.2] - 2026-11-02
+
+- Retain special HTTP header names, including __proto__, as own data properties.
+- Reject malformed decimal tokens in duration/data-size parsing and inherited duration-unit names while retaining supported decimal spellings.
+- Preserve prototype-like keys in INI, environment-file, and key-value parsing; avoid inherited variable expansion; consume complete custom key-value delimiters.
+
 ### Changed
 
 - Second-pass audit: re-verified strict full-string parsers; first-audit fixes confirmed.

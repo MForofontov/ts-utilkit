@@ -1,4 +1,4 @@
-import { randomBytes } from 'crypto';
+import { randomInt } from 'crypto';
 
 /**
  * Generates a cryptographically secure random string.
@@ -29,7 +29,7 @@ import { randomBytes } from 'crypto';
  * // Generate URL-safe token
  * generateRandomString(24, 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_');
  *
- * @note Uses Node.js crypto.randomBytes() for cryptographic strength.
+ * @note Uses Node.js crypto.randomInt() for unbiased character selection.
  * The default charset includes: a-z, A-Z, 0-9 (62 characters).
  * Suitable for generating passwords, tokens, session IDs, and API keys.
  *
@@ -47,23 +47,9 @@ export function generateRandomString(
     throw new Error('charset cannot be empty');
   }
 
-  // Generate enough random bytes to ensure uniform distribution
-  // We need more bytes than the string length to avoid bias
-  const randomBytesLength = Math.ceil(length * 1.5);
-  const bytes = randomBytes(randomBytesLength);
-
   let result = '';
-  for (let i = 0; i < bytes.length && result.length < length; i++) {
-    // Use modulo bias mitigation: only use bytes that don't cause bias
-    const maxValidValue = Math.floor(256 / charset.length) * charset.length;
-    if (bytes[i] < maxValidValue) {
-      result += charset[bytes[i] % charset.length];
-    }
-  }
-
-  // If we didn't get enough characters (very unlikely), recursively generate more
-  if (result.length < length) {
-    result += generateRandomString(length - result.length, charset);
+  for (let i = 0; i < length; i++) {
+    result += charset[randomInt(charset.length)];
   }
 
   return result;

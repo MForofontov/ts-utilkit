@@ -1,5 +1,8 @@
+import { execFileSync } from 'node:child_process';
+import { readFileSync } from 'node:fs';
+import { transpileModule, ModuleKind, ScriptTarget } from 'typescript';
 import { getWeekdaysInMonth } from '../src/getWeekdaysInMonth';
-import { localDate, expectSameCalendarDay } from './dateTestUtils';
+import { localDate } from './dateTestUtils';
 
 /**
  * Unit tests for the getWeekdaysInMonth function.
@@ -97,3 +100,85 @@ describe('getWeekdaysInMonth', () => {
     expect(() => getWeekdaysInMonth(date)).toThrow('Invalid date');
   });
 });
+
+it.each([
+  'UTC',
+  'Europe/Lisbon',
+  'America/New_York',
+  'Pacific/Apia',
+  'Pacific/Kiritimati',
+])(
+  'preserves local weekday counting across DST and skipped dates in %s',
+  (timezone) => {
+    const modules = Object.fromEntries(
+      ['getWeekdaysInMonth', 'getDaysInMonth', '_calendarDate'].map((name) => [
+        './' + name,
+        transpileModule(
+          readFileSync(require.resolve('../src/' + name), 'utf8'),
+          {
+            compilerOptions: {
+              module: ModuleKind.CommonJS,
+              target: ScriptTarget.ES2022,
+            },
+          },
+        ).outputText,
+      ]),
+    );
+    const script = `
+      const modules = ${JSON.stringify(modules)};
+      function load(id) {
+        const exports = {};
+        new Function('require', 'exports', modules[id])(load, exports);
+        return exports;
+      }
+      const { getWeekdaysInMonth } = load('./getWeekdaysInMonth');
+      const rows = [[1994, 11], [2011, 11], [2024, 2], [2024, 9]].map(([year, month]) => {
+        const lastDay = new Date(Date.UTC(year, month + 1, 0)).getUTCDate();
+        let expected = 0;
+        for (let day = 1; day <= lastDay; day++) {
+          const weekday = new Date(year, month, day).getDay();
+          if (weekday >= 1 && weekday <= 5) expected++;
+        }
+        return [getWeekdaysInMonth(new Date(year, month, 15)), expected];
+      });
+      for (const year of [0, 4, 42, 99]) {
+        const input = new Date(2000, 1, 15); input.setFullYear(year);
+        const lastDay = new Date(year + 400, 2, 0).getDate();
+        let expected = 0;
+        for (let day = 1; day <= lastDay; day++) {
+          const weekday = new Date(year + 400, 1, day).getDay();
+          if (weekday >= 1 && weekday <= 5) expected++;
+        }
+        rows.push([getWeekdaysInMonth(input), expected]);
+      }
+      console.log(JSON.stringify(rows));
+    `;
+    const rows = JSON.parse(
+      execFileSync(process.execPath, ['-e', script], {
+        encoding: 'utf8',
+        env: {
+          ...process.env,
+          TZ: timezone,
+          NODE_OPTIONS: '--max-old-space-size=128 --max-semi-space-size=4',
+        },
+        timeout: 10000,
+      }),
+    ) as number[][];
+    for (const [actual, expected] of rows) expect(actual).toBe(expected);
+    if (timezone === 'Pacific/Kiritimati') expect(rows[0][0]).toBe(22);
+  },
+);
+
+it.each([0, 4, 42, 99])(
+  'matches the Gregorian 400-year cycle for literal year %i',
+  (year) => {
+    for (let month = 0; month < 12; month++) {
+      const input = new Date(2000, month, 15);
+      input.setFullYear(year);
+      const reference = new Date(year + 400, month, 15);
+      const before = input.getTime();
+      expect(getWeekdaysInMonth(input)).toBe(getWeekdaysInMonth(reference));
+      expect(input.getTime()).toBe(before);
+    }
+  },
+);

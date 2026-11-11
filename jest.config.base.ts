@@ -4,6 +4,7 @@ Individual packages extend this configuration.
 */
 
 import * as os from 'os';
+import type { Config } from 'jest';
 
 // Manually define the status values if the import is causing issues
 const Status = {
@@ -11,7 +12,7 @@ const Status = {
   BROKEN: 'broken',
 };
 
-export const baseConfig = {
+export const baseConfig: Config = {
   preset: 'ts-jest',
   testEnvironment: 'allure-jest/node',
   testEnvironmentOptions: {

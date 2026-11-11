@@ -146,8 +146,8 @@ jobs:
           set +e
           if [ -f pnpm-lock.yaml ]; then PM="pnpm"; elif [ -f yarn.lock ]; then PM="yarn"; else PM="npm"; fi
           if jq -e '.scripts | has("prettier") or has("format")' package.json >/dev/null 2>&1; then
-            if jq -e '.scripts.format' package.json >/dev/null 2>&1; then
-              CMD="$PM run format -- -c ."
+            if jq -e '.scripts["format:check"]' package.json >/dev/null 2>&1; then
+              CMD="$PM run format:check"
             else
               CMD="$PM run prettier -- -c ."
             fi

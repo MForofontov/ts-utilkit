@@ -1,5 +1,5 @@
 import { getWeekNumber } from '../src/getWeekNumber';
-import { localDate, expectSameCalendarDay } from './dateTestUtils';
+import { localDate } from './dateTestUtils';
 
 /**
  * Unit tests for the getWeekNumber function.
@@ -72,4 +72,31 @@ describe('getWeekNumber', () => {
     const date: Date = new Date('invalid-date');
     expect(() => getWeekNumber(date)).toThrow('Invalid date');
   });
+});
+
+it.each([0, 4, 42, 99])(
+  'matches the Gregorian 400-year cycle for literal year %i',
+  (year) => {
+    for (let month = 0; month < 12; month++) {
+      const input = new Date(2000, month, 15);
+      input.setFullYear(year);
+      const reference = new Date(year + 400, month, 15);
+      const before = input.getTime();
+      expect(getWeekNumber(input)).toBe(getWeekNumber(reference));
+      expect(input.getTime()).toBe(before);
+    }
+  },
+);
+
+it('matches an independent UTC day-count oracle across a Gregorian cycle', () => {
+  for (let year = 2000; year < 2400; year++) {
+    const first = new Date(Date.UTC(year, 0, 1));
+    for (let month = 0; month < 12; month++) {
+      const input = new Date(year, month, 15, 12);
+      const days = (Date.UTC(year, month, 15) - first.getTime()) / 86400000;
+      expect(getWeekNumber(input)).toBe(
+        Math.ceil((days + first.getUTCDay() + 1) / 7),
+      );
+    }
+  }
 });

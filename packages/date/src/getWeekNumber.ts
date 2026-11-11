@@ -1,8 +1,9 @@
+import { calendarDate } from './_calendarDate';
 /**
- * Gets the ISO week number of the year for a given date (1-53).
+ * Gets a simplified January-1-based week number for a given date.
  *
  * @param date - The Date object to get the week number for.
- * @returns The week number of the year (1-53, where week 1 starts on the first Monday).
+ * @returns The week containing the date, with the week containing January 1 counted as week 1.
  *
  * @throws {Error} If the date is invalid (e.g., new Date('invalid')).
  *
@@ -40,7 +41,7 @@ export function getWeekNumber(date: Date): number {
     throw new Error('Invalid date');
   }
 
-  const start = new Date(date.getFullYear(), 0, 1);
+  const start = calendarDate(date.getFullYear(), 0, 1);
   const days = dayOfYear(date);
   return Math.ceil((days + start.getDay() + 1) / 7);
 }

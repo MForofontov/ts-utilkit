@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.1] - 2026-11-02
+
+- Prevent non-advancing `generateRange` loops and reject non-finite endpoints; preserve finite singleton, fractional, and infinite-step behavior.
+- Preserve __proto__ data in generated objects and cloned test fixtures without changing result prototypes.
+- Reject errors from later `waitForCondition` checks with the original reason, reject NaN timeout/interval values before polling, and document supported README examples.
+
 ## [0.3.0] - 2026-08-04
 
 ### Fixed

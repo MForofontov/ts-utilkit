@@ -33,15 +33,29 @@ export function unflattenFromSerialization(
       // Determine if next level should be array or object
       const isNextArray = /^\d+$/.test(nextKey);
 
-      if (current[key] === undefined) {
-        current[key] = isNextArray ? [] : {};
+      if (
+        !Object.hasOwn(current, key) ||
+        current[key] === null ||
+        typeof current[key] !== 'object'
+      ) {
+        Object.defineProperty(current, key, {
+          value: isNextArray ? [] : {},
+          enumerable: true,
+          configurable: true,
+          writable: true,
+        });
       }
 
       current = current[key];
     }
 
     const lastKey = keys[keys.length - 1];
-    current[lastKey] = value;
+    Object.defineProperty(current, lastKey, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true,
+    });
   }
 
   return result;

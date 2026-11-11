@@ -1,3 +1,5 @@
+import { calendarDate } from './_calendarDate';
+import { getDaysInMonth } from './getDaysInMonth';
 /**
  * Counts the number of weekdays (Monday through Friday) in a given month.
  *
@@ -47,11 +49,12 @@ export function getWeekdaysInMonth(date: Date): number {
 
   const year = date.getFullYear();
   const month = date.getMonth();
+  const daysInMonth = getDaysInMonth(date);
   let weekdayCount = 0;
 
   // Loop through all days of the month
-  for (let day = 1; day <= new Date(year, month + 1, 0).getDate(); day++) {
-    const currentDay = new Date(year, month, day).getDay();
+  for (let day = 1; day <= daysInMonth; day++) {
+    const currentDay = calendarDate(year, month, day).getDay();
     // Check if the day is Monday to Friday
     if (currentDay >= 1 && currentDay <= 5) {
       weekdayCount++;

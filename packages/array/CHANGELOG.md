@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-11-02
+
+- Add `arrayDifferenceBy` and `arrayIntersectionBy`, preserving source order, duplicates, and references with Set key equality and sparse-slot skipping.
+- Optimize larger data-only primitive comparisons in `arrayDifference` and `arrayIntersection`; retain lazy deep-comparison fallbacks and add a reproducible benchmark.
+- Use native primitive membership in `findUniqueElements` while preserving first representatives, sparse iteration, and deep object comparisons; correct its space complexity.
+- Make primitive duplicate detection linear by tracking emitted keys; preserve discovery order and existing equality semantics.
+- Add `uniqueBy` and `partitionBy` with runtime input validation, public exports, documentation, and boundary tests.
+- Validate finite chunk sizes while retaining fractional sizes; count objects using deep equality rather than hash identity; optimize removeByIndex with Set membership.
+
 ## [0.3.0] - 2026-08-04
 
 ### Fixed

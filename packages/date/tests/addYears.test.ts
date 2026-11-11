@@ -73,5 +73,9 @@ describe('addYears', () => {
     expect(() => addYears(new Date('invalid'), 1)).toThrow('Invalid date');
   });
 
-  it('13. should throw Error when years is NaN', () => {});
+  it('13. should throw Error when years is NaN', () => {
+    expect(() => addYears(new Date(2026, 0, 1), NaN)).toThrow(
+      'Years must be a number',
+    );
+  });
 });

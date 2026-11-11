@@ -1,3 +1,5 @@
+import { setOwn } from './_setOwn';
+
 /**
  * Converts a URL query string into an object with parameter names as keys.
  *
@@ -55,7 +57,7 @@ export function queryStringToObject(
         const [key, ...rest] = param.split('=');
         if (key) {
           const value = rest.length > 0 ? rest.join('=') : undefined;
-          acc[decodeURIComponent(key)] = decodeURIComponent(value ?? '');
+          setOwn(acc, decodeURIComponent(key), decodeURIComponent(value ?? ''));
         }
         return acc;
       },

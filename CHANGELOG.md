@@ -7,8 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- `arrayDifferenceBy`, `arrayIntersectionBy`, and `fromAsyncThrowable`, with public exports, examples, boundary tests, and packed-consumer checks.
+- Reproducible array membership benchmarks via `npm run benchmark:array-membership`.
+
+### Fixed
+
+- Avoid finite intermediate overflow in interpolation/range mapping and non-advancing loops in stepped random ranges.
+- Preserve finite weighted-selection ratios at numeric extremes and exclude zero-weight entries from the floating-point fallback.
+- Include missing own keys in object `differenceBy`, including undefined values, without reading inherited comparison values.
+- Prevent `generateRange` from looping when floating-point steps stop advancing; reject non-finite endpoints.
+
 ### Changed
 
+- Optimize larger primitive array difference/intersection comparisons while retaining deep-equality and accessor fallbacks.
+- Select Node 24 in `.nvmrc`, retaining Node 20+ support; narrow internal serialization, validation, and regex types without changing public signatures.
 - Remove all runtime `typeof`/`instanceof` TypeError guards from ALL packages (array, async, collection, crypto, date, encoding, env, event, format, math, network, object, parsing, random, regex, serialization, string, testing-utilities, utility, validation, webscraping); TypeScript is the contract for this TS-first library
 - Remove all `@throws {TypeError}` JSDoc tags from all affected functions across all packages
 - Remove all TypeError test cases from all package test files (~346 test files modified)

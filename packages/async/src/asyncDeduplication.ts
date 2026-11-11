@@ -1,3 +1,5 @@
+import { defaultCacheKey } from './_cacheKey';
+
 /**
  * Wraps an async function so that concurrent calls with identical arguments
  * share a single in-flight Promise instead of launching duplicate executions.
@@ -9,7 +11,8 @@
  *
  * @param fn - The async function to wrap.
  * @param keyFn - Optional function to derive a string deduplication key from
- * the call arguments. Defaults to `JSON.stringify(args)`.
+ * the call arguments. Defaults to JSON serialization with escaped markers for
+ * undefined, NaN, infinities, and negative zero.
  * @returns A new function with the same signature as `fn`.
  *
  * @example
@@ -42,7 +45,8 @@
  * concurrent duplicates; it does NOT cache results after the call settles.
  * Use `asyncMemoize` if you want long-lived result caching.
  *
- * @complexity Time: O(1) per call, Space: O(k) where k is concurrent unique-key count
+ * @complexity Time: O(s) per key serialization plus O(1) lookup, Space: O(k * s),
+ * where s is serialized argument size and k is concurrent unique-key count.
  */
 export function asyncDeduplication<T, Args extends unknown[]>(
   fn: (...args: Args) => Promise<T>,
@@ -51,7 +55,7 @@ export function asyncDeduplication<T, Args extends unknown[]>(
   const inFlight = new Map<string, Promise<T>>();
 
   return (...args: Args): Promise<T> => {
-    const key = keyFn ? keyFn(...args) : JSON.stringify(args);
+    const key = keyFn ? keyFn(...args) : defaultCacheKey(args);
 
     const existing = inFlight.get(key);
     if (existing !== undefined) {

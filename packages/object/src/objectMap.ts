@@ -1,3 +1,5 @@
+import { setOwn } from './_setOwn';
+
 /**
  * Creates a new object by transforming each property value using the provided function.
  * Preserves all original keys while applying the transformation function to each value.
@@ -50,7 +52,7 @@ export function objectMap<T, U>(
 ): Record<string, U> {
   return Object.keys(obj).reduce(
     (acc, key) => {
-      acc[key] = fn(obj[key], key);
+      setOwn(acc, key, fn(obj[key], key));
       return acc;
     },
     {} as Record<string, U>,

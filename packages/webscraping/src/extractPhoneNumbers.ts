@@ -45,12 +45,7 @@ export function extractPhoneNumbers(html: string): string[] {
     const matches = text.match(pattern);
     if (matches) {
       matches.forEach((phone) => {
-        // Filter out sequences that are clearly not phone numbers
-        if (!/^\d{10}$/.test(phone) || phone.startsWith('000')) {
-          phones.add(phone);
-        } else if (/^\d{10}$/.test(phone) && !phone.startsWith('000')) {
-          phones.add(phone);
-        }
+        phones.add(phone);
       });
     }
   });

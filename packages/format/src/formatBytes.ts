@@ -87,7 +87,7 @@ export function formatBytes(
   const i = Math.floor(Math.log(bytes) / Math.log(k));
 
   // Ensure we don't exceed the units array
-  const unitIndex = Math.min(i, units.length - 1);
+  const unitIndex = Math.max(0, Math.min(i, units.length - 1));
   const value = bytes / Math.pow(k, unitIndex);
 
   return `${value.toFixed(decimals)} ${units[unitIndex]}`;

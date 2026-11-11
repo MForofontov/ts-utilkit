@@ -4,6 +4,29 @@ import { formatDuration } from '../src/formatDuration';
  * Unit tests for the formatDuration function.
  */
 describe('formatDuration', () => {
+  it.each<[number, string]>([
+    [0, '0 milliseconds'],
+    [1, '1 millisecond'],
+    [2, '2 milliseconds'],
+    [1000, '1 second'],
+    [2000, '2 seconds'],
+    [60000, '1 minute'],
+    [120000, '2 minutes'],
+    [3600000, '1 hour'],
+    [7200000, '2 hours'],
+    [86400000, '1 day'],
+    [172800000, '2 days'],
+  ])(
+    'formats long duration %s with correct unit pluralization',
+    (value, expected) => {
+      expect(formatDuration(value, 'long')).toBe(expected);
+    },
+  );
+
+  it('formats zero in compact form', () => {
+    expect(formatDuration(0, 'compact')).toBe('0:00');
+  });
+
   // Test case 1: Format seconds (short)
   it('1. should format seconds in short format', () => {
     // Arrange

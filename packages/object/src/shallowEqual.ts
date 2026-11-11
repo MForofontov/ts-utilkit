@@ -50,5 +50,7 @@ export function shallowEqual(
 
   if (keys1.length !== keys2.length) return false;
 
-  return keys1.every((key) => obj1[key] === obj2[key]);
+  return keys1.every(
+    (key) => Object.hasOwn(obj2, key) && obj1[key] === obj2[key],
+  );
 }

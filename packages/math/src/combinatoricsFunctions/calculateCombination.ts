@@ -38,9 +38,10 @@ import { calculateFactorial } from './calculateFactorial';
  * @note This is also known as the binomial coefficient.
  * @note For large values, results may overflow JavaScript's number precision limits.
  * @note Common use cases: lottery combinations, team selection, poker hands.
- * @note Uses factorial-based calculation; recursive implementation may hit call stack limits.
+ * @note Retains factorial ratios through n=170; larger n uses exact BigInt intermediates to avoid factorial overflow and accumulation error.
+ * @note Results remain floating-point approximations; values beyond Number range return Infinity.
  *
- * @complexity Time: O(n), Space: O(n) due to factorial calculation
+ * @complexity Time: O(min(k, n-k)) for n > 170, bounded cached work otherwise; Space: O(1)
  */
 export function calculateCombination(n: number, k: number): number {
   if (isNaN(n) || isNaN(k)) {
@@ -55,7 +56,18 @@ export function calculateCombination(n: number, k: number): number {
   if (k > n) {
     return 0;
   }
-  return (
-    calculateFactorial(n) / (calculateFactorial(k) * calculateFactorial(n - k))
-  );
+  if (n <= 170) {
+    return (
+      calculateFactorial(n) /
+      (calculateFactorial(k) * calculateFactorial(n - k))
+    );
+  }
+  const count = Math.min(k, n - k);
+  const base = BigInt(n) - BigInt(count);
+  let result = 1n;
+  for (let i = 1; i <= count; i++) {
+    result = (result * (base + BigInt(i))) / BigInt(i);
+    if (!Number.isFinite(Number(result))) return Infinity;
+  }
+  return Number(result);
 }

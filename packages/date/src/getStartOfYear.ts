@@ -1,3 +1,4 @@
+import { calendarDate } from './_calendarDate';
 /**
  * Calculates the first day of the year for a given date.
  *
@@ -44,5 +45,5 @@ export function getStartOfYear(date: Date): Date {
   if (isNaN(date.getTime())) {
     throw new Error('Invalid date');
   }
-  return new Date(date.getFullYear(), 0, 1);
+  return calendarDate(date.getFullYear(), 0, 1);
 }

@@ -27,18 +27,33 @@ export function flattenForSerialization(
 
   const flatten = (current: any, path: string): void => {
     if (current === null || current === undefined) {
-      result[path] = current;
+      Object.defineProperty(result, path, {
+        value: current,
+        enumerable: true,
+        configurable: true,
+        writable: true,
+      });
       return;
     }
 
     if (typeof current !== 'object') {
-      result[path] = current;
+      Object.defineProperty(result, path, {
+        value: current,
+        enumerable: true,
+        configurable: true,
+        writable: true,
+      });
       return;
     }
 
     if (Array.isArray(current)) {
       if (current.length === 0) {
-        result[path] = [];
+        Object.defineProperty(result, path, {
+          value: [],
+          enumerable: true,
+          configurable: true,
+          writable: true,
+        });
         return;
       }
 
@@ -52,7 +67,12 @@ export function flattenForSerialization(
     const keys = Object.keys(current);
 
     if (keys.length === 0) {
-      result[path] = {};
+      Object.defineProperty(result, path, {
+        value: {},
+        enumerable: true,
+        configurable: true,
+        writable: true,
+      });
       return;
     }
 

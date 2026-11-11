@@ -12,15 +12,15 @@ npm install @ts-utilkit/regex
 
 - 🚀 TypeScript-first with complete type definitions
 - ✅ Comprehensive test coverage (>95%)
-- 📦 Tree-shakeable ESM and CommonJS support
+- 📦 CommonJS builds with import and require entry points
 - 🔒 Type-safe with strict TypeScript configuration
 - 📖 Extensive JSDoc documentation
 
-## Available Functions (15)
+## Available Functions (18)
 
 - **`buildPattern`** - Builds a regex pattern from components
 - **`combinePatterns`** - Combines multiple regex patterns with alternation
-- **`commonPatterns`** - Provides common regex patterns (email, URL, phone, etc.)
+- **`CommonPatterns`** - Provides common regex patterns (email, URL, phone, etc.)
 - **`countMatches`** - Counts the number of pattern matches in a string
 - **`extractMatchGroups`** - Extracts capture groups from regex matches
 - **`extractMatches`** - Extracts all matches of a pattern from text
@@ -34,18 +34,20 @@ npm install @ts-utilkit/regex
 - **`splitByPattern`** - Splits a string by a regex pattern
 - **`testPattern`** - Tests if a string matches a regex pattern
 
+## Additional exports
+
+- **`PatternBuilder`** — Fluent builder for constructing regular expression patterns safely.
+- **`getCommonPattern`** — Gets a common regex pattern by name.
+- **`testCommonPattern`** — Tests if a string matches a common pattern.
+
 ## Quick Example
 
 ```typescript
-import {
-  escapeRegExp,
-  extractURLsFromText,
-  isMatchingPattern,
-} from '@ts-utilkit/regex';
+import { extractMatches, testCommonPattern, testPattern } from '@ts-utilkit/regex';
 
-escapeRegExp('Price: $10.99'); // 'Price: \$10\.99'
-extractURLsFromText('Visit https://a.com'); // ['https://a.com']
-isMatchingPattern('test@email.com', /^\S+@\S+\.\S+$/); // true
+extractMatches('Visit https://a.com', /https?:\/\/\S+/g); // ['https://a.com']
+testCommonPattern('test@email.com', 'email'); // true
+testPattern('abc123', /\d+/); // true
 ```
 
 ## License

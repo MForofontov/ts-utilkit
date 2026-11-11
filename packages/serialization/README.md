@@ -12,7 +12,7 @@ npm install @ts-utilkit/serialization
 
 - 🚀 TypeScript-first with complete type definitions
 - ✅ Comprehensive test coverage (>95%)
-- 📦 Tree-shakeable ESM and CommonJS support
+- 📦 CommonJS builds with import and require entry points
 - 🔒 Type-safe with strict TypeScript configuration
 - 📖 Extensive JSDoc documentation
 - 🔄 Multiple format support (JSON, CSV, XML, YAML, Binary, Buffer, Query String)
@@ -52,15 +52,20 @@ npm install @ts-utilkit/serialization
 
 ```typescript
 import {
-  serializeJSON,
-  deserializeJSON,
-  serializeXML,
+  serializeToJSON,
+  deserializeFromJSON,
+  serializeToXML,
 } from '@ts-utilkit/serialization';
 
-serializeJSON({ a: 1 }); // '{"a":1}'
-deserializeJSON('{"a":1}'); // {a: 1}
-serializeXML({ root: { item: 'value' } }); // '<root><item>value</item></root>'
+serializeToJSON({ a: 1 }); // '{"a":1}'
+deserializeFromJSON('{"a":1}'); // {a: 1}
+serializeToXML({ item: 'value' }); // '<root><item>value</item></root>'
 ```
+
+CSV serialization quotes single-column blank values, whitespace-delimited blank
+cells, and carriage returns so rows and headers survive parsing. Ordinary blank
+cells in comma-separated multi-column output retain their existing representation.
+CSV parsing returns strings; null and undefined serialize as empty cells.
 
 ## License
 

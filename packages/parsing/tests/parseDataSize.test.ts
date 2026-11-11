@@ -174,3 +174,23 @@ describe('parseDataSize', () => {
     expect(() => parseDataSize(input)).toThrow('Unrecognized unit');
   });
 });
+
+it.each(['1..5', '1.2.3', '1...'])(
+  'rejects malformed numeric token %s',
+  (token) => {
+    expect(() => parseDataSize(token + 'KB')).toThrow('Invalid numeric value');
+  },
+);
+it.each([
+  ['.5', 0.5],
+  ['1.', 1],
+  ['01.5', 1.5],
+])('retains supported decimal spelling %s', (token, value) => {
+  expect(parseDataSize(String(token) + 'KB')).toBe(
+    Math.floor(Number(value) * 1024),
+  );
+});
+
+it('rejects a missing numeric value', () => {
+  expect(() => parseDataSize('.KB')).toThrow('Invalid numeric value');
+});

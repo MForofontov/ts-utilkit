@@ -1,3 +1,6 @@
+import { lerp } from './lerp';
+import { normalizeValue } from './normalizeValue';
+
 /**
  * Maps a value from one numeric range to another.
  * Equivalent to normalizing the value within [inMin, inMax] and then scaling
@@ -32,6 +35,7 @@
  * @note Values outside the input range are NOT clamped; they extrapolate linearly.
  * @note Formula: outMin + (value - inMin) / (inMax - inMin) * (outMax - outMin)
  * @note When inMin === inMax the input range is degenerate and NaN is returned.
+ * Uses the overflow-safe finite arithmetic of normalizeValue and lerp.
  *
  * @complexity Time: O(1), Space: O(1)
  */
@@ -60,5 +64,7 @@ export function mapRange(
   if (inMin === inMax) {
     return NaN;
   }
-  return outMin + ((value - inMin) / (inMax - inMin)) * (outMax - outMin);
+  const position = normalizeValue(value, inMin, inMax);
+  // Derived NaN remains a result rather than becoming a new validation error.
+  return Number.isNaN(position) ? NaN : lerp(outMin, outMax, position);
 }

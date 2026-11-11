@@ -30,6 +30,7 @@ export * from './objectSize';
 export * from './objectToQueryString';
 export * from './omitBy';
 export * from './omitKeys';
+export * from './omitDeep';
 export * from './pickBy';
 export * from './pickKeys';
 export * from './queryStringToObject';

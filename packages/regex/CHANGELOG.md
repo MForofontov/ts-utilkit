@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.1] - 2026-11-02
+
+- Narrow replacement overloads instead of casting to any; retain public callback types and replacement behavior.
+- Reject inherited object-property names as unknown common-pattern presets; correct README imports and export listings.
+- Handle zero-width matches, including Unicode code points, without infinite loops; avoid changing caller-owned regex lastIndex in iterative extractors.
+
 ## [0.3.0] - 2026-08-04
 
 ### Fixed
@@ -27,6 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `testPattern`: replace broken `setTimeout`-based timeout with `vm.runInContext` + V8 script execution timer — timeout now genuinely interrupts catastrophic backtracking instead of being a no-op post-hoc check
 
 - Add `exports` field to `package.json` for explicit ESM/CJS/types entry-point resolution by modern bundlers and Node.js `exports` map
+
 ## [0.1.0] - 2026-01-26
 
 ### Added

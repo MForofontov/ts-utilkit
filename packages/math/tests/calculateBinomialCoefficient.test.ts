@@ -83,3 +83,14 @@ describe('calculateBinomialCoefficient', () => {
     );
   });
 });
+
+it.each([
+  [171, 0, 1],
+  [171, 1, 171],
+  [200, 2, 19900],
+])(
+  'retains combination equivalence above the factorial range for (%i,%i)',
+  (n, k, expected) => {
+    expect(calculateBinomialCoefficient(n, k)).toBe(expected);
+  },
+);

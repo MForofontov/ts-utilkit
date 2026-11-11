@@ -75,7 +75,9 @@ export function asyncBatch<T, R>(
     for (let i = 0; i < items.length; i += batchSize) {
       const batch = items.slice(i, i + batchSize);
       const batchResults = await batchFn(batch);
-      results.push(...batchResults);
+      // Append without exceeding the engine's maximum function argument count.
+      // Iteration, like spread, materializes sparse entries as undefined.
+      for (const result of batchResults) results.push(result);
 
       // Apply inter-batch delay (skip after the final batch)
       if (delayMs > 0 && i + batchSize < items.length) {

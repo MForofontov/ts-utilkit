@@ -1,6 +1,6 @@
 {
   "name": "@ts-utilkit/collection",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Collection utilities for Sets, Maps, and conversions between different collection types",
   "homepage": "https://github.com/mykfor1/ts-utilkit/tree/main/packages/collection#readme",
   "bugs": {

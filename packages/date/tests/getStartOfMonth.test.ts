@@ -69,3 +69,24 @@ describe('getStartOfMonth', () => {
     expect(() => getStartOfMonth(new Date('invalid'))).toThrow('Invalid date');
   });
 });
+
+it.each([-1, 0, 4, 42, 99])(
+  'preserves literal year %i and local midnight',
+  (year) => {
+    const input = new Date(2000, 1, 15, 12, 34, 56, 789);
+    input.setFullYear(year);
+    const before = input.getTime();
+    const result = getStartOfMonth(input);
+    expect([result.getFullYear(), result.getMonth(), result.getDate()]).toEqual(
+      [year, 1, 1],
+    );
+    expect([
+      result.getHours(),
+      result.getMinutes(),
+      result.getSeconds(),
+      result.getMilliseconds(),
+    ]).toEqual([0, 0, 0, 0]);
+    expect(input.getTime()).toBe(before);
+    expect(result).not.toBe(input);
+  },
+);

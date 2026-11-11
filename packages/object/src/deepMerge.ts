@@ -1,3 +1,5 @@
+import { setOwn } from './_setOwn';
+
 /**
  * Recursively merges two objects, combining their properties and nested structures.
  *
@@ -44,6 +46,7 @@
  *
  * @complexity Time: O(n) where n is total number of properties across all nesting levels, Space: O(n)
  */
+
 export function deepMerge<T extends object, U extends object>(
   target: T,
   source: U,
@@ -63,14 +66,14 @@ export function deepMerge<T extends object, U extends object>(
   ): Record<string, unknown> => {
     Reflect.ownKeys(s).forEach((k) => {
       const key = k as string;
-      const targetValue = t[key];
+      const targetValue = Object.hasOwn(t, key) ? t[key] : undefined;
       const sourceValue = s[key];
       if (Array.isArray(targetValue) && Array.isArray(sourceValue)) {
-        t[key] = targetValue.concat(sourceValue);
+        setOwn(t, key, targetValue.concat(sourceValue));
       } else if (isPlainObject(targetValue) && isPlainObject(sourceValue)) {
-        t[key] = merge({ ...targetValue }, sourceValue);
+        setOwn(t, key, merge({ ...targetValue }, sourceValue));
       } else {
-        t[key] = sourceValue;
+        setOwn(t, key, sourceValue);
       }
     });
     return t;

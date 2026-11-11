@@ -1,5 +1,5 @@
 import { getQuarter } from '../src/getQuarter';
-import { localDate, expectSameCalendarDay } from './dateTestUtils';
+import { localDate } from './dateTestUtils';
 
 /**
  * Unit tests for the getQuarter function.

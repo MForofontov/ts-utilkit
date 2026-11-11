@@ -185,6 +185,32 @@ describe('parseDuration', () => {
   });
 
   it('17. should throw Error for trailing garbage', () => {
-    expect(() => parseDuration('5s garbage')).toThrow('unexpected trailing text');
+    expect(() => parseDuration('5s garbage')).toThrow(
+      'unexpected trailing text',
+    );
   });
+});
+
+it.each(['1..5', '1.2.3', '1...'])(
+  'rejects malformed numeric token %s',
+  (token) => {
+    expect(() => parseDuration(token + 's')).toThrow('Invalid numeric value');
+  },
+);
+it.each([
+  ['.5', 0.5],
+  ['1.', 1],
+  ['01.5', 1.5],
+])('retains supported decimal spelling %s', (token, value) => {
+  expect(parseDuration(String(token) + 's')).toBe(
+    Math.floor(Number(value) * 1000),
+  );
+});
+
+it('rejects inherited unit names', () => {
+  expect(() => parseDuration('5constructor')).toThrow('Unrecognized unit');
+});
+
+it.each([' ', 'garbage 5s', '.s'])('rejects malformed duration %p', (input) => {
+  expect(() => parseDuration(input)).toThrow();
 });

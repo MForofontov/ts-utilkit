@@ -12,16 +12,17 @@ npm install @ts-utilkit/parsing
 
 - 🚀 TypeScript-first with complete type definitions
 - ✅ Comprehensive test coverage (>95%)
-- 📦 Tree-shakeable ESM and CommonJS support
+- 📦 CommonJS builds with import and require entry points
 - 🔒 Type-safe with strict TypeScript configuration
 - 📖 Extensive JSDoc documentation
 
-## Available Functions (7)
+## Available Functions (8)
 
 - **`parseCSVLine`** - Parses a single CSV line into array of values
 - **`parseDataSize`** - Parses human-readable data size to bytes (e.g., "5MB" → 5242880)
 - **`parseDuration`** - Parses duration string to milliseconds (e.g., "1h 30m" → 5400000)
 - **`parseEnvFile`** - Parses .env file format into key-value object
+- **`parseHTTPHeaders`** - Parses a raw HTTP header block (a multi-line string of `"Name: Value"` lines)
 - **`parseINI`** - Parses INI configuration file format
 - **`parseKeyValue`** - Parses key=value format strings
 - **`parseLogLine`** - Parses structured log lines into components
@@ -30,16 +31,16 @@ npm install @ts-utilkit/parsing
 
 ```typescript
 import {
-  parseCSV,
-  parseJSON,
-  parseQueryString,
-  parseURL,
+  parseCSVLine,
+  parseDuration,
+  parseDataSize,
+  parseKeyValue,
 } from '@ts-utilkit/parsing';
 
-parseCSV('a,b\n1,2'); // [{a: '1', b: '2'}]
-parseJSON('{"a":1}'); // {a: 1}
-parseQueryString('page=2&sort=asc'); // {page: '2', sort: 'asc'}
-parseURL('https://example.com/path'); // {protocol: 'https:', host: 'example.com', ...}
+parseCSVLine('a,"b,c"'); // ['a', 'b,c']
+parseDuration('1h 30m'); // 5400000
+parseDataSize('5MB'); // 5242880
+parseKeyValue('name=Alice'); // { name: 'Alice' }
 ```
 
 ## License

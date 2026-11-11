@@ -20,7 +20,7 @@
  * @complexity Time: O(n), Space: O(n) where n is object depth
  */
 export function serializeToYAML(data: any, indent: number = 2): string {
-  const serialize = (obj: any, depth: number = 0): string => {
+  const serialize = (obj: unknown, depth: number = 0): string => {
     const spacing = ' '.repeat(depth * indent);
 
     if (obj === null) {
@@ -93,6 +93,7 @@ export function serializeToYAML(data: any, indent: number = 2): string {
       );
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-base-to-string -- Preserve native coercion of remaining symbol, bigint, and function values.
     return String(obj);
   };
 

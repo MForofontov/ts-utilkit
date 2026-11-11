@@ -22,7 +22,8 @@
  * joinURLPaths('api', 'users');
  * // Returns: 'api/users'
  *
- * @note Removes duplicate slashes and normalizes the path.
+ * @note Collapses literal slash runs inside and between segments.
+ * @note Preserves encoded slashes, dot segments, and the first segment's leading-slash choice.
  *
  * @complexity Time: O(n), Space: O(n)
  */
@@ -37,9 +38,9 @@ export function joinURLPaths(...paths: string[]): string {
 
   // Join and normalize
   const joined = paths
-    .map((path) => path.replace(/^\/+|\/+$/g, '')) // Remove leading/trailing slashes
-    .filter((path) => path.length > 0) // Remove empty segments
-    .join('/');
+    .join('/')
+    .replace(/\/+/g, '/')
+    .replace(/^\/|\/$/g, '');
 
   // Restore leading slash if original had it
   return startsWithSlash ? `/${joined}` : joined;

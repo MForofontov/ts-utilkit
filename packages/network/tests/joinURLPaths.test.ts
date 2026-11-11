@@ -127,3 +127,23 @@ describe('joinURLPaths', () => {
     expect(result).toBe('/api/user-name/file.json');
   });
 });
+
+it.each([
+  [['/api//v1', 'users///active'], '/api/v1/users/active'],
+  [['api//v1', '//users///active//'], 'api/v1/users/active'],
+])('normalizes slash runs inside every path segment', (segments, expected) => {
+  expect(joinURLPaths(...segments)).toBe(expected);
+});
+
+it.each([
+  [[''], ''],
+  [['', '/'], ''],
+  [['/', '', '//'], '/'],
+  [['', '/api', ''], 'api'],
+  [['/api', '%2F', '..', '.', '☃'], '/api/%2F/.././☃'],
+])(
+  'preserves root choice and literal non-slash content',
+  (segments, expected) => {
+    expect(joinURLPaths(...segments)).toBe(expected);
+  },
+);

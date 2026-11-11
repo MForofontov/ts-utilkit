@@ -1,6 +1,6 @@
 {
   "name": "@ts-utilkit/path",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "POSIX path utilities for joining, normalizing, and transforming file paths",
   "homepage": "https://github.com/mykfor1/ts-utilkit/tree/main/packages/path#readme",
   "bugs": {

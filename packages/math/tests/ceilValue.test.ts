@@ -68,5 +68,7 @@ describe('ceilValue', () => {
   // Test case 9: Ceil value for NaN (should throw an error)
   it('9. should throw an error for NaN input', () => {
     const input: number = NaN;
+
+    expect(() => ceilValue(input)).toThrow('Input must be a number');
   });
 });

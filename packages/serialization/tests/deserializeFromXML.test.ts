@@ -172,6 +172,8 @@ describe('deserializeFromXML', () => {
   });
 
   it('17. should throw for malformed tags', () => {
-    expect(() => deserializeFromXML('<root><<<')).toThrow(/Failed to parse XML/);
+    expect(() => deserializeFromXML('<root><<<')).toThrow(
+      /Failed to parse XML/,
+    );
   });
 });

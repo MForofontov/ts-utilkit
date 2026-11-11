@@ -43,15 +43,19 @@
  * @note Useful for configuration objects, constants, and preventing accidental mutations.
  * @note Different from Object.freeze() which only freezes the top level.
  *
- * @complexity Time: O(n) where n is total number of properties across all nesting levels, Space: O(d) where d is max depth (recursion stack)
+ * @complexity Time: O(n) properties, Space: O(n) visited objects and recursion stack.
  */
 export function deepFreeze<T extends object>(obj: T): T {
-  Object.freeze(obj);
-  Object.keys(obj).forEach((key) => {
-    const value = (obj as Record<string, unknown>)[key];
-    if (typeof value === 'object' && value !== null) {
-      deepFreeze(value);
+  const seen = new WeakSet<object>();
+  const freeze = (current: object): void => {
+    if (seen.has(current)) return;
+    seen.add(current);
+    Object.freeze(current);
+    for (const key of Reflect.ownKeys(current)) {
+      const value = (current as Record<PropertyKey, unknown>)[key];
+      if (typeof value === 'object' && value !== null) freeze(value);
     }
-  });
+  };
+  freeze(obj);
   return obj;
 }

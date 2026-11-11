@@ -31,7 +31,11 @@ export function calculateRange(arr: number[]): number {
     return NaN;
   }
 
-  const min: number = Math.min(...arr);
-  const max: number = Math.max(...arr);
+  let min = Infinity;
+  let max = -Infinity;
+  for (const value of arr) {
+    min = Math.min(min, value);
+    max = Math.max(max, value);
+  }
   return max - min;
 }

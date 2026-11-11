@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-11-02
+
+- Reject fractional weekday arguments in getNextOccurrence and replace vacuous invalid-number tests with real assertions.
+- Preserve literal years 0–99 throughout calendar boundaries, month clamping, week calculations, and business-day counting; retain negative-year rollovers and existing midnight conventions.
+- Avoid repeated month-end construction in weekday counting and use constant-time calendar offsets for simplified week numbers; correct daysLeftInYear examples without changing its elapsed-day convention.
+- Preserve literal years 0–99 in toUTCDate and getDaysInMonth, including February in leap year zero.
+- Add `addBusinessDays` with runtime input validation, public exports, documentation, and boundary tests.
+- Clarify elapsed-day and simplified week-number semantics without changing date behavior.
+
 ## [0.2.2] - 2026-08-04
 
 ### Fixed

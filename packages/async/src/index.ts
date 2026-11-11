@@ -5,6 +5,8 @@ export * from './asyncBatch';
 export * from './asyncDeduplication';
 export * from './asyncFilter';
 export * from './asyncMap';
+export * from './asyncMapSettled';
+export * from './asyncReduce';
 export * from './asyncMemoize';
 export * from './asyncParallel';
 export * from './asyncPoll';

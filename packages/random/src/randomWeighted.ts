@@ -5,13 +5,13 @@ import { _weightedPick } from './_weightedPick';
  *
  * @template T - The type of array elements.
  * @param items - The array of items to pick from.
- * @param weights - The array of weights (positive numbers) corresponding to each item.
+ * @param weights - The array of non-negative weights corresponding to each item.
  * @returns A randomly selected item based on weights.
  *
  * @throws {Error} If items array is empty.
  * @throws {Error} If weights array is empty.
  * @throws {Error} If items and weights arrays have different lengths.
- * @throws {Error} If any weight is not a positive number.
+ * @throws {Error} If any weight is negative or not a number.
  * @throws {Error} If any weight is NaN.
  * @throws {Error} If sum of weights is zero.
  *
@@ -31,6 +31,8 @@ import { _weightedPick } from './_weightedPick';
  * @note Uses Math.random() for non-cryptographic randomness.
  * @note Higher weight means higher probability of selection.
  * @note Weights don't need to sum to 1 or 100 - they are normalized internally.
+ * Finite overflowing or subnormal totals are scaled to retain relative weights.
+ * Zero-weight entries are excluded, including floating-point fallback selection.
  *
  * @complexity Time: O(n), Space: O(1) where n is array length
  */

@@ -77,7 +77,8 @@ export function isValidISODate(
 
   // Check calendar validity using UTC so date-only ISO strings (parsed as UTC)
   // are not rejected in negative UTC-offset timezones.
-  const reconstructed = new Date(Date.UTC(year, month - 1, day));
+  const reconstructed = new Date(0);
+  reconstructed.setUTCFullYear(year, month - 1, day);
   if (
     reconstructed.getUTCFullYear() !== year ||
     reconstructed.getUTCMonth() !== month - 1 ||

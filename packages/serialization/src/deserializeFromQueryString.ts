@@ -40,7 +40,9 @@ export function deserializeFromQueryString(
   for (const pair of pairs) {
     if (pair.length === 0) continue;
 
-    const [rawKey, rawValue = ''] = pair.split('=');
+    const separator = pair.indexOf('=');
+    const rawKey = separator === -1 ? pair : pair.slice(0, separator);
+    const rawValue = separator === -1 ? '' : pair.slice(separator + 1);
 
     const key = decodeValues ? decodeURIComponent(rawKey) : rawKey;
     const value = decodeValues ? decodeURIComponent(rawValue) : rawValue;
@@ -48,11 +50,18 @@ export function deserializeFromQueryString(
     // Check if it's an array key
     if (key.endsWith('[]')) {
       const baseKey = key.slice(0, -2);
-      if (!result[baseKey]) {
-        result[baseKey] = [];
+      if (!Object.hasOwn(result, baseKey)) {
+        Object.defineProperty(result, baseKey, {
+          value: [],
+          enumerable: true,
+          configurable: true,
+          writable: true,
+        });
+      } else if (!Array.isArray(result[baseKey])) {
+        result[baseKey] = [result[baseKey]];
       }
       result[baseKey].push(value);
-    } else if (arrayFormat === 'auto' && result[key] !== undefined) {
+    } else if (arrayFormat === 'auto' && Object.hasOwn(result, key)) {
       // Auto-detect repeated keys as arrays
       if (Array.isArray(result[key])) {
         result[key].push(value);
@@ -60,7 +69,12 @@ export function deserializeFromQueryString(
         result[key] = [result[key], value];
       }
     } else {
-      result[key] = value;
+      Object.defineProperty(result, key, {
+        value,
+        enumerable: true,
+        configurable: true,
+        writable: true,
+      });
     }
   }
 

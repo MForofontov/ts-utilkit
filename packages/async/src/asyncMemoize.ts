@@ -1,3 +1,5 @@
+import { defaultCacheKey } from './_cacheKey';
+
 /**
  * Internal cache entry holding a resolved value and optional expiry timestamp.
  */
@@ -19,7 +21,8 @@ interface MemoizeCacheEntry<T> {
  * @param options.ttl - Time-to-live in milliseconds. After this duration the
  * cached entry is evicted and `fn` is called again. Omit for indefinite caching.
  * @param options.keyFn - Custom function to derive a string cache key from the
- * call arguments. Defaults to `JSON.stringify(args)`.
+ * call arguments. Defaults to JSON serialization with escaped markers for
+ * undefined, NaN, infinities, and negative zero.
  * @returns A new function with the same signature as `fn` that transparently
  * caches resolved values.
  *
@@ -51,7 +54,8 @@ interface MemoizeCacheEntry<T> {
  * next invocation with the same arguments. Create a new memoized function
  * instance to reset the cache entirely.
  *
- * @complexity Time: O(1) per cached call, Space: O(k) where k is unique key count
+ * @complexity Time: O(s) per key serialization plus O(1) lookup, Space: O(k * s),
+ * where s is serialized argument size and k is unique key count.
  */
 export function asyncMemoize<T, Args extends unknown[]>(
   fn: (...args: Args) => Promise<T>,
@@ -72,7 +76,7 @@ export function asyncMemoize<T, Args extends unknown[]>(
   const inFlight = new Map<string, Promise<T>>();
 
   return (...args: Args): Promise<T> => {
-    const key = keyFn ? keyFn(...args) : JSON.stringify(args);
+    const key = keyFn ? keyFn(...args) : defaultCacheKey(args);
     const now = Date.now();
     const cached = cache.get(key);
 

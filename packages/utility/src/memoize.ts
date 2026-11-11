@@ -1,18 +1,4 @@
-/**
- * Serializes call arguments into a stable cache key, distinguishing values
- * that `JSON.stringify` would collapse (null, undefined, NaN).
- */
-function defaultCacheKey(args: unknown[]): string {
-  return JSON.stringify(args, (_key, value) => {
-    if (typeof value === 'number' && Number.isNaN(value)) {
-      return { __memoize: 'NaN' };
-    }
-    if (value === undefined) {
-      return { __memoize: 'undefined' };
-    }
-    return value;
-  });
-}
+import { defaultCacheKey } from './_cacheKey';
 
 /**
  * Wraps a synchronous function so that repeated calls with identical arguments
@@ -24,7 +10,7 @@ function defaultCacheKey(args: unknown[]): string {
  * @param fn - The synchronous function to memoize.
  * @param keyFn - Optional function that converts the call arguments to a string
  *   cache key. Defaults to a serializer that distinguishes `null`, `undefined`,
- *   and `NaN` (unlike plain `JSON.stringify`).
+ *   `NaN`, infinities, and negative zero (unlike plain `JSON.stringify`).
  * @returns A new function with the same signature as `fn` that transparently
  *   caches return values.
  *
@@ -57,7 +43,8 @@ function defaultCacheKey(args: unknown[]): string {
  * @note The default key strategy cannot handle circular references; supply a
  *   custom `keyFn` for non-serialisable arguments.
  *
- * @complexity Time: O(1) per cached call, Space: O(k) where k is unique key count
+ * @complexity Time: O(s) per key serialization plus O(1) lookup, Space: O(k * s),
+ * where s is serialized argument size and k is unique key count.
  */
 export function memoize<T, Args extends unknown[]>(
   fn: (...args: Args) => T,

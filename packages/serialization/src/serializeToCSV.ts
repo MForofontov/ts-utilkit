@@ -17,7 +17,8 @@
  * serializeToCSV([{ a: 1, b: 2 }], { delimiter: ';', includeHeaders: false });
  * // '1;2'
  *
- * @note Values containing delimiter or newlines are quoted.
+ * @note Values containing delimiters, quotes, or CR/LF are quoted. Blank values
+ * are also quoted in single-column or whitespace-delimited output to retain rows.
  *
  * @complexity Time: O(n * m), Space: O(n * m) where n is rows, m is columns
  */
@@ -37,9 +38,17 @@ export function serializeToCSV(
     throw new Error('Objects must have at least one key');
   }
 
-  const escapeValue = (value: any): string => {
+  const escapeValue = (value: unknown): string => {
+    // eslint-disable-next-line @typescript-eslint/no-base-to-string -- CSV cells deliberately retain native String coercion for arbitrary values.
     const str = String(value ?? '');
-    if (str.includes(delimiter) || str.includes('\n') || str.includes('"')) {
+    if (
+      (str.trim().length === 0 &&
+        (keys.length === 1 || delimiter.trim().length === 0)) ||
+      str.includes(delimiter) ||
+      str.includes('\r') ||
+      str.includes('\n') ||
+      str.includes('"')
+    ) {
       return `"${str.replace(/"/g, '""')}"`;
     }
     return str;

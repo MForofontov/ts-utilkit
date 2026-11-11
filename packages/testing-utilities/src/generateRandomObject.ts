@@ -29,7 +29,12 @@ export function generateRandomObject<
 
   for (const key in schema) {
     if (Object.prototype.hasOwnProperty.call(schema, key)) {
-      result[key] = schema[key]();
+      Object.defineProperty(result, key, {
+        value: schema[key](),
+        enumerable: true,
+        configurable: true,
+        writable: true,
+      });
     }
   }
 

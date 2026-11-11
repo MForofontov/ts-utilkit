@@ -4,6 +4,37 @@ import { formatNumber } from '../src/formatNumber';
  * Unit tests for the formatNumber function.
  */
 describe('formatNumber', () => {
+  it('retains custom separators and up to 100 decimal places for large values', () => {
+    expect(formatNumber(1.25e21, 2, '.', ',')).toBe(
+      '1.250.000.000.000.000.000.000,00',
+    );
+    expect(formatNumber(1e21, 100)).toBe(
+      '1,000,000,000,000,000,000,000.' + '0'.repeat(100),
+    );
+    expect(() => formatNumber(1, 2, ',', '..')).toThrow(
+      'exactly one character',
+    );
+  });
+
+  it.each([1e21, 1.2345e25, 1e308, Number.MAX_VALUE])(
+    'formats large finite numbers without overflow or undefined suffixes: %s',
+    (value) => {
+      const expectedInteger = value.toLocaleString('en-US', {
+        useGrouping: true,
+        maximumFractionDigits: 0,
+      });
+      expect(formatNumber(value, 2)).toBe(expectedInteger + '.00');
+      expect(formatNumber(-value, 2)).toBe('-' + expectedInteger + '.00');
+    },
+  );
+
+  it.each([NaN, Infinity, -Infinity])(
+    'formats non-finite numbers as %s',
+    (value) => {
+      expect(formatNumber(value, 2)).toBe(String(value));
+    },
+  );
+
   // Test case 1: Format basic number with thousands separator
   it('1. should format number with thousands separator', () => {
     // Arrange

@@ -38,7 +38,7 @@ export function serializeToXML(
       .replace(/'/g, '&apos;');
   };
 
-  const serialize = (obj: any, tag: string, depth: number = 0): string => {
+  const serialize = (obj: unknown, tag: string, depth: number = 0): string => {
     const indent = pretty ? '  '.repeat(depth) : '';
     const newline = pretty ? '\n' : '';
 
@@ -47,6 +47,7 @@ export function serializeToXML(
     }
 
     if (typeof obj !== 'object') {
+      // eslint-disable-next-line @typescript-eslint/no-base-to-string -- Preserve native coercion of non-object scalar and function values.
       return `${indent}<${tag}>${escapeXML(String(obj))}</${tag}>${newline}`;
     }
 

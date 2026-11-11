@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.2] - 2026-11-02
+
+- Reject noncanonical Base32 and Base64 padding and impossible encoded lengths while retaining optional padding.
+
 ### Changed
 
 - Second-pass audit: re-verified strict decode paths; first-audit residual-bit validation confirmed.

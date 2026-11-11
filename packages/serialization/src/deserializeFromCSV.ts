@@ -31,6 +31,12 @@ export function deserializeFromCSV(
 
   const { delimiter = ',', hasHeaders = true } = options;
 
+  if (delimiter.length !== 1 || /["\r\n]/.test(delimiter)) {
+    throw new Error(
+      'delimiter must be one character other than a quote or newline',
+    );
+  }
+
   const parseRow = (row: string): string[] => {
     const values: string[] = [];
     let current = '';
@@ -59,7 +65,28 @@ export function deserializeFromCSV(
     return values;
   };
 
-  const lines = csvString.split('\n').filter((line) => line.trim().length > 0);
+  const lines: string[] = [];
+  let line = '';
+  let inQuotes = false;
+  for (let i = 0; i < csvString.length; i++) {
+    const char = csvString[i];
+    if (char === '"') {
+      if (inQuotes && csvString[i + 1] === '"') {
+        line += '""';
+        i++;
+        continue;
+      }
+      inQuotes = !inQuotes;
+    }
+    if (char === '\n' && !inQuotes) {
+      if (line.trim().length > 0) lines.push(line.replace(/\r$/, ''));
+      line = '';
+    } else {
+      line += char;
+    }
+  }
+  if (inQuotes) throw new Error('Unclosed quoted field in CSV');
+  if (line.trim().length > 0) lines.push(line.replace(/\r$/, ''));
 
   if (lines.length === 0) {
     throw new Error('csvString must contain at least one line');
@@ -72,12 +99,8 @@ export function deserializeFromCSV(
 
   return dataLines.map((line) => {
     const values = parseRow(line);
-    const obj: Record<string, string> = {};
-
-    headers.forEach((header, index) => {
-      obj[header] = values[index] ?? '';
-    });
-
-    return obj;
+    return Object.fromEntries(
+      headers.map((header, index) => [header, values[index] ?? '']),
+    );
   });
 }

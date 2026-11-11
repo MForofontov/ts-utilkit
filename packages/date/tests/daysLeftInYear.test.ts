@@ -72,3 +72,12 @@ describe('daysLeftInYear', () => {
     expect(() => daysLeftInYear(date)).toThrow('Invalid date');
   });
 });
+
+it.each([0, 4, 42, 99])(
+  'measures to December 31 midnight in literal year %i',
+  (year) => {
+    const input = new Date(2000, 0, 1);
+    input.setFullYear(year);
+    expect(daysLeftInYear(input)).toBe(year % 4 === 0 ? 365 : 364);
+  },
+);

@@ -1,3 +1,4 @@
+import { calendarDate } from './_calendarDate';
 /**
  * Calculates the last day of the year for a given date.
  *
@@ -44,5 +45,5 @@ export function getEndOfYear(date: Date): Date {
   if (isNaN(date.getTime())) {
     throw new Error('Invalid date');
   }
-  return new Date(date.getFullYear(), 11, 31);
+  return calendarDate(date.getFullYear(), 11, 31);
 }

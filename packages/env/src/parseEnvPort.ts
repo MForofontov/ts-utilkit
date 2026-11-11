@@ -60,7 +60,7 @@ export function parseEnvPort(key: string, defaultValue?: number): number {
     }
   }
 
-  const raw = process.env[key];
+  const raw = Object.hasOwn(process.env, key) ? process.env[key] : undefined;
 
   if (raw === undefined || raw === '') {
     if (defaultValue !== undefined) {

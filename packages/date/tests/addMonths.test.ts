@@ -122,3 +122,17 @@ describe('addMonths', () => {
     expect(result.getDate()).toBe(28);
   });
 });
+
+it('clamps into February 29 in literal leap year zero', () => {
+  const input = new Date(2000, 0, 31, 12, 34);
+  input.setFullYear(0);
+  const result = addMonths(input, 1);
+  expect([
+    result.getFullYear(),
+    result.getMonth(),
+    result.getDate(),
+    result.getHours(),
+    result.getMinutes(),
+  ]).toEqual([0, 1, 29, 12, 34]);
+  expect(input.getDate()).toBe(31);
+});

@@ -63,11 +63,19 @@ export function asyncPoll<T>(
 ): Promise<T> {
   const { intervalMs = 1000, timeoutMs = 30000, onPoll } = options;
 
-  if (intervalMs <= 0) {
+  if (
+    typeof intervalMs !== 'number' ||
+    Number.isNaN(intervalMs) ||
+    intervalMs <= 0
+  ) {
     throw new Error(`intervalMs must be a positive number, got ${intervalMs}`);
   }
 
-  if (timeoutMs <= 0) {
+  if (
+    typeof timeoutMs !== 'number' ||
+    Number.isNaN(timeoutMs) ||
+    timeoutMs <= 0
+  ) {
     throw new Error(`timeoutMs must be a positive number, got ${timeoutMs}`);
   }
 

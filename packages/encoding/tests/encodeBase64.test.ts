@@ -1,3 +1,4 @@
+import { Buffer } from 'buffer';
 import { encodeBase64 } from '../src/encodeBase64';
 
 describe('encodeBase64', () => {
@@ -50,7 +51,6 @@ describe('encodeBase64', () => {
 
   // Test case 10: Round-trip consistency
   it('10. should be decodable by standard base64 decoder', () => {
-    const { Buffer } = require('buffer');
     const input = 'TypeScript utility!';
     const encoded = encodeBase64(input);
     const decoded = Buffer.from(encoded, 'base64').toString('utf8');

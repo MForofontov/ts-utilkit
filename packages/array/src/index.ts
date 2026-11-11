@@ -2,7 +2,9 @@
 // This file exports all functions from this module
 
 export * from './arrayDifference';
+export * from './arrayDifferenceBy';
 export * from './arrayIntersection';
+export * from './arrayIntersectionBy';
 export * from './cartesianProduct';
 export * from './chunkArray';
 export * from './countBy';
@@ -18,6 +20,8 @@ export * from './flattenArrayDepth';
 export * from './generatePrimes';
 export * from './groupBy';
 export * from './partition';
+export * from './partitionBy';
+export * from './uniqueBy';
 export * from './joinStrings';
 export * from './mergeUnique';
 export * from './removeByCondition';

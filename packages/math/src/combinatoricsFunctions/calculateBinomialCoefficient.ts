@@ -1,4 +1,4 @@
-import { calculateFactorial } from './calculateFactorial';
+import { calculateCombination } from './calculateCombination';
 
 /**
  * Calculates the binomial coefficient (n choose k), also denoted as C(n,k) or ⁿCₖ.
@@ -39,27 +39,13 @@ import { calculateFactorial } from './calculateFactorial';
  * @note Symmetric property: C(n,k) = C(n,n-k).
  * @note For large values, results may overflow JavaScript's number precision limits.
  * @note Common use cases: binomial theorem expansion, probability distributions, combinatorics.
- * @note Uses factorial-based calculation; recursive implementation may hit call stack limits.
+ * @note Delegates to calculateCombination, including its overflow-safe handling.
  *
  * @deprecated Use `calculateCombination(n, k)` instead — both functions are mathematically
  * identical. Will be removed in the next major version.
  *
- * @complexity Time: O(n), Space: O(n) due to factorial calculation
+ * @complexity Same as calculateCombination; bounded Space: O(1)
  */
 export function calculateBinomialCoefficient(n: number, k: number): number {
-  if (isNaN(n) || isNaN(k)) {
-    throw new Error('Both n and k must be numbers');
-  }
-  if (!Number.isInteger(n) || !Number.isInteger(k)) {
-    throw new Error('Both n and k must be integers');
-  }
-  if (n < 0 || k < 0) {
-    throw new Error('Both n and k must be non-negative integers');
-  }
-  if (k > n) {
-    return 0;
-  }
-  return (
-    calculateFactorial(n) / (calculateFactorial(k) * calculateFactorial(n - k))
-  );
+  return calculateCombination(n, k);
 }

@@ -93,8 +93,8 @@ describe('tryCatch', () => {
   });
 
   it('12. should wrap a non-Error throw in an Error', () => {
-    // eslint-disable-next-line @typescript-eslint/no-throw-literal
     const { error } = tryCatch(() => {
+      // eslint-disable-next-line @typescript-eslint/only-throw-error -- Verify handling of arbitrary thrown values.
       throw 'string error';
     });
     expect(error).toBeInstanceOf(Error);
@@ -102,8 +102,8 @@ describe('tryCatch', () => {
   });
 
   it('13. should wrap a thrown number in an Error', () => {
-    // eslint-disable-next-line @typescript-eslint/no-throw-literal
     const { error } = tryCatch(() => {
+      // eslint-disable-next-line @typescript-eslint/only-throw-error -- Verify handling of arbitrary thrown values.
       throw 42;
     });
     expect(error).toBeInstanceOf(Error);

@@ -49,6 +49,12 @@ export function asyncParallel<T>(
     throw new Error(`concurrency must be at least 1, got ${actualConcurrency}`);
   }
 
+  if (actualConcurrency !== Infinity && !Number.isInteger(actualConcurrency)) {
+    throw new Error(
+      `concurrency must be a positive integer or Infinity, got ${actualConcurrency}`,
+    );
+  }
+
   // Validate all tasks are functions
   tasks.forEach((task, index) => {
     if (typeof task !== 'function') {

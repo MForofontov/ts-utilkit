@@ -12,7 +12,7 @@ npm install @ts-utilkit/webscraping
 
 - 🚀 TypeScript-first with complete type definitions
 - ✅ Comprehensive test coverage (>95%)
-- 📦 Tree-shakeable ESM and CommonJS support
+- 📦 CommonJS builds with import and require entry points
 - 🔒 Type-safe with strict TypeScript configuration
 - 📖 Extensive JSDoc documentation
 
@@ -38,11 +38,11 @@ npm install @ts-utilkit/webscraping
 ## Quick Example
 
 ```typescript
-import { scrapeText } from '@ts-utilkit/webscraping';
+import { extractText } from '@ts-utilkit/webscraping';
 
 // Extract text content from HTML
 const html = '<div><p>Hello</p><p>World</p></div>';
-const text = scrapeText(html); // 'Hello World'
+const text = extractText(html); // 'Hello World'
 ```
 
 ## License

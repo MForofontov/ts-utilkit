@@ -83,3 +83,54 @@ describe('calculateCombination', () => {
     );
   });
 });
+
+it.each([
+  [171, 0, 1],
+  [171, 1, 171],
+  [171, 170, 171],
+  [200, 200, 1],
+  [200, 2, 19900],
+])('avoids factorial overflow for C(%i,%i)', (n, k, expected) => {
+  expect(calculateCombination(n, k)).toBe(expected);
+});
+it('retains accuracy for large finite combinations', () => {
+  expect(calculateCombination(170, 85)).toBeCloseTo(9.144841845131556e49, -36);
+});
+
+it.each([171, 200, 250, 1029])(
+  'matches an exact BigInt oracle across row %i',
+  (n) => {
+    let exact = 1n;
+    for (let k = 0; k <= n; k++) {
+      if (k > 0) exact = (exact * BigInt(n - k + 1)) / BigInt(k);
+      const expected = Number(exact);
+      const actual = calculateCombination(n, k);
+      expect(Math.abs(actual - expected) / expected).toBeLessThan(1e-13);
+      expect(actual).toBe(calculateCombination(n, n - k));
+      if (Number.isSafeInteger(expected)) expect(actual).toBe(expected);
+    }
+  },
+);
+it('returns Infinity for true result overflow, including enormous balanced selections', () => {
+  expect(calculateCombination(1030, 515)).toBe(Infinity);
+  expect(calculateCombination(Number.MAX_SAFE_INTEGER, 4503599627370495)).toBe(
+    Infinity,
+  );
+});
+it('retains the previous finite factorial ratios bit for bit', () => {
+  const factorials = [1];
+  for (let n = 1; n <= 170; n++) factorials[n] = factorials[n - 1] * n;
+  for (let n = 0; n <= 170; n++)
+    for (let k = 0; k <= n; k++) {
+      expect(calculateCombination(n, k)).toBe(
+        factorials[n] / (factorials[k] * factorials[n - k]),
+      );
+    }
+});
+it.each([
+  [5, 1.5],
+  [5, -1],
+  [Infinity, 1],
+])('validates n=%s and k=%s', (n, k) => {
+  expect(() => calculateCombination(n, k)).toThrow();
+});

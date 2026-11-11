@@ -51,9 +51,7 @@ export function combinePatterns(
         flagChars.add(flag);
       }
     } else {
-      throw new Error(
-        'Each pattern must be a string or RegExp instance',
-      );
+      throw new Error('Each pattern must be a string or RegExp instance');
     }
   }
 

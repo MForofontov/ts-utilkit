@@ -1,6 +1,8 @@
 import { deepEqual } from '@ts-utilkit/object';
 
-function isPrimitiveKeyable(value: unknown): boolean {
+type KeyablePrimitive = string | number | boolean | bigint | null | undefined;
+
+function isPrimitiveKeyable(value: unknown): value is KeyablePrimitive {
   const type = typeof value;
   return (
     value === null ||
@@ -12,7 +14,7 @@ function isPrimitiveKeyable(value: unknown): boolean {
   );
 }
 
-function primitiveKey(value: unknown): string {
+function primitiveKey(value: KeyablePrimitive): string {
   if (value === undefined) return '__undefined__';
   if (value === null) return '__null__';
   if (typeof value === 'number' && Number.isNaN(value)) return '__nan__';

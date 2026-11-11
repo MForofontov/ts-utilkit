@@ -1,5 +1,4 @@
-import type { RGB } from '../src/randomRGB';
-import { randomRGB } from '../src/randomRGB';
+import { randomRGB, type RGB } from '../src/randomRGB';
 
 /**
  * Unit tests for the randomRGB function.
@@ -117,6 +116,7 @@ describe('randomRGB', () => {
     // Should be roughly 50/50 split (±15%)
     expect(lowCount).toBeGreaterThan(350);
     expect(lowCount).toBeLessThan(650);
+    expect(lowCount + highCount).toBe(1000);
   });
 
   // Test case 11: Performance test

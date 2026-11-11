@@ -73,3 +73,33 @@ describe('getLastDayOfPreviousMonth', () => {
     expect(() => getLastDayOfPreviousMonth(date)).toThrow('Invalid date');
   });
 });
+
+it.each([-1, 0, 4, 42, 99])(
+  'preserves literal year %i and local midnight',
+  (year) => {
+    const input = new Date(2000, 2, 15, 12, 34, 56, 789);
+    input.setFullYear(year);
+    const before = input.getTime();
+    const result = getLastDayOfPreviousMonth(input);
+    expect([result.getFullYear(), result.getMonth(), result.getDate()]).toEqual(
+      [year, 1, year % 4 === 0 ? 29 : 28],
+    );
+    expect([
+      result.getHours(),
+      result.getMinutes(),
+      result.getSeconds(),
+      result.getMilliseconds(),
+    ]).toEqual([0, 0, 0, 0]);
+    expect(input.getTime()).toBe(before);
+    expect(result).not.toBe(input);
+  },
+);
+
+it('rolls from January of year zero into December of year minus one', () => {
+  const input = new Date(2000, 0, 15);
+  input.setFullYear(0);
+  const result = getLastDayOfPreviousMonth(input);
+  expect([result.getFullYear(), result.getMonth(), result.getDate()]).toEqual([
+    -1, 11, 31,
+  ]);
+});

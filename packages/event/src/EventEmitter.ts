@@ -153,8 +153,8 @@ export class EventEmitter {
    */
   once<T = unknown>(eventName: string, listener: EventListener<T>): this {
     const onceWrapper: EventListener<T> = (data: T) => {
-      listener(data);
       this.off(eventName, onceWrapper);
+      listener(data);
     };
 
     this.on(eventName, onceWrapper);
@@ -179,7 +179,7 @@ export class EventEmitter {
    * @complexity Time: O(1) for specific event, O(n) for all events, Space: O(1)
    */
   removeAllListeners(eventName?: string): this {
-    if (eventName) {
+    if (eventName !== undefined) {
       this.events.delete(eventName);
     } else {
       this.events.clear();

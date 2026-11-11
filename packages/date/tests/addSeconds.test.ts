@@ -77,5 +77,9 @@ describe('addSeconds', () => {
     expect(() => addSeconds(new Date('invalid'), 30)).toThrow('Invalid date');
   });
 
-  it('13. should throw Error when seconds is NaN', () => {});
+  it('13. should throw Error when seconds is NaN', () => {
+    expect(() => addSeconds(new Date(2026, 0, 1), NaN)).toThrow(
+      'Seconds must be a number',
+    );
+  });
 });

@@ -7,7 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.3] - 2026-11-02
+
 ### Changed
+
+- Refresh repository metadata and release the validated package artifacts.
 
 - Second-pass audit: re-verified password hashing and AES helpers; first-audit strictness confirmed.
 
@@ -33,6 +37,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Remove all TypeError test cases from all test files
 
 - Add `exports` field to `package.json` for explicit ESM/CJS/types entry-point resolution by modern bundlers and Node.js `exports` map
+
 ## [0.1.0] - 2026-01-26
 
 ### Added

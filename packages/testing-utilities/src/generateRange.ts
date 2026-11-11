@@ -7,6 +7,7 @@
  * @returns Array of numbers in the specified range.
  *
  * @throws {Error} If step is not positive.
+ * @throws {RangeError} If endpoints are not finite or step cannot advance the range.
  *
  * @example
  * const testValues = generateRange(0, 10, 2); // [0, 2, 4, 6, 8, 10]
@@ -33,9 +34,19 @@ export function generateRange(
     throw new Error('step must be a positive number');
   }
 
+  if (!Number.isFinite(start) || !Number.isFinite(end)) {
+    throw new RangeError('start and end must be finite numbers');
+  }
+
   const result: number[] = [];
-  for (let i = start; i <= end; i += step) {
+  for (let i = start; i <= end; ) {
     result.push(i);
+    if (i === end) break;
+    const next = i + step;
+    if (next === i) {
+      throw new RangeError('step is too small to advance the range');
+    }
+    i = next;
   }
   return result;
 }

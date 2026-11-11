@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-11-02
+
+- Align the format dependency range with the current local 0.3.x package.
+- Fix throttle at timestamp zero, replace obsolete trailing timers, and apply the same limit to reentrant callbacks.
+- Reject synchronous callback throws through the debounceAsync promise and allow subsequent calls after failure.
+- Add `once` with runtime input validation, public exports, documentation, and boundary tests.
+- Eliminate special-value and marker-shaped user-object cache collisions without changing custom key functions.
+
 ## [0.4.0] - 2026-08-04
 
 ### Fixed

@@ -146,7 +146,7 @@ describe('serializeToQueryString', () => {
     const result = serializeToQueryString(input);
 
     // Assert
-    expect(result).toBe('');
+    expect(result).toBe(expected);
   });
 
   it('13. should handle single property', () => {

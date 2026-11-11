@@ -33,7 +33,9 @@ export function assertArraysEqual<T>(actual: T[], expected: T[]): boolean {
   const remaining = [...expected];
 
   for (const item of actual) {
-    const index = remaining.findIndex((candidate) => deepEqual(candidate, item));
+    const index = remaining.findIndex((candidate) =>
+      deepEqual(candidate, item),
+    );
     if (index === -1) {
       return false;
     }

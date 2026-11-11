@@ -72,3 +72,32 @@ describe('getDaysInMonth', () => {
     expect(() => getDaysInMonth(date)).toThrow('Invalid date');
   });
 });
+
+it('recognizes February in the literal leap year zero', () => {
+  const date = new Date(2000, 1, 1);
+  date.setFullYear(0);
+  expect(getDaysInMonth(date)).toBe(29);
+});
+
+it.each([
+  [-400, 29],
+  [-100, 28],
+  [100, 28],
+  [400, 29],
+  [1900, 28],
+  [2000, 29],
+  [2024, 29],
+  [2025, 28],
+])('uses Gregorian leap rules for year %i', (year, expected) => {
+  const date = new Date(2000, 1, 1);
+  date.setFullYear(year);
+  expect(getDaysInMonth(date)).toBe(expected);
+});
+it('matches every month across a Gregorian 400-year cycle', () => {
+  for (let year = 2000; year < 2400; year++) {
+    for (let month = 0; month < 12; month++) {
+      const date = new Date(year, month, 15);
+      expect(getDaysInMonth(date)).toBe(new Date(year, month + 1, 0).getDate());
+    }
+  }
+});

@@ -45,7 +45,7 @@ export function countMatches(
         const currentFlags = pattern.flags;
         regex = new RegExp(pattern.source, currentFlags + 'g');
       } else {
-        regex = pattern;
+        regex = new RegExp(pattern.source, pattern.flags);
       }
     }
   } catch {
@@ -55,7 +55,7 @@ export function countMatches(
   }
 
   let count = 0;
-  while (regex.exec(text) !== null) {
+  for (const _match of text.matchAll(regex)) {
     count++;
   }
 

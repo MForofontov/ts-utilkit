@@ -39,10 +39,30 @@ describe('calculateFactorial', () => {
   // Test case 5: Factorial of a floating-point number
   it('5. should throw an error for the factorial of a floating-point number', () => {
     const input: number = 5.5;
+    expect(() => calculateFactorial(input)).toThrow('Input must be an integer');
   });
 
   // Test case 6: Exception handling for NaN input
   it('6. should throw an error for NaN input', () => {
     const input: number = NaN;
+    expect(() => calculateFactorial(input)).toThrow('Input must be a number');
   });
+});
+
+it('retains the exact ascending-product rounding for every finite factorial and repeated calls', () => {
+  const expected = [1];
+  for (let n = 1; n <= 170; n++) expected[n] = expected[n - 1] * n;
+  for (const n of [...expected.keys()].reverse())
+    expect(calculateFactorial(n)).toBe(expected[n]);
+  for (let n = 0; n <= 170; n++)
+    expect(calculateFactorial(n)).toBe(expected[n]);
+});
+it.each([171, Number.MAX_SAFE_INTEGER, Number.MAX_VALUE])(
+  'returns Infinity without unbounded work for %s',
+  (n) => {
+    expect(calculateFactorial(n)).toBe(Infinity);
+  },
+);
+it.each([Infinity, -Infinity])('rejects non-finite input %s', (n) => {
+  expect(() => calculateFactorial(n)).toThrow('integer');
 });

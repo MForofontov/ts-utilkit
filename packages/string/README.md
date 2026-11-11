@@ -12,11 +12,11 @@ npm install @ts-utilkit/string
 
 - 🚀 TypeScript-first with complete type definitions
 - ✅ Comprehensive test coverage (>95%)
-- 📦 Tree-shakeable ESM and CommonJS support
+- 📦 CommonJS builds with import and require entry points
 - 🔒 Type-safe with strict TypeScript configuration
 - 📖 Extensive JSDoc documentation
 
-## Available Functions (51)
+## Available Functions (59)
 
 - **`areAnagrams`** - Check if two strings are anagrams
 - **`capitalizeEachWord`** - Capitalize first letter of each word
@@ -70,6 +70,17 @@ npm install @ts-utilkit/string
 - **`uniqueCharacters`** - Get unique characters as array
 - **`wordsToSentence`** - Join words into sentence
 
+## Additional exports
+
+- **`extractNumbers`** — Extracts all numeric values (integers and decimals) from a string, returning them as an array of JavaScript numbers. Supports positive and negative numbers, as well as decimal numbers.
+- **`normalizeWhitespace`** — Normalizes whitespace in a string by trimming leading and trailing whitespace and collapsing all internal sequences of whitespace characters (spaces, tabs, newlines, etc.) into a single space.
+- **`maskString`** — Masks a portion of a string, replacing characters between `start` and `end` indices with a mask character. Useful for obscuring sensitive data such as credit card numbers, phone numbers, and email addresses.
+- **`removeAccents`** — Removes accent marks (diacritics) from characters in a string, converting accented characters to their base ASCII equivalents. Uses Unicode Normalization Form D (NFD) to decompose characters, then strips combining diacritical marks.
+- **`toCamelCase`** — Converts a string to camelCase. Handles space-separated, kebab-case, snake_case, PascalCase, and mixed-delimiter inputs.
+- **`toPascalCase`** — Converts a string to PascalCase (also known as UpperCamelCase). Handles space-separated, kebab-case, snake_case, camelCase, and mixed-delimiter inputs.
+- **`truncateWords`** — Truncates a string to a specified number of words, appending a suffix if the string was truncated. Useful for creating text previews, summaries, and multi-line ellipsis effects where whole words should be preserved.
+- **`wrapText`** — Wraps a string to a specified maximum line width, inserting newline characters at word boundaries. Long single words that exceed the maximum width are placed on their own line without breaking.
+
 ## Quick Example
 
 ```typescript
@@ -77,13 +88,13 @@ import {
   slugify,
   capitalizeFirstLetter,
   isPalindrome,
-  truncate,
+  truncateString,
 } from '@ts-utilkit/string';
 
 slugify('Hello World!'); // 'hello-world'
 capitalizeFirstLetter('hello'); // 'Hello'
 isPalindrome('racecar'); // true
-truncate('Long text...', 10); // 'Long text...'
+truncateString('Long text...', 10); // 'Long te...'
 ```
 
 ## License

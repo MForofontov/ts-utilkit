@@ -52,6 +52,14 @@ export function decodeBase64URL(str: string): string {
     throw new Error('Invalid Base64URL string');
   }
 
+  const payloadLength = base64.length - padding.length;
+  if (
+    payloadLength % 4 === 1 ||
+    (padding.length > 0 && (base64.length % 4 !== 0 || payloadLength % 4 === 0))
+  ) {
+    throw new Error('Invalid Base64URL string');
+  }
+
   const buffer = Buffer.from(base64, 'base64');
   const decoded = buffer.toString('utf8');
   const reEncoded = buffer.toString('base64').replace(/=+$/, '');

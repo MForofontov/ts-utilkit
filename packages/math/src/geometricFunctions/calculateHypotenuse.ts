@@ -46,5 +46,5 @@ export function calculateHypotenuse(a: number, b: number): number {
   if (a < 0 || b < 0) {
     throw new Error('Side lengths must be non-negative numbers');
   }
-  return Math.sqrt(a * a + b * b);
+  return Math.hypot(a, b);
 }

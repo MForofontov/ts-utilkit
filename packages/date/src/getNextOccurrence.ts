@@ -6,7 +6,7 @@
  * @returns A new Date object representing the next occurrence of the specified day.
  *
  * @throws {Error} If date is invalid.
- * @throws {Error} If dayOfWeek is not between 0 and 6.
+ * @throws {Error} If dayOfWeek is not an integer between 0 and 6.
  *
  * @example
  * // Basic usage
@@ -47,7 +47,7 @@ export function getNextOccurrence(date: Date, dayOfWeek: number): Date {
     throw new Error('Invalid date');
   }
 
-  if (isNaN(dayOfWeek) || dayOfWeek < 0 || dayOfWeek > 6) {
+  if (!Number.isInteger(dayOfWeek) || dayOfWeek < 0 || dayOfWeek > 6) {
     throw new Error(
       'Invalid dayOfWeek value. It must be a number between 0 (Sunday) and 6 (Saturday).',
     );

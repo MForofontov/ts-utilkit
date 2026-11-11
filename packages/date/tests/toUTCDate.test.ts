@@ -73,3 +73,19 @@ describe('toUTCDate', () => {
     expect(() => toUTCDate(date)).toThrow('Invalid date');
   });
 });
+
+it.each([0, 4, 42, 99])(
+  'preserves literal local year %i including leap days and milliseconds',
+  (year) => {
+    const date = new Date(2000, 1, year % 4 === 0 ? 29 : 28, 12, 34, 56, 789);
+    date.setFullYear(year);
+    const before = date.getTime();
+    const result = toUTCDate(date);
+    expect(result.getUTCFullYear()).toBe(year);
+    expect(result.getUTCMonth()).toBe(1);
+    expect(result.getUTCDate()).toBe(date.getDate());
+    expect(result.getUTCHours()).toBe(12);
+    expect(result.getUTCMilliseconds()).toBe(789);
+    expect(date.getTime()).toBe(before);
+  },
+);

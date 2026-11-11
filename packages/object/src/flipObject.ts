@@ -1,3 +1,5 @@
+import { setOwn } from './_setOwn';
+
 /**
  * Creates a new object by swapping the keys and values of the input object.
  * All values are converted to strings when used as keys in the result.
@@ -37,7 +39,7 @@ export function flipObject<T extends Record<string, unknown>>(
   obj: T,
 ): Record<string, string> {
   return Object.keys(obj).reduce((acc: Record<string, string>, key: string) => {
-    acc[String(obj[key])] = key;
+    setOwn(acc, String(obj[key]), key);
     return acc;
   }, {});
 }

@@ -4,6 +4,38 @@ import { waitForCondition } from '../src/waitForCondition';
  * Unit tests for the waitForCondition function.
  */
 describe('waitForCondition', () => {
+  it('rejects the original reason when a later condition check throws', async () => {
+    const reason = new Error('condition failed');
+    const condition = jest
+      .fn()
+      .mockReturnValueOnce(false)
+      .mockImplementation(() => {
+        throw reason;
+      });
+    const outcome = waitForCondition(condition, 100, 10).then(
+      () => undefined,
+      (error: unknown) => error,
+    );
+    expect(() => jest.advanceTimersByTime(10)).not.toThrow();
+    await expect(outcome).resolves.toBe(reason);
+    expect(jest.getTimerCount()).toBe(0);
+  });
+
+  it.each([
+    [NaN, 10],
+    [100, NaN],
+  ])(
+    'rejects invalid timeout/interval %s/%s before polling',
+    async (timeout, interval) => {
+      const condition = jest.fn(() => true);
+      await expect(
+        waitForCondition(condition, timeout, interval),
+      ).rejects.toThrow('must be a positive number');
+      expect(condition).not.toHaveBeenCalled();
+      expect(jest.getTimerCount()).toBe(0);
+    },
+  );
+
   // Use fake timers for all tests
   beforeEach(() => {
     jest.useFakeTimers();
