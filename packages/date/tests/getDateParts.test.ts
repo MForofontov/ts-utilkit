@@ -1,4 +1,5 @@
 import { getDateParts } from '../src/getDateParts';
+import { localDate } from './dateTestUtils';
 
 /**
  * Unit tests for the getDateParts function.
@@ -6,7 +7,7 @@ import { getDateParts } from '../src/getDateParts';
 describe('getDateParts', () => {
   // Test case 1: Extract parts from a valid date
   it('1. should extract parts from a valid date', () => {
-    const date: Date = new Date('2024-09-19T15:45:30');
+    const date: Date = localDate(2024, 8, 19, 15, 45, 30);
     const expected = {
       year: 2024,
       month: 9,
@@ -21,7 +22,7 @@ describe('getDateParts', () => {
 
   // Test case 2: Extract parts from a date with a leap day
   it('2. should extract parts from a date with a leap day', () => {
-    const date: Date = new Date('2020-02-29T12:00:00');
+    const date: Date = localDate(2020, 1, 29, 12, 0, 0);
     const expected = {
       year: 2020,
       month: 2,
@@ -36,7 +37,7 @@ describe('getDateParts', () => {
 
   // Test case 3: Extract parts from a date with negative year
   it('3. should extract parts from a date with a negative year', () => {
-    const date: Date = new Date('-000001-01-01T00:00:00');
+    const date: Date = localDate(-1, 0, 1);
     const expected = {
       year: -1,
       month: 1,
@@ -51,7 +52,7 @@ describe('getDateParts', () => {
 
   // Test case 4: Extract parts from a date with no time components
   it('4. should extract parts from a date with no time components', () => {
-    const date: Date = new Date('2023-09-19');
+    const date: Date = localDate(2023, 8, 19);
     const expected = {
       year: 2023,
       month: 9,
@@ -66,7 +67,7 @@ describe('getDateParts', () => {
 
   // Test case 5: Extract parts from a date with time components
   it('5. should extract parts from a date with time components', () => {
-    const date: Date = new Date('2023-09-19T15:45:30');
+    const date: Date = localDate(2023, 8, 19, 15, 45, 30);
     const expected = {
       year: 2023,
       month: 9,

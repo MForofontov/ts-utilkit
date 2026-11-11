@@ -1,4 +1,5 @@
 import { getLastDayOfPreviousMonth } from '../src/getLastDayOfPreviousMonth';
+import { localDate, expectSameCalendarDay } from './dateTestUtils';
 
 /**
  * Unit tests for the getLastDayOfPreviousMonth function.
@@ -6,58 +7,58 @@ import { getLastDayOfPreviousMonth } from '../src/getLastDayOfPreviousMonth';
 describe('getLastDayOfPreviousMonth', () => {
   // Test case 1: Get the last day of the previous month for a valid date
   it('1. should return the last day of the previous month for a valid date', () => {
-    const date: Date = new Date('2023-09-19');
-    const expected: Date = new Date('2023-08-31');
+    const date: Date = localDate(2023, 8, 19);
+    const expected: Date = localDate(2023, 7, 31);
     const result: Date = getLastDayOfPreviousMonth(date);
-    expect(result).toEqual(expected);
+    expectSameCalendarDay(result, expected);
   });
 
   // Test case 2: Get the last day of the previous month for a leap year date
   it('2. should return the last day of the previous month for a leap year date', () => {
-    const date: Date = new Date('2020-03-15');
-    const expected: Date = new Date('2020-02-29');
+    const date: Date = localDate(2020, 2, 15);
+    const expected: Date = localDate(2020, 1, 29);
     const result: Date = getLastDayOfPreviousMonth(date);
-    expect(result).toEqual(expected);
+    expectSameCalendarDay(result, expected);
   });
 
   // Test case 3: Get the last day of the previous month for a date with time components
   it('3. should return the last day of the previous month for a date with time components', () => {
-    const date: Date = new Date('2023-01-15T12:34:56');
-    const expected: Date = new Date('2022-12-31');
+    const date: Date = localDate(2023, 0, 15, 12, 34, 56);
+    const expected: Date = localDate(2022, 11, 31);
     const result: Date = getLastDayOfPreviousMonth(date);
-    expect(result).toEqual(expected);
+    expectSameCalendarDay(result, expected);
   });
 
   // Test case 4: Get the last day of the previous month for a date at the start of the year
   it('4. should return the last day of the previous month for a date at the start of the year', () => {
-    const date: Date = new Date('2023-01-01');
-    const expected: Date = new Date('2022-12-31');
+    const date: Date = localDate(2023, 0, 1);
+    const expected: Date = localDate(2022, 11, 31);
     const result: Date = getLastDayOfPreviousMonth(date);
-    expect(result).toEqual(expected);
+    expectSameCalendarDay(result, expected);
   });
 
   // Test case 5: Get the last day of the previous month for a date at the end of the year
   it('5. should return the last day of the previous month for a date at the end of the year', () => {
-    const date: Date = new Date('2023-12-31');
-    const expected: Date = new Date('2023-11-30');
+    const date: Date = localDate(2023, 11, 31);
+    const expected: Date = localDate(2023, 10, 30);
     const result: Date = getLastDayOfPreviousMonth(date);
-    expect(result).toEqual(expected);
+    expectSameCalendarDay(result, expected);
   });
 
   // Test case 6: Get the last day of the previous month for a date with zero time components
   it('6. should return the last day of the previous month for a date with zero time components', () => {
-    const date: Date = new Date('2023-01-01T00:00:00');
-    const expected: Date = new Date('2022-12-31');
+    const date: Date = localDate(2023, 0, 1, 0, 0, 0);
+    const expected: Date = localDate(2022, 11, 31);
     const result: Date = getLastDayOfPreviousMonth(date);
-    expect(result).toEqual(expected);
+    expectSameCalendarDay(result, expected);
   });
 
   // Test case 7: Get the last day of the previous month for a date with a negative year
   it('7. should return the last day of the previous month for a date with a negative year', () => {
-    const date: Date = new Date('-000001-01-01');
-    const expected: Date = new Date('-000002-12-31');
+    const date: Date = localDate(-1, 0, 1);
+    const expected: Date = localDate(-2, 11, 31);
     const result: Date = getLastDayOfPreviousMonth(date);
-    expect(result).toEqual(expected);
+    expectSameCalendarDay(result, expected);
   });
 
   // Test case 8: Get the last day of the previous month for a NaN date (should throw an error)

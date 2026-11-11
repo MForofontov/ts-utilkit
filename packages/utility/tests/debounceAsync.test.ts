@@ -23,9 +23,10 @@ describe('debounceAsync', () => {
   it('2. should execute only the last call made before the delay', async () => {
     const fn = jest.fn((n: number) => Promise.resolve(n));
     const debounced = debounceAsync(fn, 50);
-    void debounced(1);
+    const first = debounced(1);
     const promise = debounced(2);
     jest.advanceTimersByTime(50);
+    await expect(first).rejects.toMatchObject({ name: 'AbortError' });
     await expect(promise).resolves.toBe(2);
     expect(fn).toHaveBeenCalledTimes(1);
   });

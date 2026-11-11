@@ -35,7 +35,13 @@ export function parseEnvInt(
     return defaultValue;
   }
 
-  const parsed = parseInt(value, 10);
+  const trimmed = value.trim();
+
+  if (!/^-?\d+$/.test(trimmed)) {
+    return defaultValue;
+  }
+
+  const parsed = parseInt(trimmed, 10);
 
   if (isNaN(parsed)) {
     return defaultValue;

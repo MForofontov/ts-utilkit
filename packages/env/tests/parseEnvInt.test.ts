@@ -52,10 +52,10 @@ describe('parseEnvInt', () => {
   });
 
   // Edge cases
-  it('7. should parse only integer part of decimal string', () => {
+  it('7. should return default for decimal strings', () => {
     process.env.DECIMAL = '3.14';
-    const result = parseEnvInt('DECIMAL');
-    expect(result).toBe(3);
+    const result = parseEnvInt('DECIMAL', 0);
+    expect(result).toBe(0);
   });
 
   it('8. should return default for invalid number string', () => {
@@ -80,6 +80,12 @@ describe('parseEnvInt', () => {
     process.env.SPACES = '  42  ';
     const result = parseEnvInt('SPACES');
     expect(result).toBe(42);
+  });
+
+  it('12. should return default for partial integer parse', () => {
+    process.env.PARTIAL = '42abc';
+    const result = parseEnvInt('PARTIAL', 7);
+    expect(result).toBe(7);
   });
 
   it('13. should throw Error when key is empty string', () => {

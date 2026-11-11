@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-08-04
+
+### Fixed
+
+- `assertArraysEqual`: compare elements as an unordered multiset via `deepEqual` instead of `.sort()` (fixes objects and Symbols).
+
 ## [0.2.1] - 2026-07-29
 
 ### Changed

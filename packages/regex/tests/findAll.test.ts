@@ -171,4 +171,23 @@ describe('findAll', () => {
     expect(() => findAll(text, invalidPattern, 'g')).toThrow(Error);
     expect(() => findAll(text, invalidPattern, 'g')).toThrow(expectedMessage);
   });
+
+  it('15. should not be affected by stale lastIndex on reused RegExp', () => {
+    const text = 'abc abc abc';
+    const pattern = /abc/g;
+    pattern.lastIndex = 5;
+
+    const result = findAll(text, pattern);
+
+    expect(result).toHaveLength(3);
+    expect(pattern.lastIndex).toBe(5);
+  });
+
+  it('16. should terminate on zero-length matches', () => {
+    const text = 'abc';
+    const result = findAll(text, /(?=a)/g);
+
+    expect(result.length).toBeGreaterThan(0);
+    expect(result.length).toBeLessThan(100);
+  });
 });

@@ -1,6 +1,6 @@
 {
   "name": "@ts-utilkit/regex",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Regular expression utilities for pattern matching and text processing",
   "homepage": "https://github.com/mykfor1/ts-utilkit/tree/main/packages/regex#readme",
   "bugs": {

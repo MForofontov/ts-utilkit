@@ -147,6 +147,12 @@ describe('formatDuration', () => {
     expect(result).toBe(expected);
   });
 
+  // Test case 12: Include sub-second remainder with larger units
+  it('12. should include millisecond remainder when larger units are present', () => {
+    expect(formatDuration(1500)).toBe('1s 500ms');
+    expect(formatDuration(1500, 'long')).toBe('1 second 500 milliseconds');
+  });
+
   // Test case 14: Throw Error for negative milliseconds
   it('14. should throw Error for negative milliseconds', () => {
     // Arrange

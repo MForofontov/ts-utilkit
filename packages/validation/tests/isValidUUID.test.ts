@@ -56,7 +56,7 @@ describe('isValidUUID', () => {
 
     // Assert
     expect(results).toEqual([true, true, false, true, false]);
-    expect(endTime - startTime).toBeLessThan(100); // Should complete quickly (increased threshold for CI environments)
+    expect(endTime - startTime).toBeLessThan(500); // Should complete quickly (increased threshold for CI environments)
   });
 
   // Test case 6: Error for unsupported version

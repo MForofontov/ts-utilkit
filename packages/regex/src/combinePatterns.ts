@@ -39,32 +39,40 @@ export function combinePatterns(
     throw new Error('patterns array cannot be empty');
   }
 
-  // Extract pattern sources
   const sources: string[] = [];
+  const flagChars = new Set<string>((flags || '').split(''));
 
   for (const pattern of patterns) {
     if (typeof pattern === 'string') {
       sources.push(pattern);
     } else if (pattern instanceof RegExp) {
       sources.push(pattern.source);
+      for (const flag of pattern.flags) {
+        flagChars.add(flag);
+      }
     } else {
-      continue;
+      throw new Error(
+        'Each pattern must be a string or RegExp instance',
+      );
     }
+  }
+
+  if (sources.length === 0) {
+    throw new Error('patterns array cannot be empty');
   }
 
   let combinedPattern: string;
 
   if (operator === 'or') {
-    // OR: (pattern1|pattern2|pattern3)
     combinedPattern = sources.map((s) => `(?:${s})`).join('|');
   } else {
-    // AND: (?=.*pattern1)(?=.*pattern2)(?=.*pattern3).*
-    // Uses positive lookaheads to ensure all patterns match
     combinedPattern = sources.map((s) => `(?=.*(?:${s}))`).join('') + '.*';
   }
 
+  const combinedFlags = [...flagChars].join('');
+
   try {
-    return new RegExp(combinedPattern, flags || '');
+    return new RegExp(combinedPattern, combinedFlags);
   } catch (e) {
     throw new Error(
       `Failed to create combined pattern: ${e instanceof Error ? e.message : 'Unknown error'}`,

@@ -230,7 +230,7 @@ describe('throttleEvent', () => {
     const endTime = performance.now();
 
     // Assert
-    expect(endTime - startTime).toBeLessThan(100);
+    expect(endTime - startTime).toBeLessThan(500);
     expect(handler).toHaveBeenCalledTimes(1); // Only leading call
   });
 

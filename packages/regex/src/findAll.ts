@@ -54,12 +54,12 @@ export function findAll(
       const finalFlags = hasGlobalFlag ? effectiveFlags : effectiveFlags + 'g';
       regex = new RegExp(pattern, finalFlags);
     } else {
-      if (!pattern.global) {
-        const currentFlags = pattern.flags;
-        regex = new RegExp(pattern.source, currentFlags + 'g');
-      } else {
-        regex = pattern;
-      }
+      const currentFlags = pattern.flags;
+      const finalFlags = currentFlags.includes('g')
+        ? currentFlags
+        : currentFlags + 'g';
+      // Always clone so caller-owned regex lastIndex is not mutated.
+      regex = new RegExp(pattern.source, finalFlags);
     }
   } catch {
     throw new Error(
@@ -69,6 +69,7 @@ export function findAll(
 
   const results: MatchInfo[] = [];
   let match: RegExpExecArray | null;
+  let lastIndex = 0;
 
   while ((match = regex.exec(text)) !== null) {
     const matchValue = match[0];
@@ -78,6 +79,14 @@ export function findAll(
       endIndex: match.index + matchValue.length,
       length: matchValue.length,
     });
+
+    // Guard against zero-length matches causing an infinite loop.
+    if (matchValue.length === 0) {
+      if (regex.lastIndex === lastIndex) {
+        regex.lastIndex++;
+      }
+      lastIndex = regex.lastIndex;
+    }
   }
 
   return results;

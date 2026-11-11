@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-08-04
+
+### Fixed
+
+- `validateConfig`: reject `null`/`undefined` config instead of returning `true`.
+- `isValidISODate`: validate date-only strings with UTC components to avoid false negatives in negative-offset timezones.
+
 ## [0.2.0] - 2026-03-05
 
 ### Changed

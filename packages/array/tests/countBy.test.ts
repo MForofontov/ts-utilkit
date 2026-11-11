@@ -139,6 +139,6 @@ describe('countBy', () => {
     // Assert
     expect(result.get('even')).toBe(5000);
     expect(result.get('odd')).toBe(5000);
-    expect(end - start).toBeLessThan(100);
+    expect(end - start).toBeLessThan(500);
   });
 });

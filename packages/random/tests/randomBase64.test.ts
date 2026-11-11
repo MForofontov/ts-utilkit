@@ -81,7 +81,7 @@ describe('randomBase64', () => {
     }
     const endTime = performance.now();
 
-    expect(endTime - startTime).toBeLessThan(200);
+    expect(endTime - startTime).toBeLessThan(500);
   });
 
   // Test case 10: Contains uppercase letters

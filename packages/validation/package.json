@@ -1,6 +1,6 @@
 {
   "name": "@ts-utilkit/validation",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Validation utilities for email, URL, IP addresses, UUID, dates, and custom patterns",
   "homepage": "https://github.com/mykfor1/ts-utilkit/tree/main/packages/validation#readme",
   "bugs": {

@@ -1,6 +1,6 @@
 {
   "name": "@ts-utilkit/env",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Environment variable utilities for parsing and validation",
   "homepage": "https://github.com/mykfor1/ts-utilkit/tree/main/packages/env#readme",
   "bugs": {

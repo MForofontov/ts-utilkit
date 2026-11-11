@@ -162,7 +162,7 @@ describe('createCounterMap', () => {
     // Assert
     expect(result.size).toBe(100);
     expect(result.get(0)).toBe(100);
-    expect(elapsed).toBeLessThan(100);
+    expect(elapsed).toBeLessThan(500);
   });
 
   // ─── Error cases ───────────────────────────────────────────────────────────

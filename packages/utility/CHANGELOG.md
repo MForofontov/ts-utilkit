@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-08-04
+
+### Fixed
+
+- `debounceAsync`: superseded invocations now reject with `AbortError` instead of hanging forever.
+- `memoize`: default cache key distinguishes `null`, `undefined`, and `NaN` arguments.
+
 ## [0.3.0] - 2026-07-29
 
 ### Changed

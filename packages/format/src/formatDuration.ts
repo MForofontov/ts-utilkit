@@ -84,7 +84,7 @@ export function formatDuration(
     if (hours > 0) parts.push(`${hours}h`);
     if (minutes > 0) parts.push(`${minutes}m`);
     if (seconds > 0) parts.push(`${seconds}s`);
-    if (ms > 0 && parts.length === 0) parts.push(`${ms}ms`);
+    if (ms > 0) parts.push(`${ms}ms`);
   } else {
     // Long format with proper pluralization
     if (days > 0) parts.push(`${days} ${days === 1 ? 'day' : 'days'}`);
@@ -93,7 +93,7 @@ export function formatDuration(
       parts.push(`${minutes} ${minutes === 1 ? 'minute' : 'minutes'}`);
     if (seconds > 0)
       parts.push(`${seconds} ${seconds === 1 ? 'second' : 'seconds'}`);
-    if (ms > 0 && parts.length === 0)
+    if (ms > 0)
       parts.push(`${ms} ${ms === 1 ? 'millisecond' : 'milliseconds'}`);
   }
 

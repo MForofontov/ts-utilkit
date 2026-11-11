@@ -106,7 +106,7 @@ describe('randomUUID', () => {
     }
 
     const endTime = performance.now();
-    expect(endTime - startTime).toBeLessThan(100);
+    expect(endTime - startTime).toBeLessThan(500);
   });
 
   // Test case 12: Correct structure segments

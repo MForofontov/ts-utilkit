@@ -82,4 +82,16 @@ describe('combinePatterns', () => {
       'patterns array cannot be empty',
     );
   });
+
+  it('13. should merge flags from RegExp inputs', () => {
+    const pattern = combinePatterns([/hello/i, /world/], 'or');
+    expect(pattern.test('HELLO')).toBe(true);
+    expect(pattern.test('WORLD')).toBe(true);
+  });
+
+  it('14. should throw Error for invalid pattern entries', () => {
+    expect(() => combinePatterns([null as unknown as RegExp], 'or')).toThrow(
+      'Each pattern must be a string or RegExp instance',
+    );
+  });
 });

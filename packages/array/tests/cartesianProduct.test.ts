@@ -143,4 +143,11 @@ describe('cartesianProduct', () => {
     const regex2 = /b/;
     expect(cartesianProduct([regex1], [regex2])).toEqual([[regex1, regex2]]);
   });
+
+  it('19. should throw when result exceeds maxResults', () => {
+    const arrays = Array.from({ length: 11 }, () => [1, 2, 3, 4, 5]);
+    expect(() => cartesianProduct(...(arrays as unknown[][]))).toThrow(
+      'Cartesian product exceeds maxResults limit',
+    );
+  });
 });

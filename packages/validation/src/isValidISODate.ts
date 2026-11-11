@@ -75,39 +75,45 @@ export function isValidISODate(
     return false;
   }
 
-  // Check if the date matches what we parsed
-  const reconstructed = new Date(year, month - 1, day);
+  // Check calendar validity using UTC so date-only ISO strings (parsed as UTC)
+  // are not rejected in negative UTC-offset timezones.
+  const reconstructed = new Date(Date.UTC(year, month - 1, day));
   if (
-    reconstructed.getFullYear() !== year ||
-    reconstructed.getMonth() !== month - 1 ||
-    reconstructed.getDate() !== day
+    reconstructed.getUTCFullYear() !== year ||
+    reconstructed.getUTCMonth() !== month - 1 ||
+    reconstructed.getUTCDate() !== day
   ) {
     return false;
   }
 
-  // If time is included, validate time components
-  if (dateString.includes('T')) {
-    const timePart = dateString.split('T')[1];
-    const timeWithoutZone = timePart.replace(/Z|[+-]\d{2}:\d{2}$/, '');
-    const timeComponents = timeWithoutZone.split(':');
+  if (!dateString.includes('T')) {
+    return (
+      date.getUTCFullYear() === year &&
+      date.getUTCMonth() === month - 1 &&
+      date.getUTCDate() === day
+    );
+  }
 
-    const hour = parseInt(timeComponents[0], 10);
-    const minute = parseInt(timeComponents[1], 10);
-    const secondPart = timeComponents[2];
+  const timePart = dateString.split('T')[1];
+  const timeWithoutZone = timePart.replace(/Z|[+-]\d{2}:\d{2}$/, '');
+  const timeComponents = timeWithoutZone.split(':');
 
-    if (hour < 0 || hour > 23) {
+  const hour = parseInt(timeComponents[0], 10);
+  const minute = parseInt(timeComponents[1], 10);
+  const secondPart = timeComponents[2];
+
+  if (hour < 0 || hour > 23) {
+    return false;
+  }
+
+  if (minute < 0 || minute > 59) {
+    return false;
+  }
+
+  if (secondPart) {
+    const second = parseInt(secondPart.split('.')[0], 10);
+    if (second < 0 || second > 59) {
       return false;
-    }
-
-    if (minute < 0 || minute > 59) {
-      return false;
-    }
-
-    if (secondPart) {
-      const second = parseInt(secondPart.split('.')[0], 10);
-      if (second < 0 || second > 59) {
-        return false;
-      }
     }
   }
 

@@ -33,6 +33,21 @@ Documented limitations and intentional trade-offs in ts-utilkit. Prefer filing a
 
 - **`isValidCreditCard`:** Luhn checksum and length checks only; does not validate card issuer or BIN/IIN.
 - **`isValidJSON`:** No input size limit; parsing untrusted large payloads can be expensive.
+- **`validateConfig`:** Validates presence of keys only; does not validate value types or schemas.
+
+## Regex (`@ts-utilkit/regex`)
+
+- **`combinePatterns` with `and`:** Uses nested positive lookaheads; hostile patterns can still exhibit catastrophic backtracking.
+- **`hasBacktracking`:** Heuristic only; false positives and false negatives are possible.
+
+## Utility (`@ts-utilkit/utility`)
+
+- **`debounceAsync`:** Superseded invocations reject with `AbortError` rather than remaining pending.
+- **`memoize` default key function:** Cannot handle circular argument references; supply a custom `keyFn`.
+
+## Array (`@ts-utilkit/array`)
+
+- **`cartesianProduct`:** Throws when the result would exceed 1,000,000 combinations.
 
 ## Math (`@ts-utilkit/math`)
 

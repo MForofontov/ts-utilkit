@@ -165,4 +165,16 @@ describe('assertArraysEqual', () => {
     // Assert
     expect(result).toBe(true);
   });
+
+  it('13. should compare object elements regardless of order', () => {
+    expect(assertArraysEqual([{ id: 1 }, { id: 2 }], [{ id: 2 }, { id: 1 }])).toBe(
+      true,
+    );
+  });
+
+  it('14. should return false for symbol arrays instead of throwing', () => {
+    const sym = Symbol('x');
+    expect(assertArraysEqual([sym, 1], [1, sym])).toBe(true);
+    expect(assertArraysEqual([sym], [Symbol('y')])).toBe(false);
+  });
 });

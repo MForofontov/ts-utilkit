@@ -144,10 +144,20 @@ describe('memoize', () => {
     expect(fn(null)).toBe(0);
   });
 
-  it('14. should handle NaN as an argument (JSON.stringify maps it to null)', () => {
-    const fn = memoize((v: number) => v);
+  it('14. should distinguish null, undefined, and NaN cache keys', () => {
+    let callCount = 0;
+    const fn = memoize((v: number | null | undefined) => {
+      callCount++;
+      return v;
+    });
     fn(NaN);
-    fn(NaN); // second call — JSON.stringify(NaN) = 'null', cache hit
+    fn(null);
+    fn(undefined);
+    expect(callCount).toBe(3);
+    fn(NaN);
+    fn(null);
+    fn(undefined);
+    expect(callCount).toBe(3);
   });
 
   it('15. should not share cache when wrapping the same function twice', () => {

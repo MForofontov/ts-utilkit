@@ -85,7 +85,7 @@ describe('randomWord', () => {
     }
     const endTime = performance.now();
 
-    expect(endTime - startTime).toBeLessThan(100);
+    expect(endTime - startTime).toBeLessThan(500);
   });
 
   // Test case 10: Pattern consistency

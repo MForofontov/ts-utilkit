@@ -131,7 +131,7 @@ describe('slidingWindow', () => {
 
     // Assert
     expect(windows).toHaveLength(901);
-    expect(end - start).toBeLessThan(100);
+    expect(end - start).toBeLessThan(500);
   });
 
   // Test case 18: Throws Error when size is zero

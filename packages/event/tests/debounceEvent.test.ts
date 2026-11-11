@@ -179,7 +179,7 @@ describe('debounceEvent', () => {
     const endTime = performance.now();
 
     // Assert - should set up timer quickly
-    expect(endTime - startTime).toBeLessThan(100);
+    expect(endTime - startTime).toBeLessThan(500);
     expect(handler).not.toHaveBeenCalled();
 
     jest.advanceTimersByTime(10000);

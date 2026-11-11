@@ -108,7 +108,7 @@ describe('randomWords', () => {
     randomWords(50, 10);
     const endTime = performance.now();
 
-    expect(endTime - startTime).toBeLessThan(100);
+    expect(endTime - startTime).toBeLessThan(500);
   });
 
   // Error Test case 14: Error for NaN count

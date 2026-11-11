@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-08-04
+
+### Fixed
+
+- `formatDuration`: include millisecond remainder when larger units are present (e.g. `1500` → `"1s 500ms"`).
+
 ## [0.2.1] - 2026-07-29
 
 ### Changed

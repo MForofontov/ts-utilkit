@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Second-pass audit: re-verified password hashing and AES helpers; first-audit strictness confirmed.
+
 ## [0.3.1] - 2026-07-29
 
 ### Changed

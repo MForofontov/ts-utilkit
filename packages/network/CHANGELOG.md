@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Second-pass audit: re-verified URL extraction defaults; first-audit `includeWWW` change confirmed.
+
 ## [0.2.0] - 2026-03-05
 
 ### Changed

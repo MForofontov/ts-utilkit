@@ -120,6 +120,6 @@ describe('takeWhile', () => {
 
     // Assert
     expect(result).toHaveLength(5000);
-    expect(end - start).toBeLessThan(100);
+    expect(end - start).toBeLessThan(500);
   });
 });

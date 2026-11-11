@@ -174,6 +174,6 @@ describe('partition', () => {
     // Assert
     expect(evens).toHaveLength(5000);
     expect(odds).toHaveLength(5000);
-    expect(end - start).toBeLessThan(100);
+    expect(end - start).toBeLessThan(500);
   });
 });

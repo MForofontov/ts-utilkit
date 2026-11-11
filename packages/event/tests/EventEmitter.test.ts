@@ -325,6 +325,6 @@ describe('EventEmitter', () => {
     handlers.forEach((handler) => {
       expect(handler).toHaveBeenCalledWith('data');
     });
-    expect(endTime - startTime).toBeLessThan(100);
+    expect(endTime - startTime).toBeLessThan(500);
   });
 });

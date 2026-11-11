@@ -1,3 +1,5 @@
+const MAX_RESULTS = 1_000_000;
+
 /**
  * Calculates the Cartesian product of two or more arrays.
  * The Cartesian product of sets A and B is the set of all ordered pairs (a, b)
@@ -5,6 +7,8 @@
  *
  * @param arrays - The arrays to compute the Cartesian product of.
  * @returns An array containing all possible combinations of elements from the input arrays.
+ *
+ * @throws {Error} If the result would exceed 1,000,000 combinations.
  *
  * @example
  * // Basic usage with two arrays
@@ -55,9 +59,18 @@ type CartesianTuple<T extends unknown[][]> = { [K in keyof T]: T[K][number] };
 export function cartesianProduct<T extends unknown[][]>(
   ...arrays: T
 ): CartesianTuple<T>[] {
-  // Handle empty array case
   if (arrays.some((arr) => arr.length === 0)) {
     return [];
+  }
+
+  let size = 1;
+  for (const arr of arrays) {
+    size *= arr.length;
+    if (size > MAX_RESULTS) {
+      throw new Error(
+        `Cartesian product exceeds maxResults limit (${MAX_RESULTS})`,
+      );
+    }
   }
 
   return arrays.reduce<CartesianTuple<T>[]>(

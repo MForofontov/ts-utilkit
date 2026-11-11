@@ -1,6 +1,6 @@
 {
   "name": "@ts-utilkit/testing-utilities",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Testing utilities and helpers for writing comprehensive unit tests with TypeScript and Jest",
   "homepage": "https://github.com/mykfor1/ts-utilkit/tree/main/packages/testing-utilities#readme",
   "bugs": {

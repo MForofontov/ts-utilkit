@@ -1,6 +1,6 @@
 {
   "name": "@ts-utilkit/array",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Comprehensive array manipulation utilities including sorting, filtering, transformation, and mathematical operations",
   "homepage": "https://github.com/mykfor1/ts-utilkit/tree/main/packages/array#readme",
   "bugs": {

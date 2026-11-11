@@ -19,7 +19,7 @@ import { deepEqual } from '@ts-utilkit/object';
  *
  * @note Uses deepEqual for structural comparison, handling NaN, Date, RegExp, and nested values.
  *
- * @complexity Time: O(n log n) due to sorting, Space: O(n)
+ * @complexity Time: O(n²) worst case, Space: O(n)
  */
 export function assertArraysEqual<T>(actual: T[], expected: T[]): boolean {
   if (!Array.isArray(actual) || !Array.isArray(expected)) {
@@ -30,8 +30,15 @@ export function assertArraysEqual<T>(actual: T[], expected: T[]): boolean {
     return false;
   }
 
-  const sortedActual = [...actual].sort();
-  const sortedExpected = [...expected].sort();
+  const remaining = [...expected];
 
-  return deepEqual(sortedActual, sortedExpected);
+  for (const item of actual) {
+    const index = remaining.findIndex((candidate) => deepEqual(candidate, item));
+    if (index === -1) {
+      return false;
+    }
+    remaining.splice(index, 1);
+  }
+
+  return remaining.length === 0;
 }

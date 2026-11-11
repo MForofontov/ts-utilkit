@@ -18,8 +18,12 @@ export function _weightedPick<T>(items: T[], weights: number[]): T {
   let random = Math.random() * totalWeight;
 
   for (let i = 0; i < items.length; i++) {
-    random -= weights[i];
-    if (random <= 0) {
+    const weight = weights[i];
+    if (weight <= 0) {
+      continue;
+    }
+    random -= weight;
+    if (random < 0) {
       return items[i];
     }
   }

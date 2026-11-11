@@ -1,4 +1,20 @@
 /**
+ * Serializes call arguments into a stable cache key, distinguishing values
+ * that `JSON.stringify` would collapse (null, undefined, NaN).
+ */
+function defaultCacheKey(args: unknown[]): string {
+  return JSON.stringify(args, (_key, value) => {
+    if (typeof value === 'number' && Number.isNaN(value)) {
+      return { __memoize: 'NaN' };
+    }
+    if (value === undefined) {
+      return { __memoize: 'undefined' };
+    }
+    return value;
+  });
+}
+
+/**
  * Wraps a synchronous function so that repeated calls with identical arguments
  * are served from an in-memory cache instead of re-executing the function.
  * An optional `keyFn` lets callers control how arguments are serialised into
@@ -7,7 +23,8 @@
  *
  * @param fn - The synchronous function to memoize.
  * @param keyFn - Optional function that converts the call arguments to a string
- *   cache key. Defaults to `JSON.stringify(args)`.
+ *   cache key. Defaults to a serializer that distinguishes `null`, `undefined`,
+ *   and `NaN` (unlike plain `JSON.stringify`).
  * @returns A new function with the same signature as `fn` that transparently
  *   caches return values.
  *
@@ -37,8 +54,8 @@
  * @note The cache lives for the lifetime of the returned memoized function.
  *   Create a new memoized function instance to reset the cache.
  * @note Async functions should use `asyncMemoize` from `@ts-utilkit/async`.
- * @note `JSON.stringify` is used as the default key strategy; circular
- *   references or non-serialisable arguments require a custom `keyFn`.
+ * @note The default key strategy cannot handle circular references; supply a
+ *   custom `keyFn` for non-serialisable arguments.
  *
  * @complexity Time: O(1) per cached call, Space: O(k) where k is unique key count
  */
@@ -49,7 +66,7 @@ export function memoize<T, Args extends unknown[]>(
   const cache = new Map<string, T>();
 
   return (...args: Args): T => {
-    const key = keyFn ? keyFn(...args) : JSON.stringify(args);
+    const key = keyFn ? keyFn(...args) : defaultCacheKey(args);
     if (cache.has(key)) {
       return cache.get(key) as T;
     }

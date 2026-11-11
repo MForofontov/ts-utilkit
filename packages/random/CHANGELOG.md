@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-08-04
+
+### Fixed
+
+- `_weightedPick`: skip zero-weight items so they are never selected.
+
 ## [0.2.0] - 2026-03-05
 
 ### Fixed

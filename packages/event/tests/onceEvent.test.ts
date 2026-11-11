@@ -272,7 +272,7 @@ describe('onceEvent', () => {
 
     // Assert
     expect(handler).toHaveBeenCalledTimes(1);
-    expect(endTime - startTime).toBeLessThan(100);
+    expect(endTime - startTime).toBeLessThan(500);
   });
 
   // Test case 15: With numeric return

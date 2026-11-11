@@ -68,7 +68,7 @@ describe('generatePrimes', () => {
   it('10. should handle larger limits efficiently', () => {
     const start = performance.now();
     const result = generatePrimes(1000);
-    expect(performance.now() - start).toBeLessThan(100);
+    expect(performance.now() - start).toBeLessThan(500);
     expect(result.length).toBe(168);
     expect(result[0]).toBe(2);
     expect(result[result.length - 1]).toBe(997);

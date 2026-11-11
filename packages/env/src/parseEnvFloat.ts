@@ -35,7 +35,13 @@ export function parseEnvFloat(
     return defaultValue;
   }
 
-  const parsed = parseFloat(value);
+  const trimmed = value.trim();
+
+  if (!/^-?(?:\d+\.?\d*|\.\d+)(?:[eE][+-]?\d+)?$/.test(trimmed)) {
+    return defaultValue;
+  }
+
+  const parsed = parseFloat(trimmed);
 
   if (isNaN(parsed)) {
     return defaultValue;

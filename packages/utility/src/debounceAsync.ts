@@ -41,6 +41,7 @@
  * @note The timer resets on each call until the function stops being invoked.
  * @note Only the most recent call's arguments are used when the function finally executes.
  * @note Earlier invocations are cancelled, not queued (only the last call executes).
+ * @note Superseded invocations reject with an `AbortError` so callers are not left pending.
  * @note Returns a Promise that resolves with the result of the async function.
  *
  * @complexity Time: O(1) per invocation, Space: O(1)
@@ -53,12 +54,24 @@ export function debounceAsync<Args extends unknown[], R>(
     throw new Error('wait must be a non-negative number');
   }
 
-  let timeoutId: ReturnType<typeof setTimeout>;
+  let timeoutId: ReturnType<typeof setTimeout> | undefined;
+  let rejectPending: ((reason?: unknown) => void) | undefined;
+
   return (...args: Args) =>
-    new Promise((resolve) => {
-      if (timeoutId) {
+    new Promise<R>((resolve, reject) => {
+      if (timeoutId !== undefined) {
         clearTimeout(timeoutId);
       }
-      timeoutId = setTimeout(() => resolve(func(...args)), wait);
+      if (rejectPending) {
+        rejectPending(new DOMException('Debounced', 'AbortError'));
+        rejectPending = undefined;
+      }
+
+      rejectPending = reject;
+      timeoutId = setTimeout(() => {
+        rejectPending = undefined;
+        timeoutId = undefined;
+        void func(...args).then(resolve, reject);
+      }, wait);
     });
 }

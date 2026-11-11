@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Second-pass audit: re-verified `sanitizeHTML` adversarial cases; first-audit attribute allowlist confirmed.
+
 ## [0.3.0] - 2026-07-29
 
 ### Changed

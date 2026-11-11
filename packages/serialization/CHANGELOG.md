@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Second-pass audit: re-verified circular-reference and type-preservation behavior; first-audit fixes confirmed.
+
 ## [0.2.1] - 2026-07-29
 
 ### Changed

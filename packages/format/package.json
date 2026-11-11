@@ -1,6 +1,6 @@
 {
   "name": "@ts-utilkit/format",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Formatting utilities for numbers, dates, strings, and currencies",
   "homepage": "https://github.com/mykfor1/ts-utilkit/tree/main/packages/format#readme",
   "bugs": {

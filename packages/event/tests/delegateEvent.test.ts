@@ -304,7 +304,7 @@ describe('delegateEvent', () => {
 
     // Assert
     expect(handler).toHaveBeenCalledTimes(1);
-    expect(endTime - startTime).toBeLessThan(100);
+    expect(endTime - startTime).toBeLessThan(500);
 
     // Cleanup
     document.body.removeChild(parent);

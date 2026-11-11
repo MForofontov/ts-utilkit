@@ -24,6 +24,10 @@ export function validateConfig<T extends Record<string, any>>(
   config: T,
   requiredKeys: string[],
 ): boolean {
+  if (config == null || typeof config !== 'object') {
+    throw new Error('config must be a non-null object');
+  }
+
   for (const key of requiredKeys) {
     const value = getNestedValue(config, key);
 

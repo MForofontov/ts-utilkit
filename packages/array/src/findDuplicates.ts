@@ -1,5 +1,24 @@
 import { deepEqual } from '@ts-utilkit/object';
 
+function isPrimitiveKeyable(value: unknown): boolean {
+  const type = typeof value;
+  return (
+    value === null ||
+    type === 'string' ||
+    type === 'number' ||
+    type === 'boolean' ||
+    type === 'bigint' ||
+    type === 'undefined'
+  );
+}
+
+function primitiveKey(value: unknown): string {
+  if (value === undefined) return '__undefined__';
+  if (value === null) return '__null__';
+  if (typeof value === 'number' && Number.isNaN(value)) return '__nan__';
+  return `${typeof value}:${String(value)}`;
+}
+
 /**
  * Finds duplicate elements in an array using deep equality comparison.
  * Each duplicate value is included only once in the result array.
@@ -28,19 +47,32 @@ import { deepEqual } from '@ts-utilkit/object';
  * which makes it suitable for finding duplicates of complex objects and nested structures.
  * Each duplicate is included exactly once in the result, regardless of how many times it appears.
  *
- * @complexity Time: O(n²), Space: O(n) - Where n is array length, due to the nested array searches
+ * @complexity Time: O(n²) for object elements, O(n) for primitives, Space: O(n)
  */
 export function findDuplicates<T>(arr: T[]): T[] {
   const duplicates: T[] = [];
-  const seen: T[] = [];
+  const primitiveSeen = new Map<string, T>();
+  const objectSeen: T[] = [];
 
   for (const item of arr) {
-    if (seen.some((seenItem) => deepEqual(seenItem, item))) {
+    if (isPrimitiveKeyable(item)) {
+      const key = primitiveKey(item);
+      if (primitiveSeen.has(key)) {
+        if (!duplicates.some((duplicate) => deepEqual(duplicate, item))) {
+          duplicates.push(item);
+        }
+      } else {
+        primitiveSeen.set(key, item);
+      }
+      continue;
+    }
+
+    if (objectSeen.some((seenItem) => deepEqual(seenItem, item))) {
       if (!duplicates.some((duplicate) => deepEqual(duplicate, item))) {
         duplicates.push(item);
       }
     } else {
-      seen.push(item);
+      objectSeen.push(item);
     }
   }
 
