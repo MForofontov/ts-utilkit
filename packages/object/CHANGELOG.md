@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.4.0] - 2026-11-02
+## [0.4.0] - 2026-11-08
 
 - Include missing own keys in `differenceBy` even when their values are undefined; ignore inherited comparison values and getters.
 - Preserve transformed __proto__ keys as own data properties without changing result prototypes.

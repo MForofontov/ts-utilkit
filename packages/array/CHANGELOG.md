@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.4.0] - 2026-11-02
+## [0.4.0] - 2026-11-08
 
 - Add `arrayDifferenceBy` and `arrayIntersectionBy`, preserving source order, duplicates, and references with Set key equality and sparse-slot skipping.
 - Optimize larger data-only primitive comparisons in `arrayDifference` and `arrayIntersection`; retain lazy deep-comparison fallbacks and add a reproducible benchmark.

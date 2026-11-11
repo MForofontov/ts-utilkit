@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.2.3] - 2026-11-02
+## [0.2.3] - 2026-11-08
 
 - Narrow internal YAML/XML/CSV serialization values to unknown while retaining public signatures and output behavior.
 - Fix XML same-prefix and self-closing nested element handling; preserve special and repeated tag names as own data.

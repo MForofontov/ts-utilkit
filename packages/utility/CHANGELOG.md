@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.5.0] - 2026-11-02
+## [0.5.0] - 2026-11-08
 
 - Align the format dependency range with the current local 0.3.x package.
 - Fix throttle at timestamp zero, replace obsolete trailing timers, and apply the same limit to reentrant callbacks.

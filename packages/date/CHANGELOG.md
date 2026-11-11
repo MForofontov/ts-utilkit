@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.3.0] - 2026-11-02
+## [0.3.0] - 2026-11-08
 
 - Reject fractional weekday arguments in getNextOccurrence and replace vacuous invalid-number tests with real assertions.
 - Preserve literal years 0–99 throughout calendar boundaries, month clamping, week calculations, and business-day counting; retain negative-year rollovers and existing midnight conventions.

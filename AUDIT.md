@@ -4,8 +4,9 @@ Validated locally on Windows and Linux using Node 20.20.2, 22.23.4, and 24.22.1.
 The project requires Node 20 or newer;
 the system's default Node 16 was not used for validation. The matrix used the
 package versions retained after the earlier release-version revert. The npm
-release preparation below now updates those versions at the user's request.
-Nothing has been published yet.
+release preparation below updates those versions at the user's request.
+All 23 packages were published to npm on 2026-11-08 and verified through a fresh
+public-registry installation. GitHub and npm rollout verification is recorded below.
 
 Latest verification (reviewed 2026-11-02; runs completed 2026-10-30): **6,350 tests
 pass across 552 suites on each of the six Windows/Linux and Node 20/22/24
@@ -762,3 +763,41 @@ and prepared artifacts are retained under `local-testing/npm-release/`.
 The publisher verifies artifact hashes and npm write access before uploading,
 publishes dependencies first, and stops on a failed upload. Publishing is pending
 npm authentication; no package has been uploaded at the time of this record.
+
+## GitHub and npm rollout (2026-11-08)
+
+The user authorized pushing the reviewed working-tree changes directly to
+`main` and publishing the prepared npm releases. This supersedes the earlier
+local-only verification preference and the historical pending-authentication
+status above.
+
+- Release commit [`1c8b835`](https://github.com/MForofontov/ts-utilkit/commit/1c8b835b76f6b94ea3744f57b5b8c5b08d74057f)
+  was pushed to `origin/main`. The remote and local commit hashes matched, and
+  the working tree was clean before the final documentation update.
+- The [GitHub Actions quality run](https://github.com/MForofontov/ts-utilkit/actions/runs/42484988730)
+  passed **all six jobs**: Windows/Linux with Node 20, 22, and 24. This is hosted
+  CI verification of the release commit, distinct from the earlier local matrix.
+- npm authentication succeeded as **mforofontov**, with write access confirmed
+  for all 23 packages. After the user completed publishing authentication, all
+  23 frozen artifacts were uploaded successfully in dependency order with public
+  access and the `latest` tag. The root workspace was excluded.
+- Public registry verification confirms every planned version and `latest` tag.
+  Downloading all **23 public tarballs** confirms their SHA-512 integrities match
+  the previously tested release artifacts exactly.
+- A fresh consumer outside the checkout installed all **23 packages from npm**,
+  using exact release versions and no local tarballs or workspace symlinks.
+  CommonJS exports, named dynamic imports, strict TypeScript declarations,
+  internal dependency resolution, and the new keyed-array and async Result APIs
+  all pass. Synchronous error values retain their identity.
+- npm processing initially delayed metadata and some tarball downloads, producing
+  temporary 404/ETARGET responses. These resolved before the successful public
+  installation and final verification. There are no remaining publication or
+  authentication blockers.
+- Package changelog release dates now reflect publication on **2026-11-08**.
+  Runtime source code and tested tarballs were unchanged by this documentation
+  update. The root workspace version remains 0.1.0.
+
+Evidence is retained under `local-testing/npm-release/`, including
+`publish-results.json`, `published-verification.json`, `github-ci.json`, and the
+`public-install.log`, `public-types.log`, and `public-runtime.log` consumer checks.
+All 23 published versions are listed in the release-preparation section above.

@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.3.1] - 2026-11-02
+## [0.3.1] - 2026-11-08
 
 - Narrow replacement overloads instead of casting to any; retain public callback types and replacement behavior.
 - Reject inherited object-property names as unknown common-pattern presets; correct README imports and export listings.

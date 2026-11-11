@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.3.1] - 2026-11-02
+## [0.3.1] - 2026-11-08
 
 - Format large finite numbers in grouped decimal notation without intermediate overflow or undefined fractional suffixes; format NaN and infinities consistently.
 - Format fractional bytes in the smallest unit and reject invalid Date objects consistently in relative-time formatting.

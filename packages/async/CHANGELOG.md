@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.3.0] - 2026-11-02
+## [0.3.0] - 2026-11-08
 
 - Align the utility dependency range with the current local 0.4.0 package so installed consumers resolve the tested implementation.
 - Append batch results without spread-call argument limits, retaining sparse-result and ordering behavior for large batches.

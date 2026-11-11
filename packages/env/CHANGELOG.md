@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.3.1] - 2026-11-02
+## [0.3.1] - 2026-11-08
 
 - Ignore inherited properties in every environment reader and retain required __proto__ values as own data.
 

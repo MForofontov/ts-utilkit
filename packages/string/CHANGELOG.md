@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.2.2] - 2026-11-02
+## [0.2.2] - 2026-11-08
 
 - Use literal substring counting for short strings, retaining native matching for long strings after comparative benchmarks; correct space-complexity documentation.
 - Use unbiased crypto.randomInt selection so character sets larger than 256 characters terminate correctly.

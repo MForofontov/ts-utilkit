@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.3.2] - 2026-11-02
+## [0.3.2] - 2026-11-08
 
 - Avoid intermediate overflow for finite inputs in `lerp`, `normalizeValue`, and `mapRange`; retain ordinary arithmetic, unclamped extrapolation, validation messages, and degenerate/non-finite behavior.
 - Handle large distinct-value inputs in calculateMode without spread-call limits; add assertions to previously vacuous numeric validation tests.

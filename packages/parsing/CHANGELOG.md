@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.2.2] - 2026-11-02
+## [0.2.2] - 2026-11-08
 
 - Retain special HTTP header names, including __proto__, as own data properties.
 - Reject malformed decimal tokens in duration/data-size parsing and inherited duration-unit names while retaining supported decimal spellings.
