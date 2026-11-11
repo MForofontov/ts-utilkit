@@ -123,4 +123,12 @@ describe('isValidEmail', () => {
     const result: boolean = isValidEmail(email);
     expect(result).toBe(expected);
   });
+
+  it('16. should return false for consecutive dots in the domain', () => {
+    expect(isValidEmail('test@example..com')).toBe(false);
+  });
+
+  it('17. should return false for a leading dot in the local part', () => {
+    expect(isValidEmail('.test@example.com')).toBe(false);
+  });
 });

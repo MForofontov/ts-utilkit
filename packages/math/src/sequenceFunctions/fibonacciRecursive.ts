@@ -5,6 +5,7 @@
  * @returns The nth Fibonacci number.
  *
  * @throws {Error} If n is not an integer.
+ * @throws {Error} If n is greater than 40 (use fibonacciIterative for larger values).
  *
  * @example
  * // Basic Fibonacci sequence
@@ -38,7 +39,7 @@
  *
  * @note This implementation is simple but VERY SLOW for large n (exponential time complexity).
  * @note For n > 30, this function becomes impractically slow due to redundant calculations.
- * @note Use fibonacciIterative() for better performance with large values.
+ * @note Values above 40 are rejected to avoid stack overflow; use fibonacciIterative() instead.
  * @note Supports negative indices using the extended Fibonacci sequence formula.
  * @note The sequence starts: F(0)=0, F(1)=1, F(n)=F(n-1)+F(n-2) for n≥2.
  * @note Consider memoization or dynamic programming for production use.
@@ -51,6 +52,11 @@ export function fibonacciRecursive(n: number): number {
   }
   if (!Number.isInteger(n)) {
     throw new Error('Input must be an integer');
+  }
+  if (n > 40) {
+    throw new Error(
+      'n must be at most 40 for recursive implementation; use fibonacciIterative for larger values',
+    );
   }
   if (n < 0) {
     return Math.pow(-1, n + 1) * fibonacciRecursive(-n);

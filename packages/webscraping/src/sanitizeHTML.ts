@@ -1,3 +1,88 @@
+/** Safe HTML attributes preserved on allowed tags. */
+const SAFE_ATTRIBUTES = new Set([
+  'class',
+  'id',
+  'title',
+  'lang',
+  'dir',
+  'role',
+]);
+
+/** Attributes always stripped from allowed tags. */
+const BLOCKED_ATTRIBUTES = new Set([
+  'style',
+  'formaction',
+  'srcdoc',
+  'src',
+  'href',
+  'xlink:href',
+]);
+
+function decodeHtmlEntities(input: string): string {
+  return input
+    .replace(/&#x([0-9a-f]+);/gi, (_, hex: string) =>
+      String.fromCharCode(parseInt(hex, 16)),
+    )
+    .replace(/&#(\d+);/g, (_, dec: string) =>
+      String.fromCharCode(parseInt(dec, 10)),
+    )
+    .replace(
+      /&(amp|lt|gt|quot|apos);/gi,
+      (entity) =>
+        ({
+          '&amp;': '&',
+          '&lt;': '<',
+          '&gt;': '>',
+          '&quot;': '"',
+          '&apos;': "'",
+        })[entity.toLowerCase()] ?? entity,
+    );
+}
+
+function isSafeUrl(value: string): boolean {
+  const normalized = value.trim().toLowerCase();
+  return !(
+    normalized.startsWith('javascript:') ||
+    normalized.startsWith('data:') ||
+    normalized.startsWith('vbscript:')
+  );
+}
+
+function cleanAllowedTag(match: string, tagName: string): string {
+  if (/^<\//.test(match)) {
+    return `</${tagName}>`;
+  }
+
+  const decoded = decodeHtmlEntities(match);
+  const attrs: string[] = [];
+  const attrRegex = /([\w:-]+)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/gi;
+  let attrMatch: RegExpExecArray | null;
+
+  while ((attrMatch = attrRegex.exec(decoded)) !== null) {
+    const name = attrMatch[1].toLowerCase();
+    const value = attrMatch[2] ?? attrMatch[3] ?? attrMatch[4] ?? '';
+
+    if (name.startsWith('on') || BLOCKED_ATTRIBUTES.has(name)) {
+      continue;
+    }
+
+    if ((name === 'href' || name === 'src') && !isSafeUrl(value)) {
+      continue;
+    }
+
+    if (SAFE_ATTRIBUTES.has(name) || name.startsWith('aria-')) {
+      const escapedValue = value.replace(/"/g, '&quot;');
+      attrs.push(`${attrMatch[1]}="${escapedValue}"`);
+    }
+  }
+
+  if (attrs.length === 0) {
+    return `<${tagName}>`;
+  }
+
+  return `<${tagName} ${attrs.join(' ')}>`;
+}
+
 /**
  * Sanitizes HTML by removing potentially dangerous tags and attributes.
  *
@@ -34,31 +119,18 @@ export function sanitizeHTML(
     'div',
   ],
 ): string {
-  // Remove script and style tags entirely (paired)
   let sanitized = html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '');
   sanitized = sanitized.replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, '');
-
-  // Remove unclosed script/style opening tags and everything after them
   sanitized = sanitized.replace(/<script\b[^>]*>[\s\S]*$/gi, '');
   sanitized = sanitized.replace(/<style\b[^>]*>[\s\S]*$/gi, '');
-
-  // Remove stray closing script/style tags
   sanitized = sanitized.replace(/<\/(?:script|style)\s*>/gi, '');
 
-  // Remove all tags except allowed ones
+  const allowed = new Set(allowedTags.map((tag) => tag.toLowerCase()));
   const tagRegex = /<\/?([a-z][a-z0-9]*)\b[^>]*>/gi;
+
   sanitized = sanitized.replace(tagRegex, (match, tagName: string) => {
-    if (allowedTags.includes(tagName.toLowerCase())) {
-      // Remove dangerous attributes (quoted or unquoted event handlers)
-      let cleanTag = match.replace(
-        /\s+on\w+\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+)/gi,
-        '',
-      );
-      cleanTag = cleanTag.replace(
-        /\s+href\s*=\s*(?:"\s*javascript:[^"]*"|'\s*javascript:[^']*'|javascript:[^\s>]+)/gi,
-        '',
-      );
-      return cleanTag;
+    if (allowed.has(tagName.toLowerCase())) {
+      return cleanAllowedTag(match, tagName.toLowerCase());
     }
     return '';
   });

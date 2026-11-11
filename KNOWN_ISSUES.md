@@ -5,23 +5,38 @@ Documented limitations and intentional trade-offs in ts-utilkit. Prefer filing a
 ## Crypto (`@ts-utilkit/crypto`)
 
 - **AES ciphertext format (0.3.0+):** `encryptAES256` / `decryptAES256` use `salt:iv:authTag:ciphertext`. Payloads produced by 0.2.x (`iv:authTag:ciphertext` with a fixed scrypt salt) cannot be decrypted and must be re-encrypted.
+- **AES key derivation:** `encryptAES256` / `decryptAES256` use synchronous `scryptSync`, which blocks the event loop during each call.
 
 ## Object (`@ts-utilkit/object`)
 
 - **`deepEqual`:** Does not support circular references. Map keys are compared with `Map.has` (reference equality for object keys), not deep key equality.
-- **`deepClone`:** Relies on `structuredClone` when available; JSON fallback drops functions, `undefined`, `Date`, `RegExp`, `Map`, `Set`, symbols, and circular structures.
+- **`deepClone`:** Relies on `structuredClone` when available; JSON fallback drops functions, `undefined`, `Date`, `RegExp`, `Map`, `Set`, symbols, and circular structures. `structuredClone` throws on functions.
+
+## Encoding (`@ts-utilkit/encoding`)
+
+- **`decodeBase32` / `decodeBase64` / `decodeBase64URL`:** Strict validation rejects truncated, over-padded, or non-canonical encodings.
 
 ## Web scraping (`@ts-utilkit/webscraping`)
 
 - **`sanitizeHTML`:** Best-effort string sanitizer. It is **not** a substitute for a dedicated HTML sanitizer (e.g. DOMPurify) when rendering untrusted HTML in production.
 
-## String / validation
+## String (`@ts-utilkit/string`)
 
-- **Email validation** (`isValidEmail` in `@ts-utilkit/string` and related checks): pragmatic regex checks, not full RFC 5321/5322 compliance (no IP-literal hosts, limited quoted-local support).
+- **`isValidEmail`:** Pragmatic regex checks, not full RFC 5321/5322 compliance (no IP-literal hosts, limited quoted-local support).
+- **`stripHtmlTags`:** Removes tag delimiters and script/style blocks; it is **not** HTML sanitization and may leave text content from removed elements.
+
+## Network (`@ts-utilkit/network`)
+
+- **`isValidURL`:** Syntactic URL validation only. Dangerous schemes (`javascript:`, `data:`, `file:`) are accepted unless you use `sanitizeURL` or restrict schemes at the call site.
+
+## Validation (`@ts-utilkit/validation`)
+
+- **`isValidCreditCard`:** Luhn checksum and length checks only; does not validate card issuer or BIN/IIN.
+- **`isValidJSON`:** No input size limit; parsing untrusted large payloads can be expensive.
 
 ## Math (`@ts-utilkit/math`)
 
-- **Geometric mean:** Product of many large values can overflow to `Infinity` before the root is taken.
+- **`fibonacciRecursive`:** Rejects `n > 40` to avoid stack overflow; use `fibonacciIterative` for larger values.
 
 ## Path (`@ts-utilkit/path`)
 

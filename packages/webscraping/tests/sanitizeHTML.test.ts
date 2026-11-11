@@ -237,4 +237,19 @@ describe('sanitizeHTML', () => {
     expect(result).toBe('<p>Safe</p>');
     expect(result).not.toContain('alert');
   });
+
+  it('20. should remove style attributes from allowed tags', () => {
+    const html =
+      '<div style="background:url(javascript:alert(1))">Content</div>';
+    const result = sanitizeHTML(html);
+    expect(result).not.toContain('style');
+    expect(result).toContain('<div>Content</div>');
+  });
+
+  it('21. should remove entity-encoded event handlers', () => {
+    const html = '<p onclick&#61;"alert(1)">Click</p>';
+    const result = sanitizeHTML(html);
+    expect(result).not.toContain('onclick');
+    expect(result).toBe('<p>Click</p>');
+  });
 });

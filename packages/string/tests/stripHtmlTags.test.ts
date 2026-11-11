@@ -124,4 +124,15 @@ describe('stripHtmlTags', () => {
     const result: string = stripHtmlTags(str);
     expect(result).toBe(expected);
   });
+
+  it('16. should remove script tag content entirely', () => {
+    expect(stripHtmlTags('<script>alert(1)</script>')).toBe('');
+    expect(stripHtmlTags('before<script>alert(1)</script>after')).toBe(
+      'beforeafter',
+    );
+  });
+
+  it('17. should preserve text after unclosed tags', () => {
+    expect(stripHtmlTags('before<img src="x"')).toBe('before<img src="x"');
+  });
 });

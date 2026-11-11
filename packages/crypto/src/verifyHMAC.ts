@@ -23,8 +23,12 @@ import { createHmac, timingSafeEqual } from 'crypto';
  * verifyHMAC(data, secret, hmac); // Returns: true
  *
  * @example
- * // Verify with wrong HMAC
- * verifyHMAC('message', 'secret-key', 'wrong-hmac'); // Returns: false
+ * // Invalid HMAC length (throws)
+ * try {
+ *   verifyHMAC('message', 'secret-key', 'wrong-hmac');
+ * } catch (error) {
+ *   console.error(error.message);
+ * }
  *
  * @example
  * // Verify API webhook signature

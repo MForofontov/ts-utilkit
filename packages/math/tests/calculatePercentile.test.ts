@@ -88,4 +88,10 @@ describe('calculatePercentile', () => {
       'p must be in the range [0, 100], got 101',
     );
   });
+
+  it('15. should throw when array contains non-finite values', () => {
+    expect(() => calculatePercentile([1, NaN, 3], 50)).toThrow(
+      'arr must contain only finite numbers',
+    );
+  });
 });

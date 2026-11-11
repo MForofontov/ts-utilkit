@@ -69,6 +69,7 @@ export function asyncMemoize<T, Args extends unknown[]>(
   }
 
   const cache = new Map<string, MemoizeCacheEntry<T>>();
+  const inFlight = new Map<string, Promise<T>>();
 
   return (...args: Args): Promise<T> => {
     const key = keyFn ? keyFn(...args) : JSON.stringify(args);
@@ -79,14 +80,25 @@ export function asyncMemoize<T, Args extends unknown[]>(
       if (cached.expiresAt === null || cached.expiresAt > now) {
         return Promise.resolve(cached.value);
       }
-      // TTL expired — evict
       cache.delete(key);
     }
 
-    return fn(...args).then((value) => {
-      const expiresAt = ttl !== undefined ? Date.now() + ttl : null;
-      cache.set(key, { value, expiresAt });
-      return value;
-    });
+    const existing = inFlight.get(key);
+    if (existing !== undefined) {
+      return existing;
+    }
+
+    const promise = fn(...args)
+      .then((value) => {
+        const expiresAt = ttl !== undefined ? Date.now() + ttl : null;
+        cache.set(key, { value, expiresAt });
+        return value;
+      })
+      .finally(() => {
+        inFlight.delete(key);
+      });
+
+    inFlight.set(key, promise);
+    return promise;
   };
 }

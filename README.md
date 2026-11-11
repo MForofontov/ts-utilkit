@@ -147,14 +147,14 @@ Quick reference of functions by category:
 | **Validation**    | 13             | `isValidIPv4`, `isValidUUID`, `isValidJSON`, `isInRange`, `isValidCreditCard`                |
 | **Webscraping**   | 16             | `extractLinks`, `extractMetaTags`, `extractEmails`, `fetchHTML`, `parseHTML`                 |
 
-**Total: 408 Functions** across 21 specialized packages
+**Total: ~500 exported symbols** across 23 specialized packages
 
 ## 💡 Usage Examples
 
 ### Array Operations
 
 ```typescript
-import { chunkArray, findDuplicates, cartesianProduct } from 'ts-utilkit';
+import { chunkArray, findDuplicates, cartesianProduct } from '@ts-utilkit/array';
 
 // Split array into chunks
 const data = [1, 2, 3, 4, 5, 6, 7, 8];
@@ -174,7 +174,7 @@ const combinations = cartesianProduct(colors, sizes);
 ### Async Operations
 
 ```typescript
-import { asyncRetry, asyncTimeout, asyncMap } from 'ts-utilkit';
+import { asyncRetry, asyncTimeout, asyncMap } from '@ts-utilkit/async';
 
 // Retry with exponential backoff
 const result = await asyncRetry(() => fetch('/api/data'), {
@@ -199,7 +199,7 @@ const responses = await asyncMap(urls, async (url) => {
 ### Object Manipulation
 
 ```typescript
-import { deepMerge, safeGet, flattenObject } from 'ts-utilkit';
+import { deepMerge, safeGet, flattenObject } from '@ts-utilkit/object';
 
 // Deep merge with conflict resolution
 const config = deepMerge(
@@ -225,7 +225,7 @@ import {
   calculateStandardDeviation,
   calculateHaversineDistance,
   isPrime,
-} from 'ts-utilkit';
+} from '@ts-utilkit/math';
 
 // Statistical calculations
 const data = [2, 4, 4, 4, 5, 5, 7, 9];
@@ -244,7 +244,8 @@ const primeCheck = isPrime(97); // true
 ### String Processing
 
 ```typescript
-import { slugify, extractDomain, isPalindrome } from 'ts-utilkit';
+import { slugify, isPalindrome } from '@ts-utilkit/string';
+import { extractDomain } from '@ts-utilkit/network';
 
 // URL-friendly slugs
 const slug = slugify('Hello World! 123'); // 'hello-world-123'
@@ -259,7 +260,7 @@ const isPalin = isPalindrome('A man a plan a canal Panama'); // true
 ### Validation
 
 ```typescript
-import { isValidIPv4, isValidUUID, isValidMACAddress } from 'ts-utilkit';
+import { isValidIPv4, isValidUUID, isValidMACAddress } from '@ts-utilkit/validation';
 
 // Network validation
 const isValidIP = isValidIPv4('192.168.1.1'); // true

@@ -1,6 +1,6 @@
 {
   "name": "@ts-utilkit/encoding",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Encoding and decoding utilities for Base64 and other encoding schemes",
   "homepage": "https://github.com/mykfor1/ts-utilkit/tree/main/packages/encoding#readme",
   "bugs": {

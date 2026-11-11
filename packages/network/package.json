@@ -1,6 +1,6 @@
 {
   "name": "@ts-utilkit/network",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Network utilities for URL validation, IP address handling, and network-related operations",
   "homepage": "https://github.com/mykfor1/ts-utilkit/tree/main/packages/network#readme",
   "bugs": {

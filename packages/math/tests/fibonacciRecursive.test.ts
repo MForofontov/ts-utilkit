@@ -43,11 +43,14 @@ describe('fibonacciRecursive', () => {
 
   // Test case 6: Fibonacci number for a floating-point number (should throw an error)
   it('6. should throw an error for a floating-point number', () => {
-    const input: number = 5.5;
+    expect(() => fibonacciRecursive(5.5)).toThrow('Input must be an integer');
   });
 
-  // Test case 7: Fibonacci number for NaN (should throw an error)
   it('7. should throw an error for NaN input', () => {
-    const input: number = NaN;
+    expect(() => fibonacciRecursive(NaN)).toThrow('Input must be a number');
+  });
+
+  it('8. should throw an error when n exceeds the recursive limit', () => {
+    expect(() => fibonacciRecursive(41)).toThrow('at most 40');
   });
 });

@@ -69,12 +69,19 @@ export function parseDuration(input: string): number {
 
   let totalMilliseconds = 0;
 
-  // Match all number-unit pairs
   const regex = /(-?[\d.]+)\s*([a-zA-Z]+)/g;
   let match: RegExpExecArray | null;
   let hasMatches = false;
+  let lastIndex = 0;
 
   while ((match = regex.exec(input)) !== null) {
+    const leading = input.slice(lastIndex, match.index);
+    if (leading.trim().length > 0) {
+      throw new Error(
+        `Invalid duration format: unexpected text "${leading.trim()}"`,
+      );
+    }
+
     hasMatches = true;
     const numericValue = parseFloat(match[1]);
     const unit = match[2].toLowerCase();
@@ -95,6 +102,14 @@ export function parseDuration(input: string): number {
     }
 
     totalMilliseconds += numericValue * units[unit];
+    lastIndex = regex.lastIndex;
+  }
+
+  const trailing = input.slice(lastIndex).trim();
+  if (trailing.length > 0) {
+    throw new Error(
+      `Invalid duration format: unexpected trailing text "${trailing}"`,
+    );
   }
 
   if (!hasMatches) {

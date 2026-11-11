@@ -75,6 +75,14 @@ export async function hashPassword(
     throw new Error('salt must contain only hexadecimal characters');
   }
 
+  if (salt.length % 2 !== 0) {
+    throw new Error('salt must have even hexadecimal length');
+  }
+
+  if (salt.length < 16) {
+    throw new Error('salt must be at least 16 hexadecimal characters (8 bytes)');
+  }
+
   if (isNaN(iterations)) {
     throw new Error('iterations must be a valid number, not NaN');
   }

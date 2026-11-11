@@ -82,4 +82,12 @@ describe('decodeBase32', () => {
     expect(() => decodeBase32('NBSWY8DP')).toThrow('Invalid Base32 string');
     expect(() => decodeBase32('NBSWY9DP')).toThrow('Invalid Base32 string');
   });
+
+  it('17. should throw Error for truncated Base32 input', () => {
+    expect(() => decodeBase32('NBSWY3D')).toThrow('Invalid Base32 string');
+  });
+
+  it('18. should throw Error for corrupted trailing character', () => {
+    expect(() => decodeBase32('NBSWY3DPX')).toThrow('Invalid Base32 string');
+  });
 });

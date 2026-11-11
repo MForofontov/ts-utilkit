@@ -28,19 +28,19 @@
  * @note This uses a simplified week calculation starting from January 1.
  * @note Week 1 is the first week of the year; this differs from ISO 8601.
  * @note For true ISO 8601 week numbers, use getISOWeekDate function instead.
- * @note Calculation: days since Jan 1 divided by 7, rounded up.
+ * @note Day counting uses local calendar dates to avoid DST boundary errors.
  * @note Common use cases: calendar displays, weekly reports, scheduling.
  *
  * @complexity Time: O(1), Space: O(1)
  */
+import { dayOfYear } from './dateUtils';
+
 export function getWeekNumber(date: Date): number {
   if (isNaN(date.getTime())) {
     throw new Error('Invalid date');
   }
 
   const start = new Date(date.getFullYear(), 0, 1);
-  const days = Math.floor(
-    (date.getTime() - start.getTime()) / (24 * 60 * 60 * 1000),
-  );
+  const days = dayOfYear(date);
   return Math.ceil((days + start.getDay() + 1) / 7);
 }

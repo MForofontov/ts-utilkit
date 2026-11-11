@@ -25,7 +25,9 @@ import { createCipheriv, randomBytes, scryptSync } from 'crypto';
  * const data = JSON.stringify({ user: 'alice', token: 'xyz' });
  * const encrypted = encryptAES256(data, 'encryption-key');
  *
- * @note Uses AES-256-GCM (Galois/Counter Mode) which provides both confidentiality
+ * @note Uses synchronous scrypt key derivation (`scryptSync`), which blocks the
+ * event loop during encryption. Avoid high-frequency calls on server hot paths.
+ * @note Uses AES-256-GCM (Galois/Counter Mode), which provides both confidentiality
  * and authenticity. The encryption key is derived from the provided key using scrypt
  * with a per-encryption random salt. Each encryption also generates a unique IV.
  * The output format is: base64(salt):base64(iv):base64(authTag):base64(ciphertext)

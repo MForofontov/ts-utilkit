@@ -104,6 +104,8 @@ export function asyncRetry<T>(
             break;
         }
 
+        currentDelay = Math.min(currentDelay, 2_147_483_647);
+
         await delayFn(currentDelay);
       }
     }

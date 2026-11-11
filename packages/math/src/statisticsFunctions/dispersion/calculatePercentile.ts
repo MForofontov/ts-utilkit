@@ -45,6 +45,10 @@ export function calculatePercentile(arr: number[], p: number): number {
     return NaN;
   }
 
+  if (arr.some((value) => !Number.isFinite(value))) {
+    throw new Error('arr must contain only finite numbers');
+  }
+
   const sorted = [...arr].sort((a, b) => a - b);
   const index = (p / 100) * (sorted.length - 1);
   const lower = Math.floor(index);

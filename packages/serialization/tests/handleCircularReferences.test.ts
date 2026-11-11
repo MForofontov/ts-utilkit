@@ -173,4 +173,18 @@ describe('handleCircularReferences', () => {
     // Assert
     expect(input.self).toBe(input); // Original unchanged
   });
+
+  it('15. should preserve Date values', () => {
+    const date = new Date('2020-01-01T00:00:00.000Z');
+    const result = handleCircularReferences({ d: date });
+    expect(result.d).toEqual(date);
+    expect(result.d).not.toBe(date);
+  });
+
+  it('16. should preserve Map values', () => {
+    const map = new Map([['a', 1]]);
+    const result = handleCircularReferences({ m: map });
+    expect(result.m).toEqual(map);
+    expect(result.m).not.toBe(map);
+  });
 });

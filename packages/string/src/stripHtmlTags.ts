@@ -16,12 +16,16 @@
  * // Nested tags
  * stripHtmlTags("<div><span>Hello <strong>world</strong></span></div>"); // "Hello world"
  *
- * @note This uses regex-based tag removal and works for most common HTML.
+ * @note Removes script and style element contents entirely before stripping tags.
+ * @note Only well-formed tags (ending with `>`) are removed; unclosed `<` is preserved.
+ * @note This is tag-delimiter removal, not HTML sanitization for untrusted content.
  * @note For complex HTML parsing with proper DOM handling, consider using a dedicated HTML parser.
  * @note Does not decode HTML entities (e.g., &amp; remains as &amp;).
  *
  * @complexity Time: O(n), Space: O(n) where n is the length of the string
  */
 export function stripHtmlTags(str: string): string {
-  return str.replace(/<\/?[^>]+(>|$)/g, '');
+  let result = str.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '');
+  result = result.replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, '');
+  return result.replace(/<\/?[^>]+>/g, '');
 }

@@ -121,10 +121,15 @@ export function deepEqual(a: unknown, b: unknown): boolean {
     if (a.size !== b.size) {
       return false;
     }
+
+    const bValues = [...b];
+    const matchedIndices = new Set<number>();
+
     for (const value of a) {
       let found = false;
-      for (const other of b) {
-        if (deepEqual(value, other)) {
+      for (let i = 0; i < bValues.length; i++) {
+        if (!matchedIndices.has(i) && deepEqual(value, bValues[i])) {
+          matchedIndices.add(i);
           found = true;
           break;
         }
@@ -136,23 +141,20 @@ export function deepEqual(a: unknown, b: unknown): boolean {
     return true;
   }
 
-  // Get the keys of both objects.
-  const objA = a as Record<string, unknown>;
-  const objB = b as Record<string, unknown>;
-  const keysA = Object.keys(objA);
-  const keysB = Object.keys(objB);
+  const objA = a as Record<PropertyKey, unknown>;
+  const objB = b as Record<PropertyKey, unknown>;
+  const keysA = Reflect.ownKeys(objA);
+  const keysB = Reflect.ownKeys(objB);
 
-  // If the objects have different numbers of keys, they are not deeply equal.
   if (keysA.length !== keysB.length) return false;
 
-  // Recursively compare each key and value in both objects.
+  const keysBSet = new Set(keysB);
+
   for (const key of keysA) {
-    // If the key is not present in both objects or the values are not deeply equal, return false.
-    if (!keysB.includes(key) || !deepEqual(objA[key], objB[key])) {
+    if (!keysBSet.has(key) || !deepEqual(objA[key], objB[key])) {
       return false;
     }
   }
 
-  // If all keys and values are deeply equal, return true.
   return true;
 }

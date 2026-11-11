@@ -93,7 +93,14 @@ export function asyncPoll<T>(
         return result;
       }
 
-      await delayFn(intervalMs);
+      const remaining = deadline - Date.now();
+      if (remaining <= 0) {
+        throw new Error(
+          `asyncPoll timed out after ${timeoutMs}ms (${attempt} attempts)`,
+        );
+      }
+
+      await delayFn(Math.min(intervalMs, remaining));
     }
   })();
 }

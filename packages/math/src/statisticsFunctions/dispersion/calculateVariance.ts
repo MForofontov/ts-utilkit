@@ -1,5 +1,3 @@
-import { calculateAverage } from '../centralTendency/calculateAverage';
-
 /**
  * Calculates the variance of an array of numbers.
  * Variance measures how far a set of numbers are spread out from their average value.
@@ -25,8 +23,7 @@ import { calculateAverage } from '../centralTendency/calculateAverage';
  * calculateVariance([]); // Returns NaN
  *
  * @note This function calculates the population variance (dividing by n),
- * not the sample variance (which would divide by n-1). It uses the arithmetic
- * mean calculated by the calculateAverage function.
+ * not the sample variance (which would divide by n-1).
  *
  * @complexity Time: O(n), Space: O(1) - Where n is array length
  */
@@ -35,10 +32,15 @@ export function calculateVariance(arr: number[]): number {
     return NaN;
   }
 
-  const mean: number = calculateAverage(arr);
-  const sumOfSquares: number = arr.reduce(
-    (sum, num) => sum + Math.pow(num - mean, 2),
-    0,
-  );
+  let mean = 0;
+  let sumOfSquares = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    const value = arr[i];
+    const delta = value - mean;
+    mean += delta / (i + 1);
+    sumOfSquares += delta * (value - mean);
+  }
+
   return sumOfSquares / arr.length;
 }

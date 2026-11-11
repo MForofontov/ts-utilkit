@@ -156,14 +156,17 @@ describe('parseCSVLine', () => {
 
   // Test case 14: Throw Error for invalid delimiter length
   it('14. should throw Error when delimiter is not one character', () => {
-    // Arrange
     const input = 'a,b,c';
     const delimiter = ',,';
-
-    // Act & Assert
     expect(() => parseCSVLine(input, delimiter)).toThrow(Error);
     expect(() => parseCSVLine(input, delimiter)).toThrow(
       'exactly one character',
+    );
+  });
+
+  it('15. should throw Error for characters after a closing quote', () => {
+    expect(() => parseCSVLine('a,"b"c,d')).toThrow(
+      'unexpected character after closing quote',
     );
   });
 });

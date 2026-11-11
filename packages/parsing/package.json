@@ -1,6 +1,6 @@
 {
   "name": "@ts-utilkit/parsing",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Parsing utilities for JSON, CSV, XML, and other data formats",
   "homepage": "https://github.com/mykfor1/ts-utilkit/tree/main/packages/parsing#readme",
   "bugs": {

@@ -36,7 +36,7 @@ export function getURLsFromText(
   text: string,
   options: URLExtractionOptions = {},
 ): string[] {
-  const { includeWWW = true, unique = true } = options;
+  const { includeWWW = false, unique = true } = options;
 
   // Regex pattern for URLs - matches http://, https://, ftp://, and www. URLs
   // More restrictive to avoid capturing trailing punctuation

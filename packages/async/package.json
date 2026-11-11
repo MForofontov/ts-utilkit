@@ -1,6 +1,6 @@
 {
   "name": "@ts-utilkit/async",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Asynchronous operation utilities for retry logic, timeouts, parallel execution, and promise management",
   "homepage": "https://github.com/mykfor1/ts-utilkit/tree/main/packages/async#readme",
   "bugs": {

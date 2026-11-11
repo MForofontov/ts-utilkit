@@ -34,6 +34,8 @@
  *
  * @complexity Time: O(1), Space: O(1)
  */
+import { shiftMonths } from './dateUtils';
+
 export function subtractMonths(date: Date, months: number): Date {
   if (isNaN(date.getTime())) {
     throw new Error('Invalid date');
@@ -42,7 +44,5 @@ export function subtractMonths(date: Date, months: number): Date {
     throw new Error('Months must be a number');
   }
 
-  const result = new Date(date);
-  result.setMonth(result.getMonth() - months);
-  return result;
+  return shiftMonths(date, -months);
 }

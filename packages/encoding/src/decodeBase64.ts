@@ -43,6 +43,16 @@ import { Buffer } from 'buffer';
 export function decodeBase64(str: string): string {
   try {
     const normalized = str.replace(/-/g, '+').replace(/_/g, '/');
+    const padding = normalized.match(/=+$/)?.[0] ?? '';
+    if (padding.length > 2) {
+      throw new Error('Invalid base64 string');
+    }
+
+    const withoutPadding = normalized.replace(/=+$/, '');
+    if (withoutPadding.length % 4 === 1) {
+      throw new Error('Invalid base64 string');
+    }
+
     const buffer = Buffer.from(normalized, 'base64');
     const decoded = buffer.toString('utf-8');
     const reEncoded = buffer.toString('base64').replace(/=+$/, '');

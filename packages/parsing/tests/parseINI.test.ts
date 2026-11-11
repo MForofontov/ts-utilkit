@@ -198,11 +198,13 @@ invalidline
 
   // Test case 13: Throw Error for empty key
   it('13. should throw Error for empty key', () => {
-    // Arrange
     const input = '[section]\n=value';
-
-    // Act & Assert
     expect(() => parseINI(input)).toThrow(Error);
     expect(() => parseINI(input)).toThrow('Empty key');
+  });
+
+  it('14. should preserve hash characters inside quoted values', () => {
+    const result = parseINI('[app]\nkey="foo#bar"');
+    expect(result.app.key).toBe('foo#bar');
   });
 });

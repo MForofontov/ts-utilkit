@@ -1,5 +1,3 @@
-import { calculateProduct } from './calculateProduct';
-
 /**
  * Calculates the geometric mean of an array of positive numbers.
  *
@@ -21,7 +19,7 @@ import { calculateProduct } from './calculateProduct';
  * calculateGeometricMean(growthRates); // ~1.0766 (7.66% average growth)
  *
  * @note The geometric mean is only defined for positive numbers.
- * @note Formula: nth root of the product of n numbers.
+ * @note Uses log-space averaging to reduce overflow risk for large values.
  * @note Useful for calculating average rates of change and investment returns.
  * @note Returns NaN for empty arrays or arrays containing non-positive values.
  *
@@ -32,6 +30,6 @@ export function calculateGeometricMean(arr: number[]): number {
     return NaN;
   }
 
-  const product: number = calculateProduct(arr);
-  return Math.pow(product, 1 / arr.length);
+  const logSum = arr.reduce((sum, num) => sum + Math.log(num), 0);
+  return Math.exp(logSum / arr.length);
 }

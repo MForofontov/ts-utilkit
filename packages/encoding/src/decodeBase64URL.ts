@@ -47,5 +47,19 @@ export function decodeBase64URL(str: string): string {
   }
 
   const base64 = str.replace(/-/g, '+').replace(/_/g, '/');
-  return Buffer.from(base64, 'base64').toString('utf8');
+  const padding = base64.match(/=+$/)?.[0] ?? '';
+  if (padding.length > 2) {
+    throw new Error('Invalid Base64URL string');
+  }
+
+  const buffer = Buffer.from(base64, 'base64');
+  const decoded = buffer.toString('utf8');
+  const reEncoded = buffer.toString('base64').replace(/=+$/, '');
+  const sanitizedInput = base64.replace(/=+$/, '');
+
+  if (reEncoded !== sanitizedInput) {
+    throw new Error('Invalid Base64URL string');
+  }
+
+  return decoded;
 }

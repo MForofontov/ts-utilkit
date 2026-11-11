@@ -153,4 +153,20 @@ describe('asyncMemoize', () => {
       'ttl must be non-negative, got -100',
     );
   });
+
+  it('12. should deduplicate concurrent calls with the same arguments', async () => {
+    let calls = 0;
+    const fn = jest.fn().mockImplementation(async () => {
+      calls++;
+      await new Promise((resolve) => setTimeout(resolve, 20));
+      return calls;
+    });
+    const memoized = asyncMemoize(fn);
+
+    const [a, b] = await Promise.all([memoized(), memoized()]);
+
+    expect(a).toBe(1);
+    expect(b).toBe(1);
+    expect(fn).toHaveBeenCalledTimes(1);
+  });
 });

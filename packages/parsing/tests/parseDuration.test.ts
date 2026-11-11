@@ -179,11 +179,12 @@ describe('parseDuration', () => {
 
   // Test case 16: Throw Error for unrecognized unit
   it('16. should throw Error for unrecognized unit', () => {
-    // Arrange
     const input = '5x';
-
-    // Act & Assert
     expect(() => parseDuration(input)).toThrow(Error);
     expect(() => parseDuration(input)).toThrow('Unrecognized unit');
+  });
+
+  it('17. should throw Error for trailing garbage', () => {
+    expect(() => parseDuration('5s garbage')).toThrow('unexpected trailing text');
   });
 });

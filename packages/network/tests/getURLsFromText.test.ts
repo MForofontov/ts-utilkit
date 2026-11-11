@@ -63,9 +63,9 @@ describe('getURLsFromText', () => {
     expect(result).toEqual(['https://example.com']);
   });
 
-  it('12. should extract www URLs', () => {
+  it('12. should extract www URLs when includeWWW is enabled', () => {
     const text = 'Check www.example.com for details';
-    const result = getURLsFromText(text);
+    const result = getURLsFromText(text, { includeWWW: true });
     expect(result).toEqual(['https://www.example.com']);
   });
 
@@ -85,7 +85,7 @@ describe('getURLsFromText', () => {
     const text = `Line 1: https://example.com
     Line 2: http://other.com
     Line 3: www.another.com`;
-    const result = getURLsFromText(text);
+    const result = getURLsFromText(text, { includeWWW: true });
     expect(result).toEqual([
       'https://example.com',
       'http://other.com',

@@ -70,5 +70,12 @@ export function decodeBase32(str: string): string {
     }
   }
 
+  if (bitsCount > 0) {
+    const residualMask = (1 << bitsCount) - 1;
+    if ((bitsBuffer & residualMask) !== 0) {
+      throw new Error('Invalid Base32 string');
+    }
+  }
+
   return Buffer.from(bytes).toString('utf8');
 }

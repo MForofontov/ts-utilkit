@@ -34,5 +34,21 @@
  */
 export function isValidEmail(email: string): boolean {
   const emailRegex = /^[^\s@]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  return emailRegex.test(email);
+  if (!emailRegex.test(email)) {
+    return false;
+  }
+
+  const atIndex = email.indexOf('@');
+  const local = email.slice(0, atIndex);
+  const domain = email.slice(atIndex + 1);
+
+  if (local.startsWith('.') || local.endsWith('.') || local.includes('..')) {
+    return false;
+  }
+
+  if (domain.includes('..') || domain.startsWith('.') || domain.endsWith('.')) {
+    return false;
+  }
+
+  return true;
 }

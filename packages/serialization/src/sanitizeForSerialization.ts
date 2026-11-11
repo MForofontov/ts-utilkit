@@ -18,6 +18,12 @@
  *
  * @complexity Time: O(n), Space: O(n) where n is object properties
  */
+import {
+  cloneDate,
+  cloneRegExp,
+  isPlainObject,
+} from './serializationValueUtils';
+
 export function sanitizeForSerialization(
   obj: any,
   removeNull: boolean = false,
@@ -35,19 +41,54 @@ export function sanitizeForSerialization(
       return undefined;
     }
 
+    if (value instanceof Date) {
+      return cloneDate(value);
+    }
+
+    if (value instanceof RegExp) {
+      return cloneRegExp(value);
+    }
+
     if (Array.isArray(value)) {
       return value.map(sanitize).filter((v) => v !== undefined);
     }
 
+    if (value instanceof Map) {
+      const result = new Map<any, any>();
+      for (const [key, val] of value) {
+        const sanitizedKey = sanitize(key);
+        const sanitizedVal = sanitize(val);
+        if (sanitizedKey !== undefined && sanitizedVal !== undefined) {
+          result.set(sanitizedKey, sanitizedVal);
+        }
+      }
+      return result;
+    }
+
+    if (value instanceof Set) {
+      const result = new Set<any>();
+      for (const item of value) {
+        const sanitized = sanitize(item);
+        if (sanitized !== undefined) {
+          result.add(sanitized);
+        }
+      }
+      return result;
+    }
+
     if (typeof value === 'object') {
+      if (!isPlainObject(value)) {
+        return value;
+      }
+
       const result: Record<string, any> = {};
 
-      for (const [key, val] of Object.entries(value)) {
+      for (const key of Reflect.ownKeys(value)) {
         if (typeof key === 'symbol') {
           continue;
         }
 
-        const sanitized = sanitize(val);
+        const sanitized = sanitize((value as any)[key]);
         if (sanitized !== undefined) {
           result[key] = sanitized;
         }

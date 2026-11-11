@@ -189,4 +189,20 @@ describe('sanitizeForSerialization', () => {
     // Assert
     expect(input).toEqual(original);
   });
+
+  it('15. should preserve Date values', () => {
+    const date = new Date('2020-01-01T00:00:00.000Z');
+    const result = sanitizeForSerialization({ d: date });
+    expect(result.d).toEqual(date);
+    expect(result.d).not.toBe(date);
+  });
+
+  it('16. should preserve Map and Set values', () => {
+    const result = sanitizeForSerialization({
+      m: new Map([['a', 1]]),
+      s: new Set([1, 2]),
+    });
+    expect(result.m).toEqual(new Map([['a', 1]]));
+    expect(result.s).toEqual(new Set([1, 2]));
+  });
 });

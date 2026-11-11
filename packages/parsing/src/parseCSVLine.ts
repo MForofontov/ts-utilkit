@@ -72,9 +72,13 @@ export function parseCSVLine(
           i += 2;
           continue;
         } else {
-          // End of quoted field
           inQuotes = false;
           i++;
+          if (i < input.length && input[i] !== delimiter) {
+            throw new Error(
+              'Malformed CSV field: unexpected character after closing quote',
+            );
+          }
           continue;
         }
       } else {

@@ -123,4 +123,8 @@ describe('slugify', () => {
     const result: string = slugify(str);
     expect(result).toBe(expected);
   });
+
+  it('16. should transliterate accented characters before slugifying', () => {
+    expect(slugify('café résumé')).toBe('cafe-resume');
+  });
 });

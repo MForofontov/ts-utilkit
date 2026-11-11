@@ -87,5 +87,16 @@ describe('subtractMonths', () => {
     );
   });
 
-  it('12. should throw Error when months is NaN', () => {});
+  it('12. should throw Error when months is NaN', () => {
+    expect(() => subtractMonths(new Date('2025-06-15'), NaN)).toThrow(
+      'Months must be a number',
+    );
+  });
+
+  it('13. should clamp day overflow when subtracting months', () => {
+    const result = subtractMonths(new Date('2025-03-31'), 1);
+    expect(result.getFullYear()).toBe(2025);
+    expect(result.getMonth()).toBe(1);
+    expect(result.getDate()).toBe(28);
+  });
 });

@@ -17,9 +17,12 @@ import { timingSafeEqual, createHash } from 'crypto';
  * compareHash('hello world', hash, 'sha256'); // Returns: true
  *
  * @example
- * // Compare with wrong hash
- * const wrongHash = 'abc123';
- * compareHash('hello world', wrongHash, 'sha256'); // Returns: false
+ * // Compare with invalid hash length (throws)
+ * try {
+ *   compareHash('hello world', 'abc123', 'sha256');
+ * } catch (error) {
+ *   console.error(error.message);
+ * }
  *
  * @example
  * // Compare SHA-512 hash

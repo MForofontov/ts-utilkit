@@ -108,6 +108,18 @@ describe('hashPassword', () => {
     );
   });
 
+  it('14b. should throw Error when salt has odd hex length', async () => {
+    await expect(hashPassword(testPassword, 'abc')).rejects.toThrow(
+      'salt must have even hexadecimal length',
+    );
+  });
+
+  it('14c. should throw Error when salt is too short', async () => {
+    await expect(hashPassword(testPassword, 'a1b2c3d4')).rejects.toThrow(
+      'salt must be at least 16 hexadecimal characters',
+    );
+  });
+
   // Test case 15: Throw error for NaN iterations
   it('15. should throw Error when iterations is NaN', async () => {
     await expect(hashPassword(testPassword, testSalt, NaN)).rejects.toThrow(

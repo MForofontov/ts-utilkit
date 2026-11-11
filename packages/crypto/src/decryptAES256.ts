@@ -32,6 +32,8 @@ import { createDecipheriv, scryptSync } from 'crypto';
  *   console.error('Decryption failed:', error.message);
  * }
  *
+ * @note Uses synchronous scrypt key derivation (`scryptSync`), which blocks the
+ * event loop during decryption. Avoid high-frequency calls on server hot paths.
  * @note Uses AES-256-GCM (Galois/Counter Mode). The authentication tag is verified
  * during decryption, ensuring data integrity and authenticity. If the data has been
  * tampered with or the wrong key is used, decryption will fail.

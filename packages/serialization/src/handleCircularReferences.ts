@@ -21,6 +21,12 @@
  *
  * @complexity Time: O(n), Space: O(n) where n is object size
  */
+import {
+  cloneDate,
+  cloneRegExp,
+  isPlainObject,
+} from './serializationValueUtils';
+
 export function handleCircularReferences(
   obj: any,
   replacer: any = '[Circular]',
@@ -36,6 +42,14 @@ export function handleCircularReferences(
       return value;
     }
 
+    if (value instanceof Date) {
+      return cloneDate(value);
+    }
+
+    if (value instanceof RegExp) {
+      return cloneRegExp(value);
+    }
+
     // Check for circular reference
     if (seen.has(value)) {
       return replacer;
@@ -49,10 +63,32 @@ export function handleCircularReferences(
       return result;
     }
 
-    const result: Record<string, any> = {};
+    if (value instanceof Map) {
+      const result = new Map<any, any>();
+      for (const [key, val] of value) {
+        result.set(handle(key), handle(val));
+      }
+      seen.delete(value);
+      return result;
+    }
 
-    for (const [key, val] of Object.entries(value)) {
-      result[key] = handle(val);
+    if (value instanceof Set) {
+      const result = new Set<any>();
+      for (const item of value) {
+        result.add(handle(item));
+      }
+      seen.delete(value);
+      return result;
+    }
+
+    if (!isPlainObject(value)) {
+      return value;
+    }
+
+    const result: Record<string | symbol, any> = {};
+
+    for (const key of Reflect.ownKeys(value)) {
+      result[key] = handle((value as Record<PropertyKey, unknown>)[key]);
     }
 
     seen.delete(value); // Allow same object at different branches

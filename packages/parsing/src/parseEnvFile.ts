@@ -1,6 +1,6 @@
 /**
  * Parses a .env file string into a key-value object.
- * Supports quotes, multiline values, comments, and variable expansion.
+ * Supports quotes, comments, and variable expansion.
  *
  * @param input - The .env file content as a string.
  * @param expandVariables - Whether to expand variable references like $VAR or ${VAR} (default: false).

@@ -45,6 +45,24 @@
  *
  * @complexity Time: O(n), Space: O(n) - Where n is the length of input string
  */
+function parseINIValue(raw: string): string {
+  const trimmed = raw.trim();
+
+  if (
+    (trimmed.startsWith('"') && trimmed.endsWith('"')) ||
+    (trimmed.startsWith("'") && trimmed.endsWith("'"))
+  ) {
+    return trimmed.slice(1, -1);
+  }
+
+  const commentIndex = trimmed.search(/[;#]/);
+  if (commentIndex !== -1) {
+    return trimmed.substring(0, commentIndex).trim();
+  }
+
+  return trimmed;
+}
+
 export function parseINI(
   input: string,
 ): Record<string, Record<string, string>> {
@@ -73,12 +91,6 @@ export function parseINI(
       continue;
     }
 
-    // Remove inline comments
-    const commentIndex = line.search(/[;#]/);
-    if (commentIndex !== -1) {
-      line = line.substring(0, commentIndex).trim();
-    }
-
     // Check for section header
     if (line.startsWith('[') && line.endsWith(']')) {
       currentSection = line.substring(1, line.length - 1).trim();
@@ -100,7 +112,7 @@ export function parseINI(
     }
 
     const key = line.substring(0, equalIndex).trim();
-    const value = line.substring(equalIndex + 1).trim();
+    const value = parseINIValue(line.substring(equalIndex + 1));
 
     if (key.length === 0) {
       throw new Error(`Empty key at line ${lineNum + 1}`);

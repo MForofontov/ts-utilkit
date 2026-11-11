@@ -112,4 +112,10 @@ describe('businessDaysBetween', () => {
       'Start date must be before end date',
     );
   });
+
+  it('14. should count calendar business days regardless of time-of-day', () => {
+    const start = new Date(2024, 8, 6, 23, 0, 0); // Friday 23:00
+    const end = new Date(2024, 8, 9, 1, 0, 0); // Monday 01:00
+    expect(businessDaysBetween(start, end)).toBe(2);
+  });
 });

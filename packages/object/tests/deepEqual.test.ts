@@ -75,6 +75,15 @@ describe('deepEqual', () => {
     expect(deepEqual(obj1, obj2)).toBe(true);
   });
 
+  it('8b. should return false for objects with different symbol values', () => {
+    const sym1 = Symbol('sym1');
+    const sym2a = Symbol('sym2');
+    const sym2b = Symbol('sym2');
+    expect(deepEqual({ [sym1]: 1, [sym2a]: 2 }, { [sym1]: 1, [sym2b]: 3 })).toBe(
+      false,
+    );
+  });
+
   // Test case 9: Handle non-object input (number)
   it('9. should return false if one input is a number', () => {
     expect(deepEqual(42 as unknown as Record<string, unknown>, { a: 1 })).toBe(

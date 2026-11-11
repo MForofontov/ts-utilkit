@@ -51,9 +51,15 @@ export function businessDaysBetween(start: Date, end: Date): number {
   }
 
   let count = 0;
-  const currentDate = new Date(start);
+  const startDay = new Date(
+    start.getFullYear(),
+    start.getMonth(),
+    start.getDate(),
+  );
+  const endDay = new Date(end.getFullYear(), end.getMonth(), end.getDate());
+  const currentDate = new Date(startDay);
 
-  while (currentDate <= end) {
+  while (currentDate <= endDay) {
     const dayOfWeek = currentDate.getDay();
     if (dayOfWeek !== 0 && dayOfWeek !== 6) {
       // Exclude Sundays (0) and Saturdays (6)

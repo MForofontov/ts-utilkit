@@ -1,6 +1,6 @@
 {
   "name": "@ts-utilkit/serialization",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Serialization and deserialization utilities for various data formats",
   "homepage": "https://github.com/mykfor1/ts-utilkit/tree/main/packages/serialization#readme",
   "bugs": {
