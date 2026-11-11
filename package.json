@@ -42,14 +42,17 @@
     "test:network": "npm test -w @ts-utilkit/network",
     "test:object": "npm test -w @ts-utilkit/object",
     "test:parsing": "npm test -w @ts-utilkit/parsing",
+    "test:path": "npm test -w @ts-utilkit/path",
     "test:random": "npm test -w @ts-utilkit/random",
     "test:regex": "npm test -w @ts-utilkit/regex",
+    "test:result": "npm test -w @ts-utilkit/result",
     "test:serialization": "npm test -w @ts-utilkit/serialization",
     "test:string": "npm test -w @ts-utilkit/string",
     "test:testing-utilities": "npm test -w @ts-utilkit/testing-utilities",
     "test:utility": "npm test -w @ts-utilkit/utility",
     "test:validation": "npm test -w @ts-utilkit/validation",
     "test:webscraping": "npm test -w @ts-utilkit/webscraping",
+    "build": "npm run build --workspaces --if-present",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "format": "prettier --write \"**/*.{ts,js,json,md}\""
@@ -73,6 +76,7 @@
     "prettier": "^3.6.2",
     "ts-jest": "^29.4.0",
     "ts-node": "^10.9.2",
+    "typescript": "^5.9.2",
     "typescript-eslint": "^8.48.1"
   },
   "dependencies": {

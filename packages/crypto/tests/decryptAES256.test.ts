@@ -37,37 +37,87 @@ describe('decryptAES256', () => {
     expect(() => decryptAES256(encrypted, 'password2')).toThrow();
   });
 
-  // Test case 5: Tampered IV fails decryption (security)
-  it('5. should throw error when IV is tampered', () => {
+  // Test case 5: Tampered salt fails decryption (security)
+  it('5. should throw error when salt is tampered', () => {
     const encrypted = encryptAES256(testData, testPassword);
     const parts = encrypted.split(':');
     const tampered =
-      'aaaa' + parts[0].slice(4) + ':' + parts[1] + ':' + parts[2];
+      'aaaa' +
+      parts[0].slice(4) +
+      ':' +
+      parts[1] +
+      ':' +
+      parts[2] +
+      ':' +
+      parts[3];
     expect(() => decryptAES256(tampered, testPassword)).toThrow();
   });
 
-  // Test case 6: Tampered ciphertext fails decryption (security)
-  it('6. should throw error when ciphertext is tampered', () => {
+  // Test case 6: Tampered IV fails decryption (security)
+  it('6. should throw error when IV is tampered', () => {
     const encrypted = encryptAES256(testData, testPassword);
     const parts = encrypted.split(':');
     const tampered =
-      parts[0] + ':' + 'bbbb' + parts[1].slice(4) + ':' + parts[2];
+      parts[0] +
+      ':' +
+      'aaaa' +
+      parts[1].slice(4) +
+      ':' +
+      parts[2] +
+      ':' +
+      parts[3];
     expect(() => decryptAES256(tampered, testPassword)).toThrow();
   });
 
-  // Test case 7: Tampered auth tag fails decryption (security)
-  it('7. should throw error when auth tag is tampered', () => {
+  // Test case 7: Tampered ciphertext fails decryption (security)
+  it('7. should throw error when ciphertext is tampered', () => {
     const encrypted = encryptAES256(testData, testPassword);
     const parts = encrypted.split(':');
     const tampered =
-      parts[0] + ':' + parts[1] + ':' + 'cccc' + parts[2].slice(4);
+      parts[0] +
+      ':' +
+      parts[1] +
+      ':' +
+      parts[2] +
+      ':' +
+      'bbbb' +
+      parts[3].slice(4);
     expect(() => decryptAES256(tampered, testPassword)).toThrow();
   });
 
-  // Test case 8: Invalid format fails decryption
-  it('8. should throw error for invalid encrypted format', () => {
+  // Test case 8: Tampered auth tag fails decryption (security)
+  it('8. should throw error when auth tag is tampered', () => {
+    const encrypted = encryptAES256(testData, testPassword);
+    const parts = encrypted.split(':');
+    const tampered =
+      parts[0] +
+      ':' +
+      parts[1] +
+      ':' +
+      'cccc' +
+      parts[2].slice(4) +
+      ':' +
+      parts[3];
+    expect(() => decryptAES256(tampered, testPassword)).toThrow();
+  });
+
+  // Test case 9: Invalid format fails decryption
+  it('9. should throw error for invalid encrypted format', () => {
     expect(() => decryptAES256('invalid:format', testPassword)).toThrow();
     expect(() => decryptAES256('only-one-part', testPassword)).toThrow();
+  });
+
+  // Test case 10: Legacy 3-part format is rejected
+  it('10. should reject legacy 3-part iv:authTag:ciphertext format', () => {
+    const legacy =
+      Buffer.alloc(16).toString('base64') +
+      ':' +
+      Buffer.alloc(16).toString('base64') +
+      ':' +
+      Buffer.from('test').toString('base64');
+    expect(() => decryptAES256(legacy, testPassword)).toThrow(
+      /legacy 3-part format/,
+    );
   });
 
   // Test case 13: Throw error for empty key
@@ -85,13 +135,27 @@ describe('decryptAES256', () => {
     );
   });
 
-  // Test case 15: Throw error for invalid IV length
-  it('15. should throw Error when IV length is invalid', () => {
-    // Create encrypted data with incorrect IV length (too short)
+  // Test case 15: Throw error for invalid salt length
+  it('15. should throw Error when salt length is invalid', () => {
+    const shortSalt = Buffer.from('short', 'utf8').toString('base64');
+    const validIV = Buffer.alloc(16).toString('base64');
+    const validAuthTag = Buffer.alloc(16).toString('base64');
+    const validCiphertext = Buffer.from('test', 'utf8').toString('base64');
+    const invalidEncrypted = `${shortSalt}:${validIV}:${validAuthTag}:${validCiphertext}`;
+
+    expect(() => decryptAES256(invalidEncrypted, testPassword)).toThrow(Error);
+    expect(() => decryptAES256(invalidEncrypted, testPassword)).toThrow(
+      'invalid salt length',
+    );
+  });
+
+  // Test case 16: Throw error for invalid IV length
+  it('16. should throw Error when IV length is invalid', () => {
+    const validSalt = Buffer.alloc(16).toString('base64');
     const shortIV = Buffer.from('short', 'utf8').toString('base64');
     const validAuthTag = Buffer.alloc(16).toString('base64');
     const validCiphertext = Buffer.from('test', 'utf8').toString('base64');
-    const invalidEncrypted = `${shortIV}:${validAuthTag}:${validCiphertext}`;
+    const invalidEncrypted = `${validSalt}:${shortIV}:${validAuthTag}:${validCiphertext}`;
 
     expect(() => decryptAES256(invalidEncrypted, testPassword)).toThrow(Error);
     expect(() => decryptAES256(invalidEncrypted, testPassword)).toThrow(
@@ -99,13 +163,13 @@ describe('decryptAES256', () => {
     );
   });
 
-  // Test case 16: Throw error for invalid auth tag length
-  it('16. should throw Error when auth tag length is invalid', () => {
-    // Create encrypted data with incorrect auth tag length
+  // Test case 17: Throw error for invalid auth tag length
+  it('17. should throw Error when auth tag length is invalid', () => {
+    const validSalt = Buffer.alloc(16).toString('base64');
     const validIV = Buffer.alloc(16).toString('base64');
     const shortAuthTag = Buffer.from('short', 'utf8').toString('base64');
     const validCiphertext = Buffer.from('test', 'utf8').toString('base64');
-    const invalidEncrypted = `${validIV}:${shortAuthTag}:${validCiphertext}`;
+    const invalidEncrypted = `${validSalt}:${validIV}:${shortAuthTag}:${validCiphertext}`;
 
     expect(() => decryptAES256(invalidEncrypted, testPassword)).toThrow(Error);
     expect(() => decryptAES256(invalidEncrypted, testPassword)).toThrow(

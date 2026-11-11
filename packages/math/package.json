@@ -1,6 +1,6 @@
 {
   "name": "@ts-utilkit/math",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Mathematical utilities covering algebra, geometry, statistics, number theory, and combinatorics",
   "homepage": "https://github.com/mykfor1/ts-utilkit/tree/main/packages/math#readme",
   "bugs": {

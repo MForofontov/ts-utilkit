@@ -1,6 +1,6 @@
 {
   "name": "@ts-utilkit/crypto",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Cryptographic utilities for hashing (SHA-256, SHA-512, MD5), encryption (AES-256), HMAC, and password management",
   "homepage": "https://github.com/mykfor1/ts-utilkit/tree/main/packages/crypto#readme",
   "bugs": {

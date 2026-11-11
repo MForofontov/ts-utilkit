@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-07-29
+
+### Changed
+
+- **Breaking:** `deepEqual` no longer treats arrays, Dates, Maps, or Sets as plain objects via `Object.keys`. Mixed kinds (`[]` vs `{}`, `Date` vs `{}`, `Map` vs object) return `false`. Maps and Sets are compared by entries.
+- `deepClone` JSDoc updated to match `structuredClone` behavior (no false claim that primitives throw `TypeError`).
+
 ## [0.2.0] - 2026-03-05
 
 ### Changed

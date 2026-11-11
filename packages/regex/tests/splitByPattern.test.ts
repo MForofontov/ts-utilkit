@@ -72,4 +72,18 @@ describe('splitByPattern', () => {
       'Invalid regular expression pattern',
     );
   });
+
+  it('16. should combine includeDelimiters with limit', () => {
+    const result = splitByPattern('a-b-c-d', /(-)/, {
+      includeDelimiters: true,
+      limit: 3,
+    });
+    expect(result.length).toBeLessThanOrEqual(3);
+    expect(result[0]).toBe('a');
+  });
+
+  it('17. should apply flags to string patterns', () => {
+    const result = splitByPattern('A,b,C', ',', undefined, 'i');
+    expect(result).toEqual(['A', 'b', 'C']);
+  });
 });

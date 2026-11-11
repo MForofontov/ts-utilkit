@@ -16,4 +16,14 @@ describe('calculateGeometricMean', () => {
   it('3. should return NaN for an empty array', () => {
     expect(calculateGeometricMean([])).toBeNaN();
   });
+
+  // Test case 4: Single element
+  it('4. should return the value itself for a single-element array', () => {
+    expect(calculateGeometricMean([7])).toBe(7);
+  });
+
+  // Test case 5: Identical values
+  it('5. should return the value itself when all elements are equal', () => {
+    expect(calculateGeometricMean([4, 4, 4, 4])).toBe(4);
+  });
 });

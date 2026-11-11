@@ -147,4 +147,20 @@ describe('deserializeFromXML', () => {
     expect(result.root.item).toEqual(['1', '2']);
     expect(result.root.other).toBe('3');
   });
+
+  it('13. should handle repeated self-closing tags as array', () => {
+    const input = '<root><item/><item/></root>';
+    const result = deserializeFromXML(input);
+    expect(result.root.item).toEqual([null, null]);
+  });
+
+  it('14. should handle nested same-named tags', () => {
+    const input = '<root><item><item>inner</item></item></root>';
+    const result = deserializeFromXML(input);
+    expect(result.root.item.item).toBe('inner');
+  });
+
+  it('15. should return text-only content when no tags present', () => {
+    expect(deserializeFromXML('plain text')).toBe('plain text');
+  });
 });

@@ -8,7 +8,7 @@ import { calculateProduct } from './calculateProduct';
  *
  * @example
  * // Basic usage
- * calculateGeometricMean([1, 3, 9, 27]); // Returns 6
+ * calculateGeometricMean([1, 3, 9, 27]); // ~5.196
  *
  * @example
  * // Contains zero or negative numbers

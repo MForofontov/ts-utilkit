@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-07-29
+
+### Changed
+
+- **Breaking:** `sanitizeHTML` now strips unquoted event handlers and unclosed `<script>`/`<style>` remnants that previously could survive sanitization.
+
 ## [0.2.0] - 2026-03-05
 
 ### Changed

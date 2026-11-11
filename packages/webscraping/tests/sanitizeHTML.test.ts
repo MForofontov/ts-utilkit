@@ -222,4 +222,19 @@ describe('sanitizeHTML', () => {
     expect(result).not.toContain('script');
     expect(result).not.toContain('evil.js');
   });
+
+  it('18. should remove unquoted event handlers', () => {
+    const html = '<div onclick=alert(1)>Click</div>';
+    const result = sanitizeHTML(html);
+    expect(result).not.toContain('onclick');
+    expect(result).not.toContain('alert');
+    expect(result).toContain('<div');
+  });
+
+  it('19. should remove unclosed script tags and trailing content', () => {
+    const html = '<p>Safe</p><script>alert(1)';
+    const result = sanitizeHTML(html);
+    expect(result).toBe('<p>Safe</p>');
+    expect(result).not.toContain('alert');
+  });
 });

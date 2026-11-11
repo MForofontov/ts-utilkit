@@ -5,18 +5,18 @@
 [![Jest](https://img.shields.io/badge/Jest-323330?style=for-the-badge&logo=Jest&logoColor=white)](https://jestjs.io/)
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
-A collection of **408 TypeScript utility functions** organized into specialized modules. Built with type safety and comprehensive testing in mind.
+A collection of **TypeScript utility functions** organized into specialized packages. Built with type safety and comprehensive testing in mind.
 
-> ⚠️ **Production Notice**: While this library has extensive test coverage (>98%), not all functions have been battle-tested in production environments. Use at your own discretion and thoroughly test in your specific use case before deploying to production.
+> ⚠️ **Production Notice**: While this library has extensive test coverage (>95%), not all functions have been battle-tested in production environments. Use at your own discretion and thoroughly test in your specific use case before deploying to production.
 
 ## ✨ Features
 
-- 🎯 **408 Functions**: Utilities across array, async, crypto, date, math, object, string, and more
+- 🎯 **~500 Functions**: Utilities across array, async, crypto, date, math, object, string, result, path, and more
 - 🔒 **Type Safe**: Full TypeScript support with strict type checking
 - 📝 **Well Documented**: JSDoc comments with examples and complexity notes
-- 🧪 **Extensively Tested**: 5,675 unit tests with >98% code coverage
-- 📦 **Tree Shakeable**: Import only what you need
-- 🛡️ **Input Validation**: Comprehensive error handling with descriptive messages
+- 🧪 **Extensively Tested**: ~500 Jest test files with high code coverage
+- 📦 **Tree Shakeable**: Import only what you need from scoped packages
+- 🛡️ **Input Validation**: Descriptive errors where runtime checks apply
 - ⚖️ **MIT Licensed**: Free for personal and commercial use
 
 ## 📚 Table of Contents
@@ -38,18 +38,20 @@ This library requires **Node.js 20 or later** and supports modern TypeScript env
 
 ### Package Manager
 
+Install the scoped packages you need (each is published independently):
+
 ```bash
 # npm
-npm install ts-utilkit
+npm install @ts-utilkit/array @ts-utilkit/object @ts-utilkit/string
 
 # yarn
-yarn add ts-utilkit
+yarn add @ts-utilkit/array @ts-utilkit/object @ts-utilkit/string
 
 # pnpm
-pnpm add ts-utilkit
+pnpm add @ts-utilkit/array @ts-utilkit/object @ts-utilkit/string
 
 # bun
-bun add ts-utilkit
+bun add @ts-utilkit/array @ts-utilkit/object @ts-utilkit/string
 ```
 
 ### TypeScript Configuration
@@ -68,10 +70,12 @@ Ensure your `tsconfig.json` includes:
 
 ## ⚡ Quick Start
 
-Import functions individually for optimal tree-shaking:
+Import from scoped packages for optimal tree-shaking:
 
 ```typescript
-import { chunkArray, deepMerge, slugify } from 'ts-utilkit';
+import { chunkArray } from '@ts-utilkit/array';
+import { deepMerge } from '@ts-utilkit/object';
+import { slugify } from '@ts-utilkit/string';
 
 // Array operations
 const chunks = chunkArray([1, 2, 3, 4, 5], 2); // [[1, 2], [3, 4], [5]]
@@ -83,35 +87,37 @@ const merged = deepMerge({ a: 1 }, { b: 2 }); // { a: 1, b: 2 }
 const slug = slugify('Hello World!'); // 'hello-world'
 ```
 
-## � Packages Overview
+## Packages Overview
 
-This library provides **408 utility functions** organized into **21 specialized packages**. Each package is independently installable and fully tree-shakeable.
+This library provides utility functions organized into **23 specialized packages**. Each package is independently installable and fully tree-shakeable.
 
-| Package                           | Functions | Description                                                 | Documentation                                            |
-| --------------------------------- | --------- | ----------------------------------------------------------- | -------------------------------------------------------- |
-| **@ts-utilkit/array**             | 26        | Array manipulation, chunking, flattening, grouping, sorting | [View Functions →](packages/array/README.md)             |
-| **@ts-utilkit/async**             | 6         | Retry logic, timeouts, parallel/series execution            | [View Functions →](packages/async/README.md)             |
-| **@ts-utilkit/collection**        | 17        | Set and Map operations, conversions                         | [View Functions →](packages/collection/README.md)        |
-| **@ts-utilkit/configuration**     | 12        | Environment variables, config management                    | [View Functions →](packages/configuration/README.md)     |
-| **@ts-utilkit/crypto**            | 11        | Hashing (SHA, MD5), encryption (AES), HMAC                  | [View Functions →](packages/crypto/README.md)            |
-| **@ts-utilkit/date**              | 31        | Date arithmetic, formatting, business days                  | [View Functions →](packages/date/README.md)              |
-| **@ts-utilkit/encoding**          | 2         | Base64 encoding/decoding                                    | [View Functions →](packages/encoding/README.md)          |
-| **@ts-utilkit/event**             | 7         | Event emitters, debouncing, throttling                      | [View Functions →](packages/event/README.md)             |
-| **@ts-utilkit/format**            | 8         | Number, currency, byte, duration formatting                 | [View Functions →](packages/format/README.md)            |
-| **@ts-utilkit/math**              | 56        | Arithmetic, algebra, geometry, statistics                   | [View Functions →](packages/math/README.md)              |
-| **@ts-utilkit/network**           | 18        | URL parsing, query params, domain extraction                | [View Functions →](packages/network/README.md)           |
-| **@ts-utilkit/object**            | 39        | Deep merge/clone, flattening, key transformations           | [View Functions →](packages/object/README.md)            |
-| **@ts-utilkit/parsing**           | 7         | CSV, INI, log, env file parsing                             | [View Functions →](packages/parsing/README.md)           |
-| **@ts-utilkit/random**            | 25        | Random generation (numbers, strings, colors, UUIDs)         | [View Functions →](packages/random/README.md)            |
-| **@ts-utilkit/regex**             | 15        | Pattern building, matching, common patterns                 | [View Functions →](packages/regex/README.md)             |
-| **@ts-utilkit/serialization**     | 18        | JSON, CSV, XML, YAML, binary serialization                  | [View Functions →](packages/serialization/README.md)     |
-| **@ts-utilkit/string**            | 51        | Case conversion, slugs, validation, manipulation            | [View Functions →](packages/string/README.md)            |
-| **@ts-utilkit/testing-utilities** | 21        | Test data generation, assertions, spies                     | [View Functions →](packages/testing-utilities/README.md) |
-| **@ts-utilkit/utility**           | 9         | Debounce, throttle, color conversion, delays                | [View Functions →](packages/utility/README.md)           |
-| **@ts-utilkit/validation**        | 13        | IP, UUID, email, credit card validation                     | [View Functions →](packages/validation/README.md)        |
-| **@ts-utilkit/webscraping**       | 16        | HTML parsing, link/email extraction                         | [View Functions →](packages/webscraping/README.md)       |
+| Package                           | Description                                                 | Documentation                                            |
+| --------------------------------- | ----------------------------------------------------------- | -------------------------------------------------------- |
+| **@ts-utilkit/array**             | Array manipulation, chunking, flattening, grouping, sorting | [View Functions →](packages/array/README.md)             |
+| **@ts-utilkit/async**             | Retry logic, timeouts, parallel/series execution            | [View Functions →](packages/async/README.md)             |
+| **@ts-utilkit/collection**        | Set and Map operations, conversions                         | [View Functions →](packages/collection/README.md)        |
+| **@ts-utilkit/crypto**            | Hashing (SHA, MD5), encryption (AES), HMAC                  | [View Functions →](packages/crypto/README.md)            |
+| **@ts-utilkit/date**              | Date arithmetic, formatting, business days                  | [View Functions →](packages/date/README.md)              |
+| **@ts-utilkit/encoding**          | Base64 / Base64URL / hex / Base32                           | [View Functions →](packages/encoding/README.md)          |
+| **@ts-utilkit/env**               | Environment variables and config parsing                    | [View Functions →](packages/env/README.md)               |
+| **@ts-utilkit/event**             | Event emitters, debouncing, throttling                      | [View Functions →](packages/event/README.md)             |
+| **@ts-utilkit/format**            | Number, currency, byte, duration formatting                 | [View Functions →](packages/format/README.md)            |
+| **@ts-utilkit/math**              | Arithmetic, algebra, geometry, statistics                   | [View Functions →](packages/math/README.md)              |
+| **@ts-utilkit/network**           | URL parsing, query params, domain extraction                | [View Functions →](packages/network/README.md)           |
+| **@ts-utilkit/object**            | Deep merge/clone, flattening, key transformations           | [View Functions →](packages/object/README.md)            |
+| **@ts-utilkit/parsing**           | CSV, INI, log, env file parsing                             | [View Functions →](packages/parsing/README.md)           |
+| **@ts-utilkit/path**              | POSIX path join, normalize, basename, extensions            | [View Functions →](packages/path/README.md)              |
+| **@ts-utilkit/random**            | Random generation (numbers, strings, colors, UUIDs)         | [View Functions →](packages/random/README.md)            |
+| **@ts-utilkit/regex**             | Pattern building, matching, common patterns                 | [View Functions →](packages/regex/README.md)             |
+| **@ts-utilkit/result**            | Ok/Err Result type, map, match, fromThrowable               | [View Functions →](packages/result/README.md)            |
+| **@ts-utilkit/serialization**     | JSON, CSV, XML, YAML, binary serialization                  | [View Functions →](packages/serialization/README.md)     |
+| **@ts-utilkit/string**            | Case conversion, slugs, validation, manipulation            | [View Functions →](packages/string/README.md)            |
+| **@ts-utilkit/testing-utilities** | Test data generation, assertions, spies                     | [View Functions →](packages/testing-utilities/README.md) |
+| **@ts-utilkit/utility**           | Debounce, throttle, color conversion, delays                | [View Functions →](packages/utility/README.md)           |
+| **@ts-utilkit/validation**        | IP, UUID, JSON, credit card validation                      | [View Functions →](packages/validation/README.md)        |
+| **@ts-utilkit/webscraping**       | HTML parsing, link/email extraction                         | [View Functions →](packages/webscraping/README.md)       |
 
-> 💡 **Tip**: Click on "View Functions →" links to see the complete function list for each package with detailed usage examples.
+> Tip: Click on "View Functions →" links to see the complete function list for each package with detailed usage examples. See [KNOWN_ISSUES.md](KNOWN_ISSUES.md) for documented limitations.
 
 ## 📊 Function Summary
 

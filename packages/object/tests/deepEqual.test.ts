@@ -109,4 +109,89 @@ describe('deepEqual', () => {
       deepEqual(undefined as unknown as Record<string, unknown>, { a: 1 }),
     ).toBe(false);
   });
+
+  // Test case 14: Array vs empty object must not be equal
+  it('14. should return false for empty array vs empty object', () => {
+    expect(deepEqual([], {})).toBe(false);
+  });
+
+  // Test case 15: Array vs object with numeric keys
+  it('15. should return false for array vs object with same numeric keys', () => {
+    expect(deepEqual([1, 2], { 0: 1, 1: 2 })).toBe(false);
+  });
+
+  // Test case 16: Date vs empty object
+  it('16. should return false for Date vs empty object', () => {
+    expect(deepEqual(new Date(0), {})).toBe(false);
+  });
+
+  // Test case 17: Equal Date objects
+  it('17. should return true for equal Date objects', () => {
+    expect(deepEqual(new Date('2025-01-01'), new Date('2025-01-01'))).toBe(
+      true,
+    );
+  });
+
+  // Test case 18: Unequal Date objects
+  it('18. should return false for unequal Date objects', () => {
+    expect(deepEqual(new Date('2025-01-01'), new Date('2025-01-02'))).toBe(
+      false,
+    );
+  });
+
+  // Test case 19: Equal RegExp objects
+  it('19. should return true for equal RegExp objects', () => {
+    expect(deepEqual(/test/gi, /test/gi)).toBe(true);
+  });
+
+  // Test case 20: Unequal RegExp flags
+  it('20. should return false for RegExp with different flags', () => {
+    expect(deepEqual(/test/gi, /test/i)).toBe(false);
+  });
+
+  // Test case 21: Equal Maps
+  it('21. should return true for equal Maps', () => {
+    expect(deepEqual(new Map([['a', 1]]), new Map([['a', 1]]))).toBe(true);
+  });
+
+  // Test case 22: Unequal Maps
+  it('22. should return false for unequal Maps', () => {
+    expect(deepEqual(new Map([['a', 1]]), new Map([['b', 2]]))).toBe(false);
+  });
+
+  // Test case 23: Map vs plain object
+  it('23. should return false for Map vs plain object', () => {
+    expect(deepEqual(new Map([['a', 1]]), { a: 1 })).toBe(false);
+  });
+
+  // Test case 24: Equal Sets
+  it('24. should return true for equal Sets', () => {
+    expect(deepEqual(new Set([1, 2]), new Set([2, 1]))).toBe(true);
+  });
+
+  // Test case 25: Unequal Sets
+  it('25. should return false for unequal Sets', () => {
+    expect(deepEqual(new Set([1, 2]), new Set([1, 3]))).toBe(false);
+  });
+
+  // Test case 26: Set vs array
+  it('26. should return false for Set vs array', () => {
+    expect(deepEqual(new Set([1, 2]), [1, 2])).toBe(false);
+  });
+
+  // Test case 27: Nested Map values
+  it('27. should deeply compare Map values', () => {
+    expect(
+      deepEqual(
+        new Map([['x', { nested: true }]]),
+        new Map([['x', { nested: true }]]),
+      ),
+    ).toBe(true);
+    expect(
+      deepEqual(
+        new Map([['x', { nested: true }]]),
+        new Map([['x', { nested: false }]]),
+      ),
+    ).toBe(false);
+  });
 });

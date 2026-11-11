@@ -4,6 +4,8 @@
  * @param rgb - The object containing red (r), green (g), and blue (b) values (0-255).
  * @returns The hexadecimal color string in the format #RRGGBB (lowercase).
  *
+ * @throws {Error} If any channel is missing, NaN, or not finite.
+ *
  * @example
  * // Basic usage
  * rgbToHex({ r: 255, g: 87, b: 51 }); // '#ff5733'
@@ -23,7 +25,16 @@
  * @complexity Time: O(1), Space: O(1)
  */
 export function rgbToHex(rgb: { r: number; g: number; b: number }): string {
+  const { r, g, b } = rgb;
+  if (
+    ![r, g, b].every(
+      (channel) => typeof channel === 'number' && Number.isFinite(channel),
+    )
+  ) {
+    throw new Error('rgb channels must be finite numbers');
+  }
+
   const clamp = (num: number) => Math.min(255, Math.max(0, Math.round(num)));
   const toHex = (num: number) => clamp(num).toString(16).padStart(2, '0');
-  return `#${toHex(rgb.r)}${toHex(rgb.g)}${toHex(rgb.b)}`;
+  return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
 }

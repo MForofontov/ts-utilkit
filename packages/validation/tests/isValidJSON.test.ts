@@ -43,4 +43,17 @@ describe('isValidJSON', () => {
     expect(results).toEqual([true, true, false, true, true]);
     expect(endTime - startTime).toBeLessThan(10);
   });
+
+  // Test case 4: Whitespace-only
+  it('4. should return false for whitespace-only strings', () => {
+    expect(isValidJSON('   ')).toBe(false);
+    expect(isValidJSON('\n\t')).toBe(false);
+  });
+
+  // Test case 5: Numeric and nested JSON
+  it('5. should accept numeric strings and nested objects', () => {
+    expect(isValidJSON('0')).toBe(true);
+    expect(isValidJSON('-12.5')).toBe(true);
+    expect(isValidJSON('{"a":{"b":[1,2,3]}}')).toBe(true);
+  });
 });

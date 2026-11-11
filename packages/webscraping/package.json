@@ -1,6 +1,6 @@
 {
   "name": "@ts-utilkit/webscraping",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Web scraping utilities for HTML parsing, data extraction, and web content processing",
   "homepage": "https://github.com/mykfor1/ts-utilkit/tree/main/packages/webscraping#readme",
   "bugs": {

@@ -1,6 +1,6 @@
 {
   "name": "@ts-utilkit/object",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Object manipulation utilities for deep merging, cloning, path access, and transformation",
   "homepage": "https://github.com/mykfor1/ts-utilkit/tree/main/packages/object#readme",
   "bugs": {

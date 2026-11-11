@@ -95,4 +95,15 @@ describe('testPattern', () => {
       'Invalid regular expression pattern',
     );
   });
+
+  it('17. should match beginning and end anchors', () => {
+    expect(testPattern('exact', /^exact$/)).toBe(true);
+    expect(testPattern('exactly', /^exact$/)).toBe(false);
+  });
+
+  it('18. should handle global flag without sticky side effects', () => {
+    const pattern = /ab/g;
+    expect(testPattern('ab ab', pattern)).toBe(true);
+    expect(testPattern('xx', pattern)).toBe(false);
+  });
 });

@@ -44,18 +44,22 @@ describe('rgbToHex', () => {
     expect(rgbToHex({ r: 10.4, g: 20.5, b: 30.6 })).toBe('#0a151f');
   });
 
-  // Test case 9: Document behaviour when channels are missing
-  it('9. should return #ffNaNNaN when green and blue channels are missing', () => {
+  // Test case 9: Reject missing channels
+  it('9. should throw when green and blue channels are missing', () => {
     const incomplete = { r: 255 } as unknown as {
       r: number;
       g: number;
       b: number;
     };
-    expect(rgbToHex(incomplete)).toBe('#ffNaNNaN');
+    expect(() => rgbToHex(incomplete)).toThrow(
+      'rgb channels must be finite numbers',
+    );
   });
 
-  // Test case 10: Document behaviour for NaN channels
-  it('10. should return #ffNaN00 when a channel is NaN', () => {
-    expect(rgbToHex({ r: 255, g: Number.NaN, b: 0 })).toBe('#ffNaN00');
+  // Test case 10: Reject NaN channels
+  it('10. should throw when a channel is NaN', () => {
+    expect(() => rgbToHex({ r: 255, g: Number.NaN, b: 0 })).toThrow(
+      'rgb channels must be finite numbers',
+    );
   });
 });

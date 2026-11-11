@@ -50,14 +50,15 @@ describe('encryptAES256', () => {
     expect(result1).not.toBe(result2);
   });
 
-  // Test case 7: Encrypted data contains IV, encrypted data, and auth tag
-  it('7. should produce formatted output with IV:encrypted:authTag', () => {
+  // Test case 7: Encrypted data contains salt, IV, auth tag, and ciphertext
+  it('7. should produce formatted output with salt:iv:authTag:ciphertext', () => {
     const result = encryptAES256(testData, testPassword);
     const parts = result.split(':');
-    expect(parts.length).toBe(3);
-    expect(parts[0].length).toBeGreaterThan(0); // IV
-    expect(parts[1].length).toBeGreaterThan(0); // encrypted data
+    expect(parts.length).toBe(4);
+    expect(parts[0].length).toBeGreaterThan(0); // salt
+    expect(parts[1].length).toBeGreaterThan(0); // IV
     expect(parts[2].length).toBeGreaterThan(0); // auth tag
+    expect(parts[3].length).toBeGreaterThan(0); // ciphertext
   });
 
   // Test case 8: Encrypted data is base64 encoded
@@ -75,6 +76,13 @@ describe('encryptAES256', () => {
     const encrypted = encryptAES256(testData, testPassword);
     const decrypted = decryptAES256(encrypted, testPassword);
     expect(decrypted).toBe(testData);
+  });
+
+  // Test case 10: Each encryption uses a unique salt
+  it('10. should use a unique salt per encryption', () => {
+    const result1 = encryptAES256(testData, testPassword);
+    const result2 = encryptAES256(testData, testPassword);
+    expect(result1.split(':')[0]).not.toBe(result2.split(':')[0]);
   });
 
   // Test case 14: Throw error for empty data

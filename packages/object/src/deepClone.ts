@@ -1,8 +1,9 @@
 /**
  * Creates a deep clone of an object or array, preserving nested structures.
  *
- * @param obj - The object or array to clone (must be a non-null object).
- * @returns A deep copy of the input object with no shared references.
+ * @param obj - The value to clone. Prefer plain objects and arrays; primitives
+ * are passed through by `structuredClone` when available.
+ * @returns A deep copy of the input with no shared references (for clonable values).
  *
  * @example
  * // Clone nested object
@@ -26,11 +27,6 @@
  * };
  * const cloned = deepClone(obj);
  * // Date and RegExp objects are properly cloned
- *
- * @example
- * // Primitives throw error
- * deepClone(42); // TypeError: Input must be a non-null object
- * deepClone(null); // TypeError: Input must be a non-null object
  *
  * @note Uses `structuredClone` when available (Node.js 17+, modern browsers).
  * @note Falls back to JSON serialization if `structuredClone` not available.

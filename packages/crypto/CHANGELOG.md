@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-07-29
+
+### Changed
+
+- **Breaking:** `encryptAES256` / `decryptAES256` now use a per-encryption random scrypt salt. Ciphertext format is `salt:iv:authTag:ciphertext` (base64). Legacy 3-part payloads (`iv:authTag:ciphertext` with fixed salt `'salt'`) are rejected and must be re-encrypted.
+
 ## [0.2.0] - 2026-03-05
 
 ### Changed

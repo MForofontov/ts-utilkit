@@ -20,6 +20,7 @@
  * // Array comparisons
  * deepEqual([1, 2, [3, 4]], [1, 2, [3, 4]]); // true
  * deepEqual([1, 2, 3], [1, 2]); // false (different lengths)
+ * deepEqual([], {}); // false (array vs plain object)
  *
  * @example
  * // Date objects
@@ -31,12 +32,18 @@
  * deepEqual(/test/gi, /test/gi); // true
  * deepEqual(/test/gi, /test/i); // false (different flags)
  *
- * @note Handles primitives, objects, arrays, NaN, Date, and RegExp objects.
+ * @example
+ * // Map and Set
+ * deepEqual(new Map([['a', 1]]), new Map([['a', 1]])); // true
+ * deepEqual(new Set([1, 2]), new Set([1, 2])); // true
+ *
+ * @note Handles primitives, plain objects, arrays, NaN, Date, RegExp, Map, and Set.
  * @note NaN is considered equal to NaN (unlike === comparison).
  * @note Compares object properties recursively.
  * @note Arrays must have same length and elements in same order.
- * @note Does NOT support Map, Set, or circular references.
- * @note Property order doesn't matter for objects.
+ * @note Mixed kinds (array vs object, Date vs plain object, Map vs object) are never equal.
+ * @note Does NOT support circular references.
+ * @note Property order doesn't matter for plain objects.
  *
  * @complexity Time: O(n) where n is total number of values across both structures, Space: O(d) where d is max depth (recursion stack)
  */
@@ -59,27 +66,74 @@ export function deepEqual(a: unknown, b: unknown): boolean {
     return false;
   }
 
-  // Special case for Date objects
-  if (a instanceof Date && b instanceof Date) {
-    return a.getTime() === b.getTime();
-  }
-
-  // Special case for RegExp objects
-  if (a instanceof RegExp && b instanceof RegExp) {
-    return a.source === b.source && a.flags === b.flags;
-  }
-
-  // If one is a Date and the other is a RegExp, they are not deeply equal
-  if (
-    (a instanceof Date && b instanceof RegExp) ||
-    (a instanceof RegExp && b instanceof Date)
-  ) {
+  // Arrays must match arrays (reject array vs plain object)
+  const aIsArray = Array.isArray(a);
+  const bIsArray = Array.isArray(b);
+  if (aIsArray !== bIsArray) {
     return false;
   }
 
-  // Special case for boolean values
-  if (typeof a === 'boolean' && typeof b === 'boolean') {
-    return a === b;
+  // Special case for Date objects
+  const aIsDate = a instanceof Date;
+  const bIsDate = b instanceof Date;
+  if (aIsDate || bIsDate) {
+    if (aIsDate && bIsDate) {
+      return a.getTime() === b.getTime();
+    }
+    return false;
+  }
+
+  // Special case for RegExp objects
+  const aIsRegExp = a instanceof RegExp;
+  const bIsRegExp = b instanceof RegExp;
+  if (aIsRegExp || bIsRegExp) {
+    if (aIsRegExp && bIsRegExp) {
+      return a.source === b.source && a.flags === b.flags;
+    }
+    return false;
+  }
+
+  // Special case for Map
+  const aIsMap = a instanceof Map;
+  const bIsMap = b instanceof Map;
+  if (aIsMap || bIsMap) {
+    if (!(aIsMap && bIsMap)) {
+      return false;
+    }
+    if (a.size !== b.size) {
+      return false;
+    }
+    for (const [key, value] of a) {
+      if (!b.has(key) || !deepEqual(value, b.get(key))) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  // Special case for Set
+  const aIsSet = a instanceof Set;
+  const bIsSet = b instanceof Set;
+  if (aIsSet || bIsSet) {
+    if (!(aIsSet && bIsSet)) {
+      return false;
+    }
+    if (a.size !== b.size) {
+      return false;
+    }
+    for (const value of a) {
+      let found = false;
+      for (const other of b) {
+        if (deepEqual(value, other)) {
+          found = true;
+          break;
+        }
+      }
+      if (!found) {
+        return false;
+      }
+    }
+    return true;
   }
 
   // Get the keys of both objects.
@@ -100,6 +154,5 @@ export function deepEqual(a: unknown, b: unknown): boolean {
   }
 
   // If all keys and values are deeply equal, return true.
-
   return true;
 }

@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-07-29
+
+### Changed
+
+- **Breaking:** `calculateHarmonicMean` returns `NaN` for any non-positive value (negatives included), not only zeros.
+- `calculateGeometricMean` JSDoc example corrected (`[1, 3, 9, 27]` ≈ 5.196, not 6).
+
 ## [0.2.0] - 2026-03-05
 
 ### Changed

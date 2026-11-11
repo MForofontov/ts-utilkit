@@ -27,7 +27,7 @@ echo -e "${GREEN}✓ Logged in as: $NPM_USER${NC}"
 echo ""
 
 # Confirm publishing
-echo -e "${YELLOW}This will publish 21 packages to npm under the @ts-utilkit scope.${NC}"
+echo -e "${YELLOW}This will publish packages to npm under the @ts-utilkit scope.${NC}"
 read -p "Are you sure you want to continue? (yes/no): " -r
 echo
 if [[ ! $REPLY =~ ^[Yy][Ee][Ss]$ ]]; then
@@ -48,8 +48,10 @@ PACKAGES=(
   "network"
   "object"
   "parsing"
+  "path"
   "random"
   "regex"
+  "result"
   "serialization"
   "string"
   "testing-utilities"

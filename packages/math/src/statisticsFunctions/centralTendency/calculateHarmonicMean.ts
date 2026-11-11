@@ -3,7 +3,7 @@
  * The harmonic mean is useful for rates and ratios.
  *
  * @param arr - The array of numbers to calculate the harmonic mean from.
- * @returns The harmonic mean of the numbers. Returns NaN for empty arrays or if any value is zero.
+ * @returns The harmonic mean of the numbers. Returns NaN for empty arrays or if any value is non-positive.
  *
  * @example
  * // Basic usage
@@ -18,6 +18,10 @@
  * calculateHarmonicMean([1, 0, 2]); // NaN
  *
  * @example
+ * // Contains negatives - undefined harmonic mean
+ * calculateHarmonicMean([1, -2, 4]); // NaN
+ *
+ * @example
  * // Empty array
  * calculateHarmonicMean([]); // NaN
  *
@@ -26,7 +30,7 @@
  * // Trip 1: 60 mph, Trip 2: 40 mph
  * calculateHarmonicMean([60, 40]); // 48 mph (average speed)
  *
- * @note The harmonic mean is not defined for arrays containing zero.
+ * @note The harmonic mean is only defined for positive numbers.
  * @note Useful for calculating average rates (e.g., speed, price-to-earnings ratios).
  * @note Always less than or equal to the arithmetic and geometric means.
  * @note Best for data expressed as rates or ratios (e.g., speed, density).
@@ -34,7 +38,7 @@
  * @complexity Time: O(n), Space: O(1) - Where n is the array length
  */
 export function calculateHarmonicMean(arr: number[]): number {
-  if (arr.length === 0 || arr.some((num) => num === 0)) {
+  if (arr.length === 0 || arr.some((num) => num <= 0)) {
     return NaN;
   }
 
